@@ -12,7 +12,7 @@ $config_directories = array(
 /**
  * Hash salt used for one-time login links, etc.
  */
-$settings['hash_salt'] = 'ZDKkQxVPRT1754DOHetrX86m_pagksVNvImJZsNlGIoto2V5VRBtQeRCnVNWYRFMBwPenG0GgQ';
+$settings['hash_salt'] = '_2vpc4MByU3bbDhtGSYgmxQ-lrKHWf4Tqvv5_aUSw4xy9YqpKXGvrPTWNbhGGhFnkD4T5Dhlng';
 
 /**
  * Access control for update.php script.
