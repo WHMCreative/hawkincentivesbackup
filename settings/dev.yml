@@ -11,35 +11,27 @@
     site_name: bhk-d8.dev.e3develop.com   # Directory where htdocs and application will live
     git_org: elevatedthird                # Name of the git user/organization
     git_repo: bhk-D8                      # Name of the git repository
-    drupal_root: docroot                  # Dir which has index.php
-    git_branch: develop                   # This is the branch that will be deployed
-    max_releases: 10                      # Number of past releases to keep
-    settings_file: settings.php           # Name of the Drupal settings file to deploy
+    drupal_root: docroot               # Dir which has index.php
+    git_branch: develop             # This is the branch that will be deployed
+    max_releases: 10                # Number of past releases to keep
+    settings_file: settings.php     # Name of the Drupal settings file to deploy
 
     site_domains:      # array of domains name to put in vhost. Should NOT have www.
       - ['bhk-d8.dev.e3develop.com']
-        # site root directories and database credentials, root directories should stay the same between environments
-        # db credentials will change.
-        # name == site @ docroot/sites/*
+    # site root directories and database credentials, root directories should stay the same between environments
+    # db credentials will change.
+    # name == site @ docroot/sites/*
     site_roots:
       - {name: 'default', db_name: hawkincentives-D8, db_user: hawkincentives, db_pass: xj>S=e!7aA!4EnN5}
 
-    # Host mysql
-    db_name: hawkincentives-D8    # name of the db
-    db_user: hawkincentives       # name of the db user
-    db_pass: xj>S=e!7aA!4EnN5     # db password
-
     mysql_login_host: localhost
 
-    # Host apache
-    site_domain:      # domain name to put in vhost. Should NOT have www.
     env_vars:
       - AH_SITE_SERVER blackmesh
       - AH_SITE_ENVIRONMENT dev
 
     # Host filesystem
     htdocs: htdocs            # document root expected by apache
-#    htsdocs: htsdocs          # ibid.
     file_owner: hawk1
     file_group: apache
-    sites_directory: /var/www/bhk-d8.dev.e3develop.com
+    sites_directory: /var/www

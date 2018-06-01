@@ -120,15 +120,15 @@
     - release
 
 - name: apply ownership inside project
-  #become: yes
-  #become_method: sudo
+  become: yes
+  become_method: sudo
   command: find . -exec chown {{ file_owner }}:{{ file_group }} '{}' \+
   args:
     chdir: "{{ sites_directory }}/{{ site_name }}/application/releases/{{ timestamp.stdout }}"
   tags:
     - deploy
     - release
-    #- sudo
+    - sudo
     - permissions
 
 - name: remove default directory

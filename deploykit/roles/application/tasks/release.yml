@@ -10,6 +10,8 @@
     - release
 
 - name: symlink config directory
+  become: yes
+  become_method: sudo
   file:
     path={{ sites_directory }}/{{ site_name }}/config
     src={{ sites_directory }}/{{ site_name }}/application/releases/{{ timestamp.stdout }}/config
@@ -19,6 +21,8 @@
     - release
 
 - name: symlink vendor directory
+  become: yes
+  become_method: sudo
   file:
     path={{ sites_directory }}/{{ site_name }}/vendor
     src={{ sites_directory }}/{{ site_name }}/application/releases/{{ timestamp.stdout }}/vendor
