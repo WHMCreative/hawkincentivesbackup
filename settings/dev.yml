@@ -1,0 +1,37 @@
+---
+
+- hosts: develop
+  remote_user: hawk1
+  roles:
+    #- apache      # remove for plesk
+    #- mysql       # remove for plesk
+    - application
+  vars:
+    # Project
+    site_name: bhk-d8.dev.e3develop.com   # Directory where htdocs and application will live
+    git_org: elevatedthird                # Name of the git user/organization
+    git_repo: bhk-D8                      # Name of the git repository
+    drupal_root: docroot                  # Dir which has index.php
+    git_branch: develop                   # This is the branch that will be deployed
+    max_releases: 10                      # Number of past releases to keep
+    settings_file: settings.php           # Name of the Drupal settings file to deploy
+
+    # Host mysql
+    db_name:      # name of the db
+    db_user:      # name of the db user
+    db_pass:      # db password
+
+    mysql_login_host: localhost
+
+    # Host apache
+    site_domain:      # domain name to put in vhost. Should NOT have www.
+    env_vars:
+      - AH_SITE_SERVER blackmesh
+      - AH_SITE_ENVIRONMENT dev
+
+    # Host filesystem
+    htdocs: htdocs            # document root expected by apache
+#    htsdocs: htsdocs          # ibid.
+    file_owner: hawk1
+    file_group: apache
+    sites_directory: /var/www/bhk-d8.dev.e3develop.com

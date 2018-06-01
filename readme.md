@@ -6,15 +6,14 @@ This project uses our standard single master branch workflow with date based tag
 
 ## Hosting
 
-* Platform: Acquia
-* Environment name: Elevated Third - Paragon Dev (paragondev)
-* Dev URL: http://paragondevansnwocpp3.devcloud.acquia-sites.com/
+* Platform: BlackMesh/Contegix
+* Dev URL: bhk-d8.dev.e3develop.com
 * Prod URL: N/A
 
 ### Shield credentials
 
-* Username: paragon
-* Password: 3ditParagon
+* Username: hawkincentives
+* Password: 3ditHawk
 
 ## Config workflow
 
