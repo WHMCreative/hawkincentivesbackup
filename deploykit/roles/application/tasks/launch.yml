@@ -1,0 +1,50 @@
+---
+
+- name: create htdocs symlink
+  become: yes
+  become_method: sudo
+  file:
+    path={{ sites_directory }}/{{ site_name }}/{{ htdocs }}
+    src={{ sites_directory }}/{{ site_name }}/application/current
+    owner={{ file_owner }}
+    group={{ file_group }}
+    state=link
+    force=yes
+  notify:
+    - reload httpd
+  tags:
+    - launch
+    - sudo
+
+- name: create vendor directory symlink
+  become: yes
+  become_method: sudo
+  file:
+    path={{ sites_directory }}/{{ site_name }}/vendor
+    src={{ sites_directory }}/{{ site_name }}/application/releases/{{ timestamp.stdout }}/vendor
+    owner={{ file_owner }}
+    group={{ file_group }}
+    state=link
+    force=yes
+  notify:
+    - reload httpd
+  tags:
+    - launch
+    - sudo
+
+- name: create htsdocs symlink
+  become: yes
+  become_method: sudo
+  file:
+    path={{ sites_directory }}/{{ site_name }}/{{ htsdocs }}
+    src={{ sites_directory }}/{{ site_name }}/application/current
+    owner={{ file_owner }}
+    group={{ file_group }}
+    state=link
+    force=yes
+  notify:
+    - reload httpd
+  tags:
+    - launch
+    - sudo
+

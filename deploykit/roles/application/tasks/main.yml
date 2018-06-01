@@ -1,0 +1,21 @@
+---
+
+- name: set release timestamp
+  shell:
+    ls | tail -n 2 | head -n 1
+    chdir={{ sites_directory }}/{{ site_name }}/application/releases
+  register: timestamp
+  tags:
+    - revert
+
+- name: set release timestamp
+  command: date +%Y%m%d%H%M%S
+  register: timestamp
+  tags:
+    - deploy
+    - release
+
+- include: setup.yml
+- include: shared.yml
+- include: launch.yml
+- include: release.yml

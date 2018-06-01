@@ -1,0 +1,13 @@
+# Define application variables
+
+# Paths shared by all drupal roots
+shared_paths:
+  - { path: 'application', mode: '0750' }
+  - { path: 'application/releases', mode: '0750' }
+  - { path: 'application/shared', mode: '0750' }
+  - { path: 'application/shared/repository', mode: '0750' }
+# Multi-site paths, empty path is used to make sub-site root directory
+paths:
+  - { path: '', mode: '0750' }
+  - { path: 'private', mode: '0770' }
+  - { path: 'private/tmp', mode: '0770' }

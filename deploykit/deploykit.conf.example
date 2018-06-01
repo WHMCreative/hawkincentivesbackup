@@ -1,0 +1,5 @@
+# vim: set filetype=make:
+
+# Uncomment the first line and comment out the second in order to disable sudo
+#flags=$(flags_default) --skip-tags sudo
+flags=$(flags_default) --ask-become-pass

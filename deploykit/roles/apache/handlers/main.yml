@@ -1,0 +1,8 @@
+---
+
+- name: reload httpd
+  become: yes
+  become_method: sudo
+  service: name=httpd state=reloaded
+  tags:
+    -apache

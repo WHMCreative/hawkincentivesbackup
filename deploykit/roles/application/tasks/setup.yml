@@ -1,0 +1,49 @@
+---
+
+- name: create shared directory structure
+  become: yes
+  become_method: sudo
+  file:
+    path={{ sites_directory }}/{{ site_name }}/{{ item.path }}
+    owner={{ file_owner }}
+    group={{ file_group }}
+    mode={{ item.mode }}
+    state=directory
+  with_items: "{{ shared_paths }}"
+  tags:
+    - setup
+    - sudo
+    - permissions
+
+- name: create directory structure
+  become: yes
+  become_method: sudo
+  file:
+    path={{ sites_directory }}/{{ site_name }}/application/shared/{{ item[0].name }}/{{ item[1].path }}
+    owner={{ file_owner }}
+    group={{ file_group }}
+    mode={{ item[1].mode }}
+    state=directory
+  with_nested:
+    - "{{ site_roots }}"
+    - "{{ paths }}"
+  tags:
+    - setup
+    - sudo
+    - permissions
+
+- name: provision local settings file
+  become: yes
+  become_method: sudo
+  template:
+    src=local-settings.j2
+    dest={{ sites_directory }}/{{ site_name }}/application/shared/{{ item.name }}/local-settings.inc
+    owner={{ file_owner }}
+    group={{ file_group }}
+    mode=0440
+  with_items: "{{ site_roots }}"
+  tags:
+    - setup
+    - settings
+    - sudo
+    - permissions

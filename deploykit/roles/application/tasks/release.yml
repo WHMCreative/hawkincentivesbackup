@@ -1,0 +1,37 @@
+---
+
+- name: symlink latest release
+  file:
+    path={{ sites_directory }}/{{ site_name }}/application/current
+    src={{ sites_directory }}/{{ site_name }}/application/releases/{{ timestamp.stdout }}/{{ drupal_root }}
+    state=link
+  tags:
+    - revert
+    - release
+
+- name: symlink config directory
+  file:
+    path={{ sites_directory }}/{{ site_name }}/config
+    src={{ sites_directory }}/{{ site_name }}/application/releases/{{ timestamp.stdout }}/config
+    state=link
+  tags:
+    - revert
+    - release
+
+- name: symlink vendor directory
+  file:
+    path={{ sites_directory }}/{{ site_name }}/vendor
+    src={{ sites_directory }}/{{ site_name }}/application/releases/{{ timestamp.stdout }}/vendor
+    state=link
+  tags:
+    - revert
+    - release
+
+- name: remove oldest releases
+  become: yes
+  become_method: sudo
+  shell:
+    ls | sort -r | tail -n +{{ max_releases + 1 }} | xargs rm -rf
+    chdir={{ sites_directory }}/{{ site_name }}/application/releases
+  tags:
+    - release

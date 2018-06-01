@@ -1,0 +1,34 @@
+---
+
+- name: reload httpd
+  become: yes
+  become_method: sudo
+  service: name=httpd state=reloaded
+  tags:
+    - launch
+
+- name: apply directory permissions inside repository
+  become: yes
+  become_method: sudo
+  when: ask_become_pass is defined
+  command: find . -type d -exec chmod 750 '{}' \+
+  args:
+    chdir: "{{ sites_directory }}/{{ site_name }}/application/shared/repository"
+  tags:
+    - setup
+    - deploy
+    - sudo
+    - permissions
+
+- name: apply files permissions inside repository
+  become: yes
+  become_method: sudo
+  when: ask_become_pass is defined
+  command: find . -type f -exec chmod 740 '{}' \+
+  args:
+    chdir: "{{ sites_directory }}/{{ site_name }}/application/shared/repository"
+  tags:
+    - setup
+    - deploy
+    - sudo
+    - permissions

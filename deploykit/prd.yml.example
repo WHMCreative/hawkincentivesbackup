@@ -1,0 +1,39 @@
+---
+
+- hosts: production
+  remote_user: 401e
+  roles:
+    - apache      # remove for plesk
+    - mysql       # remove for plesk
+    - application
+  vars:
+    # Project
+    site_name:                      # Directory where htdocs and application will live
+    git_org: elevatedthird          # Name of the git user/organization
+    git_repo:                       # Name of the git repository
+    drupal_root: site               # Dir which has index.php
+    git_branch: master              # This is the branch that will be deployed
+    max_releases: 10                # Number of past releases to keep
+    settings_file: settings.php     # Name of the Drupal settings file to deploy
+
+    site_domains:      # array of domains name to put in vhost. Should NOT have www.
+      - ['example.com', 'pizza.necks']
+    # site root directories and database credentials, root directories should stay the same between environments
+    # db credentials will change.
+    # name == site @ docroot/sites/*
+    site_roots:
+      - {name: 'default', db_name: example_db, db_user: root, db_pass: root}
+      - {name: 'pizza.necks', db_name: pizza_necks, db_user: root, db_pass: root}
+
+    mysql_login_host: localhost
+
+    env_vars:
+      - AH_SITE_SERVER blackmesh
+      - AH_SITE_ENVIRONMENT prod
+
+    # Host filesystem
+    htdocs: htdocs            # document root expected by apache
+    htsdocs: htsdocs          # ibid.
+    file_owner: 401e
+    file_group: apache
+    sites_directory: /var/www
