@@ -127,3 +127,8 @@ elseif (file_exists(__DIR__ . '/settings.drupalvm.php')) {
 if(file_exists(__DIR__ . '/settings.local.php')) {
   include __DIR__ . '/settings.local.php';
 }
+
+// If local settings file exists, load it.
+if(file_exists(__DIR__ . '/local-settings.inc')) {
+  include __DIR__ . '/local-settings.inc';
+}
