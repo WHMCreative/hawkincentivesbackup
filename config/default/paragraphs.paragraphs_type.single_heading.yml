@@ -1,0 +1,9 @@
+uuid: 68725e43-1cfc-48bd-946b-6da328130acf
+langcode: en
+status: true
+dependencies: {  }
+id: single_heading
+label: 'Single - Heading'
+icon_uuid: 8e4b3917-fa46-4946-adfc-4205420646b5
+description: 'This is a single heading paragraph thingy.'
+behavior_plugins: {  }
