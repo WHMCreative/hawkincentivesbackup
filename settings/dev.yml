@@ -17,9 +17,9 @@
     settings_file: settings.php           # Name of the Drupal settings file to deploy
 
     # Host mysql
-    db_name:      # name of the db
-    db_user:      # name of the db user
-    db_pass:      # db password
+    db_name: hawkincentives-D8    # name of the db
+    db_user: hawkincentives       # name of the db user
+    db_pass: xj>S=e!7aA!4EnN5     # db password
 
     mysql_login_host: localhost
 
