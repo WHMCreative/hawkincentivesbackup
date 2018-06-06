@@ -83,7 +83,7 @@ have to install and start PhantomJS.
 
 * Start PhantomJS:
   ```
-  phantomjs --ssl-protocol=any --ignore-ssl-errors=true ./vendor/jcalderonzumba/gastonjs/src/Client/main.js 8510 1024 768 2>&1 >> /dev/null &
+  phantomjs --ssl-protocol=any --ignore-ssl-errors=true ./vendor/jcalderonzumba/gastonjs/src/Client/card-catalog.js 8510 1024 768 2>&1 >> /dev/null &
   ```
 
 * Then you can run the test:

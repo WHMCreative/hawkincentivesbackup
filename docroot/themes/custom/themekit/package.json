@@ -4,17 +4,24 @@
   "description": "Starter drupal theme.",
   "main": "index.js",
   "scripts": {
+    "dev": "webpack --watch",
+    "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "find node_modules/ -name '*.info' -type f -delete"
   },
   "author": "Elevated Third",
   "license": "ISC",
   "devDependencies": {
+    "autoprefixer": "^8.4.1",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-plugin-array-includes": "^2.0.3",
+    "babel-plugin-syntax-async-functions": "^6.13.0",
+    "babel-plugin-transform-regenerator": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-2": "^6.24.1",
+    "browser-sync": "^2.24.4",
+    "browser-sync-webpack-plugin": "^2.2.2",
     "css-loader": "^0.28.9",
     "extract-loader": "^1.0.2",
     "extract-text-webpack-plugin": "^3.0.2",
@@ -27,13 +34,28 @@
     "gulp-plumber": "^1.1.0",
     "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^2.4.0",
+    "node-sass": "^4.9.0",
+    "postcss-loader": "^2.1.5",
+    "resolve-url-loader": "^2.2.1",
+    "sass-loader": "^6.0.7",
     "sassdoc": "^2.1.20",
+    "style-loader": "^0.20.2",
+    "vue-loader": "^14.1.1",
+    "vue-template-compiler": "^2.5.13",
     "webpack": "^3.11.0",
     "webpack-stream": "^4.0.2"
   },
   "dependencies": {
+    "apollo-cache-inmemory": "^1.1.11",
+    "apollo-client": "^2.2.7",
+    "apollo-link": "^1.2.1",
+    "apollo-link-http": "^1.5.3",
+    "babel-polyfill": "^6.26.0",
     "foundation-sites": "6.4.3",
-    "script-loader": "^0.7.0",
-    "svg.js": "^2.6.4"
+    "graphql": "^0.13.1",
+    "graphql-tag": "^2.8.0",
+    "npm": "^5.8.0",
+    "svg.js": "^2.6.4",
+    "vue": "^2.5.13"
   }
 }
