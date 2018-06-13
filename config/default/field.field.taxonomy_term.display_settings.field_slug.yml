@@ -1,0 +1,19 @@
+uuid: 5a646c93-89ea-4ce4-8ca6-77b2be7c86d0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_slug
+    - taxonomy.vocabulary.display_settings
+id: taxonomy_term.display_settings.field_slug
+field_name: field_slug
+entity_type: taxonomy_term
+bundle: display_settings
+label: Slug
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,32 @@
+uuid: d6563213-ce0f-4adf-ac88-9296030f8ca8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.display_settings.field_slug
+    - taxonomy.vocabulary.display_settings
+id: taxonomy_term.display_settings.default
+targetEntityType: taxonomy_term
+bundle: display_settings
+mode: default
+content:
+  field_slug:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  description: true
+  langcode: true
+  path: true

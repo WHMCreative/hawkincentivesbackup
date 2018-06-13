@@ -1,0 +1,9 @@
+uuid: 6f99f494-2e2f-4fc6-a98c-fe22364efdea
+langcode: en
+status: true
+dependencies: {  }
+name: 'Display Settings'
+vid: display_settings
+description: ''
+hierarchy: 0
+weight: 0
