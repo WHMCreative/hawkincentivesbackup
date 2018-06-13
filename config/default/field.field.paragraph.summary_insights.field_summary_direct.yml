@@ -1,0 +1,21 @@
+uuid: 5208060d-ff06-458f-818c-ddfc2a745178
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_summary_direct
+    - paragraphs.paragraphs_type.summary_insights
+id: paragraph.summary_insights.field_summary_direct
+field_name: field_summary_direct
+entity_type: paragraph
+bundle: summary_insights
+label: 'Select Items Directly'
+description: 'Select exact items to show in this summary.'
+required: false
+translatable: true
+default_value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

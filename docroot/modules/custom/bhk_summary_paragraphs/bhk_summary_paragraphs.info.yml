@@ -1,0 +1,7 @@
+name: BHK Summary Paragraphs
+type: module
+description: Summary Paragraph functionality for BHK
+core: 8.x
+package: Custom
+dependencies:
+  - drupal:paragraphs

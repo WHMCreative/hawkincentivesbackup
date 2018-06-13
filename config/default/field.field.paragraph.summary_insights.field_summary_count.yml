@@ -1,0 +1,23 @@
+uuid: fa48c879-580d-4500-a05c-eb7eea5872cb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_summary_count
+    - paragraphs.paragraphs_type.summary_insights
+id: paragraph.summary_insights.field_summary_count
+field_name: field_summary_count
+entity_type: paragraph
+bundle: summary_insights
+label: 'Total Count'
+description: 'Total number of items to display in this summary.'
+required: false
+translatable: true
+default_value: 3
+default_value_callback: ''
+settings:
+  min: 1
+  max: 15
+  prefix: ''
+  suffix: ''
+field_type: integer

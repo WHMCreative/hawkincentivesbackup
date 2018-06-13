@@ -1,0 +1,17 @@
+{#
+/**
+ * @file
+ * Default theme implementation for displaying a summmary output.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the summary wrapper.
+ * - items: Summary items to output.
+ *
+ * @see template_preprocess_bhk_summary()
+ *
+ * @ingroup themeable
+ */
+#}
+<div{{ attributes.addClass('summary-output')}}>
+  {{ items }}
+</div>

@@ -1,0 +1,43 @@
+uuid: b3643293-36f1-4cf3-849f-3a08ead2a9ed
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_p_header
+    - node.type.insight
+    - paragraphs.paragraphs_type.single_heading
+  module:
+    - entity_reference_revisions
+id: node.insight.field_p_header
+field_name: field_p_header
+entity_type: node
+bundle: insight
+label: Header
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      single_heading: single_heading
+    target_bundles_drag_drop:
+      single_heading:
+        enabled: true
+        weight: 6
+      single_image:
+        weight: 7
+        enabled: false
+      single_svg:
+        weight: 8
+        enabled: false
+      single_text_area:
+        weight: 9
+        enabled: false
+      single_video:
+        weight: 10
+        enabled: false
+field_type: entity_reference_revisions

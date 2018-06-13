@@ -1,0 +1,105 @@
+<?php
+
+/**
+ * @file
+ * Module file for Summary Paragraph Components.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function bhk_summary_paragraphs_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.bhk_summary_paragraphs':
+      $text = file_get_contents(dirname(__FILE__) . "/README.txt");
+
+      return '<pre>' . $text . '</pre>';
+  }
+}
+
+/**
+ * Implements hook_entity_type_alter().
+ */
+function bhk_summary_paragraphs_entity_type_alter(array &$entity_types) {
+  $entity_types['paragraphs_type']
+    ->setFormClass('add', 'Drupal\bhk_summary_paragraphs\Form\SummaryEnabledParagraphsTypeForm')
+    ->setFormClass('edit', 'Drupal\bhk_summary_paragraphs\Form\SummaryEnabledParagraphsTypeForm');
+
+  $entity_types['paragraph']
+    ->setViewBuilderClass('Drupal\bhk_summary_paragraphs\ParagraphViewBuilder');
+}
+
+/**
+ * Imlements hook_entity_extra_field_info().
+ */
+function bhk_summary_paragraphs_entity_extra_field_info() {
+  // Get a list of paragraph bundles with enabled summary.
+  $paragraph_types = \Drupal::entityTypeManager()->getStorage('paragraphs_type')->loadMultiple();
+
+  $paragraph_types = array_filter($paragraph_types, function ($bundle) {
+    return $bundle->getThirdPartySetting('bhk_summary_paragraphs', 'enable_summary', FALSE);
+  });
+
+  // Add a Summary Output display field to all enabled bundles.
+  $extra = [];
+  foreach ($paragraph_types as $bundle) {
+    $extra['paragraph'][$bundle->id()]['display']['summary_output'] = [
+      'label' => t('Summary Output'),
+      'description' => t('Outputs a summary according to user configuration'),
+      'weight' => 10,
+      'visible' => TRUE,
+    ];
+  }
+
+  return $extra;
+}
+
+/**
+ * Implements hook_form_paragraphs_subform_alter().
+ */
+function bhk_summary_paragraphs_form_paragraphs_subform_alter(array &$subform, FormStateInterface $form_state, $delta) {
+  // Add conditional behavior to direct summary selection.
+  if (isset($subform['field_summary_content'], $subform['field_summary_direct'])) {
+
+    // Determine correct input name to use for the condition.
+    if (!empty($subform['field_summary_direct']['widget']['#parents'])) {
+      $parents = $subform['field_summary_direct']['widget']['#parents'];
+
+      $root_parent = array_shift($parents);
+
+      if ($parents) {
+        $parents = '[' . implode('][', $parents) . ']';
+      }
+      else {
+        $parents = '';
+      }
+
+      $field_name = "{$root_parent}{$parents}[value]";
+
+      // Add condition.
+      $subform['field_summary_content']['#states'] = [
+        'visible' => [
+          ':input[name="' . $field_name . '"]' => ['checked' => TRUE],
+        ],
+      ];
+    }
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function bhk_summary_paragraphs_theme($existing, $type, $theme, $path) {
+  return [
+    'summary_output' => [
+      'render element' => 'container',
+      'template' => 'bhk-summary',
+      'variables' => [
+        'items' => [],
+      ],
+    ],
+  ];
+}

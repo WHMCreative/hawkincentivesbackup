@@ -1,0 +1,10 @@
+uuid: bbea55db-b243-47a3-a19b-d9bcdf71d8c8
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.gated
+label: Gated
+targetEntityType: node
+cache: true

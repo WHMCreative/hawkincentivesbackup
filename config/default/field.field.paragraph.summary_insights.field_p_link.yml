@@ -1,0 +1,44 @@
+uuid: b811c925-020e-4672-8ea4-89e459dea898
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_link
+    - paragraphs.paragraphs_type.summary_insights
+  module:
+    - entity_reference_revisions
+id: paragraph.summary_insights.field_p_link
+field_name: field_p_link
+entity_type: paragraph
+bundle: summary_insights
+label: Link
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles: null
+    target_bundles_drag_drop:
+      single_heading:
+        weight: 7
+        enabled: false
+      single_image:
+        weight: 8
+        enabled: false
+      single_svg:
+        weight: 9
+        enabled: false
+      single_text_area:
+        weight: 10
+        enabled: false
+      single_video:
+        weight: 11
+        enabled: false
+      summary_insights:
+        weight: 12
+        enabled: false
+field_type: entity_reference_revisions

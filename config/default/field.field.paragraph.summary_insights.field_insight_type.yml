@@ -1,0 +1,29 @@
+uuid: a30d312e-6043-4706-967e-02bd6b36e881
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_insight_type
+    - paragraphs.paragraphs_type.summary_insights
+    - taxonomy.vocabulary.insight_type
+id: paragraph.summary_insights.field_insight_type
+field_name: field_insight_type
+entity_type: paragraph
+bundle: summary_insights
+label: 'Insight Type'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      insight_type: insight_type
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
