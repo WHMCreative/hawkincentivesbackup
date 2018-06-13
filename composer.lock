@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4af8a8d484dd96e57f3a6a6250be4278",
+    "content-hash": "11be53491d8d7000701df507a58a4371",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -6365,6 +6365,54 @@
             }
         },
         {
+            "name": "drupal/video_embed_wistia",
+            "version": "1.0.0-rc1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/video_embed_wistia",
+                "reference": "8.x-1.0-rc1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/video_embed_wistia-8.x-1.0-rc1.zip",
+                "reference": "8.x-1.0-rc1",
+                "shasum": "caf69071f67a1062065a8b00472105af9e90236b"
+            },
+            "require": {
+                "drupal/core": "~8.0",
+                "drupal/video_embed_field": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0-rc1",
+                    "datestamp": "1460014739",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "vivianspencer",
+                    "homepage": "https://www.drupal.org/user/256826"
+                }
+            ],
+            "description": "Provides Wistia handler for Video Embed Fields.",
+            "homepage": "https://www.drupal.org/project/video_embed_wistia",
+            "support": {
+                "source": "http://cgit.drupalcode.org/video_embed_wistia"
+            }
+        },
+        {
             "name": "drush/drush",
             "version": "8.1.16",
             "source": {
@@ -11846,7 +11894,8 @@
         "drupal/paragraphs_previewer": 20,
         "drupal/field_tools": 20,
         "drupal/password_policy": 15,
-        "drupal/http_cache_control": 15
+        "drupal/http_cache_control": 15,
+        "drupal/video_embed_wistia": 5
     },
     "prefer-stable": true,
     "prefer-lowest": false,

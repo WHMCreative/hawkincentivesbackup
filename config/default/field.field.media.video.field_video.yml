@@ -21,5 +21,6 @@ settings:
   allowed_providers:
     vimeo: vimeo
     youtube: youtube
+    wistia: wistia
     youtube_playlist: '0'
 field_type: video_embed_field
