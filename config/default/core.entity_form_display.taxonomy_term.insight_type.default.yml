@@ -1,0 +1,23 @@
+uuid: e89579f4-8689-4a8d-8379-240117bee122
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.insight_type
+id: taxonomy_term.insight_type.default
+targetEntityType: taxonomy_term
+bundle: insight_type
+mode: default
+content:
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  description: true
+  langcode: true
+  path: true

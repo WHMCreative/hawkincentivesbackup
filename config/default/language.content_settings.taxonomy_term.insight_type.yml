@@ -1,0 +1,11 @@
+uuid: 6790b856-7a58-4cfa-ab02-cd916c8f671d
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.insight_type
+id: taxonomy_term.insight_type
+target_entity_type_id: taxonomy_term
+target_bundle: insight_type
+default_langcode: site_default
+language_alterable: false
