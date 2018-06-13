@@ -1,0 +1,5 @@
+name: BHK - Remote Entity
+type: module
+description: Redirects specific entities to remote urls instead of internal display.
+core: 8.x
+package: Custom

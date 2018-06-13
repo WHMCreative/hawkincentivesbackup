@@ -31,6 +31,7 @@ hidden:
   created: true
   field_tags: true
   field_video_id: true
+  field_video_source: true
   field_video_type: true
   langcode: true
   name: true

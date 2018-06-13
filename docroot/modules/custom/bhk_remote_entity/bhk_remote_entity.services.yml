@@ -1,0 +1,6 @@
+services:
+  gbhk_remote_entity.path_processor:
+    class: Drupal\bhk_remote_entity\PathProcessorRemoteEntity
+    tags:
+      - { name: path_processor_inbound, priority: 0 }
+      - { name: path_processor_outbound, priority: 0 }

@@ -1,0 +1,40 @@
+<?php
+
+/**
+ * @file
+ * Contains bhk_remote_entity.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\node\Entity\Node;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_help().
+ */
+function bhk_remote_entity_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the bhk_remote_entity module.
+    case 'help.page.bhk_remote_entity':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Redirects specific entities to remote url instead of internal display.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Alter links to fix bug with external path for Sitemap module.
+ */
+function bhk_remote_entity_simple_sitemap_links_alter(&$links) {
+  foreach ($links as &$link) {
+    if (isset($link['entity_info']) && $link['entity_info']['entity_type'] === "node") {
+      $node = Node::load($link['entity_info']['id']);
+      if (!is_null($node->field_external_link) && !$node->field_external_link->isEmpty()) {
+        $link['url'] = Url::fromUri($node->field_external_link->first()->getValue()['uri'])->toString();
+      }
+    }
+  }
+}
