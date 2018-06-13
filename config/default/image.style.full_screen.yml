@@ -1,0 +1,15 @@
+uuid: 760a54ed-e5aa-45f2-99fa-aa2c35725b1a
+langcode: en
+status: true
+dependencies: {  }
+name: full_screen
+label: 'Full Screen (2000W)'
+effects:
+  d1f17d52-b49f-4a47-b515-77d364d91c4d:
+    uuid: d1f17d52-b49f-4a47-b515-77d364d91c4d
+    id: image_scale
+    weight: 1
+    data:
+      width: 2000
+      height: null
+      upscale: false

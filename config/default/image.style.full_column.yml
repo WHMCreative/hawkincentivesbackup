@@ -1,0 +1,15 @@
+uuid: 599c4107-8fe6-4c59-8edf-d6723b12aa98
+langcode: en
+status: true
+dependencies: {  }
+name: full_column
+label: 'Full Column (1200W)'
+effects:
+  5a3f3cbd-5857-4146-9907-108646a69f4c:
+    uuid: 5a3f3cbd-5857-4146-9907-108646a69f4c
+    id: image_scale
+    weight: 1
+    data:
+      width: 1200
+      height: null
+      upscale: false

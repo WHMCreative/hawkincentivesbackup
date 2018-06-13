@@ -1,0 +1,15 @@
+uuid: f054cc56-05c9-4745-aa37-1cfc2dbfc5a4
+langcode: en
+status: true
+dependencies: {  }
+name: third_column
+label: 'Third Column (400W)'
+effects:
+  3a6a2ce2-b2a5-4ed0-b701-cc5839d887dc:
+    uuid: 3a6a2ce2-b2a5-4ed0-b701-cc5839d887dc
+    id: image_scale
+    weight: 1
+    data:
+      width: 400
+      height: null
+      upscale: false

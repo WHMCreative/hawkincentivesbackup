@@ -1,0 +1,15 @@
+uuid: 25f11598-20e1-4a48-ad68-ff039d29f99e
+langcode: en
+status: true
+dependencies: {  }
+name: half_column
+label: 'Half Column (600W)'
+effects:
+  24d4625e-b6e7-4f27-9b99-933daa1ba157:
+    uuid: 24d4625e-b6e7-4f27-9b99-933daa1ba157
+    id: image_scale
+    weight: 1
+    data:
+      width: 600
+      height: null
+      upscale: false

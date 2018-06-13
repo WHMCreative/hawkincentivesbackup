@@ -1,0 +1,15 @@
+uuid: b06ea864-e828-47f4-84bc-a093820f5b2f
+langcode: en
+status: true
+dependencies: {  }
+name: fourth_column
+label: 'Fourth Column (300W)'
+effects:
+  96e895d8-b11d-48d7-8901-20c8ef3b003b:
+    uuid: 96e895d8-b11d-48d7-8901-20c8ef3b003b
+    id: image_scale
+    weight: 1
+    data:
+      width: 300
+      height: null
+      upscale: false
