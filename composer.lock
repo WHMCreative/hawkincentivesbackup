@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ad24b2a3ce85437c2f89d6e21fbb62c0",
+    "content-hash": "4af8a8d484dd96e57f3a6a6250be4278",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -4645,6 +4645,74 @@
             "homepage": "https://www.drupal.org/project/menu_block",
             "support": {
                 "source": "http://cgit.drupalcode.org/menu_block"
+            }
+        },
+        {
+            "name": "drupal/menu_item_extras",
+            "version": "2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/menu_item_extras",
+                "reference": "8.x-2.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/menu_item_extras-8.x-2.2.zip",
+                "reference": "8.x-2.2",
+                "shasum": "10cd4afd2087067b7fd58b98f0d2012f59cc187b"
+            },
+            "require": {
+                "drupal/core": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-2.x": "2.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-2.2",
+                    "datestamp": "1522691284",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Andriy Khomych",
+                    "homepage": "https://www.drupal.org/u/andriy-khomych",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Bogdan Hepting",
+                    "homepage": "https://www.drupal.org/u/bogdan-hepting",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Oleh Vehera",
+                    "homepage": "https://www.drupal.org/u/voleger",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Mykhailo Gurei",
+                    "homepage": "https://www.drupal.org/u/ozin",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "Provide an additional custom fields which can be used on Menu link",
+            "homepage": "https://www.drupal.org/project/menu_item_extras",
+            "keywords": [
+                "Drupal",
+                "Mega Menu"
+            ],
+            "support": {
+                "source": "http://cgit.drupalcode.org/menu_item_extras",
+                "issues": "https://www.drupal.org/project/issues/menu_item_extras"
             }
         },
         {
