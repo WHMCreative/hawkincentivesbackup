@@ -1,0 +1,24 @@
+uuid: 89ab18f5-9240-42e2-9490-7f05db1dce3b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_hidden_field_value
+    - paragraphs.paragraphs_type.marketo_hidden_field
+  enforced:
+    module:
+      - e3_marketo
+_core:
+  default_config_hash: Xbctcy3fBdXyX3bIZpqtKAqNCbF1uk--gLhjfU0LQug
+id: paragraph.marketo_hidden_field.field_hidden_field_value
+field_name: field_hidden_field_value
+entity_type: paragraph
+bundle: marketo_hidden_field
+label: 'Field Value'
+description: 'Value to set for the hidden field.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,6 @@
+gated-content-unlocker:
+  version: 1.x
+  js:
+    js/gated-content-unlocker.js: {}
+  dependencies:
+    - e3_marketo/marketo-forms

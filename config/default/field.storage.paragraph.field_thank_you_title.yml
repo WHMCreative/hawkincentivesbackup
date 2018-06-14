@@ -1,0 +1,26 @@
+uuid: 553997de-df90-40bd-a0fc-873c36326573
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - e3_marketo
+  module:
+    - paragraphs
+_core:
+  default_config_hash: z420M9JA11m28Bhzis0BkrXP_RdbUTMbvI_ukXNGvAM
+id: paragraph.field_thank_you_title
+field_name: field_thank_you_title
+entity_type: paragraph
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

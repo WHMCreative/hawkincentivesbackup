@@ -1,0 +1,28 @@
+uuid: 7b9b21f6-6483-4756-a60d-177635876cb6
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.preview
+    - field.field.paragraph.reference_marketo_form.field_marketo_form
+    - field.field.paragraph.reference_marketo_form.field_marketo_form_title
+    - field.field.paragraph.reference_marketo_form.field_marketo_hidden_fields
+    - paragraphs.paragraphs_type.reference_marketo_form
+_core:
+  default_config_hash: H-DiZte5CJp7OlfT0Dv5osx9mUXfpmbuJWtevEQt8S8
+id: paragraph.reference_marketo_form.preview
+targetEntityType: paragraph
+bundle: reference_marketo_form
+mode: preview
+content:
+  field_marketo_form:
+    type: entity_reference_label
+    weight: 0
+    region: content
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+hidden:
+  field_marketo_form_title: true
+  field_marketo_hidden_fields: true

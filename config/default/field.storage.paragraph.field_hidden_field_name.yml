@@ -1,0 +1,26 @@
+uuid: 834ee008-d8d4-4103-9e42-aca2d358bfc4
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - e3_marketo
+  module:
+    - paragraphs
+_core:
+  default_config_hash: v-eudK262TKHJkv5hVuNr8D7oqIXQx-3LhkvbzAiCLY
+id: paragraph.field_hidden_field_name
+field_name: field_hidden_field_name
+entity_type: paragraph
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

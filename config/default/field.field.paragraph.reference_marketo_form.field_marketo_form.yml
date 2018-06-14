@@ -1,0 +1,30 @@
+uuid: 71984009-599a-4a60-be00-518476b3d879
+langcode: en
+status: true
+dependencies:
+  config:
+    - e3_marketo.bundle.default
+    - field.storage.paragraph.field_marketo_form
+    - paragraphs.paragraphs_type.reference_marketo_form
+_core:
+  default_config_hash: _t4KynWLYT6z3J823l3IVTPWAlp3pnj6PMPzrsL4NBY
+id: paragraph.reference_marketo_form.field_marketo_form
+field_name: field_marketo_form
+entity_type: paragraph
+bundle: reference_marketo_form
+label: 'Marketo Form'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:marketo_form'
+  handler_settings:
+    target_bundles:
+      default: default
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

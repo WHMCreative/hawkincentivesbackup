@@ -1,0 +1,127 @@
+<?php
+
+/**
+ * @file
+ * Module file for E3 Gated Content.
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_entity_view_mode_alter().
+ */
+function e3_gated_content_entity_view_mode_alter(&$view_mode, EntityInterface $entity, $context) {
+
+  $gated_bundles = [
+    'insight',
+  ];
+
+  // Control view mode dated resource is being rendered in.
+  if ($entity->getEntityTypeId() == 'node' && in_array($entity->bundle(), $gated_bundles) && $view_mode == 'full') {
+
+    // If Gated Content is enabled for this node - don't cache it.
+    if ($entity->hasField('field_gated') && $entity->get('field_gated')->value) {
+      \Drupal::service('page_cache_kill_switch')->trigger();
+
+      // Add unlocked resources cookie to cache contexts.
+      $entity->addCacheContexts(['cookies:e3_unlocked_resources']);
+
+      if (_e3_content_is_gated($entity)) {
+        $view_mode = 'gated';
+      }
+      else {
+        $view_mode = 'revealed_content';
+      }
+    }
+  }
+}
+
+/**
+ * Check if content is gated.
+ *
+ * @param \Drupal\Core\Entity\EntityInterface $entity
+ *   Node to run the check for.
+ *
+ * @return bool
+ *   TRUE if content should be gated, FALSE otherwise.
+ */
+function _e3_content_is_gated(EntityInterface $entity) {
+  // Don't do anything if resource has not been set as gated.
+  if ($entity->hasField('field_gated') && !$entity->get('field_gated')->value) {
+    return FALSE;
+  }
+
+  $request = \Drupal::request();
+
+  // Check if user has unlocked this resource, otherwise render it as gated.
+  $cookies = $request->cookies;
+  $unlocked_resources = json_decode($cookies->get('e3_unlocked_resources'));
+
+  if ($unlocked_resources && in_array($entity->id(), $unlocked_resources)) {
+    return FALSE;
+  }
+
+  return TRUE;
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function e3_gated_content_preprocess_node(&$variables) {
+
+  // Preprocess gated resources and determine when they are viewed for the first
+  // time after the unlock.
+  if (isset($variables['node']) && !_e3_content_is_gated($variables['node'])) {
+
+    $request = \Drupal::request();
+    $content_unlocked_first_view = FALSE;
+
+    // Check of this is a first view of unlocked content.
+    if ($request) {
+      $cookies = $request->cookies;
+
+      if ($cookies && !empty($cookies->get('gated_unlock_first_view'))) {
+        $content_unlocked_first_view = $cookies->get('gated_unlock_first_view');
+      }
+    }
+
+    // If content has just been unlocked - add a variable for the node template.
+    if ($content_unlocked_first_view) {
+
+      // Delete the cookie.
+      $response = new \Symfony\Component\HttpFoundation\Response();
+      $response->headers->setCookie(new \Symfony\Component\HttpFoundation\Cookie('gated_unlock_first_view', 1, 1, '/', $request->getHost(), FALSE, FALSE));
+      $response->sendHeaders();
+
+      // Set appropriate variable for templates.
+      $variables['unlocked_content_first_view'] = TRUE;
+    }
+  }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function e3_gated_content_form_node_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  /** @var \Drupal\node\NodeInterface $node */
+  $node = $form_state->getFormObject()->getEntity();
+
+  // Hide Gated extra fields if gated content is not enabled for the node.
+  if ($node->bundle() === 'insight') {
+
+    $gated_fields = [
+      'field_p_form',
+    ];
+
+    foreach ($gated_fields as $gated_field) {
+      if (isset($form[$gated_field])) {
+        $form[$gated_field]['#states'] = [
+          'visible' => [
+            ':input[name="field_gated[value]"]' => ['checked' => TRUE],
+          ],
+        ];
+      }
+    }
+  }
+}

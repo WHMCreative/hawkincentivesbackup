@@ -1,0 +1,8 @@
+instance_host: ''
+client_id: ''
+client_secret: ''
+endpoint_path: ''
+identity_endpoint_path: ''
+munchkin_id: ''
+_core:
+  default_config_hash: Y7youmzX_9L3XWikVr5d0Sxv79UiZBrNq6AGTfioWRc

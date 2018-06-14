@@ -1,0 +1,14 @@
+uuid: 35bd4dda-6134-4a16-9410-b2d034dc4713
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - e3_marketo
+_core:
+  default_config_hash: LrSdd55_4uleqOpLGzEyK8qcFXSF6Vcu-Pnc40yQTss
+id: reference_marketo_form
+label: 'Reference - Marketo Form'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }
