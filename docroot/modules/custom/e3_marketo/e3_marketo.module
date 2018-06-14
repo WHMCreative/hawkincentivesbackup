@@ -1,0 +1,148 @@
+<?php
+
+/**
+ * @file
+ * Contains e3_marketo module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Render\Element;
+
+/**
+ * Implements hook_help().
+ */
+function e3_marketo_help($route_name, RouteMatchInterface $route_match) {
+  return $route_name === 'help.page.e3_marketo' ?
+    check_markup(file_get_contents(dirname(__FILE__) . "/README.md")) : NULL;
+}
+
+/**
+ * Implements hook_entity_extra_field_info().
+ */
+function e3_marketo_entity_extra_field_info() {
+  $content_types = \Drupal::service('entity_type.bundle.info')->getBundleInfo('marketo_form');
+  $extra = [];
+
+  if ($content_types) {
+
+    // Create embed pseudo-field for each Marketo Bundle.
+    foreach (array_keys($content_types) as $bundle_id) {
+      $extra['marketo_form'][$bundle_id]['display']['marketo_form_embed'] = [
+        'label' => t('Marketo Form Embed'),
+        'description' => t('Embedded Marketo form'),
+        'weight' => 0,
+        'visible' => TRUE,
+      ];
+    }
+  }
+
+  return $extra;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function e3_marketo_theme() {
+  return [
+    'marketo_form' => [
+      'render element' => 'elements',
+    ],
+    'marketo_form_embed' => [
+      'template' => 'marketo-form-embed',
+      'variables' => [
+        'form_attributes' => [],
+        'entity_id' => NULL,
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK().
+ */
+function e3_marketo_theme_suggestions_marketo_form(array $variables) {
+  $suggestions = [];
+  $marketo_form = $variables['elements']['#marketo_form'];
+  $sanitized_view_mode = strtr($variables['elements']['#view_mode'], '.', '_');
+
+  $suggestions[] = 'marketo_form__' . $sanitized_view_mode;
+  $suggestions[] = 'marketo_form__' . $marketo_form->bundle();
+  $suggestions[] = 'marketo_form__' . $marketo_form->bundle() . '__' . $sanitized_view_mode;
+  $suggestions[] = 'marketo_form__' . $marketo_form->id();
+  $suggestions[] = 'marketo_form__' . $marketo_form->id() . '__' . $sanitized_view_mode;
+
+  return $suggestions;
+}
+
+/**
+ * Prepare variables for marketo_form entity templates.
+ */
+function e3_marketo_preprocess_marketo_form(array &$variables) {
+  $variables['view_mode'] = $variables['elements']['#view_mode'];
+  $variables['marketo_form'] = $variables['elements']['#marketo_form'];
+
+  // Override form title if specified.
+  if (!empty($variables['marketo_form']->_referringItem)) {
+    /** @var \Drupal\Core\Entity\FieldableEntityInterface $parent */
+    $parent = $variables['marketo_form']->_referringItem->getEntity();
+
+    if ($parent && $parent->hasField('field_marketo_form_title') && !$parent->get('field_marketo_form_title')->isEmpty()) {
+      $variables['title_override'] = $parent->get('field_marketo_form_title')->value;
+    }
+  }
+
+  $route_match = \Drupal::routeMatch();
+  if ($route_match->getRouteName() === 'entity.marketo_form.canonical') {
+    $marketo_form = $route_match->getParameter('marketo_form');
+
+    if ($variables['marketo_form']->id() === $marketo_form->id()) {
+      $variables['page'] = TRUE;
+    }
+  }
+
+  // Helpful $content variable for templates.
+  $variables += ['content' => []];
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
+}
+
+/**
+ * Implements hook_library_info_alter().
+ */
+function e3_marketo_library_info_alter(&$libraries, $extension) {
+
+  // Set correct Marketo host for the remote marketo forms library.
+  if ($extension == 'e3_marketo' && isset($libraries['marketo-forms-remote'])) {
+
+    $marketo_settings = \Drupal::config('e3_marketo.settings');
+    if ($marketo_settings) {
+
+      $marketo_host = $marketo_settings->get('instance_host');
+      if ($marketo_host) {
+        $default_key = '//app-xxxx.marketo.com/js/forms2/js/forms2.min.js';
+        $libraries['marketo-forms-remote']['js']["{$marketo_host}/js/forms2/js/forms2.min.js"] = $libraries['marketo-forms-remote']['js'][$default_key];
+        unset($libraries['marketo-forms-remote']['js'][$default_key]);
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_page_attachments().
+ */
+function e3_marketo_page_attachments(array &$page) {
+
+  // Make sure Munchkin code is loaded on every page.
+  if (empty($page['#attached']['library'])) {
+    $page['#attached']['library'] = [];
+  }
+
+  if (!in_array('e3_marketo/e3-marketo-munchkin', $page['#attached']['library'])) {
+    $page['#attached']['library'][] = 'e3_marketo/e3-marketo-munchkin';
+  }
+
+  if (empty($page['#attached']['drupalSettings']['marketoForms']['munchkinId'])) {
+    $page['#attached']['drupalSettings']['marketoForms']['munchkinId'] = \Drupal::config('e3_marketo.settings')->get('munchkin_id');
+  }
+}

@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_hidden_field_name
+    - paragraphs.paragraphs_type.marketo_hidden_field
+  module:
+    - e3_marketo
+  enforced:
+    module:
+      - e3_marketo
+id: paragraph.marketo_hidden_field.field_hidden_field_name
+field_name: field_hidden_field_name
+entity_type: paragraph
+bundle: marketo_hidden_field
+label: 'Field Name'
+description: 'Name attribute of the hidden field. This value is usually the same as the API name of the field in Marketo.<br>See https://docs.marketo.com/display/public/DOCS/Field+Management for more information on how to add and view existing field details in Marketo.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

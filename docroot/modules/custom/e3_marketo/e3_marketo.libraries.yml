@@ -1,0 +1,42 @@
+marketo-forms:
+  version: 1.x
+  css:
+    theme:
+      css/marketo.form.css: {}
+  js:
+    js/e3_marketo_forms.js: {}
+  dependencies:
+    - e3_marketo/e3-marketo-munchkin
+
+e3-marketo-munchkin:
+  version: 1.x
+  js:
+    js/e3_marketo_munchkin.js: { }
+  dependencies:
+    - core/jquery
+    - core/jquery.cookie
+    - core/drupal
+    - core/drupal.ajax
+    - core/drupalSettings
+    - e3_marketo/marketo-forms-remote
+    - e3_marketo/marketo-munchkin
+
+marketo_bundle_form:
+  version: 1.x
+  js:
+    js/marketo_bundle_form.js: {}
+  dependencies:
+    - core/drupal.form
+
+# This library gets altered to set the correct marketo host.
+marketo-forms-remote:
+  version: 1.x
+  header: true
+  js:
+    //app-xxxx.marketo.com/js/forms2/js/forms2.min.js: { type: external, weight: -400 }
+
+marketo-munchkin:
+  version: 1.x
+  header: true
+  js:
+    //munchkin.marketo.net/munchkin.js: { type: external }

@@ -1,0 +1,36 @@
+marketo.settings:
+  type: config_object
+  label: 'Marketo settings'
+  mapping:
+    instance_host:
+      type: string
+      label: 'Marketo Instance Host'
+    client_id:
+      type: string
+      label: 'Marketo REST service Client ID'
+    client_secret:
+      type: string
+      label: 'Marketo REST service Client secret'
+    endpoint_path:
+      type: string
+      label: 'Marketo REST endpoint path'
+    identity_endpoint_path:
+      type: string
+      label: 'Marketo identity endpoint path'
+    munchkin_id:
+      type: string
+      label: 'Munchkin ID'
+
+marketo.bundle.*:
+  type: config_entity
+  label: 'Marketo Form bundle'
+  mapping:
+    id:
+      type: string
+      label: 'Machine name'
+    label:
+      type: label
+      label: 'Name'
+    description:
+      type: text
+      label: 'Description'

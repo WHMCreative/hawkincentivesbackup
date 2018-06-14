@@ -1,0 +1,38 @@
+add marketo form entity entities:
+  title: 'Create new Marketo form entity entities'
+
+administer marketo form bundles:
+  title: 'Administer Marketo form entity bundles'
+  description: 'Allow to access the administration form to configure Marketo form entity bundles.'
+  restrict access: true
+
+administer marketo form entity entities:
+  title: 'Administer Marketo form entity entities'
+  description: 'Allow to access the administration form to configure Marketo form entity entities.'
+  restrict access: true
+
+delete marketo form entity entities:
+  title: 'Delete Marketo form entity entities'
+
+edit marketo form entity entities:
+  title: 'Edit Marketo form entity entities'
+
+access marketo form entity overview:
+  title: 'Access the Marketo form entity overview page'
+
+view published marketo form entity entities:
+  title: 'View published Marketo form entity entities'
+
+view unpublished marketo form entity entities:
+  title: 'View unpublished Marketo form entity entities'
+
+view all marketo form entity revisions:
+  title: 'View all Marketo form entity revisions'
+
+revert all marketo form entity revisions:
+  title: 'Revert all Marketo form entity revisions'
+  description: 'Role requires permission <em>view Marketo form entity revisions</em> and <em>edit rights</em> for marketo form entity entities in question or <em>administer marketo form entity entities</em>.'
+
+delete all marketo form entity revisions:
+  title: 'Delete all revisions'
+  description: 'Role requires permission to <em>view Marketo form entity revisions</em> and <em>delete rights</em> for marketo form entity entities in question or <em>administer marketo form entity entities</em>.'

@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - e3_marketo
+  enforced:
+    module:
+      - e3_marketo
+id: reference_marketo_form
+label: 'Reference - Marketo Form'
+description: ''
+behavior_plugins: {  }

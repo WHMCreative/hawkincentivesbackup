@@ -1,0 +1,34 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.marketo_hidden_field.field_hidden_field_name
+    - field.field.paragraph.marketo_hidden_field.field_hidden_field_value
+    - paragraphs.paragraphs_type.marketo_hidden_field
+  module:
+    - e3_marketo
+  enforced:
+    module:
+      - e3_marketo
+id: paragraph.marketo_hidden_field.default
+targetEntityType: paragraph
+bundle: marketo_hidden_field
+mode: default
+content:
+  field_hidden_field_name:
+    weight: 0
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_hidden_field_value:
+    weight: 1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

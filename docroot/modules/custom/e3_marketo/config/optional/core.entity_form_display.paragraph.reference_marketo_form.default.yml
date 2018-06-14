@@ -1,0 +1,46 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.reference_marketo_form.field_marketo_hidden_fields
+    - field.field.paragraph.reference_marketo_form.field_marketo_form
+    - field.field.paragraph.reference_marketo_form.field_marketo_form_title
+    - paragraphs.paragraphs_type.reference_marketo_form
+  module:
+    - paragraphs
+    - e3_marketo
+id: paragraph.reference_marketo_form.default
+targetEntityType: paragraph
+bundle: reference_marketo_form
+mode: default
+content:
+  field_marketo_form:
+    type: options_select
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_marketo_form_title:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_marketo_hidden_fields:
+    type: entity_reference_paragraphs
+    weight: 2
+    region: content
+    settings:
+      title: 'Hidden Marketo Filed'
+      title_plural: 'Hidden Marketo Fileds'
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true
