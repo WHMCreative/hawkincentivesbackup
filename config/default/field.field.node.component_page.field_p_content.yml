@@ -1,16 +1,16 @@
-uuid: 0934d996-1075-41f6-b8dc-5c3e5626ed7e
+uuid: 179745b2-962d-4698-8ab3-508795cb64f5
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.field_p_content
-    - node.type.landing_page
+    - node.type.component_page
   module:
     - entity_reference_revisions
-id: node.landing_page.field_p_content
+id: node.component_page.field_p_content
 field_name: field_p_content
 entity_type: node
-bundle: landing_page
+bundle: component_page
 label: Content
 description: ''
 required: false
@@ -20,30 +20,25 @@ default_value_callback: ''
 settings:
   handler: 'default:paragraph'
   handler_settings:
+    negate: 0
     target_bundles: null
     target_bundles_drag_drop:
-      banner_standard:
-        weight: 9
-        enabled: false
       single_heading:
-        weight: 10
+        weight: 7
         enabled: false
       single_image:
-        weight: 11
+        weight: 8
         enabled: false
       single_svg:
-        weight: 12
+        weight: 9
         enabled: false
       single_text_area:
-        weight: 13
+        weight: 10
         enabled: false
       single_video:
-        weight: 14
+        weight: 11
         enabled: false
-      slider_banner_standard:
-        weight: 15
-        enabled: false
-      summary_articles:
-        weight: 16
+      summary_insights:
+        weight: 12
         enabled: false
 field_type: entity_reference_revisions
