@@ -1,0 +1,53 @@
+uuid: ca071b5a-b6f7-4541-9775-fd0968fd41b4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_p_header
+    - node.type.reward
+  module:
+    - entity_reference_revisions
+id: node.reward.field_p_header
+field_name: field_p_header
+entity_type: node
+bundle: reward
+label: Header
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles: null
+    target_bundles_drag_drop:
+      marketo_hidden_field:
+        weight: 10
+        enabled: false
+      marketo_submission_confirmation:
+        weight: 11
+        enabled: false
+      reference_marketo_form:
+        weight: 12
+        enabled: false
+      single_heading:
+        weight: 13
+        enabled: false
+      single_image:
+        weight: 14
+        enabled: false
+      single_svg:
+        weight: 15
+        enabled: false
+      single_text_area:
+        weight: 16
+        enabled: false
+      single_video:
+        weight: 17
+        enabled: false
+      summary_insights:
+        weight: 18
+        enabled: false
+field_type: entity_reference_revisions

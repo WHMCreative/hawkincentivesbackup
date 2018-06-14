@@ -1,0 +1,11 @@
+uuid: 945b2306-a4f6-4d15-9afb-f73a51c3ab81
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.reward
+id: node.reward
+target_entity_type_id: node
+target_bundle: reward
+default_langcode: site_default
+language_alterable: false
