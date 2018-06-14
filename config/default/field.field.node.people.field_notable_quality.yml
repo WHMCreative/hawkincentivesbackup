@@ -1,0 +1,19 @@
+uuid: df645511-1d32-4842-8ff8-5fa800cfe6af
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_notable_quality
+    - node.type.people
+id: node.people.field_notable_quality
+field_name: field_notable_quality
+entity_type: node
+bundle: people
+label: 'Notable quality'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

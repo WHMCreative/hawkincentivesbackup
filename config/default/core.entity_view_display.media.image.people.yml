@@ -1,20 +1,20 @@
-uuid: e5904990-1ef2-46a3-a82f-1691d4b9e2c4
+uuid: 5ee55c0f-628a-4a83-8f26-c8483c591921
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.media.entity_embed
+    - core.entity_view_mode.media.people
     - field.field.media.image.field_image
     - field.field.media.image.field_image_type
     - field.field.media.image.field_tags
-    - image.style.large
+    - image.style.people
     - media_entity.bundle.image
   module:
     - image
-id: media.image.entity_embed
+id: media.image.people
 targetEntityType: media
 bundle: image
-mode: entity_embed
+mode: people
 content:
   field_image:
     type: image
@@ -22,7 +22,7 @@ content:
     region: content
     label: hidden
     settings:
-      image_style: large
+      image_style: people
       image_link: ''
     third_party_settings: {  }
 hidden:

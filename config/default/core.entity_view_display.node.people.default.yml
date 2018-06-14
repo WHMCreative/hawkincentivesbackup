@@ -1,0 +1,57 @@
+uuid: 25160d57-084a-447f-ac07-e954244232ae
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.people.body
+    - field.field.node.people.field_media_image
+    - field.field.node.people.field_notable_quality
+    - field.field.node.people.field_title
+    - node.type.people
+  module:
+    - text
+    - user
+id: node.people.default
+targetEntityType: node
+bundle: people
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_media_image:
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: people
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_notable_quality:
+    weight: 2
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_title:
+    weight: 3
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  langcode: true

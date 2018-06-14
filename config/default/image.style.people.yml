@@ -1,0 +1,17 @@
+uuid: 2e0428d9-e8ad-4d38-89db-8db0180dc8d7
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: people
+label: People
+effects:
+  1bc05cf6-7ca6-4de7-ae35-ad471e0c29ac:
+    uuid: 1bc05cf6-7ca6-4de7-ae35-ad471e0c29ac
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 300
+      height: 300
+      crop_type: focal_point

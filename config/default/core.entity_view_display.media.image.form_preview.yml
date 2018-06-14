@@ -7,7 +7,7 @@ dependencies:
     - field.field.media.image.field_image
     - field.field.media.image.field_image_type
     - field.field.media.image.field_tags
-    - image.style.medium
+    - image.style.thumbnail
     - media_entity.bundle.image
   module:
     - image
@@ -16,12 +16,21 @@ targetEntityType: media
 bundle: image
 mode: form_preview
 content:
+  field_image:
+    type: image
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      image_style: thumbnail
+      image_link: ''
+    third_party_settings: {  }
   field_image_type:
     type: entity_reference_label
     weight: 2
     label: above
     settings:
-      link: true
+      link: false
     third_party_settings: {  }
     region: content
   field_tags:
@@ -29,7 +38,7 @@ content:
     weight: 3
     label: above
     settings:
-      link: true
+      link: false
     third_party_settings: {  }
     region: content
   name:
@@ -40,17 +49,8 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     region: content
-  thumbnail:
-    type: image
-    weight: 0
-    label: hidden
-    settings:
-      image_style: medium
-      image_link: ''
-    third_party_settings: {  }
-    region: content
 hidden:
   created: true
-  field_image: true
   langcode: true
+  thumbnail: true
   uid: true

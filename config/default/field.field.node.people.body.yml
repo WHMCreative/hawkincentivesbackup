@@ -1,0 +1,29 @@
+uuid: ab92927a-18d3-476d-bfff-913d1d648824
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.people
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    limited_rich_text: '0'
+    rich_text: '0'
+    plain_text: '0'
+    html: '0'
+id: node.people.body
+field_name: body
+entity_type: node
+bundle: people
+label: Body
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+field_type: text_with_summary

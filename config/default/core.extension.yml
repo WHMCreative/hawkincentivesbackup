@@ -52,6 +52,7 @@ module:
   field_ui: 0
   file: 0
   filter: 0
+  focal_point: 0
   help: 0
   history: 0
   http_cache_control: 0
