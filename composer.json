@@ -90,7 +90,8 @@
     "drupal/acquia_purge": "1.0.0-beta3",
     "drupal/http_cache_control": "^1.0@alpha",
     "drupal/menu_item_extras": "^2.2",
-    "drupal/video_embed_wistia": "^1.0@RC"
+    "drupal/video_embed_wistia": "^1.0@RC",
+    "drupal/editor_advanced_link": "^1.4"
   },
   "conflict": {
       "drupal/drupal": "*"
@@ -135,6 +136,9 @@
       },
       "drupal/video_embed_field": {
         "Adds shouldUpdateThumbnail method for video embed field to update thumbnail, depends on above patch": "./patches/video_embed_field_update_thumb.patch"
+      },
+      "drupal/editor_advanced_link": {
+        "Add predefined styles": "./patches/editor-advance-link--add-predefined-styles.patch"
       },
       "drupal/swiftmailer": {
         "htmlspecialchars() expects parameter 1 to be string": "https://www.drupal.org/files/issues/swiftmailer-htmlspecialchars_-2855052-9-do-not-test.patch"
