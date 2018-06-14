@@ -184,6 +184,9 @@ abstract class SummaryHandlerBase extends PluginBase implements SummaryHandlerIn
       }
     }
 
+    // Exclude the current node too.
+    $nodes_to_exclude[] = $paragraph->getParentEntity()->id();
+
     // Build a base query.
     $query = $this->entityTypeManager->getStorage('node')->getQuery()
       ->condition('type', $enabled_content_types, 'IN');
@@ -199,7 +202,7 @@ abstract class SummaryHandlerBase extends PluginBase implements SummaryHandlerIn
 
     return $query;
   }
-
+  
   /**
    * {@inheritdoc}
    */
