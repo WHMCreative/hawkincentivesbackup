@@ -1,0 +1,25 @@
+uuid: c2b8d55e-f38b-4f96-bdf1-3c072aa2129d
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.component_page.field_meta_summary
+    - field.field.node.component_page.field_p_content
+    - field.field.node.component_page.field_p_header
+    - node.type.component_page
+  module:
+    - user
+id: node.component_page.teaser
+targetEntityType: node
+bundle: component_page
+mode: teaser
+content:
+  links:
+    weight: 100
+    region: content
+hidden:
+  field_meta_summary: true
+  field_p_content: true
+  field_p_header: true
+  langcode: true

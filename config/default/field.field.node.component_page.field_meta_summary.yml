@@ -1,0 +1,19 @@
+uuid: 6f71ccc2-5a35-4568-b230-1addb5440243
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_meta_summary
+    - node.type.component_page
+id: node.component_page.field_meta_summary
+field_name: field_meta_summary
+entity_type: node
+bundle: component_page
+label: 'Meta Summary'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

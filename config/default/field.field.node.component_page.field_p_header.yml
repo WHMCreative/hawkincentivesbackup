@@ -1,42 +1,44 @@
-uuid: 584dcb50-9066-4bfa-bf4b-1c8a8712ad2a
+uuid: 447e9951-6fa4-46ff-b9ef-be84b694e891
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.field_p_header
-    - node.type.landing_page
-    - paragraphs.paragraphs_type.single_heading
+    - node.type.component_page
   module:
     - entity_reference_revisions
-id: node.landing_page.field_p_header
+id: node.component_page.field_p_header
 field_name: field_p_header
 entity_type: node
-bundle: landing_page
+bundle: component_page
 label: Header
-description: 'Select a component to use for the header of this page.'
+description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
   handler: 'default:paragraph'
   handler_settings:
-    target_bundles:
-      single_heading: single_heading
+    negate: 0
+    target_bundles: null
     target_bundles_drag_drop:
       single_heading:
-        enabled: true
-        weight: 6
-      single_image:
         weight: 7
         enabled: false
-      single_svg:
+      single_image:
         weight: 8
         enabled: false
-      single_text_area:
+      single_svg:
         weight: 9
         enabled: false
-      single_video:
+      single_text_area:
         weight: 10
+        enabled: false
+      single_video:
+        weight: 11
+        enabled: false
+      summary_insights:
+        weight: 12
         enabled: false
 field_type: entity_reference_revisions
