@@ -1,0 +1,19 @@
+uuid: c15db2e8-16f3-4355-9831-541a593b718c
+langcode: en
+status: true
+dependencies:
+  module:
+    - bhk_summary_paragraphs
+third_party_settings:
+  bhk_summary_paragraphs:
+    enable_summary: 1
+    summary_plugin: insights_summary_handler
+    summary_content_types:
+      insight: insight
+    summary_view_mode: teaser
+    summary_add_fields: 1
+id: summary_insights
+label: 'Summary - Insights'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

@@ -1,0 +1,4 @@
+services:
+  plugin.manager.bhk_summary_paragraphs_handler:
+    class: Drupal\bhk_summary_paragraphs\SummaryHandlerManager
+    parent: default_plugin_manager

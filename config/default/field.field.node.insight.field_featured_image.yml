@@ -1,0 +1,28 @@
+uuid: 98722a97-8a63-4963-a87b-0d2a0fd8b5cb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_featured_image
+    - media_entity.bundle.image
+    - node.type.insight
+id: node.insight.field_featured_image
+field_name: field_featured_image
+entity_type: node
+bundle: insight
+label: 'Featured Image'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,11 @@
+uuid: 4697bc6e-9aa1-48f8-9726-2fbc281e9e30
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.insight
+id: node.insight
+target_entity_type_id: node
+target_bundle: insight
+default_langcode: site_default
+language_alterable: false

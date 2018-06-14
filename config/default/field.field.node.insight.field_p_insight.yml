@@ -1,0 +1,41 @@
+uuid: 1b8a836e-c864-40a2-817f-a3d9338507d6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_p_insight
+    - node.type.insight
+  module:
+    - entity_reference_revisions
+id: node.insight.field_p_insight
+field_name: field_p_insight
+entity_type: node
+bundle: insight
+label: Insight
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles: null
+    target_bundles_drag_drop:
+      single_heading:
+        weight: 6
+        enabled: false
+      single_image:
+        weight: 7
+        enabled: false
+      single_svg:
+        weight: 8
+        enabled: false
+      single_text_area:
+        weight: 9
+        enabled: false
+      single_video:
+        weight: 10
+        enabled: false
+field_type: entity_reference_revisions

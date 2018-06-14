@@ -1,0 +1,24 @@
+uuid: 8faa32c5-34dd-4910-a88e-c65e723b7f4d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_summary_content
+    - node.type.insight
+    - paragraphs.paragraphs_type.summary_insights
+id: paragraph.summary_insights.field_summary_content
+field_name: field_summary_content
+entity_type: paragraph
+bundle: summary_insights
+label: 'Summary Content'
+description: 'Optional. Select specific items to show in this summary.'
+required: false
+translatable: true
+default_value: ''
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      insight: insight
+field_type: entity_reference
