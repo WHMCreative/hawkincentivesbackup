@@ -1,0 +1,36 @@
+uuid: a8446d67-3df8-4597-b685-9576fa2907c8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.marketo_submission_confirmation.field_thank_you_description
+    - field.field.paragraph.marketo_submission_confirmation.field_thank_you_title
+    - paragraphs.paragraphs_type.marketo_submission_confirmation
+  enforced:
+    module:
+      - e3_marketo
+  module:
+    - text
+_core:
+  default_config_hash: dseQvT41MQMeKw6rJoBhnogn8tlQGccP9zd1XC60ESY
+id: paragraph.marketo_submission_confirmation.default
+targetEntityType: paragraph
+bundle: marketo_submission_confirmation
+mode: default
+content:
+  field_thank_you_description:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_thank_you_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

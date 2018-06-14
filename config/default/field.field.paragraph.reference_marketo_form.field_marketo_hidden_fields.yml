@@ -1,0 +1,35 @@
+uuid: 8c3bcec1-e4c1-4c99-92d0-927eb50e18e2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_marketo_hidden_fields
+    - paragraphs.paragraphs_type.marketo_hidden_field
+    - paragraphs.paragraphs_type.reference_marketo_form
+  enforced:
+    module:
+      - e3_marketo
+  module:
+    - entity_reference_revisions
+_core:
+  default_config_hash: WeA1CvyT1SikJzEUbnHHBKxqkgQ0ahUCKC7eqMer-gQ
+id: paragraph.reference_marketo_form.field_marketo_hidden_fields
+field_name: field_marketo_hidden_fields
+entity_type: paragraph
+bundle: reference_marketo_form
+label: 'Hidden Fields'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      marketo_hidden_field: marketo_hidden_field
+    target_bundles_drag_drop:
+      marketo_hidden_field:
+        enabled: true
+field_type: entity_reference_revisions

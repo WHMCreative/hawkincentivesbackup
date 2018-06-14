@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - text
+    - e3_marketo
+  enforced:
+    module:
+      - e3_marketo
+id: paragraph.field_thank_you_description
+field_name: field_thank_you_description
+entity_type: paragraph
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

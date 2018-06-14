@@ -1,0 +1,6 @@
+name: E3 Marketo
+type: module
+description: Provides integration with Marketo Forms
+core: 8.x
+package: Custom
+configure: marketo_form.settings

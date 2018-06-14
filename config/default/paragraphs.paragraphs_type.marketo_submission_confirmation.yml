@@ -1,0 +1,14 @@
+uuid: e6f7f953-b281-44df-99d5-dd9391adb069
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - e3_marketo
+_core:
+  default_config_hash: qnX1JeBpDiLL8wP2WtBhDbJWIaTB00P0geSM-uQ-4fw
+id: marketo_submission_confirmation
+label: 'Marketo - Submission Confirmation'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

@@ -1,6 +1,4 @@
 module:
-  acquia_connector: 0
-  acquia_purge: 0
   action: 0
   address: 0
   admin_toolbar: 0
@@ -35,7 +33,9 @@ module:
   datetime_range: 0
   dblog: 0
   dynamic_page_cache: 0
+  e3_gated_content: 0
   e3_google_tag: 0
+  e3_marketo: 0
   editor: 0
   editor_advanced_link: 0
   embed: 0

@@ -1,0 +1,7 @@
+name: E3 Gated Content
+type: module
+description: Provides functionality for gating resources.
+package: Custom
+dependencies:
+   - drupal:e3_marketo
+core: 8.x

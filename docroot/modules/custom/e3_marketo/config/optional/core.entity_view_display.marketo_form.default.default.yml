@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - e3_marketo.bundle.default
+    - field.field.marketo_form.default.field_submission_confirmation
+id: marketo_form.default.default
+targetEntityType: marketo_form
+bundle: default
+mode: default
+content:
+  marketo_form_embed:
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  name:
+    label: hidden
+    type: string
+    weight: 0
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  field_submission_confirmation: true
+  langcode: true
+  marketo_form_id: true
+  user_id: true

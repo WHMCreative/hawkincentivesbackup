@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.node.field_p_form
     - node.type.insight
+    - paragraphs.paragraphs_type.reference_marketo_form
   module:
     - entity_reference_revisions
 id: node.insight.field_p_form
@@ -21,7 +22,8 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     negate: 0
-    target_bundles: null
+    target_bundles:
+      reference_marketo_form: reference_marketo_form
     target_bundles_drag_drop:
       single_heading:
         weight: 6
@@ -35,7 +37,19 @@ settings:
       single_text_area:
         weight: 9
         enabled: false
+      marketo_hidden_field:
+        weight: 10
+        enabled: false
       single_video:
         weight: 10
         enabled: false
+      marketo_submission_confirmation:
+        weight: 11
+        enabled: false
+      summary_insights:
+        weight: 17
+        enabled: false
+      reference_marketo_form:
+        enabled: true
+        weight: 18
 field_type: entity_reference_revisions

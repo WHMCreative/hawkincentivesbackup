@@ -1,0 +1,76 @@
+uuid: 1d5ed009-76b2-47e8-842f-93b128874a6c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.reference_marketo_form.field_description
+    - field.field.paragraph.reference_marketo_form.field_marketo_form
+    - field.field.paragraph.reference_marketo_form.field_marketo_form_title
+    - field.field.paragraph.reference_marketo_form.field_marketo_hidden_fields
+    - paragraphs.paragraphs_type.reference_marketo_form
+  module:
+    - field_group
+    - paragraphs
+    - text
+third_party_settings:
+  field_group:
+    group_marketo_form_settings:
+      children:
+        - field_marketo_form_title
+        - field_description
+        - field_marketo_hidden_fields
+      parent_name: ''
+      weight: 1
+      format_type: details
+      format_settings:
+        label: 'Marketo Form Settings'
+        open: true
+        required_fields: true
+        id: ''
+        classes: ''
+      label: 'Marketo Form Settings'
+_core:
+  default_config_hash: xT22i079Q2KBDzQUc3xCUBdXDOgbRooPmdadnr0bKok
+id: paragraph.reference_marketo_form.default
+targetEntityType: paragraph
+bundle: reference_marketo_form
+mode: default
+content:
+  field_description:
+    weight: 3
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_marketo_form:
+    type: options_select
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_marketo_form_title:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_marketo_hidden_fields:
+    type: entity_reference_paragraphs
+    weight: 4
+    region: content
+    settings:
+      title: 'Hidden Marketo Filed'
+      title_plural: 'Hidden Marketo Fileds'
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

@@ -1,0 +1,31 @@
+marketo_form.settings_tab:
+  route_name: marketo_form.settings
+  title: 'Settings'
+  base_route: marketo_form.settings
+
+entity.marketo_form.canonical:
+  route_name: entity.marketo_form.canonical
+  base_route: entity.marketo_form.canonical
+  title: 'View'
+
+entity.marketo_form.edit_form:
+  route_name: entity.marketo_form.edit_form
+  base_route: entity.marketo_form.canonical
+  title: 'Edit'
+
+entity.marketo_form.delete_form:
+  route_name:  entity.marketo_form.delete_form
+  base_route:  entity.marketo_form.canonical
+  title: 'Delete'
+  weight: 10
+
+entity.marketo_form_bundle.edit_form:
+  title: 'Edit'
+  route_name: entity.marketo_form_bundle.edit_form
+  base_route: entity.marketo_form_bundle.edit_form
+
+marketo_forms.admin:
+  title: Marketo Forms
+  route_name: view.marketo_forms.marketo_forms_list
+  base_route: system.admin_content
+  weight: 10

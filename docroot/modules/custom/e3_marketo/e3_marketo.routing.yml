@@ -1,0 +1,30 @@
+entity.marketo_form_bundle.collection:
+  path: '/admin/structure/marketo_bundles'
+  defaults:
+    _entity_list: 'marketo_form_bundle'
+    _title: 'Marketo Form Bundles'
+  requirements:
+    _permission: 'administer marketo form bundles'
+
+marketo_form_bundle.add:
+  path: '/admin/structure/marketo_bundles/add'
+  defaults:
+    _entity_form: 'marketo_form_bundle.add'
+    _title: 'Add a new marketo form bundle'
+  requirements:
+    _permission: 'administer marketo form bundles'
+
+marketo_form.settings:
+  path: '/admin/config/marketo'
+  defaults:
+    _form: '\Drupal\e3_marketo\Form\MarketoFormEntitySettingsForm'
+    _title: 'Marketo Settings'
+  requirements:
+    _permission: 'administer marketo form entity entities'
+
+marketo_form.form_prefill:
+  path: '/marketo/prefill'
+  defaults:
+    _controller: '\Drupal\e3_marketo\Controller\MarketoRestController::getFormValues'
+  requirements:
+    _access: 'TRUE'

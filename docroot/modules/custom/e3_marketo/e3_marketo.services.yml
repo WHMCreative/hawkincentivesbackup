@@ -1,0 +1,4 @@
+services:
+  plugin.manager.marketo_handler_manager:
+    class: Drupal\e3_marketo\Plugin\MarketoHandlerManager
+    parent: default_plugin_manager

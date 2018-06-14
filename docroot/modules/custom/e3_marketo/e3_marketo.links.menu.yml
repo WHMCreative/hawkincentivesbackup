@@ -1,0 +1,29 @@
+marketo_form.admin.structure.settings:
+  title: Marketo Settings
+  description: 'Configure Marketo Settings'
+  route_name: marketo_form.settings
+  parent: system.admin_config_services
+
+entity.marketo_form_bundle.collection:
+  title: 'Marketo Forms bundles'
+  parent: system.admin_structure
+  description: 'Manage marketo forms bundles.'
+  route_name: entity.marketo_form_bundle.collection
+
+entity.marketo_form.collection:
+  title: 'Marketo Forms'
+  parent: system.admin_content
+  description: 'Manage marketo forms.'
+  route_name: view.marketo_forms.marketo_forms_list
+
+entity.marketo_form.add:
+  title: 'Add a new marketo form'
+  parent: entity.marketo_form.collection
+  description: 'Add a new marketo form.'
+  route_name: entity.marketo_form.add_page
+
+entity.marketo_form_bundle.add:
+  title: 'Add marketo form bundle'
+  parent: entity.marketo_form_bundle.collection
+  description: 'Add a new marketo form.'
+  route_name: entity.marketo_form_bundle.add_form

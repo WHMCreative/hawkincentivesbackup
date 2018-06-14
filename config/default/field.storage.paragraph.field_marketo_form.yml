@@ -1,0 +1,22 @@
+uuid: 0ada7f3b-9b35-4325-abdc-c4cfba04e636
+langcode: en
+status: true
+dependencies:
+  module:
+    - e3_marketo
+    - paragraphs
+_core:
+  default_config_hash: KAG4s3krPebtL-6Of07Um4httJozYuXlTrxtVXl9Bn8
+id: paragraph.field_marketo_form
+field_name: field_marketo_form
+entity_type: paragraph
+type: entity_reference
+settings:
+  target_type: marketo_form
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

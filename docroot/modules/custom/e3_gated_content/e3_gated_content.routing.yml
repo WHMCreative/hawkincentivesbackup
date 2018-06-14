@@ -1,0 +1,6 @@
+marketo.gated_content_unlock:
+  path: '/marketo/unlock_gated_content'
+  defaults:
+    _controller: '\Drupal\e3_gated_content\Controller\GatedContentController::unlockGatedResource'
+  requirements:
+    _permission: 'access content'

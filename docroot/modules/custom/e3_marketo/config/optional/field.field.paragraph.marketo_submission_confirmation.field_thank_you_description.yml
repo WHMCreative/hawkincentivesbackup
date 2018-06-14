@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_thank_you_description
+    - paragraphs.paragraphs_type.marketo_submission_confirmation
+  module:
+    - allowed_formats
+    - text
+    - e3_marketo
+  enforced:
+    module:
+      - e3_marketo
+third_party_settings:
+  allowed_formats:
+    limited_rich_text: '0'
+    rich_text: '0'
+    plain_text: '0'
+id: paragraph.marketo_submission_confirmation.field_thank_you_description
+field_name: field_thank_you_description
+entity_type: paragraph
+bundle: marketo_submission_confirmation
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

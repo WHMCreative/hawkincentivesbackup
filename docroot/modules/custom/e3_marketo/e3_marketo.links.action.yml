@@ -1,0 +1,6 @@
+entity.marketo_form.add_page:
+  route_name: entity.marketo_form.add_page
+  title: 'Add Marketo form'
+  appears_on:
+    - entity.marketo_form.collection
+    - view.marketo_forms.marketo_forms_list

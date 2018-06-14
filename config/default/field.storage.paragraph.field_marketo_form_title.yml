@@ -1,0 +1,23 @@
+uuid: fa3f18bb-5e51-4cec-b694-68e2d26bc28b
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+_core:
+  default_config_hash: kiFk0eSQIQRL81DO1MdAhpMpEgWdbyDRy4d_9QxMNkA
+id: paragraph.field_marketo_form_title
+field_name: field_marketo_form_title
+entity_type: paragraph
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

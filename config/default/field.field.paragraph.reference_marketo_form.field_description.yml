@@ -1,0 +1,28 @@
+uuid: f0a0d44f-491e-49bd-9de9-793731e27a88
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_description
+    - paragraphs.paragraphs_type.reference_marketo_form
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    basic_html: '0'
+    restricted_html: '0'
+    full_html: '0'
+    plain_text: '0'
+id: paragraph.reference_marketo_form.field_description
+field_name: field_description
+entity_type: paragraph
+bundle: reference_marketo_form
+label: Description
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

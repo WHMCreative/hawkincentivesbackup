@@ -1,0 +1,25 @@
+uuid: 8584add0-2fd5-4a51-a03d-4b5caab04261
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - e3_marketo
+  module:
+    - entity_reference_revisions
+    - paragraphs
+_core:
+  default_config_hash: A2t8ur0wCpEExJAfiXH9E06hAtckiNkqll_X44Yw4iM
+id: paragraph.field_marketo_hidden_fields
+field_name: field_marketo_hidden_fields
+entity_type: paragraph
+type: entity_reference_revisions
+settings:
+  target_type: paragraph
+module: entity_reference_revisions
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

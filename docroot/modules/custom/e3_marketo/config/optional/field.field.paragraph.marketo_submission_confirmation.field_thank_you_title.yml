@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_thank_you_title
+    - paragraphs.paragraphs_type.marketo_submission_confirmation
+  enforced:
+    module:
+      - e3_marketo
+id: paragraph.marketo_submission_confirmation.field_thank_you_title
+field_name: field_thank_you_title
+entity_type: paragraph
+bundle: marketo_submission_confirmation
+label: Title
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

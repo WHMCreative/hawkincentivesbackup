@@ -1,0 +1,32 @@
+uuid: 116dd229-5030-47a3-8099-4b1f5503da7c
+langcode: en
+status: true
+dependencies:
+  config:
+    - e3_marketo.bundle.default
+    - field.storage.marketo_form.field_submission_confirmation
+    - paragraphs.paragraphs_type.marketo_submission_confirmation
+  module:
+    - entity_reference_revisions
+_core:
+  default_config_hash: ahR-nFr0NdZ5FACR_wCfVHt2HP8a5Eef8dvG6wJsXD4
+id: marketo_form.default.field_submission_confirmation
+field_name: field_submission_confirmation
+entity_type: marketo_form
+bundle: default
+label: 'Submission Confirmation'
+description: 'If added, this component will be displayed in place of the form once it is successfully submitted.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      marketo_submission_confirmation: marketo_submission_confirmation
+    target_bundles_drag_drop:
+      marketo_submission_confirmation:
+        enabled: true
+field_type: entity_reference_revisions

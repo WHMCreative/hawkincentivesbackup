@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - e3_marketo
+  enforced:
+    module:
+      - e3_marketo
+id: marketo_hidden_field
+label: 'Marketo - Hidden Field'
+description: ''
+behavior_plugins: {  }

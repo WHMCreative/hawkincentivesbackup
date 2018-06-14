@@ -1,0 +1,35 @@
+uuid: 9819159a-8fb0-4b79-aacb-2cc38f7b7b97
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.marketo_hidden_field.field_hidden_field_name
+    - field.field.paragraph.marketo_hidden_field.field_hidden_field_value
+    - paragraphs.paragraphs_type.marketo_hidden_field
+  enforced:
+    module:
+      - e3_marketo
+_core:
+  default_config_hash: xf6cb2wo8LnjmF8FVsdcABbQT_m-7ZQlrOpkJ0qlm8Q
+id: paragraph.marketo_hidden_field.default
+targetEntityType: paragraph
+bundle: marketo_hidden_field
+mode: default
+content:
+  field_hidden_field_name:
+    weight: 0
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_hidden_field_value:
+    weight: 1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

@@ -1,0 +1,10 @@
+uuid: 70d45861-8c13-4b41-89e2-a9a6bc1c5a7a
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: Ieg3yqnPAVWaZyQ2NtxILXY4Z-xMjhb2wway5CaLhGg
+id: default
+label: Default
+description: 'Basic Marketo Form bundle.'
+remove_source_styles: true

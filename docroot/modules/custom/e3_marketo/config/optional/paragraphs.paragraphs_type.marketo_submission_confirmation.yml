@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - e3_marketo
+  enforced:
+    module:
+      - e3_marketo
+id: marketo_submission_confirmation
+label: 'Marketo - Submission Confirmation'
+description: ''
+behavior_plugins: {  }
