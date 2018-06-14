@@ -1,0 +1,10 @@
+uuid: 604de88a-c7ca-4133-a779-25cba2636b1a
+langcode: en
+status: true
+dependencies: {  }
+id: reviewer
+label: Reviewer
+weight: 3
+is_admin: null
+permissions:
+  - 'view any unpublished content'

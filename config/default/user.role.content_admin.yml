@@ -1,0 +1,28 @@
+uuid: 51152a66-f055-4234-ae15-35f6a8d1e476
+langcode: en
+status: true
+dependencies: {  }
+id: content_admin
+label: 'Content Admin'
+weight: 6
+is_admin: null
+permissions:
+  - 'access content overview'
+  - 'access toolbar'
+  - 'create terms in insight_type'
+  - 'create terms in tags'
+  - 'delete terms in insight_type'
+  - 'delete terms in tags'
+  - 'edit terms in insight_type'
+  - 'edit terms in tags'
+  - 'revert all revisions'
+  - 'use editorial transition archive'
+  - 'use editorial transition archived_draft'
+  - 'use editorial transition archived_published'
+  - 'use editorial transition create_new_draft'
+  - 'use editorial transition keep_in_review'
+  - 'use editorial transition publish'
+  - 'use editorial transition send_to_review'
+  - 'view all revisions'
+  - 'view any unpublished content'
+  - 'view latest version'

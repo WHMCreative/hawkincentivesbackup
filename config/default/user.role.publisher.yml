@@ -1,0 +1,18 @@
+uuid: a54b82dd-a6f5-4006-8d2f-e3d30e7be2aa
+langcode: en
+status: true
+dependencies: {  }
+id: publisher
+label: Publisher
+weight: 5
+is_admin: null
+permissions:
+  - 'access toolbar'
+  - 'use editorial transition archive'
+  - 'use editorial transition archived_draft'
+  - 'use editorial transition archived_published'
+  - 'use editorial transition create_new_draft'
+  - 'use editorial transition keep_in_review'
+  - 'use editorial transition publish'
+  - 'use editorial transition send_to_review'
+  - 'view any unpublished content'

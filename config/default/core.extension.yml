@@ -25,6 +25,7 @@ module:
   contact: 0
   contact_storage: 0
   contact_storage_export: 0
+  content_moderation: 0
   contextual: 0
   crop: 0
   csv_serialization: 0
@@ -119,6 +120,7 @@ module:
   video_embed_media: 0
   video_embed_wistia: 0
   views_ui: 0
+  workflows: 0
   menu_link_content: 1
   views: 10
   paragraphs: 11

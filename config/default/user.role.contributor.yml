@@ -1,0 +1,13 @@
+uuid: 98ad87d9-fad9-4693-abfd-86c32137fd72
+langcode: en
+status: true
+dependencies: {  }
+id: contributor
+label: Contributor
+weight: 4
+is_admin: null
+permissions:
+  - 'access toolbar'
+  - 'use editorial transition create_new_draft'
+  - 'use editorial transition send_to_review'
+  - 'view any unpublished content'
