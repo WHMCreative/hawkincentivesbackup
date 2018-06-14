@@ -664,6 +664,14 @@ class InlineParagraphsWidget extends WidgetBase {
             }
           }
         }
+        $form_state->set('paragraph', $paragraphs_entity);
+        $hooks = [
+          'form_paragraphs_subform',
+          'form_paragraphs_subform_' . $paragraphs_entity->getParagraphType()->id(),
+          'form_paragraphs_subform_classic',
+          'form_paragraphs_subform_classic_' . $paragraphs_entity->getParagraphType()->id(),
+        ];
+        \Drupal::ModuleHandler()->alter($hooks, $element['subform'], $form_state, $delta);
       }
       elseif ($item_mode == 'preview') {
         $element['subform'] = array();

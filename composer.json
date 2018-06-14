@@ -142,6 +142,9 @@
       },
       "drupal/swiftmailer": {
         "htmlspecialchars() expects parameter 1 to be string": "https://www.drupal.org/files/issues/swiftmailer-htmlspecialchars_-2855052-9-do-not-test.patch"
+      },
+      "drupal/paragraphs": {
+        "Add additional subform alters": "https://www.drupal.org/files/issues/2868155-16.patch"
       }
     }
   },

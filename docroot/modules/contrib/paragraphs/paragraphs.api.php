@@ -46,5 +46,116 @@ function hook_paragraphs_widget_actions_alter(array &$widget_actions, array &$co
 }
 
 /**
+ * Perform alterations on a paragraphs entity subform.
+ *
+ * Modules can implement hook_form_paragraphs_subform_alter() to change a
+ * paragraphs entity subform in the entity reference widgets.
+ *
+ * In addition to hook_form_paragraphs_subform_alter(), there are more specific
+ * form hooks available. This allows targeting of a specific widget type and/or
+ * paragraphs type form directly. Within each module, the alter hooks are
+ * called in the following order:
+ * - hook_form_paragraphs_subform_alter()
+ * - hook_form_paragraphs_subform_TYPE_alter()
+ *   With TYPE being the paragraphs type of the paragraphs entity.
+ * - hook_form_paragraphs_subform_WIDGET_alter()
+ *   With WIDGET being 'classic' or 'experimental'.
+ * - hook_form_paragraphs_subform_WIDGET_TYPE_alter()
+ *   With WIDGET being 'classic' or 'experimental' and TYPE being the
+ *   paragraphs type of the paragraphs entity.
+ *
+ * @param array $subform
+ *   Nested array of form elements for the paragraphs entity subform in the
+ *   widget.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The current state of the form. The arguments that
+ *   \Drupal::formBuilder()->getForm() was originally called with are available
+ *   in the array $form_state->getBuildInfo()['args'].
+ * @param int $delta
+ *   The order of this item in the array of sub-elements (0, 1, 2, etc.).
+ *
+ * @see hook_form_paragraphs_subform_TYPE_alter()
+ * @see hook_form_paragraphs_subform_WIDGET_alter()
+ * @see hook_form_paragraphs_subform_WIDGET_TYPE_alter()
+ */
+function hook_form_paragraphs_subform_alter(array &$subform, \Drupal\Core\Form\FormStateInterface $form_state, $delta) {
+  $paragraph = $form_state->get('paragraph');
+}
+
+/**
+ * Perform alterations on a paragraphs entity subform.
+ *
+ * Modules can implement hook_form_paragraphs_subform_TYPE_alter() to change
+ * a paragraphs entity subform in the entity reference widgets for a specific
+ * paragraphs type.
+ *
+ * @param array $subform
+ *   Nested array of form elements for the paragraphs entity subform in the
+ *   widget.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The current state of the form. The arguments that
+ *   \Drupal::formBuilder()->getForm() was originally called with are available
+ *   in the array $form_state->getBuildInfo()['args'].
+ * @param int $delta
+ *   The order of this item in the array of sub-elements (0, 1, 2, etc.).
+ *
+ * @see hook_form_paragraphs_subform_alter()
+ * @see hook_form_paragraphs_subform_WIDGET_alter()
+ * @see hook_form_paragraphs_subform_WIDGET_TYPE_alter()
+ */
+function hook_form_paragraphs_subform_TYPE_alter(array &$subform, \Drupal\Core\Form\FormStateInterface $form_state, $delta) {
+  $paragraph = $form_state->get('paragraph');
+}
+
+/**
+ * Perform alterations on a paragraphs entity subform.
+ *
+ * Modules can implement hook_form_paragraphs_subform_WIDGET_alter() to change
+ * a paragraphs entity subform in a specific entity reference widget.
+ *
+ * @param array $subform
+ *   Nested array of form elements for the paragraphs entity subform in the
+ *   widget.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The current state of the form. The arguments that
+ *   \Drupal::formBuilder()->getForm() was originally called with are available
+ *   in the array $form_state->getBuildInfo()['args'].
+ * @param int $delta
+ *   The order of this item in the array of sub-elements (0, 1, 2, etc.).
+ *
+ * @see hook_form_paragraphs_subform_alter()
+ * @see hook_form_paragraphs_subform_TYPE_alter()
+ * @see hook_form_paragraphs_subform_WIDGET_TYPE_alter()
+ */
+function hook_form_paragraphs_subform_WIDGET_alter(array &$subform, \Drupal\Core\Form\FormStateInterface $form_state, $delta) {
+  $paragraph = $form_state->get('paragraph');
+}
+
+/**
+ * Perform alterations on a paragraphs entity subform.
+ *
+ * Modules can implement hook_form_paragraphs_subform_WIDGET_TYPE_alter() to
+ * change a paragraphs entity subform in a specific entity reference widget for
+ * and a specific paragraphs type.
+ *
+ * @param array $subform
+ *   Nested array of form elements for the paragraphs entity subform in the
+ *   widget.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The current state of the form. The arguments that
+ *   \Drupal::formBuilder()->getForm() was originally called with are available
+ *   in the array $form_state->getBuildInfo()['args'].
+ * @param int $delta
+ *   The order of this item in the array of sub-elements (0, 1, 2, etc.).
+ *
+ * @see hook_form_paragraphs_subform_alter()
+ * @see hook_form_paragraphs_subform_TYPE_alter()
+ * @see hook_form_paragraphs_subform_WIDGET_alter()
+ */
+function hook_form_paragraphs_subform_WIDGET_TYPE_alter(array &$subform, \Drupal\Core\Form\FormStateInterface $form_state, $delta) {
+  $paragraph = $form_state->get('paragraph');
+}
+
+/**
  * @} End of "addtogroup hooks".
  */

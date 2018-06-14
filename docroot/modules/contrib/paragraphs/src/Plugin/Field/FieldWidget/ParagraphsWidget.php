@@ -732,6 +732,14 @@ class ParagraphsWidget extends WidgetBase {
             }
           }
         }
+        $form_state->set('paragraph', $paragraphs_entity);
+        $hooks = [
+          'form_paragraphs_subform',
+          'form_paragraphs_subform_' . $paragraphs_entity->getParagraphType()->id(),
+          'form_paragraphs_subform_experimental',
+          'form_paragraphs_subform_experimental_' . $paragraphs_entity->getParagraphType()->id(),
+        ];
+        \Drupal::ModuleHandler()->alter($hooks, $element['subform'], $form_state, $delta);
       }
       elseif ($item_mode == 'closed') {
         $element['subform'] = [];
