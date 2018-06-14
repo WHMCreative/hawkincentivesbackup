@@ -70,7 +70,7 @@
     "drupal/system_status": "^2.0",
     "drupal/paragraphs_browser": "^1.0",
     "drupal/twig_field_value": "^1.0",
-    "drupal/linkit": "^4.0",
+    "drupal/linkit": "^5.0",
     "drupal/field_hidden": "^1.0",
     "drupal/mailsystem": "^4.0",
     "drupal/image_style_quality": "^1.0",
