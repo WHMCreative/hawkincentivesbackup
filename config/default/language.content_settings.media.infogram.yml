@@ -1,0 +1,11 @@
+uuid: 031b3842-0955-4a9b-80c8-f1ce2fa70637
+langcode: en
+status: true
+dependencies:
+  config:
+    - media_entity.bundle.infogram
+id: media.infogram
+target_entity_type_id: media
+target_bundle: infogram
+default_langcode: site_default
+language_alterable: false

@@ -39,6 +39,7 @@ settings:
             - Blockquote
             - image_embed
             - video_embed
+            - infogram
         -
           name: 'Block Formatting'
           items:

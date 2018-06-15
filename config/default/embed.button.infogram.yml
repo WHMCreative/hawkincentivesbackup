@@ -1,0 +1,22 @@
+uuid: 6e5341b1-94dc-4c8c-bace-a5e19233ad9e
+langcode: en
+status: true
+dependencies:
+  config:
+    - media_entity.bundle.infogram
+  module:
+    - entity_embed
+    - media_entity
+label: Infogram
+id: infogram
+type_id: entity
+type_settings:
+  entity_type: media
+  bundles:
+    - infogram
+  display_plugins:
+    - 'view_mode:media.entity_embed'
+  entity_browser: infogram_embed
+  entity_browser_settings:
+    display_review: true
+icon_uuid: null

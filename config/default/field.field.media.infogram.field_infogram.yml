@@ -1,0 +1,19 @@
+uuid: dd435393-2dd9-40ed-a500-b83d5f638002
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_infogram
+    - media_entity.bundle.infogram
+id: media.infogram.field_infogram
+field_name: field_infogram
+entity_type: media
+bundle: infogram
+label: Infogram
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

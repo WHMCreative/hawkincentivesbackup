@@ -1,0 +1,52 @@
+uuid: fb8c7ead-b62a-43c4-86e1-60f65df6e330
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.media.media_browser
+    - field.field.media.infogram.field_infogram
+    - field.field.media.infogram.field_infogram_type
+    - field.field.media.infogram.field_tags
+    - media_entity.bundle.infogram
+id: media.infogram.media_browser
+targetEntityType: media
+bundle: infogram
+mode: media_browser
+content:
+  field_infogram:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_infogram_type:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_tags:
+    weight: 3
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete_tags
+    region: content
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  langcode: true
+  moderation_state: true
+  path: true
+  uid: true

@@ -1,0 +1,9 @@
+uuid: 36e85cdd-ce26-401d-ad08-7a3411920f8a
+langcode: en
+status: true
+dependencies: {  }
+name: 'Infogram Type'
+vid: infogram_type
+description: ''
+hierarchy: 0
+weight: 0

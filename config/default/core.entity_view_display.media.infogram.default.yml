@@ -1,0 +1,30 @@
+uuid: 7e383e77-2f60-4596-bc78-57d295574761
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.infogram.field_infogram
+    - field.field.media.infogram.field_infogram_type
+    - field.field.media.infogram.field_tags
+    - media_entity.bundle.infogram
+id: media.infogram.default
+targetEntityType: media
+bundle: infogram
+mode: default
+content:
+  field_infogram:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  created: true
+  field_infogram_type: true
+  field_tags: true
+  langcode: true
+  name: true
+  thumbnail: true
+  uid: true

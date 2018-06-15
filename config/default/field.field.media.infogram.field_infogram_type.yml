@@ -1,0 +1,29 @@
+uuid: 28b07236-5548-4ebf-ace6-4e097440fbbc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_infogram_type
+    - media_entity.bundle.infogram
+    - taxonomy.vocabulary.infogram_type
+id: media.infogram.field_infogram_type
+field_name: field_infogram_type
+entity_type: media
+bundle: infogram
+label: 'Infogram Type'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      infogram_type: infogram_type
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

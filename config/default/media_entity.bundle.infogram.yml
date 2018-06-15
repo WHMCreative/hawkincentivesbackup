@@ -1,0 +1,12 @@
+uuid: baea0a48-69d2-47ee-8246-1bc89223ee94
+langcode: en
+status: true
+dependencies: {  }
+id: infogram
+label: Infogram
+description: ''
+type: generic
+queue_thumbnail_downloads: false
+new_revision: false
+type_configuration: {  }
+field_map: {  }

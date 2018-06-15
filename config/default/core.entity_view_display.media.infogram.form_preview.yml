@@ -1,0 +1,52 @@
+uuid: a77d6fb9-c7b3-47ca-b9bc-d36e67ee3435
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.form_preview
+    - field.field.media.infogram.field_infogram
+    - field.field.media.infogram.field_infogram_type
+    - field.field.media.infogram.field_tags
+    - media_entity.bundle.infogram
+id: media.infogram.form_preview
+targetEntityType: media
+bundle: infogram
+mode: form_preview
+content:
+  field_infogram:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_infogram_type:
+    type: entity_reference_label
+    weight: 2
+    region: content
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+  field_tags:
+    type: entity_reference_label
+    weight: 3
+    region: content
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+  name:
+    type: string
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  created: true
+  langcode: true
+  thumbnail: true
+  uid: true

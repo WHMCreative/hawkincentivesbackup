@@ -1,0 +1,42 @@
+uuid: 77171540-ad4b-4668-9ce6-d5d61f258755
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.entity_browser_infogram
+  module:
+    - entity_browser_entity_form
+    - views
+name: infogram
+label: Infogram
+display: modal
+display_configuration:
+  width: '800'
+  height: '500'
+  link_text: 'Add Infogram'
+  auto_open: false
+selection_display: no_display
+selection_display_configuration: {  }
+widget_selector: tabs
+widget_selector_configuration: {  }
+widgets:
+  5a2008b1-fb75-42e8-be67-f012f4e22e28:
+    settings:
+      view: entity_browser_infogram
+      view_display: entity_browser_infogram
+      submit_text: 'Select infogram'
+      auto_select: false
+    uuid: 5a2008b1-fb75-42e8-be67-f012f4e22e28
+    weight: 1
+    label: 'View Infograms'
+    id: view
+  383e06f4-963d-44ad-adfb-7b5c34cfe870:
+    settings:
+      entity_type: media
+      bundle: infogram
+      form_mode: media_browser
+      submit_text: 'Save infogram'
+    uuid: 383e06f4-963d-44ad-adfb-7b5c34cfe870
+    weight: 2
+    label: 'Add Infogram'
+    id: entity_form
