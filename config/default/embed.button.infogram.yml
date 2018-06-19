@@ -7,7 +7,7 @@ dependencies:
   module:
     - entity_embed
     - media_entity
-label: Infogram
+label: 'Infogram Embed'
 id: infogram
 type_id: entity
 type_settings:

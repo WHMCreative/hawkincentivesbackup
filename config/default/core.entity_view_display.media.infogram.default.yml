@@ -7,6 +7,8 @@ dependencies:
     - field.field.media.infogram.field_infogram_type
     - field.field.media.infogram.field_tags
     - media_entity.bundle.infogram
+  module:
+    - bhk_infogram
 id: media.infogram.default
 targetEntityType: media
 bundle: infogram
@@ -15,10 +17,9 @@ content:
   field_infogram:
     weight: 0
     label: hidden
-    settings:
-      link_to_entity: false
+    settings: {  }
     third_party_settings: {  }
-    type: string
+    type: infogram
     region: content
 hidden:
   created: true

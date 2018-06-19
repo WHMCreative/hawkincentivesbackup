@@ -8,19 +8,21 @@ dependencies:
     - field.field.media.infogram.field_infogram_type
     - field.field.media.infogram.field_tags
     - media_entity.bundle.infogram
+  module:
+    - bhk_infogram
 id: media.infogram.form_preview
 targetEntityType: media
 bundle: infogram
 mode: form_preview
 content:
   field_infogram:
+    type: infogram
     weight: 1
+    region: content
     label: hidden
     settings:
-      link_to_entity: false
+      thumbnail_display: true
     third_party_settings: {  }
-    type: string
-    region: content
   field_infogram_type:
     type: entity_reference_label
     weight: 2

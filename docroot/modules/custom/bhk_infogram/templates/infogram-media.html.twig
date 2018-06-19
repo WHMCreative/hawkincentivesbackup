@@ -1,0 +1,23 @@
+{#
+/**
+ * @file
+ * Default theme implementation for displaying an infogram field.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the infogram field wrapper.
+ * - infogram_html: Infogram chart html to output.
+ * - infogram_thumbnail: Infogram thumbnail to output.
+ *
+ * @see template_preprocess_infogram_output()
+ *
+ * @ingroup themeable
+ */
+#}
+<div{{ attributes.addClass('infogram-output')}}>
+  {% if infogram_html %}
+    {{ infogram_html }}
+  {% endif %}
+  {% if infogram_thumbnail %}
+    {{ infogram_thumbnail }}
+  {% endif %}
+</div>

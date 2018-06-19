@@ -1,0 +1,7 @@
+field.formatter.settings.infogram:
+  type: mapping
+  label: 'Infogram display'
+  mapping:
+    thumbnail_display:
+      type: boolean
+      label: 'Display as thumbnail'

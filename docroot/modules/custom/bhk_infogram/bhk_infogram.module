@@ -1,0 +1,39 @@
+<?php
+
+/**
+ * @file
+ * Contains bhk_infogram.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function bhk_infogram_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the bhk_infogram module.
+    case 'help.page.bhk_infogram':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Provides Infogram integration for media.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function bhk_infogram_theme($existing, $type, $theme, $path) {
+  return [
+    'infogram_output' => [
+      'template' => 'infogram-media',
+      'variables' => [
+        'infogram_html' => '',
+        'infogram_thumbnail' => '',
+      ],
+    ],
+  ];
+}

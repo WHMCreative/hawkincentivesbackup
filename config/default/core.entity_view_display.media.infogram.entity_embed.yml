@@ -8,19 +8,21 @@ dependencies:
     - field.field.media.infogram.field_infogram_type
     - field.field.media.infogram.field_tags
     - media_entity.bundle.infogram
+  module:
+    - bhk_infogram
 id: media.infogram.entity_embed
 targetEntityType: media
 bundle: infogram
 mode: entity_embed
 content:
   field_infogram:
+    type: infogram
     weight: 0
+    region: content
     label: hidden
     settings:
-      link_to_entity: false
+      thumbnail_display: false
     third_party_settings: {  }
-    type: string
-    region: content
 hidden:
   created: true
   field_infogram_type: true
