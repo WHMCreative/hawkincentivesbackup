@@ -1,0 +1,34 @@
+uuid: 626c56f1-f28a-4930-8059-46fca53aca51
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.link_url.field_link
+    - paragraphs.paragraphs_type.link_url
+  module:
+    - link_attributes
+id: paragraph.link_url.default
+targetEntityType: paragraph
+bundle: link_url
+mode: default
+content:
+  field_link:
+    weight: 0
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+      enabled_attributes:
+        target: true
+        rel: true
+        id: false
+        name: false
+        class: false
+        accesskey: false
+    third_party_settings: {  }
+    type: link_attributes
+    region: content
+hidden:
+  created: true
+  moderation_state: true
+  status: true
+  uid: true
