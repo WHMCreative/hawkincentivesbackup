@@ -1,0 +1,24 @@
+uuid: a6fd8526-457d-4371-94d8-38d768171099
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.preview
+    - field.field.paragraph.link_file.field_file
+    - paragraphs.paragraphs_type.link_file
+  module:
+    - file
+id: paragraph.link_file.preview
+targetEntityType: paragraph
+bundle: link_file
+mode: preview
+content:
+  field_file:
+    weight: 0
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    type: file_default
+    region: content
+hidden: {  }

@@ -1,0 +1,9 @@
+uuid: 6db99b46-967f-4e31-859a-3a1d6aba2922
+langcode: en
+status: true
+dependencies: {  }
+id: link_file
+label: 'Link - File'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

@@ -1,0 +1,26 @@
+uuid: 9ad4443b-b996-4afd-87a5-cc0884eb0244
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.link_file.field_file
+    - paragraphs.paragraphs_type.link_file
+  module:
+    - file
+id: paragraph.link_file.default
+targetEntityType: paragraph
+bundle: link_file
+mode: default
+content:
+  field_file:
+    weight: 0
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+    type: file_generic
+    region: content
+hidden:
+  created: true
+  moderation_state: true
+  status: true
+  uid: true
