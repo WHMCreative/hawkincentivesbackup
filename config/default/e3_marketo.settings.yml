@@ -1,8 +1,12 @@
-instance_host: ''
-client_id: ''
-client_secret: ''
-endpoint_path: ''
-identity_endpoint_path: ''
-munchkin_id: ''
+instance_host: //app-sj21.marketo.com
+client_id: d028c645-e1bd-4888-ad3b-56a128a7d59e
+client_secret: ivuwF6zqncMw3po2OYs5R4O2QiasVHU1
+endpoint_path: 'https://626-SKD-725.mktorest.com/rest'
+identity_endpoint_path: 'https://626-SKD-725.mktorest.com/identity'
+munchkin_id: 626-SKD-725
 _core:
   default_config_hash: Y7youmzX_9L3XWikVr5d0Sxv79UiZBrNq6AGTfioWRc
+alt_instance_host: ''
+load_error_message:
+  value: "<p>This form has been blocked by your browser settings.</p>\r\n"
+  format: limited_rich_text
