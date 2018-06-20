@@ -52,3 +52,4 @@ map:
   marketo_hidden_field: marketo
   marketo_submission_confirmation: marketo
   simple_icon_content: simple
+  simple_stat: simple

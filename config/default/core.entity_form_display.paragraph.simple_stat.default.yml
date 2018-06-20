@@ -1,0 +1,44 @@
+uuid: 0c764202-5cab-49f5-8750-8b8ef7ab6c5d
+langcode: en
+status: true
+dependencies:
+  config:
+    - entity_browser.browser.image
+    - field.field.paragraph.simple_stat.field_description
+    - field.field.paragraph.simple_stat.field_media
+    - paragraphs.paragraphs_type.simple_stat
+  module:
+    - entity_browser
+    - text
+id: paragraph.simple_stat.default
+targetEntityType: paragraph
+bundle: simple_stat
+mode: default
+content:
+  field_description:
+    weight: 1
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_media:
+    weight: 0
+    settings:
+      entity_browser: image
+      field_widget_display: rendered_entity
+      field_widget_remove: true
+      open: true
+      selection_mode: selection_append
+      field_widget_display_settings:
+        view_mode: form_preview
+      field_widget_edit: false
+    third_party_settings: {  }
+    type: entity_browser_entity_reference
+    region: content
+hidden:
+  created: true
+  moderation_state: true
+  status: true
+  uid: true

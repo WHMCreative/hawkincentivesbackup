@@ -1,0 +1,32 @@
+uuid: 7824c87c-8c0c-4640-8052-4acc5369b9b8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.simple_stat.field_description
+    - field.field.paragraph.simple_stat.field_media
+    - paragraphs.paragraphs_type.simple_stat
+  module:
+    - text
+id: paragraph.simple_stat.default
+targetEntityType: paragraph
+bundle: simple_stat
+mode: default
+content:
+  field_description:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_media:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: stat
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+hidden: {  }

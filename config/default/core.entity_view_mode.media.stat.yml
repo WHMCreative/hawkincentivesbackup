@@ -1,0 +1,10 @@
+uuid: ec7ba7f4-ac3d-4b74-8b5b-f129bfa971ec
+langcode: en
+status: true
+dependencies:
+  module:
+    - media_entity
+id: media.stat
+label: Stat
+targetEntityType: media
+cache: true

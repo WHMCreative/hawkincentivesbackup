@@ -1,0 +1,33 @@
+uuid: 0a0a3148-0660-4fb0-b9fb-5c06dce8c6d3
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.preview
+    - field.field.paragraph.simple_stat.field_description
+    - field.field.paragraph.simple_stat.field_media
+    - paragraphs.paragraphs_type.simple_stat
+  module:
+    - text
+id: paragraph.simple_stat.preview
+targetEntityType: paragraph
+bundle: simple_stat
+mode: preview
+content:
+  field_description:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_media:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: form_preview
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+hidden: {  }
