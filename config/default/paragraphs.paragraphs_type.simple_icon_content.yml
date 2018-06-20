@@ -1,0 +1,9 @@
+uuid: 8069e540-520d-4b5c-ad77-67de6531b229
+langcode: en
+status: true
+dependencies: {  }
+id: simple_icon_content
+label: 'Simple - Icon Content'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

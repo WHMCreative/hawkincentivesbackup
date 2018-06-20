@@ -1,0 +1,28 @@
+uuid: e2907548-f331-4547-b5f8-0d232972ccdb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_description
+    - paragraphs.paragraphs_type.simple_icon_content
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    limited_rich_text: '0'
+    rich_text: '0'
+    plain_text: '0'
+    html: '0'
+id: paragraph.simple_icon_content.field_description
+field_name: field_description
+entity_type: paragraph
+bundle: simple_icon_content
+label: Description
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

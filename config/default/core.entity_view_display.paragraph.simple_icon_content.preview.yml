@@ -1,0 +1,61 @@
+uuid: eca807d0-8aab-4128-bd19-8af55b86a5ed
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.preview
+    - field.field.paragraph.simple_icon_content.field_description
+    - field.field.paragraph.simple_icon_content.field_heading
+    - field.field.paragraph.simple_icon_content.field_media
+    - field.field.paragraph.simple_icon_content.field_mobile_description
+    - field.field.paragraph.simple_icon_content.field_p_link
+    - paragraphs.paragraphs_type.simple_icon_content
+  module:
+    - entity_reference_revisions
+    - text
+id: paragraph.simple_icon_content.preview
+targetEntityType: paragraph
+bundle: simple_icon_content
+mode: preview
+content:
+  field_description:
+    weight: 2
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_heading:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_media:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: form_preview
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_mobile_description:
+    weight: 3
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_p_link:
+    weight: 4
+    label: hidden
+    settings:
+      view_mode: preview
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+hidden: {  }
