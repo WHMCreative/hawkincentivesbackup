@@ -1,0 +1,43 @@
+uuid: 30abfaa4-386d-488b-b7d0-7178643945ce
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.preview
+    - field.field.paragraph.simple_content.field_description
+    - field.field.paragraph.simple_content.field_heading
+    - field.field.paragraph.simple_content.field_p_multiple_links
+    - paragraphs.paragraphs_type.simple_content
+  module:
+    - entity_reference_revisions
+    - text
+id: paragraph.simple_content.preview
+targetEntityType: paragraph
+bundle: simple_content
+mode: preview
+content:
+  field_description:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_heading:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_p_multiple_links:
+    type: entity_reference_revisions_entity_view
+    weight: 2
+    label: hidden
+    settings:
+      view_mode: preview
+      link: ''
+    third_party_settings: {  }
+    region: content
+hidden: {  }
