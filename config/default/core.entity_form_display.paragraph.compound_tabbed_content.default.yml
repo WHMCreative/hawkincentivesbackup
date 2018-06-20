@@ -1,0 +1,34 @@
+uuid: b06042fe-a2c7-41d9-8d0c-651e9731fff6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.compound_tabbed_content.field_p_tab_content
+    - paragraphs.paragraphs_type.compound_tabbed_content
+  module:
+    - paragraphs_browser
+id: paragraph.compound_tabbed_content.default
+targetEntityType: paragraph
+bundle: compound_tabbed_content
+mode: default
+content:
+  field_p_tab_content:
+    type: entity_reference_paragraphs_browser
+    weight: 0
+    settings:
+      title: Tab
+      title_plural: Tabs
+      edit_mode: preview
+      add_mode: paragraphs_browser
+      form_display_mode: default
+      default_paragraph_type: _none
+      paragraphs_browser: browser
+      modal_width: 80%
+      modal_height: auto
+    third_party_settings: {  }
+    region: content
+hidden:
+  created: true
+  moderation_state: true
+  status: true
+  uid: true

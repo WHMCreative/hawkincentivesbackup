@@ -1,0 +1,85 @@
+uuid: 370a310f-34ce-498f-8fd0-a1ea91fe3e46
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_link
+    - paragraphs.paragraphs_type.link_url
+    - paragraphs.paragraphs_type.simple_media_bar
+  module:
+    - entity_reference_revisions
+id: paragraph.simple_media_bar.field_p_link
+field_name: field_p_link
+entity_type: paragraph
+bundle: simple_media_bar
+label: Link
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      link_url: link_url
+    target_bundles_drag_drop:
+      compound_content_bar:
+        weight: 20
+        enabled: false
+      compound_stat_bar:
+        weight: 21
+        enabled: false
+      compound_tabbed_content:
+        weight: 22
+        enabled: false
+      link_file:
+        weight: 23
+        enabled: false
+      link_url:
+        enabled: true
+        weight: 24
+      marketo_hidden_field:
+        weight: 25
+        enabled: false
+      marketo_submission_confirmation:
+        weight: 26
+        enabled: false
+      media_image_slider:
+        weight: 27
+        enabled: false
+      media_video_modal:
+        weight: 28
+        enabled: false
+      reference_marketo_form:
+        weight: 29
+        enabled: false
+      simple_content:
+        weight: 30
+        enabled: false
+      simple_icon_content:
+        weight: 31
+        enabled: false
+      simple_media_bar:
+        weight: 32
+        enabled: false
+      simple_media_tile:
+        weight: 33
+        enabled: false
+      simple_stat:
+        weight: 34
+        enabled: false
+      single_image:
+        weight: 35
+        enabled: false
+      single_svg:
+        weight: 36
+        enabled: false
+      single_video:
+        weight: 37
+        enabled: false
+      summary_insights:
+        weight: 38
+        enabled: false
+field_type: entity_reference_revisions

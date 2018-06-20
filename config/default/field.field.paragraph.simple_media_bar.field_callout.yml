@@ -1,0 +1,28 @@
+uuid: e4e36ae4-aa67-4626-b57f-d058249ecd52
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_callout
+    - paragraphs.paragraphs_type.simple_media_bar
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    limited_rich_text: '0'
+    rich_text: '0'
+    plain_text: '0'
+    html: '0'
+id: paragraph.simple_media_bar.field_callout
+field_name: field_callout
+entity_type: paragraph
+bundle: simple_media_bar
+label: Callout
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

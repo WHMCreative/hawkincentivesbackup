@@ -37,14 +37,18 @@ groups:
     label: Link
     id: link
     weight: '11'
+  resource:
+    label: Resource
+    id: resource
+    weight: '12'
   marketo:
     label: Marketo
     id: marketo
-    weight: '12'
+    weight: '13'
   single:
     label: Single
     id: single
-    weight: '13'
+    weight: '14'
 map:
   link_file: link
   link_url: link
@@ -62,3 +66,4 @@ map:
   single_video: single
   compound_content_bar: compound
   compound_stat_bar: compound
+  simple_media_bar: simple

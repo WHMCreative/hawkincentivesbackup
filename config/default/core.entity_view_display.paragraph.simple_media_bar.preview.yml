@@ -1,0 +1,70 @@
+uuid: 950eadd7-f097-4d74-8513-81061d45c8df
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.preview
+    - field.field.paragraph.simple_media_bar.field_callout
+    - field.field.paragraph.simple_media_bar.field_description
+    - field.field.paragraph.simple_media_bar.field_heading
+    - field.field.paragraph.simple_media_bar.field_label
+    - field.field.paragraph.simple_media_bar.field_media
+    - field.field.paragraph.simple_media_bar.field_p_link
+    - paragraphs.paragraphs_type.simple_media_bar
+  module:
+    - entity_reference_revisions
+    - text
+id: paragraph.simple_media_bar.preview
+targetEntityType: paragraph
+bundle: simple_media_bar
+mode: preview
+content:
+  field_callout:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_description:
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_heading:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_label:
+    weight: 0
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_media:
+    weight: 5
+    label: hidden
+    settings:
+      view_mode: form_preview
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_p_link:
+    weight: 4
+    label: hidden
+    settings:
+      view_mode: preview
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+hidden: {  }

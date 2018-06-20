@@ -1,0 +1,28 @@
+uuid: 5a2e8b8f-c891-4734-acd3-eea7f9861f90
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_media
+    - media_entity.bundle.image
+    - paragraphs.paragraphs_type.simple_media_bar
+id: paragraph.simple_media_bar.field_media
+field_name: field_media
+entity_type: paragraph
+bundle: simple_media_bar
+label: 'Background Image'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
