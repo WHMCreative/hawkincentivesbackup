@@ -1,0 +1,9 @@
+uuid: 29ef76a9-a638-4efa-bf88-dada796ff709
+langcode: en
+status: true
+dependencies: {  }
+id: media_image_slider
+label: 'Media - Image Slider'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

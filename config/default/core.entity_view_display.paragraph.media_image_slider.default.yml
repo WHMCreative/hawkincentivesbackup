@@ -1,0 +1,31 @@
+uuid: bd312600-3462-4475-b721-a7732e2955ec
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.media_image_slider.field_label
+    - field.field.paragraph.media_image_slider.field_media
+    - paragraphs.paragraphs_type.media_image_slider
+id: paragraph.media_image_slider.default
+targetEntityType: paragraph
+bundle: media_image_slider
+mode: default
+content:
+  field_label:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_media:
+    weight: 1
+    label: hidden
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+hidden: {  }

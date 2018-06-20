@@ -1,0 +1,19 @@
+uuid: 6bbc4a84-31fc-41c3-888f-c882f0b266b4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_label
+    - paragraphs.paragraphs_type.media_image_slider
+id: paragraph.media_image_slider.field_label
+field_name: field_label
+entity_type: paragraph
+bundle: media_image_slider
+label: Label
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
