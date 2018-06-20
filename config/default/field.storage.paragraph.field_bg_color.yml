@@ -1,16 +1,17 @@
-uuid: da4d3540-ffcc-45dd-a24a-68be4298d37b
+uuid: 8e687560-9d6a-4212-81d4-f156fd42ce82
 langcode: en
 status: true
 dependencies:
   module:
     - paragraphs
-    - text
-id: paragraph.field_text_area
-field_name: field_text_area
+    - taxonomy
+id: paragraph.field_bg_color
+field_name: field_bg_color
 entity_type: paragraph
-type: text_long
-settings: {  }
-module: text
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
 locked: false
 cardinality: 1
 translatable: true

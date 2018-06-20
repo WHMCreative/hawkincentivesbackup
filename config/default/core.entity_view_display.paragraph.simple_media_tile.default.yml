@@ -1,46 +1,48 @@
-uuid: 9cfab68d-c9d4-41f2-bf4b-2cf551026abd
+uuid: 8fa129af-6465-44f6-bbec-2b0b60c8d827
 langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.simple_icon_content.field_description
-    - field.field.paragraph.simple_icon_content.field_heading
-    - field.field.paragraph.simple_icon_content.field_mobile_description
-    - field.field.paragraph.simple_icon_content.field_p_link
-    - field.field.paragraph.simple_icon_content.field_p_media
-    - paragraphs.paragraphs_type.simple_icon_content
+    - field.field.paragraph.simple_media_tile.field_bg_color
+    - field.field.paragraph.simple_media_tile.field_description
+    - field.field.paragraph.simple_media_tile.field_heading
+    - field.field.paragraph.simple_media_tile.field_label
+    - field.field.paragraph.simple_media_tile.field_p_link
+    - field.field.paragraph.simple_media_tile.field_p_media
+    - paragraphs.paragraphs_type.simple_media_tile
   module:
     - entity_reference_revisions
     - text
-id: paragraph.simple_icon_content.default
+id: paragraph.simple_media_tile.default
 targetEntityType: paragraph
-bundle: simple_icon_content
+bundle: simple_media_tile
 mode: default
 content:
   field_description:
-    weight: 2
+    weight: 1
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: content
   field_heading:
-    weight: 1
+    weight: 0
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
     type: string
     region: content
-  field_mobile_description:
-    weight: 3
+  field_label:
+    weight: 4
     label: hidden
-    settings: {  }
+    settings:
+      link_to_entity: false
     third_party_settings: {  }
-    type: text_default
+    type: string
     region: content
   field_p_link:
-    weight: 4
+    weight: 2
     label: hidden
     settings:
       view_mode: default
@@ -49,12 +51,13 @@ content:
     type: entity_reference_revisions_entity_view
     region: content
   field_p_media:
-    type: entity_reference_revisions_entity_view
-    weight: 0
+    weight: 3
     label: hidden
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
     region: content
-hidden: {  }
+hidden:
+  field_bg_color: true

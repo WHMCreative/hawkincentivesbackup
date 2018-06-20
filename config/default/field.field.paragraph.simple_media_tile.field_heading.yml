@@ -1,17 +1,17 @@
-uuid: e526df56-48d0-44d7-8afe-645296b15f1f
+uuid: c4427ceb-22f2-41e8-be73-6c91b5de991e
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.paragraph.field_heading
-    - paragraphs.paragraphs_type.single_heading
-id: paragraph.single_heading.field_heading
+    - paragraphs.paragraphs_type.simple_media_tile
+id: paragraph.simple_media_tile.field_heading
 field_name: field_heading
 entity_type: paragraph
-bundle: single_heading
+bundle: simple_media_tile
 label: Heading
 description: ''
-required: true
+required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''

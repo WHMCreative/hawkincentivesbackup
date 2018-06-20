@@ -1,0 +1,75 @@
+uuid: 287a6aca-693c-4fd4-af77-afc667be3cae
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_media
+    - paragraphs.paragraphs_type.simple_icon_content
+    - paragraphs.paragraphs_type.single_image
+    - paragraphs.paragraphs_type.single_svg
+  module:
+    - entity_reference_revisions
+id: paragraph.simple_icon_content.field_p_media
+field_name: field_p_media
+entity_type: paragraph
+bundle: simple_icon_content
+label: Media
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      single_image: single_image
+      single_svg: single_svg
+    target_bundles_drag_drop:
+      link_file:
+        weight: 16
+        enabled: false
+      link_url:
+        weight: 17
+        enabled: false
+      marketo_hidden_field:
+        weight: 18
+        enabled: false
+      marketo_submission_confirmation:
+        weight: 19
+        enabled: false
+      media_image_slider:
+        weight: 20
+        enabled: false
+      media_video_modal:
+        weight: 21
+        enabled: false
+      reference_marketo_form:
+        weight: 22
+        enabled: false
+      simple_content:
+        weight: 23
+        enabled: false
+      simple_icon_content:
+        weight: 24
+        enabled: false
+      simple_media_tile:
+        weight: 25
+        enabled: false
+      simple_stat:
+        weight: 26
+        enabled: false
+      single_image:
+        enabled: true
+        weight: 27
+      single_svg:
+        enabled: true
+        weight: 28
+      single_video:
+        weight: 29
+        enabled: false
+      summary_insights:
+        weight: 30
+        enabled: false
+field_type: entity_reference_revisions

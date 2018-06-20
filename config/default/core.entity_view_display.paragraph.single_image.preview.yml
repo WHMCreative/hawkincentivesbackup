@@ -1,20 +1,21 @@
-uuid: 966b9e6d-c614-4671-9596-7f4ca0d31b16
+uuid: e632dc7f-b701-4e7c-9011-78f26d5cb467
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.paragraph.preview
     - field.field.paragraph.single_image.field_media_image
     - paragraphs.paragraphs_type.single_image
-id: paragraph.single_image.default
+id: paragraph.single_image.preview
 targetEntityType: paragraph
 bundle: single_image
-mode: default
+mode: preview
 content:
   field_media_image:
     weight: 0
     label: hidden
     settings:
-      view_mode: default
+      view_mode: form_preview
       link: false
     third_party_settings: {  }
     type: entity_reference_entity_view

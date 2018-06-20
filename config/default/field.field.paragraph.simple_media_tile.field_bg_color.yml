@@ -1,0 +1,29 @@
+uuid: abcbf0d9-8782-4470-a385-72160d3e4e1f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_bg_color
+    - paragraphs.paragraphs_type.simple_media_tile
+    - taxonomy.vocabulary.display_settings
+id: paragraph.simple_media_tile.field_bg_color
+field_name: field_bg_color
+entity_type: paragraph
+bundle: simple_media_tile
+label: 'Background Color'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      display_settings: display_settings
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

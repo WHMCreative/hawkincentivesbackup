@@ -41,6 +41,10 @@ groups:
     label: Marketo
     id: marketo
     weight: '12'
+  single:
+    label: Single
+    id: single
+    weight: '13'
 map:
   link_file: link
   link_url: link
@@ -53,3 +57,6 @@ map:
   marketo_submission_confirmation: marketo
   simple_icon_content: simple
   simple_stat: simple
+  single_image: single
+  single_svg: single
+  single_video: single

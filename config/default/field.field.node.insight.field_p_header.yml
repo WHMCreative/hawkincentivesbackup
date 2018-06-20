@@ -5,7 +5,6 @@ dependencies:
   config:
     - field.storage.node.field_p_header
     - node.type.insight
-    - paragraphs.paragraphs_type.single_heading
   module:
     - entity_reference_revisions
 id: node.insight.field_p_header
@@ -22,8 +21,7 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     negate: 0
-    target_bundles:
-      single_heading: single_heading
+    target_bundles: {  }
     target_bundles_drag_drop:
       single_heading:
         enabled: true
