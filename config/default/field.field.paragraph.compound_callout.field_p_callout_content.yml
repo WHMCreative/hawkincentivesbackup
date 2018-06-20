@@ -1,25 +1,20 @@
-uuid: 179745b2-962d-4698-8ab3-508795cb64f5
+uuid: 50c8946d-37d7-4cc9-be55-2fdc2c7e5210
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_p_content
-    - node.type.component_page
+    - field.storage.paragraph.field_p_callout_content
     - paragraphs.paragraphs_type.compound_callout
-    - paragraphs.paragraphs_type.compound_content_bar
-    - paragraphs.paragraphs_type.compound_stat_bar
-    - paragraphs.paragraphs_type.compound_tabbed_content
-    - paragraphs.paragraphs_type.reference_marketo_form
-    - paragraphs.paragraphs_type.summary_insights
+    - paragraphs.paragraphs_type.simple_icon_content
   module:
     - entity_reference_revisions
-id: node.component_page.field_p_content
-field_name: field_p_content
-entity_type: node
-bundle: component_page
+id: paragraph.compound_callout.field_p_callout_content
+field_name: field_p_callout_content
+entity_type: paragraph
+bundle: compound_callout
 label: Content
 description: ''
-required: false
+required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''
@@ -28,37 +23,20 @@ settings:
   handler_settings:
     negate: 0
     target_bundles:
-      summary_insights: summary_insights
-      compound_callout: compound_callout
-      compound_content_bar: compound_content_bar
-      compound_stat_bar: compound_stat_bar
-      compound_tabbed_content: compound_tabbed_content
-      reference_marketo_form: reference_marketo_form
+      simple_icon_content: simple_icon_content
     target_bundles_drag_drop:
-      single_image:
-        weight: 8
-        enabled: false
-      single_svg:
-        weight: 9
-        enabled: false
-      single_video:
-        weight: 11
-        enabled: false
-      summary_insights:
-        enabled: true
-        weight: 12
       compound_callout:
-        enabled: true
         weight: 21
+        enabled: false
       compound_content_bar:
-        enabled: true
         weight: 22
+        enabled: false
       compound_stat_bar:
-        enabled: true
         weight: 23
+        enabled: false
       compound_tabbed_content:
-        enabled: true
         weight: 24
+        enabled: false
       link_file:
         weight: 25
         enabled: false
@@ -78,14 +56,14 @@ settings:
         weight: 30
         enabled: false
       reference_marketo_form:
-        enabled: true
         weight: 31
+        enabled: false
       simple_content:
         weight: 32
         enabled: false
       simple_icon_content:
+        enabled: true
         weight: 33
-        enabled: false
       simple_media_bar:
         weight: 34
         enabled: false
@@ -94,5 +72,17 @@ settings:
         enabled: false
       simple_stat:
         weight: 36
+        enabled: false
+      single_image:
+        weight: 37
+        enabled: false
+      single_svg:
+        weight: 38
+        enabled: false
+      single_video:
+        weight: 39
+        enabled: false
+      summary_insights:
+        weight: 40
         enabled: false
 field_type: entity_reference_revisions

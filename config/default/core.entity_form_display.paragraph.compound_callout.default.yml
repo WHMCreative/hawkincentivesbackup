@@ -1,0 +1,43 @@
+uuid: 70ae26eb-5ebb-4af4-84e4-4f0388191ba1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.compound_callout.field_heading
+    - field.field.paragraph.compound_callout.field_p_callout_content
+    - paragraphs.paragraphs_type.compound_callout
+  module:
+    - paragraphs_browser
+id: paragraph.compound_callout.default
+targetEntityType: paragraph
+bundle: compound_callout
+mode: default
+content:
+  field_heading:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_p_callout_content:
+    type: entity_reference_paragraphs_browser
+    weight: 1
+    settings:
+      title: Component
+      title_plural: Components
+      edit_mode: preview
+      add_mode: paragraphs_browser
+      form_display_mode: simple
+      default_paragraph_type: _none
+      paragraphs_browser: browser
+      modal_width: 80%
+      modal_height: auto
+    third_party_settings: {  }
+    region: content
+hidden:
+  created: true
+  moderation_state: true
+  status: true
+  uid: true

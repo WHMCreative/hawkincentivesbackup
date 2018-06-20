@@ -67,3 +67,5 @@ map:
   compound_content_bar: compound
   compound_stat_bar: compound
   simple_media_bar: simple
+  compound_tabbed_content: compound
+  compound_callout: compound
