@@ -12,7 +12,8 @@ dependencies:
     - field.field.paragraph.summary_insights.field_summary_direct
     - paragraphs.paragraphs_type.summary_insights
   module:
-    - paragraphs
+    - content_moderation
+    - paragraphs_browser
     - text
 id: paragraph.summary_insights.default
 targetEntityType: paragraph
@@ -42,15 +43,18 @@ content:
     type: options_select
     region: content
   field_p_link:
-    type: entity_reference_paragraphs
+    type: entity_reference_paragraphs_browser
     weight: 6
     settings:
       title: Link
       title_plural: Links
       edit_mode: preview
-      add_mode: select
+      add_mode: paragraphs_browser
       form_display_mode: default
       default_paragraph_type: _none
+      paragraphs_browser: browser
+      modal_width: 80%
+      modal_height: auto
     third_party_settings: {  }
     region: content
   field_summary_content:
@@ -73,6 +77,12 @@ content:
       display_label: true
     third_party_settings: {  }
     region: content
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    settings: {  }
+    region: content
+    third_party_settings: {  }
 hidden:
   created: true
   status: true

@@ -1,0 +1,53 @@
+uuid: 335f0fac-b07a-442a-98aa-589e1886524e
+langcode: en
+status: true
+dependencies: {  }
+id: browser
+label: Browser
+groups:
+  banner:
+    label: Banner
+    id: banner
+    weight: '4'
+  layout:
+    label: Layout
+    id: layout
+    weight: '5'
+  compound:
+    label: Compound
+    id: compound
+    weight: '6'
+  reference:
+    label: Reference
+    id: reference
+    weight: '7'
+  summary:
+    label: Summary
+    id: summary
+    weight: '8'
+  simple:
+    label: Simple
+    id: simple
+    weight: '9'
+  media:
+    label: Media
+    id: media
+    weight: '10'
+  link:
+    label: Link
+    id: link
+    weight: '11'
+  marketo:
+    label: Marketo
+    id: marketo
+    weight: '12'
+map:
+  link_file: link
+  link_url: link
+  media_image_slider: media
+  media_video_modal: media
+  reference_marketo_form: reference
+  simple_content: simple
+  summary_insights: summary
+  marketo_hidden_field: marketo
+  marketo_submission_confirmation: marketo

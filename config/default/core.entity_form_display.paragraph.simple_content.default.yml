@@ -41,7 +41,7 @@ content:
       add_mode: paragraphs_browser
       form_display_mode: default
       default_paragraph_type: _none
-      paragraphs_browser: _na
+      paragraphs_browser: browser
       modal_width: 80%
       modal_height: auto
     third_party_settings: {  }
