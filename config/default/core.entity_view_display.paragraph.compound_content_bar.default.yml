@@ -1,0 +1,54 @@
+uuid: a6985388-e420-4a57-ad9a-f64337ab2728
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.compound_content_bar.field_bg_color
+    - field.field.paragraph.compound_content_bar.field_description
+    - field.field.paragraph.compound_content_bar.field_heading
+    - field.field.paragraph.compound_content_bar.field_p_compound_content
+    - field.field.paragraph.compound_content_bar.field_p_multiple_links
+    - paragraphs.paragraphs_type.compound_content_bar
+  module:
+    - entity_reference_revisions
+    - text
+id: paragraph.compound_content_bar.default
+targetEntityType: paragraph
+bundle: compound_content_bar
+mode: default
+content:
+  field_description:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_heading:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_p_compound_content:
+    type: entity_reference_revisions_entity_view
+    weight: 2
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_p_multiple_links:
+    weight: 3
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+hidden:
+  field_bg_color: true

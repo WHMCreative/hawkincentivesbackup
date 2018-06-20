@@ -1,0 +1,9 @@
+uuid: 06d8ba06-7473-4c15-832d-3a30aab0131f
+langcode: en
+status: true
+dependencies: {  }
+id: compound_content_bar
+label: 'Compound - Content Bar'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

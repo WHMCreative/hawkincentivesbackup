@@ -1,0 +1,78 @@
+uuid: 87dc5ced-77d2-461f-bb07-b7d924241da6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_compound_content
+    - paragraphs.paragraphs_type.compound_content_bar
+    - paragraphs.paragraphs_type.simple_icon_content
+    - paragraphs.paragraphs_type.simple_media_tile
+  module:
+    - entity_reference_revisions
+id: paragraph.compound_content_bar.field_p_compound_content
+field_name: field_p_compound_content
+entity_type: paragraph
+bundle: compound_content_bar
+label: Content
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      simple_icon_content: simple_icon_content
+      simple_media_tile: simple_media_tile
+    target_bundles_drag_drop:
+      compound_content_bar:
+        weight: 17
+        enabled: false
+      link_file:
+        weight: 18
+        enabled: false
+      link_url:
+        weight: 19
+        enabled: false
+      marketo_hidden_field:
+        weight: 20
+        enabled: false
+      marketo_submission_confirmation:
+        weight: 21
+        enabled: false
+      media_image_slider:
+        weight: 22
+        enabled: false
+      media_video_modal:
+        weight: 23
+        enabled: false
+      reference_marketo_form:
+        weight: 24
+        enabled: false
+      simple_content:
+        weight: 25
+        enabled: false
+      simple_icon_content:
+        enabled: true
+        weight: 26
+      simple_media_tile:
+        enabled: true
+        weight: 27
+      simple_stat:
+        weight: 28
+        enabled: false
+      single_image:
+        weight: 29
+        enabled: false
+      single_svg:
+        weight: 30
+        enabled: false
+      single_video:
+        weight: 31
+        enabled: false
+      summary_insights:
+        weight: 32
+        enabled: false
+field_type: entity_reference_revisions

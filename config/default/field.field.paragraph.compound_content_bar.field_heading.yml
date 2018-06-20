@@ -1,0 +1,19 @@
+uuid: 9d978949-2a91-48de-8413-bdb760b7020c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_heading
+    - paragraphs.paragraphs_type.compound_content_bar
+id: paragraph.compound_content_bar.field_heading
+field_name: field_heading
+entity_type: paragraph
+bundle: compound_content_bar
+label: Heading
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
