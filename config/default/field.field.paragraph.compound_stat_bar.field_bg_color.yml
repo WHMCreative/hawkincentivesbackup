@@ -1,0 +1,29 @@
+uuid: 7156a8b9-5928-434a-aa95-fede79c9c7d6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_bg_color
+    - paragraphs.paragraphs_type.compound_stat_bar
+    - taxonomy.vocabulary.display_settings
+id: paragraph.compound_stat_bar.field_bg_color
+field_name: field_bg_color
+entity_type: paragraph
+bundle: compound_stat_bar
+label: 'Background Color'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      display_settings: display_settings
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

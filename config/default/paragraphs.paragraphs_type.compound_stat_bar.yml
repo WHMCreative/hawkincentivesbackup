@@ -1,0 +1,9 @@
+uuid: e2436b2b-61f5-4ee9-a067-e8017c503b83
+langcode: en
+status: true
+dependencies: {  }
+id: compound_stat_bar
+label: 'Compound - Stat Bar'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

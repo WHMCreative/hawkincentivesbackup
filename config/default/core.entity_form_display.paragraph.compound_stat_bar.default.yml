@@ -1,0 +1,41 @@
+uuid: bbddf909-ea86-404d-8b4e-e2f90da7d791
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.compound_stat_bar.field_bg_color
+    - field.field.paragraph.compound_stat_bar.field_p_stat_content
+    - paragraphs.paragraphs_type.compound_stat_bar
+  module:
+    - paragraphs_browser
+id: paragraph.compound_stat_bar.default
+targetEntityType: paragraph
+bundle: compound_stat_bar
+mode: default
+content:
+  field_bg_color:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_p_stat_content:
+    type: entity_reference_paragraphs_browser
+    weight: 0
+    settings:
+      title: Stat
+      title_plural: Stats
+      edit_mode: preview
+      add_mode: paragraphs_browser
+      form_display_mode: default
+      default_paragraph_type: _none
+      paragraphs_browser: browser
+      modal_width: 80%
+      modal_height: auto
+    third_party_settings: {  }
+    region: content
+hidden:
+  created: true
+  moderation_state: true
+  status: true
+  uid: true

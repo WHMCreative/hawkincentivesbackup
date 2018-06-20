@@ -1,0 +1,26 @@
+uuid: 550cf419-b5d0-4675-99b8-0029fb36925f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.compound_stat_bar.field_bg_color
+    - field.field.paragraph.compound_stat_bar.field_p_stat_content
+    - paragraphs.paragraphs_type.compound_stat_bar
+  module:
+    - entity_reference_revisions
+id: paragraph.compound_stat_bar.default
+targetEntityType: paragraph
+bundle: compound_stat_bar
+mode: default
+content:
+  field_p_stat_content:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_bg_color: true

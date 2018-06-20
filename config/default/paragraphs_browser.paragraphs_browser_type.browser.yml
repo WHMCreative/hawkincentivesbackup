@@ -60,3 +60,5 @@ map:
   single_image: single
   single_svg: single
   single_video: single
+  compound_content_bar: compound
+  compound_stat_bar: compound

@@ -1,0 +1,79 @@
+uuid: bf913b6e-2901-4731-b0ae-5c8ab636f4e3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_stat_content
+    - paragraphs.paragraphs_type.compound_stat_bar
+    - paragraphs.paragraphs_type.simple_stat
+  module:
+    - entity_reference_revisions
+id: paragraph.compound_stat_bar.field_p_stat_content
+field_name: field_p_stat_content
+entity_type: paragraph
+bundle: compound_stat_bar
+label: Content
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      simple_stat: simple_stat
+    target_bundles_drag_drop:
+      compound_content_bar:
+        weight: 18
+        enabled: false
+      compound_stat_bar:
+        weight: 19
+        enabled: false
+      link_file:
+        weight: 20
+        enabled: false
+      link_url:
+        weight: 21
+        enabled: false
+      marketo_hidden_field:
+        weight: 22
+        enabled: false
+      marketo_submission_confirmation:
+        weight: 23
+        enabled: false
+      media_image_slider:
+        weight: 24
+        enabled: false
+      media_video_modal:
+        weight: 25
+        enabled: false
+      reference_marketo_form:
+        weight: 26
+        enabled: false
+      simple_content:
+        weight: 27
+        enabled: false
+      simple_icon_content:
+        weight: 28
+        enabled: false
+      simple_media_tile:
+        weight: 29
+        enabled: false
+      simple_stat:
+        enabled: true
+        weight: 30
+      single_image:
+        weight: 31
+        enabled: false
+      single_svg:
+        weight: 32
+        enabled: false
+      single_video:
+        weight: 33
+        enabled: false
+      summary_insights:
+        weight: 34
+        enabled: false
+field_type: entity_reference_revisions
