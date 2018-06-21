@@ -91,7 +91,8 @@
     "drupal/http_cache_control": "^1.0@alpha",
     "drupal/menu_item_extras": "^2.2",
     "drupal/video_embed_wistia": "^1.0@RC",
-    "drupal/editor_advanced_link": "^1.4"
+    "drupal/editor_advanced_link": "^1.4",
+    "drupal/block_field": "^1.0@alpha"
   },
   "conflict": {
       "drupal/drupal": "*"
