@@ -1,0 +1,75 @@
+uuid: 097552c3-3d6b-4d48-baaf-ee0c69c9dfff
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.layout_grid.field_bg_color
+    - field.field.paragraph.layout_grid.field_column_count
+    - field.field.paragraph.layout_grid.field_component_bg_color
+    - field.field.paragraph.layout_grid.field_description
+    - field.field.paragraph.layout_grid.field_heading
+    - field.field.paragraph.layout_grid.field_p_grid_content
+    - paragraphs.paragraphs_type.layout_grid
+  module:
+    - paragraphs_browser
+    - text
+id: paragraph.layout_grid.default
+targetEntityType: paragraph
+bundle: layout_grid
+mode: default
+content:
+  field_bg_color:
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_column_count:
+    weight: 3
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  field_component_bg_color:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_description:
+    weight: 1
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_heading:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_p_grid_content:
+    type: entity_reference_paragraphs_browser
+    weight: 2
+    settings:
+      title: Component
+      title_plural: Components
+      edit_mode: preview
+      add_mode: paragraphs_browser
+      form_display_mode: default
+      default_paragraph_type: _none
+      paragraphs_browser: browser
+      modal_width: 80%
+      modal_height: auto
+    third_party_settings: {  }
+    region: content
+hidden:
+  created: true
+  moderation_state: true
+  status: true
+  uid: true

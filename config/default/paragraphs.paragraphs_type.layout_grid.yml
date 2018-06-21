@@ -1,0 +1,9 @@
+uuid: 5f64e0a8-8456-422b-ae1f-96dcbeba8cd8
+langcode: en
+status: true
+dependencies: {  }
+id: layout_grid
+label: 'Layout - Grid'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

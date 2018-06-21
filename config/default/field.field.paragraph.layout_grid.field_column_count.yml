@@ -1,0 +1,23 @@
+uuid: 33c54cc2-f060-47fd-a6e5-858411637e75
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_column_count
+    - paragraphs.paragraphs_type.layout_grid
+id: paragraph.layout_grid.field_column_count
+field_name: field_column_count
+entity_type: paragraph
+bundle: layout_grid
+label: Columns
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 1
+  max: 8
+  prefix: ''
+  suffix: ''
+field_type: integer
