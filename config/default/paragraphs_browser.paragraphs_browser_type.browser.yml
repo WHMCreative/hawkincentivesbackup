@@ -73,3 +73,5 @@ map:
   banner_featured_insights: banner
   layout_grid: layout
   reference_block: reference
+  reference_featured_insight: reference
+  summary_cards: summary

@@ -1,0 +1,43 @@
+uuid: d08a9b8a-f3ee-401b-8fcd-998384ad478b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.summary_cards.field_heading
+    - field.field.paragraph.summary_cards.field_p_multiple_links
+    - paragraphs.paragraphs_type.summary_cards
+  module:
+    - paragraphs_browser
+id: paragraph.summary_cards.default
+targetEntityType: paragraph
+bundle: summary_cards
+mode: default
+content:
+  field_heading:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_p_multiple_links:
+    weight: 1
+    settings:
+      title: Link
+      title_plural: Links
+      edit_mode: preview
+      add_mode: paragraphs_browser
+      form_display_mode: default
+      default_paragraph_type: _none
+      paragraphs_browser: browser
+      modal_width: 80%
+      modal_height: auto
+    third_party_settings: {  }
+    type: entity_reference_paragraphs_browser
+    region: content
+hidden:
+  created: true
+  moderation_state: true
+  status: true
+  uid: true

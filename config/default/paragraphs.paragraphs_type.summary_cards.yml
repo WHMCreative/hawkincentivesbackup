@@ -1,0 +1,9 @@
+uuid: 9f67fcd0-6ba9-4d94-9072-05b68bc5e767
+langcode: en
+status: true
+dependencies: {  }
+id: summary_cards
+label: 'Summary - Cards'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

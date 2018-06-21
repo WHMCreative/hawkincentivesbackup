@@ -5,11 +5,11 @@ dependencies:
   config:
     - field.storage.node.field_p_content
     - node.type.component_page
-    - paragraphs.paragraphs_type.compound_callout
-    - paragraphs.paragraphs_type.compound_content_bar
-    - paragraphs.paragraphs_type.compound_stat_bar
-    - paragraphs.paragraphs_type.compound_tabbed_content
+    - paragraphs.paragraphs_type.layout_grid
+    - paragraphs.paragraphs_type.reference_block
+    - paragraphs.paragraphs_type.reference_featured_insight
     - paragraphs.paragraphs_type.reference_marketo_form
+    - paragraphs.paragraphs_type.summary_cards
     - paragraphs.paragraphs_type.summary_insights
   module:
     - entity_reference_revisions
@@ -29,11 +29,11 @@ settings:
     negate: 0
     target_bundles:
       summary_insights: summary_insights
-      compound_callout: compound_callout
-      compound_content_bar: compound_content_bar
-      compound_stat_bar: compound_stat_bar
-      compound_tabbed_content: compound_tabbed_content
       reference_marketo_form: reference_marketo_form
+      layout_grid: layout_grid
+      reference_block: reference_block
+      reference_featured_insight: reference_featured_insight
+      summary_cards: summary_cards
     target_bundles_drag_drop:
       single_image:
         weight: 8
@@ -48,17 +48,17 @@ settings:
         enabled: true
         weight: 12
       compound_callout:
-        enabled: true
         weight: 21
+        enabled: false
       compound_content_bar:
-        enabled: true
         weight: 22
+        enabled: false
       compound_stat_bar:
-        enabled: true
         weight: 23
+        enabled: false
       compound_tabbed_content:
-        enabled: true
         weight: 24
+        enabled: false
       link_file:
         weight: 25
         enabled: false
@@ -68,10 +68,16 @@ settings:
       marketo_hidden_field:
         weight: 27
         enabled: false
+      banner_featured_insights:
+        weight: 28
+        enabled: false
       marketo_submission_confirmation:
         weight: 28
         enabled: false
       media_image_slider:
+        weight: 29
+        enabled: false
+      banner_hero:
         weight: 29
         enabled: false
       media_video_modal:
@@ -83,6 +89,9 @@ settings:
       simple_content:
         weight: 32
         enabled: false
+      compound_slider:
+        weight: 32
+        enabled: false
       simple_icon_content:
         weight: 33
         enabled: false
@@ -92,7 +101,19 @@ settings:
       simple_media_tile:
         weight: 35
         enabled: false
+      layout_grid:
+        enabled: true
+        weight: 35
       simple_stat:
         weight: 36
         enabled: false
+      reference_block:
+        enabled: true
+        weight: 42
+      reference_featured_insight:
+        enabled: true
+        weight: 43
+      summary_cards:
+        enabled: true
+        weight: 53
 field_type: entity_reference_revisions
