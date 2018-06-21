@@ -1,0 +1,22 @@
+uuid: d51d78b0-b5b1-4e00-a73c-890e503eca3f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.reference_featured_insight.field_resource
+    - paragraphs.paragraphs_type.reference_featured_insight
+id: paragraph.reference_featured_insight.default
+targetEntityType: paragraph
+bundle: reference_featured_insight
+mode: default
+content:
+  field_resource:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: featured
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+hidden: {  }

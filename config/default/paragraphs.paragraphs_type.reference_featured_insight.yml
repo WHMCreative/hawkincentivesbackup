@@ -1,0 +1,9 @@
+uuid: 591d8617-c04e-47af-9a96-84c0ab833ca7
+langcode: en
+status: true
+dependencies: {  }
+id: reference_featured_insight
+label: 'Reference - Featured Insight'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

@@ -1,0 +1,25 @@
+uuid: d8984c77-b240-477f-ad16-391d0cacfe94
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_resource
+    - paragraphs.paragraphs_type.reference_featured_insight
+id: paragraph.reference_featured_insight.field_resource
+field_name: field_resource
+entity_type: paragraph
+bundle: reference_featured_insight
+label: Resource
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: entity_reference_insight
+      display_name: entity_reference_gated_resources
+      arguments: {  }
+field_type: entity_reference

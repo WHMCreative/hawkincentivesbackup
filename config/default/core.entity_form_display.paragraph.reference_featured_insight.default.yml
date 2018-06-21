@@ -1,0 +1,26 @@
+uuid: 8e856511-920e-4fc0-8a4c-e240234266ac
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.reference_featured_insight.field_resource
+    - paragraphs.paragraphs_type.reference_featured_insight
+id: paragraph.reference_featured_insight.default
+targetEntityType: paragraph
+bundle: reference_featured_insight
+mode: default
+content:
+  field_resource:
+    weight: 0
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+hidden:
+  created: true
+  moderation_state: true
+  status: true
+  uid: true

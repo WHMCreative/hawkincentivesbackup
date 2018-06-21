@@ -1,0 +1,22 @@
+uuid: a74f8410-02d0-4a39-b436-0e1f1c174efd
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.preview
+    - field.field.paragraph.reference_featured_insight.field_resource
+    - paragraphs.paragraphs_type.reference_featured_insight
+id: paragraph.reference_featured_insight.preview
+targetEntityType: paragraph
+bundle: reference_featured_insight
+mode: preview
+content:
+  field_resource:
+    weight: 0
+    label: inline
+    settings:
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+hidden: {  }
