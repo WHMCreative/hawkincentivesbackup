@@ -1,0 +1,82 @@
+uuid: b9ae0ceb-3f7a-446f-b648-80b1d052c962
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.banner_hero.field_bg_color
+    - field.field.paragraph.banner_hero.field_description
+    - field.field.paragraph.banner_hero.field_heading
+    - field.field.paragraph.banner_hero.field_large_heading
+    - field.field.paragraph.banner_hero.field_media
+    - field.field.paragraph.banner_hero.field_p_banner_content
+    - field.field.paragraph.banner_hero.field_p_multiple_links
+    - field.field.paragraph.banner_hero.field_use_large_heading
+    - paragraphs.paragraphs_type.banner_hero
+  module:
+    - entity_reference_revisions
+    - text
+id: paragraph.banner_hero.default
+targetEntityType: paragraph
+bundle: banner_hero
+mode: default
+content:
+  field_bg_color:
+    type: entity_reference_label
+    weight: 6
+    region: content
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+  field_description:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_heading:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_large_heading:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_media:
+    weight: 5
+    label: hidden
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_p_banner_content:
+    type: entity_reference_revisions_entity_view
+    weight: 4
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_p_multiple_links:
+    weight: 3
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+hidden:
+  field_use_large_heading: true

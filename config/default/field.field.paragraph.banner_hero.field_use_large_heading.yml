@@ -1,0 +1,23 @@
+uuid: cb8c41aa-d376-4a05-9e47-0a3f8a63ab8f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_use_large_heading
+    - paragraphs.paragraphs_type.banner_hero
+id: paragraph.banner_hero.field_use_large_heading
+field_name: field_use_large_heading
+entity_type: paragraph
+bundle: banner_hero
+label: 'Use Large Heading as H1'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

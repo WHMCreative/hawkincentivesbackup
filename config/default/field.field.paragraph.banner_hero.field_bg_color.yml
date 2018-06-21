@@ -1,0 +1,29 @@
+uuid: 8b7a3507-c154-4a02-a797-a27daa2a8437
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_bg_color
+    - paragraphs.paragraphs_type.banner_hero
+    - taxonomy.vocabulary.display_settings
+id: paragraph.banner_hero.field_bg_color
+field_name: field_bg_color
+entity_type: paragraph
+bundle: banner_hero
+label: 'Background Color'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      display_settings: display_settings
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
