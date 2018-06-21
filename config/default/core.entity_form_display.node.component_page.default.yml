@@ -35,8 +35,8 @@ content:
     type: entity_reference_paragraphs_browser
     weight: 2
     settings:
-      title: Component
-      title_plural: Components
+      title: 'Content Component'
+      title_plural: 'Content Components'
       edit_mode: preview
       add_mode: paragraphs_browser
       form_display_mode: default
@@ -49,13 +49,13 @@ content:
   field_p_header:
     weight: 1
     settings:
-      title: Component
-      title_plural: Components
+      title: 'Header Component'
+      title_plural: 'Header Components'
       edit_mode: preview
       add_mode: paragraphs_browser
       form_display_mode: default
       default_paragraph_type: _none
-      paragraphs_browser: _na
+      paragraphs_browser: browser
       modal_width: 80%
       modal_height: auto
     third_party_settings: {  }

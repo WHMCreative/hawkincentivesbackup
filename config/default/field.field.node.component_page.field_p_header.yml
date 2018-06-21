@@ -5,6 +5,8 @@ dependencies:
   config:
     - field.storage.node.field_p_header
     - node.type.component_page
+    - paragraphs.paragraphs_type.banner_featured_insights
+    - paragraphs.paragraphs_type.banner_hero
   module:
     - entity_reference_revisions
 id: node.component_page.field_p_header
@@ -21,24 +23,77 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     negate: 0
-    target_bundles: null
+    target_bundles:
+      banner_featured_insights: banner_featured_insights
+      banner_hero: banner_hero
     target_bundles_drag_drop:
-      single_heading:
-        weight: 7
-        enabled: false
       single_image:
         weight: 8
         enabled: false
       single_svg:
         weight: 9
         enabled: false
-      single_text_area:
-        weight: 10
-        enabled: false
       single_video:
         weight: 11
         enabled: false
       summary_insights:
         weight: 12
+        enabled: false
+      banner_featured_insights:
+        enabled: true
+        weight: 24
+      banner_hero:
+        enabled: true
+        weight: 25
+      compound_callout:
+        weight: 26
+        enabled: false
+      compound_content_bar:
+        weight: 27
+        enabled: false
+      compound_slider:
+        weight: 28
+        enabled: false
+      compound_stat_bar:
+        weight: 29
+        enabled: false
+      compound_tabbed_content:
+        weight: 30
+        enabled: false
+      link_file:
+        weight: 31
+        enabled: false
+      link_url:
+        weight: 32
+        enabled: false
+      marketo_hidden_field:
+        weight: 33
+        enabled: false
+      marketo_submission_confirmation:
+        weight: 34
+        enabled: false
+      media_image_slider:
+        weight: 35
+        enabled: false
+      media_video_modal:
+        weight: 36
+        enabled: false
+      reference_marketo_form:
+        weight: 37
+        enabled: false
+      simple_content:
+        weight: 38
+        enabled: false
+      simple_icon_content:
+        weight: 39
+        enabled: false
+      simple_media_bar:
+        weight: 40
+        enabled: false
+      simple_media_tile:
+        weight: 41
+        enabled: false
+      simple_stat:
+        weight: 42
         enabled: false
 field_type: entity_reference_revisions

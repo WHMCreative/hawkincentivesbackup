@@ -1,0 +1,41 @@
+uuid: 8aa22ba8-1cfc-41d9-a28a-2a8befe0444d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.banner_featured_insights.field_heading
+    - field.field.paragraph.banner_featured_insights.field_insight
+    - field.field.paragraph.banner_featured_insights.field_top_insights
+    - paragraphs.paragraphs_type.banner_featured_insights
+id: paragraph.banner_featured_insights.default
+targetEntityType: paragraph
+bundle: banner_featured_insights
+mode: default
+content:
+  field_heading:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_insight:
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: featured
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_top_insights:
+    weight: 2
+    label: hidden
+    settings:
+      view_mode: teaser
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+hidden: {  }

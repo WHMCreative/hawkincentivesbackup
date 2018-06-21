@@ -1,0 +1,28 @@
+uuid: 2de6c5b5-3ab9-4760-94f4-76c78bddc6ed
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_top_insights
+    - node.type.insight
+    - paragraphs.paragraphs_type.banner_featured_insights
+id: paragraph.banner_featured_insights.field_top_insights
+field_name: field_top_insights
+entity_type: paragraph
+bundle: banner_featured_insights
+label: 'Top Insights'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      insight: insight
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,9 @@
+uuid: a76967c0-5be6-463f-8e87-936d1f5f59ea
+langcode: en
+status: true
+dependencies: {  }
+id: banner_featured_insights
+label: 'Banner - Featured Insights'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }
