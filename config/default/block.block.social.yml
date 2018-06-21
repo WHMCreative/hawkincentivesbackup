@@ -1,0 +1,27 @@
+uuid: 192e69bf-e278-4552-bd01-b920f447f18c
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.social
+  module:
+    - menu_block
+  theme:
+    - themekit
+id: social
+theme: themekit
+region: footer
+weight: -7
+provider: null
+plugin: 'menu_block:social'
+settings:
+  id: 'menu_block:social'
+  label: Social
+  provider: menu_block
+  label_display: '0'
+  level: 1
+  depth: 0
+  expand: 0
+  parent: 'social:'
+  suggestion: social
+visibility: {  }

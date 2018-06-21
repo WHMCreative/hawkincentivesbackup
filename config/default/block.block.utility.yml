@@ -1,0 +1,27 @@
+uuid: 5ec6324e-18e9-4b7b-9dd5-dd7558423e29
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.utility
+  module:
+    - menu_block
+  theme:
+    - themekit
+id: utility
+theme: themekit
+region: header
+weight: 0
+provider: null
+plugin: 'menu_block:utility'
+settings:
+  id: 'menu_block:utility'
+  label: Utility
+  provider: menu_block
+  label_display: '0'
+  level: 1
+  depth: 0
+  expand: 0
+  parent: 'utility:'
+  suggestion: utility
+visibility: {  }
