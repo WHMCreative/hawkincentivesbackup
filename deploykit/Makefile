@@ -33,6 +33,6 @@ revert:
 	$(env_set) && \
 		ansible-playbook $(flags) -i $(hosts) $(sudo) -t revert $(settings)
 
-itall:
+install:
 	$(env_set) && \
 		ansible-playbook $(flags) -i $(hosts) $(sudo) -t "setup,deploy,release,launch" $(settings)

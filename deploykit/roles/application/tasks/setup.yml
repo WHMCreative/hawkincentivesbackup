@@ -47,3 +47,18 @@
     - settings
     - sudo
     - permissions
+
+- name: create files directory for future symlink
+  when: files_symlink_path is defined
+  become: yes
+  become_method: sudo
+  file:
+    path={{ files_symlink_path }}
+    owner={{ file_owner }}
+    group={{ file_group }}
+    mode=0775
+    state=directory
+  tags:
+    - setup
+    - sudo
+    - permissions
