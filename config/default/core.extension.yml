@@ -39,6 +39,7 @@ module:
   e3_gated_content: 0
   e3_google_tag: 0
   e3_marketo: 0
+  e3_marketo_bhk: 0
   editor: 0
   editor_advanced_link: 0
   embed: 0

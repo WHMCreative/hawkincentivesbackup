@@ -1,0 +1,38 @@
+{#
+/**
+ * @file marketo_form.html.twig
+ * Default theme implementation to present Marketo form entity data.
+ *
+ * This template is used when viewing Marketo form entity pages.
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content.
+ * - label: marketo_form entity title.
+ * - attributes: HTML attributes for the container element.
+ * - title_override: Override for the title of the form.
+ * - marketo_form: The marketo_form entity with limited access to object
+ *   properties and methods. Only method names starting with "get", "has", or
+ *   "is" and a few common methods such as "id", "label", and "bundle" are available.
+ *
+ * @see template_preprocess_marketo_form()
+ *
+ * @ingroup themeable
+ */
+#}
+<div{{ attributes.addClass('marketo-form-wrapper') }}>
+  <div{{ create_attribute({'class': "marketo-form-entity-ajax-wrapper"}) }}>
+    {% if content %}
+      {% if content.name is not empty and page is empty %}
+        {% if title_override is not empty %}
+          <h2>{{ title_override }}</h2>
+        {% else %}
+          <h2>{{ marketo_form.name.value }}</h2>
+        {% endif %}
+        {% if description is not empty %}
+          <div {{ create_attribute({'class': "marketo-form-description"}) }}>{{ description }}</div>
+        {% endif %}
+      {% endif %}
+      {{ content|without('name') }}
+    {% endif %}
+  </div>
+</div>

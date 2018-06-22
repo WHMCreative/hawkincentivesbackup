@@ -1,0 +1,30 @@
+uuid: 6c326969-1dde-44d4-b203-7d8ed70e5534
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_submission_behavior
+field_name: field_submission_behavior
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: redirect
+      label: 'Redirect User'
+    -
+      value: marketo
+      label: 'Use submission settings from Marketo'
+    -
+      value: confirmation
+      label: 'Replace with Submission Confirmation'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

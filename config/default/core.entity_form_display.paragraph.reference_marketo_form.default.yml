@@ -7,11 +7,13 @@ dependencies:
     - field.field.paragraph.reference_marketo_form.field_marketo_form
     - field.field.paragraph.reference_marketo_form.field_marketo_form_title
     - field.field.paragraph.reference_marketo_form.field_marketo_hidden_fields
+    - field.field.paragraph.reference_marketo_form.field_submission_behavior
+    - field.field.paragraph.reference_marketo_form.field_thank_you_url
     - paragraphs.paragraphs_type.reference_marketo_form
   module:
-    - content_moderation
     - field_group
-    - paragraphs_browser
+    - link
+    - paragraphs
     - text
 third_party_settings:
   field_group:
@@ -19,6 +21,8 @@ third_party_settings:
       children:
         - field_marketo_form_title
         - field_description
+        - field_submission_behavior
+        - field_thank_you_url
         - field_marketo_hidden_fields
       parent_name: ''
       weight: 1
@@ -60,8 +64,8 @@ content:
     type: string_textfield
     region: content
   field_marketo_hidden_fields:
-    type: entity_reference_paragraphs_browser
-    weight: 4
+    type: entity_reference_paragraphs
+    weight: 6
     region: content
     settings:
       title: 'Hidden Marketo Filed'
@@ -70,17 +74,23 @@ content:
       add_mode: paragraphs_browser
       form_display_mode: default
       default_paragraph_type: _none
-      paragraphs_browser: browser
-      modal_width: 80%
-      modal_height: auto
     third_party_settings: {  }
-  moderation_state:
-    type: moderation_state_default
-    weight: 100
+  field_submission_behavior:
+    weight: 4
     settings: {  }
-    region: content
     third_party_settings: {  }
+    type: options_select
+    region: content
+  field_thank_you_url:
+    weight: 5
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
 hidden:
   created: true
+  moderation_state: true
   status: true
   uid: true

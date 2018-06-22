@@ -1,0 +1,7 @@
+name: BHK Marketo Forms Extensions
+type: module
+description: Provides additional features for Forms 2.0 Marketo Forms.
+core: 8.x
+package: Custom
+dependencies:
+   - drupal:e3_marketo

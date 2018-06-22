@@ -1,0 +1,151 @@
+<?php
+
+/**
+ * @file
+ * Contains e3_marketo_bhk.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_help().
+ */
+function e3_marketo_bhk_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the e3_marketo_bhk module.
+    case 'help.page.e3_marketo_bhk':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Provides additional features for Forms 2.0 Marketo Forms') . '</p>';
+      break;
+    default:
+      $output = NULL;
+  }
+
+  return $output;
+}
+
+/**
+ * Implements hook_form_paragraphs_subform_TYPE_alter().
+ */
+function e3_marketo_bhk_form_paragraphs_subform_reference_marketo_form_alter(array &$subform, FormStateInterface $form_state, $delta) {
+
+  // Determine if the form is gated.
+  /** @var \Drupal\node\NodeInterface $parent_node */
+  $parent_node = $form_state->getFormObject()->getEntity();
+  $gated = FALSE;
+
+  // Remove submission behavior options from display for gated forms.
+  if ($parent_node->hasField('field_gated') && !empty($subform['field_submission_behavior'])) {
+    if (!empty($subform['#parents'])) {
+      $parent_field_name = reset($subform['#parents']);
+
+      if ($parent_field_name === 'field_p_form') {
+        $subform['field_submission_behavior']['#access'] = FALSE;
+        $subform['field_thank_you_url']['#access'] = FALSE;
+        $gated = TRUE;
+      }
+    }
+  }
+
+  // Set conditions for Submission Behavior fields.
+  if (!empty($subform['field_submission_behavior']['widget']['#parents']) && !$gated) {
+
+    // Determine submission behavior field name to use for states.
+    $parents = $subform['field_submission_behavior']['widget']['#parents'];
+    $behaviors_field_name = _get_html_field_name($parents);
+
+    // Set conditions. 'enabled' is also used, so when fields are invisible
+    // their values will not be submitted.
+    $redirect_states = [
+      'visible' => [
+        ':input[name="' . $behaviors_field_name . '"]' => ['value' => 'redirect'],
+      ],
+      'enabled' => [
+        ':input[name="' . $behaviors_field_name . '"]' => ['value' => 'redirect'],
+      ],
+    ];
+
+    // Set fields this should only be displayed when "Redirect" is selected.
+    $redirect_fields = [
+      'field_thank_you_url',
+    ];
+
+    foreach ($redirect_fields as $field_name) {
+      if (isset($subform[$field_name])) {
+        $subform[$field_name]['#states'] = $redirect_states;
+      }
+    }
+  }
+
+  // Set conditions for Override Submit Button text fields.
+  if (!empty($subform['field_submit_text_override']['widget']['#parents'])) {
+    $parents = $subform['field_submit_text_override']['widget']['#parents'];
+    $submit_override_name = _get_html_field_name($parents);
+
+    $subform['field_submit_button_text']['#states'] = [
+      'visible' => [
+        ':input[name="' . $submit_override_name . '[value]"]' => ['checked' => TRUE],
+      ],
+      'enabled' => [
+        ':input[name="' . $submit_override_name . '[value]"]' => ['checked' => TRUE],
+      ],
+    ];
+  }
+}
+
+/**
+ * Builds the correct field name that can be used in states for paragraphs.
+ *
+ * @param $parents
+ *   Element widget parent array.
+ *
+ * @return string
+ *   Field name to use.
+ */
+function _get_html_field_name($parents) {
+  $root_parent = array_shift($parents);
+
+  if ($parents) {
+    $parents = '[' . implode('][', $parents) . ']';
+  }
+  else {
+    $parents = '';
+  }
+
+  return "{$root_parent}{$parents}";
+}
+
+/**
+ * Prepare variables for marketo_form entity templates.
+ */
+function e3_marketo_bhk_preprocess_marketo_form(array &$variables) {
+  $variables['marketo_form'] = $variables['elements']['#marketo_form'];
+
+  // Override form title if specified.
+  if (!empty($variables['marketo_form']->_referringItem)) {
+    /** @var \Drupal\Core\Entity\FieldableEntityInterface $parent */
+    $parent = $variables['marketo_form']->_referringItem->getEntity();
+
+    // Add description.
+    if ($parent && $parent->hasField('field_description') && !$parent->get('field_description')->isEmpty()) {
+      $variables['description'] = \Drupal\Component\Utility\Xss::filter($parent->get('field_description')->value);
+    }
+  }
+}
+
+/**
+ * Implements hook_page_attachments().
+ */
+function e3_marketo_bhk_page_attachments(array &$page) {
+
+  // Make sure UTM Parameters code is loaded on every page.
+  if (empty($page['#attached']['library'])) {
+    $page['#attached']['library'] = [];
+  }
+
+  if (!in_array('e3_marketo_bhk/utm-parameters', $page['#attached']['library'])) {
+    $page['#attached']['library'][] = 'e3_marketo_bhk/utm-parameters';
+  }
+}

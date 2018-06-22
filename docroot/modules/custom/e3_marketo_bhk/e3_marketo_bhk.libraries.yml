@@ -1,0 +1,14 @@
+bhk-marketo-forms:
+  version: 1.1
+  js:
+    js/bhk-marketo-forms.js: {}
+  dependencies:
+    - e3_marketo/marketo-forms
+utm-parameters:
+  version: 1.x
+  js:
+    js/utm-parameters.js: { }
+  dependencies:
+    - core/jquery
+    - core/jquery.cookie
+    - core/drupalSettings

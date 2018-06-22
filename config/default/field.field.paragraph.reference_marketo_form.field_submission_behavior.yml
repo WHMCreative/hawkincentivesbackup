@@ -1,0 +1,23 @@
+uuid: a6eaca08-ac42-496d-8498-8908922a47e8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_submission_behavior
+    - paragraphs.paragraphs_type.reference_marketo_form
+  module:
+    - options
+id: paragraph.reference_marketo_form.field_submission_behavior
+field_name: field_submission_behavior
+entity_type: paragraph
+bundle: reference_marketo_form
+label: 'Submission Behavior'
+description: 'Select the action to take on the form submission'
+required: true
+translatable: false
+default_value:
+  -
+    value: confirmation
+default_value_callback: ''
+settings: {  }
+field_type: list_string

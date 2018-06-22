@@ -7,9 +7,9 @@ dependencies:
     - field.field.paragraph.reference_marketo_form.field_marketo_form
     - field.field.paragraph.reference_marketo_form.field_marketo_form_title
     - field.field.paragraph.reference_marketo_form.field_marketo_hidden_fields
+    - field.field.paragraph.reference_marketo_form.field_submission_behavior
+    - field.field.paragraph.reference_marketo_form.field_thank_you_url
     - paragraphs.paragraphs_type.reference_marketo_form
-  module:
-    - text
 _core:
   default_config_hash: DpV_5BHhEbVmZfzTxlV9UgnjTyfNY-cOJ-PcWu1yLfc
 id: paragraph.reference_marketo_form.default
@@ -17,13 +17,6 @@ targetEntityType: paragraph
 bundle: reference_marketo_form
 mode: default
 content:
-  field_description:
-    weight: 1
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: text_default
-    region: content
   field_marketo_form:
     type: entity_reference_entity_view
     weight: 0
@@ -34,5 +27,8 @@ content:
       view_mode: default
     third_party_settings: {  }
 hidden:
+  field_description: true
   field_marketo_form_title: true
   field_marketo_hidden_fields: true
+  field_submission_behavior: true
+  field_thank_you_url: true

@@ -1,0 +1,23 @@
+uuid: 755f726f-afce-4457-b089-b653cc5786dd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_thank_you_url
+    - paragraphs.paragraphs_type.reference_marketo_form
+  module:
+    - link
+id: paragraph.reference_marketo_form.field_thank_you_url
+field_name: field_thank_you_url
+entity_type: paragraph
+bundle: reference_marketo_form
+label: 'Redirect URL'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 0
+field_type: link
