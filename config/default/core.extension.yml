@@ -57,6 +57,8 @@ module:
   file: 0
   filter: 0
   focal_point: 0
+  graphql: 0
+  graphql_core: 0
   help: 0
   history: 0
   http_cache_control: 0
