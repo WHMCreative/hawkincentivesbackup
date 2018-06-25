@@ -1,22 +1,29 @@
 <template>
-  <div class="card" @click="$emit('toggleCheckbox')">
-    <div class="heart"></div>
+  <div class="card" @click="$emit('selectCard')" v-bind:class="{ selectable: !selected }">
+    <div v-show="!selected" class="heart"></div>
     <h2>
       {{ card.name}}
     </h2>
-    <p>
-      {{ card.category}} {{ card.type}}
+    <p v-show="!selected">
+    <template v-for="(category, index) in card.category">
+      <template v-if="index == card.category.length - 1">{{ category.value }}</template>
+      <template v-else>{{ category.value }}, </template>
+    </template>
+    <template v-for="(type, index) in card.type">
+      <template v-if="index == card.type.length - 1">{{ type.value }}</template>
+      <template v-else>{{ type.value }}, </template>
+    </template>
     </p>
     <p>
       {{ card.description }}
     </p>
-    <input id="checkBox" type="checkbox" :checked="card.selected">
+    <input v-show="!selected" id="checkBox" type="checkbox" :checked="card.selected">
   </div>
 </template>
 
 <script>
 export default {
-  props: ['card']
+  props: ['card', 'selected']
 };
 </script>
 
@@ -57,7 +64,7 @@ export default {
   display: none;
 }
 
-.card:hover{
+.card.selectable:hover{
   cursor: pointer;
   background: #ffcccc;
 }

@@ -7,6 +7,7 @@ dependencies:
     - node.type.component_page
     - paragraphs.paragraphs_type.layout_grid
     - paragraphs.paragraphs_type.reference_block
+    - paragraphs.paragraphs_type.reference_card_browser
     - paragraphs.paragraphs_type.reference_featured_insight
     - paragraphs.paragraphs_type.reference_marketo_form
     - paragraphs.paragraphs_type.summary_cards
@@ -29,6 +30,7 @@ settings:
     negate: 0
     target_bundles:
       summary_insights: summary_insights
+      reference_card_browser: reference_card_browser
       reference_marketo_form: reference_marketo_form
       layout_grid: layout_grid
       reference_block: reference_block
@@ -74,6 +76,9 @@ settings:
       marketo_submission_confirmation:
         weight: 28
         enabled: false
+      reference_card_browser:
+        enabled: true
+        weight: 29
       media_image_slider:
         weight: 29
         enabled: false

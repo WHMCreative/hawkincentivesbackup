@@ -1,0 +1,9 @@
+uuid: e1e513e5-c5e7-4f21-af54-1a8409e50e33
+langcode: en
+status: true
+dependencies: {  }
+id: reference_card_browser
+label: 'Reference - Card Browser'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

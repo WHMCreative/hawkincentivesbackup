@@ -56,7 +56,9 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
 %}
 
 {% set rendered_content = content|without('') %}
+{{ attach_library('themekit/card-catalog') }}
 
 <div{{ attributes.addClass(classes) }}>
+  <div id="card-catalog"></div>
   {{ rendered_content }}
 </div>

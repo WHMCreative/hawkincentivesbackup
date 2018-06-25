@@ -1,0 +1,40 @@
+uuid: c9ab864b-3c58-468c-960c-1faec090ec04
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.reference_card_browser.field_p_form
+    - paragraphs.paragraphs_type.reference_card_browser
+  module:
+    - content_moderation
+    - paragraphs_browser
+id: paragraph.reference_card_browser.default
+targetEntityType: paragraph
+bundle: reference_card_browser
+mode: default
+content:
+  field_p_form:
+    type: entity_reference_paragraphs_browser
+    weight: 101
+    settings:
+      title: Form
+      title_plural: Forms
+      edit_mode: open
+      add_mode: paragraphs_browser
+      form_display_mode: default
+      default_paragraph_type: reference_marketo_form
+      paragraphs_browser: _na
+      modal_width: 80%
+      modal_height: auto
+    third_party_settings: {  }
+    region: content
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    settings: {  }
+    region: content
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true
