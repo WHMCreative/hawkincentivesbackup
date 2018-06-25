@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.people.field_media_image
     - field.field.node.people.field_notable_quality
     - field.field.node.people.field_title
+    - field.field.node.people.field_type
     - node.type.people
   module:
     - text
@@ -19,12 +20,17 @@ content:
   body:
     label: hidden
     type: text_default
-    weight: 4
+    weight: 5
     settings: {  }
     third_party_settings: {  }
     region: content
+  content_moderation_control:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_media_image:
-    weight: 1
+    weight: 2
     label: hidden
     settings:
       view_mode: people
@@ -33,14 +39,6 @@ content:
     type: entity_reference_entity_view
     region: content
   field_notable_quality:
-    weight: 2
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-    region: content
-  field_title:
     weight: 3
     label: hidden
     settings:
@@ -48,10 +46,19 @@ content:
     third_party_settings: {  }
     type: string
     region: content
+  field_title:
+    weight: 4
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
   links:
-    weight: 0
+    weight: 1
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_type: true
   langcode: true
