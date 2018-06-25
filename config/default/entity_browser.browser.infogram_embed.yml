@@ -14,7 +14,7 @@ display_configuration:
   width: '800'
   height: '600'
   link_text: 'Select Infogram'
-  auto_open: false
+  auto_open: true
 selection_display: no_display
 selection_display_configuration: {  }
 widget_selector: tabs

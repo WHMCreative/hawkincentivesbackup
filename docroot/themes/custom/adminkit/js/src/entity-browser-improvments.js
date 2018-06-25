@@ -13,7 +13,8 @@
       let $browserSelectors = [
         '.view-entity-browser-image',
         '.view-entity-browser-video',
-        '.view-entity-browser-svg'
+        '.view-entity-browser-svg',
+        '.view-entity-browser-infogram'
       ];
 
       let $browserCol = $($browserSelectors.join(', '), context).find('.views-row');

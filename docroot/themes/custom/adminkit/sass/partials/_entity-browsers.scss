@@ -77,7 +77,8 @@
   // Add .view-entity-browser-BROWSER-NAME to this list for items you want to hide the checkbox
   .view-entity-browser-image,
   .view-entity-browser-svg,
-  .view-entity-browser-video {
+  .view-entity-browser-video,
+  .view-entity-browser-infogram {
     .form-type-checkbox.form-no-label {
       display: none;
     }

@@ -38,6 +38,13 @@
     }
   }
 }
+.field--widget-entity-reference-paragraphs-browser {
+  .form-type-select {
+    .chosen-container.js-hide {
+      display: none !important;
+    }
+  }
+}
 // This may not be ideal, and I think depends a bit on how you implement the preview view mode for your paragraphs
 // Giving the top layer of paragraph previews a bigger margin helps separate the division between nested
 // paragraphs in the previews. But feels to big when it's just the individual fields on the nested paragraph.
