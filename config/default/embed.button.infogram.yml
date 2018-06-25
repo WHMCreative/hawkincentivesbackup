@@ -4,6 +4,8 @@ status: true
 dependencies:
   config:
     - media_entity.bundle.infogram
+  content:
+    - 'file:file:f28e6cf6-9866-4ae6-9b69-89bf559de48c'
   module:
     - entity_embed
     - media_entity
@@ -19,4 +21,4 @@ type_settings:
   entity_browser: infogram_embed
   entity_browser_settings:
     display_review: true
-icon_uuid: null
+icon_uuid: f28e6cf6-9866-4ae6-9b69-89bf559de48c

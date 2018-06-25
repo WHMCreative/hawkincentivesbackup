@@ -4,6 +4,8 @@ status: true
 dependencies:
   config:
     - media_entity.bundle.video
+  content:
+    - 'file:file:ac2d035f-e173-4b54-b2ea-5de235cf7b16'
   module:
     - entity_embed
     - media_entity
@@ -19,4 +21,4 @@ type_settings:
   entity_browser: video_embed
   entity_browser_settings:
     display_review: true
-icon_uuid: null
+icon_uuid: ac2d035f-e173-4b54-b2ea-5de235cf7b16
