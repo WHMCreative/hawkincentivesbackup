@@ -10,7 +10,7 @@ field_name: field_infogram
 entity_type: media
 bundle: infogram
 label: Infogram
-description: ''
+description: 'Provide an Infogram URL like  <em>https://infogram.com/graphic-name-here</em>'
 required: true
 translatable: false
 default_value: {  }
