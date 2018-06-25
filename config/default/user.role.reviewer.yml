@@ -7,4 +7,9 @@ label: Reviewer
 weight: 3
 is_admin: null
 permissions:
+  - 'access content overview'
+  - 'access toolbar'
+  - 'view all revisions'
   - 'view any unpublished content'
+  - 'view the administration theme'
+  - 'view unpublished marketo form entity entities'

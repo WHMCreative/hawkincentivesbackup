@@ -16,3 +16,4 @@ permissions:
   - 'search content'
   - 'use text format restricted_html'
   - 'view media'
+  - 'view published marketo form entity entities'
