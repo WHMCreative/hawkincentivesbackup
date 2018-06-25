@@ -1,9 +1,9 @@
-uuid: c480fc6c-bcc7-4970-acd9-d4a0c1fc9450
+uuid: fa621fe8-5f15-4ab0-8d97-99712182c3bd
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.body
+    - field.storage.node.field_references
     - node.type.news
   module:
     - allowed_formats
@@ -11,19 +11,18 @@ dependencies:
 third_party_settings:
   allowed_formats:
     limited_rich_text: limited_rich_text
-    rich_text: rich_text
+    rich_text: '0'
     plain_text: '0'
     html: '0'
-id: node.news.body
-field_name: body
+id: node.news.field_references
+field_name: field_references
 entity_type: node
 bundle: news
-label: Body
+label: References
 description: ''
-required: true
-translatable: true
+required: false
+translatable: false
 default_value: {  }
 default_value_callback: ''
-settings:
-  display_summary: true
-field_type: text_with_summary
+settings: {  }
+field_type: text_long

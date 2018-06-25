@@ -14,9 +14,10 @@ dependencies:
     - field.field.node.insight.field_teaser_image
     - node.type.insight
   module:
+    - content_moderation
     - entity_browser
     - field_group
-    - paragraphs
+    - paragraphs_browser
     - path
     - scheduler
 third_party_settings:
@@ -117,15 +118,18 @@ content:
     type: options_select
     region: content
   field_p_form:
-    type: entity_reference_paragraphs
+    type: entity_reference_paragraphs_browser
     weight: 14
     settings:
       title: 'Gated Form'
       title_plural: 'Gated Forms'
       edit_mode: open
-      add_mode: select
+      add_mode: paragraphs_browser
       form_display_mode: default
       default_paragraph_type: _none
+      paragraphs_browser: browser
+      modal_width: 80%
+      modal_height: auto
     third_party_settings: {  }
     region: content
   field_p_header:
@@ -134,22 +138,28 @@ content:
       title: Header
       title_plural: Headers
       edit_mode: preview
-      add_mode: select
+      add_mode: paragraphs_browser
       form_display_mode: default
       default_paragraph_type: _none
+      paragraphs_browser: browser
+      modal_width: 80%
+      modal_height: auto
     third_party_settings: {  }
-    type: entity_reference_paragraphs
+    type: entity_reference_paragraphs_browser
     region: content
   field_p_insight:
-    type: entity_reference_paragraphs
+    type: entity_reference_paragraphs_browser
     weight: 13
     settings:
       title: Insight
       title_plural: Insights
       edit_mode: preview
-      add_mode: select
+      add_mode: paragraphs_browser
       form_display_mode: default
       default_paragraph_type: _none
+      paragraphs_browser: browser
+      modal_width: 80%
+      modal_height: auto
     third_party_settings: {  }
     region: content
   field_p_related_insights:
@@ -158,11 +168,14 @@ content:
       title: 'Related Insights'
       title_plural: 'Related Insights'
       edit_mode: preview
-      add_mode: select
+      add_mode: paragraphs_browser
       form_display_mode: default
       default_paragraph_type: _none
+      paragraphs_browser: browser
+      modal_width: 80%
+      modal_height: auto
     third_party_settings: {  }
-    type: entity_reference_paragraphs
+    type: entity_reference_paragraphs_browser
     region: content
   field_teaser_image:
     weight: 15
@@ -178,6 +191,12 @@ content:
     third_party_settings: {  }
     type: entity_browser_entity_reference
     region: content
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    settings: {  }
+    region: content
+    third_party_settings: {  }
   path:
     type: path
     weight: 8

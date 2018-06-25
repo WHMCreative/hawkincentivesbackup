@@ -5,6 +5,8 @@ dependencies:
   config:
     - field.storage.node.field_p_header
     - node.type.insight
+    - paragraphs.paragraphs_type.banner_featured_insights
+    - paragraphs.paragraphs_type.banner_hero
   module:
     - entity_reference_revisions
 id: node.insight.field_p_header
@@ -21,21 +23,92 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     negate: 0
-    target_bundles: {  }
+    target_bundles:
+      banner_featured_insights: banner_featured_insights
+      banner_hero: banner_hero
     target_bundles_drag_drop:
-      single_heading:
-        enabled: true
-        weight: 6
       single_image:
         weight: 7
         enabled: false
       single_svg:
         weight: 8
         enabled: false
-      single_text_area:
-        weight: 9
-        enabled: false
       single_video:
         weight: 10
+        enabled: false
+      banner_featured_insights:
+        enabled: true
+        weight: 29
+      banner_hero:
+        enabled: true
+        weight: 30
+      compound_callout:
+        weight: 31
+        enabled: false
+      compound_content_bar:
+        weight: 32
+        enabled: false
+      compound_slider:
+        weight: 33
+        enabled: false
+      compound_stat_bar:
+        weight: 34
+        enabled: false
+      compound_tabbed_content:
+        weight: 35
+        enabled: false
+      layout_grid:
+        weight: 36
+        enabled: false
+      link_file:
+        weight: 37
+        enabled: false
+      link_url:
+        weight: 38
+        enabled: false
+      marketo_hidden_field:
+        weight: 39
+        enabled: false
+      marketo_submission_confirmation:
+        weight: 40
+        enabled: false
+      media_image_slider:
+        weight: 41
+        enabled: false
+      media_video_modal:
+        weight: 42
+        enabled: false
+      reference_block:
+        weight: 43
+        enabled: false
+      reference_card_browser:
+        weight: 44
+        enabled: false
+      reference_featured_insight:
+        weight: 45
+        enabled: false
+      reference_marketo_form:
+        weight: 46
+        enabled: false
+      simple_content:
+        weight: 47
+        enabled: false
+      simple_icon_content:
+        weight: 48
+        enabled: false
+      simple_media_bar:
+        weight: 49
+        enabled: false
+      simple_media_tile:
+        weight: 50
+        enabled: false
+      simple_stat:
+        weight: 51
+        enabled: false
+      summary_cards:
+        weight: 55
+        enabled: false
+      summary_insights:
+        weight: 56
         enabled: false
 field_type: entity_reference_revisions
