@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - entity_browser.browser.image
+    - field.field.node.insight.field_author
     - field.field.node.insight.field_featured_image
     - field.field.node.insight.field_gated
     - field.field.node.insight.field_insight_type
@@ -42,6 +43,7 @@ third_party_settings:
         - field_p_insight
         - field_featured_image
         - field_teaser_image
+        - field_author
       parent_name: group_tabs
       weight: 8
       format_type: tab
@@ -90,6 +92,15 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_author:
+    weight: 16
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
   field_featured_image:
     weight: 14
     settings:
