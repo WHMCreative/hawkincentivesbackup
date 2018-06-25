@@ -3,11 +3,9 @@ langcode: en
 status: true
 dependencies:
   config:
-    - node.type.article
     - node.type.component_page
     - node.type.insight
     - node.type.news
-    - node.type.page
     - node.type.people
     - node.type.reward
   module:
@@ -88,10 +86,8 @@ type_settings:
       weight: 5
   entity_types:
     node:
-      - article
       - component_page
       - insight
       - news
-      - page
       - people
       - reward
