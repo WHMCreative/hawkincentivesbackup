@@ -3,21 +3,29 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.link_file.field_file
+    - entity_browser.browser.file
+    - field.field.paragraph.link_file.field_media_file
     - paragraphs.paragraphs_type.link_file
   module:
-    - file
+    - entity_browser
 id: paragraph.link_file.default
 targetEntityType: paragraph
 bundle: link_file
 mode: default
 content:
-  field_file:
-    weight: 0
+  field_media_file:
+    weight: 1
     settings:
-      progress_indicator: throbber
+      entity_browser: file
+      field_widget_display: rendered_entity
+      field_widget_remove: true
+      open: true
+      selection_mode: selection_append
+      field_widget_display_settings:
+        view_mode: form_preview
+      field_widget_edit: false
     third_party_settings: {  }
-    type: file_generic
+    type: entity_browser_entity_reference
     region: content
 hidden:
   created: true

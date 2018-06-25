@@ -19,9 +19,9 @@ content:
       placeholder_title: ''
       enabled_attributes:
         target: true
-        rel: true
         id: false
         name: false
+        rel: false
         class: false
         accesskey: false
     third_party_settings: {  }

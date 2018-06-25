@@ -35,8 +35,8 @@ content:
     type: entity_reference_paragraphs_browser
     weight: 2
     settings:
-      title: Paragraph
-      title_plural: Paragraphs
+      title: Link
+      title_plural: Links
       edit_mode: preview
       add_mode: paragraphs_browser
       form_display_mode: default

@@ -13,7 +13,7 @@ id: paragraph.simple_icon_content.field_p_media
 field_name: field_p_media
 entity_type: paragraph
 bundle: simple_icon_content
-label: Media
+label: Icon
 description: ''
 required: true
 translatable: false
@@ -66,10 +66,49 @@ settings:
       single_svg:
         enabled: true
         weight: 28
+      banner_featured_insights:
+        weight: 29
+        enabled: false
       single_video:
         weight: 29
         enabled: false
       summary_insights:
         weight: 30
+        enabled: false
+      banner_hero:
+        weight: 30
+        enabled: false
+      compound_callout:
+        weight: 31
+        enabled: false
+      compound_content_bar:
+        weight: 32
+        enabled: false
+      compound_slider:
+        weight: 33
+        enabled: false
+      compound_stat_bar:
+        weight: 34
+        enabled: false
+      compound_tabbed_content:
+        weight: 35
+        enabled: false
+      layout_grid:
+        weight: 36
+        enabled: false
+      reference_block:
+        weight: 43
+        enabled: false
+      reference_card_browser:
+        weight: 44
+        enabled: false
+      reference_featured_insight:
+        weight: 45
+        enabled: false
+      simple_media_bar:
+        weight: 49
+        enabled: false
+      summary_cards:
+        weight: 55
         enabled: false
 field_type: entity_reference_revisions

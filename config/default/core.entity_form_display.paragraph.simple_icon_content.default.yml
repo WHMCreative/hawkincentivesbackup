@@ -60,8 +60,8 @@ content:
     type: entity_reference_paragraphs_browser
     weight: 0
     settings:
-      title: Media
-      title_plural: Media
+      title: Icon
+      title_plural: Icons
       edit_mode: preview
       add_mode: paragraphs_browser
       form_display_mode: default

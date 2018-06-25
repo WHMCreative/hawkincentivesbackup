@@ -1,0 +1,28 @@
+uuid: 7dca009e-e3a1-4f02-bde6-7bc9c59d15af
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_media_image
+    - media_entity.bundle.image
+    - paragraphs.paragraphs_type.media_video_modal
+id: paragraph.media_video_modal.field_media_image
+field_name: field_media_image
+entity_type: paragraph
+bundle: media_video_modal
+label: Thumbnail
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -4,21 +4,20 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.paragraph.preview
-    - field.field.paragraph.link_file.field_file
+    - field.field.paragraph.link_file.field_media_file
     - paragraphs.paragraphs_type.link_file
-  module:
-    - file
 id: paragraph.link_file.preview
 targetEntityType: paragraph
 bundle: link_file
 mode: preview
 content:
-  field_file:
-    weight: 0
+  field_media_file:
+    type: entity_reference_entity_view
+    weight: 1
+    region: content
     label: above
     settings:
-      use_description_as_link_text: true
+      view_mode: form_preview
+      link: false
     third_party_settings: {  }
-    type: file_default
-    region: content
 hidden: {  }

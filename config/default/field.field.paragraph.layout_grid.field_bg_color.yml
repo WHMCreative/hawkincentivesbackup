@@ -11,7 +11,7 @@ field_name: field_bg_color
 entity_type: paragraph
 bundle: layout_grid
 label: 'Background Color'
-description: ''
+description: 'Controls background color for wrapper component'
 required: false
 translatable: true
 default_value: {  }

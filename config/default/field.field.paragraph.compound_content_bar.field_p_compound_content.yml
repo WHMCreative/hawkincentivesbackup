@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.paragraph.field_p_compound_content
     - paragraphs.paragraphs_type.compound_content_bar
+    - paragraphs.paragraphs_type.simple_content
     - paragraphs.paragraphs_type.simple_icon_content
     - paragraphs.paragraphs_type.simple_media_tile
   module:
@@ -24,6 +25,7 @@ settings:
   handler_settings:
     negate: 0
     target_bundles:
+      simple_content: simple_content
       simple_icon_content: simple_icon_content
       simple_media_tile: simple_media_tile
     target_bundles_drag_drop:
@@ -52,8 +54,8 @@ settings:
         weight: 24
         enabled: false
       simple_content:
+        enabled: true
         weight: 25
-        enabled: false
       simple_icon_content:
         enabled: true
         weight: 26
@@ -66,13 +68,49 @@ settings:
       single_image:
         weight: 29
         enabled: false
+      banner_featured_insights:
+        weight: 29
+        enabled: false
       single_svg:
+        weight: 30
+        enabled: false
+      banner_hero:
         weight: 30
         enabled: false
       single_video:
         weight: 31
         enabled: false
+      compound_callout:
+        weight: 31
+        enabled: false
       summary_insights:
         weight: 32
+        enabled: false
+      compound_slider:
+        weight: 33
+        enabled: false
+      compound_stat_bar:
+        weight: 34
+        enabled: false
+      compound_tabbed_content:
+        weight: 35
+        enabled: false
+      layout_grid:
+        weight: 36
+        enabled: false
+      reference_block:
+        weight: 43
+        enabled: false
+      reference_card_browser:
+        weight: 44
+        enabled: false
+      reference_featured_insight:
+        weight: 45
+        enabled: false
+      simple_media_bar:
+        weight: 49
+        enabled: false
+      summary_cards:
+        weight: 55
         enabled: false
 field_type: entity_reference_revisions
