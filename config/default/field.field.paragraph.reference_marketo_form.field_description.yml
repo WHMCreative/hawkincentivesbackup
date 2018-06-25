@@ -10,10 +10,10 @@ dependencies:
     - text
 third_party_settings:
   allowed_formats:
-    basic_html: '0'
-    restricted_html: '0'
-    full_html: '0'
+    limited_rich_text: limited_rich_text
+    rich_text: '0'
     plain_text: '0'
+    html: '0'
 id: paragraph.reference_marketo_form.field_description
 field_name: field_description
 entity_type: paragraph

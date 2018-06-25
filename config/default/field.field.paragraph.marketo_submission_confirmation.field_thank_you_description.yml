@@ -13,9 +13,10 @@ dependencies:
     - text
 third_party_settings:
   allowed_formats:
-    limited_rich_text: '0'
+    limited_rich_text: limited_rich_text
     rich_text: '0'
     plain_text: '0'
+    html: '0'
 _core:
   default_config_hash: GJ5Ou5kxq7ehqTmDcMcxnD8Np5nBQlvWY6_D1Bz6azk
 id: paragraph.marketo_submission_confirmation.field_thank_you_description
