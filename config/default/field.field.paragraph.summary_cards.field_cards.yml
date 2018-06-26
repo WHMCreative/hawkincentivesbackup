@@ -1,0 +1,28 @@
+uuid: ce0a453f-d0b2-4896-ad76-0a89fec8686b
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.card.card
+    - field.storage.paragraph.field_cards
+    - paragraphs.paragraphs_type.summary_cards
+id: paragraph.summary_cards.field_cards
+field_name: field_cards
+entity_type: paragraph
+bundle: summary_cards
+label: 'Featured Cards'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:card'
+  handler_settings:
+    target_bundles:
+      card: card
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
