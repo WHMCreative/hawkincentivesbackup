@@ -1,0 +1,19 @@
+uuid: 584a6017-9191-406a-beda-fff5f371bca9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_cta_title
+    - paragraphs.paragraphs_type.link_form_modal
+id: paragraph.link_form_modal.field_cta_title
+field_name: field_cta_title
+entity_type: paragraph
+bundle: link_form_modal
+label: 'CTA Title'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

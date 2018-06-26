@@ -1,0 +1,40 @@
+uuid: 158100b6-ca21-4ed2-97d8-4f70452e89dc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.link_form_modal.field_cta_title
+    - field.field.paragraph.link_form_modal.field_p_form
+    - paragraphs.paragraphs_type.link_form_modal
+  module:
+    - paragraphs
+id: paragraph.link_form_modal.default
+targetEntityType: paragraph
+bundle: link_form_modal
+mode: default
+content:
+  field_cta_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_p_form:
+    weight: 1
+    settings:
+      title: 'Marketo Form'
+      title_plural: 'Marketo Forms'
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: reference_marketo_form
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
+    region: content
+hidden:
+  created: true
+  moderation_state: true
+  status: true
+  uid: true
