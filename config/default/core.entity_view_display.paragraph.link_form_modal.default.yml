@@ -1,0 +1,33 @@
+uuid: 2a17c867-0bc1-4c97-b9a7-b8b2a3245b1f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.link_form_modal.field_cta_title
+    - field.field.paragraph.link_form_modal.field_p_form
+    - paragraphs.paragraphs_type.link_form_modal
+  module:
+    - entity_reference_revisions
+id: paragraph.link_form_modal.default
+targetEntityType: paragraph
+bundle: link_form_modal
+mode: default
+content:
+  field_cta_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_p_form:
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+hidden: {  }
