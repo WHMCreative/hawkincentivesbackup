@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.paragraph.field_p_multiple_links
     - paragraphs.paragraphs_type.compound_content_bar
+    - paragraphs.paragraphs_type.link_form_modal
     - paragraphs.paragraphs_type.link_url
   module:
     - entity_reference_revisions
@@ -24,6 +25,7 @@ settings:
     negate: 0
     target_bundles:
       link_url: link_url
+      link_form_modal: link_form_modal
     target_bundles_drag_drop:
       compound_content_bar:
         weight: 17
@@ -67,10 +69,49 @@ settings:
       single_svg:
         weight: 30
         enabled: false
+      banner_featured_insights:
+        weight: 30
+        enabled: false
+      banner_hero:
+        weight: 31
+        enabled: false
       single_video:
         weight: 31
         enabled: false
+      compound_callout:
+        weight: 32
+        enabled: false
       summary_insights:
         weight: 32
+        enabled: false
+      compound_slider:
+        weight: 34
+        enabled: false
+      compound_stat_bar:
+        weight: 35
+        enabled: false
+      compound_tabbed_content:
+        weight: 36
+        enabled: false
+      layout_grid:
+        weight: 37
+        enabled: false
+      link_form_modal:
+        enabled: true
+        weight: 39
+      reference_block:
+        weight: 45
+        enabled: false
+      reference_card_browser:
+        weight: 46
+        enabled: false
+      reference_featured_insight:
+        weight: 47
+        enabled: false
+      simple_media_bar:
+        weight: 51
+        enabled: false
+      summary_cards:
+        weight: 57
         enabled: false
 field_type: entity_reference_revisions
