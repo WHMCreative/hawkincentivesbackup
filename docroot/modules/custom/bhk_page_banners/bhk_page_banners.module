@@ -1,0 +1,46 @@
+<?php
+
+/**
+ * @file
+ * Contains gwh_page_banners module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function bhk_page_banners_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the bhk_page_banners module.
+    case 'help.page.bhk_page_banners':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Define banners for content pages') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Theme hook.
+ *
+ * If we define our templates here, we can store the twig templates in this
+ * module's templates folder.
+ */
+function bhk_page_banners_theme($existing, $type, $theme, $path) {
+  return [
+    'block__page_banner' => [
+      'render element' => 'elements',
+      'base hook' => 'block',
+    ],
+  ];
+}
+
+/**
+ * Implement custom block preprocesses.
+ */
+function bhk_page_banners_preprocess_block__page_banner(&$variables) {
+
+}

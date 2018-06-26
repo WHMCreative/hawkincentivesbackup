@@ -9,6 +9,7 @@ module:
   backup_migrate: 0
   ban: 0
   bhk_infogram: 0
+  bhk_page_banners: 0
   bhk_remote_entity: 0
   bhk_summary_paragraphs: 0
   big_pipe: 0

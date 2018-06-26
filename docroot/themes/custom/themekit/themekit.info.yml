@@ -20,6 +20,7 @@ regions:
   page_bottom: 'Page bottom'
   highlighted: Highlighted
   featured: Featured
+  content_above: 'Content above'
   content: Content
   sidebar_first: 'Sidebar first'
   sidebar_second: 'Sidebar second'

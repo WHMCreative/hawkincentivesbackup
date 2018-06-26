@@ -18,6 +18,16 @@ use Drupal\views\Views;
 //*********************************************
 
 /**
+ * Implements template_preprocess_html().
+ */
+function themekit_preprocess_html(&$variables) {
+
+  // Place this block programmatically, issues placing within the block ui.
+  $variables['page']['content_above']['pagebanner'] = themekit_block_to_renderable_array('pagebanner');
+
+}
+
+/**
  * Implements template_preprocess_node().
  */
 function themekit_preprocess_node(&$variables) {
