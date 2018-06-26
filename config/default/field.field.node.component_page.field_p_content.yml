@@ -11,7 +11,6 @@ dependencies:
     - paragraphs.paragraphs_type.compound_stat_bar
     - paragraphs.paragraphs_type.compound_tabbed_content
     - paragraphs.paragraphs_type.layout_grid
-    - paragraphs.paragraphs_type.link_form_modal
     - paragraphs.paragraphs_type.reference_block
     - paragraphs.paragraphs_type.reference_card_browser
     - paragraphs.paragraphs_type.reference_featured_insight
@@ -46,7 +45,6 @@ settings:
       simple_content: simple_content
       compound_slider: compound_slider
       layout_grid: layout_grid
-      link_form_modal: link_form_modal
       reference_block: reference_block
       reference_featured_insight: reference_featured_insight
       summary_cards: summary_cards
@@ -127,8 +125,8 @@ settings:
         weight: 36
         enabled: false
       link_form_modal:
-        enabled: true
         weight: 39
+        enabled: false
       reference_block:
         enabled: true
         weight: 42
