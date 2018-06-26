@@ -1,0 +1,9 @@
+uuid: bf28ecba-2ae7-42ea-87f0-01cb6b4ec002
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_entity_type.card
+name: Card
+type: card
+description: ''
