@@ -1,0 +1,25 @@
+uuid: f53a872c-a84a-4e05-87bf-1305570c8c91
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:60c4951d-2ec1-481d-89d1-6f19cf577c5b'
+  module:
+    - block_content
+  theme:
+    - themekit
+id: copyright
+theme: themekit
+region: footer
+weight: -5
+provider: null
+plugin: 'block_content:60c4951d-2ec1-481d-89d1-6f19cf577c5b'
+settings:
+  id: 'block_content:60c4951d-2ec1-481d-89d1-6f19cf577c5b'
+  label: '© [current-date:html_year] Blachhawk Network Holdings, Inc. All Rights Reserved.'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

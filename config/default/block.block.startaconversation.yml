@@ -1,0 +1,25 @@
+uuid: 2661206a-56b3-4c6e-ae81-8b1b56ea763b
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:b719e5d9-ae0c-403b-b058-38763e713b28'
+  module:
+    - block_content
+  theme:
+    - themekit
+id: startaconversation
+theme: themekit
+region: footer
+weight: -7
+provider: null
+plugin: 'block_content:b719e5d9-ae0c-403b-b058-38763e713b28'
+settings:
+  id: 'block_content:b719e5d9-ae0c-403b-b058-38763e713b28'
+  label: 'Start a Conversation'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }
