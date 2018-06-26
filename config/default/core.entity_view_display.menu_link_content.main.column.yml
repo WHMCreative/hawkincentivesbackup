@@ -1,0 +1,21 @@
+uuid: 60ae4451-f3e9-45bc-92ca-7909476467fe
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.menu_link_content.column
+    - field.field.menu_link_content.main.field_description
+    - system.menu.main
+id: menu_link_content.main.column
+targetEntityType: menu_link_content
+bundle: main
+mode: column
+content:
+  children:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_description: true
+  langcode: true

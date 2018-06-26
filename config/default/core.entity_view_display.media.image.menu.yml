@@ -1,0 +1,35 @@
+uuid: 3d7e28dd-aec9-4fa2-8806-c89a896d9d55
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.menu
+    - field.field.media.image.field_image
+    - field.field.media.image.field_image_type
+    - field.field.media.image.field_tags
+    - image.style.fourth_column
+    - media_entity.bundle.image
+  module:
+    - image
+id: media.image.menu
+targetEntityType: media
+bundle: image
+mode: menu
+content:
+  field_image:
+    type: image
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      image_style: fourth_column
+      image_link: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_image_type: true
+  field_tags: true
+  langcode: true
+  name: true
+  thumbnail: true
+  uid: true

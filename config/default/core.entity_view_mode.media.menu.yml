@@ -1,0 +1,10 @@
+uuid: e1fb557b-5919-4258-91b9-6ea8d794d8cb
+langcode: en
+status: true
+dependencies:
+  module:
+    - media_entity
+id: media.menu
+label: Menu
+targetEntityType: media
+cache: true

@@ -1,0 +1,10 @@
+uuid: 5061177e-5a47-4e4a-96eb-292313032bed
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_link_content
+id: menu_link_content.featured
+label: Featured
+targetEntityType: menu_link_content
+cache: true

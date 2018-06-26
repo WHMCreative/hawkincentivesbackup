@@ -1,0 +1,20 @@
+uuid: 5aaf97ce-a3d3-4ffa-9af8-f3e26f2533c4
+langcode: en
+status: true
+dependencies:
+  module:
+    - media_entity
+    - menu_link_content
+id: menu_link_content.field_media_image
+field_name: field_media_image
+entity_type: menu_link_content
+type: entity_reference
+settings:
+  target_type: media
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

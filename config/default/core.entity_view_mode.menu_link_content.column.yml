@@ -1,0 +1,10 @@
+uuid: a81bbd88-2eb4-49df-aeb9-87f58f227a05
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_link_content
+id: menu_link_content.column
+label: Column
+targetEntityType: menu_link_content
+cache: true
