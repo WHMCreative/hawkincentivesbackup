@@ -28,8 +28,13 @@
       margin-left: auto;
       margin-right: auto;
     }
-    .media.view-mode-entity-embed {
-      min-width: $global-width * 0.5;
+    .media-infogram.view-mode-entity-embed {
+      @include breakpoint(medium) {
+        min-width: 320px;
+      }
+      @include breakpoint(large) {
+        min-width: $global-width * 0.5;
+      }
     }
   }
 }
