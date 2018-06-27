@@ -90,7 +90,9 @@ view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
 ]
 %}
 
-{% set rendered_content = content|without('') %}
+{% set rendered_content = content|without(
+  'field_p_header'
+  ) %}
 
 {{ attach_library('classy/node') }}
 <article{{ attributes.addClass(classes) }}>
@@ -103,17 +105,7 @@ view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
   {% endif %}
   {{ title_suffix }}
 
-  {% if display_submitted %}
-    <footer class="node__meta">
-      {{ author_picture }}
-      <div{{ author_attributes.addClass('node__submitted') }}>
-        {% trans %}Submitted by {{ author_name }} on {{ date }}{% endtrans %}
-        {{ metadata }}
-      </div>
-    </footer>
-  {% endif %}
-
-  <div{{ content_attributes.addClass('node__content') }}>
+  <div{{ content_attributes.addClass('node--content') }}>
     {{ rendered_content }}
   </div>
 
