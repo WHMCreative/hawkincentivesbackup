@@ -26,6 +26,8 @@ permissions:
   - 'edit own reward content'
   - 'use editorial transition create_new_draft'
   - 'use editorial transition send_to_review'
+  - 'use text format limited_rich_text'
+  - 'use text format rich_text'
   - 'view all revisions'
   - 'view any unpublished content'
   - 'view the administration theme'
