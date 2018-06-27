@@ -116,6 +116,7 @@ $print-transparent-backgrounds: true;
 @include add-foundation-colors;
 
 $img-dir: '../../images/';
+$icon-font-dir: '../../fonts/icomoon/fonts/';
 
 
 // 1.Drupal - All of these settings should be copied over when the _settings.scss partial is updated on new version of foundation!!!
