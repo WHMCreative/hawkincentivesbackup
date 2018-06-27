@@ -1,0 +1,17 @@
+uuid: 18703193-f5fb-48d2-b14d-9fbf843d303a
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: menu
+label: 'Menu (85x55)'
+effects:
+  acf15bb7-bfce-4108-a6ab-084d01052c6d:
+    uuid: acf15bb7-bfce-4108-a6ab-084d01052c6d
+    id: focal_point_scale_and_crop
+    weight: 2
+    data:
+      width: 85
+      height: 55
+      crop_type: focal_point

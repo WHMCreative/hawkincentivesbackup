@@ -7,7 +7,7 @@ dependencies:
     - field.field.media.image.field_image
     - field.field.media.image.field_image_type
     - field.field.media.image.field_tags
-    - image.style.fourth_column
+    - image.style.menu
     - media_entity.bundle.image
   module:
     - image
@@ -22,7 +22,7 @@ content:
     region: content
     label: hidden
     settings:
-      image_style: fourth_column
+      image_style: menu
       image_link: ''
     third_party_settings: {  }
 hidden:
