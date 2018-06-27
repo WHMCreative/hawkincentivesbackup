@@ -18,11 +18,28 @@ $links: (
 @mixin link($link-key: default) {
   $link-conf: extend-in-map($links, $link-key);
 
+  font-size: rem-calc(14);
+  line-height: 1.25;
   color: key($link-conf, color);
   font-weight: key($link-conf, font-weight);
 
+  @if (map-has-key($link-conf, background)) {
+    @supports (-webkit-text-fill-color: transparent) {
+      background: key($link-conf, background);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
   @include selectors(active) {
-    color: key($link-conf, active-color);
-    text-decoration: underline;
+    @if (map-has-key($link-conf, active-color)) {
+      color: key($link-conf, active-color);
+    }
+    @if (map-has-key($link-conf, active-background)) {
+      @supports (-webkit-text-fill-color: transparent) {
+        background: key($link-conf, active-background);
+        -webkit-background-clip: text;
+      }
+    }
   }
 }

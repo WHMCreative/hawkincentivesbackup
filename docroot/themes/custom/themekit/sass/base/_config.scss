@@ -65,6 +65,17 @@ $buttons: (
   )
 );
 
+/// Link config
+$links: (
+  default: (
+    color: $bhk-blue,
+    background: linear-gradient(-45deg, $bhk-teal 0%, $bhk-blue 100%),
+    font-weight: 700,
+    active-color: $bhk-teal,
+    active-background: linear-gradient(-45deg, $bhk-blue 0%, $bhk-teal 100%),
+  ),
+);
+
 
 /// Layouts
 $layouts: (
