@@ -72,29 +72,37 @@
 // ---------
 
 $global-font-size: 100%;
-$global-width: rem-calc(1200);
+$global-width: rem-calc(1024);
+$global-width-wide: rem-calc(1140);
 $global-lineheight: 1.5;
+
+$bhk-blue: #1969b7;
+$bhk-teal: #6bcec9;
+$bhk-green: #89ae43;
+$bhk-navy: #125c7f;
+
 $foundation-palette: (
-  primary: #1779ba,
-  secondary: #767676,
+  primary: $bhk-blue,
+  secondary: $bhk-green,
   success: #3adb76,
   warning: #ffae00,
   alert: #cc4b37,
 );
-$light-gray: #e6e6e6;
-$medium-gray: #cacaca;
-$dark-gray: #8a8a8a;
-$black: #0a0a0a;
-$white: #fefefe;
+
+$light-gray: #bdbdbd;
+$medium-gray: #777777;
+$dark-gray: #4a4a4a;
+$black: #000000;
+$white: #ffffff;
 $body-background: $white;
-$body-font-color: $black;
-$body-font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
+$body-font-color: $medium-gray;
+$body-font-family: 'Open Sans', Helvetica, Roboto, Arial, sans-serif;
 $body-antialiased: true;
 $global-margin: 1rem;
 $global-padding: 1rem;
 $global-position: 1rem;
-$global-weight-normal: normal;
-$global-weight-bold: bold;
+$global-weight-normal: 400;
+$global-weight-bold: 700;
 $global-radius: 0;
 $global-menu-padding: 0.7rem 1rem;
 $global-menu-nested-margin: 1rem;
@@ -107,6 +115,7 @@ $print-transparent-backgrounds: true;
 
 @include add-foundation-colors;
 
+$img-dir: '../../images/';
 
 
 // 1.Drupal - All of these settings should be copied over when the _settings.scss partial is updated on new version of foundation!!!
@@ -140,8 +149,8 @@ $breakpoints: (
   small: 0,
   medium: 640px,
   large: 1024px,
-  xlarge: 1200px,
-  xxlarge: 1440px,
+  xlarge: 1140px,
+  xxlarge: 1330px,
 );
 $print-breakpoint: large;
 $breakpoint-classes: (small medium large);
@@ -167,24 +176,24 @@ $header-font-weight: $global-weight-normal;
 $header-font-style: normal;
 $font-family-monospace: Consolas, 'Liberation Mono', Courier, monospace;
 $header-color: inherit;
-$header-lineheight: 1.4;
+$header-lineheight: 1.25;
 $header-margin-bottom: 0.5rem;
 $header-styles: (
   small: (
-    'h1': ('font-size': 24),
-    'h2': ('font-size': 20),
-    'h3': ('font-size': 19),
-    'h4': ('font-size': 18),
-    'h5': ('font-size': 17),
-    'h6': ('font-size': 16),
+    'h1': ('font-size': 30),
+    'h2': ('font-size': 24),
+    'h3': ('font-size': 18),
+    'h4': ('font-size': 16),
+    'h5': ('font-size': 14),
+    'h6': ('font-size': 12),
   ),
   medium: (
-    'h1': ('font-size': 48),
-    'h2': ('font-size': 40),
-    'h3': ('font-size': 31),
-    'h4': ('font-size': 25),
-    'h5': ('font-size': 20),
-    'h6': ('font-size': 16),
+    'h1': ('font-size': 40),
+    'h2': ('font-size': 32),
+    'h3': ('font-size': 20),
+    'h4': ('font-size': 18),
+    'h5': ('font-size': 16),
+    'h6': ('font-size': 14),
   ),
 );
 $header-text-rendering: optimizeLegibility;
@@ -452,10 +461,10 @@ $input-prefix-color: $black;
 $input-prefix-background: $light-gray;
 $input-prefix-border: 1px solid $medium-gray;
 $input-prefix-padding: 1rem;
-$form-label-color: $black;
+$form-label-color: $body-font-color;
 $form-label-font-size: rem-calc(14);
 $form-label-font-weight: $global-weight-normal;
-$form-label-line-height: 1.8;
+$form-label-line-height: 1.25;
 $select-background: $white;
 $select-triangle-color: $dark-gray;
 $select-radius: $global-radius;

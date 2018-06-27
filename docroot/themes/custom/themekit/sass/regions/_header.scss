@@ -2,3 +2,20 @@
 /// Header
 ////
 
+.region-header {
+  .region-inner {
+    @include content-width(1330px);
+    .block-system-branding-block {
+      .site-name {
+        a {
+          display: block;
+          text-indent: -9999px;
+          width: 281px;
+          height: 38px;
+          background-image: url(img-get('svg/logo.svg'));
+          background-size: contain;
+        }
+      }
+    }
+  }
+}

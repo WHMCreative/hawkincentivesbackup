@@ -17,31 +17,38 @@ $buttons: (
 
 /// Standard button style mixin
 /// @param {String} $button-key - the key in the $buttons map to use from config
-/// @param {String} $size [small] - the button size, choose from defined keywords in the mixin
-@mixin btn($button-key, $size: small) {
+@mixin btn($button-key) {
   $button: extend-in-map($buttons, $button-key);
 
   @include disable-mouse-outline;
   display: inline-block;
-  line-height: 1;
-  font-weight: 400;
-
+  padding: 9px 16px;
+  font-size: rem-calc(14);
+  line-height: 1.5;
+  font-weight: 700;
+  border-radius: 18px;
   appearance: none;
-  border: 2px solid key($button, border);
+
+  @if (map-has-key($button, border)) {
+    border: 1px solid key($button, border);
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
   background: key($button, background);
   color: key($button, color);
 
-  @if ($size == small) {
-    padding: 8px 12px;
-    font-size: 14px;
-  } @else if ($size == large) {
-    padding: 12px 20px;
-    font-size: 16px;
-  }
-
   @include selectors(active) {
-    border-color: key($button, active-border);
-    background: key($button, active-background);
-    color: key($button, active-color);
+
+    @if (map-has-key($button, active-background)) {
+      background: key($button, active-background);
+    }
+    @if (map-has-key($button, active-color)) {
+      color: key($button, active-color);
+    }
+
+    @if (map-has-key($button, active-border)) {
+      border-color: key($button, active-border);
+    }
   }
 }

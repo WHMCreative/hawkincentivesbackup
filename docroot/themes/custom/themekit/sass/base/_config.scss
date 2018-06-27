@@ -44,12 +44,49 @@ $buttons: (
   _base: (
     background: slategray,
     color: #fff,
-    border: slategray,
     active-background: darken(slategray, 10%),
     active-color: #fff,
-    active-border: darken(slategray, 10%)
   ),
   blue: (
+    background: linear-gradient(-45deg, $bhk-teal 0%, $bhk-blue 100%),
+    color: $white
+  ),
+  white: (
+    background: $white,
+    color: $primary-color
+  ),
+  ghost: (
+    background: transparent,
+    border: $white,
+    color: $white,
+    active-border: $white,
+    active-background: $white,
+    active-color: $primary-color,
+  )
+);
+
+
+/// Layouts
+$layouts: (
+  _base: (
+    width: $global-width,
+    gutters: (
+      small: 20px,
+      medium: 30px
+    )
+  ),
+  default: (
     extend: _base
+  ),
+  wide: (
+    extend: _base,
+    width: $global-width-wide,
+  ),
+  full: (
+    width: 100%,
+    gutters: (
+      small: 0px,
+      medium: 0px
+    )
   )
 );

@@ -1,3 +1,11 @@
 ////
 /// Footer
 ////
+
+.region-footer {
+  background: $secondary-color;
+  color: $white;
+  .region-inner {
+    @include content-width(default);
+  }
+}
