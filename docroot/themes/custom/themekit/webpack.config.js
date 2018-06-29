@@ -6,7 +6,8 @@ const autoprefixer = require('autoprefixer');
 
 var entryPoints = {
   themekit: './js/src/theme.js',
-  themecss: './sass/style.scss',
+  style: './sass/style.scss',
+  wysiwyg: './sass/wysiwyg.scss',
   'card-catalog': './js/src/v-card-catalog/card-catalog.js'
   // hotelFilters: "./js/src/v-hotel-filters/hotel-filters.js",
 };
@@ -69,7 +70,7 @@ var config = {
       files: ["./sass/**/*.scss", "./js/**/*.js", "./js/**/*.vue"]
     }),
     new ExtractTextPlugin({ // define where to save the file
-      filename: 'css/style.css',
+      filename: 'css/[name].css',
       allChunks: true,
     }),
     autoprefixer,
