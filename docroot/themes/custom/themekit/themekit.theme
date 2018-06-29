@@ -92,8 +92,13 @@ function themekit_preprocess_paragraph(&$variables) {
   }
 }
 
-function themekit_preprocess_paragraph_simple_content(&$variables) {
-  // Example hook for paragraph type
+function themekit_preprocess_paragraph_compound_content_bar(&$variables) {
+  $paragraph = $variables['paragraph'];
+
+  $items_count = $paragraph->get('field_p_compound_content')->count();
+  if ($items_count > 4) {
+    $variables['attributes']['class'][] = 'columns-narrow';
+  }
 }
 
 //*********************************************
@@ -125,6 +130,9 @@ function themekit_theme_suggestions_field_alter(array &$suggestions, array $vari
   // Apply theme suggestions for "field_heading" based on paragraph bundle.
   if ($field_name == 'field_heading' && $is_paragraph) {
     switch($bundle) {
+      case 'compound_content_bar':
+        array_unshift($suggestions, 'field__heading_2');
+        break;
       case 'banner_standard':
       case 'single_heading':
         array_unshift($suggestions, 'field__heading_3');

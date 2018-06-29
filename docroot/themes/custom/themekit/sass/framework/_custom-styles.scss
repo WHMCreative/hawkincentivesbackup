@@ -2,3 +2,14 @@
 /// Framework - Custom Style Patterns
 /// @group frameworkComponents
 ////
+
+@mixin paragraph-margins($spacing: $paragraph-spacing) {
+  @if type-of($spacing == map) {
+    @each $bp, $size in $spacing {
+      $size: rem-calc($size);
+      @include breakpoint($bp) {
+        @include top-bottom(margin, $size);
+      }
+    }
+  }
+}

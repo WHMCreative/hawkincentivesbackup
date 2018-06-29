@@ -7,3 +7,9 @@
     display: none;
   }
 }
+
+.paragraph--type--link-url {
+  a {
+    @include btn(blue);
+  }
+}

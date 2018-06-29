@@ -1,3 +1,63 @@
 ////
 /// Paragraphs - Compound
 ////
+
+.paragraph--type--compound-content-bar {
+  @include paragraph-margins();
+  @include content-width(wide);
+  text-align: center;
+  > .field--name-field-heading {
+    @include breakpoint(large) {
+      max-width: 60%;
+      margin: 0 auto 40px;
+    }
+  }
+  > .field--name-field-description {
+    @include breakpoint(large) {
+      max-width: 60%;
+      margin: 0 auto;
+    }
+  }
+  .field--name-field-p-compound-content {
+    @include breakpoint(medium) {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      flex: 1 1 auto;
+    }
+    > .paragraph {
+      margin: 10px 0;
+      @include breakpoint(medium) {
+        margin: 0 1.25%;
+        width: 21.875%;
+        min-width: 150px;
+      }
+    }
+  }
+  &.columns-narrow {
+    .field--name-field-p-compound-content {
+      > .paragraph {
+        @include breakpoint(medium) {
+          width: 17.5%;
+        }
+      }
+    }
+  }
+  > .field--name-field-p-multiple-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    @include breakpoint(large) {
+      margin-top: 40px;
+    }
+    .paragraph {
+      margin: 0 10px;
+      + .paragraph {
+        a {
+          @include link();
+        }
+      }
+    }
+  }
+}

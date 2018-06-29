@@ -22,6 +22,8 @@ $links: (
   line-height: 1.25;
   color: key($link-conf, color);
   font-weight: key($link-conf, font-weight);
+  padding: 0;
+  border: 0;
 
   @if (map-has-key($link-conf, background)) {
     @supports (-webkit-text-fill-color: transparent) {
