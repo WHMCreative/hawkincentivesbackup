@@ -54,6 +54,7 @@
     "foundation-sites": "6.4.3",
     "graphql": "^0.13.1",
     "graphql-tag": "^2.8.0",
+    "magnific-popup": "^1.1.0",
     "npm": "^5.8.0",
     "svg.js": "^2.6.4",
     "vue": "^2.5.13",
