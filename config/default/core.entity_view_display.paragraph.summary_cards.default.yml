@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.summary_cards.field_cards
     - field.field.paragraph.summary_cards.field_heading
     - field.field.paragraph.summary_cards.field_p_multiple_links
     - paragraphs.paragraphs_type.summary_cards
@@ -14,14 +13,6 @@ targetEntityType: paragraph
 bundle: summary_cards
 mode: default
 content:
-  field_cards:
-    weight: 2
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
   field_heading:
     weight: 0
     label: hidden

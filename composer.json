@@ -93,8 +93,7 @@
     "drupal/video_embed_wistia": "^1.0@RC",
     "drupal/editor_advanced_link": "^1.4",
     "drupal/block_field": "^1.0@alpha",
-    "drupal/graphql": "^3.0",
-    "drupal/eck": "^1.0@alpha"
+    "drupal/graphql": "^3.0"
   },
   "conflict": {
       "drupal/drupal": "*"

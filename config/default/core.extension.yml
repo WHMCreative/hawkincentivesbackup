@@ -8,6 +8,7 @@ module:
   allowed_formats: 0
   backup_migrate: 0
   ban: 0
+  bhk_card_browser: 0
   bhk_infogram: 0
   bhk_page_banners: 0
   bhk_remote_entity: 0
