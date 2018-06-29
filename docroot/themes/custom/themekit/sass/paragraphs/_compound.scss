@@ -13,9 +13,10 @@
     }
   }
   > .field--name-field-description {
-    @include breakpoint(large) {
+    margin-bottom: 10px;
+    @include breakpoint(medium) {
       max-width: 60%;
-      margin: 0 auto;
+      margin: 0 auto 20px;
     }
   }
   .field--name-field-p-compound-content {
