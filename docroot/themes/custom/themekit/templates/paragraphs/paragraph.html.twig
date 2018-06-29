@@ -58,5 +58,7 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
 {% set rendered_content = content|without('') %}
 
 <div{{ attributes.addClass(classes) }}>
-  {{ rendered_content }}
+  <div class="paragraph-content">
+    {{ rendered_content }}
+  </div>
 </div>

@@ -67,6 +67,7 @@ module:
   image: 0
   image_style_quality: 0
   inline_entity_form: 0
+  kint: 0
   language: 0
   link: 0
   link_attributes: 0
