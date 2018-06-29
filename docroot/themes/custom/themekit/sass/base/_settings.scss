@@ -72,8 +72,8 @@
 // ---------
 
 $global-font-size: 100%;
-$global-width: rem-calc(1024);
-$global-width-wide: rem-calc(1140);
+$global-width: rem-calc(1084);
+$global-width-wide: rem-calc(1200);
 $global-lineheight: 1.5;
 
 $bhk-blue: #1969b7;
@@ -117,6 +117,11 @@ $print-transparent-backgrounds: true;
 
 $img-dir: '../../images/';
 $icon-font-dir: '../../fonts/icomoon/fonts/';
+$paragraph-spacing: (
+  small: 40px,
+  medium: 60px,
+  large: 85px
+);
 
 
 // 1.Drupal - All of these settings should be copied over when the _settings.scss partial is updated on new version of foundation!!!
@@ -173,10 +178,10 @@ $block-grid-max: 8;
 // ------------------
 
 $header-font-family: $body-font-family;
-$header-font-weight: $global-weight-normal;
+$header-font-weight: 300;
 $header-font-style: normal;
 $font-family-monospace: Consolas, 'Liberation Mono', Courier, monospace;
-$header-color: inherit;
+$header-color: $primary-color;
 $header-lineheight: 1.25;
 $header-margin-bottom: 0.5rem;
 $header-styles: (

@@ -13,7 +13,9 @@
 @import "framework/typography";
 @import "framework/custom-styles";
 
-// Add anything from bower here
+// Add anything from bower/npm here
+@import "../node_modules/magnific-popup/src/css/settings";
+@import "../node_modules/magnific-popup/src/css/main";
 
 @import "base/settings";
 @import "base/app";
@@ -30,6 +32,7 @@
 
 @import "paragraphs/simple";
 @import "paragraphs/compound";
+@import "paragraphs/link";
 
 // @TODO: Choose one format and remove the other from the project
 @import "content/page";

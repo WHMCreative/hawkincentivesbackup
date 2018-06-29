@@ -1,0 +1,15 @@
+////
+/// Paragraphs - Link
+////
+
+.paragraph--type--link-form-modal {
+  .paragraph--type--reference-marketo-form {
+    display: none;
+  }
+}
+
+.paragraph--type--link-url {
+  a {
+    @include btn(blue);
+  }
+}
