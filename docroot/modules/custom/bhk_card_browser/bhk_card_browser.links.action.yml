@@ -1,5 +1,0 @@
-entity.card.add_form:
-  route_name: entity.card.add_form
-  title: 'Add Card'
-  appears_on:
-    - entity.card.collection
