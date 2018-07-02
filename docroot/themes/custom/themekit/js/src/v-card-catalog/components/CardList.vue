@@ -7,6 +7,8 @@
       <Card v-for="card in selectedCards" :card="card" v-bind:selected='true'></Card>
     </div>
     <!-- End Selected Cards -->
+      <button class="marketo-modal-cta-link">Start a Conversation</button>
+      <button class="marketo-modal-cta-link">Start a Conversation 2</button>
 
     <div class="card-list">
     <!-- Begin Filters -->
@@ -66,6 +68,26 @@ export default {
         {name: 'Card 8', description: 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.', selected: false, category:[{value:'Cat 1'}], type: [{value:'type 4'}, {value:'type 1'}]}
       ],
       selectedFilters: []
+    }
+  },
+
+  mounted () {
+
+    // Open marketo form
+    let modalLinks = document.getElementsByClassName('marketo-modal-cta-link'),
+      modalSrc = document.getElementsByClassName('form--card-browser');
+    if(!modalLinks.length && !modalSrc.length) return;
+
+    for (var i = 0, len = modalLinks.length; i < len; i++) {
+      modalLinks[i].addEventListener('click',function () {
+        jQuery.magnificPopup.open({
+          items: {
+            src: modalSrc,
+            type: 'inline'
+          },
+          closeBtnInside: false,
+        });
+      });
     }
   },
 
