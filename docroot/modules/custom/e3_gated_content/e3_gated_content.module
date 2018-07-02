@@ -25,13 +25,13 @@ function e3_gated_content_entity_view_mode_alter(&$view_mode, EntityInterface $e
       \Drupal::service('page_cache_kill_switch')->trigger();
 
       // Add unlocked resources cookie to cache contexts.
-      $entity->addCacheContexts(['cookies:e3_unlocked_resources']);
+      $entity->addCacheContexts(['cookies:bhk_unlocked_resources']);
 
       if (_e3_content_is_gated($entity)) {
         $view_mode = 'gated';
       }
       else {
-        $view_mode = 'revealed_content';
+        $view_mode = 'unlocked';
       }
     }
   }
@@ -56,7 +56,7 @@ function _e3_content_is_gated(EntityInterface $entity) {
 
   // Check if user has unlocked this resource, otherwise render it as gated.
   $cookies = $request->cookies;
-  $unlocked_resources = json_decode($cookies->get('e3_unlocked_resources'));
+  $unlocked_resources = json_decode($cookies->get('bhk_unlocked_resources'));
 
   if ($unlocked_resources && in_array($entity->id(), $unlocked_resources)) {
     return FALSE;
@@ -68,7 +68,7 @@ function _e3_content_is_gated(EntityInterface $entity) {
 /**
  * Implements hook_preprocess_node().
  */
-function e3_gated_content_preprocess_node(&$variables) {
+function e3_gated_content_preprocess_node(array &$variables) {
 
   // Preprocess gated resources and determine when they are viewed for the first
   // time after the unlock.
@@ -103,7 +103,7 @@ function e3_gated_content_preprocess_node(&$variables) {
 /**
  * Implements hook_form_BASE_FORM_ID_alter().
  */
-function e3_gated_content_form_node_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+function e3_gated_content_form_node_form_alter(array &$form, FormStateInterface $form_state, $form_id) {
   /** @var \Drupal\node\NodeInterface $node */
   $node = $form_state->getFormObject()->getEntity();
 

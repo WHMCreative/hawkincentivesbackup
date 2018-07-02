@@ -31,7 +31,7 @@
      */
     getParameterByName: function (name) {
       name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
-      console.log(name);
+
       let regexS = "[\\?&]" + name + "=([^&#]*)";
       let regex = new RegExp(regexS);
       let results = regex.exec(window.location.search);
@@ -55,7 +55,6 @@
         let param = this.utmParams[i];
         let value = this.getParameterByName(param);
 
-        console.log(param + ' = ' + value);
         if (value !== "" && typeof(value) !== 'undefined') {
           present = true;
         }

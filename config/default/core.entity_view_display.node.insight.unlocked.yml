@@ -1,8 +1,9 @@
-uuid: ee984f18-a964-455f-bb34-0f1a778ab285
+uuid: 49402be6-c0bb-4eae-8ce9-94ea42a154ef
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.unlocked
     - field.field.node.insight.field_author
     - field.field.node.insight.field_featured_image
     - field.field.node.insight.field_gated
@@ -16,10 +17,10 @@ dependencies:
   module:
     - entity_reference_revisions
     - user
-id: node.insight.default
+id: node.insight.unlocked
 targetEntityType: node
 bundle: insight
-mode: default
+mode: unlocked
 content:
   content_moderation_control:
     weight: 0
@@ -27,7 +28,7 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_author:
-    weight: 8
+    weight: 7
     label: above
     settings:
       link: true
@@ -77,14 +78,6 @@ content:
     third_party_settings: {  }
     type: entity_reference_revisions_entity_view
     region: content
-  field_teaser_image:
-    weight: 7
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
   links:
     weight: 1
     region: content
@@ -93,4 +86,5 @@ content:
 hidden:
   field_gated: true
   field_p_form: true
+  field_teaser_image: true
   langcode: true

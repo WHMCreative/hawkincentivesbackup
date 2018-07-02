@@ -1,0 +1,10 @@
+uuid: 753bda8d-9621-4db1-a80d-f537194197e3
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.unlocked
+label: Unlocked
+targetEntityType: node
+cache: true

@@ -65,7 +65,7 @@ class GatedContentController extends ControllerBase implements ContainerInjectio
       $cookies = $request->cookies;
 
       // Look for existing cookie first, update it if found.
-      $unlocked_gated_resources = $cookies->get('e3_unlocked_resources', []);
+      $unlocked_gated_resources = $cookies->get('bhk_unlocked_resources', []);
       if ($unlocked_gated_resources) {
         $unlocked_gated_resources = json_decode($unlocked_gated_resources);
 
@@ -92,7 +92,7 @@ class GatedContentController extends ControllerBase implements ContainerInjectio
       }
 
       $response = new JsonResponse(['query_string' => $query_string]);
-      $response->headers->setCookie(new Cookie('e3_unlocked_resources', json_encode($unlocked_gated_resources), strtotime('+5 years'), '/', $request->getHost(), FALSE, FALSE));
+      $response->headers->setCookie(new Cookie('bhk_unlocked_resources', json_encode($unlocked_gated_resources), 0, '/', $request->getHost(), FALSE, FALSE));
       $response->headers->setCookie(new Cookie('gated_unlock_first_view', 1, strtotime('+1 hour'), '/', $request->getHost(), FALSE, FALSE));
 
       // Force cache invalidation for the source entity.
@@ -123,17 +123,9 @@ class GatedContentController extends ControllerBase implements ContainerInjectio
         return FALSE;
       }
 
-      $query_fields = [
-        'ot' => 'field_offer_type',
-        'proprooffertype'=> 'field_proprooffertype',
+      $params = [
+        'state' => 'unlocked',
       ];
-
-      $params = [];
-      foreach ($query_fields as $param_key => $param_source_field) {
-        if ($gated_form->hasField($param_source_field) && !$gated_form->get($param_source_field)->isEmpty()) {
-          $params[$param_key] = $gated_form->get($param_source_field)->value;
-        }
-      }
 
       return $params;
     }
