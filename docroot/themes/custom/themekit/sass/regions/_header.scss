@@ -3,8 +3,28 @@
 ////
 
 .region-header {
+  background: $body-background;
+  &.sticky.is-stuck {
+    .toolbar-horizontal & {
+      top: 39px !important;
+    }
+    .toolbar-horizontal.toolbar-tray-open & {
+      top: 79px !important;
+    }
+  }
   .region-inner {
-    @include content-width(1330px);
+    @include content-width(1370px);
+    padding-left: 20px;
+    padding-right: 20px;
+
+    @include breakpoint(large) {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      padding-top: 10px;
+      padding-bottom: 20px;
+    }
+
     .block-system-branding-block {
       .site-name {
         a {
@@ -17,5 +37,55 @@
         }
       }
     }
+    .menu-toggle {
+      @include breakpoint(large) {
+        display: none;
+      }
+    }
+
+    .menu--utility {
+      @include breakpoint(large) {
+        padding-bottom: 10px;
+        border-bottom: 1px solid $mercury-gray;
+        margin-bottom: 25px;
+        width: 100%;
+      }
+      ul.menu {
+        margin: 0;
+        list-style: none;
+        @include breakpoint(large) {
+          display: flex;
+          justify-content: flex-end;
+        }
+        li {
+          @include breakpoint(large) {
+            margin-left: 25px;
+          }
+        }
+      }
+    }
+
+    .menu--main {
+      ul.menu {
+        list-style: none;
+        margin: 0;
+        &.menu-level-0 {
+          @include breakpoint(large) {
+            display: flex;
+          }
+          > li {
+            @include breakpoint(large) {
+              margin-left: 35px;
+            }
+            &.menu-item--expanded {
+              .menu-dropdown {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+
   }
 }
