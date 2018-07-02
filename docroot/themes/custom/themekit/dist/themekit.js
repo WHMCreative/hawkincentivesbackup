@@ -2345,13 +2345,16 @@ $skipLink.on('click', function(e) {
 Drupal.behaviors.magnificPopup = {
   attach: function (context, settings) {
 
-    __WEBPACK_IMPORTED_MODULE_0_jquery___default()('a.marketo-modal-cta-link').once('marketo-modal').on('click', function(e) {
+    let $link = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('a.marketo-modal-cta-link', context);
+    if(!$link.length) return;
+
+    $link.on('click', function(e) {
       let $parent_paragraph = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).parents('.paragraph--type--link-form-modal'),
-          modalSrc = $parent_paragraph.find('.paragraph--type--reference-marketo-form');
-      if (modalSrc.length) {
+        $modalSrc = $parent_paragraph.find('.paragraph--type--reference-marketo-form');
+      if ($modalSrc.length) {
         __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.magnificPopup.open({
           items: {
-            src: modalSrc,
+            src: $modalSrc,
             type: 'inline'
           },
           closeBtnInside: false,
@@ -2359,7 +2362,6 @@ Drupal.behaviors.magnificPopup = {
       }
       e.preventDefault();
     });
-
   }
 };
 
