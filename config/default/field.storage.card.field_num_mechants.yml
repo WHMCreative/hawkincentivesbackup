@@ -1,0 +1,20 @@
+uuid: 167521fb-b561-47a0-a521-36b07b3e97ec
+langcode: en
+status: true
+dependencies:
+  module:
+    - bhk_card_browser
+id: card.field_num_mechants
+field_name: field_num_mechants
+entity_type: card
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,30 @@
+uuid: 66927338-9630-4097-b3b5-f14044d59743
+langcode: en
+status: true
+dependencies:
+  module:
+    - bhk_card_browser
+    - options
+id: card.field_prepaid_type
+field_name: field_prepaid_type
+entity_type: card
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: non_filtered
+      label: 'Non Filtered'
+    -
+      value: pre_filtered
+      label: Pre-Filtered
+    -
+      value: filtered
+      label: Filtered
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

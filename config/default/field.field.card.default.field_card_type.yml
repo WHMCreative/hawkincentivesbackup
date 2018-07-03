@@ -1,0 +1,21 @@
+uuid: 97ed7c90-f588-4924-b30a-3bb3a3c77de3
+langcode: en
+status: true
+dependencies:
+  config:
+    - bhk_card_browser.card_type.default
+    - field.storage.card.field_card_type
+  module:
+    - options
+id: card.default.field_card_type
+field_name: field_card_type
+entity_type: card
+bundle: default
+label: Type
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,9 @@
+uuid: ba1bca35-55ad-448b-92e7-d8c6eb3f2017
+langcode: en
+status: true
+dependencies: {  }
+name: 'Card Currency'
+vid: card_currency
+description: ''
+hierarchy: 0
+weight: 0

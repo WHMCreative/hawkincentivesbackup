@@ -1,0 +1,29 @@
+uuid: b6b75174-d6c4-41b8-8784-95d3ae9f2286
+langcode: en
+status: true
+dependencies:
+  config:
+    - bhk_card_browser.card_type.default
+    - field.storage.card.field_currency
+    - taxonomy.vocabulary.card_currency
+id: card.default.field_currency
+field_name: field_currency
+entity_type: card
+bundle: default
+label: Currency
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      card_currency: card_currency
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

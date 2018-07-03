@@ -1,0 +1,27 @@
+uuid: 85c1cc43-1e12-4a35-a89c-092b2d44741f
+langcode: en
+status: true
+dependencies:
+  module:
+    - bhk_card_browser
+    - options
+id: card.field_prepaid_load
+field_name: field_prepaid_load
+entity_type: card
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: single_load
+      label: 'Single Load'
+    -
+      value: reloadable
+      label: Reloadable
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,21 @@
+uuid: c1449147-6804-4b37-92c7-b48a4446e623
+langcode: en
+status: true
+dependencies:
+  config:
+    - bhk_card_browser.card_type.default
+    - field.storage.card.field_delivery
+  module:
+    - options
+id: card.default.field_delivery
+field_name: field_delivery
+entity_type: card
+bundle: default
+label: Delivery/Shipping
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

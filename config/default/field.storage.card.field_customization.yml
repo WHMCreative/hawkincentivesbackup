@@ -1,0 +1,18 @@
+uuid: d4187575-6b9c-4faa-9d05-8d94f4fbff3c
+langcode: en
+status: true
+dependencies:
+  module:
+    - bhk_card_browser
+id: card.field_customization
+field_name: field_customization
+entity_type: card
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

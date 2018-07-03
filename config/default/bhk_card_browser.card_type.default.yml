@@ -1,0 +1,7 @@
+uuid: f4998c1a-7be3-4bed-857c-ab2f4d9f8000
+langcode: en
+status: true
+dependencies: {  }
+id: default
+label: Default
+description: 'Default bundle for Card entities'

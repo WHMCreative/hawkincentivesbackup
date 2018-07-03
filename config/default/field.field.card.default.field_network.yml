@@ -1,0 +1,21 @@
+uuid: 23112479-9506-4961-b174-a4b7e693d638
+langcode: en
+status: true
+dependencies:
+  config:
+    - bhk_card_browser.card_type.default
+    - field.storage.card.field_network
+  module:
+    - options
+id: card.default.field_network
+field_name: field_network
+entity_type: card
+bundle: default
+label: Network
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

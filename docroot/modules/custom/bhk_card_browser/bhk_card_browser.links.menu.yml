@@ -1,0 +1,26 @@
+
+# Card menu items definition
+entity.card.collection:
+  title: 'Cards'
+  route_name: view.cards.card_admin_list
+  description: 'List of Card entities'
+  parent: system.admin_content
+
+# Card type menu items definition
+entity.card_type.collection:
+  title: 'Card types'
+  route_name: entity.card_type.collection
+  description: 'List of available Card Types'
+  parent: system.admin_structure
+
+entity.card.add:
+  title: 'Add a new Card'
+  parent: entity.card.collection
+  description: 'Add a new Card entity.'
+  route_name: entity.card.add_page
+
+entity.card_type.add:
+  title: 'Add a new Card type'
+  parent: entity.card_type.collection
+  description: 'Add a new Card type.'
+  route_name: entity.card_type.add_form

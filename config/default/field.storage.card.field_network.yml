@@ -1,0 +1,30 @@
+uuid: 2b680184-5c68-42e7-a11d-a992dae4adf3
+langcode: en
+status: true
+dependencies:
+  module:
+    - bhk_card_browser
+    - options
+id: card.field_network
+field_name: field_network
+entity_type: card
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: discover
+      label: Discover
+    -
+      value: mastercard
+      label: Mastercard
+    -
+      value: visa
+      label: Visa
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

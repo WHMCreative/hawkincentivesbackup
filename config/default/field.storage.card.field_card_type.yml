@@ -1,0 +1,30 @@
+uuid: 1399f3c1-906f-4fe9-9b45-d71298327167
+langcode: en
+status: true
+dependencies:
+  module:
+    - bhk_card_browser
+    - options
+id: card.field_card_type
+field_name: field_card_type
+entity_type: card
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: prepaid
+      label: Prepaid
+    -
+      value: gift_card
+      label: 'Gift Card'
+    -
+      value: omnicode
+      label: OmniCode
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,11 @@
+uuid: 2b972a24-698b-4043-b4c6-6aa6a1882edb
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.card_category
+id: taxonomy_term.card_category
+target_entity_type_id: taxonomy_term
+target_bundle: card_category
+default_langcode: site_default
+language_alterable: false

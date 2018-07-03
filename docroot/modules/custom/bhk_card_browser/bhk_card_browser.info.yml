@@ -1,0 +1,5 @@
+name: BHK Card Browser
+type: module
+description: Provides the Card entity and corresponding functionality for BHK
+core: 8.x
+package: Custom

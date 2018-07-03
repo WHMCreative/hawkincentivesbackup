@@ -1,0 +1,9 @@
+uuid: 9d4b9b1f-6f15-4a66-9398-a0804c96ea1c
+langcode: en
+status: true
+dependencies: {  }
+name: 'Card Category'
+vid: card_category
+description: ''
+hierarchy: 0
+weight: 0

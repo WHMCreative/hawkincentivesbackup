@@ -1,0 +1,21 @@
+uuid: 7ba035ed-e2de-417a-96d7-69d822f9b5c4
+langcode: en
+status: true
+dependencies:
+  config:
+    - bhk_card_browser.card_type.default
+    - field.storage.card.field_prepaid_load
+  module:
+    - options
+id: card.default.field_prepaid_load
+field_name: field_prepaid_load
+entity_type: card
+bundle: default
+label: 'Prepaid Load'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

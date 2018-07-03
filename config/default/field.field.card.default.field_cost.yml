@@ -1,0 +1,21 @@
+uuid: 8cee3dab-8830-4408-931f-7bcf6f0b6bc4
+langcode: en
+status: true
+dependencies:
+  config:
+    - bhk_card_browser.card_type.default
+    - field.storage.card.field_cost
+  module:
+    - options
+id: card.default.field_cost
+field_name: field_cost
+entity_type: card
+bundle: default
+label: Cost
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

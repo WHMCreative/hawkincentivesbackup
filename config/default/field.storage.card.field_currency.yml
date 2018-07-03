@@ -1,0 +1,20 @@
+uuid: 56f214e6-05eb-418c-aeb0-90530812e97f
+langcode: en
+status: true
+dependencies:
+  module:
+    - bhk_card_browser
+    - taxonomy
+id: card.field_currency
+field_name: field_currency
+entity_type: card
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

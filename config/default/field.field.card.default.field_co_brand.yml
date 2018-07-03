@@ -1,0 +1,23 @@
+uuid: 01fed425-e873-4575-a3a7-28d51e60b1ef
+langcode: en
+status: true
+dependencies:
+  config:
+    - bhk_card_browser.card_type.default
+    - field.storage.card.field_co_brand
+id: card.default.field_co_brand
+field_name: field_co_brand
+entity_type: card
+bundle: default
+label: 'Can be Co-Branded?'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

@@ -1,0 +1,23 @@
+uuid: 1cb214d3-3488-4b17-8a1c-0509901814c5
+langcode: en
+status: true
+dependencies:
+  config:
+    - bhk_card_browser.card_type.default
+    - field.storage.card.field_greeting_card
+id: card.default.field_greeting_card
+field_name: field_greeting_card
+entity_type: card
+bundle: default
+label: 'Greeting Card is available?'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

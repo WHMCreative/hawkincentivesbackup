@@ -1,0 +1,12 @@
+bhk_card_browser.card_type.*:
+  type: config_entity
+  label: 'Card type config'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    label:
+      type: label
+      label: 'Label'
+    uuid:
+      type: string

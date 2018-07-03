@@ -1,0 +1,196 @@
+<?php
+
+/**
+ * @file
+ * Contains bhk_card_browser.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_help().
+ */
+function bhk_card_browser_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the bhk_card_browser module.
+    case 'help.page.bhk_card_browser':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Provides the Card entity and corresponding functionality for BHK project') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function bhk_card_browser_theme() {
+  $theme = [];
+  $theme['card'] = [
+    'render element' => 'elements',
+    'file' => 'card.page.inc',
+    'template' => 'card',
+  ];
+  $theme['card_content_add_list'] = [
+    'render element' => 'content',
+    'variables' => ['content' => NULL],
+    'file' => 'card.page.inc',
+  ];
+  return $theme;
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK().
+ */
+function bhk_card_browser_theme_suggestions_card(array $variables) {
+  $suggestions = [];
+  $entity = $variables['elements']['#card'];
+  $sanitized_view_mode = strtr($variables['elements']['#view_mode'], '.', '_');
+
+  $suggestions[] = 'card__' . $sanitized_view_mode;
+  $suggestions[] = 'card__' . $entity->bundle();
+  $suggestions[] = 'card__' . $entity->bundle() . '__' . $sanitized_view_mode;
+  $suggestions[] = 'card__' . $entity->id();
+  $suggestions[] = 'card__' . $entity->id() . '__' . $sanitized_view_mode;
+  return $suggestions;
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function bhk_card_browser_form_card_form_alter(array &$form, FormStateInterface $form_state, $form_id) {
+
+  // Fields that should be visible when Prepaid option is selected as the Card
+  // type.
+  $prepaid = [
+    'field_prepaid_type',
+    'field_network',
+    'field_personalization',
+    'field_prepaid_load',
+    'field_cash_back',
+  ];
+
+  // Fields that should be visible when Prepaid or Gift Card is selected as the
+  // Card type.
+  $prepaid_gift_card = [
+    'field_co_brand',
+    'field_cost',
+    'field_greeting_card',
+    'field_virtual',
+  ];
+
+  // Fields that should be visible when OmniCode or Gift Card is selected as the
+  // Card type.
+  $gift_card_omnicodes = [
+    'field_card_category',
+    'field_load_max',
+    'field_currency',
+    'field_issuance',
+  ];
+
+  // Add states for Prepaid fields.
+  foreach ($prepaid as $field_name) {
+    if (isset($form[$field_name])) {
+      $form[$field_name]['#states'] = [
+        'visible' => [
+          ':input[name="field_card_type"]' => ['value' => 'prepaid'],
+        ],
+        'enabled' => [
+          ':input[name="field_card_type"]' => ['value' => 'prepaid'],
+        ],
+      ];
+    }
+  }
+
+  // Add states for Prepaid/Gift Card fields.
+  foreach ($prepaid_gift_card as $field_name) {
+    if (isset($form[$field_name])) {
+      $form[$field_name]['#states'] = [
+        'visible' => [
+          [
+            ':input[name="field_card_type"]' => ['value' => 'prepaid'],
+          ],
+          [
+            ':input[name="field_card_type"]' => ['value' => 'gift_card'],
+          ],
+        ],
+        'enabled' => [
+          [
+            ':input[name="field_card_type"]' => ['value' => 'prepaid'],
+          ],
+          [
+            ':input[name="field_card_type"]' => ['value' => 'gift_card'],
+          ],
+        ],
+      ];
+    }
+  }
+
+  // Add states for OmniCode/Gift Card fields.
+  foreach ($gift_card_omnicodes as $field_name) {
+    if (isset($form[$field_name])) {
+      $form[$field_name]['#states'] = [
+        'visible' => [
+          [
+            ':input[name="field_card_type"]' => ['value' => 'gift_card'],
+          ],
+          [
+            ':input[name="field_card_type"]' => ['value' => 'omnicode'],
+          ],
+        ],
+        'enabled' => [
+          [
+            ':input[name="field_card_type"]' => ['value' => 'gift_card'],
+          ],
+          [
+            ':input[name="field_card_type"]' => ['value' => 'omnicode'],
+          ],
+        ],
+      ];
+    }
+  }
+
+  // Special case for 'field_filtered'.
+  if (isset($form['field_filtered'])) {
+    $form['field_filtered']['#states'] = [
+      'visible' => [
+        ':input[name="field_card_type"]' => ['value' => 'prepaid'],
+        ':input[name="field_prepaid_type"]' => ['value' => 'non_filtered'],
+      ],
+      'enabled' => [
+        ':input[name="field_card_type"]' => ['value' => 'prepaid'],
+        ':input[name="field_prepaid_type"]' => ['value' => 'non_filtered'],
+      ],
+    ];
+  }
+
+  // Special case for 'field_num_mechants'.
+  if (isset($form['field_num_mechants'])) {
+    $form['field_num_mechants']['#states'] = [
+      'visible' => [
+        [
+          ':input[name="field_card_type"]' => ['value' => 'prepaid'],
+          ':input[name="field_prepaid_type"]' => ['value' => 'pre_filtered'],
+        ],
+        [
+          ':input[name="field_card_type"]' => ['value' => 'prepaid'],
+          ':input[name="field_prepaid_type"]' => ['value' => 'filtered'],
+        ],
+      ],
+      'enabled' => [
+        [
+          ':input[name="field_card_type"]' => ['value' => 'prepaid'],
+          ':input[name="field_prepaid_type"]' => ['value' => 'pre_filtered'],
+        ],
+        [
+          ':input[name="field_card_type"]' => ['value' => 'prepaid'],
+          ':input[name="field_prepaid_type"]' => ['value' => 'filtered'],
+        ],
+      ],
+    ];
+  }
+
+}
