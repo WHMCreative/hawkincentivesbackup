@@ -1,68 +1,825 @@
-webpackJsonp([1],[
-/* 0 */
+webpackJsonp([1],{
+
+/***/ 0:
 /***/ (function(module, exports) {
 
 module.exports = jQuery;
 
 /***/ }),
-/* 1 */,
-/* 2 */
+
+/***/ 125:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return rtl; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GetYoDigits; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return transitionend; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_foundation_sites_js_foundation_sticky__ = __webpack_require__(126);
+/**
+ * Sticky component
+ */
 
 
 
 
-// Core Foundation Utilities, utilized in a number of places.
+new __WEBPACK_IMPORTED_MODULE_1_foundation_sites_js_foundation_sticky__["a" /* Sticky */](__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.region-header'));
 
-  /**
-   * Returns a boolean for RTL support
-   */
-function rtl() {
-  return __WEBPACK_IMPORTED_MODULE_0_jquery___default()('html').attr('dir') === 'rtl';
-}
+
+/***/ }),
+
+/***/ 126:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Sticky; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation_util_core__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation_util_mediaQuery__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__foundation_plugin__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__foundation_util_triggers__ = __webpack_require__(127);
+
+
+
+
+
+
+
 
 /**
- * returns a random base-36 uid with namespacing
- * @function
- * @param {Number} length - number of random base-36 digits desired. Increase for more random strings.
- * @param {String} namespace - name of plugin to be incorporated in uid, optional.
- * @default {String} '' - if no plugin name is provided, nothing is appended to the uid.
- * @returns {String} - unique id
+ * Sticky module.
+ * @module foundation.sticky
+ * @requires foundation.util.triggers
+ * @requires foundation.util.mediaQuery
  */
-function GetYoDigits(length, namespace){
-  length = length || 6;
-  return Math.round((Math.pow(36, length + 1) - Math.random() * Math.pow(36, length))).toString(36).slice(1) + (namespace ? `-${namespace}` : '');
-}
 
-function transitionend($elem){
-  var transitions = {
-    'transition': 'transitionend',
-    'WebkitTransition': 'webkitTransitionEnd',
-    'MozTransition': 'transitionend',
-    'OTransition': 'otransitionend'
-  };
-  var elem = document.createElement('div'),
-      end;
+class Sticky extends __WEBPACK_IMPORTED_MODULE_3__foundation_plugin__["a" /* Plugin */] {
+  /**
+   * Creates a new instance of a sticky thing.
+   * @class
+   * @name Sticky
+   * @param {jQuery} element - jQuery object to make sticky.
+   * @param {Object} options - options object passed when creating the element programmatically.
+   */
+  _setup(element, options) {
+    this.$element = element;
+    this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, Sticky.defaults, this.$element.data(), options);
+    this.className = 'Sticky'; // ie9 back compat
 
-  for (var t in transitions){
-    if (typeof elem.style[t] !== 'undefined'){
-      end = transitions[t];
+    // Triggers init is idempotent, just need to make sure it is initialized
+    __WEBPACK_IMPORTED_MODULE_4__foundation_util_triggers__["a" /* Triggers */].init(__WEBPACK_IMPORTED_MODULE_0_jquery___default.a);
+
+    this._init();
+  }
+
+  /**
+   * Initializes the sticky element by adding classes, getting/setting dimensions, breakpoints and attributes
+   * @function
+   * @private
+   */
+  _init() {
+    __WEBPACK_IMPORTED_MODULE_2__foundation_util_mediaQuery__["a" /* MediaQuery */]._init();
+
+    var $parent = this.$element.parent('[data-sticky-container]'),
+        id = this.$element[0].id || Object(__WEBPACK_IMPORTED_MODULE_1__foundation_util_core__["a" /* GetYoDigits */])(6, 'sticky'),
+        _this = this;
+
+    if($parent.length){
+      this.$container = $parent;
+    } else {
+      this.wasWrapped = true;
+      this.$element.wrap(this.options.container);
+      this.$container = this.$element.parent();
+    }
+    this.$container.addClass(this.options.containerClass);
+
+    this.$element.addClass(this.options.stickyClass).attr({ 'data-resize': id, 'data-mutate': id });
+    if (this.options.anchor !== '') {
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#' + _this.options.anchor).attr({ 'data-mutate': id });
+    }
+
+    this.scrollCount = this.options.checkEvery;
+    this.isStuck = false;
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).one('load.zf.sticky', function(){
+      //We calculate the container height to have correct values for anchor points offset calculation.
+      _this.containerHeight = _this.$element.css("display") == "none" ? 0 : _this.$element[0].getBoundingClientRect().height;
+      _this.$container.css('height', _this.containerHeight);
+      _this.elemHeight = _this.containerHeight;
+      if(_this.options.anchor !== ''){
+        _this.$anchor = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#' + _this.options.anchor);
+      }else{
+        _this._parsePoints();
+      }
+
+      _this._setSizes(function(){
+        var scroll = window.pageYOffset;
+        _this._calc(false, scroll);
+        //Unstick the element will ensure that proper classes are set.
+        if (!_this.isStuck) {
+          _this._removeSticky((scroll >= _this.topPoint) ? false : true);
+        }
+      });
+      _this._events(id.split('-').reverse().join('-'));
+    });
+  }
+
+  /**
+   * If using multiple elements as anchors, calculates the top and bottom pixel values the sticky thing should stick and unstick on.
+   * @function
+   * @private
+   */
+  _parsePoints() {
+    var top = this.options.topAnchor == "" ? 1 : this.options.topAnchor,
+        btm = this.options.btmAnchor== "" ? document.documentElement.scrollHeight : this.options.btmAnchor,
+        pts = [top, btm],
+        breaks = {};
+    for (var i = 0, len = pts.length; i < len && pts[i]; i++) {
+      var pt;
+      if (typeof pts[i] === 'number') {
+        pt = pts[i];
+      } else {
+        var place = pts[i].split(':'),
+            anchor = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(`#${place[0]}`);
+
+        pt = anchor.offset().top;
+        if (place[1] && place[1].toLowerCase() === 'bottom') {
+          pt += anchor[0].getBoundingClientRect().height;
+        }
+      }
+      breaks[i] = pt;
+    }
+
+
+    this.points = breaks;
+    return;
+  }
+
+  /**
+   * Adds event handlers for the scrolling element.
+   * @private
+   * @param {String} id - pseudo-random id for unique scroll event listener.
+   */
+  _events(id) {
+    var _this = this,
+        scrollListener = this.scrollListener = `scroll.zf.${id}`;
+    if (this.isOn) { return; }
+    if (this.canStick) {
+      this.isOn = true;
+      __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).off(scrollListener)
+               .on(scrollListener, function(e) {
+                 if (_this.scrollCount === 0) {
+                   _this.scrollCount = _this.options.checkEvery;
+                   _this._setSizes(function() {
+                     _this._calc(false, window.pageYOffset);
+                   });
+                 } else {
+                   _this.scrollCount--;
+                   _this._calc(false, window.pageYOffset);
+                 }
+              });
+    }
+
+    this.$element.off('resizeme.zf.trigger')
+                 .on('resizeme.zf.trigger', function(e, el) {
+                    _this._eventsHandler(id);
+    });
+
+    this.$element.on('mutateme.zf.trigger', function (e, el) {
+        _this._eventsHandler(id);
+    });
+
+    if(this.$anchor) {
+      this.$anchor.on('mutateme.zf.trigger', function (e, el) {
+          _this._eventsHandler(id);
+      });
     }
   }
-  if(end){
-    return end;
-  }else{
-    end = setTimeout(function(){
-      $elem.triggerHandler('transitionend', [$elem]);
-    }, 1);
-    return 'transitionend';
+
+  /**
+   * Handler for events.
+   * @private
+   * @param {String} id - pseudo-random id for unique scroll event listener.
+   */
+  _eventsHandler(id) {
+       var _this = this,
+        scrollListener = this.scrollListener = `scroll.zf.${id}`;
+
+       _this._setSizes(function() {
+       _this._calc(false);
+       if (_this.canStick) {
+         if (!_this.isOn) {
+           _this._events(id);
+         }
+       } else if (_this.isOn) {
+         _this._pauseListeners(scrollListener);
+       }
+     });
+  }
+
+  /**
+   * Removes event handlers for scroll and change events on anchor.
+   * @fires Sticky#pause
+   * @param {String} scrollListener - unique, namespaced scroll listener attached to `window`
+   */
+  _pauseListeners(scrollListener) {
+    this.isOn = false;
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).off(scrollListener);
+
+    /**
+     * Fires when the plugin is paused due to resize event shrinking the view.
+     * @event Sticky#pause
+     * @private
+     */
+     this.$element.trigger('pause.zf.sticky');
+  }
+
+  /**
+   * Called on every `scroll` event and on `_init`
+   * fires functions based on booleans and cached values
+   * @param {Boolean} checkSizes - true if plugin should recalculate sizes and breakpoints.
+   * @param {Number} scroll - current scroll position passed from scroll event cb function. If not passed, defaults to `window.pageYOffset`.
+   */
+  _calc(checkSizes, scroll) {
+    if (checkSizes) { this._setSizes(); }
+
+    if (!this.canStick) {
+      if (this.isStuck) {
+        this._removeSticky(true);
+      }
+      return false;
+    }
+
+    if (!scroll) { scroll = window.pageYOffset; }
+
+    if (scroll >= this.topPoint) {
+      if (scroll <= this.bottomPoint) {
+        if (!this.isStuck) {
+          this._setSticky();
+        }
+      } else {
+        if (this.isStuck) {
+          this._removeSticky(false);
+        }
+      }
+    } else {
+      if (this.isStuck) {
+        this._removeSticky(true);
+      }
+    }
+  }
+
+  /**
+   * Causes the $element to become stuck.
+   * Adds `position: fixed;`, and helper classes.
+   * @fires Sticky#stuckto
+   * @function
+   * @private
+   */
+  _setSticky() {
+    var _this = this,
+        stickTo = this.options.stickTo,
+        mrgn = stickTo === 'top' ? 'marginTop' : 'marginBottom',
+        notStuckTo = stickTo === 'top' ? 'bottom' : 'top',
+        css = {};
+
+    css[mrgn] = `${this.options[mrgn]}em`;
+    css[stickTo] = 0;
+    css[notStuckTo] = 'auto';
+    this.isStuck = true;
+    this.$element.removeClass(`is-anchored is-at-${notStuckTo}`)
+                 .addClass(`is-stuck is-at-${stickTo}`)
+                 .css(css)
+                 /**
+                  * Fires when the $element has become `position: fixed;`
+                  * Namespaced to `top` or `bottom`, e.g. `sticky.zf.stuckto:top`
+                  * @event Sticky#stuckto
+                  */
+                 .trigger(`sticky.zf.stuckto:${stickTo}`);
+    this.$element.on("transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd", function() {
+      _this._setSizes();
+    });
+  }
+
+  /**
+   * Causes the $element to become unstuck.
+   * Removes `position: fixed;`, and helper classes.
+   * Adds other helper classes.
+   * @param {Boolean} isTop - tells the function if the $element should anchor to the top or bottom of its $anchor element.
+   * @fires Sticky#unstuckfrom
+   * @private
+   */
+  _removeSticky(isTop) {
+    var stickTo = this.options.stickTo,
+        stickToTop = stickTo === 'top',
+        css = {},
+        anchorPt = (this.points ? this.points[1] - this.points[0] : this.anchorHeight) - this.elemHeight,
+        mrgn = stickToTop ? 'marginTop' : 'marginBottom',
+        notStuckTo = stickToTop ? 'bottom' : 'top',
+        topOrBottom = isTop ? 'top' : 'bottom';
+
+    css[mrgn] = 0;
+
+    css['bottom'] = 'auto';
+    if(isTop) {
+      css['top'] = 0;
+    } else {
+      css['top'] = anchorPt;
+    }
+
+    this.isStuck = false;
+    this.$element.removeClass(`is-stuck is-at-${stickTo}`)
+                 .addClass(`is-anchored is-at-${topOrBottom}`)
+                 .css(css)
+                 /**
+                  * Fires when the $element has become anchored.
+                  * Namespaced to `top` or `bottom`, e.g. `sticky.zf.unstuckfrom:bottom`
+                  * @event Sticky#unstuckfrom
+                  */
+                 .trigger(`sticky.zf.unstuckfrom:${topOrBottom}`);
+  }
+
+  /**
+   * Sets the $element and $container sizes for plugin.
+   * Calls `_setBreakPoints`.
+   * @param {Function} cb - optional callback function to fire on completion of `_setBreakPoints`.
+   * @private
+   */
+  _setSizes(cb) {
+    this.canStick = __WEBPACK_IMPORTED_MODULE_2__foundation_util_mediaQuery__["a" /* MediaQuery */].is(this.options.stickyOn);
+    if (!this.canStick) {
+      if (cb && typeof cb === 'function') { cb(); }
+    }
+    var _this = this,
+        newElemWidth = this.$container[0].getBoundingClientRect().width,
+        comp = window.getComputedStyle(this.$container[0]),
+        pdngl = parseInt(comp['padding-left'], 10),
+        pdngr = parseInt(comp['padding-right'], 10);
+
+    if (this.$anchor && this.$anchor.length) {
+      this.anchorHeight = this.$anchor[0].getBoundingClientRect().height;
+    } else {
+      this._parsePoints();
+    }
+
+    this.$element.css({
+      'max-width': `${newElemWidth - pdngl - pdngr}px`
+    });
+
+    var newContainerHeight = this.$element[0].getBoundingClientRect().height || this.containerHeight;
+    if (this.$element.css("display") == "none") {
+      newContainerHeight = 0;
+    }
+    this.containerHeight = newContainerHeight;
+    this.$container.css({
+      height: newContainerHeight
+    });
+    this.elemHeight = newContainerHeight;
+
+    if (!this.isStuck) {
+      if (this.$element.hasClass('is-at-bottom')) {
+        var anchorPt = (this.points ? this.points[1] - this.$container.offset().top : this.anchorHeight) - this.elemHeight;
+        this.$element.css('top', anchorPt);
+      }
+    }
+
+    this._setBreakPoints(newContainerHeight, function() {
+      if (cb && typeof cb === 'function') { cb(); }
+    });
+  }
+
+  /**
+   * Sets the upper and lower breakpoints for the element to become sticky/unsticky.
+   * @param {Number} elemHeight - px value for sticky.$element height, calculated by `_setSizes`.
+   * @param {Function} cb - optional callback function to be called on completion.
+   * @private
+   */
+  _setBreakPoints(elemHeight, cb) {
+    if (!this.canStick) {
+      if (cb && typeof cb === 'function') { cb(); }
+      else { return false; }
+    }
+    var mTop = emCalc(this.options.marginTop),
+        mBtm = emCalc(this.options.marginBottom),
+        topPoint = this.points ? this.points[0] : this.$anchor.offset().top,
+        bottomPoint = this.points ? this.points[1] : topPoint + this.anchorHeight,
+        // topPoint = this.$anchor.offset().top || this.points[0],
+        // bottomPoint = topPoint + this.anchorHeight || this.points[1],
+        winHeight = window.innerHeight;
+
+    if (this.options.stickTo === 'top') {
+      topPoint -= mTop;
+      bottomPoint -= (elemHeight + mTop);
+    } else if (this.options.stickTo === 'bottom') {
+      topPoint -= (winHeight - (elemHeight + mBtm));
+      bottomPoint -= (winHeight - mBtm);
+    } else {
+      //this would be the stickTo: both option... tricky
+    }
+
+    this.topPoint = topPoint;
+    this.bottomPoint = bottomPoint;
+
+    if (cb && typeof cb === 'function') { cb(); }
+  }
+
+  /**
+   * Destroys the current sticky element.
+   * Resets the element to the top position first.
+   * Removes event listeners, JS-added css properties and classes, and unwraps the $element if the JS added the $container.
+   * @function
+   */
+  _destroy() {
+    this._removeSticky(true);
+
+    this.$element.removeClass(`${this.options.stickyClass} is-anchored is-at-top`)
+                 .css({
+                   height: '',
+                   top: '',
+                   bottom: '',
+                   'max-width': ''
+                 })
+                 .off('resizeme.zf.trigger')
+                 .off('mutateme.zf.trigger');
+    if (this.$anchor && this.$anchor.length) {
+      this.$anchor.off('change.zf.sticky');
+    }
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).off(this.scrollListener);
+
+    if (this.wasWrapped) {
+      this.$element.unwrap();
+    } else {
+      this.$container.removeClass(this.options.containerClass)
+                     .css({
+                       height: ''
+                     });
+    }
+  }
+}
+
+Sticky.defaults = {
+  /**
+   * Customizable container template. Add your own classes for styling and sizing.
+   * @option
+   * @type {string}
+   * @default '&lt;div data-sticky-container&gt;&lt;/div&gt;'
+   */
+  container: '<div data-sticky-container></div>',
+  /**
+   * Location in the view the element sticks to. Can be `'top'` or `'bottom'`.
+   * @option
+   * @type {string}
+   * @default 'top'
+   */
+  stickTo: 'top',
+  /**
+   * If anchored to a single element, the id of that element.
+   * @option
+   * @type {string}
+   * @default ''
+   */
+  anchor: '',
+  /**
+   * If using more than one element as anchor points, the id of the top anchor.
+   * @option
+   * @type {string}
+   * @default ''
+   */
+  topAnchor: '',
+  /**
+   * If using more than one element as anchor points, the id of the bottom anchor.
+   * @option
+   * @type {string}
+   * @default ''
+   */
+  btmAnchor: '',
+  /**
+   * Margin, in `em`'s to apply to the top of the element when it becomes sticky.
+   * @option
+   * @type {number}
+   * @default 1
+   */
+  marginTop: 1,
+  /**
+   * Margin, in `em`'s to apply to the bottom of the element when it becomes sticky.
+   * @option
+   * @type {number}
+   * @default 1
+   */
+  marginBottom: 1,
+  /**
+   * Breakpoint string that is the minimum screen size an element should become sticky.
+   * @option
+   * @type {string}
+   * @default 'medium'
+   */
+  stickyOn: 'medium',
+  /**
+   * Class applied to sticky element, and removed on destruction. Foundation defaults to `sticky`.
+   * @option
+   * @type {string}
+   * @default 'sticky'
+   */
+  stickyClass: 'sticky',
+  /**
+   * Class applied to sticky container. Foundation defaults to `sticky-container`.
+   * @option
+   * @type {string}
+   * @default 'sticky-container'
+   */
+  containerClass: 'sticky-container',
+  /**
+   * Number of scroll events between the plugin's recalculating sticky points. Setting it to `0` will cause it to recalc every scroll event, setting it to `-1` will prevent recalc on scroll.
+   * @option
+   * @type {number}
+   * @default -1
+   */
+  checkEvery: -1
+};
+
+/**
+ * Helper function to calculate em values
+ * @param Number {em} - number of em's to calculate into pixels
+ */
+function emCalc(em) {
+  return parseInt(window.getComputedStyle(document.body, null).fontSize, 10) * em;
+}
+
+
+
+
+/***/ }),
+
+/***/ 127:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Triggers; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation_util_motion__ = __webpack_require__(46);
+
+
+
+
+
+const MutationObserver = (function () {
+  var prefixes = ['WebKit', 'Moz', 'O', 'Ms', ''];
+  for (var i=0; i < prefixes.length; i++) {
+    if (`${prefixes[i]}MutationObserver` in window) {
+      return window[`${prefixes[i]}MutationObserver`];
+    }
+  }
+  return false;
+}());
+
+const triggers = (el, type) => {
+  el.data(type).split(' ').forEach(id => {
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default()(`#${id}`)[ type === 'close' ? 'trigger' : 'triggerHandler'](`${type}.zf.trigger`, [el]);
+  });
+};
+
+var Triggers = {
+  Listeners: {
+    Basic: {},
+    Global: {}
+  },
+  Initializers: {}
+}
+
+Triggers.Listeners.Basic  = {
+  openListener: function() {
+    triggers(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this), 'open');
+  },
+  closeListener: function() {
+    let id = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).data('close');
+    if (id) {
+      triggers(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this), 'close');
+    }
+    else {
+      __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).trigger('close.zf.trigger');
+    }
+  },
+  toggleListener: function() {
+    let id = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).data('toggle');
+    if (id) {
+      triggers(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this), 'toggle');
+    } else {
+      __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).trigger('toggle.zf.trigger');
+    }
+  },
+  closeableListener: function(e) {
+    e.stopPropagation();
+    let animation = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).data('closable');
+
+    if(animation !== ''){
+      __WEBPACK_IMPORTED_MODULE_1__foundation_util_motion__["a" /* Motion */].animateOut(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this), animation, function() {
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).trigger('closed.zf');
+      });
+    }else{
+      __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).fadeOut().trigger('closed.zf');
+    }
+  },
+  toggleFocusListener: function() {
+    let id = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).data('toggle-focus');
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default()(`#${id}`).triggerHandler('toggle.zf.trigger', [__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this)]);
+  }
+};
+
+// Elements with [data-open] will reveal a plugin that supports it when clicked.
+Triggers.Initializers.addOpenListener = ($elem) => {
+  $elem.off('click.zf.trigger', Triggers.Listeners.Basic.openListener);
+  $elem.on('click.zf.trigger', '[data-open]', Triggers.Listeners.Basic.openListener);
+}
+
+// Elements with [data-close] will close a plugin that supports it when clicked.
+// If used without a value on [data-close], the event will bubble, allowing it to close a parent component.
+Triggers.Initializers.addCloseListener = ($elem) => {
+  $elem.off('click.zf.trigger', Triggers.Listeners.Basic.closeListener);
+  $elem.on('click.zf.trigger', '[data-close]', Triggers.Listeners.Basic.closeListener);
+}
+
+// Elements with [data-toggle] will toggle a plugin that supports it when clicked.
+Triggers.Initializers.addToggleListener = ($elem) => {
+  $elem.off('click.zf.trigger', Triggers.Listeners.Basic.toggleListener);
+  $elem.on('click.zf.trigger', '[data-toggle]', Triggers.Listeners.Basic.toggleListener);
+}
+
+// Elements with [data-closable] will respond to close.zf.trigger events.
+Triggers.Initializers.addCloseableListener = ($elem) => {
+  $elem.off('close.zf.trigger', Triggers.Listeners.Basic.closeableListener);
+  $elem.on('close.zf.trigger', '[data-closeable], [data-closable]', Triggers.Listeners.Basic.closeableListener);
+}
+
+// Elements with [data-toggle-focus] will respond to coming in and out of focus
+Triggers.Initializers.addToggleFocusListener = ($elem) => {
+  $elem.off('focus.zf.trigger blur.zf.trigger', Triggers.Listeners.Basic.toggleFocusListener);
+  $elem.on('focus.zf.trigger blur.zf.trigger', '[data-toggle-focus]', Triggers.Listeners.Basic.toggleFocusListener);
+}
+
+
+
+// More Global/complex listeners and triggers
+Triggers.Listeners.Global  = {
+  resizeListener: function($nodes) {
+    if(!MutationObserver){//fallback for IE 9
+      $nodes.each(function(){
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).triggerHandler('resizeme.zf.trigger');
+      });
+    }
+    //trigger all listening elements and signal a resize event
+    $nodes.attr('data-events', "resize");
+  },
+  scrollListener: function($nodes) {
+    if(!MutationObserver){//fallback for IE 9
+      $nodes.each(function(){
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).triggerHandler('scrollme.zf.trigger');
+      });
+    }
+    //trigger all listening elements and signal a scroll event
+    $nodes.attr('data-events', "scroll");
+  },
+  closeMeListener: function(e, pluginId){
+    let plugin = e.namespace.split('.')[0];
+    let plugins = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(`[data-${plugin}]`).not(`[data-yeti-box="${pluginId}"]`);
+
+    plugins.each(function(){
+      let _this = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this);
+      _this.triggerHandler('close.zf.trigger', [_this]);
+    });
+  }
+}
+
+// Global, parses whole document.
+Triggers.Initializers.addClosemeListener = function(pluginName) {
+  var yetiBoxes = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('[data-yeti-box]'),
+      plugNames = ['dropdown', 'tooltip', 'reveal'];
+
+  if(pluginName){
+    if(typeof pluginName === 'string'){
+      plugNames.push(pluginName);
+    }else if(typeof pluginName === 'object' && typeof pluginName[0] === 'string'){
+      plugNames.concat(pluginName);
+    }else{
+      console.error('Plugin names must be strings');
+    }
+  }
+  if(yetiBoxes.length){
+    let listeners = plugNames.map((name) => {
+      return `closeme.zf.${name}`;
+    }).join(' ');
+
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).off(listeners).on(listeners, Triggers.Listeners.Global.closeMeListener);
+  }
+}
+
+function debounceGlobalListener(debounce, trigger, listener) {
+  let timer, args = Array.prototype.slice.call(arguments, 3);
+  __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).off(trigger).on(trigger, function(e) {
+    if (timer) { clearTimeout(timer); }
+    timer = setTimeout(function(){
+      listener.apply(null, args);
+    }, debounce || 10);//default time to emit scroll event
+  });
+}
+
+Triggers.Initializers.addResizeListener = function(debounce){
+  let $nodes = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('[data-resize]');
+  if($nodes.length){
+    debounceGlobalListener(debounce, 'resize.zf.trigger', Triggers.Listeners.Global.resizeListener, $nodes);
+  }
+}
+
+Triggers.Initializers.addScrollListener = function(debounce){
+  let $nodes = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('[data-scroll]');
+  if($nodes.length){
+    debounceGlobalListener(debounce, 'scroll.zf.trigger', Triggers.Listeners.Global.scrollListener, $nodes);
+  }
+}
+
+Triggers.Initializers.addMutationEventsListener = function($elem) {
+  if(!MutationObserver){ return false; }
+  let $nodes = $elem.find('[data-resize], [data-scroll], [data-mutate]');
+
+  //element callback
+  var listeningElementsMutation = function (mutationRecordsList) {
+    var $target = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(mutationRecordsList[0].target);
+
+    //trigger the event handler for the element depending on type
+    switch (mutationRecordsList[0].type) {
+      case "attributes":
+        if ($target.attr("data-events") === "scroll" && mutationRecordsList[0].attributeName === "data-events") {
+          $target.triggerHandler('scrollme.zf.trigger', [$target, window.pageYOffset]);
+        }
+        if ($target.attr("data-events") === "resize" && mutationRecordsList[0].attributeName === "data-events") {
+          $target.triggerHandler('resizeme.zf.trigger', [$target]);
+         }
+        if (mutationRecordsList[0].attributeName === "style") {
+          $target.closest("[data-mutate]").attr("data-events","mutate");
+          $target.closest("[data-mutate]").triggerHandler('mutateme.zf.trigger', [$target.closest("[data-mutate]")]);
+        }
+        break;
+
+      case "childList":
+        $target.closest("[data-mutate]").attr("data-events","mutate");
+        $target.closest("[data-mutate]").triggerHandler('mutateme.zf.trigger', [$target.closest("[data-mutate]")]);
+        break;
+
+      default:
+        return false;
+      //nothing
+    }
+  };
+
+  if ($nodes.length) {
+    //for each element that needs to listen for resizing, scrolling, or mutation add a single observer
+    for (var i = 0; i <= $nodes.length - 1; i++) {
+      var elementObserver = new MutationObserver(listeningElementsMutation);
+      elementObserver.observe($nodes[i], { attributes: true, childList: true, characterData: false, subtree: true, attributeFilter: ["data-events", "style"] });
+    }
+  }
+}
+
+Triggers.Initializers.addSimpleListeners = function() {
+  let $document = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document);
+
+  Triggers.Initializers.addOpenListener($document);
+  Triggers.Initializers.addCloseListener($document);
+  Triggers.Initializers.addToggleListener($document);
+  Triggers.Initializers.addCloseableListener($document);
+  Triggers.Initializers.addToggleFocusListener($document);
+
+}
+
+Triggers.Initializers.addGlobalListeners = function() {
+  let $document = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document);
+  Triggers.Initializers.addMutationEventsListener($document);
+  Triggers.Initializers.addResizeListener();
+  Triggers.Initializers.addScrollListener();
+  Triggers.Initializers.addClosemeListener();
+}
+
+
+Triggers.init = function($, Foundation) {
+  if (typeof($.triggersInitialized) === 'undefined') {
+    let $document = $(document);
+
+    if(document.readyState === "complete") {
+      Triggers.Initializers.addSimpleListeners();
+      Triggers.Initializers.addGlobalListeners();
+    } else {
+      $(window).on('load', () => {
+        Triggers.Initializers.addSimpleListeners();
+        Triggers.Initializers.addGlobalListeners();
+      });
+    }
+
+
+    $.triggersInitialized = true;
+  }
+
+  if(Foundation) {
+    Foundation.Triggers = Triggers;
+    // Legacy included to be backwards compatible for now.
+    Foundation.IHearYou = Triggers.Initializers.addGlobalListeners
   }
 }
 
@@ -70,23 +827,8 @@ function transitionend($elem){
 
 
 /***/ }),
-/* 3 */,
-/* 4 */,
-/* 5 */,
-/* 6 */,
-/* 7 */,
-/* 8 */,
-/* 9 */,
-/* 10 */,
-/* 11 */,
-/* 12 */,
-/* 13 */,
-/* 14 */,
-/* 15 */,
-/* 16 */,
-/* 17 */,
-/* 18 */,
-/* 19 */
+
+/***/ 19:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -330,7 +1072,73 @@ function parseStyleToObject(str) {
 
 
 /***/ }),
-/* 20 */
+
+/***/ 2:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return rtl; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GetYoDigits; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return transitionend; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
+
+
+
+
+// Core Foundation Utilities, utilized in a number of places.
+
+  /**
+   * Returns a boolean for RTL support
+   */
+function rtl() {
+  return __WEBPACK_IMPORTED_MODULE_0_jquery___default()('html').attr('dir') === 'rtl';
+}
+
+/**
+ * returns a random base-36 uid with namespacing
+ * @function
+ * @param {Number} length - number of random base-36 digits desired. Increase for more random strings.
+ * @param {String} namespace - name of plugin to be incorporated in uid, optional.
+ * @default {String} '' - if no plugin name is provided, nothing is appended to the uid.
+ * @returns {String} - unique id
+ */
+function GetYoDigits(length, namespace){
+  length = length || 6;
+  return Math.round((Math.pow(36, length + 1) - Math.random() * Math.pow(36, length))).toString(36).slice(1) + (namespace ? `-${namespace}` : '');
+}
+
+function transitionend($elem){
+  var transitions = {
+    'transition': 'transitionend',
+    'WebkitTransition': 'webkitTransitionEnd',
+    'MozTransition': 'transitionend',
+    'OTransition': 'otransitionend'
+  };
+  var elem = document.createElement('div'),
+      end;
+
+  for (var t in transitions){
+    if (typeof elem.style[t] !== 'undefined'){
+      end = transitions[t];
+    }
+  }
+  if(end){
+    return end;
+  }else{
+    end = setTimeout(function(){
+      $elem.triggerHandler('transitionend', [$elem]);
+    }, 1);
+    return 'transitionend';
+  }
+}
+
+
+
+
+/***/ }),
+
+/***/ 20:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -570,7 +1378,8 @@ function GetExplicitOffsets(element, anchor, position, alignment, vOffset, hOffs
 
 
 /***/ }),
-/* 21 */
+
+/***/ 21:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -743,7 +1552,8 @@ function getKeyCodes(kcs) {
 
 
 /***/ }),
-/* 22 */
+
+/***/ 22:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -820,26 +1630,8 @@ const Nest = {
 
 
 /***/ }),
-/* 23 */,
-/* 24 */,
-/* 25 */,
-/* 26 */,
-/* 27 */,
-/* 28 */,
-/* 29 */,
-/* 30 */,
-/* 31 */,
-/* 32 */,
-/* 33 */,
-/* 34 */,
-/* 35 */,
-/* 36 */,
-/* 37 */,
-/* 38 */,
-/* 39 */,
-/* 40 */,
-/* 41 */,
-/* 42 */
+
+/***/ 42:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -847,7 +1639,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation_setup__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__skip_link__ = __webpack_require__(48);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__magnific_popup__ = __webpack_require__(49);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__menus_example__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sticky__ = __webpack_require__(125);
 /**
  * theme.js
  * Entry point for all theme related js.
@@ -856,13 +1648,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-// EXAMPLE FOUNDATION COMPONENT USAGE
+// FOUNDATION COMPONENT USAGE
 
 
 
 
 /***/ }),
-/* 43 */
+
+/***/ 43:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -924,7 +1717,8 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).foundation();
 
 
 /***/ }),
-/* 44 */
+
+/***/ 44:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1273,7 +2067,8 @@ function hyphenate(str) {
 
 
 /***/ }),
-/* 45 */
+
+/***/ 45:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1328,7 +2123,8 @@ function onImagesLoaded(images, callback){
 
 
 /***/ }),
-/* 46 */
+
+/***/ 46:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1444,7 +2240,8 @@ function animate(isIn, element, animation, cb) {
 
 
 /***/ }),
-/* 47 */
+
+/***/ 47:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1502,7 +2299,8 @@ function Timer(elem, options, cb) {
 
 
 /***/ }),
-/* 48 */
+
+/***/ 48:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1528,7 +2326,8 @@ $skipLink.on('click', function(e) {
 });
 
 /***/ }),
-/* 49 */
+
+/***/ 49:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1546,13 +2345,16 @@ $skipLink.on('click', function(e) {
 Drupal.behaviors.magnificPopup = {
   attach: function (context, settings) {
 
-    __WEBPACK_IMPORTED_MODULE_0_jquery___default()('a.marketo-modal-cta-link').once('marketo-modal').on('click', function(e) {
+    let $link = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('a.marketo-modal-cta-link', context);
+    if(!$link.length) return;
+
+    $link.on('click', function(e) {
       let $parent_paragraph = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).parents('.paragraph--type--link-form-modal'),
-          modalSrc = $parent_paragraph.find('.paragraph--type--reference-marketo-form');
-      if (modalSrc.length) {
+        $modalSrc = $parent_paragraph.find('.paragraph--type--reference-marketo-form');
+      if ($modalSrc.length) {
         __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.magnificPopup.open({
           items: {
-            src: modalSrc,
+            src: $modalSrc,
             type: 'inline'
           },
           closeBtnInside: false,
@@ -1560,13 +2362,13 @@ Drupal.behaviors.magnificPopup = {
       }
       e.preventDefault();
     });
-
   }
 };
 
 
 /***/ }),
-/* 50 */
+
+/***/ 50:
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(__webpack_provided_window_dot_jQuery) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! Magnific Popup - v1.1.0 - 2016-02-20
@@ -3435,501 +4237,8 @@ $.magnificPopup.registerModule(RETINA_NS, {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 51 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_foundation_sites_js_foundation_dropdownMenu__ = __webpack_require__(52);
-/**
- * EXAMPLE FOUNDATION COMPONENT USAGE
- *
- * Include all of your dependencies. For any foundation components this will include
- * jQuery and the foundation setup js file.
- *
- * The include the module from the `foundation-sites/js/` dir as shown below.
- */
-
-
-
-
-new __WEBPACK_IMPORTED_MODULE_1_foundation_sites_js_foundation_dropdownMenu__["a" /* DropdownMenu */](__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.menu--main > ul'));
-
-/***/ }),
-/* 52 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DropdownMenu; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation_util_keyboard__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation_util_nest__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__foundation_util_box__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__foundation_util_core__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__foundation_plugin__ = __webpack_require__(53);
-
-
-
-
-
-
-
-
-
-
-/**
- * DropdownMenu module.
- * @module foundation.dropdown-menu
- * @requires foundation.util.keyboard
- * @requires foundation.util.box
- * @requires foundation.util.nest
- */
-
-class DropdownMenu extends __WEBPACK_IMPORTED_MODULE_5__foundation_plugin__["a" /* Plugin */] {
-  /**
-   * Creates a new instance of DropdownMenu.
-   * @class
-   * @name DropdownMenu
-   * @fires DropdownMenu#init
-   * @param {jQuery} element - jQuery object to make into a dropdown menu.
-   * @param {Object} options - Overrides to the default plugin settings.
-   */
-  _setup(element, options) {
-    this.$element = element;
-    this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, DropdownMenu.defaults, this.$element.data(), options);
-    this.className = 'DropdownMenu'; // ie9 back compat
-
-    this._init();
-
-    __WEBPACK_IMPORTED_MODULE_1__foundation_util_keyboard__["a" /* Keyboard */].register('DropdownMenu', {
-      'ENTER': 'open',
-      'SPACE': 'open',
-      'ARROW_RIGHT': 'next',
-      'ARROW_UP': 'up',
-      'ARROW_DOWN': 'down',
-      'ARROW_LEFT': 'previous',
-      'ESCAPE': 'close'
-    });
-  }
-
-  /**
-   * Initializes the plugin, and calls _prepareMenu
-   * @private
-   * @function
-   */
-  _init() {
-    __WEBPACK_IMPORTED_MODULE_2__foundation_util_nest__["a" /* Nest */].Feather(this.$element, 'dropdown');
-
-    var subs = this.$element.find('li.is-dropdown-submenu-parent');
-    this.$element.children('.is-dropdown-submenu-parent').children('.is-dropdown-submenu').addClass('first-sub');
-
-    this.$menuItems = this.$element.find('[role="menuitem"]');
-    this.$tabs = this.$element.children('[role="menuitem"]');
-    this.$tabs.find('ul.is-dropdown-submenu').addClass(this.options.verticalClass);
-
-    if (this.options.alignment === 'auto') {
-        if (this.$element.hasClass(this.options.rightClass) || Object(__WEBPACK_IMPORTED_MODULE_4__foundation_util_core__["b" /* rtl */])() || this.$element.parents('.top-bar-right').is('*')) {
-            this.options.alignment = 'right';
-            subs.addClass('opens-left');
-        } else {
-            this.options.alignment = 'left';
-            subs.addClass('opens-right');
-        }
-    } else {
-      if (this.options.alignment === 'right') {
-          subs.addClass('opens-left');
-      } else {
-          subs.addClass('opens-right');
-      }
-    }
-    this.changed = false;
-    this._events();
-  };
-
-  _isVertical() {
-    return this.$tabs.css('display') === 'block' || this.$element.css('flex-direction') === 'column';
-  }
-
-  _isRtl() {
-    return this.$element.hasClass('align-right') || (Object(__WEBPACK_IMPORTED_MODULE_4__foundation_util_core__["b" /* rtl */])() && !this.$element.hasClass('align-left'));
-  }
-
-  /**
-   * Adds event listeners to elements within the menu
-   * @private
-   * @function
-   */
-  _events() {
-    var _this = this,
-        hasTouch = 'ontouchstart' in window || (typeof window.ontouchstart !== 'undefined'),
-        parClass = 'is-dropdown-submenu-parent';
-
-    // used for onClick and in the keyboard handlers
-    var handleClickFn = function(e) {
-      var $elem = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(e.target).parentsUntil('ul', `.${parClass}`),
-          hasSub = $elem.hasClass(parClass),
-          hasClicked = $elem.attr('data-is-click') === 'true',
-          $sub = $elem.children('.is-dropdown-submenu');
-
-      if (hasSub) {
-        if (hasClicked) {
-          if (!_this.options.closeOnClick || (!_this.options.clickOpen && !hasTouch) || (_this.options.forceFollow && hasTouch)) { return; }
-          else {
-            e.stopImmediatePropagation();
-            e.preventDefault();
-            _this._hide($elem);
-          }
-        } else {
-          e.preventDefault();
-          e.stopImmediatePropagation();
-          _this._show($sub);
-          $elem.add($elem.parentsUntil(_this.$element, `.${parClass}`)).attr('data-is-click', true);
-        }
-      }
-    };
-
-    if (this.options.clickOpen || hasTouch) {
-      this.$menuItems.on('click.zf.dropdownmenu touchstart.zf.dropdownmenu', handleClickFn);
-    }
-
-    // Handle Leaf element Clicks
-    if(_this.options.closeOnClickInside){
-      this.$menuItems.on('click.zf.dropdownmenu', function(e) {
-        var $elem = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this),
-            hasSub = $elem.hasClass(parClass);
-        if(!hasSub){
-          _this._hide();
-        }
-      });
-    }
-
-    if (!this.options.disableHover) {
-      this.$menuItems.on('mouseenter.zf.dropdownmenu', function(e) {
-        var $elem = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this),
-            hasSub = $elem.hasClass(parClass);
-
-        if (hasSub) {
-          clearTimeout($elem.data('_delay'));
-          $elem.data('_delay', setTimeout(function() {
-            _this._show($elem.children('.is-dropdown-submenu'));
-          }, _this.options.hoverDelay));
-        }
-      }).on('mouseleave.zf.dropdownmenu', function(e) {
-        var $elem = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this),
-            hasSub = $elem.hasClass(parClass);
-        if (hasSub && _this.options.autoclose) {
-          if ($elem.attr('data-is-click') === 'true' && _this.options.clickOpen) { return false; }
-
-          clearTimeout($elem.data('_delay'));
-          $elem.data('_delay', setTimeout(function() {
-            _this._hide($elem);
-          }, _this.options.closingTime));
-        }
-      });
-    }
-    this.$menuItems.on('keydown.zf.dropdownmenu', function(e) {
-      var $element = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(e.target).parentsUntil('ul', '[role="menuitem"]'),
-          isTab = _this.$tabs.index($element) > -1,
-          $elements = isTab ? _this.$tabs : $element.siblings('li').add($element),
-          $prevElement,
-          $nextElement;
-
-      $elements.each(function(i) {
-        if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).is($element)) {
-          $prevElement = $elements.eq(i-1);
-          $nextElement = $elements.eq(i+1);
-          return;
-        }
-      });
-
-      var nextSibling = function() {
-        $nextElement.children('a:first').focus();
-        e.preventDefault();
-      }, prevSibling = function() {
-        $prevElement.children('a:first').focus();
-        e.preventDefault();
-      }, openSub = function() {
-        var $sub = $element.children('ul.is-dropdown-submenu');
-        if ($sub.length) {
-          _this._show($sub);
-          $element.find('li > a:first').focus();
-          e.preventDefault();
-        } else { return; }
-      }, closeSub = function() {
-        //if ($element.is(':first-child')) {
-        var close = $element.parent('ul').parent('li');
-        close.children('a:first').focus();
-        _this._hide(close);
-        e.preventDefault();
-        //}
-      };
-      var functions = {
-        open: openSub,
-        close: function() {
-          _this._hide(_this.$element);
-          _this.$menuItems.eq(0).children('a').focus(); // focus to first element
-          e.preventDefault();
-        },
-        handled: function() {
-          e.stopImmediatePropagation();
-        }
-      };
-
-      if (isTab) {
-        if (_this._isVertical()) { // vertical menu
-          if (_this._isRtl()) { // right aligned
-            __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend(functions, {
-              down: nextSibling,
-              up: prevSibling,
-              next: closeSub,
-              previous: openSub
-            });
-          } else { // left aligned
-            __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend(functions, {
-              down: nextSibling,
-              up: prevSibling,
-              next: openSub,
-              previous: closeSub
-            });
-          }
-        } else { // horizontal menu
-          if (_this._isRtl()) { // right aligned
-            __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend(functions, {
-              next: prevSibling,
-              previous: nextSibling,
-              down: openSub,
-              up: closeSub
-            });
-          } else { // left aligned
-            __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend(functions, {
-              next: nextSibling,
-              previous: prevSibling,
-              down: openSub,
-              up: closeSub
-            });
-          }
-        }
-      } else { // not tabs -> one sub
-        if (_this._isRtl()) { // right aligned
-          __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend(functions, {
-            next: closeSub,
-            previous: openSub,
-            down: nextSibling,
-            up: prevSibling
-          });
-        } else { // left aligned
-          __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend(functions, {
-            next: openSub,
-            previous: closeSub,
-            down: nextSibling,
-            up: prevSibling
-          });
-        }
-      }
-      __WEBPACK_IMPORTED_MODULE_1__foundation_util_keyboard__["a" /* Keyboard */].handleKey(e, 'DropdownMenu', functions);
-
-    });
-  }
-
-  /**
-   * Adds an event handler to the body to close any dropdowns on a click.
-   * @function
-   * @private
-   */
-  _addBodyHandler() {
-    var $body = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document.body),
-        _this = this;
-    $body.off('mouseup.zf.dropdownmenu touchend.zf.dropdownmenu')
-         .on('mouseup.zf.dropdownmenu touchend.zf.dropdownmenu', function(e) {
-           var $link = _this.$element.find(e.target);
-           if ($link.length) { return; }
-
-           _this._hide();
-           $body.off('mouseup.zf.dropdownmenu touchend.zf.dropdownmenu');
-         });
-  }
-
-  /**
-   * Opens a dropdown pane, and checks for collisions first.
-   * @param {jQuery} $sub - ul element that is a submenu to show
-   * @function
-   * @private
-   * @fires DropdownMenu#show
-   */
-  _show($sub) {
-    var idx = this.$tabs.index(this.$tabs.filter(function(i, el) {
-      return __WEBPACK_IMPORTED_MODULE_0_jquery___default()(el).find($sub).length > 0;
-    }));
-    var $sibs = $sub.parent('li.is-dropdown-submenu-parent').siblings('li.is-dropdown-submenu-parent');
-    this._hide($sibs, idx);
-    $sub.css('visibility', 'hidden').addClass('js-dropdown-active')
-        .parent('li.is-dropdown-submenu-parent').addClass('is-active');
-    var clear = __WEBPACK_IMPORTED_MODULE_3__foundation_util_box__["a" /* Box */].ImNotTouchingYou($sub, null, true);
-    if (!clear) {
-      var oldClass = this.options.alignment === 'left' ? '-right' : '-left',
-          $parentLi = $sub.parent('.is-dropdown-submenu-parent');
-      $parentLi.removeClass(`opens${oldClass}`).addClass(`opens-${this.options.alignment}`);
-      clear = __WEBPACK_IMPORTED_MODULE_3__foundation_util_box__["a" /* Box */].ImNotTouchingYou($sub, null, true);
-      if (!clear) {
-        $parentLi.removeClass(`opens-${this.options.alignment}`).addClass('opens-inner');
-      }
-      this.changed = true;
-    }
-    $sub.css('visibility', '');
-    if (this.options.closeOnClick) { this._addBodyHandler(); }
-    /**
-     * Fires when the new dropdown pane is visible.
-     * @event DropdownMenu#show
-     */
-    this.$element.trigger('show.zf.dropdownmenu', [$sub]);
-  }
-
-  /**
-   * Hides a single, currently open dropdown pane, if passed a parameter, otherwise, hides everything.
-   * @function
-   * @param {jQuery} $elem - element with a submenu to hide
-   * @param {Number} idx - index of the $tabs collection to hide
-   * @private
-   */
-  _hide($elem, idx) {
-    var $toClose;
-    if ($elem && $elem.length) {
-      $toClose = $elem;
-    } else if (idx !== undefined) {
-      $toClose = this.$tabs.not(function(i, el) {
-        return i === idx;
-      });
-    }
-    else {
-      $toClose = this.$element;
-    }
-    var somethingToClose = $toClose.hasClass('is-active') || $toClose.find('.is-active').length > 0;
-
-    if (somethingToClose) {
-      $toClose.find('li.is-active').add($toClose).attr({
-        'data-is-click': false
-      }).removeClass('is-active');
-
-      $toClose.find('ul.js-dropdown-active').removeClass('js-dropdown-active');
-
-      if (this.changed || $toClose.find('opens-inner').length) {
-        var oldClass = this.options.alignment === 'left' ? 'right' : 'left';
-        $toClose.find('li.is-dropdown-submenu-parent').add($toClose)
-                .removeClass(`opens-inner opens-${this.options.alignment}`)
-                .addClass(`opens-${oldClass}`);
-        this.changed = false;
-      }
-      /**
-       * Fires when the open menus are closed.
-       * @event DropdownMenu#hide
-       */
-      this.$element.trigger('hide.zf.dropdownmenu', [$toClose]);
-    }
-  }
-
-  /**
-   * Destroys the plugin.
-   * @function
-   */
-  _destroy() {
-    this.$menuItems.off('.zf.dropdownmenu').removeAttr('data-is-click')
-        .removeClass('is-right-arrow is-left-arrow is-down-arrow opens-right opens-left opens-inner');
-    __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document.body).off('.zf.dropdownmenu');
-    __WEBPACK_IMPORTED_MODULE_2__foundation_util_nest__["a" /* Nest */].Burn(this.$element, 'dropdown');
-  }
-}
-
-/**
- * Default settings for plugin
- */
-DropdownMenu.defaults = {
-  /**
-   * Disallows hover events from opening submenus
-   * @option
-   * @type {boolean}
-   * @default false
-   */
-  disableHover: false,
-  /**
-   * Allow a submenu to automatically close on a mouseleave event, if not clicked open.
-   * @option
-   * @type {boolean}
-   * @default true
-   */
-  autoclose: true,
-  /**
-   * Amount of time to delay opening a submenu on hover event.
-   * @option
-   * @type {number}
-   * @default 50
-   */
-  hoverDelay: 50,
-  /**
-   * Allow a submenu to open/remain open on parent click event. Allows cursor to move away from menu.
-   * @option
-   * @type {boolean}
-   * @default false
-   */
-  clickOpen: false,
-  /**
-   * Amount of time to delay closing a submenu on a mouseleave event.
-   * @option
-   * @type {number}
-   * @default 500
-   */
-
-  closingTime: 500,
-  /**
-   * Position of the menu relative to what direction the submenus should open. Handled by JS. Can be `'auto'`, `'left'` or `'right'`.
-   * @option
-   * @type {string}
-   * @default 'auto'
-   */
-  alignment: 'auto',
-  /**
-   * Allow clicks on the body to close any open submenus.
-   * @option
-   * @type {boolean}
-   * @default true
-   */
-  closeOnClick: true,
-  /**
-   * Allow clicks on leaf anchor links to close any open submenus.
-   * @option
-   * @type {boolean}
-   * @default true
-   */
-  closeOnClickInside: true,
-  /**
-   * Class applied to vertical oriented menus, Foundation default is `vertical`. Update this if using your own class.
-   * @option
-   * @type {string}
-   * @default 'vertical'
-   */
-  verticalClass: 'vertical',
-  /**
-   * Class applied to right-side oriented menus, Foundation default is `align-right`. Update this if using your own class.
-   * @option
-   * @type {string}
-   * @default 'align-right'
-   */
-  rightClass: 'align-right',
-  /**
-   * Boolean to force overide the clicking of links to perform default action, on second touch event for mobile.
-   * @option
-   * @type {boolean}
-   * @default true
-   */
-  forceFollow: true
-};
-
-
-
-
-/***/ }),
-/* 53 */
+/***/ 53:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3994,5 +4303,6 @@ function getPluginName(obj) {
 
 
 /***/ })
-],[42]);
+
+},[42]);
 //# sourceMappingURL=themekit.js.map
