@@ -13,10 +13,10 @@
         ],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "grid": 0,
         "tags": [
           "copy"
-        ]
+        ],
+        "grid": 0
       },
       "attrs": [
         {},
@@ -24,13 +24,13 @@
       ],
       "properties": {
         "order": 57,
-        "id": 4,
+        "id": 0,
         "name": "clone",
         "prevSize": 32,
         "code": 59648
       },
       "setIdx": 0,
-      "setId": 2,
+      "setId": 1,
       "iconIdx": 0
     },
     {
@@ -43,23 +43,23 @@
         ],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "grid": 0,
         "tags": [
           "edit"
-        ]
+        ],
+        "grid": 0
       },
       "attrs": [
         {}
       ],
       "properties": {
         "order": 56,
-        "id": 3,
+        "id": 1,
         "name": "edit",
         "prevSize": 32,
         "code": 59649
       },
       "setIdx": 0,
-      "setId": 2,
+      "setId": 1,
       "iconIdx": 1
     },
     {
@@ -78,10 +78,10 @@
         ],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "grid": 0,
         "tags": [
           "garbage"
-        ]
+        ],
+        "grid": 0
       },
       "attrs": [
         {},
@@ -97,7 +97,7 @@
         "code": 59650
       },
       "setIdx": 0,
-      "setId": 2,
+      "setId": 1,
       "iconIdx": 2
     },
     {
@@ -112,10 +112,10 @@
         ],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "grid": 0,
         "tags": [
           "settings"
-        ]
+        ],
+        "grid": 0
       },
       "attrs": [
         {},
@@ -123,13 +123,13 @@
       ],
       "properties": {
         "order": 54,
-        "id": 1,
+        "id": 3,
         "name": "gear",
         "prevSize": 32,
         "code": 59651
       },
       "setIdx": 0,
-      "setId": 2,
+      "setId": 1,
       "iconIdx": 3
     },
     {
@@ -144,10 +144,10 @@
         ],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "grid": 0,
         "tags": [
           "view"
-        ]
+        ],
+        "grid": 0
       },
       "attrs": [
         {},
@@ -155,14 +155,43 @@
       ],
       "properties": {
         "order": 53,
-        "id": 0,
+        "id": 4,
         "name": "view",
         "prevSize": 32,
         "code": 59652
       },
       "setIdx": 0,
-      "setId": 2,
+      "setId": 1,
       "iconIdx": 4
+    },
+    {
+      "icon": {
+        "paths": [
+          "M904.533 196.267l-392.533 392.533-392.533-392.533-119.467 119.467 512 512 512-512z"
+        ],
+        "attrs": [
+          {}
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 24,
+        "tags": [
+          "expand-button"
+        ]
+      },
+      "attrs": [
+        {}
+      ],
+      "properties": {
+        "order": 2,
+        "id": 4,
+        "name": "arrow-down",
+        "prevSize": 24,
+        "code": 59653
+      },
+      "setIdx": 1,
+      "setId": 0,
+      "iconIdx": 0
     },
     {
       "icon": {
@@ -182,14 +211,14 @@
       "properties": {
         "order": 51,
         "ligatures": "check_circle",
-        "id": 151,
+        "id": 0,
         "prevSize": 24,
         "code": 59500,
         "name": "check_circle"
       },
       "setIdx": 1,
-      "setId": 1,
-      "iconIdx": 151
+      "setId": 0,
+      "iconIdx": 1
     },
     {
       "icon": {
@@ -209,14 +238,14 @@
       "properties": {
         "order": 48,
         "ligatures": "error",
-        "id": 245,
+        "id": 1,
         "prevSize": 24,
         "code": 57344,
         "name": "error"
       },
       "setIdx": 1,
-      "setId": 1,
-      "iconIdx": 245
+      "setId": 0,
+      "iconIdx": 2
     },
     {
       "icon": {
@@ -236,14 +265,14 @@
       "properties": {
         "order": 52,
         "ligatures": "info",
-        "id": 400,
+        "id": 2,
         "prevSize": 24,
         "code": 59534,
         "name": "info"
       },
       "setIdx": 1,
-      "setId": 1,
-      "iconIdx": 400
+      "setId": 0,
+      "iconIdx": 3
     },
     {
       "icon": {
@@ -263,14 +292,14 @@
       "properties": {
         "order": 19,
         "ligatures": "settings",
-        "id": 664,
+        "id": 3,
         "prevSize": 24,
         "code": 59576,
         "name": "settings"
       },
       "setIdx": 1,
-      "setId": 1,
-      "iconIdx": 664
+      "setId": 0,
+      "iconIdx": 4
     }
   ],
   "height": 1024,
@@ -294,7 +323,8 @@
         "emSize": 1024,
         "baseline": 6.25,
         "whitespace": 50
-      }
+      },
+      "embed": false
     },
     "imagePref": {
       "prefix": "icon-",

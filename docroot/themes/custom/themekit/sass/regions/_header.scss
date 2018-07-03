@@ -4,6 +4,8 @@
 
 .region-header {
   background: $body-background;
+  box-shadow: 0 2px 10px rgba($black, 0.05);
+  z-index: z(header, base);
   &.sticky.is-stuck {
     .toolbar-horizontal & {
       top: 39px !important;
@@ -43,12 +45,23 @@
       }
     }
 
+    // Utility menu
     .menu--utility {
       @include breakpoint(large) {
-        padding-bottom: 10px;
-        border-bottom: 1px solid $mercury-gray;
+        padding-bottom: 11px;
         margin-bottom: 25px;
         width: 100%;
+        position: relative;
+        &:after {
+          content: '';
+          position: absolute;
+          left: 50%;
+          bottom: 0;
+          transform: translateX(-50%);
+          width: 100vw;
+          height: 1px;
+          background: $mercury-gray;
+        }
       }
       ul.menu {
         margin: 0;
@@ -58,13 +71,26 @@
           justify-content: flex-end;
         }
         li {
+          font-size: rem-calc(13);
           @include breakpoint(large) {
-            margin-left: 25px;
+            margin-left: 20px;
+          }
+          a {
+            padding: 0 3px;
+            color: $dove-gray;
+            @include selectors(active) {
+              color: $bhk-blue;
+            }
+          }
+          span {
+            font-weight: 700;
+            color: $bhk-blue;
           }
         }
       }
     }
 
+    // Main menu
     .menu--main {
       ul.menu {
         list-style: none;
@@ -72,14 +98,126 @@
         &.menu-level-0 {
           @include breakpoint(large) {
             display: flex;
+            position: relative;
+            z-index: z(header, menu);
           }
           > li {
             @include breakpoint(large) {
-              margin-left: 35px;
+              margin-left: 30px;
             }
             &.menu-item--expanded {
-              .menu-dropdown {
+              > .menu-dropdown {
                 display: none;
+                @include breakpoint(large) {
+                  position: absolute;
+                  z-index: z(header, menu);
+                  left: 0;
+                  top: calc(100% + 26px);
+                  background: $white;
+                  box-shadow: 0 10px 15px rgba($black, 0.1);
+                  padding: 35px;
+                }
+              }
+              &.active {
+                > .menu-dropdown {
+                  display: block;
+                }
+                > a {
+                  &:after {
+                    transform: rotate(-180deg);
+                  }
+                  @include breakpoint(large) {
+                    &:before {
+                      content: '';
+                      position: absolute;
+                      left: 0;
+                      bottom: -14px;
+                      right: 20px;
+                      height: 3px;
+                      background: linear-gradient(-45deg, $bhk-teal 0%, $bhk-blue 100%);
+                    }
+                  }
+                }
+              }
+              > a {
+                position: relative;
+                padding-right: 15px;
+                &:after {
+                  @include icon(arrow-down);
+                  font-size: 10px;
+                  color: $bhk-olive;
+                  position: absolute;
+                  right: 0;
+                  bottom: 4px;
+                  transition: transform 250ms;
+                }
+                @include breakpoint(large) {
+                  padding-right: 20px;
+                }
+              }
+            }
+            > a {
+              font-size: rem-calc(16);
+              line-height: 1.5;
+              font-weight: 700;
+              color: $dark-gray;
+            }
+          }
+        }
+        &.menu-level-1 {
+          @include breakpoint(large) {
+            display: flex;
+          }
+          > li {
+            @include breakpoint(large) {
+              min-width: 260px;
+              margin-right: 40px;
+              &:last-child {
+                margin-right: 0;
+              }
+            }
+            > span {
+              display: none;
+            }
+          }
+        }
+        &.menu-level-2 {
+          > li {
+            margin-bottom: 20px;
+            &:last-child {
+              margin-bottom: 0;
+            }
+            @include breakpoint(large) {
+              display: flex;
+              flex-wrap: wrap;
+              margin-bottom: 25px;
+            }
+            .field--name-field-media-image {
+              display: none;
+              @include breakpoint(large) {
+                display: block;
+                order: 0;
+              }
+            }
+            > a {
+              font-size: rem-calc(12);
+              line-height: 1.5;
+              font-weight: 700;
+              color: $bhk-blue;
+              @include breakpoint(large) {
+                order: 1;
+                font-size: rem-calc(14);
+              }
+            }
+            .field--name-field-description {
+              font-size: rem-calc(11);
+              @include breakpoint(large) {
+                order: 2;
+                font-size: rem-calc(13);
+              }
+              p {
+                margin: 0;
+                line-height: 1.45;
               }
             }
           }

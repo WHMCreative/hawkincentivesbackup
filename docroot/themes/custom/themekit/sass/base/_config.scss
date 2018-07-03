@@ -32,10 +32,9 @@ $z-layers: (
   under: -1,
   bottomless-pit: -9999,
 
-  // example nested z-index.
-  example: (
-    default: 100,
-    image: -2
+  header: (
+    base: 50,
+    menu: 60
   )
 );
 
@@ -56,13 +55,22 @@ $buttons: (
     color: $primary-color
   ),
   ghost: (
+    background: $white,
+    border: transparent,
+    color: $black,
+    active-border: transparent,
+    active-background: transparent,
+    active-color: $white,
+    gradient: linear-gradient(-45deg, $bhk-teal 0%, $bhk-blue 100%),
+  ),
+  ghost-white: (
     background: transparent,
     border: $white,
     color: $white,
     active-border: $white,
     active-background: $white,
     active-color: $primary-color,
-  )
+  ),
 );
 
 /// Link config

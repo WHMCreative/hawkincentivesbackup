@@ -19,6 +19,7 @@ $buttons: (
 /// @param {String} $button-key - the key in the $buttons map to use from config
 @mixin btn($button-key) {
   $button: extend-in-map($buttons, $button-key);
+  $radius: 18px;
 
   @include disable-mouse-outline;
   display: inline-block;
@@ -26,7 +27,7 @@ $buttons: (
   font-size: rem-calc(14);
   line-height: 1.5;
   font-weight: 700;
-  border-radius: 18px;
+  border-radius: $radius;
   appearance: none;
 
   @if (map-has-key($button, border)) {
@@ -37,6 +38,37 @@ $buttons: (
 
   background: key($button, background);
   color: key($button, color);
+
+  @if (map-has-key($button, gradient)) {
+    position: relative;
+    &:before {
+      content: '';
+      position: absolute;
+      z-index: -2;
+      left: -1px;
+      top: -1px;
+      bottom: -1px;
+      right: -1px;
+      background: key($button, gradient);
+      border-radius: $radius;
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: key($button, background);
+      border-radius: $radius;
+    }
+    @supports (-webkit-text-fill-color: transparent) {
+      background: key($button, gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
 
   @include selectors(active) {
 
@@ -49,6 +81,15 @@ $buttons: (
 
     @if (map-has-key($button, active-border)) {
       border-color: key($button, active-border);
+    }
+
+    @if (map-has-key($button, gradient)) {
+      background: key($button, active-background);
+      -webkit-background-clip: border-box;
+      -webkit-text-fill-color: key($button, active-color);
+      &:after {
+        background: key($button, active-background);
+      }
     }
   }
 }

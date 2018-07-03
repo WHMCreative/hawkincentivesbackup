@@ -11,5 +11,8 @@
 .paragraph--type--link-url {
   a {
     @include btn(blue);
+    .menu-dropdown & {
+      @include btn(ghost);
+    }
   }
 }

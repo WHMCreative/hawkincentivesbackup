@@ -828,6 +828,44 @@ Triggers.init = function($, Foundation) {
 
 /***/ }),
 
+/***/ 128:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
+/**
+ * @file
+ * Menu
+ */
+
+
+
+Drupal.behaviors.magnificPopup = {
+  attach: function (context, settings) {
+    let $mainMenuItem = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.menu-level-0 > li.menu-item--expanded', context),
+        $mainMenuItemLink = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.menu-level-0 > li.menu-item--expanded > a', context);
+
+    $mainMenuItemLink.on('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).parent().toggleClass('active');
+    });
+
+    // hide dropdown when clicked outside
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).once('document-click').on('click', function (e) {
+      let $acitveMenuItem = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.menu-level-0 > li.active', context);
+      if($acitveMenuItem.length && !$acitveMenuItem.has(e.target).length > 0) {
+        $acitveMenuItem.removeClass('active');
+      }
+    });
+
+  }
+};
+
+
+/***/ }),
+
 /***/ 19:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1639,11 +1677,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation_setup__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__skip_link__ = __webpack_require__(48);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__magnific_popup__ = __webpack_require__(49);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sticky__ = __webpack_require__(125);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__menu__ = __webpack_require__(128);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__sticky__ = __webpack_require__(125);
 /**
  * theme.js
  * Entry point for all theme related js.
  */
+
 
 
 
