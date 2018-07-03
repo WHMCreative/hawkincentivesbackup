@@ -1,0 +1,18 @@
+uuid: 71ca5546-4405-452d-a8a1-9530eb93f445
+langcode: en
+status: true
+dependencies:
+  module:
+    - bhk_card_browser
+id: card.field_fulfillment
+field_name: field_fulfillment
+entity_type: card
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

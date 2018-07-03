@@ -1,0 +1,23 @@
+uuid: 903ffb85-0741-4c49-a2ef-1ffb26cb18b3
+langcode: en
+status: true
+dependencies:
+  config:
+    - bhk_card_browser.card_type.default
+    - field.storage.card.field_cash_back
+id: card.default.field_cash_back
+field_name: field_cash_back
+entity_type: card
+bundle: default
+label: '5% Back'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

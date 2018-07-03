@@ -1,0 +1,33 @@
+uuid: ecc6e21e-64bc-49bc-8a08-f3179d35ac58
+langcode: en
+status: true
+dependencies:
+  module:
+    - bhk_card_browser
+    - options
+id: card.field_cost
+field_name: field_cost
+entity_type: card
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: 1x
+      label: $
+    -
+      value: 2x
+      label: $$
+    -
+      value: 3x
+      label: $$$
+    -
+      value: 4x
+      label: $$$$
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,259 @@
+uuid: 720fc84c-286b-4c61-8431-691289a403aa
+langcode: en
+status: true
+dependencies:
+  config:
+    - bhk_card_browser.card_type.default
+    - field.field.card.default.field_card_category
+    - field.field.card.default.field_card_type
+    - field.field.card.default.field_cash_back
+    - field.field.card.default.field_co_brand
+    - field.field.card.default.field_cost
+    - field.field.card.default.field_currency
+    - field.field.card.default.field_customization
+    - field.field.card.default.field_delivery
+    - field.field.card.default.field_description
+    - field.field.card.default.field_filtered
+    - field.field.card.default.field_fulfillment
+    - field.field.card.default.field_greeting_card
+    - field.field.card.default.field_issuance
+    - field.field.card.default.field_load_max
+    - field.field.card.default.field_network
+    - field.field.card.default.field_num_mechants
+    - field.field.card.default.field_p_media
+    - field.field.card.default.field_personalization
+    - field.field.card.default.field_prepaid_load
+    - field.field.card.default.field_prepaid_type
+    - field.field.card.default.field_virtual
+  module:
+    - field_group
+    - paragraphs_browser
+    - text
+third_party_settings:
+  field_group:
+    group_tabs:
+      children:
+        - group_main_content
+        - group_card_settings
+      parent_name: ''
+      weight: 1
+      format_type: tabs
+      format_settings:
+        id: ''
+        classes: ''
+        direction: vertical
+      label: Tabs
+    group_main_content:
+      children:
+        - field_p_media
+        - field_description
+      parent_name: group_tabs
+      weight: 20
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: 'Main Content'
+    group_card_settings:
+      children:
+        - field_card_type
+        - field_prepaid_type
+        - field_network
+        - field_personalization
+        - field_prepaid_load
+        - field_delivery
+        - field_cash_back
+        - field_customization
+        - field_co_brand
+        - field_cost
+        - field_greeting_card
+        - field_fulfillment
+        - field_virtual
+        - field_filtered
+        - field_num_mechants
+        - field_card_category
+        - field_load_max
+        - field_currency
+        - field_issuance
+      parent_name: group_tabs
+      weight: 21
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: 'Card Settings'
+id: card.default.default
+targetEntityType: card
+bundle: default
+mode: default
+content:
+  field_card_category:
+    weight: 20
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_card_type:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_cash_back:
+    weight: 11
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_co_brand:
+    weight: 13
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_cost:
+    weight: 14
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_currency:
+    weight: 22
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_customization:
+    weight: 12
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_delivery:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_description:
+    weight: 4
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_filtered:
+    weight: 18
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_fulfillment:
+    weight: 16
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_greeting_card:
+    weight: 15
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_issuance:
+    weight: 23
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_load_max:
+    weight: 21
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  field_network:
+    weight: 7
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_num_mechants:
+    weight: 19
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  field_p_media:
+    type: entity_reference_paragraphs_browser
+    weight: 3
+    settings:
+      title: Image
+      title_plural: Images
+      edit_mode: preview
+      add_mode: paragraphs_browser
+      form_display_mode: default
+      default_paragraph_type: _none
+      paragraphs_browser: browser
+      modal_width: 80%
+      modal_height: auto
+    third_party_settings: {  }
+    region: content
+  field_personalization:
+    weight: 8
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_prepaid_load:
+    weight: 9
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_prepaid_type:
+    weight: 6
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_virtual:
+    weight: 17
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 2
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+hidden:
+  langcode: true
+  user_id: true

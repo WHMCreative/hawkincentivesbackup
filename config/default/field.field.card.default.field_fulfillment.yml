@@ -1,0 +1,23 @@
+uuid: 392d4fd9-b240-4f52-8d47-21eb0dca7d82
+langcode: en
+status: true
+dependencies:
+  config:
+    - bhk_card_browser.card_type.default
+    - field.storage.card.field_fulfillment
+id: card.default.field_fulfillment
+field_name: field_fulfillment
+entity_type: card
+bundle: default
+label: 'Fast Fulfillment is available?'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

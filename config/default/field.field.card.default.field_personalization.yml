@@ -1,0 +1,21 @@
+uuid: 5eb539ac-372d-4d28-bc6f-4813c239d372
+langcode: en
+status: true
+dependencies:
+  config:
+    - bhk_card_browser.card_type.default
+    - field.storage.card.field_personalization
+  module:
+    - options
+id: card.default.field_personalization
+field_name: field_personalization
+entity_type: card
+bundle: default
+label: Personalization
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

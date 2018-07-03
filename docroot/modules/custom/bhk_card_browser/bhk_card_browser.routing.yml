@@ -1,0 +1,7 @@
+entity.card_type.collection:
+  path: '/admin/structure/card_types'
+  defaults:
+    _entity_list: 'card_type'
+    _title: 'Card Types'
+  requirements:
+    _permission: 'administer site configuration'

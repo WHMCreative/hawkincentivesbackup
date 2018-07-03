@@ -1,0 +1,28 @@
+# Card routing definition
+
+entity.card.canonical:
+  route_name: entity.card.canonical
+  base_route: entity.card.canonical
+  title: 'View'
+
+entity.card.edit_form:
+  route_name: entity.card.edit_form
+  base_route: entity.card.canonical
+  title: 'Edit'
+
+entity.card.delete_form:
+  route_name:  entity.card.delete_form
+  base_route:  entity.card.canonical
+  title: 'Delete'
+  weight: 10
+
+entity.card_type.edit_form:
+  title: 'Edit'
+  route_name: entity.card_type.edit_form
+  base_route: entity.card_type.edit_form
+
+cards.admin:
+  title: Cards
+  route_name: view.cards.card_admin_list
+  base_route: system.admin_content
+  weight: 10

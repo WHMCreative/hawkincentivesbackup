@@ -1,0 +1,27 @@
+uuid: eb0bcf5b-901a-4b02-a2ad-79bdbf0d6d08
+langcode: en
+status: true
+dependencies:
+  module:
+    - bhk_card_browser
+    - options
+id: card.field_issuance
+field_name: field_issuance
+entity_type: card
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: us_only
+      label: 'US only'
+    -
+      value: international
+      label: 'International*'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

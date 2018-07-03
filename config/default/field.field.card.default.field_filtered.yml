@@ -1,0 +1,23 @@
+uuid: 986a408b-f535-411c-81da-cbcb691ef1e0
+langcode: en
+status: true
+dependencies:
+  config:
+    - bhk_card_browser.card_type.default
+    - field.storage.card.field_filtered
+id: card.default.field_filtered
+field_name: field_filtered
+entity_type: card
+bundle: default
+label: 'Filtered Options'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

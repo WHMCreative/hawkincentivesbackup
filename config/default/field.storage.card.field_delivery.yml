@@ -1,0 +1,27 @@
+uuid: 4a087f04-e156-4533-8183-9aedd37a67f0
+langcode: en
+status: true
+dependencies:
+  module:
+    - bhk_card_browser
+    - options
+id: card.field_delivery
+field_name: field_delivery
+entity_type: card
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: individual
+      label: Individual
+    -
+      value: bulk
+      label: Bulk
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

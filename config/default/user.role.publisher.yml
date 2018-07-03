@@ -37,5 +37,7 @@ permissions:
   - 'use text format rich_text'
   - 'view all revisions'
   - 'view any unpublished content'
+  - 'view published card entities'
   - 'view the administration theme'
+  - 'view unpublished card entities'
   - 'view unpublished marketo form entity entities'

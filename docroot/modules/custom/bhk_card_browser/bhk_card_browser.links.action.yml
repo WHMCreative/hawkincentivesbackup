@@ -1,0 +1,11 @@
+entity.card.add_form:
+  route_name: entity.card.add_page
+  title: 'Add Card'
+  appears_on:
+    - view.cards.card_admin_list
+entity.card_type.add_form:
+  route_name: entity.card_type.add_form
+  title: 'Add Card type'
+  appears_on:
+    - entity.card_type.collection
+

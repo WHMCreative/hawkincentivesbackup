@@ -1,0 +1,23 @@
+uuid: 1fb79fea-bb9a-4d22-b078-df255dd5080c
+langcode: en
+status: true
+dependencies:
+  config:
+    - bhk_card_browser.card_type.default
+    - field.storage.card.field_load_max
+id: card.default.field_load_max
+field_name: field_load_max
+entity_type: card
+bundle: default
+label: 'Load Max'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: $
+  suffix: ''
+field_type: integer

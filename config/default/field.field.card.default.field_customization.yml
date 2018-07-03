@@ -1,0 +1,23 @@
+uuid: 2f6f5305-fb72-415a-bb7e-fd6536a0e178
+langcode: en
+status: true
+dependencies:
+  config:
+    - bhk_card_browser.card_type.default
+    - field.storage.card.field_customization
+id: card.default.field_customization
+field_name: field_customization
+entity_type: card
+bundle: default
+label: 'Can be customized?'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

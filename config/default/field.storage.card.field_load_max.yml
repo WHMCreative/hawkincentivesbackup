@@ -1,0 +1,20 @@
+uuid: 3e0885b5-cf6f-4b81-96bc-00125137ebc7
+langcode: en
+status: true
+dependencies:
+  module:
+    - bhk_card_browser
+id: card.field_load_max
+field_name: field_load_max
+entity_type: card
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

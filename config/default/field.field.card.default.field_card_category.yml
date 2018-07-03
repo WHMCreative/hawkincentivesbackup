@@ -1,0 +1,29 @@
+uuid: 35f6042e-0822-4130-adeb-07afe3176c1b
+langcode: en
+status: true
+dependencies:
+  config:
+    - bhk_card_browser.card_type.default
+    - field.storage.card.field_card_category
+    - taxonomy.vocabulary.card_category
+id: card.default.field_card_category
+field_name: field_card_category
+entity_type: card
+bundle: default
+label: Category
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      card_category: card_category
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

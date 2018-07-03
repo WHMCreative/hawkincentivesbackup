@@ -1,0 +1,23 @@
+uuid: 231ad4ad-f795-4ae5-9f03-d919399acd68
+langcode: en
+status: true
+dependencies:
+  config:
+    - bhk_card_browser.card_type.default
+    - field.storage.card.field_num_mechants
+id: card.default.field_num_mechants
+field_name: field_num_mechants
+entity_type: card
+bundle: default
+label: 'Number of Mechants'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: 50000
+  prefix: ''
+  suffix: ''
+field_type: integer

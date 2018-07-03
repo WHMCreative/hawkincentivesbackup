@@ -1,0 +1,11 @@
+uuid: 02a5f7f2-7bf0-4595-bbdd-6848e31eb873
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.card_currency
+id: taxonomy_term.card_currency
+target_entity_type_id: taxonomy_term
+target_bundle: card_currency
+default_langcode: site_default
+language_alterable: false

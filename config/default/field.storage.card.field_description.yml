@@ -1,0 +1,19 @@
+uuid: 5fe6d948-a2c6-4b85-859b-c64640284f54
+langcode: en
+status: true
+dependencies:
+  module:
+    - bhk_card_browser
+    - text
+id: card.field_description
+field_name: field_description
+entity_type: card
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
