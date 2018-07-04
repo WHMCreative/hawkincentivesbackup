@@ -1,10 +1,10 @@
-uuid: bdfb6cbc-8cd6-4108-a331-be94cb1062fd
+uuid: a09c321a-677a-485b-bc08-40f10fef323c
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_large_heading
-    - paragraphs.paragraphs_type.banner_hero
+    - field.storage.node.field_references
+    - node.type.insight
   module:
     - allowed_formats
     - text
@@ -14,14 +14,14 @@ third_party_settings:
     rich_text: '0'
     plain_text: '0'
     html: '0'
-id: paragraph.banner_hero.field_large_heading
-field_name: field_large_heading
-entity_type: paragraph
-bundle: banner_hero
-label: 'Large Heading'
+id: node.insight.field_references
+field_name: field_references
+entity_type: node
+bundle: insight
+label: References
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }

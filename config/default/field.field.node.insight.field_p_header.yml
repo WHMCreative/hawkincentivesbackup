@@ -5,7 +5,6 @@ dependencies:
   config:
     - field.storage.node.field_p_header
     - node.type.insight
-    - paragraphs.paragraphs_type.banner_featured_insights
     - paragraphs.paragraphs_type.banner_hero
   module:
     - entity_reference_revisions
@@ -24,7 +23,6 @@ settings:
   handler_settings:
     negate: 0
     target_bundles:
-      banner_featured_insights: banner_featured_insights
       banner_hero: banner_hero
     target_bundles_drag_drop:
       single_image:
@@ -37,8 +35,8 @@ settings:
         weight: 10
         enabled: false
       banner_featured_insights:
-        enabled: true
         weight: 29
+        enabled: false
       banner_hero:
         enabled: true
         weight: 30
@@ -65,6 +63,9 @@ settings:
         enabled: false
       link_url:
         weight: 38
+        enabled: false
+      link_form_modal:
+        weight: 39
         enabled: false
       marketo_hidden_field:
         weight: 39

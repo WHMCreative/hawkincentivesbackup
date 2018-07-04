@@ -4,14 +4,17 @@ status: true
 dependencies:
   config:
     - entity_browser.browser.image
+    - field.field.node.insight.body
     - field.field.node.insight.field_author
     - field.field.node.insight.field_featured_image
     - field.field.node.insight.field_gated
     - field.field.node.insight.field_insight_type
+    - field.field.node.insight.field_intro_copy
     - field.field.node.insight.field_p_form
     - field.field.node.insight.field_p_header
     - field.field.node.insight.field_p_insight
     - field.field.node.insight.field_p_related_insights
+    - field.field.node.insight.field_references
     - field.field.node.insight.field_teaser_image
     - node.type.insight
   module:
@@ -21,6 +24,7 @@ dependencies:
     - paragraphs_browser
     - path
     - scheduler
+    - text
 third_party_settings:
   field_group:
     group_tabs:
@@ -41,6 +45,9 @@ third_party_settings:
         - field_insight_type
         - field_p_header
         - field_p_insight
+        - field_intro_copy
+        - body
+        - field_references
         - field_featured_image
         - field_teaser_image
         - field_author
@@ -86,6 +93,15 @@ targetEntityType: node
 bundle: insight
 mode: default
 content:
+  body:
+    weight: 15
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea_with_summary
+    region: content
   created:
     type: datetime_timestamp
     weight: 3
@@ -93,7 +109,7 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_author:
-    weight: 16
+    weight: 19
     settings:
       match_operator: CONTAINS
       size: 60
@@ -102,7 +118,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_featured_image:
-    weight: 14
+    weight: 17
     settings:
       entity_browser: image
       field_widget_display: rendered_entity
@@ -116,7 +132,7 @@ content:
     type: entity_browser_entity_reference
     region: content
   field_gated:
-    weight: 13
+    weight: 104
     settings:
       display_label: true
     third_party_settings: {  }
@@ -128,9 +144,17 @@ content:
     third_party_settings: {  }
     type: options_select
     region: content
+  field_intro_copy:
+    weight: 14
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
   field_p_form:
     type: entity_reference_paragraphs_browser
-    weight: 14
+    weight: 105
     settings:
       title: 'Gated Form'
       title_plural: 'Gated Forms'
@@ -188,8 +212,16 @@ content:
     third_party_settings: {  }
     type: entity_reference_paragraphs_browser
     region: content
+  field_references:
+    weight: 16
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
   field_teaser_image:
-    weight: 15
+    weight: 18
     settings:
       entity_browser: image
       field_widget_display: rendered_entity

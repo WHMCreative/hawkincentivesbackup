@@ -1,13 +1,13 @@
-uuid: ce16440b-dbae-4201-86b1-36f410512ad5
+uuid: a2a7c73c-1d91-4ca2-8b3b-d88a18f10a54
 langcode: en
 status: true
 dependencies:
   module:
-    - paragraphs
+    - node
     - text
-id: paragraph.field_large_heading
-field_name: field_large_heading
-entity_type: paragraph
+id: node.field_intro_copy
+field_name: field_intro_copy
+entity_type: node
 type: text_long
 settings: {  }
 module: text

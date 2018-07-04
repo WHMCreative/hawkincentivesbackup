@@ -14,6 +14,7 @@ dependencies:
     - field.field.paragraph.banner_hero.field_use_large_heading
     - paragraphs.paragraphs_type.banner_hero
   module:
+    - allowed_formats
     - entity_browser
     - paragraphs_browser
     - text
@@ -47,10 +48,13 @@ content:
   field_large_heading:
     weight: 1
     settings:
-      size: 60
+      rows: 3
       placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
+    third_party_settings:
+      allowed_formats:
+        hide_help: '1'
+        hide_guidelines: '0'
+    type: text_textarea
     region: content
   field_media:
     weight: 6

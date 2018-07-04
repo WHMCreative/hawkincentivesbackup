@@ -46,10 +46,9 @@ content:
   field_large_heading:
     weight: 1
     label: hidden
-    settings:
-      link_to_entity: false
+    settings: {  }
     third_party_settings: {  }
-    type: string
+    type: text_default
     region: content
   field_media:
     weight: 5
