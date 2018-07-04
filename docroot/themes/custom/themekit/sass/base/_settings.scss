@@ -125,6 +125,11 @@ $paragraph-spacing: (
   medium: 60px,
   large: 85px
 );
+$banner-spacing: (
+  small: 30px,
+  medium: 60px,
+  large: 100px
+);
 
 
 // 1.Drupal - All of these settings should be copied over when the _settings.scss partial is updated on new version of foundation!!!

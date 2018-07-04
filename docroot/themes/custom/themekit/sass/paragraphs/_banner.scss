@@ -1,0 +1,34 @@
+////
+/// Paragraphs - Banner
+////
+
+.paragraph--type--banner-hero {
+  position: relative;
+  z-index: z(banner, base);
+  .bg-container {
+    position: absolute;
+    z-index: z(banner,base);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .paragraph-content {
+    @include content-width(default);
+    position: relative;
+    z-index: z(banner, content);
+    @each $bp, $size in $banner-spacing {
+      $size: rem-calc($size);
+      @include breakpoint($bp) {
+        @include top-bottom(padding, $size);
+      }
+    }
+
+    .field--name-field-heading {
+      color: $white;
+    }
+
+  }
+}

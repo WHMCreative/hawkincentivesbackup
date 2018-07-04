@@ -35,7 +35,12 @@ $z-layers: (
   header: (
     base: 50,
     menu: 60
-  )
+  ),
+  banner: (
+    base: 1,
+    overlay: 3,
+    content: 5
+  ),
 );
 
 /// Button config

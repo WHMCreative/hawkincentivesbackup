@@ -1,0 +1,17 @@
+uuid: 1f68c8e7-0467-4715-85f2-57075d04be33
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: banner_hero
+label: 'Banner Hero (1400x510)'
+effects:
+  23d9dbb4-c046-43e9-91c7-a285c171e153:
+    uuid: 23d9dbb4-c046-43e9-91c7-a285c171e153
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 1400
+      height: 510
+      crop_type: focal_point
