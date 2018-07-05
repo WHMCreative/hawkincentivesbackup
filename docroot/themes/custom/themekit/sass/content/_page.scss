@@ -1,13 +1,99 @@
 ////
-/// Page styles
-/// TODO: Example Partial (Content Type) - Choose either to break up content styles by content type or view mode
-/// View mode specific layout and styles
+/// Full view mode styles
 ////
 
-.node--type-page.node--view-mode-full {
+.node--view-mode-full,
+.node--view-mode-unlocked,
+.node--view-mode-gated {
+  &.node--type-insight,
+  &.node--type-news {
+    .node--content-wrapper {
+      @include content-width(default);
+      padding-top: 40px;
+      margin-bottom: 40px;
+      @include breakpoint(marge) {
+        padding-top: 85px;
+        margin-bottom: 85px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .node--content {
+        margin-bottom: 40px;
+        @include breakpoint(marge) {
+          margin-bottom: 0;
+          width: 64%;
+          max-width: 650px;
+        }
+      }
+      .node--sidebar {
+        @include breakpoint(marge) {
+          max-width: 245px;
+          width: 25%;
+        }
 
-}
+        h3 {
+          margin-bottom: 12px;
+        }
+      }
+    }
+  }
 
-.node--type-page.node--view-mode-teaser {
+  .field--name-field-intro-copy {
+    font-size: rem-calc(14);
+    margin-bottom: 1rem;
+    p:first-child {
+      &:first-letter {
+        color: $secondary-color-dark;
+        font-size: rem-calc(56);
+        line-height: 0.8;
+        font-weight: 700;
+        float: left;
+        margin: 0 4px 0 0;
+        text-transform: uppercase;
+      }
+    }
+
+  }
+
+  .field--name-field-intro-copy,
+  .field--name-body {
+    ul,
+    ol {
+      list-style-position: inside;
+      margin-left: 10px;
+      @include breakpoint(marge) {
+        margin-left: 30px;
+      }
+      @include breakpoint(large) {
+        margin-left: 50px;
+      }
+    }
+  }
+  .field--name-field-p-insight {
+    margin-bottom: 40px;
+    @include breakpoint(marge) {
+      margin-left: -30px;
+    }
+    @include breakpoint(large) {
+      margin-left: -40px;
+      margin-bottom: 60px;
+    }
+    @include breakpoint(xlarge) {
+      margin-left: -45px;
+      margin-right: -45px;
+    }
+  }
+
+  .field--name-field-p-related-insights,
+  .field--name-field-author {
+    margin-bottom: 40px;
+    @include breakpoint(marge) {
+      margin-bottom: 80px;
+    }
+  }
+  .field--name-field-references {
+    font-size: rem-calc(12);
+    font-style: italic;
+  }
 
 }

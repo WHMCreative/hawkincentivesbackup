@@ -165,6 +165,7 @@ function themekit_theme_suggestions_field_alter(array &$suggestions, array $vari
         array_unshift($suggestions, 'field__heading_2');
         break;
       case 'single_heading':
+      case 'summary_insights':
         array_unshift($suggestions, 'field__heading_3');
         break;
     }

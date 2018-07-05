@@ -2,12 +2,21 @@
 /// Global Typography
 ////
 
+h3 {
+  font-weight: 700;
+}
+
 .cke_editable,
 .field.text-formatted {
   .embedded-entity {
     margin: 15px 0;
-    @include breakpoint(medium) {
-      max-width: 50%;
+    max-width: 100%;
+    &.align-left,
+    &.align-right,
+    &.align-center {
+      @include breakpoint(medium) {
+        max-width: 50%;
+      }
     }
     &.align-left {
       float: none;
