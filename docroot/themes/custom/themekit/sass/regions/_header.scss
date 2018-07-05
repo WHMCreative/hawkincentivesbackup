@@ -60,7 +60,7 @@
           transform: translateX(-50%);
           width: 100vw;
           height: 1px;
-          background: $mercury-gray;
+          background: $lighter-gray;
         }
       }
       ul.menu {
@@ -77,14 +77,14 @@
           }
           a {
             padding: 0 3px;
-            color: $dove-gray;
+            color: $medium-gray;
             @include selectors(active) {
-              color: $bhk-blue;
+              color: $secondary-color;
             }
           }
           span {
             font-weight: 700;
-            color: $bhk-blue;
+            color: $secondary-color;
           }
         }
       }
@@ -134,7 +134,7 @@
                       bottom: -14px;
                       right: 20px;
                       height: 3px;
-                      background: linear-gradient(-45deg, $bhk-teal 0%, $bhk-blue 100%);
+                      background: linear-gradient(-45deg, $secondary-color-light 0%, $secondary-color 100%);
                     }
                   }
                 }
@@ -145,7 +145,7 @@
                 &:after {
                   @include icon(arrow-down);
                   font-size: 10px;
-                  color: $bhk-olive;
+                  color: color(default, light);
                   position: absolute;
                   right: 0;
                   bottom: 4px;
@@ -203,7 +203,7 @@
               font-size: rem-calc(12);
               line-height: 1.5;
               font-weight: 700;
-              color: $bhk-blue;
+              color: $secondary-color;
               @include breakpoint(large) {
                 order: 1;
                 font-size: rem-calc(14);

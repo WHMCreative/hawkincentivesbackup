@@ -77,25 +77,15 @@ $global-width: rem-calc(1084);
 $global-width-wide: rem-calc(1200);
 $global-lineheight: 1.5;
 
-$bhk-blue: #1969b7;
-$bhk-teal: #6bcec9;
-$bhk-green: #89ae43;
-$bhk-navy: #125c7f;
-$bhk-olive: #a8b234;
 
-$foundation-palette: (
-  primary: $bhk-blue,
-  secondary: $bhk-green,
-  success: #3adb76,
-  warning: #ffae00,
-  alert: #cc4b37,
-);
+//$foundation-palette: (
+//  primary: #89ae43,
+//  secondary: #1969b7,
+//  success: #3adb76,
+//  warning: #ffae00,
+//  alert: #cc4b37,
+//);
 
-$light-gray: #bdbdbd;
-$mercury-gray: #e5e5e5;
-$medium-gray: #777777;
-$dove-gray: #6b6b6b;
-$dark-gray: #4a4a4a;
 $black: #000000;
 $white: #ffffff;
 $body-background: $white;
@@ -118,7 +108,7 @@ $global-button-cursor: auto;
 $global-color-pick-contrast-tolerance: 0;
 $print-transparent-backgrounds: true;
 
-@include add-foundation-colors;
+//@include add-foundation-colors;
 
 $img-dir: '../../images/';
 $icon-font-dir: '../../fonts/icomoon/fonts/';
@@ -192,7 +182,7 @@ $header-font-family: $body-font-family;
 $header-font-weight: 300;
 $header-font-style: normal;
 $font-family-monospace: Consolas, 'Liberation Mono', Courier, monospace;
-$header-color: $primary-color;
+$header-color: $secondary-color;
 $header-lineheight: 1.25;
 $header-margin-bottom: 0.5rem;
 $header-styles: (
@@ -225,7 +215,7 @@ $code-font-weight: $global-weight-normal;
 $code-background: $light-gray;
 $code-border: 1px solid $medium-gray;
 $code-padding: rem-calc(2 5 1);
-$anchor-color: $primary-color;
+$anchor-color: $secondary-color;
 $anchor-color-hover: scale-color($anchor-color, $lightness: -14%);
 $anchor-text-decoration: none;
 $anchor-text-decoration-hover: none;
