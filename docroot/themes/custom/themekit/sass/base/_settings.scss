@@ -67,6 +67,7 @@
 //  56. Xy Grid
 
 @import 'util/util';
+@import "colors";
 
 // 1. Global
 // ---------
@@ -104,6 +105,7 @@ $body-antialiased: true;
 $global-margin: 1rem;
 $global-padding: 1rem;
 $global-position: 1rem;
+$global-weight-light: 300;
 $global-weight-normal: 400;
 $global-weight-bold: 700;
 $global-radius: 0;
