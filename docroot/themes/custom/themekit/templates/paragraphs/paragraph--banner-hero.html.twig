@@ -66,6 +66,12 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
     <div class="bg-container" {{ image_inline_style|raw }}></div>
   {% endif %}
   <div class="paragraph-content">
+    {% if insight_type %}
+      <div class="insight-type">{{ insight_type }}</div>
+    {% endif %}
+    {% if date %}
+      <div class="date">{{ date }}</div>
+    {% endif %}
     {{ rendered_content }}
   </div>
 </div>

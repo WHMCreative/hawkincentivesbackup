@@ -94,7 +94,24 @@ function themekit_preprocess_paragraph(&$variables) {
 
 function themekit_preprocess_paragraph_banner_hero(&$variables) {
   $paragraph = $variables['paragraph'];
+  $node = $paragraph->getParentEntity();
+  $bundle = $node->bundle();
+
+  if ($bundle === 'insight') {
+    if (!$node->get('field_insight_type')->isEmpty()) {
+      $type = $node->get('field_insight_type')->first()->entity->label();
+      $variables['insight_type'] = $type;
+      if ($type === 'webinar') {
+        $variables['date'] = ''; // @todo Add webinar date
+      } else {
+        $variables['date'] = date('M j, Y', $node->getCreatedTime());
+      }
+
+    }
+  }
+
   $variables['image_inline_style'] = themekit_get_entity_image_inline_style($paragraph, 'field_media', 'banner_hero');
+
 }
 
 function themekit_preprocess_paragraph_compound_content_bar(&$variables) {
@@ -118,6 +135,12 @@ function themekit_theme_suggestions_field_alter(array &$suggestions, array $vari
   $type = !empty($variables['element']['#entity_type']) ? $variables['element']['#entity_type'] : '';
   $bundle = !empty($variables['element']['#bundle']) ? $variables['element']['#bundle'] : '';
   $is_paragraph = ($type == 'paragraph');
+  $entity = $variables['element']['#object'];
+
+  $large_heading = FALSE;
+  if ($is_paragraph && $bundle === 'banner_hero' && $entity->hasField('field_use_large_heading') && $entity->field_use_large_heading->value) {
+    $large_heading = TRUE;
+  }
 
   // Apply theme suggestions based on field name.
   switch($field_name) {
@@ -136,13 +159,20 @@ function themekit_theme_suggestions_field_alter(array &$suggestions, array $vari
   if ($field_name == 'field_heading' && $is_paragraph) {
     switch($bundle) {
       case 'banner_hero':
-        array_unshift($suggestions, 'field__heading_1');
+        array_unshift($suggestions, $large_heading ? 'field__heading_5' : 'field__heading_1');
         break;
       case 'compound_content_bar':
         array_unshift($suggestions, 'field__heading_2');
         break;
       case 'single_heading':
         array_unshift($suggestions, 'field__heading_3');
+        break;
+    }
+  }
+  if ($field_name == 'field_large_heading' && $is_paragraph) {
+    switch($bundle) {
+      case 'banner_hero':
+        $suggestions[] = $large_heading ? 'field__heading_1' : 'field__heading_3';
         break;
     }
   }

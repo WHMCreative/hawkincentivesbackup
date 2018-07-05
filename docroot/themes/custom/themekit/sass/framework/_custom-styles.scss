@@ -13,3 +13,11 @@
     }
   }
 }
+
+@mixin insight-label($font-size: 11) {
+  font-size: rem-calc($font-size);
+  line-height: 2;
+  padding: 2px 7px;
+  background: rgba($black, 0.25);
+  border-radius: 3px;
+}
