@@ -2174,30 +2174,21 @@ exports.default = {
 
   data: function data() {
     return {
-      allCardGQ: null,
-      allCards: [{ name: 'Card 1', description: 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.', selected: false, category: [{ value: 'Cat 3' }, { value: 'Cat 1' }], type: [{ value: 'type 3' }, { value: 'type 1' }] }, { name: 'Card 2', description: 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.', selected: false, category: [{ value: 'Cat 2' }, { value: 'Cat 1' }], type: [{ value: 'type 2' }, { value: 'type 1' }] }, { name: 'Card 3', description: 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.', selected: false, category: [{ value: 'Cat 3' }], type: [{ value: 'type 3' }, { value: 'type 2' }] }, { name: 'Card 4', description: 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.', selected: false, category: [{ value: 'Cat 3' }], type: [{ value: 'type 3' }] }, { name: 'Card 5', description: 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.', selected: false, category: [{ value: 'Cat 2' }], type: [{ value: 'type 2' }, { value: 'type 1' }] }, { name: 'Card 6', description: 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.', selected: false, category: [{ value: 'Cat 3' }, { value: 'Cat 2' }], type: [{ value: 'type 1' }] }, { name: 'Card 7', description: 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.', selected: false, category: [{ value: 'Cat 2' }], type: [{ value: 'type 3' }, { value: 'type 1' }] }, { name: 'Card 8', description: 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.', selected: false, category: [{ value: 'Cat 1' }], type: [{ value: 'type 4' }, { value: 'type 1' }] }],
+      allCards: null,
+      /*allCards: [
+        {title: 'Card 1', description: 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.', category:[{value:'Cat 3'}, {value:'Cat 1'}], type: [{value:'type 3'}, {value:'type 1'}]},
+        {title: 'Card 2', description: 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.', category:[{value:'Cat 2'}, {value:'Cat 1'}], type: [{value:'type 2'}, {value:'type 1'}]},
+        {title: 'Card 3', description: 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.', category:[{value:'Cat 3'}], type: [{value:'type 3'}, {value:'type 2'}]},
+        {title: 'Card 4', description: 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.', category:[{value:'Cat 3'}], type: [{value:'type 3'}]},
+        {title: 'Card 5', description: 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.', category:[{value:'Cat 2'}], type: [{value:'type 2'}, {value:'type 1'}]},
+        {title: 'Card 6', description: 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.', category:[{value:'Cat 3'}, {value:'Cat 2'}], type: [{value:'type 1'}]},
+        {title: 'Card 7', description: 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.', category:[{value:'Cat 2'}], type: [{value:'type 3'}, {value:'type 1'}]},
+        {title: 'Card 8', description: 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.', category:[{value:'Cat 1'}], type: [{value:'type 4'}, {value:'type 1'}]}
+      ],*/
       selectedFilters: []
     };
   },
-  mounted: function mounted() {
-
-    // Open marketo form
-    var modalLinks = document.getElementsByClassName('marketo-modal-cta-link'),
-        modalSrc = document.getElementsByClassName('form--card-browser');
-    if (!modalLinks.length && !modalSrc.length) return;
-
-    for (var i = 0, len = modalLinks.length; i < len; i++) {
-      modalLinks[i].addEventListener('click', function () {
-        jQuery.magnificPopup.open({
-          items: {
-            src: modalSrc,
-            type: 'inline'
-          },
-          closeBtnInside: false
-        });
-      });
-    }
-  },
+  mounted: function mounted() {},
 
 
   methods: {
@@ -2216,22 +2207,35 @@ exports.default = {
     onlyUnique: function onlyUnique(value, index, self) {
       return self.indexOf(value) === index;
     },
+    openFrom: function openFrom() {
+      // Find form content
+      var modalSrc = document.getElementsByClassName('form--card-browser');
+      if (!modalSrc.length) return;
+
+      // Open in modal
+      jQuery.magnificPopup.open({
+        items: {
+          src: modalSrc,
+          type: 'inline'
+        },
+        closeBtnInside: false
+      });
+    },
 
 
     // Update selected filters
-    selectFilter: function selectFilter(filter) {
-      var value = filter.target.value,
-          type = filter.target.name;
-      if (filter.target.checked) {
-        this.selectedFilters.push({ value: value, type: type });
-      } else {
-        var index = this.getIndexOf(this.selectedFilters, value, type);
-        if (index > -1) {
-          this.selectedFilters.splice(index, 1);
-        }
-      }
-    },
-
+    // selectFilter(filter) {
+    //   let value = filter.target.value,
+    //     type = filter.target.name;
+    //   if (filter.target.checked) {
+    //     this.selectedFilters.push({value: value, type: type});
+    //   } else {
+    //     let index = this.getIndexOf(this.selectedFilters, value, type);
+    //     if (index > -1) {
+    //       this.selectedFilters.splice(index, 1);
+    //     }
+    //   }
+    // },
 
     // Updated selected cards
     selectCard: function selectCard(selectedCard) {
@@ -2240,6 +2244,8 @@ exports.default = {
       } else {
         selectedCard.selected = true;
       }
+
+      // console.log(this.cards.filter(card => card.selected));
     },
 
 
@@ -2257,61 +2263,72 @@ exports.default = {
     cards: function cards() {
       var _this = this;
 
-      var allCards = this.allCards.slice();
-      if (this.selectedFilters.length > 0) {
-        for (var i in this.selectedFilters) {
-          allCards = allCards.filter(function (card) {
-            // Get filter type
-            var type = _this.selectedFilters[i].type;
+      var allCards = this.allCards ? this.allCards.entities : [];
+      // let allCards = this.allCards ? this.allCards : [];
 
-            // Find cards that match filter
-            var foundCategory = card[type].findIndex(function (filter) {
-              return filter.value === _this.selectedFilters[i].value;
-            });
-            return foundCategory !== -1;
-          });
+      if (allCards) {
+        var cards = [];
+        // Add selected value
+        for (var i = 0; i < allCards.length; i++) {
+          cards[i] = Object.assign({ selected: false }, allCards[i]);
         }
+
+        allCards = cards;
+        if (this.selectedFilters.length > 0) {
+          for (var i in this.selectedFilters) {
+            cards = allCards.filter(function (card) {
+              // Get filter type
+              var type = _this.selectedFilters[i].type;
+
+              // Find cards that match filter
+              var foundCategory = card[type].findIndex(function (filter) {
+                return filter.value === _this.selectedFilters[i].value;
+              });
+              return foundCategory !== -1;
+            });
+          }
+        }
+        return allCards;
       }
-      return allCards;
     },
 
 
     // Return all unique categories sorted
     categories: function categories() {
-      var returnCat = [];
-      for (var i in this.allCards) {
-        for (var j in this.allCards[i].category) {
-          returnCat.push(this.allCards[i].category[j].value);
-        }
-      }
-
-      returnCat = returnCat.filter(this.onlyUnique);
-      returnCat = returnCat.sort(this.sortABC);
-
-      return returnCat;
+      // let returnCat = [];
+      // for (var i in this.allCards) {
+      //   for (var j in this.allCards[i].category) {
+      //     returnCat.push(this.allCards[i].category[j].value);
+      //   }
+      // }
+      //
+      // returnCat = returnCat.filter( this.onlyUnique );
+      // returnCat = returnCat.sort( this.sortABC );
+      //
+      // return returnCat;
     },
 
 
     // Return all unique types sorted
     types: function types() {
 
-      var types = [];
-      for (var i in this.allCards) {
-        for (var j in this.allCards[i].type) {
-          types.push(this.allCards[i].type[j].value);
-        }
-      }
-
-      types = types.filter(this.onlyUnique);
-      types = types.sort(this.sortABC);
-
-      return types;
+      // let types = [];
+      // for (var i in this.allCards) {
+      //   for (var j in this.allCards[i].type) {
+      //     types.push(this.allCards[i].type[j].value);
+      //   }
+      // }
+      //
+      // types = types.filter( this.onlyUnique );
+      // types = types.sort( this.sortABC );
+      //
+      // return types;
     },
 
 
     // Return selected cards
     selectedCards: function selectedCards() {
-      return this.allCards.filter(function (card) {
+      return this.cards.filter(function (card) {
         return card.selected;
       });
     }
@@ -2319,23 +2336,7 @@ exports.default = {
 
   apollo: {
     // Simple query that will update the 'hello' vue property
-    /*allCardGQ: gql(`{
-      allCardGQ: nodeQuery {
-        entities {
-          ... on NodeArticle {
-            label: entityLabel
-            body {
-              processed
-            }
-            tags: fieldTags {
-              entity {
-                entityLabel
-              }
-            }
-          }
-        }
-      }
-    }`),*/
+    allCards: (0, _graphqlTag2.default)('{\n      allCards: cardQuery {\n        entities {\n          ... on Card {\n            id: entityId\n            title: entityLabel\n            cashBack: fieldCashBack\n            coBrand: fieldCoBrand\n            customization: fieldCustomization\n            image: fieldPMedia {\n              entity {\n                fieldMediaImage {\n                  entity {\n                    fieldImage {\n                      url\n                      alt\n                    }\n                  }\n                }\n              }\n            }\n            cardCategory:fieldCardCategory {\n              entity {\n                entityLabel\n              }\n            }\n            cost: fieldCost\n            currency:fieldCurrency {\n              entity {\n                entityLabel\n              }\n            }\n            delivery:fieldDelivery\n            description:fieldDescription {\n              processed\n            }\n            fulfillment: fieldFulfillment\n            filtered: fieldFiltered\n            greetingCard: fieldGreetingCard\n            issance: fieldIssuance\n            virtual: fieldVirtual\n            loadMax: fieldLoadMax\n            network: fieldNetwork\n            numMechants: fieldNumMechants\n            personalization: fieldPersonalization\n            prepaidLoad: fieldPrepaidLoad\n            prepaidType: fieldPrepaidType\n            cardType:fieldCardType\n          }\n        }\n      }\n    }')
   }
 }; //
 //
@@ -2388,7 +2389,7 @@ exports.default = {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(jQuery) {
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -2416,10 +2417,140 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 exports.default = {
-  props: ['card', 'selected']
+  props: ['card', 'selected'],
+  methods: {
+    details: function details(id) {
+      // Find form content
+      var selector = 'modal--card-' + id;
+      var modalSrc = document.getElementsByClassName(selector);
+      if (!modalSrc.length) return;
+
+      // Open in modal
+      jQuery.magnificPopup.open({
+        items: {
+          src: modalSrc,
+          type: 'inline'
+        },
+        closeBtnInside: true
+      });
+    },
+    open: function open() {
+      console.log('open');
+    }
+  }
 };
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
 /* 24 */
@@ -15537,7 +15668,7 @@ exports = module.exports = __webpack_require__(7)(false);
 
 
 // module
-exports.push([module.i, "\n.card-list[data-v-2a4c0cfe] {\n  max-width: 1200px;\n  margin: 0 auto;\n  display: flex;\n}\n\n/* Filters */\n.filters[data-v-2a4c0cfe] {\n  flex: 1;\n}\n.filter[data-v-2a4c0cfe] {\n  margin-bottom: 16px;\n}\n.filter .filter-label[data-v-2a4c0cfe] {\n  font-size: 10px;\n  text-transform: uppercase;\n  text-align: left;\n}\n\n/* Cards */\n.cards[data-v-2a4c0cfe] {\n  flex: 5;\n}\n.all-cards[data-v-2a4c0cfe] {\n  display: flex;\n  flex-wrap: wrap;\n}\n.all-cards .card[data-v-2a4c0cfe] {\n  flex: 0 0 33.33%;\n}\n.selected-cards[data-v-2a4c0cfe] {\n  display: flex;\n  flex-wrap: wrap;\n  align-content: center;\n  justify-content: center;\n  background: #ccc;\n  padding: 10px 0;\n}\n.selected-cards .card[data-v-2a4c0cfe] {\n  flex: 0 0 33.33%;\n  max-width: 300px;\n}\n.no-results[data-v-2a4c0cfe] {\n  text-align: left;\n}\n\n", ""]);
+exports.push([module.i, "\n.card-list[data-v-2a4c0cfe] {\n  max-width: 1370px;\n  margin: 0 auto;\n  display: flex;\n}\n.filters[data-v-2a4c0cfe],\n.cards[data-v-2a4c0cfe] {\n  margin: 0 16px;\n}\n\n/* Filters */\n.filters[data-v-2a4c0cfe] {\n  flex: 1;\n}\n.filter[data-v-2a4c0cfe] {\n  margin-bottom: 16px;\n}\n.filter .filter-label[data-v-2a4c0cfe] {\n  font-size: 10px;\n  text-transform: uppercase;\n  text-align: left;\n}\n\n/* Cards */\n.cards[data-v-2a4c0cfe] {\n  flex: 2;\n}\n\n/*.all-cards {\n  display: flex;\n  flex-wrap: wrap;\n}\n.all-cards .card {\n  flex: 0 0 33.33%;\n}*/\n.selected-cards[data-v-2a4c0cfe] {\n  display: flex;\n  flex-wrap: wrap;\n  align-content: center;\n  justify-content: center;\n  background: #ccc;\n  padding: 10px 0;\n}\n.selected-cards .card[data-v-2a4c0cfe] {\n  flex: 0 0 33.33%;\n  max-width: 300px;\n}\n.no-results[data-v-2a4c0cfe] {\n  text-align: left;\n}\n\n", ""]);
 
 // exports
 
@@ -15614,13 +15745,13 @@ if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
 var add = __webpack_require__(8).default
-var update = add("20c90a61", content, false, {});
+var update = add("895e9f84", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"id\":\"data-v-fbdde980\",\"scoped\":true,\"sourceMap\":false}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Card.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"id\":\"data-v-fbdde980\",\"scoped\":true,\"sourceMap\":false}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Card.vue");
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"id\":\"data-v-fbdde980\",\"scoped\":true,\"sourceMap\":false}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Card.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"id\":\"data-v-fbdde980\",\"scoped\":true,\"sourceMap\":false}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Card.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -15638,7 +15769,7 @@ exports = module.exports = __webpack_require__(7)(false);
 
 
 // module
-exports.push([module.i, "\n.heart[data-v-fbdde980] {\n  background-color: #ccc;\n  height: 10px;\n  -webkit-transform: rotate(-45deg);\n          transform: rotate(-45deg);\n  width: 10px;\n  position: absolute;\n  top: 10px;\n  right: 10px;\n}\n.heart[data-v-fbdde980]:before,\n.heart[data-v-fbdde980]:after {\n  content: \"\";\n  background-color: #ccc;\n  border-radius: 50%;\n  height: 10px;\n  position: absolute;\n  width: 10px;\n}\n.heart[data-v-fbdde980]:before {\n  top: -5px;\n  left: 0;\n}\n.card[data-v-fbdde980] {\n  min-height: 100px;\n  position: relative;\n}\n.card input[type=checkbox][data-v-fbdde980] {\n  display: none;\n}\n.card.selectable[data-v-fbdde980]:hover{\n  cursor: pointer;\n  background: #ffcccc;\n}\n.card:hover .heart[data-v-fbdde980],\n.card.selected .heart[data-v-fbdde980],\n.card:hover .heart[data-v-fbdde980]:before,\n.card.selected .heart[data-v-fbdde980]:before,\n.card:hover .heart[data-v-fbdde980]:after,\n.card.selected .heart[data-v-fbdde980]:after {\n  background-color: red;\n}\n\n/*.card.selected {*/\n  /*background: red;*/\n/*}*/\n\n", ""]);
+exports.push([module.i, "\n.heart[data-v-fbdde980] {\n  background-color: #ccc;\n  height: 10px;\n  -webkit-transform: rotate(-45deg);\n          transform: rotate(-45deg);\n  width: 10px;\n  position: absolute;\n  top: 20px;\n  right: 20px;\n}\n.heart[data-v-fbdde980]:before,\n.heart[data-v-fbdde980]:after {\n  content: \"\";\n  background-color: #ccc;\n  border-radius: 50%;\n  height: 10px;\n  position: absolute;\n  width: 10px;\n}\n.heart[data-v-fbdde980]:before {\n  top: -5px;\n  left: 0;\n}\n.card input[type=checkbox][data-v-fbdde980] {\n  display: none;\n}\n.card.selectable[data-v-fbdde980]:hover {\n  cursor: pointer;\n}\n.card:hover .heart[data-v-fbdde980],\n.card.selected .heart[data-v-fbdde980],\n.card:hover .heart[data-v-fbdde980]:before,\n.card.selected .heart[data-v-fbdde980]:before,\n.card:hover .heart[data-v-fbdde980]:after,\n.card.selected .heart[data-v-fbdde980]:after {\n  background-color: red;\n}\n.card-overview[data-v-fbdde980] {\n  min-height: 100px;\n  display: flex;\n  margin: 0 -16px 48px;\n  font-weight: 700;\n}\n.card-overview .media[data-v-fbdde980],\n  .card-overview .content[data-v-fbdde980] {\n    margin: 0 16px;\n}\n.card-overview .media[data-v-fbdde980] {\n    flex: 2;\n    position: relative;\n}\n.card-overview .media img[data-v-fbdde980] {\n      width: 100%;\n}\n.card-overview .content[data-v-fbdde980] {\n    flex: 3;\n    text-align: left;\n}\n.card-overview .content .card-title[data-v-fbdde980] {\n      font-size: 30px;\n      margin-bottom: 20px;\n}\n.card-overview .content .card-info[data-v-fbdde980] {\n      border-bottom: #ccc 2px solid;\n      border-top: #ccc 2px solid;\n      padding: 30px 0 15px;\n      position: relative;\n}\n.card-overview .content .top-level-info[data-v-fbdde980] {\n      display: flex;\n      align-items: center;\n      position: absolute;\n      top: 0;\n      -webkit-transform: translateY(-50%);\n              transform: translateY(-50%);\n      background: white;\n      padding-right: 5px;\n}\n.card-overview .content .type[data-v-fbdde980] {\n      background: #f00;\n      padding: 3px 8px;\n      border-radius: 3px;\n      color: white;\n}\n.card-overview .content .cost[data-v-fbdde980] {\n      padding: 0 10px;\n      color: #ccc;\n}\n.card-overview .content .features[data-v-fbdde980] {\n      display: flex;\n      flex-wrap: wrap;\n}\n.card-overview .content .features .feature[data-v-fbdde980] {\n        flex: 0 0 50%;\n}\n.card-overview .content .features .feature[data-v-fbdde980]::before {\n          content: 'X';\n          color: #ccc;\n          margin-right: 16px;\n}\n.card-overview .content .features .feature.true[data-v-fbdde980]:before {\n          content: 'O';\n          color: #f00;\n}\n.card-overview .content .view-details[data-v-fbdde980] {\n      cursor: pointer;\n}\n", ""]);
 
 // exports
 
@@ -15658,7 +15789,7 @@ var render = function() {
     "div",
     {
       staticClass: "card",
-      class: { selectable: !_vm.selected },
+      class: [{ selectable: !_vm.selected }, "card-" + _vm.card.id],
       on: {
         click: function($event) {
           _vm.$emit("selectCard")
@@ -15666,53 +15797,316 @@ var render = function() {
       }
     },
     [
-      _c("div", {
-        directives: [
-          {
-            name: "show",
-            rawName: "v-show",
-            value: !_vm.selected,
-            expression: "!selected"
-          }
-        ],
-        staticClass: "heart"
-      }),
-      _vm._v(" "),
-      _c("h2", [_vm._v("\n    " + _vm._s(_vm.card.name) + "\n  ")]),
-      _vm._v(" "),
-      _c(
-        "p",
-        {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: !_vm.selected,
-              expression: "!selected"
-            }
-          ]
-        },
-        [
-          _vm._l(_vm.card.category, function(category, index) {
-            return [
-              index == _vm.card.category.length - 1
-                ? [_vm._v(_vm._s(category.value))]
-                : [_vm._v(_vm._s(category.value) + ", ")]
-            ]
+      _c("div", { staticClass: "card-overview" }, [
+        _c("div", { staticClass: "media" }, [
+          _c("div", {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: !_vm.selected,
+                expression: "!selected"
+              }
+            ],
+            staticClass: "heart"
           }),
           _vm._v(" "),
-          _vm._l(_vm.card.type, function(type, index) {
-            return [
-              index == _vm.card.type.length - 1
-                ? [_vm._v(_vm._s(type.value))]
-                : [_vm._v(_vm._s(type.value) + ", ")]
-            ]
+          _c("img", {
+            attrs: {
+              src: _vm.card.image.entity.fieldMediaImage.entity.fieldImage.url,
+              alt: _vm.card.image.entity.fieldMediaImage.entity.fieldImage.alt
+            }
           })
-        ],
-        2
-      ),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "content" }, [
+          _c("h3", { staticClass: "card-title" }, [
+            _vm._v("\n        " + _vm._s(_vm.card.title) + "\n      ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-info" }, [
+            _c("div", { staticClass: "top-level-info" }, [
+              _c("div", { staticClass: "type", class: _vm.card.cardType }, [
+                _vm._v(
+                  "\n            " + _vm._s(_vm.card.cardType) + "\n          "
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "cost" }, [
+                _vm._v(
+                  "\n            " + _vm._s(_vm.card.cost) + "\n          "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "features" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "feature co-brand",
+                  class: { true: _vm.card.coBrand }
+                },
+                [_vm._v("\n            Co-Brandable\n          ")]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "feature fulfillment",
+                  class: { true: _vm.card.fulfillment }
+                },
+                [_vm._v("\n            Fast Fulfillment\n          ")]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "feature customization",
+                  class: { true: _vm.card.customization }
+                },
+                [_vm._v("\n            Customization\n          ")]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "feature virtual",
+                  class: { true: _vm.card.virtual }
+                },
+                [_vm._v("\n            Virtual Options\n          ")]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "view-details",
+              on: {
+                click: function($event) {
+                  _vm.details(_vm.card.id)
+                }
+              }
+            },
+            [_vm._v("View Details")]
+          )
+        ])
+      ]),
       _vm._v(" "),
-      _c("p", [_vm._v("\n    " + _vm._s(_vm.card.description) + "\n  ")]),
+      _c(
+        "div",
+        {
+          staticClass: "card-modal mfp-hide",
+          class: "modal--card-" + _vm.card.id
+        },
+        [
+          _c("div", { staticClass: "media" }, [
+            _c("img", {
+              attrs: {
+                src:
+                  _vm.card.image.entity.fieldMediaImage.entity.fieldImage.url,
+                alt: _vm.card.image.entity.fieldMediaImage.entity.fieldImage.alt
+              }
+            }),
+            _vm._v(
+              "\n    " + _vm._s(_vm.card.description.processed) + "\n      "
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "marketo-modal-cta-link",
+                on: {
+                  click: function($event) {
+                    _vm.$emit("openFrom")
+                  }
+                }
+              },
+              [_vm._v("Start a Conversation")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "content" }, [
+            _c("h3", { staticClass: "card-title" }, [
+              _vm._v("\n        " + _vm._s(_vm.card.title) + "\n      ")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-info" }, [
+              _c("div", { staticClass: "top-level-info" }, [
+                _c("div", { staticClass: "type", class: _vm.card.cardType }, [
+                  _vm._v(
+                    "\n            " +
+                      _vm._s(_vm.card.cardType) +
+                      "\n          "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "cost" }, [
+                  _vm._v(
+                    "\n            " + _vm._s(_vm.card.cost) + "\n          "
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "features" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "feature co-brand",
+                    class: { true: _vm.card.coBrand }
+                  },
+                  [_vm._v("\n            Co-Brandable\n          ")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "feature fulfillment",
+                    class: { true: _vm.card.fulfillment }
+                  },
+                  [_vm._v("\n            Fast Fulfillment\n          ")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "feature customization",
+                    class: { true: _vm.card.customization }
+                  },
+                  [_vm._v("\n            Customization\n          ")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "feature virtual",
+                    class: { true: _vm.card.virtual }
+                  },
+                  [_vm._v("\n            Virtual Options\n          ")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "feature personalization",
+                    class: { true: _vm.card.personalization }
+                  },
+                  [_vm._v("\n            Personalization\n          ")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "feature prepaidLoad",
+                    class: { true: _vm.card.prepaidLoad }
+                  },
+                  [_vm._v("\n            Prepaid Load\n          ")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "feature delivery",
+                    class: { true: _vm.card.delivery }
+                  },
+                  [_vm._v("\n            Delivery/Shipping\n          ")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "feature numMechants",
+                    class: { true: _vm.card.numMechants }
+                  },
+                  [_vm._v("\n            Number of Merchants\n          ")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "feature cashBack",
+                    class: { true: _vm.card.cashBack }
+                  },
+                  [_vm._v("\n            5% Cash Back\n          ")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "feature filtered",
+                    class: { true: _vm.card.filtered }
+                  },
+                  [_vm._v("\n            Filterable\n          ")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "feature greetingCard",
+                    class: { true: _vm.card.greetingCard }
+                  },
+                  [_vm._v("\n            greetingCard\n          ")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "feature issance",
+                    class: { true: _vm.card.issance }
+                  },
+                  [_vm._v("\n            Issuance\n          ")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "feature loadMax",
+                    class: { true: _vm.card.loadMax }
+                  },
+                  [_vm._v("\n            loadMax\n          ")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "feature network",
+                    class: { true: _vm.card.network }
+                  },
+                  [_vm._v("\n            network\n          ")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "feature prepaidLoad",
+                    class: { true: _vm.card.prepaidLoad }
+                  },
+                  [_vm._v("\n            prepaidLoad\n          ")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "feature prepaidLoad",
+                    class: { true: _vm.card.prepaidType }
+                  },
+                  [_vm._v("\n            prepaidType\n          ")]
+                ),
+                _vm._v(" "),
+                _c("div", {
+                  staticClass: "feature cardCategory",
+                  class: { true: _vm.card.cardCategory }
+                }),
+                _vm._v(" "),
+                _c("div", {
+                  staticClass: "feature prepaidLoad",
+                  class: { true: _vm.card.currency }
+                })
+              ])
+            ])
+          ])
+        ]
+      ),
       _vm._v(" "),
       _c("input", {
         directives: [
@@ -18407,57 +18801,27 @@ var render = function() {
       ? _c(
           "div",
           { staticClass: "selected-cards" },
-          _vm._l(_vm.selectedCards, function(card) {
-            return _c("Card", { attrs: { card: card, selected: true } })
-          })
+          [
+            _vm._l(_vm.selectedCards, function(card) {
+              return _c("Card", { attrs: { card: card, selected: true } })
+            }),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "marketo-modal-cta-link",
+                on: { click: _vm.openFrom }
+              },
+              [_vm._v("Start a Conversation")]
+            )
+          ],
+          2
         )
       : _vm._e(),
     _vm._v(" "),
-    _c("button", { staticClass: "marketo-modal-cta-link" }, [
-      _vm._v("Start a Conversation")
-    ]),
-    _vm._v(" "),
-    _c("button", { staticClass: "marketo-modal-cta-link" }, [
-      _vm._v("Start a Conversation 2")
-    ]),
-    _vm._v(" "),
     _c("div", { staticClass: "card-list" }, [
       _c("div", { staticClass: "filters" }, [
-        _vm.categories.length > 0
-          ? _c(
-              "div",
-              { staticClass: "filter filter--category" },
-              [
-                _c("div", { staticClass: "filter-label" }, [_vm._v("Catgory")]),
-                _vm._v(" "),
-                _vm._l(_vm.categories, function(category) {
-                  return _c("FilterItem", {
-                    attrs: { filter: category, type: "category" },
-                    on: { selectFilter: _vm.selectFilter }
-                  })
-                })
-              ],
-              2
-            )
-          : _vm._e(),
-        _vm._v(" "),
-        _vm.types.length > 0
-          ? _c(
-              "div",
-              { staticClass: "filter filter--type" },
-              [
-                _c("div", { staticClass: "filter-label" }, [_vm._v("Type")]),
-                _vm._v(" "),
-                _vm._l(_vm.types, function(type) {
-                  return _c("FilterItem", {
-                    attrs: { filter: type, type: "type" },
-                    on: { selectFilter: _vm.selectFilter }
-                  })
-                })
-              ],
-              2
-            )
-          : _vm._e()
+        _vm._v("\n      fliters\n\n      ")
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "cards" }, [
@@ -18472,7 +18836,8 @@ var render = function() {
               on: {
                 selectCard: function($event) {
                   _vm.selectCard(card)
-                }
+                },
+                openFrom: _vm.openFrom
               }
             })
           })

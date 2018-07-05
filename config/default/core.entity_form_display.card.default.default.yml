@@ -208,7 +208,7 @@ content:
       edit_mode: preview
       add_mode: paragraphs_browser
       form_display_mode: default
-      default_paragraph_type: _none
+      default_paragraph_type: single_image
       paragraphs_browser: browser
       modal_width: 80%
       modal_height: auto

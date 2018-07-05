@@ -5,6 +5,7 @@ dependencies:
   config:
     - bhk_card_browser.card_type.default
     - field.storage.card.field_p_media
+    - paragraphs.paragraphs_type.single_image
   module:
     - entity_reference_revisions
 id: card.default.field_p_media
@@ -21,7 +22,8 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     negate: 0
-    target_bundles: null
+    target_bundles:
+      single_image: single_image
     target_bundles_drag_drop:
       banner_featured_insights:
         weight: 30
@@ -96,8 +98,8 @@ settings:
         weight: 53
         enabled: false
       single_image:
+        enabled: true
         weight: 54
-        enabled: false
       single_svg:
         weight: 55
         enabled: false
