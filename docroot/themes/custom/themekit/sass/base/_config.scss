@@ -117,6 +117,10 @@ $layouts: (
   default: (
     extend: _base
   ),
+  narrow: (
+    extend: _base,
+    width: $global-width-narrow,
+  ),
   wide: (
     extend: _base,
     width: $global-width-wide,

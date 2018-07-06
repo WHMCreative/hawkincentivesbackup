@@ -62,6 +62,25 @@ function themekit_preprocess_field(&$variables) {
 function themekit_preprocess_node_article(&$variables) {
 }
 
+function themekit_preprocess_node_insight(&$variables) {
+  $node = $variables['node'];
+
+  // Get correct heading for unlocked vm
+  $heading = '';
+  if(array_key_exists('field_p_header',$variables['content'])) {
+    $header = $variables['content']['field_p_header'][0]['#paragraph'];
+    if($header->hasField('field_heading') && !empty($header->field_heading->getValue())) {
+      $$heading = $header->field_heading->getValue();
+    }
+  }
+
+  if($heading) {
+    $variables['heading'] = $heading;
+  } else {
+    $variables['heading'] = $node->getTitle();
+  }
+}
+
 
 /**
  * Implements template_preprocess_media().
@@ -162,6 +181,7 @@ function themekit_theme_suggestions_field_alter(array &$suggestions, array $vari
         array_unshift($suggestions, $large_heading ? 'field__heading_5' : 'field__heading_1');
         break;
       case 'compound_content_bar':
+      case 'simple_cta':
         array_unshift($suggestions, 'field__heading_2');
         break;
       case 'single_heading':

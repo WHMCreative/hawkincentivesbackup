@@ -19,61 +19,23 @@ dependencies:
     - node.type.insight
   module:
     - entity_reference_revisions
-    - text
     - user
 id: node.insight.unlocked
 targetEntityType: node
 bundle: insight
 mode: unlocked
 content:
-  addtoany:
-    weight: 1
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  body:
-    type: text_default
-    weight: 3
-    region: content
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-  field_author:
-    weight: 6
-    label: hidden
-    settings:
-      view_mode: teaser
-      link: false
-    third_party_settings: {  }
-    type: entity_reference_entity_view
-    region: content
-  field_intro_copy:
-    type: text_default
-    weight: 2
-    region: content
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
   field_p_header:
+    type: entity_reference_revisions_entity_view
     weight: 0
+    region: content
     label: hidden
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    type: entity_reference_revisions_entity_view
-    region: content
-  field_p_insight:
-    type: entity_reference_revisions_entity_view
-    weight: 4
-    label: hidden
-    settings:
-      view_mode: default
-      link: ''
-    third_party_settings: {  }
-    region: content
   field_p_related_insights:
-    weight: 5
+    weight: 1
     label: hidden
     settings:
       view_mode: default
@@ -81,19 +43,18 @@ content:
     third_party_settings: {  }
     type: entity_reference_revisions_entity_view
     region: content
-  field_references:
-    type: text_default
-    weight: 7
-    region: content
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
 hidden:
+  addtoany: true
+  body: true
   content_moderation_control: true
+  field_author: true
   field_featured_image: true
   field_gated: true
   field_insight_type: true
+  field_intro_copy: true
   field_p_form: true
+  field_p_insight: true
+  field_references: true
   field_teaser_image: true
   langcode: true
   links: true

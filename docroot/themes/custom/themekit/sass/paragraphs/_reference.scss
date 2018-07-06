@@ -1,0 +1,13 @@
+////
+/// Paragraphs - Reference
+////
+
+.paragraph--type--reference-marketo-form {
+  background: $blue-gradient-reverse;
+  padding: rem-calc(20);
+  color: $white;
+
+  .marketo-form-description {
+    margin-bottom: rem-calc(16);
+  }
+}

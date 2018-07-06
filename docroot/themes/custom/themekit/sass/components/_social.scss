@@ -19,10 +19,16 @@
     width: 32px;
     height: 32px;
     margin-right: 10px;
+    transition: background-color ease 0.5s;
     @include breakpoint(xlarge) {
       margin-bottom: 10px;
       margin-right: 0;
     }
+
+    @include selectors(active) {
+      background: $secondary-color;
+    }
+
     @each $social in $socials {
       &.a2a_button_#{$social} {
         @include icon-before(#{$social});

@@ -63,6 +63,7 @@ third_party_settings:
       children:
         - field_gated
         - field_p_form
+        - field_p_related_insights
       parent_name: group_tabs
       weight: 16
       format_type: tab
@@ -73,19 +74,6 @@ third_party_settings:
         description: ''
         required_fields: true
       label: 'Gated Settings'
-    group_relationships:
-      children:
-        - field_p_related_insights
-      parent_name: group_tabs
-      weight: 18
-      format_type: tab
-      format_settings:
-        id: ''
-        classes: ''
-        formatter: closed
-        description: ''
-        required_fields: true
-      label: Relationships
     group_sidebar:
       children:
         - field_p_insight
@@ -224,14 +212,14 @@ content:
     third_party_settings: {  }
     region: content
   field_p_related_insights:
-    weight: 15
+    weight: 106
     settings:
       title: 'Related Insights'
       title_plural: 'Related Insights'
       edit_mode: preview
       add_mode: paragraphs_browser
       form_display_mode: default
-      default_paragraph_type: _none
+      default_paragraph_type: summary_insights
       paragraphs_browser: browser
       modal_width: 80%
       modal_height: auto

@@ -37,7 +37,9 @@ $dark-gray: color(gray, dark);
 
 
 $gray-gradient: linear-gradient(135deg, rgba(244, 244, 244, 0.4) 0%, rgba(228, 228, 228, 0.4) 100%);
+$green-gradient: linear-gradient(135deg, rgba(180, 203, 77, 0.9) 0%, rgba(67, 132, 29, 0.9) 100%);
 $blue-gradient: linear-gradient(135deg, $secondary-color-light 0%, $secondary-color 100%);
+$blue-gradient-reverse: linear-gradient(135deg, $secondary-color 0%, $secondary-color-light 100%);
 
 $bg-colors: (
 

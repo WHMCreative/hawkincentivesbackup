@@ -1,0 +1,33 @@
+uuid: 71cc23c6-aba8-417c-b2f8-c526fdf78cb6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.simple_cta.field_heading
+    - field.field.paragraph.simple_cta.field_p_link
+    - paragraphs.paragraphs_type.simple_cta
+  module:
+    - entity_reference_revisions
+id: paragraph.simple_cta.default
+targetEntityType: paragraph
+bundle: simple_cta
+mode: default
+content:
+  field_heading:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_p_link:
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+hidden: {  }

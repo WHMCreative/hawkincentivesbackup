@@ -1,0 +1,9 @@
+uuid: adfb7475-0a5b-48be-aecd-2ab43e11d870
+langcode: en
+status: true
+dependencies: {  }
+id: simple_cta
+label: 'Simple - CTA'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

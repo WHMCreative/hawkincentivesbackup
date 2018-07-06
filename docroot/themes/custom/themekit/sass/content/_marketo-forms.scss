@@ -1,0 +1,18 @@
+////
+/// Compact view mode styles
+////
+
+.marketo-form-wrapper {
+  h2 {
+   font-size: rem-calc(20);
+    font-weight: $global-weight-bold;
+    color: $white;
+  }
+
+  .mktoButtonRow {
+    button {
+      @include btn(ghost-white);
+      cursor: pointer;
+    }
+  }
+}

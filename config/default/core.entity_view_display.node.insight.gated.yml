@@ -31,6 +31,13 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  body:
+    type: text_default
+    weight: 4
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
   content_moderation_control:
     weight: 0
     region: content
@@ -45,7 +52,7 @@ content:
     third_party_settings: {  }
   field_p_form:
     type: entity_reference_revisions_entity_view
-    weight: 4
+    weight: 5
     label: hidden
     settings:
       view_mode: default
@@ -61,22 +68,13 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-  field_p_related_insights:
-    type: entity_reference_revisions_entity_view
-    weight: 5
-    region: content
-    label: hidden
-    settings:
-      view_mode: default
-      link: ''
-    third_party_settings: {  }
 hidden:
-  body: true
   field_author: true
   field_featured_image: true
   field_gated: true
   field_insight_type: true
   field_p_insight: true
+  field_p_related_insights: true
   field_references: true
   field_teaser_image: true
   langcode: true

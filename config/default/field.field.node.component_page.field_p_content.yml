@@ -16,6 +16,7 @@ dependencies:
     - paragraphs.paragraphs_type.reference_featured_insight
     - paragraphs.paragraphs_type.reference_marketo_form
     - paragraphs.paragraphs_type.simple_content
+    - paragraphs.paragraphs_type.simple_cta
     - paragraphs.paragraphs_type.summary_cards
     - paragraphs.paragraphs_type.summary_insights
   module:
@@ -41,6 +42,7 @@ settings:
       compound_stat_bar: compound_stat_bar
       compound_tabbed_content: compound_tabbed_content
       reference_card_browser: reference_card_browser
+      simple_cta: simple_cta
       reference_marketo_form: reference_marketo_form
       simple_content: simple_content
       compound_slider: compound_slider
@@ -82,10 +84,10 @@ settings:
       marketo_hidden_field:
         weight: 27
         enabled: false
-      banner_featured_insights:
+      marketo_submission_confirmation:
         weight: 28
         enabled: false
-      marketo_submission_confirmation:
+      banner_featured_insights:
         weight: 28
         enabled: false
       reference_card_browser:
@@ -100,6 +102,9 @@ settings:
       media_video_modal:
         weight: 30
         enabled: false
+      simple_cta:
+        enabled: true
+        weight: 31
       reference_marketo_form:
         enabled: true
         weight: 31

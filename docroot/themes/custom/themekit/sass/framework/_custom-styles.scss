@@ -53,3 +53,14 @@
     }
   }
 }
+
+
+@mixin top-border() {
+  &:before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: rem-calc(10);
+    background: $green-gradient;
+  }
+}
