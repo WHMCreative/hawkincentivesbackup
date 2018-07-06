@@ -7,7 +7,9 @@
 .node--view-mode-gated {
   &.node--type-insight,
   &.node--type-news {
-    .node--content-wrapper {
+    position: relative;
+    z-index: z(content, base);
+    > .node--content-wrapper {
       @include content-width(default);
       padding-top: 40px;
       margin-bottom: 40px;
@@ -17,7 +19,7 @@
         display: flex;
         justify-content: space-between;
       }
-      .node--content {
+      > .node--content {
         margin-bottom: 40px;
         @include breakpoint(marge) {
           margin-bottom: 0;
@@ -25,10 +27,10 @@
           max-width: 650px;
         }
       }
-      .node--sidebar {
+      > .node--sidebar {
         @include breakpoint(marge) {
-          max-width: 245px;
-          width: 25%;
+          max-width: 250px;
+          width: 26%;
         }
 
         h3 {
@@ -69,18 +71,47 @@
       }
     }
   }
-  .field--name-field-p-insight {
+  .field--name-field-p-insight,
+  .field--name-field-p-form {
     margin-bottom: 40px;
     @include breakpoint(marge) {
       margin-left: -30px;
     }
     @include breakpoint(large) {
-      margin-left: -40px;
+      margin-left: -35px;
       margin-bottom: 60px;
     }
     @include breakpoint(xlarge) {
-      margin-left: -45px;
-      margin-right: -45px;
+      margin-left: -40px;
+      margin-right: -40px;
+    }
+  }
+  .field--name-field-p-insight {
+    @include breakpoint(marge) {
+      margin-top: -225px;
+      min-height: 230px;
+    }
+    @include breakpoint(large) {
+      margin-top: -245px;
+      min-height: 250px;
+    }
+    @include breakpoint(xlarge) {
+      margin-top: -265px;
+      min-height: 270px;
+    }
+  }
+  .field--name-field-p-form {
+    @include breakpoint(marge) {
+      margin-top: -180px;
+      min-height: 270px;
+    }
+    @include breakpoint(large) {
+      margin-top: -200px;
+      min-height: 290px;
+    }
+    @include breakpoint(xlarge) {
+      margin-top: -230px;
+      min-height: 320px;
     }
   }
 

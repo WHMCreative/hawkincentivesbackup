@@ -36,6 +36,6 @@
 @import "paragraphs/compound";
 @import "paragraphs/link";
 
-// @TODO: Choose one format and remove the other from the project
-@import "content/page";
+@import "content/full";
 @import "content/teaser";
+@import "content/compact";

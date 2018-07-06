@@ -1,0 +1,29 @@
+////
+/// Compact view mode styles
+////
+
+.node--view-mode-compact {
+  &.node--type-people {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .node--image {
+      width: 60px;
+      margin-right: 20px;
+      .field--name-field-media-image {
+        @include frame($secondary-color-light, 1px, 5px, 1px);
+      }
+    }
+    .node--content {
+      flex-grow: 1;
+      h4 {
+        color: inherit;
+        margin: 0;
+      }
+      .field--name-field-title {
+        font-size: rem-calc(14);
+        font-style: italic;
+      }
+    }
+  }
+}

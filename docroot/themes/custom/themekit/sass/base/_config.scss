@@ -41,6 +41,9 @@ $z-layers: (
     overlay: 3,
     content: 5
   ),
+  content: (
+    base: 10,
+  ),
 );
 
 /// Button config
