@@ -25,6 +25,7 @@
           margin-bottom: 0;
           width: 64%;
           max-width: 650px;
+          position: relative;
         }
       }
       > .node--sidebar {
@@ -37,6 +38,20 @@
           margin-bottom: 12px;
         }
       }
+    }
+  }
+
+  .a2a_kit {
+    margin-bottom: 20px;
+    @include breakpoint(marge) {
+      position: absolute;
+      left: 0;
+      top: -45px;
+    }
+    @include breakpoint(xlarge) {
+      width: 32px;
+      top: 0;
+      left: -90px;
     }
   }
 

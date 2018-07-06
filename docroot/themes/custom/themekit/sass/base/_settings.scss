@@ -122,6 +122,7 @@ $banner-spacing: (
   medium: 60px,
   large: 95px
 );
+$socials: facebook, linkedin, twitter;
 
 
 // 1.Drupal - All of these settings should be copied over when the _settings.scss partial is updated on new version of foundation!!!
@@ -145,6 +146,9 @@ $icons: (
   arrow-down: "\e907",
   checkmark: "\e901",
   times: "\e900",
+  twitter: "\e908",
+  linkedin: "\e909",
+  facebook: "\e90a",
 );
 /******* End Drupal Defaults *******/
 
