@@ -1,129 +1,164 @@
 <template>
-  <div class="card" @click="$emit('selectCard')" :class="[{ selectable: !selected}, 'card-' + card.id]">
+  <div class="card" :class="[{ selectable: !selected}, 'card-' + card.id]">
     <div class="card-overview">
       <div class="media">
-        <div v-show="!selected" class="heart"></div>
+        <button class="heart" @click="handleClick" ></button>
         <img :src=card.image.entity.fieldMediaImage.entity.fieldImage.url :alt=card.image.entity.fieldMediaImage.entity.fieldImage.alt />
       </div>
-      <div class="content">
+      <div class="content" v-show="!selected">
         <h3 class="card-title">
           {{ card.title }}
         </h3>
 
-        <div class="card-info">
+        <div class="features">
           <div class="top-level-info">
             <div class="type" :class=card.cardType>
-              {{ card.cardType }}
+              {{ typeMap[card.cardType ]}}
             </div>
-            <div class="cost">
-              {{ card.cost }}
+            <div class="cost" v-show="card.cardType === 'prepaid' || card.cardType === 'gift_card'">
+              {{ costMap[card.cost ]}}
             </div>
           </div>
-          <div class="features">
-            <div class="feature co-brand" :class="{ true: card.coBrand }">
+          <div class="content boolean">
+            <div class="feature icon co-brand" :class="{ true: card.coBrand }">
               Co-Brandable
             </div>
-            <div class="feature fulfillment" :class="{ true: card.fulfillment }">
+            <div class="feature icon fulfillment" :class="{ true: card.fulfillment }">
               Fast Fulfillment
             </div>
-            <div class="feature customization" :class="{ true: card.customization }">
+            <div class="feature icon customization" :class="{ true: card.customization }">
               Customization
             </div>
-            <div class="feature virtual" :class="{ true: card.virtual }">
+            <div class="feature icon virtual" :class="{ true: card.virtual }" v-show="card.cardType === 'prepaid' || card.cardType === 'gift_card'">
               Virtual Options
             </div>
           </div>
-
         </div>
-      <button class="view-details" @click='details(card.id)'>View Details</button>
+
+      <button class="view-details" @click='details(card.id)' v-show="!selected">View Details</button>
     </div>
 
 
     </div>
 
-    <div class="card-modal mfp-hide":class="'modal--card-' + card.id">
-      <div class="media">
-        <img :src=card.image.entity.fieldMediaImage.entity.fieldImage.url :alt=card.image.entity.fieldMediaImage.entity.fieldImage.alt />
-      {{ card.description.processed }}
-        <!--<button class="marketo-modal-cta-link" @click="$emit('openFrom')">Start a Conversation</button>-->
-        <button class="marketo-modal-cta-link" @click="$emit('openFrom')">Start a Conversation</button>
+    <div class="card card-modal mfp-hide":class="'modal--card-' + card.id" v-show="!selected">
+    <!--<div class="card card-modal":class="'modal&#45;&#45;card-' + card.id">-->
+
+      <div class="card-info">
+        <div class="media">
+          <img :src=card.image.entity.fieldMediaImage.entity.fieldImage.url :alt=card.image.entity.fieldMediaImage.entity.fieldImage.alt />
+        </div>
+        <div class="content">
+          <h3 class="card-title">
+            {{ card.title }}
+          </h3>
+          <div class="description">
+            {{ card.description.processed }}
+          </div>
+        </div>
       </div>
 
-
-      <div class="content">
-        <h3 class="card-title">
-          {{ card.title }}
-        </h3>
-
-        <div class="card-info">
-          <div class="top-level-info">
-            <div class="type" :class=card.cardType>
-              {{ card.cardType }}
-            </div>
-            <div class="cost">
-              {{ card.cost }}
-            </div>
+      <div class="features">
+        <div class="top-level-info">
+          <div class="type" :class=card.cardType>
+            {{ typeMap[card.cardType ]}}
           </div>
-          <div class="features">
-            <div class="feature co-brand" :class="{ true: card.coBrand }">
+          <div class="cost" v-show="card.cardType === 'prepaid' || card.cardType === 'gift_card'">
+            {{ costMap[card.cost ]}}
+          </div>
+        </div>
+        <div class="content boolean">
+          <template v-if="card.cardType === 'prepaid' || card.cardType === 'gift_card'">
+            <div class="feature icon co-brand" :class="{ true: card.coBrand }">
               Co-Brandable
             </div>
-            <div class="feature fulfillment" :class="{ true: card.fulfillment }">
-              Fast Fulfillment
-            </div>
-            <div class="feature customization" :class="{ true: card.customization }">
-              Customization
-            </div>
-            <div class="feature virtual" :class="{ true: card.virtual }">
-              Virtual Options
-            </div>
-            <div class="feature personalization" :class="{ true: card.personalization }">
+          </template>
+          <div class="feature icon fulfillment" :class="{ true: card.fulfillment }">
+            Fast Fulfillment
+          </div>
+          <div class="feature icon customization" :class="{ true: card.customization }">
+            Customization
+          </div>
+          <div class="feature icon virtual" :class="{ true: card.virtual }">
+            Virtual Options
+          </div>
+          <template v-if="card.cardType === 'prepaid'">
+            <div class="feature icon personalization" :class="{ true: card.personalization }">
               Personalization
             </div>
-            <div class="feature prepaidLoad" :class="{ true: card.prepaidLoad }">
-              Prepaid Load
-            </div>
-            <div class="feature delivery" :class="{ true: card.delivery }">
-              Delivery/Shipping
-            </div>
-            <div class="feature numMechants" :class="{ true: card.numMechants }">
-              Number of Merchants
-            </div>
-
-            <div class="feature cashBack" :class="{ true: card.cashBack }">
+          </template>
+          <template v-if="card.cardType === 'prepaid'">
+            <div class="feature icon cashBack" :class="{ true: card.cashBack }">
               5% Cash Back
             </div>
-            <div class="feature filtered" :class="{ true: card.filtered }">
-              Filterable
-            </div>
-            <div class="feature greetingCard" :class="{ true: card.greetingCard }">
-              greetingCard
-            </div>
-            <div class="feature issance" :class="{ true: card.issance }">
-              Issuance
-            </div>
-            <div class="feature loadMax" :class="{ true: card.loadMax }">
-              loadMax
-            </div>
-            <div class="feature network" :class="{ true: card.network }">
-              network
-            </div>
-            <div class="feature prepaidLoad" :class="{ true: card.prepaidLoad }">
-              prepaidLoad
-            </div>
-            <div class="feature prepaidLoad" :class="{ true: card.prepaidType }">
-              prepaidType
-            </div>
-
-            <div class="feature cardCategory" :class="{ true: card.cardCategory }">
-    <!--{{ card.cardCategory.entity.entityLabel }}-->
-            </div>
-            <div class="feature prepaidLoad" :class="{ true: card.currency }">
-    <!--{{ card.currency.entity.entityLabel }}-->
-            </div>
+          </template>
+          <div class="feature icon filtered" :class="{ true: card.filtered }">
+            Filterable
           </div>
+          <template v-if="card.cardType === 'prepaid' || card.cardType === 'gift_card'">
+            <div class="feature icon greetingCard" :class="{ true: card.greetingCard }">
+              Greeting Card
+            </div>
+          </template>
+        </div>
+
+        <div class="content varied">
+          <div class="feature delivery" :class="{ true: card.delivery }">
+            <span class="label">Delivery/Shipping</span>
+            <span class="value">{{ devlieryMap[card.delivery] }}</span>
+          </div>
+          <template v-if="card.cardType === 'gift_card' || card.cardType === 'omnicodes'">
+            <div class="feature cardCategory" :class="{ true: card.cardCategory }">
+              Card Category
+              <!--{{ card.cardCategory.entity.entityLabel }}-->
+            </div>
+          </template>
+          <template v-if="card.cardType === 'gift_card' || card.cardType === 'omnicodes'">
+            <div class="feature currency" :class="{ true: card.currency }">
+              Currency
+              <!--{{ card.currency.entity.entityLabel }}-->
+            </div>
+          </template>
+
+          <template v-if="card.cardType === 'prepaid' && (card.prepaidType === 'pre_filtered' || card.prepaidType === 'filtered')">
+            <div class="feature numMechants" :class="{ true: card.numMechants }">
+              <span class="label">Number of Merchants</span>
+              <span class="value">{{ card.numMechants }}</span>
+            </div>
+          </template>
+          <template v-if="card.cardType === 'gift_card' || card.cardType === 'omnicodes'">
+            <div class="feature issuance" :class="{ true: card.issance }">
+              <span class="label">Issuance</span>
+              <span class="value">{{ issuanceMap[card.issance] }}</span>
+            </div>
+          </template>
+          <template v-if="card.cardType === 'gift_card' || card.cardType === 'omnicodes'">
+            <div class="feature loadMax" :class="{ true: card.loadMax }">
+              <span class="label">Load Max</span>
+              <span class="value">${{ card.loadMax }}</span>
+            </div>
+          </template>
+          <template v-if="card.cardType === 'prepaid'">
+            <div class="feature network" :class="{ true: card.network }">
+              <span class="label">Network</span>
+              <span class="value">{{ networkMap[card.network] }}</span>
+            </div>
+          </template>
+          <template v-if="card.cardType === 'prepaid'">
+            <div class="feature prepaidLoad" :class="{ true: card.prepaidLoad }">
+              <span class="label">Prepaid Load</span>
+              <span class="value">{{ prepaidLoadMap[card.prepaidLoad] }}</span>
+            </div>
+          </template>
+          <template v-if="card.cardType === 'prepaid'">
+            <div class="feature prepaidType" :class="{ true: card.prepaidType }">
+              <span class="label">Prepaid Type</span>
+              <span class="value">{{ card.prepaidType }}</span>
+            </div>
+          </template>
         </div>
       </div>
+      <button class="marketo-modal-cta-link" @click="$emit('openFrom')">Start a Conversation</button>
     </div>
 
     <input v-show="!selected" id="checkBox" type="checkbox" :checked="card.selected">
@@ -133,10 +168,49 @@
 <script>
 export default {
   props: ['card', 'selected'],
+  data() {
+
+    return {
+      costMap: {
+        '1x': '$',
+        '2x': '$$',
+        '3x': '$$$',
+        '4x': '$$$$'
+      },
+
+      devlieryMap: {
+        'individual': 'Individual',
+        'bulk': 'Bulk'
+      },
+
+      issuanceMap: {
+        'us_only': 'U.S. Only',
+        'international': 'International*'
+      },
+
+      networkMap: {
+        'discover': 'discover',
+        'Mastercard': 'Mastercard',
+        'visa': 'Visa'
+      },
+
+      prepaidLoadMap: {
+        'anonymous': 'Anonymous',
+        'personalized': 'Personalized'
+      },
+
+      typeMap: {
+        'prepaid': 'PrePaid',
+        'gift_card': 'Gift Card',
+        'omnicode': 'OmniCode'
+      }
+    }
+  },
   methods: {
 
+    // Open card detail modal
     details(id) {
-      // Find form content
+      // Find detail content
       let selector = 'modal--card-' + id;
       let modalSrc = document.getElementsByClassName(selector);
       if (!modalSrc.length) return;
@@ -148,12 +222,21 @@ export default {
           type: 'inline'
         },
         closeBtnInside: true,
+        closeOnBgClick: false,
+        closeOnContentClick: false,
+        callbacks: {
+          beforeOpen: function() {
+            jQuery.magnificPopup.instance.close = function() {
+              jQuery.magnificPopup.proto.close.call(this);
+            };
+          }
+        }
       });
     },
 
-    open() {
-      console.log('open');
-    }
+    handleClick() {
+      this.$emit('selectCard', this.card.id);
+    },
   }
 };
 </script>
@@ -161,134 +244,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
 
-.heart {
-  background-color: #ccc;
-  height: 10px;
-  transform: rotate(-45deg);
-  width: 10px;
-  position: absolute;
-  top: 20px;
-  right: 20px;
-}
 
-.heart:before,
-.heart:after {
-  content: "";
-  background-color: #ccc;
-  border-radius: 50%;
-  height: 10px;
-  position: absolute;
-  width: 10px;
-}
-
-.heart:before {
-  top: -5px;
-  left: 0;
-}
-
-.card input[type=checkbox] {
-  display: none;
-}
-
-.card.selectable:hover{
-  cursor: pointer;
-}
-
-.card:hover .heart,
-.card.selected .heart,
-.card:hover .heart:before,
-.card.selected .heart:before,
-.card:hover .heart:after,
-.card.selected .heart:after {
-  background-color: red;
-}
-
-
-.card-overview {
-  min-height: 100px;
-  display: flex;
-  margin: 0 -16px 48px;
-  font-weight: 700;
-
-  .media,
-  .content {
-    margin: 0 16px;
-  }
-
-  .media {
-    flex: 2;
-    position: relative;
-
-    img {
-      width: 100%;
-    }
-  }
-
-  .content {
-    flex: 3;
-    text-align: left;
-
-    .card-title {
-      font-size: 30px;
-      margin-bottom: 20px;
-    }
-
-    .card-info {
-      border-bottom: #ccc 2px solid;
-      border-top: #ccc 2px solid;
-      padding: 30px 0 15px;
-      position: relative;
-    }
-
-    .top-level-info {
-      display: flex;
-      align-items: center;
-      position: absolute;
-      top: 0;
-      transform: translateY(-50%);
-      background: white;
-      padding-right: 5px;
-    }
-
-    .type {
-      background: #f00;
-      padding: 3px 8px;
-      border-radius: 3px;
-      color: white;
-    }
-
-    .cost {
-      padding: 0 10px;
-      color: #ccc;
-    }
-
-
-    .features {
-      display: flex;
-      flex-wrap: wrap;
-
-      .feature {
-        flex: 0 0 50%;
-
-        &::before {
-          content:'X';
-          color: #ccc;
-          margin-right: 16px;
-        }
-
-        &.true:before {
-          content:'O';
-          color: #f00;
-        }
-      }
-    }
-
-    .view-details {
-      cursor: pointer;
-    }
-  }
-
-}
 
 
 </style>

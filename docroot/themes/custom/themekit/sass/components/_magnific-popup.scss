@@ -2,11 +2,15 @@
 /// Magnific Popup
 ////
 
+.mfp-close-btn-in .mfp-close {
+  color: $lighter-gray;
+  font-size: rem-calc(34);
+}
 
 .mfp-content {
   .card-modal {
     width: 90%;
-    max-width: 600px;
+    max-width: rem-calc(700);
     background: $white;
     margin: auto;
     padding: rem-calc(40);
