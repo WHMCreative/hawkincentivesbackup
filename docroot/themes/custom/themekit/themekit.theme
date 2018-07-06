@@ -142,6 +142,8 @@ function themekit_preprocess_paragraph_compound_content_bar(&$variables) {
   $items_count = $paragraph->get('field_p_compound_content')->count();
   if ($items_count < 3) {
     $variables['attributes']['class'][] = 'columns-narrow';
+  } else {
+    $variables['attributes']['class'][] = 'columns-wide';
   }
 }
 

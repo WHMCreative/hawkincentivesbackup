@@ -39,14 +39,21 @@
     }
   }
 
-  .field--name-field-p-compound-content {
-    @include content-width(wide);
-    @include tk-flex-equal-width-items($grid-column-gutter, '.paragraph');
+  &.columns-wide {
+    .field--name-field-p-compound-content {
+      @include content-width(wide);
+      @include breakpoint(marge) {
+        @include tk-flex-equal-width-items($grid-column-gutter, '.paragraph');
+      }
+    }
   }
 
   &.columns-narrow {
     .field--name-field-p-compound-content {
       @include content-width(narrow);
+      @include breakpoint(medium) {
+        @include tk-flex-equal-width-items($grid-column-gutter, '.paragraph');
+      }
     }
   }
 }
