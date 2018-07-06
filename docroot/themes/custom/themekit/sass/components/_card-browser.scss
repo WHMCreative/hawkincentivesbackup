@@ -1,3 +1,316 @@
 ////
 /// Card Browser
 ////
+
+.card-catalog {
+
+  .card-list {
+    @include content-width(default);
+    display: flex;
+  }
+
+  /* Filters */
+  .filters {
+    flex: 1;
+    padding-right: rem-calc(50);
+    position: relative;
+    text-align: left;
+    padding-top: rem-calc(50);
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 9600px;
+      right: 0;
+      background-image: $gray-gradient;
+    }
+
+    .content {
+      position: relative;
+      z-index: z(above);
+    }
+
+    .filter-title {
+      font-size: rem-calc(20);
+      font-weight: $global-weight-bold;
+    }
+
+    .box-filter {
+      padding: rem-calc(20);
+      background: $white;
+    }
+  }
+
+  .card-list {
+    /* Cards */
+    > .cards {
+      flex: 2;
+      padding-top: rem-calc(50);
+      padding-left: rem-calc(50);
+    }
+  }
+
+
+
+  .no-results {
+    text-align: left;
+  }
+}
+
+
+.selected-cards {
+  background-image: $blue-gradient;
+  padding: 10px 0;
+  position: absolute;
+  width: 100%;
+  max-height: 500px;
+  z-index: z(just-above);
+  transition: max-height 1s;
+
+  &.slide-enter-active,
+  &.slide-leave-active {
+  }
+
+  &.slide-enter,
+  &.slide-leave-to {
+    transition: max-height 1s;
+    max-height: 0;
+    overflow: hidden;
+  }
+
+  .content-wrapper {
+    @include content-width(wide);
+  }
+
+  .content {
+    margin: 0 auto;
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+
+    & > .cards {
+      @include tk-block-grid(6, '.card');
+      flex-grow: 1;
+
+    }
+  }
+
+  .actions {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+  }
+
+  .marketo-modal-cta-link {
+    @include btn(ghost-white);
+    cursor: pointer;
+  }
+}
+
+
+// Card Styles
+.card {
+
+  .media {
+    position: relative;
+  }
+
+  .heart {
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    top: 6%;
+    right: 6%;
+    background-image: url(img-get('svg/heart.svg'));
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    cursor: pointer;
+  }
+
+
+  input[type=checkbox] {
+    display: none;
+  }
+
+  .card-title {
+    font-size: rem-calc(20);
+    font-weight: $global-weight-bold;
+  }
+
+  .features {
+    border-bottom: $lighter-gray 2px solid;
+    border-top: $lighter-gray 2px solid;
+    padding: 30px 0 15px;
+    position: relative;
+
+    .content.boolean {
+      @include tk-flex-block-grid(2, '.feature', $gutter: 16px, $bottom-gutter: 10px);
+    }
+
+    .feature {
+      &.icon {
+        @include icon-before(times);
+
+        &:before {
+          color: $lighter-gray;
+          min-width: rem-calc(35);
+          text-align: left;
+        }
+
+        &.true {
+          @include icon-before(checkmark);
+
+          &:before {
+            text-align: left;
+            color: $primary-color;
+          }
+        }
+      }
+
+    }
+
+    .top-level-info {
+      display: flex;
+      align-items: center;
+      position: absolute;
+      top: 0;
+      transform: translateY(-50%);
+      background: white;
+      padding-right: 5px;
+    }
+
+    .type {
+      background: $primary-color;
+      padding: 3px 8px;
+      border-radius: 3px;
+      color: $white;
+      font-weight: $global-weight-bold;
+
+      &.prepaid {
+        background: $secondary-color-light;
+      }
+
+      &.omnicode {
+        background: $tertiary-color;
+      }
+    }
+
+    .cost {
+      padding: 0 10px;
+      color: $secondary-color;
+      font-weight: $global-weight-bold;
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+  // Main Overview
+  .card-list & {
+    .card-overview {
+      min-height: 100px;
+      display: flex;
+
+      .media {
+        flex: 2;
+        margin-right: rem-calc(32);
+
+        img {
+          width: 100%;
+        }
+      }
+
+      .card-title {
+        margin-bottom: rem-calc(30);
+      }
+
+      .content {
+        flex: 3;
+        text-align: left;
+
+
+        .view-details {
+          cursor: pointer;
+          @include link(blue);
+          margin-top: rem-calc(20);
+        }
+      }
+    }
+  }
+
+  // Detail Modal
+  &.card-modal {
+    text-align: left;
+
+    .card-info {
+      display: flex;
+
+      .media {
+        flex: 1;
+        margin-right: rem-calc(24);
+      }
+
+      .content {
+        flex: 2;
+      }
+    }
+
+    .description {
+      font-size: rem-calc(14);
+    }
+
+    .features {
+      margin: rem-calc(32 0);
+
+      .content.boolean {
+        @include tk-flex-block-grid(3, '.feature', $gutter: 16px, $bottom-gutter: 10px);
+      }
+
+      .feature {
+        .value {
+          color: $light-gray;
+          font-weight: $global-weight-bold;
+          min-width: rem-calc(35);
+          display: inline-block;
+        }
+
+        .label {
+          font-weight: $global-weight-normal;
+        }
+      }
+
+      .varied {
+        border-top: 3px solid red;
+      }
+    }
+
+    .marketo-modal-cta-link {
+      @include btn(blue);
+    }
+  }
+
+  // Main
+  .cards & {
+    margin-bottom: rem-calc(48);
+  }
+
+  // Selected
+  .selected-cards & {
+    max-width: 300px;
+    margin-bottom: 0;
+  }
+
+  .selected-cards .content>.cards & {
+    margin-bottom: 0;
+  }
+}

@@ -27,6 +27,7 @@ $z-layers: (
   skip-link: 8000,
   ajax-throbber: 7000,
   debug: 1000,
+  just-above: 10,
   above: 1,
   default: 0,
   under: -1,
@@ -83,12 +84,23 @@ $buttons: (
 
 /// Link config
 $links: (
+  _base: (
+    color: $secondary-color,
+    font-weight: 700,
+    active-color: $secondary-color-light,
+  ),
+
+
   default: (
     color: $secondary-color,
     background: linear-gradient(-45deg, $secondary-color-light 0%, $secondary-color 100%),
     font-weight: 700,
     active-color: $secondary-color-light,
     active-background: linear-gradient(-45deg, $secondary-color 0%, $secondary-color-light 100%),
+  ),
+
+  blue: (
+    extend: _base
   ),
 );
 

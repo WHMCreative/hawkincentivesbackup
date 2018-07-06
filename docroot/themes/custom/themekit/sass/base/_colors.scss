@@ -35,6 +35,10 @@ $lighter-gray: color(gray, lighter);
 $medium-gray: color(gray, default);
 $dark-gray: color(gray, dark);
 
+
+$gray-gradient: linear-gradient(135deg, rgba(244, 244, 244, 0.4) 0%, rgba(228, 228, 228, 0.4) 100%);
+$blue-gradient: linear-gradient(135deg, $secondary-color-light 0%, $secondary-color 100%);
+
 $bg-colors: (
 
 );
