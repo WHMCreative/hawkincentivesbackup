@@ -140,7 +140,7 @@ function themekit_preprocess_paragraph_compound_content_bar(&$variables) {
   $paragraph = $variables['paragraph'];
 
   $items_count = $paragraph->get('field_p_compound_content')->count();
-  if ($items_count > 4) {
+  if ($items_count < 3) {
     $variables['attributes']['class'][] = 'columns-narrow';
   }
 }
