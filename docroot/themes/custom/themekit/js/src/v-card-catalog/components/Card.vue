@@ -35,14 +35,11 @@
           </div>
         </div>
 
-      <button class="view-details" @click='details(card.id)' v-show="!selected">View Details</button>
-    </div>
-
-
+        <button class="view-details" @click='details(card.id)' v-show="!selected">View Details</button>
+      </div>
     </div>
 
     <div class="card card-modal mfp-hide":class="'modal--card-' + card.id" v-show="!selected">
-    <!--<div class="card card-modal":class="'modal&#45;&#45;card-' + card.id">-->
 
       <div class="card-info">
         <div class="media">
@@ -52,7 +49,7 @@
           <h3 class="card-title">
             {{ card.title }}
           </h3>
-          <div class="description">
+          <div class="description" v-html="card.description.processed">
             {{ card.description.processed }}
           </div>
         </div>
@@ -83,11 +80,6 @@
             Virtual Options
           </div>
           <template v-if="card.cardType === 'prepaid'">
-            <div class="feature icon personalization" :class="{ true: card.personalization }">
-              Personalization
-            </div>
-          </template>
-          <template v-if="card.cardType === 'prepaid'">
             <div class="feature icon cashBack" :class="{ true: card.cashBack }">
               5% Cash Back
             </div>
@@ -103,20 +95,26 @@
         </div>
 
         <div class="content varied">
+          <template v-if="card.cardType === 'prepaid'">
+            <div class="feature personalization" :class="{ true: card.personalization }">
+              <span class="label">Personalization</span>
+              <span class="value">{{ personalizationMap[card.personalization] }}</span>
+            </div>
+          </template>
           <div class="feature delivery" :class="{ true: card.delivery }">
             <span class="label">Delivery/Shipping</span>
             <span class="value">{{ devlieryMap[card.delivery] }}</span>
           </div>
           <template v-if="card.cardType === 'gift_card' || card.cardType === 'omnicodes'">
             <div class="feature cardCategory" :class="{ true: card.cardCategory }">
-              Card Category
-              <!--{{ card.cardCategory.entity.entityLabel }}-->
+              <span class="label">Card Category</span>
+              <span class="value">{{ card.cardCategory.entity.entityLabel }}</span>
             </div>
           </template>
           <template v-if="card.cardType === 'gift_card' || card.cardType === 'omnicodes'">
             <div class="feature currency" :class="{ true: card.currency }">
-              Currency
-              <!--{{ card.currency.entity.entityLabel }}-->
+              <span class="label">Currency</span>
+              <span class="value">{{ card.currency.entity.entityLabel }}</span>
             </div>
           </template>
 
@@ -153,7 +151,7 @@
           <template v-if="card.cardType === 'prepaid'">
             <div class="feature prepaidType" :class="{ true: card.prepaidType }">
               <span class="label">Prepaid Type</span>
-              <span class="value">{{ card.prepaidType }}</span>
+              <span class="value">{{ prepaidTypeMap[card.prepaidType] }}</span>
             </div>
           </template>
         </div>
@@ -189,14 +187,25 @@ export default {
       },
 
       networkMap: {
-        'discover': 'discover',
+        'discover': 'Discover',
         'Mastercard': 'Mastercard',
         'visa': 'Visa'
       },
 
-      prepaidLoadMap: {
+      personalizationMap: {
         'anonymous': 'Anonymous',
         'personalized': 'Personalized'
+      },
+
+      prepaidLoadMap: {
+        'single_load': 'Single Load',
+        'reloadable': 'Reloadable'
+      },
+
+      prepaidTypeMap: {
+        'non_filtered': 'Non Filtered',
+        'pre_filtered': 'Pre-Filtered',
+        'filtered': 'Filtered',
       },
 
       typeMap: {

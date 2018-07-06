@@ -3,8 +3,8 @@
   <div class="card-catalog">
 
     <!-- Begin Selected Cards -->
-    <transition v-if="selectedCards.length > 0" name="slide">
-      <div class="selected-cards">
+    <transition name="slide" appear>
+      <div class="selected-cards" v-show="selectedCards.length > 0">
         <div class="content-wrapper">
         <div class="content">
           <div class="cards">
@@ -33,14 +33,14 @@
               <FilterItem v-for="filter in filters" :filter="filter" :type="'boolean'" :key="filter.key" @selectFilter='selectFilter'></FilterItem>
             </div>
           </div>
-
-
         </div>
-
       </div>
       <!-- End Filters -->
 
       <div class="cards">
+        <div class="count">
+          1 - {{visibleCards}} of {{ cardCount }} Cards
+        </div>
         <!-- Begin ALl Cards -->
         <div class="all-cards">
           <Card v-for="card in cards" :card="card" :key="card.id" @selectCard='selectCard' @openFrom='openFrom' v-bind:class="{selected: card.selected}"></Card>
@@ -48,6 +48,9 @@
         <div class="no-results" v-if="cards.length == 0">
           <p>No results</p>
         </div>
+        <template v-if="visibleCards !== cardCount">
+          <button @click='loadMore' class="load-more">Load More</button>
+        </template>
         <!-- End All Cards -->
       </div>
     </div>
@@ -70,6 +73,12 @@ export default {
     FilterItem
   },
 
+  props: {
+    nodeId: {
+      type: String
+    }
+  },
+
   data () {
     return {
       allCards: null,
@@ -80,8 +89,12 @@ export default {
         {key:'virtual', value:'Virtual Option'},
         {key:'phsyical', value:'Physical Option'}
       ],
+      cardsToShow: 3,
+      cardCount: 0,
+      multipler: 1,
       selectedCards: [],
-      selectedFilters: []
+      selectedFilters: [],
+      visibleCards: 0,
     }
   },
 
@@ -105,6 +118,17 @@ export default {
       for (var i = 0; i < arr.length; i++) {
         if(arr[i].value === value && arr[i].type === type) {
           return i;
+        }
+      }
+    },
+
+    // Load more cards
+    loadMore() {
+      let allCards = this.allCards ? this.allCards.entities : [];
+
+      if (allCards) {
+        if (allCards.length >= this.cards.length) {
+          this.multipler = this.multipler + 1;
         }
       }
     },
@@ -196,6 +220,8 @@ export default {
 
       if (allCards) {
 
+        let total = allCards.length;
+
         if (this.selectedFilters.length > 0) {
           for (var i in this.selectedFilters) {
             allCards = allCards.filter((card) => {
@@ -217,7 +243,19 @@ export default {
             })
           }
         }
-        return allCards;
+
+        // Set number of cards for this filter
+        this.cardCount = allCards.length;
+
+        // Set number of visible cards
+        if (this.cardsToShow * this.multipler >= this.cardCount) {
+          this.visibleCards = this.cardCount;
+        } else {
+          this.visibleCards = this.cardsToShow * this.multipler;
+        }
+
+        // Return the amount of cards per pager
+        return allCards.slice(0, (this.visibleCards));
       }
     },
 
@@ -241,7 +279,16 @@ export default {
   apollo: {
     // Simple query that will update the 'hello' vue property
     allCards: gql(`{
-      allCards: cardQuery {
+      allCards: cardQuery(sort:{
+        direction: ASC
+        field: "name"
+      },
+      filter: {
+        conditions:[{
+          field: "status"
+          value: "1"
+        }],
+      }) {
         entities {
           ... on Card {
             id: entityId

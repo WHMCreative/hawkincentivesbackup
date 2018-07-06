@@ -9,13 +9,13 @@
     display: flex;
   }
 
-  /* Filters */
+  // Filters
   .filters {
-    flex: 1;
+    min-width: rem-calc(320);
     padding-right: rem-calc(50);
     position: relative;
     text-align: left;
-    padding-top: rem-calc(50);
+    @include top-bottom(padding, rem-calc(50));
 
     &:before {
       content: "";
@@ -40,73 +40,110 @@
     .box-filter {
       padding: rem-calc(20);
       background: $white;
+      box-shadow: 0 5px 15px rgba(153, 153, 153, 0.15);
+    }
+
+    .filter--type {
+      @include tk-flex-block-grid(2, 'label', $gutter: 16px, $bottom-gutter: 16px);
+      margin-bottom: rem-calc(32);
+
+      input[type=radio] {
+        display: none;
+      }
+
+      label span {
+        display: block;
+        background: $white;
+        text-align: center;
+        border-radius: 5px;
+        font-size: rem-calc(13);
+        @include top-bottom(padding, rem-calc(20));
+        box-shadow: 0 5px 15px rgba(153, 153, 153, 0.15);
+        cursor: pointer;
+
+        &:hover {
+          background: $secondary-color-dark;
+          color: $white;
+        }
+      }
     }
   }
 
+  // Card Overview
   .card-list {
     /* Cards */
     > .cards {
-      flex: 2;
-      padding-top: rem-calc(50);
+      //flex: 2;
+      @include top-bottom(padding, rem-calc(50));
       padding-left: rem-calc(50);
     }
+
+    .count {
+      font-size: rem-calc(13);
+      text-align: left;
+      margin-bottom: rem-calc(16);
+    }
   }
-
-
 
   .no-results {
     text-align: left;
   }
-}
 
-
-.selected-cards {
-  background-image: $blue-gradient;
-  padding: 10px 0;
-  position: absolute;
-  width: 100%;
-  max-height: 500px;
-  z-index: z(just-above);
-  transition: max-height 1s;
-
-  &.slide-enter-active,
-  &.slide-leave-active {
-  }
-
-  &.slide-enter,
-  &.slide-leave-to {
-    transition: max-height 1s;
-    max-height: 0;
-    overflow: hidden;
-  }
-
-  .content-wrapper {
-    @include content-width(wide);
-  }
-
-  .content {
-    margin: 0 auto;
-    display: flex;
-    align-content: center;
-    justify-content: space-between;
-
-    & > .cards {
-      @include tk-block-grid(6, '.card');
-      flex-grow: 1;
-
-    }
-  }
-
-  .actions {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    justify-content: center;
-  }
-
-  .marketo-modal-cta-link {
-    @include btn(ghost-white);
+  .load-more {
+    @include btn(blue);
     cursor: pointer;
+  }
+
+  // Selected Cards Area
+  .selected-cards {
+    background-image: $blue-gradient;
+    padding: 10px 0;
+    position: absolute;
+    width: 100%;
+    max-height: 500px;
+    z-index: z(just-above);
+    transition: max-height 1s;
+
+    &.slide-enter-active,
+    &.slide-leave-active {
+    }
+
+    &.slide-enter,
+    &.slide-leave-to {
+      transition: max-height 1s;
+      max-height: 0;
+      overflow: hidden;
+    }
+
+    .content-wrapper {
+      @include content-width(wide);
+      max-width: 80rem;
+    }
+
+    .content {
+      margin: 0 auto;
+      display: flex;
+      align-content: center;
+      justify-content: space-between;
+
+      & > .cards {
+        @include tk-block-grid(6, '.card');
+        flex-grow: 1;
+
+      }
+    }
+
+    .actions {
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      justify-content: center;
+    }
+
+    .marketo-modal-cta-link {
+      @include btn(ghost-white);
+      cursor: pointer;
+    }
   }
 }
 
@@ -144,7 +181,7 @@
   .features {
     border-bottom: $lighter-gray 2px solid;
     border-top: $lighter-gray 2px solid;
-    padding: 30px 0 15px;
+    padding: 25px 0 15px;
     position: relative;
 
     .content.boolean {
@@ -152,13 +189,17 @@
     }
 
     .feature {
+      font-size: rem-calc(13);
       &.icon {
         @include icon-before(times);
+        position: relative;
 
         &:before {
           color: $lighter-gray;
-          min-width: rem-calc(35);
+          min-width: rem-calc(20);
           text-align: left;
+          top: 2px;
+          position: relative;
         }
 
         &.true {
@@ -188,6 +229,7 @@
       padding: 3px 8px;
       border-radius: 3px;
       color: $white;
+      font-size: rem-calc(11);
       font-weight: $global-weight-bold;
 
       &.prepaid {
@@ -200,20 +242,11 @@
     }
 
     .cost {
-      padding: 0 10px;
+      padding: 0 3px 0 7px;
       color: $secondary-color;
       font-weight: $global-weight-bold;
     }
   }
-
-
-
-
-
-
-
-
-
 
   // Main Overview
   .card-list & {
@@ -222,8 +255,8 @@
       display: flex;
 
       .media {
-        flex: 2;
-        margin-right: rem-calc(32);
+        width: rem-calc(300);
+        margin-right: rem-calc(24);
 
         img {
           width: 100%;
@@ -235,8 +268,8 @@
       }
 
       .content {
-        flex: 3;
         text-align: left;
+        flex: 1;
 
 
         .view-details {
@@ -278,7 +311,7 @@
 
       .feature {
         .value {
-          color: $light-gray;
+          color: $primary-color;
           font-weight: $global-weight-bold;
           min-width: rem-calc(35);
           display: inline-block;
@@ -290,7 +323,16 @@
       }
 
       .varied {
-        border-top: 3px solid red;
+        @include tk-flex-block-grid(3, '.feature', $gutter: 16px, $bottom-gutter: 10px);
+        margin-top: rem-calc(32);
+
+        &:before {
+          position: absolute;
+          top: 3px;
+          width: 100%;
+          background: red;
+          display: block;
+        }
       }
     }
 
@@ -314,3 +356,5 @@
     margin-bottom: 0;
   }
 }
+
+

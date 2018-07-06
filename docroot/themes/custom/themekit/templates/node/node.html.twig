@@ -95,7 +95,7 @@ view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
   ) %}
 
 {{ attach_library('classy/node') }}
-<article{{ attributes.addClass(classes) }}>
+<article{{ attributes.addClass(classes) }} data-id="{{ node.id }}">
 
   {{ title_prefix }}
   {% if not page %}

@@ -2132,6 +2132,19 @@ exports.default = {
   name: 'card-catalog',
   components: {
     CardList: _CardList2.default
+  },
+
+  created: function created() {
+    var node = document.querySelector('.node.node--type-component-page');
+
+    if (node) {
+      this.nodeId = node.dataset.id;
+    }
+  },
+  data: function data() {
+    return {
+      nodeId: null
+    };
   }
 }; //
 //
@@ -2227,6 +2240,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
 
 exports.default = {
   name: 'CardList',
@@ -2236,12 +2252,22 @@ exports.default = {
     FilterItem: _FilterItem2.default
   },
 
+  props: {
+    nodeId: {
+      type: String
+    }
+  },
+
   data: function data() {
     return {
       allCards: null,
       filters: [{ key: 'coBrand', value: 'Co-brandable' }, { key: 'customization', value: 'Customization' }, { key: 'fulfillment', value: 'Fast Fulfillment Available' }, { key: 'virtual', value: 'Virtual Option' }, { key: 'phsyical', value: 'Physical Option' }],
+      cardsToShow: 3,
+      cardCount: 0,
+      multipler: 1,
       selectedCards: [],
-      selectedFilters: []
+      selectedFilters: [],
+      visibleCards: 0
     };
   },
   mounted: function mounted() {},
@@ -2267,6 +2293,18 @@ exports.default = {
       for (var i = 0; i < arr.length; i++) {
         if (arr[i].value === value && arr[i].type === type) {
           return i;
+        }
+      }
+    },
+
+
+    // Load more cards
+    loadMore: function loadMore() {
+      var allCards = this.allCards ? this.allCards.entities : [];
+
+      if (allCards) {
+        if (allCards.length >= this.cards.length) {
+          this.multipler = this.multipler + 1;
         }
       }
     },
@@ -2370,6 +2408,8 @@ exports.default = {
 
       if (allCards) {
 
+        var total = allCards.length;
+
         if (this.selectedFilters.length > 0) {
           for (var i in this.selectedFilters) {
             allCards = allCards.filter(function (card) {
@@ -2390,7 +2430,19 @@ exports.default = {
             });
           }
         }
-        return allCards;
+
+        // Set number of cards for this filter
+        this.cardCount = allCards.length;
+
+        // Set number of visible cards
+        if (this.cardsToShow * this.multipler >= this.cardCount) {
+          this.visibleCards = this.cardCount;
+        } else {
+          this.visibleCards = this.cardsToShow * this.multipler;
+        }
+
+        // Return the amount of cards per pager
+        return allCards.slice(0, this.visibleCards);
       }
     },
 
@@ -2414,7 +2466,7 @@ exports.default = {
 
   apollo: {
     // Simple query that will update the 'hello' vue property
-    allCards: (0, _graphqlTag2.default)('{\n      allCards: cardQuery {\n        entities {\n          ... on Card {\n            id: entityId\n            title: entityLabel\n            cashBack: fieldCashBack\n            coBrand: fieldCoBrand\n            customization: fieldCustomization\n            image: fieldPMedia {\n              entity {\n                fieldMediaImage {\n                  entity {\n                    fieldImage {\n                      url\n                      alt\n                    }\n                  }\n                }\n              }\n            }\n            cardCategory:fieldCardCategory {\n              entity {\n                entityLabel\n              }\n            }\n            cost: fieldCost\n            currency:fieldCurrency {\n              entity {\n                entityLabel\n              }\n            }\n            delivery:fieldDelivery\n            description:fieldDescription {\n              processed\n            }\n            fulfillment: fieldFulfillment\n            filtered: fieldFiltered\n            greetingCard: fieldGreetingCard\n            issance: fieldIssuance\n            virtual: fieldVirtual\n            loadMax: fieldLoadMax\n            network: fieldNetwork\n            numMechants: fieldNumMechants\n            personalization: fieldPersonalization\n            prepaidLoad: fieldPrepaidLoad\n            prepaidType: fieldPrepaidType\n            cardType:fieldCardType\n          }\n        }\n      }\n    }')
+    allCards: (0, _graphqlTag2.default)('{\n      allCards: cardQuery(sort:{\n        direction: ASC\n        field: "name"\n      },\n      filter: {\n        conditions:[{\n          field: "status"\n          value: "1"\n        }],\n      }) {\n        entities {\n          ... on Card {\n            id: entityId\n            title: entityLabel\n            cashBack: fieldCashBack\n            coBrand: fieldCoBrand\n            customization: fieldCustomization\n            image: fieldPMedia {\n              entity {\n                fieldMediaImage {\n                  entity {\n                    fieldImage {\n                      url\n                      alt\n                    }\n                  }\n                }\n              }\n            }\n            cardCategory:fieldCardCategory {\n              entity {\n                entityLabel\n              }\n            }\n            cost: fieldCost\n            currency:fieldCurrency {\n              entity {\n                entityLabel\n              }\n            }\n            delivery:fieldDelivery\n            description:fieldDescription {\n              processed\n            }\n            fulfillment: fieldFulfillment\n            filtered: fieldFiltered\n            greetingCard: fieldGreetingCard\n            issance: fieldIssuance\n            virtual: fieldVirtual\n            loadMax: fieldLoadMax\n            network: fieldNetwork\n            numMechants: fieldNumMechants\n            personalization: fieldPersonalization\n            prepaidLoad: fieldPrepaidLoad\n            prepaidType: fieldPrepaidType\n            cardType:fieldCardType\n          }\n        }\n      }\n    }')
   }
 };
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
@@ -2429,8 +2481,6 @@ exports.default = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-//
-//
 //
 //
 //
@@ -2620,14 +2670,25 @@ exports.default = {
       },
 
       networkMap: {
-        'discover': 'discover',
+        'discover': 'Discover',
         'Mastercard': 'Mastercard',
         'visa': 'Visa'
       },
 
-      prepaidLoadMap: {
+      personalizationMap: {
         'anonymous': 'Anonymous',
         'personalized': 'Personalized'
+      },
+
+      prepaidLoadMap: {
+        'single_load': 'Single Load',
+        'reloadable': 'Reloadable'
+      },
+
+      prepaidTypeMap: {
+        'non_filtered': 'Non Filtered',
+        'pre_filtered': 'Pre-Filtered',
+        'filtered': 'Filtered'
       },
 
       typeMap: {
@@ -15862,7 +15923,7 @@ exports = module.exports = __webpack_require__(5)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -16161,13 +16222,22 @@ var render = function() {
                 _vm._v("\n          " + _vm._s(_vm.card.title) + "\n        ")
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "description" }, [
-                _vm._v(
-                  "\n          " +
-                    _vm._s(_vm.card.description.processed) +
-                    "\n        "
-                )
-              ])
+              _c(
+                "div",
+                {
+                  staticClass: "description",
+                  domProps: {
+                    innerHTML: _vm._s(_vm.card.description.processed)
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n          " +
+                      _vm._s(_vm.card.description.processed) +
+                      "\n        "
+                  )
+                ]
+              )
             ])
           ]),
           _vm._v(" "),
@@ -16257,19 +16327,6 @@ var render = function() {
                       _c(
                         "div",
                         {
-                          staticClass: "feature icon personalization",
-                          class: { true: _vm.card.personalization }
-                        },
-                        [_vm._v("\n            Personalization\n          ")]
-                      )
-                    ]
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.card.cardType === "prepaid"
-                  ? [
-                      _c(
-                        "div",
-                        {
                           staticClass: "feature icon cashBack",
                           class: { true: _vm.card.cashBack }
                         },
@@ -16308,6 +16365,31 @@ var render = function() {
               "div",
               { staticClass: "content varied" },
               [
+                _vm.card.cardType === "prepaid"
+                  ? [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "feature personalization",
+                          class: { true: _vm.card.personalization }
+                        },
+                        [
+                          _c("span", { staticClass: "label" }, [
+                            _vm._v("Personalization")
+                          ]),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "value" }, [
+                            _vm._v(
+                              _vm._s(
+                                _vm.personalizationMap[_vm.card.personalization]
+                              )
+                            )
+                          ])
+                        ]
+                      )
+                    ]
+                  : _vm._e(),
+                _vm._v(" "),
                 _c(
                   "div",
                   {
@@ -16334,7 +16416,17 @@ var render = function() {
                           staticClass: "feature cardCategory",
                           class: { true: _vm.card.cardCategory }
                         },
-                        [_vm._v("\n            Card Category\n            ")]
+                        [
+                          _c("span", { staticClass: "label" }, [
+                            _vm._v("Card Category")
+                          ]),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "value" }, [
+                            _vm._v(
+                              _vm._s(_vm.card.cardCategory.entity.entityLabel)
+                            )
+                          ])
+                        ]
                       )
                     ]
                   : _vm._e(),
@@ -16348,7 +16440,15 @@ var render = function() {
                           staticClass: "feature currency",
                           class: { true: _vm.card.currency }
                         },
-                        [_vm._v("\n            Currency\n            ")]
+                        [
+                          _c("span", { staticClass: "label" }, [
+                            _vm._v("Currency")
+                          ]),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "value" }, [
+                            _vm._v(_vm._s(_vm.card.currency.entity.entityLabel))
+                          ])
+                        ]
                       )
                     ]
                   : _vm._e(),
@@ -16478,7 +16578,9 @@ var render = function() {
                           ]),
                           _vm._v(" "),
                           _c("span", { staticClass: "value" }, [
-                            _vm._v(_vm._s(_vm.card.prepaidType))
+                            _vm._v(
+                              _vm._s(_vm.prepaidTypeMap[_vm.card.prepaidType])
+                            )
                           ])
                         ]
                       )
@@ -19294,16 +19396,18 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("label", [
-    _c("input", {
-      attrs: { type: "radio", name: _vm.type },
-      domProps: { value: _vm.filter },
-      on: {
-        change: function($event) {
-          _vm.$emit("selectRadio", $event)
+    _c("span", [
+      _c("input", {
+        attrs: { type: "radio", name: _vm.type },
+        domProps: { value: _vm.filter },
+        on: {
+          change: function($event) {
+            _vm.$emit("selectRadio", $event)
+          }
         }
-      }
-    }),
-    _vm._v(_vm._s(_vm.typeMap[_vm.filter]))
+      }),
+      _vm._v(_vm._s(_vm.typeMap[_vm.filter]))
+    ])
   ])
 }
 var staticRenderFns = []
@@ -19331,41 +19435,50 @@ var render = function() {
     "div",
     { staticClass: "card-catalog" },
     [
-      _vm.selectedCards.length > 0
-        ? _c("transition", { attrs: { name: "slide" } }, [
-            _c("div", { staticClass: "selected-cards" }, [
-              _c("div", { staticClass: "content-wrapper" }, [
-                _c("div", { staticClass: "content" }, [
-                  _c(
-                    "div",
-                    { staticClass: "cards" },
-                    _vm._l(_vm.selectedCards, function(card_id) {
-                      return _c("Card", {
-                        key: card_id,
-                        attrs: {
-                          card: _vm.getCardById(card_id),
-                          selected: true
-                        },
-                        on: { selectCard: _vm.selectCard }
-                      })
+      _c("transition", { attrs: { name: "slide", appear: "" } }, [
+        _c(
+          "div",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.selectedCards.length > 0,
+                expression: "selectedCards.length > 0"
+              }
+            ],
+            staticClass: "selected-cards"
+          },
+          [
+            _c("div", { staticClass: "content-wrapper" }, [
+              _c("div", { staticClass: "content" }, [
+                _c(
+                  "div",
+                  { staticClass: "cards" },
+                  _vm._l(_vm.selectedCards, function(card_id) {
+                    return _c("Card", {
+                      key: card_id,
+                      attrs: { card: _vm.getCardById(card_id), selected: true },
+                      on: { selectCard: _vm.selectCard }
                     })
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "actions" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "marketo-modal-cta-link",
-                        on: { click: _vm.openFrom }
-                      },
-                      [_vm._v("Start a Conversation")]
-                    )
-                  ])
+                  })
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "actions" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "marketo-modal-cta-link",
+                      on: { click: _vm.openFrom }
+                    },
+                    [_vm._v("Start a Conversation")]
+                  )
                 ])
               ])
             ])
-          ])
-        : _vm._e(),
+          ]
+        )
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "card-list" }, [
         _c("div", { staticClass: "filters" }, [
@@ -19406,26 +19519,51 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "cards" }, [
-          _c(
-            "div",
-            { staticClass: "all-cards" },
-            _vm._l(_vm.cards, function(card) {
-              return _c("Card", {
-                key: card.id,
-                class: { selected: card.selected },
-                attrs: { card: card },
-                on: { selectCard: _vm.selectCard, openFrom: _vm.openFrom }
+        _c(
+          "div",
+          { staticClass: "cards" },
+          [
+            _c("div", { staticClass: "count" }, [
+              _vm._v(
+                "\n        1 - " +
+                  _vm._s(_vm.visibleCards) +
+                  " of " +
+                  _vm._s(_vm.cardCount) +
+                  " Cards\n      "
+              )
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "all-cards" },
+              _vm._l(_vm.cards, function(card) {
+                return _c("Card", {
+                  key: card.id,
+                  class: { selected: card.selected },
+                  attrs: { card: card },
+                  on: { selectCard: _vm.selectCard, openFrom: _vm.openFrom }
+                })
               })
-            })
-          ),
-          _vm._v(" "),
-          _vm.cards.length == 0
-            ? _c("div", { staticClass: "no-results" }, [
-                _c("p", [_vm._v("No results")])
-              ])
-            : _vm._e()
-        ])
+            ),
+            _vm._v(" "),
+            _vm.cards.length == 0
+              ? _c("div", { staticClass: "no-results" }, [
+                  _c("p", [_vm._v("No results")])
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.visibleCards !== _vm.cardCount
+              ? [
+                  _c(
+                    "button",
+                    { staticClass: "load-more", on: { click: _vm.loadMore } },
+                    [_vm._v("Load More")]
+                  )
+                ]
+              : _vm._e()
+          ],
+          2
+        )
       ])
     ],
     1
@@ -19452,7 +19590,12 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "card-catalog" } }, [_c("CardList")], 1)
+  return _c(
+    "div",
+    { attrs: { id: "card-catalog" } },
+    [_vm.nodeId ? _c("CardList", { attrs: { nodeId: _vm.nodeId } }) : _vm._e()],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

@@ -1,5 +1,5 @@
 <template>
-  <label><input type="radio" :name="type" :value="filter" @change="$emit('selectRadio', $event)">{{ typeMap[filter]}}</label>
+  <label><span><input type="radio" :name="type" :value="filter" @change="$emit('selectRadio', $event)">{{ typeMap[filter]}}</span></label>
 </template>
 
 <script>
