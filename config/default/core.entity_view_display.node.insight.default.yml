@@ -25,15 +25,20 @@ targetEntityType: node
 bundle: insight
 mode: default
 content:
+  addtoany:
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   body:
-    weight: 2
+    weight: 3
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: content
   field_author:
-    weight: 5
+    weight: 6
     label: hidden
     settings:
       view_mode: compact
@@ -42,7 +47,7 @@ content:
     type: entity_reference_entity_view
     region: content
   field_intro_copy:
-    weight: 1
+    weight: 2
     label: hidden
     settings: {  }
     third_party_settings: {  }
@@ -59,7 +64,7 @@ content:
     region: content
   field_p_insight:
     type: entity_reference_revisions_entity_view
-    weight: 3
+    weight: 4
     label: hidden
     settings:
       view_mode: default
@@ -67,7 +72,7 @@ content:
     third_party_settings: {  }
     region: content
   field_p_related_insights:
-    weight: 4
+    weight: 5
     label: hidden
     settings:
       view_mode: default
@@ -76,7 +81,7 @@ content:
     type: entity_reference_revisions_entity_view
     region: content
   field_references:
-    weight: 6
+    weight: 7
     label: hidden
     settings: {  }
     third_party_settings: {  }

@@ -26,6 +26,11 @@ targetEntityType: node
 bundle: insight
 mode: gated
 content:
+  addtoany:
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   content_moderation_control:
     weight: 0
     region: content
@@ -33,14 +38,14 @@ content:
     third_party_settings: {  }
   field_intro_copy:
     type: text_default
-    weight: 2
+    weight: 3
     region: content
     label: hidden
     settings: {  }
     third_party_settings: {  }
   field_p_form:
     type: entity_reference_revisions_entity_view
-    weight: 3
+    weight: 4
     label: hidden
     settings:
       view_mode: default
@@ -58,7 +63,7 @@ content:
     third_party_settings: {  }
   field_p_related_insights:
     type: entity_reference_revisions_entity_view
-    weight: 4
+    weight: 5
     region: content
     label: hidden
     settings:
