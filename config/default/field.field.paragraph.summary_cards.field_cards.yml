@@ -1,0 +1,28 @@
+uuid: 850abaca-1846-42a8-a616-8e88511a78d6
+langcode: en
+status: true
+dependencies:
+  config:
+    - bhk_card_browser.card_type.default
+    - field.storage.paragraph.field_cards
+    - paragraphs.paragraphs_type.summary_cards
+id: paragraph.summary_cards.field_cards
+field_name: field_cards
+entity_type: paragraph
+bundle: summary_cards
+label: Cards
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:card'
+  handler_settings:
+    target_bundles:
+      default: default
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
