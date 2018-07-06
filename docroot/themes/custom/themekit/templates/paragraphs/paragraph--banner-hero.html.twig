@@ -62,6 +62,7 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
   ) %}
 
 <div{{ attributes.addClass(classes) }}>
+  <div class="bg-overlay" style="background-image:url('/{{ base_path ~ directory }}/images/banners/{{ overlay_color }}.png')" ></div>
   {% if bg_image %}
     <div class="bg-container" {{ image_inline_style|raw }}></div>
   {% endif %}

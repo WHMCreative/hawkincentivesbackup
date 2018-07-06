@@ -12,6 +12,7 @@ use Drupal\file\Entity\File;
 use Drupal\image\Entity\ImageStyle;
 use Drupal\block\Entity\Block;
 use Drupal\views\Views;
+use Drupal\taxonomy\Entity\Term;
 
 //*********************************************
 // 1. Preprocess hooks
@@ -130,6 +131,8 @@ function themekit_preprocess_paragraph_banner_hero(&$variables) {
   }
 
   $variables['image_inline_style'] = themekit_get_entity_image_inline_style($paragraph, 'field_media', 'banner_hero');
+
+  $variables['overlay_color'] = themekit_get_term_slug($paragraph, 'field_bg_color') ? themekit_get_term_slug($paragraph, 'field_bg_color') : 'blue';
 
 }
 
@@ -321,4 +324,12 @@ function themekit_view_to_renderable_array($view_id, $view_display, $view_title 
   $view_content['content'] = views_embed_view($view_id, $view_display);
 
   return $view_content;
+}
+
+function themekit_get_term_slug($paragraph, $field) {
+  if ($paragraph->hasField($field)) {
+    if (!empty($term = $paragraph->$field->getValue())) {
+      return Term::load($term[0]['target_id'])->field_slug->value;
+    }
+  }
 }
