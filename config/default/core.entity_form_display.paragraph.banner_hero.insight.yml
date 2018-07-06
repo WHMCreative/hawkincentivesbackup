@@ -1,0 +1,56 @@
+uuid: f8792a59-a3b2-4ad8-b6e4-0bc7278dd662
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.paragraph.insight
+    - entity_browser.browser.image
+    - field.field.paragraph.banner_hero.field_bg_color
+    - field.field.paragraph.banner_hero.field_description
+    - field.field.paragraph.banner_hero.field_heading
+    - field.field.paragraph.banner_hero.field_large_heading
+    - field.field.paragraph.banner_hero.field_media
+    - field.field.paragraph.banner_hero.field_p_banner_content
+    - field.field.paragraph.banner_hero.field_p_multiple_links
+    - field.field.paragraph.banner_hero.field_use_large_heading
+    - paragraphs.paragraphs_type.banner_hero
+  module:
+    - entity_browser
+id: paragraph.banner_hero.insight
+targetEntityType: paragraph
+bundle: banner_hero
+mode: insight
+content:
+  field_heading:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_media:
+    weight: 1
+    settings:
+      entity_browser: image
+      field_widget_display: rendered_entity
+      field_widget_remove: true
+      open: true
+      selection_mode: selection_append
+      field_widget_display_settings:
+        view_mode: form_preview
+      field_widget_edit: false
+    third_party_settings: {  }
+    type: entity_browser_entity_reference
+    region: content
+hidden:
+  created: true
+  field_bg_color: true
+  field_description: true
+  field_large_heading: true
+  field_p_banner_content: true
+  field_p_multiple_links: true
+  field_use_large_heading: true
+  moderation_state: true
+  status: true
+  uid: true

@@ -1,0 +1,23 @@
+uuid: fcbd8e10-a973-48fd-b331-6f67dd68c5e7
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.card_currency
+id: taxonomy_term.card_currency.default
+targetEntityType: taxonomy_term
+bundle: card_currency
+mode: default
+content:
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  description: true
+  langcode: true
+  path: true

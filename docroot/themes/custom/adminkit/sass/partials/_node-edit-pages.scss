@@ -1,16 +1,17 @@
 // Disable the right sidebar on node edit forms for all but large screens.
 .layout-region {
-  @media screen and (max-width: 1600px) {
+  //@media screen and (max-width: 1600px) {
     &.layout-region-node-main,
     &.layout-region-node-secondary {
       float: none;
       width: auto;
-      max-width: 1200px;
+      //max-width: 1300px;
+      margin: 0 auto;
     }
 
     &.layout-region-node-main {
       padding-right: 0;
       margin-bottom: 20px;
     }
-  }
+  //}
 }

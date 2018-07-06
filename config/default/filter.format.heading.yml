@@ -1,0 +1,17 @@
+uuid: b7f3c7fa-7b90-491f-a3ed-32d3a71b8aa9
+langcode: en
+status: true
+dependencies: {  }
+name: Heading
+format: heading
+weight: -10
+filters:
+  filter_html:
+    id: filter_html
+    provider: filter
+    status: true
+    weight: -10
+    settings:
+      allowed_html: '<strong> <br>'
+      filter_html_help: true
+      filter_html_nofollow: false
