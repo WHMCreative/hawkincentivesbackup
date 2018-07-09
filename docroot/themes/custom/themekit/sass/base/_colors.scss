@@ -42,5 +42,8 @@ $blue-gradient: linear-gradient(135deg, $secondary-color-light 0%, $secondary-co
 $blue-gradient-reverse: linear-gradient(135deg, $secondary-color 0%, $secondary-color-light 100%);
 
 $bg-colors: (
-
+  green: $primary-color,
+  blue: $secondary-color,
+  //orange: $tertiary-color,
+  grey: $medium-gray
 );

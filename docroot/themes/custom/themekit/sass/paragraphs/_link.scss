@@ -10,7 +10,7 @@
 
 .paragraph--type--link-url {
   a {
-    @include btn(blue);
+    //@include btn(blue);
     .menu-dropdown & {
       @include btn(ghost);
     }

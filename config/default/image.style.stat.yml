@@ -1,17 +1,15 @@
 uuid: 5c316669-2eaf-42ae-ad0d-72b530bd9537
 langcode: en
 status: true
-dependencies:
-  module:
-    - focal_point
+dependencies: {  }
 name: stat
-label: 'Stat (100x100)'
+label: 'Stat (100W)'
 effects:
-  da37bef5-04d1-457a-b4aa-598edbdc8cf7:
-    uuid: da37bef5-04d1-457a-b4aa-598edbdc8cf7
-    id: focal_point_scale_and_crop
+  0d55d9b8-d2cd-4387-a8e2-305041b0a847:
+    uuid: 0d55d9b8-d2cd-4387-a8e2-305041b0a847
+    id: image_scale
     weight: 1
     data:
       width: 100
-      height: 100
-      crop_type: focal_point
+      height: null
+      upscale: false

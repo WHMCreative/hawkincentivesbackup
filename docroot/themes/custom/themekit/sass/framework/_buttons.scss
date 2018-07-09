@@ -38,6 +38,9 @@ $buttons: (
 
   background: key($button, background);
   color: key($button, color);
+  @supports (-webkit-text-fill-color: transparent) {
+    -webkit-text-fill-color: key($button, color);
+  }
 
   @if (map-has-key($button, gradient)) {
     position: relative;

@@ -5,8 +5,6 @@ dependencies:
   config:
     - field.storage.paragraph.field_p_media
     - paragraphs.paragraphs_type.simple_media_tile
-    - paragraphs.paragraphs_type.single_image
-    - paragraphs.paragraphs_type.single_svg
   module:
     - entity_reference_revisions
 id: paragraph.simple_media_tile.field_p_media
@@ -23,9 +21,7 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     negate: 0
-    target_bundles:
-      single_image: single_image
-      single_svg: single_svg
+    target_bundles: {  }
     target_bundles_drag_drop:
       link_file:
         weight: 16

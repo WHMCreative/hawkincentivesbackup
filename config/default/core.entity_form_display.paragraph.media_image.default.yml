@@ -1,21 +1,21 @@
-uuid: 6a8669d7-60a5-4e4c-b693-e1b0d64fb3dc
+uuid: f6b443b7-d445-4d4a-a0fa-f2ddc836726f
 langcode: en
 status: true
 dependencies:
   config:
     - entity_browser.browser.image
-    - field.field.paragraph.single_image.field_media_image
-    - paragraphs.paragraphs_type.single_image
+    - field.field.paragraph.media_image.field_media_image
+    - paragraphs.paragraphs_type.media_image
   module:
     - content_moderation
     - entity_browser
-id: paragraph.single_image.default
+id: paragraph.media_image.default
 targetEntityType: paragraph
-bundle: single_image
+bundle: media_image
 mode: default
 content:
   field_media_image:
-    weight: 0
+    weight: 101
     settings:
       entity_browser: image
       field_widget_display: rendered_entity
@@ -23,7 +23,7 @@ content:
       open: true
       selection_mode: selection_append
       field_widget_display_settings:
-        view_mode: form_preview
+        view_mode: default
       field_widget_edit: false
     third_party_settings: {  }
     type: entity_browser_entity_reference

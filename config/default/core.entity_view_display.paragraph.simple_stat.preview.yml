@@ -5,7 +5,6 @@ dependencies:
   config:
     - core.entity_view_mode.paragraph.preview
     - field.field.paragraph.simple_stat.field_description
-    - field.field.paragraph.simple_stat.field_media
     - paragraphs.paragraphs_type.simple_stat
   module:
     - text
@@ -21,13 +20,5 @@ content:
     third_party_settings: {  }
     type: text_default
     region: content
-  field_media:
-    weight: 0
-    label: hidden
-    settings:
-      view_mode: form_preview
-      link: false
-    third_party_settings: {  }
-    type: entity_reference_entity_view
-    region: content
-hidden: {  }
+hidden:
+  field_p_media: true

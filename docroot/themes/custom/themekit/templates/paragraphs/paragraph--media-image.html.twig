@@ -52,16 +52,21 @@ set classes = [
 'paragraph',
 'paragraph--type--' ~ paragraph.bundle|clean_class,
 view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
-bg_status,
-bg_color,
-color_scheme
+'image-type--' ~ image_type
 ]
 %}
 
-{% set rendered_content = content|without('') %}
+{% set rendered_content = content|without(
+'field_media_image'
+) %}
 
 <div{{ attributes.addClass(classes) }}>
-  <div class="paragraph-content">
-    {{ rendered_content }}
-  </div>
+  {% if image_inline_style %}
+    <div class="simple-image-bg" {{ image_inline_style|raw }}></div>
+  {% elseif custom_image_style %}
+    {{ custom_image_style }}
+  {% else %}
+    {{ content.field_media_image }}
+  {% endif %}
+  {{ rendered_content }}
 </div>

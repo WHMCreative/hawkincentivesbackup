@@ -1,16 +1,16 @@
-uuid: d8faf07e-a193-4b1e-b982-014f870c007b
+uuid: f9c0f6ad-2824-4e82-bbe8-2b62c4a22451
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_media_image
-    - media_entity.bundle.image
-    - paragraphs.paragraphs_type.single_image
-id: paragraph.single_image.field_media_image
-field_name: field_media_image
+    - field.storage.paragraph.field_video
+    - media_entity.bundle.video
+    - paragraphs.paragraphs_type.media_video
+id: paragraph.media_video.field_video
+field_name: field_video
 entity_type: paragraph
-bundle: single_image
-label: Image
+bundle: media_video
+label: Video
 description: ''
 required: true
 translatable: false
@@ -20,7 +20,7 @@ settings:
   handler: 'default:media'
   handler_settings:
     target_bundles:
-      image: image
+      video: video
     sort:
       field: _none
     auto_create: false

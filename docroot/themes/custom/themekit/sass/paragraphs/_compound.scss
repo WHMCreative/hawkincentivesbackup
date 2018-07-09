@@ -3,23 +3,43 @@
 ////
 
 .paragraph--type--compound-content-bar {
-  @include paragraph-margins();
   text-align: center;
   > .paragraph-content {
     @include content-width(wide);
     > .field--name-field-heading {
       @include breakpoint(large) {
         @include content-width(narrow);
-        margin-bottom: rem-calc(40);
       }
     }
     > .field--name-field-description {
-      margin-bottom: 10px;
+      margin-bottom: rem-calc(48);
       @include breakpoint(medium) {
         @include content-width(narrow);
-          margin-bottom: rem-calc(20);
       }
     }
+
+    .field--name-field-heading + .field--name-field-p-compound-content {
+     margin-top: rem-calc(24);
+     @include breakpoint(medium) {
+      margin-top: rem-calc(32);
+     }
+    }
+
+    .field--name-field-p-compound-content {
+      @include content-width(wide);
+      @include breakpoint(marge) {
+        @include tk-flex-equal-width-items($grid-column-gutter, '.paragraph');
+      }
+    }
+
+    & > .paragraph {
+      margin-bottom: rem-calc(48);
+
+      @include breakpoint(marge) {
+        margin-bottom: 0;
+      }
+    }
+
     > .field--name-field-p-multiple-links {
       display: flex;
       align-items: center;
@@ -28,51 +48,61 @@
       @include breakpoint(large) {
         margin-top: 40px;
       }
-      .paragraph {
-        margin: 0 10px;
-        + .paragraph {
+
+      & > .paragraph {
+        margin: 0 8px;
+        a {
+          @include link(default);
+        }
+
+        &:nth-last-child(2) {
           a {
-            @include link();
+            @include btn(blue);
           }
         }
       }
     }
   }
 
-  &.columns-wide {
-    .field--name-field-p-compound-content {
-      @include content-width(wide);
-      @include breakpoint(marge) {
-        @include tk-flex-equal-width-items($grid-column-gutter, '.paragraph');
-      }
-    }
-  }
-
-  &.columns-narrow {
-    .field--name-field-p-compound-content {
+  &.column-count-1,
+  &.column-count-2 {
+    & > .paragraph-content > .field--name-field-p-compound-content {
       @include content-width(narrow);
       @include breakpoint(medium) {
         @include tk-flex-equal-width-items($grid-column-gutter, '.paragraph');
       }
+
+      & > .paragraph {
+        margin-bottom: rem-calc(48);
+
+        @include breakpoint(medium) {
+          margin-bottom: 0;
+        }
+      }
     }
   }
+
+  &.column-count-3 {
+    & > .paragraph-content > .field--name-field-p-compound-content {
+      @include breakpoint(marge) {
+        @include tk-flex-equal-width-items((small: 30px, medium: 60px), '.paragraph');
+      }
+    }
+  }
+
+
+
+
+
 }
 
 .paragraph--type--compound-stat-bar {
-  @include paragraph-margins();
-  background: $light-gray;
-  padding: 40px 0;
-  @include breakpoint(large) {
-    padding: 80px 0;
-  }
   > .paragraph-content {
     @include content-width(default);
   }
   .field--name-field-p-stat-content {
     @include breakpoint(medium) {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      @include tk-flex-equal-width-items($grid-column-gutter, '.paragraph');
     }
     > .paragraph {
       margin-bottom: 20px;

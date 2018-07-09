@@ -2,12 +2,47 @@
 /// Paragraphs - Simple
 ////
 
+
+.paragraph--type--simple-content {
+
+  .field--name-field-p-multiple-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+
+    @include breakpoint(medium) {
+      margin-top: 20px;
+    }
+
+    & > .paragraph {
+      margin: 0 8px;
+      a {
+        @include link(default);
+      }
+
+      &:nth-last-child(2) {
+        a {
+          @include btn(blue);
+        }
+      }
+    }
+  }
+
+  .paragraph--type--compound-content-bar {
+    .field--name-field-heading {
+      color: $secondary-color-dark;
+    }
+  }
+}
+
+// Simple - CTA
 .paragraph--type--simple-cta {
   background: $blue-gradient-reverse;
   @include top-bottom(padding, rem-calc(40));
 
-  @include breakpoint(medium) {
-    @include top-bottom(padding, rem-calc(80));
+  .field--name-field-p-content > & {
+    @include paragraph-margins((small: 0));
   }
 
   & > .paragraph-content {
@@ -44,6 +79,27 @@
 
     .field--name-field-p-link a {
       margin-top: rem-calc(20);
+    }
+  }
+}
+
+// Simple - Stat
+.paragraph--type--simple-stat {
+  .paragraph-content {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+
+    .field--name-field-p-media {
+      min-width: rem-calc(100);
+      margin-right: rem-calc(16);
+      display: flex;
+      align-items: center;
+      //display: flex;
+      //align-content: center;
+
+      .paragraph--type--media-image {
+      }
     }
   }
 }

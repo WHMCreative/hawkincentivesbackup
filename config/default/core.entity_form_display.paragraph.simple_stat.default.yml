@@ -3,12 +3,11 @@ langcode: en
 status: true
 dependencies:
   config:
-    - entity_browser.browser.image
     - field.field.paragraph.simple_stat.field_description
-    - field.field.paragraph.simple_stat.field_media
+    - field.field.paragraph.simple_stat.field_p_media
     - paragraphs.paragraphs_type.simple_stat
   module:
-    - entity_browser
+    - paragraphs_browser
     - text
 id: paragraph.simple_stat.default
 targetEntityType: paragraph
@@ -23,19 +22,20 @@ content:
     third_party_settings: {  }
     type: text_textarea
     region: content
-  field_media:
+  field_p_media:
     weight: 0
     settings:
-      entity_browser: image
-      field_widget_display: rendered_entity
-      field_widget_remove: true
-      open: true
-      selection_mode: selection_append
-      field_widget_display_settings:
-        view_mode: form_preview
-      field_widget_edit: false
+      title: Stat
+      title_plural: Stats
+      edit_mode: open
+      add_mode: paragraphs_browser
+      form_display_mode: default
+      default_paragraph_type: media_image
+      paragraphs_browser: browser
+      modal_width: 80%
+      modal_height: auto
     third_party_settings: {  }
-    type: entity_browser_entity_reference
+    type: entity_reference_paragraphs_browser
     region: content
 hidden:
   created: true

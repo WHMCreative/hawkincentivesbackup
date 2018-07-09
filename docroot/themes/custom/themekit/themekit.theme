@@ -125,6 +125,7 @@ function themekit_preprocess_media__svg(&$variables) {
  * Paragraphs preprocess.
  */
 function themekit_preprocess_paragraph(&$variables) {
+  $paragraph = $variables['paragraph'];
   // Set our own paragraphs type preprocess, drupal creates them by default, but they seem
   // to only run hook_preprocess_paragraph__simple_content on default view mode,
   // not additional view modes as well
@@ -135,6 +136,16 @@ function themekit_preprocess_paragraph(&$variables) {
       $function($variables);
     }
   }
+
+  // Handle bg color.
+  $bg_color = '';
+  if ($paragraph->hasField('field_bg_color')) {
+    $bg_color = themekit_get_term_slug($paragraph, 'field_bg_color');
+  }
+
+  $variables['bg_status'] = (empty($bg_color)) ? 'no-bg' : 'with-bg';
+  $variables['bg_color'] = (empty($bg_color)) ? 'bg-color-none' : 'bg-color-' . $bg_color;
+  $variables['color_scheme'] = 'color-scheme-' . themekit_color_scheme($bg_color);
 }
 
 function themekit_preprocess_paragraph_banner_hero(&$variables) {
@@ -151,11 +162,36 @@ function themekit_preprocess_paragraph_banner_hero(&$variables) {
 function themekit_preprocess_paragraph_compound_content_bar(&$variables) {
   $paragraph = $variables['paragraph'];
 
-  $items_count = $paragraph->get('field_p_compound_content')->count();
-  if ($items_count < 3) {
-    $variables['attributes']['class'][] = 'columns-narrow';
-  } else {
-    $variables['attributes']['class'][] = 'columns-wide';
+  $variables['column_count'] = $paragraph->get('field_p_compound_content')->count();
+}
+
+/**
+ * Implements template_preprocess_media().
+ */
+
+function themekit_preprocess_paragraph_media_image(&$variables) {
+  /* @var $paragraph Drupal\paragraphs\Entity\Paragraph */
+  $paragraph = $variables['paragraph'];
+
+  // Do contextual adjustments to image (image style or background image if necessary)
+  // Identify the implementing bundle and use any additional conditions as well and add either `image_inline_style` or `custom_image_style` var
+  $parent = $paragraph->getParentEntity();
+  if ($parent->getEntityTypeId() === 'paragraph') {
+    switch ($parent->getType()) {
+//            case 'simple_stat':
+//              $stop='';
+//              $image_style = (isset($variables['content']['field_image'][0]['#image_style'])) ? $variables['content']['field_image'][0]['#image_style'] : NULL;
+//              $variables['image_inline_style'] = themekit_get_entity_image_inline_style($paragraph, 'field_image', $image_style);
+//              break;
+            case 'simple_stat':
+              $uri = $paragraph->field_media_image->entity->field_image->entity->getFileUri();
+              $variables['custom_image_style'] = [
+                '#theme' => 'image_style',
+                '#style_name' => 'stat',
+                '#uri' => $uri,
+              ];
+              break;
+    }
   }
 }
 
@@ -201,6 +237,7 @@ function themekit_theme_suggestions_field_alter(array &$suggestions, array $vari
       case 'simple_cta':
         array_unshift($suggestions, 'field__heading_2');
         break;
+      case 'simple_content':
       case 'single_heading':
       case 'summary_insights':
         array_unshift($suggestions, 'field__heading_3');
@@ -363,4 +400,22 @@ function themekit_get_insight_data(NodeInterface $node, &$variables) {
 
     }
   }
+}
+
+function themekit_color_scheme($color) {
+  $color_scheme = 'light';
+
+  $dark_colors = [
+    'blue',
+    'green',
+    'navy',
+    'orange',
+    'purple',
+  ];
+
+  if (in_array($color, $dark_colors)) {
+    $color_scheme = 'dark';
+  }
+
+  return $color_scheme;
 }
