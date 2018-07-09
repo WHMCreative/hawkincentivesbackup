@@ -24,9 +24,21 @@ use Drupal\Core\Render\Element;
  */
 function themekit_preprocess_html(&$variables) {
 
+  /** @var \Drupal\node\NodeInterface $current_node */
+  $current_node = \Drupal::routeMatch()->getParameter('node');
+
+  // Prevent banner from being placed on unlocked Insights.
+  if ($current_node && $current_node instanceof \Drupal\node\NodeInterface) {
+    if ($current_node->hasField('field_gated') && $current_node->get('field_gated')->value) {
+
+      if (!_e3_content_is_gated($current_node)) {
+        return;
+      }
+    }
+  }
+
   // Place this block programmatically, issues placing within the block ui.
   $variables['page']['content_above']['pagebanner'] = themekit_block_to_renderable_array('pagebanner');
-
 }
 
 /**
