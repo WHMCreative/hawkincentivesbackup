@@ -27,16 +27,24 @@ $z-layers: (
   skip-link: 8000,
   ajax-throbber: 7000,
   debug: 1000,
+  just-above: 10,
   above: 1,
   default: 0,
   under: -1,
   bottomless-pit: -9999,
 
-  // example nested z-index.
-  example: (
-    default: 100,
-    image: -2
-  )
+  header: (
+    base: 50,
+    menu: 60
+  ),
+  banner: (
+    base: 1,
+    overlay: 3,
+    content: 5
+  ),
+  content: (
+    base: 10,
+  ),
 );
 
 /// Button config
@@ -48,7 +56,7 @@ $buttons: (
     active-color: #fff,
   ),
   blue: (
-    background: linear-gradient(-45deg, $bhk-teal 0%, $bhk-blue 100%),
+    background: linear-gradient(-45deg, $secondary-color-light 0%, $secondary-color 100%),
     color: $white
 ),
   white: (
@@ -56,23 +64,43 @@ $buttons: (
     color: $primary-color
   ),
   ghost: (
+    background: $white,
+    border: transparent,
+    color: $black,
+    active-border: transparent,
+    active-background: transparent,
+    active-color: $white,
+    gradient: linear-gradient(-45deg, $secondary-color-light 0%, $secondary-color 100%),
+  ),
+  ghost-white: (
     background: transparent,
     border: $white,
     color: $white,
     active-border: $white,
     active-background: $white,
     active-color: $primary-color,
-  )
+  ),
 );
 
 /// Link config
 $links: (
-  default: (
-    color: $bhk-blue,
-    background: linear-gradient(-45deg, $bhk-teal 0%, $bhk-blue 100%),
+  _base: (
+    color: $secondary-color,
     font-weight: 700,
-    active-color: $bhk-teal,
-    active-background: linear-gradient(-45deg, $bhk-blue 0%, $bhk-teal 100%),
+    active-color: $secondary-color-light,
+  ),
+
+
+  default: (
+    color: $secondary-color,
+    background: linear-gradient(-45deg, $secondary-color-light 0%, $secondary-color 100%),
+    font-weight: 700,
+    active-color: $secondary-color-light,
+    active-background: linear-gradient(-45deg, $secondary-color 0%, $secondary-color-light 100%),
+  ),
+
+  blue: (
+    extend: _base
   ),
 );
 
@@ -88,6 +116,10 @@ $layouts: (
   ),
   default: (
     extend: _base
+  ),
+  narrow: (
+    extend: _base,
+    width: $global-width-narrow,
   ),
   wide: (
     extend: _base,

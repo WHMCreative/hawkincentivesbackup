@@ -1,0 +1,28 @@
+uuid: a09c321a-677a-485b-bc08-40f10fef323c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_references
+    - node.type.insight
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    limited_rich_text: limited_rich_text
+    rich_text: '0'
+    plain_text: '0'
+    html: '0'
+id: node.insight.field_references
+field_name: field_references
+entity_type: node
+bundle: insight
+label: References
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

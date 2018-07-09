@@ -17,6 +17,7 @@ permissions:
   - 'search content'
   - 'skip comment approval'
   - 'use text format basic_html'
+  - 'use text format heading'
   - 'view media'
   - 'view published card entities'
   - 'view published marketo form entity entities'

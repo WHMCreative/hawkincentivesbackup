@@ -1,3 +1,49 @@
 ////
 /// Paragraphs - Simple
 ////
+
+.paragraph--type--simple-cta {
+  background: $blue-gradient-reverse;
+  @include top-bottom(padding, rem-calc(40));
+
+  @include breakpoint(medium) {
+    @include top-bottom(padding, rem-calc(80));
+  }
+
+  & > .paragraph-content {
+    @include content-width(narrow);
+    text-align: center;
+
+    .field--name-field-heading {
+      color: $white;
+    }
+
+    .field--name-field-p-link a {
+      @include btn(ghost-white);
+      margin-top: rem-calc(20);
+
+      @include breakpoint(medium) {
+        margin-top: rem-calc(40);
+      }
+    }
+  }
+
+  // When placed on insight
+  .field--name-field-p-insight & {
+    @include top-bottom(padding, rem-calc(40));
+
+    & > .paragraph-content {
+      text-align: left;
+      @include left-right(padding, rem-calc(40));
+
+      .field--name-field-heading {
+        font-size: rem-calc(20);
+        font-weight: $global-weight-bold;
+      }
+    }
+
+    .field--name-field-p-link a {
+      margin-top: rem-calc(20);
+    }
+  }
+}

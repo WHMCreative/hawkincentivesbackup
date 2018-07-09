@@ -1,0 +1,10 @@
+uuid: 2cb266ea-94e1-467f-b530-86693aa07982
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.insight
+label: Insight
+targetEntityType: paragraph
+cache: true

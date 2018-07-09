@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.people.field_media_image
     - field.field.node.people.field_notable_quality
     - field.field.node.people.field_title
+    - field.field.node.people.field_type
     - node.type.people
   module:
     - text
@@ -18,42 +19,33 @@ bundle: people
 mode: teaser
 content:
   body:
-    label: hidden
-    type: text_summary_or_trimmed
-    weight: 4
-    settings:
-      trim_length: 600
-    third_party_settings: {  }
+    type: text_default
+    weight: 2
     region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
   field_media_image:
     type: entity_reference_entity_view
-    weight: 1
+    weight: 0
     region: content
     label: hidden
     settings:
       view_mode: people
       link: false
     third_party_settings: {  }
-  field_notable_quality:
-    type: string
-    weight: 2
-    region: content
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
   field_title:
     type: string
-    weight: 3
+    weight: 1
     region: content
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-  links:
-    weight: 0
-    region: content
-    settings: {  }
-    third_party_settings: {  }
 hidden:
+  addtoany: true
+  content_moderation_control: true
+  field_notable_quality: true
+  field_type: true
   langcode: true
+  links: true

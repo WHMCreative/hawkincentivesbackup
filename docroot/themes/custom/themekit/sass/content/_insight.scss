@@ -1,0 +1,176 @@
+////
+/// Insight
+////
+
+.node--type-insight {
+
+  &.node--view-mode-full,
+  &.node--view-mode-gated {
+
+    position: relative;
+    z-index: z(content, base);
+    > .node--content-wrapper {
+      @include content-width(default);
+      padding-top: 40px;
+      margin-bottom: 40px;
+      @include breakpoint(marge) {
+        padding-top: 85px;
+        margin-bottom: 85px;
+        display: flex;
+        justify-content: space-between;
+      }
+      > .node--content {
+        margin-bottom: 40px;
+        @include breakpoint(marge) {
+          margin-bottom: 0;
+          width: 64%;
+          max-width: 650px;
+          position: relative;
+        }
+      }
+      > .node--sidebar {
+        @include breakpoint(marge) {
+          max-width: 250px;
+          width: 26%;
+        }
+
+        h3 {
+          margin-bottom: 12px;
+        }
+      }
+    }
+
+
+    .a2a_kit {
+      margin-bottom: 20px;
+      @include breakpoint(marge) {
+        position: absolute;
+        left: 0;
+        top: -45px;
+      }
+      @include breakpoint(xlarge) {
+        width: 32px;
+        top: 0;
+        left: -90px;
+      }
+    }
+
+    .field--name-field-intro-copy {
+      font-size: rem-calc(18);
+      margin-bottom: 1rem;
+      p:first-child {
+        &:first-letter {
+          color: $secondary-color-dark;
+          font-size: rem-calc(56);
+          line-height: 0.8;
+          font-weight: 700;
+          float: left;
+          margin: 0 4px 0 0;
+          text-transform: uppercase;
+        }
+      }
+
+    }
+
+    .field--name-field-intro-copy,
+    .field--name-body {
+      ul,
+      ol {
+        list-style-position: inside;
+        margin-left: 10px;
+        @include breakpoint(marge) {
+          margin-left: 30px;
+        }
+        @include breakpoint(large) {
+          margin-left: 50px;
+        }
+      }
+    }
+    .field--name-field-p-insight,
+    .field--name-field-p-form {
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+      margin-bottom: 20px;
+      @include breakpoint(marge) {
+        margin-left: -30px;
+      }
+      @include breakpoint(large) {
+        margin-left: -35px;
+        margin-bottom: 40px;
+      }
+      @include breakpoint(xlarge) {
+        margin-left: -40px;
+        margin-right: -40px;
+      }
+    }
+    .field--name-field-p-insight {
+      @include breakpoint(marge) {
+        margin-top: -225px;
+        min-height: 230px;
+      }
+      @include breakpoint(large) {
+        margin-top: -245px;
+        min-height: 250px;
+      }
+      @include breakpoint(xlarge) {
+        margin-top: -265px;
+        min-height: 270px;
+      }
+    }
+    .field--name-field-p-form {
+      @include breakpoint(marge) {
+        margin-top: -180px;
+        min-height: 270px;
+      }
+      @include breakpoint(large) {
+        margin-top: -200px;
+        min-height: 290px;
+      }
+      @include breakpoint(xlarge) {
+        margin-top: -230px;
+        min-height: 320px;
+      }
+    }
+
+    .field--name-field-p-related-insights,
+    .field--name-field-author {
+      margin-bottom: 40px;
+      @include breakpoint(marge) {
+        margin-bottom: 80px;
+      }
+    }
+    .field--name-field-references {
+      font-size: rem-calc(12);
+      font-style: italic;
+    }
+
+  }
+
+  &.node--view-mode-unlocked {
+    position: relative;
+    z-index: z(content, base);
+
+    @include top-border;
+
+    > .node--content-wrapper {
+      @include content-width(default);
+      padding-top: 40px;
+      margin-bottom: 40px;
+      @include breakpoint(marge) {
+        padding-top: 85px;
+        margin-bottom: 85px;
+      }
+    }
+
+    .title {
+      text-align: center;
+      margin-bottom: rem-calc(20);
+    }
+
+    .message {
+      text-align: center;
+      border-top: 1px solid $lighter-gray;
+      @include content-width(narrow);
+      @include top-bottom(padding, rem-calc(40));
+    }
+  }
+}

@@ -40,13 +40,13 @@
 ///   @include tk-block-grid(3, '.field__item')
 @mixin tk-block-grid($number: 1, $selector: '.column', $bottom-gutter: 15, $gutter: 30px, $behavior: nest) {
   > #{$selector} {
-    @include grid-column($gutter: $gutter);
+    @include grid-column($gutters: $gutter);
     margin-bottom: #{$bottom-gutter}px;
     &:last-child {
       @include grid-column-end();
     }
   }
-  @include grid-row($behavior: $behavior, $gutter: $gutter);
+  @include grid-row($behavior: $behavior, $gutters: $gutter);
   @include tk-grid-layout-child($number, $selector);
 
   @if ($behavior == nest) {

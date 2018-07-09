@@ -1,19 +1,19 @@
-uuid: b2bf0abc-91ec-4bdc-b039-31e289a11f2c
+uuid: aba6eed9-87b2-4c09-8ff7-7fc9a0a96897
 langcode: en
 status: true
 dependencies:
   module:
-    - node
+    - bhk_card_browser
     - paragraphs
 id: paragraph.field_cards
 field_name: field_cards
 entity_type: paragraph
 type: entity_reference
 settings:
-  target_type: node
+  target_type: card
 module: core
 locked: false
-cardinality: 1
+cardinality: 3
 translatable: true
 indexes: {  }
 persist_with_no_fields: false

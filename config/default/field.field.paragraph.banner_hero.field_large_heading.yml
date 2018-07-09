@@ -1,10 +1,20 @@
-uuid: 7190d6b8-9b9e-4f4d-8d9b-679a92ba2942
+uuid: bdfb6cbc-8cd6-4108-a331-be94cb1062fd
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.paragraph.field_large_heading
     - paragraphs.paragraphs_type.banner_hero
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    heading: heading
+    limited_rich_text: '0'
+    rich_text: '0'
+    plain_text: '0'
+    html: '0'
 id: paragraph.banner_hero.field_large_heading
 field_name: field_large_heading
 entity_type: paragraph
@@ -16,4 +26,4 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }
-field_type: string
+field_type: text_long

@@ -3,7 +3,7 @@
 ////
 
 .region-footer {
-  background: $secondary-color;
+  background: $primary-color;
   color: $white;
   .region-inner {
     @include content-width(default);

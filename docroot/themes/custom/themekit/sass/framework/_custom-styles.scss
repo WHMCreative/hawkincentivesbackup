@@ -13,3 +13,54 @@
     }
   }
 }
+
+@mixin insight-label($font-size: 11) {
+  font-size: rem-calc($font-size);
+  line-height: 2;
+  padding: 2px 7px;
+  background: rgba($black, 0.25);
+  border-radius: 3px;
+}
+
+/// Adds frame for teaser image
+///
+/// @param {string} $color - Frame's border color
+/// @param {string} $size - Frame's border width, in px
+/// @param {string} $offset - Frame's offset from top left corner of a teaser, in px
+/// @param {string} $radius - Value of the frame's border radius, in px
+/// @param {string} $pseudo-element - Element to use for adding the frame. Default value: after
+/// @param {boolean} $animate - Animate frame's position on teaser active states. Default value: false
+@mixin frame($color, $size, $offset, $radius, $pseudo-element: after, $animate: false) {
+  position: relative;
+  &:#{$pseudo-element} {
+    content: '';
+    position: absolute;
+    left: $offset;
+    top: $offset;
+    width: 100%;
+    height: 100%;
+    border: $size solid $color;
+    border-radius: $radius;
+    @if ($animate == true) {
+      transition: transform 250ms;
+    }
+  }
+  @if ($animate == true) {
+    @include selectors(active) {
+      &:#{$pseudo-element} {
+        transform: translate(-($offset - 2), -($offset - 2));
+      }
+    }
+  }
+}
+
+
+@mixin top-border() {
+  &:before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: rem-calc(10);
+    background: $green-gradient;
+  }
+}

@@ -1,6 +1,6 @@
 <template>
   <div id="card-catalog">
-    <CardList></CardList>
+    <CardList v-if="nodeId" :nodeId="nodeId"></CardList>
   </div>
 </template>
 
@@ -11,6 +11,20 @@ export default {
   name: 'card-catalog',
   components: {
     CardList
+  },
+
+  created() {
+    let node = document.querySelector('.node.node--type-component-page');
+
+    if(node) {
+      this.nodeId = node.dataset.id
+    }
+  },
+
+  data() {
+    return {
+      nodeId: null
+    }
   }
 }
 </script>

@@ -1,0 +1,28 @@
+uuid: d97b88ad-0f29-4355-8ea5-49b5e6d53016
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_intro_copy
+    - node.type.insight
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    limited_rich_text: limited_rich_text
+    rich_text: '0'
+    plain_text: '0'
+    html: '0'
+id: node.insight.field_intro_copy
+field_name: field_intro_copy
+entity_type: node
+bundle: insight
+label: 'Intro Copy'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

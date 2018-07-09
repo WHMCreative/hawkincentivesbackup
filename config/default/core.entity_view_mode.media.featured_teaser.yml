@@ -1,0 +1,10 @@
+uuid: 68c1e749-2b8b-4e98-b79d-56f97a875b92
+langcode: en
+status: true
+dependencies:
+  module:
+    - media_entity
+id: media.featured_teaser
+label: 'Featured Teaser'
+targetEntityType: media
+cache: true

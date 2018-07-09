@@ -2,12 +2,35 @@
 /// Global Typography
 ////
 
+h3 {
+  font-weight: 700;
+}
+
 .cke_editable,
 .field.text-formatted {
+
+  h4 {
+    text-transform: uppercase;
+    color: $primary-color;
+    font-weight: $global-weight-bold;
+    font-size: rem-calc(14);
+  }
+
+  .btn {
+    &.blue {
+      @include btn(blue);
+    }
+  }
+
   .embedded-entity {
     margin: 15px 0;
-    @include breakpoint(medium) {
-      max-width: 50%;
+    max-width: 100%;
+    &.align-left,
+    &.align-right,
+    &.align-center {
+      @include breakpoint(medium) {
+        max-width: 50%;
+      }
     }
     &.align-left {
       float: none;
@@ -35,6 +58,33 @@
       @include breakpoint(large) {
         min-width: $global-width * 0.5;
       }
+    }
+  }
+
+  .callout {
+    border-top: 1px solid $lighter-gray;
+    border-bottom: 1px solid $lighter-gray;
+    position: relative;
+    padding: rem-calc(40 0);
+    margin: rem-calc(50 0 40);
+
+    h4 {
+      background: $white;
+      position: absolute;
+      top:0;
+      left: 50%;
+      transform: translate(-50%, -60%);
+      padding: rem-calc(0 10);
+    }
+
+    .content {
+      width: 80%;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
     }
   }
 }

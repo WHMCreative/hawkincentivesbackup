@@ -4,46 +4,78 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.gated
+    - field.field.node.insight.body
     - field.field.node.insight.field_author
     - field.field.node.insight.field_featured_image
     - field.field.node.insight.field_gated
     - field.field.node.insight.field_insight_type
+    - field.field.node.insight.field_intro_copy
     - field.field.node.insight.field_p_form
     - field.field.node.insight.field_p_header
     - field.field.node.insight.field_p_insight
     - field.field.node.insight.field_p_related_insights
+    - field.field.node.insight.field_references
     - field.field.node.insight.field_teaser_image
     - node.type.insight
   module:
     - entity_reference_revisions
+    - text
     - user
 id: node.insight.gated
 targetEntityType: node
 bundle: insight
 mode: gated
 content:
+  addtoany:
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  body:
+    type: text_default
+    weight: 4
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
   content_moderation_control:
     weight: 0
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_intro_copy:
+    type: text_default
+    weight: 3
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
   field_p_form:
     type: entity_reference_revisions_entity_view
-    weight: 1
+    weight: 5
     label: hidden
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
     region: content
+  field_p_header:
+    type: entity_reference_revisions_entity_view
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
 hidden:
   field_author: true
   field_featured_image: true
   field_gated: true
   field_insight_type: true
-  field_p_header: true
   field_p_insight: true
   field_p_related_insights: true
+  field_references: true
   field_teaser_image: true
   langcode: true
   links: true

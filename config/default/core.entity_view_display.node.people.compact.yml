@@ -1,0 +1,44 @@
+uuid: 6859473c-a192-4baf-9812-e00dbb1b7564
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.compact
+    - field.field.node.people.body
+    - field.field.node.people.field_media_image
+    - field.field.node.people.field_notable_quality
+    - field.field.node.people.field_title
+    - field.field.node.people.field_type
+    - node.type.people
+  module:
+    - user
+id: node.people.compact
+targetEntityType: node
+bundle: people
+mode: compact
+content:
+  field_media_image:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: people
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_title:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  addtoany: true
+  body: true
+  content_moderation_control: true
+  field_notable_quality: true
+  field_type: true
+  langcode: true
+  links: true

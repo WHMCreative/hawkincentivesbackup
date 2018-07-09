@@ -1,0 +1,45 @@
+////
+/// Social
+////
+
+.a2a_kit {
+  display: flex;
+  @include breakpoint(xlarge) {
+    flex-wrap: wrap;
+    max-width: 32px;
+  }
+  > a {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $white;
+    background: $primary-color;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
+    transition: background-color ease 0.5s;
+    @include breakpoint(xlarge) {
+      margin-bottom: 10px;
+      margin-right: 0;
+    }
+
+    @include selectors(active) {
+      background: $secondary-color;
+    }
+
+    @each $social in $socials {
+      &.a2a_button_#{$social} {
+        @include icon-before(#{$social});
+      }
+    }
+    &:before {
+      font-size: 17px;
+      display: block;
+    }
+    .a2a_svg {
+      display: none;
+    }
+  }
+}

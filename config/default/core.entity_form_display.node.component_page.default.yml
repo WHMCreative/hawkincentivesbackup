@@ -106,7 +106,7 @@ content:
     settings:
       title: 'Header Component'
       title_plural: 'Header Components'
-      edit_mode: preview
+      edit_mode: open
       add_mode: paragraphs_browser
       form_display_mode: default
       default_paragraph_type: _none

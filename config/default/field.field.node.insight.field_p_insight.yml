@@ -5,8 +5,8 @@ dependencies:
   config:
     - field.storage.node.field_p_insight
     - node.type.insight
-    - paragraphs.paragraphs_type.reference_block
-    - paragraphs.paragraphs_type.simple_content
+    - paragraphs.paragraphs_type.media_video_modal
+    - paragraphs.paragraphs_type.simple_cta
   module:
     - entity_reference_revisions
 id: node.insight.field_p_insight
@@ -15,7 +15,7 @@ entity_type: node
 bundle: insight
 label: Insight
 description: ''
-required: true
+required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
@@ -24,8 +24,8 @@ settings:
   handler_settings:
     negate: 0
     target_bundles:
-      reference_block: reference_block
-      simple_content: simple_content
+      simple_cta: simple_cta
+      media_video_modal: media_video_modal
     target_bundles_drag_drop:
       single_image:
         weight: 7
@@ -42,6 +42,9 @@ settings:
       banner_hero:
         weight: 30
         enabled: false
+      simple_cta:
+        enabled: true
+        weight: 31
       compound_callout:
         weight: 31
         enabled: false
@@ -66,6 +69,9 @@ settings:
       link_url:
         weight: 38
         enabled: false
+      link_form_modal:
+        weight: 39
+        enabled: false
       marketo_hidden_field:
         weight: 39
         enabled: false
@@ -76,11 +82,11 @@ settings:
         weight: 41
         enabled: false
       media_video_modal:
-        weight: 42
-        enabled: false
-      reference_block:
         enabled: true
+        weight: 42
+      reference_block:
         weight: 43
+        enabled: false
       reference_card_browser:
         weight: 44
         enabled: false
@@ -91,8 +97,8 @@ settings:
         weight: 46
         enabled: false
       simple_content:
-        enabled: true
         weight: 47
+        enabled: false
       simple_icon_content:
         weight: 48
         enabled: false

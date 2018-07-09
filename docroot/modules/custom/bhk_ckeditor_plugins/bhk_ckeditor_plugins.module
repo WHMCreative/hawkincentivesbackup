@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains bhk_ckeditor_plugins.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function bhk_ckeditor_plugins_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the bhk_ckeditor_plugins module.
+    case 'help.page.bhk_ckeditor_plugins':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Add custom plugins to ckeditor') . '</p>';
+      return $output;
+
+    default:
+  }
+}

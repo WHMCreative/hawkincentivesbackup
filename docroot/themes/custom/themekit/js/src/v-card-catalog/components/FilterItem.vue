@@ -1,5 +1,5 @@
 <template>
-  <label><input type="checkbox" :name="type" :value="filter" @change="$emit('selectFilter', $event)">{{ filter }}</label>
+  <label><input type="checkbox" :name="type" :value="filter.key" @change="$emit('selectFilter', $event)">{{ filter.value }}</label>
 </template>
 
 <script>

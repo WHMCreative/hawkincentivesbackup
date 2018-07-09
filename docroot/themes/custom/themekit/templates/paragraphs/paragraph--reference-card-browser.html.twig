@@ -55,10 +55,17 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
 ]
 %}
 
-{% set rendered_content = content|without('') %}
+{% set rendered_content = content|without(
+  'field_p_form'
+) %}
 {{ attach_library('themekit/card-catalog') }}
 
 <div{{ attributes.addClass(classes) }}>
   <div id="card-catalog"></div>
   {{ rendered_content }}
+  {% if content.field_p_form|render %}
+    <div class="form--card-browser mfp-hide">
+      {{ content.field_p_form }}
+    </div>
+  {% endif %}
 </div>

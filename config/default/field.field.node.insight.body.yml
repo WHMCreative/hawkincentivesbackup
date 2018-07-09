@@ -1,0 +1,29 @@
+uuid: f66d89a5-f7ed-4811-b9ac-f927832bb7d0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.insight
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    rich_text: rich_text
+    limited_rich_text: '0'
+    plain_text: '0'
+    html: '0'
+id: node.insight.body
+field_name: body
+entity_type: node
+bundle: insight
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+field_type: text_with_summary

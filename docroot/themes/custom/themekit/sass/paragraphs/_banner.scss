@@ -1,0 +1,90 @@
+////
+/// Paragraphs - Banner
+////
+
+.paragraph--type--banner-hero {
+  position: relative;
+  z-index: z(banner, base);
+
+  .bg-overlay {
+    position: absolute;
+    z-index: z(banner,overlay);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .bg-container {
+    position: absolute;
+    z-index: z(banner,base);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .paragraph-content {
+    @include content-width(default);
+    position: relative;
+    z-index: z(banner, content);
+    color: $white;
+    @each $bp, $size in $banner-spacing {
+      $size: rem-calc($size);
+      @include breakpoint($bp) {
+        @include top-bottom(padding, $size);
+      }
+    }
+
+    h1 {
+      color: inherit;
+      max-width: 520px;
+      margin: 15px 0;
+      font-size: rem-calc(26);
+      @include breakpoint(medium) {
+        font-size: rem-calc(35);
+      }
+      @include breakpoint(large) {
+        margin: 20px 0;
+      }
+      p {
+        margin: 0;
+      }
+    }
+    h5 {
+      max-width: 520px;
+      color: inherit;
+      opacity: 0.6;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin: 0;
+      + h1 {
+        @include header-font-size(h1);
+      }
+    }
+    h3 {
+      color: inherit;
+      margin: 0;
+      p {
+        margin: 0;
+      }
+    }
+    .insight-type {
+      display: inline-block;
+      vertical-align: top;
+      @include insight-label();
+      margin-right: 8px;
+    }
+    .date {
+      display: inline-block;
+      vertical-align: top;
+      font-size: rem-calc(13);
+      line-height: 2;
+      opacity: 0.8;
+    }
+
+  }
+}

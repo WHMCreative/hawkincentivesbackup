@@ -1,0 +1,41 @@
+uuid: edac3210-cfff-4a54-91ed-687d1243e54c
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.heading
+  module:
+    - ckeditor
+format: heading
+editor: ckeditor
+settings:
+  toolbar:
+    rows:
+      -
+        -
+          name: Formatting
+          items:
+            - Bold
+        -
+          name: Tools
+          items:
+            - Source
+  plugins:
+    stylescombo:
+      styles: ''
+    drupallink:
+      linkit_enabled: false
+      linkit_profile: ''
+    language:
+      language_list: un
+    linkitstyles:
+      enable: 0
+      styles: ''
+image_upload:
+  status: false
+  scheme: public
+  directory: inline-images
+  max_size: ''
+  max_dimensions:
+    width: null
+    height: null

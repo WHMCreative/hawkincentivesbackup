@@ -67,32 +67,26 @@
 //  56. Xy Grid
 
 @import 'util/util';
+@import "colors";
 
 // 1. Global
 // ---------
 
 $global-font-size: 100%;
 $global-width: rem-calc(1084);
+$global-width-narrow: rem-calc(800);
 $global-width-wide: rem-calc(1200);
 $global-lineheight: 1.5;
 
-$bhk-blue: #1969b7;
-$bhk-teal: #6bcec9;
-$bhk-green: #89ae43;
-$bhk-navy: #125c7f;
 
-$foundation-palette: (
-  primary: $bhk-blue,
-  secondary: $bhk-green,
-  success: #3adb76,
-  warning: #ffae00,
-  alert: #cc4b37,
-);
+//$foundation-palette: (
+//  primary: #89ae43,
+//  secondary: #1969b7,
+//  success: #3adb76,
+//  warning: #ffae00,
+//  alert: #cc4b37,
+//);
 
-$light-gray: #bdbdbd;
-$mercury-gray: #e5e5e5;
-$medium-gray: #777777;
-$dark-gray: #4a4a4a;
 $black: #000000;
 $white: #ffffff;
 $body-background: $white;
@@ -102,6 +96,7 @@ $body-antialiased: true;
 $global-margin: 1rem;
 $global-padding: 1rem;
 $global-position: 1rem;
+$global-weight-light: 300;
 $global-weight-normal: 400;
 $global-weight-bold: 700;
 $global-radius: 0;
@@ -114,7 +109,7 @@ $global-button-cursor: auto;
 $global-color-pick-contrast-tolerance: 0;
 $print-transparent-backgrounds: true;
 
-@include add-foundation-colors;
+//@include add-foundation-colors;
 
 $img-dir: '../../images/';
 $icon-font-dir: '../../fonts/icomoon/fonts/';
@@ -123,6 +118,12 @@ $paragraph-spacing: (
   medium: 60px,
   large: 85px
 );
+$banner-spacing: (
+  small: 30px,
+  medium: 60px,
+  large: 95px
+);
+$socials: facebook, linkedin, twitter;
 
 
 // 1.Drupal - All of these settings should be copied over when the _settings.scss partial is updated on new version of foundation!!!
@@ -138,11 +139,17 @@ $icons: (
   error: "\e000",
   info: "\e88e",
   settings: "\e8b8",
-  edit: "\e902",
-  trash: "\e903",
-  view: "\e905",
-  gear: "\e904",
-  clone: "\e906"
+  edit: "\e903",
+  trash: "\e904",
+  view: "\e906",
+  gear: "\e905",
+  clone: "\e906",
+  arrow-down: "\e907",
+  checkmark: "\e901",
+  times: "\e900",
+  twitter: "\e908",
+  linkedin: "\e909",
+  facebook: "\e90a",
 );
 /******* End Drupal Defaults *******/
 
@@ -155,6 +162,7 @@ $icons: (
 $breakpoints: (
   small: 0,
   medium: 640px,
+  marge: 800px,
   large: 1084px,
   xlarge: 1200px,
   xxlarge: 1370px,
@@ -182,7 +190,7 @@ $header-font-family: $body-font-family;
 $header-font-weight: 300;
 $header-font-style: normal;
 $font-family-monospace: Consolas, 'Liberation Mono', Courier, monospace;
-$header-color: $primary-color;
+$header-color: $secondary-color;
 $header-lineheight: 1.25;
 $header-margin-bottom: 0.5rem;
 $header-styles: (
@@ -215,7 +223,7 @@ $code-font-weight: $global-weight-normal;
 $code-background: $light-gray;
 $code-border: 1px solid $medium-gray;
 $code-padding: rem-calc(2 5 1);
-$anchor-color: $primary-color;
+$anchor-color: $secondary-color;
 $anchor-color-hover: scale-color($anchor-color, $lightness: -14%);
 $anchor-text-decoration: none;
 $anchor-text-decoration-hover: none;

@@ -9,15 +9,15 @@
     @include content-width(wide);
     > .field--name-field-heading {
       @include breakpoint(large) {
-        max-width: 60%;
-        margin: 0 auto 40px;
+        @include content-width(narrow);
+        margin-bottom: rem-calc(40);
       }
     }
     > .field--name-field-description {
       margin-bottom: 10px;
       @include breakpoint(medium) {
-        max-width: 60%;
-        margin: 0 auto 20px;
+        @include content-width(narrow);
+          margin-bottom: rem-calc(20);
       }
     }
     > .field--name-field-p-multiple-links {
@@ -39,28 +39,20 @@
     }
   }
 
-  .field--name-field-p-compound-content {
-    @include breakpoint(medium) {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      flex: 1 1 auto;
-    }
-    > .paragraph {
-      margin: 10px 0;
-      @include breakpoint(medium) {
-        margin: 0 1.25%;
-        width: 21.875%;
-        min-width: 150px;
+  &.columns-wide {
+    .field--name-field-p-compound-content {
+      @include content-width(wide);
+      @include breakpoint(marge) {
+        @include tk-flex-equal-width-items($grid-column-gutter, '.paragraph');
       }
     }
   }
+
   &.columns-narrow {
     .field--name-field-p-compound-content {
-      > .paragraph {
-        @include breakpoint(medium) {
-          width: 17.5%;
-        }
+      @include content-width(narrow);
+      @include breakpoint(medium) {
+        @include tk-flex-equal-width-items($grid-column-gutter, '.paragraph');
       }
     }
   }

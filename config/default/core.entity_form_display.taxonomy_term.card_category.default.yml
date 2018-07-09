@@ -1,0 +1,23 @@
+uuid: 9466606c-41a1-4ab9-9f83-e6c3a861dd34
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.card_category
+id: taxonomy_term.card_category.default
+targetEntityType: taxonomy_term
+bundle: card_category
+mode: default
+content:
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  description: true
+  langcode: true
+  path: true

@@ -40,6 +40,7 @@ settings:
             - image_embed
             - video_embed
             - infogram
+            - Callout
         -
           name: 'Block Formatting'
           items:
@@ -60,7 +61,7 @@ settings:
       language_list: un
     linkitstyles:
       enable: 1
-      styles: ''
+      styles: '.btn.blue|Blue Button'
 image_upload:
   status: false
   scheme: public

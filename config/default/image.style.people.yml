@@ -5,13 +5,13 @@ dependencies:
   module:
     - focal_point
 name: people
-label: People
+label: 'People (150x150)'
 effects:
   1bc05cf6-7ca6-4de7-ae35-ad471e0c29ac:
     uuid: 1bc05cf6-7ca6-4de7-ae35-ad471e0c29ac
     id: focal_point_scale_and_crop
     weight: 1
     data:
-      width: 300
-      height: 300
+      width: 150
+      height: 150
       crop_type: focal_point
