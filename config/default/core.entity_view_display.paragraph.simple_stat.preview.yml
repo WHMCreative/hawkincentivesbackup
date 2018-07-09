@@ -5,8 +5,10 @@ dependencies:
   config:
     - core.entity_view_mode.paragraph.preview
     - field.field.paragraph.simple_stat.field_description
+    - field.field.paragraph.simple_stat.field_p_media
     - paragraphs.paragraphs_type.simple_stat
   module:
+    - entity_reference_revisions
     - text
 id: paragraph.simple_stat.preview
 targetEntityType: paragraph
@@ -20,5 +22,13 @@ content:
     third_party_settings: {  }
     type: text_default
     region: content
-hidden:
-  field_p_media: true
+  field_p_media:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      view_mode: preview
+      link: ''
+    third_party_settings: {  }
+hidden: {  }

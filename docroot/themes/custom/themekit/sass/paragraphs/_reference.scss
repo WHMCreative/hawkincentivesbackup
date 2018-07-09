@@ -17,7 +17,7 @@
   .field--name-field-p-content > & {
     @include paragraph-margins((small: 0));
   }
-  
+
   background: $gray-gradient;
   padding: 40px 0;
   @include breakpoint(medium) {

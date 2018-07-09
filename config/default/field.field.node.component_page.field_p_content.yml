@@ -10,6 +10,7 @@ dependencies:
     - paragraphs.paragraphs_type.compound_slider
     - paragraphs.paragraphs_type.compound_stat_bar
     - paragraphs.paragraphs_type.compound_tabbed_content
+    - paragraphs.paragraphs_type.layout_2_column
     - paragraphs.paragraphs_type.layout_grid
     - paragraphs.paragraphs_type.reference_block
     - paragraphs.paragraphs_type.reference_card_browser
@@ -42,24 +43,16 @@ settings:
       compound_stat_bar: compound_stat_bar
       compound_tabbed_content: compound_tabbed_content
       reference_card_browser: reference_card_browser
+      layout_2_column: layout_2_column
       simple_cta: simple_cta
       reference_marketo_form: reference_marketo_form
-      simple_content: simple_content
       compound_slider: compound_slider
+      simple_content: simple_content
       layout_grid: layout_grid
       reference_block: reference_block
       reference_featured_insight: reference_featured_insight
       summary_cards: summary_cards
     target_bundles_drag_drop:
-      single_image:
-        weight: 8
-        enabled: false
-      single_svg:
-        weight: 9
-        enabled: false
-      single_video:
-        weight: 11
-        enabled: false
       summary_insights:
         enabled: true
         weight: 12
@@ -84,34 +77,37 @@ settings:
       marketo_hidden_field:
         weight: 27
         enabled: false
-      marketo_submission_confirmation:
+      banner_featured_insights:
         weight: 28
         enabled: false
-      banner_featured_insights:
+      marketo_submission_confirmation:
         weight: 28
         enabled: false
       reference_card_browser:
         enabled: true
         weight: 29
-      banner_hero:
+      media_image_slider:
         weight: 29
         enabled: false
-      media_image_slider:
+      banner_hero:
         weight: 29
         enabled: false
       media_video_modal:
         weight: 30
         enabled: false
+      layout_2_column:
+        enabled: true
+        weight: 31
       simple_cta:
         enabled: true
         weight: 31
       reference_marketo_form:
         enabled: true
         weight: 31
-      simple_content:
+      compound_slider:
         enabled: true
         weight: 32
-      compound_slider:
+      simple_content:
         enabled: true
         weight: 32
       simple_icon_content:
@@ -120,12 +116,12 @@ settings:
       simple_media_bar:
         weight: 34
         enabled: false
-      simple_media_tile:
-        weight: 35
-        enabled: false
       layout_grid:
         enabled: true
         weight: 35
+      simple_media_tile:
+        weight: 35
+        enabled: false
       simple_stat:
         weight: 36
         enabled: false
@@ -138,6 +134,12 @@ settings:
       reference_featured_insight:
         enabled: true
         weight: 43
+      media_image:
+        weight: 45
+        enabled: false
+      media_video:
+        weight: 47
+        enabled: false
       summary_cards:
         enabled: true
         weight: 53

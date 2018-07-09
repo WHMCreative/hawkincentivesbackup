@@ -7,31 +7,75 @@
 
   .field--name-field-p-multiple-links {
     display: flex;
-    align-items: center;
-    justify-content: center;
     margin-top: 20px;
+    align-items: center;
+  }
 
-    @include breakpoint(medium) {
-      margin-top: 20px;
+  .paragraph--type--compound-content-bar & {
+    .field--name-field-heading {
+      color: $secondary-color-dark;
     }
 
-    & > .paragraph {
-      margin: 0 8px;
-      a {
-        @include link(default);
-      }
+    .field--name-field-p-multiple-links {
+      justify-content: center;
 
-      &:nth-last-child(2) {
+      & > .paragraph {
+        margin: 0 8px;
         a {
-          @include btn(blue);
+          @include link(default);
+        }
+
+        &:nth-last-child(2) {
+          a {
+            @include btn(blue);
+          }
         }
       }
     }
   }
 
-  .paragraph--type--compound-content-bar {
+  .color-scheme-dark &,
+  &.color-scheme-dark {
+    @include color-scheme();
+  }
+
+  .paragraph--type--layout-2-column & {
     .field--name-field-heading {
-      color: $secondary-color-dark;
+      margin-bottom: rem-calc(28);
+    }
+
+    .field--name-field-p-multiple-links {
+
+      & > .paragraph {
+        margin: 0 8px;
+        a {
+            @include link(default);
+        }
+
+        &:first-child {
+          margin-left: 0;
+          a {
+            @include btn(blue);
+          }
+        }
+      }
+    }
+  }
+
+  .paragraph--type--layout-2-column.color-scheme-dark & {
+    .field--name-field-p-multiple-links {
+
+      & > .paragraph {
+        a {
+          @include link(white);
+        }
+
+        &:first-child {
+          a {
+            @include btn(ghost-white);
+          }
+        }
+      }
     }
   }
 }
@@ -95,11 +139,28 @@
       margin-right: rem-calc(16);
       display: flex;
       align-items: center;
-      //display: flex;
-      //align-content: center;
 
-      .paragraph--type--media-image {
+      @include breakpoint(medium) {
+        min-width: rem-calc(100);
       }
+    }
+
+    .field--name-field-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-width: rem-calc(100);
+    }
+  }
+
+  .paragraph--type--layout-2-column & {
+    .paragraph-content {
+      //align-content: center;
+      justify-content: flex-start;
+    }
+    .field--name-field-description p {
+      font-size: rem-calc(13);
     }
   }
 }

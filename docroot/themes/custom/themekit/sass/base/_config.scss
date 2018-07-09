@@ -103,6 +103,12 @@ $links: (
   blue: (
     extend: _base
   ),
+
+  white: (
+    extend: _base,
+    color: $white,
+    active-color: $secondary-color-light,
+  )
 );
 
 

@@ -10,6 +10,7 @@ dependencies:
     - paragraphs.paragraphs_type.compound_slider
     - paragraphs.paragraphs_type.compound_stat_bar
     - paragraphs.paragraphs_type.compound_tabbed_content
+    - paragraphs.paragraphs_type.layout_2_column
     - paragraphs.paragraphs_type.layout_grid
     - paragraphs.paragraphs_type.reference_block
     - paragraphs.paragraphs_type.reference_featured_insight
@@ -38,6 +39,7 @@ settings:
       reference_marketo_form: reference_marketo_form
       summary_insights: summary_insights
       simple_cta: simple_cta
+      layout_2_column: layout_2_column
       compound_callout: compound_callout
       compound_content_bar: compound_content_bar
       compound_slider: compound_slider
@@ -58,15 +60,6 @@ settings:
       reference_marketo_form:
         enabled: true
         weight: 12
-      single_image:
-        weight: 14
-        enabled: false
-      single_svg:
-        weight: 15
-        enabled: false
-      single_video:
-        weight: 17
-        enabled: false
       summary_insights:
         enabled: true
         weight: 18
@@ -77,6 +70,9 @@ settings:
         weight: 30
         enabled: false
       simple_cta:
+        enabled: true
+        weight: 31
+      layout_2_column:
         enabled: true
         weight: 31
       compound_callout:
@@ -103,10 +99,10 @@ settings:
       link_url:
         weight: 38
         enabled: false
-      link_form_modal:
+      media_image_slider:
         weight: 41
         enabled: false
-      media_image_slider:
+      link_form_modal:
         weight: 41
         enabled: false
       media_video_modal:
@@ -121,6 +117,12 @@ settings:
       reference_featured_insight:
         enabled: true
         weight: 45
+      media_image:
+        weight: 45
+        enabled: false
+      media_video:
+        weight: 47
+        enabled: false
       simple_content:
         enabled: true
         weight: 47

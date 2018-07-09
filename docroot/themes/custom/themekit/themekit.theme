@@ -165,6 +165,13 @@ function themekit_preprocess_paragraph_compound_content_bar(&$variables) {
   $variables['column_count'] = $paragraph->get('field_p_compound_content')->count();
 }
 
+function themekit_preprocess_paragraph_layout_2_column(&$variables) {
+  $paragraph = $variables['paragraph'];
+  if ($paragraph->hasField('field_width')) {
+    $variables['width'] = $paragraph->field_width->getValue()[0]['value'];
+  }
+}
+
 /**
  * Implements template_preprocess_media().
  */
@@ -178,19 +185,22 @@ function themekit_preprocess_paragraph_media_image(&$variables) {
   $parent = $paragraph->getParentEntity();
   if ($parent->getEntityTypeId() === 'paragraph') {
     switch ($parent->getType()) {
-//            case 'simple_stat':
-//              $stop='';
-//              $image_style = (isset($variables['content']['field_image'][0]['#image_style'])) ? $variables['content']['field_image'][0]['#image_style'] : NULL;
-//              $variables['image_inline_style'] = themekit_get_entity_image_inline_style($paragraph, 'field_image', $image_style);
-//              break;
-            case 'simple_stat':
-              $uri = $paragraph->field_media_image->entity->field_image->entity->getFileUri();
-              $variables['custom_image_style'] = [
-                '#theme' => 'image_style',
-                '#style_name' => 'stat',
-                '#uri' => $uri,
-              ];
-              break;
+      case 'simple_stat':
+        $uri = $paragraph->field_media_image->entity->field_image->entity->getFileUri();
+        $variables['custom_image_style'] = [
+          '#theme' => 'image_style',
+          '#style_name' => 'stat',
+          '#uri' => $uri,
+        ];
+        break;
+      case 'layout_2_column':
+        $uri = $paragraph->field_media_image->entity->field_image->entity->getFileUri();
+        $variables['custom_image_style'] = [
+          '#theme' => 'image_style',
+          '#style_name' => 'half_column',
+          '#uri' => $uri,
+        ];
+        break;
     }
   }
 }
@@ -234,6 +244,7 @@ function themekit_theme_suggestions_field_alter(array &$suggestions, array $vari
         array_unshift($suggestions, $large_heading ? 'field__heading_5' : 'field__heading_1');
         break;
       case 'compound_content_bar':
+      case 'layout_2_column':
       case 'simple_cta':
         array_unshift($suggestions, 'field__heading_2');
         break;
@@ -257,6 +268,25 @@ function themekit_theme_suggestions_field_alter(array &$suggestions, array $vari
       $suggestions[] = 'field__' . $type;
       $suggestions[] = 'field__' . $type . '__' . $variables['element']['#field_type'];
       break;
+  }
+
+  if ($entity) {
+
+  $parent_field = $variables['element']['#object']->parent_field_name;
+  if ($parent_field) {
+
+      $parent_field = $variables['element']['#object']->parent_field_name->getValue()[0]['value'];
+      // Check if this was part of the layout component
+      if ($parent_field == 'field_p_layout_content') {
+        switch($bundle) {
+          case 'simple_content':
+            if ($field_name == 'field_heading') {
+              $suggestions[] = 'field__heading_2';
+            }
+            break;
+        }
+      }
+    }
   }
 }
 

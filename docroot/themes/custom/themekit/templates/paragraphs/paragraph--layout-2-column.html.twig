@@ -51,7 +51,11 @@
 set classes = [
 'paragraph',
 'paragraph--type--' ~ paragraph.bundle|clean_class,
-view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class
+view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+bg_status,
+bg_color,
+color_scheme,
+'column-width-' ~ width
 ]
 %}
 
