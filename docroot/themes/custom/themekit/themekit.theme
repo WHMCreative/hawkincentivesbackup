@@ -14,6 +14,7 @@ use Drupal\block\Entity\Block;
 use Drupal\views\Views;
 use Drupal\taxonomy\Entity\Term;
 use Drupal\node\NodeInterface;
+use Drupal\Core\Render\Element;
 
 //*********************************************
 // 1. Preprocess hooks
@@ -24,9 +25,21 @@ use Drupal\node\NodeInterface;
  */
 function themekit_preprocess_html(&$variables) {
 
+  /** @var \Drupal\node\NodeInterface $current_node */
+  $current_node = \Drupal::routeMatch()->getParameter('node');
+
+  // Prevent banner from being placed on unlocked Insights.
+  if ($current_node && $current_node instanceof \Drupal\node\NodeInterface) {
+    if ($current_node->hasField('field_gated') && $current_node->get('field_gated')->value) {
+
+      if (!_e3_content_is_gated($current_node)) {
+        return;
+      }
+    }
+  }
+
   // Place this block programmatically, issues placing within the block ui.
   $variables['page']['content_above']['pagebanner'] = themekit_block_to_renderable_array('pagebanner');
-
 }
 
 /**
@@ -65,20 +78,30 @@ function themekit_preprocess_node_article(&$variables) {
 }
 
 function themekit_preprocess_node_insight(&$variables) {
+  /** @var \Drupal\node\NodeInterface $node */
   $node = $variables['node'];
 
-  // Get correct heading for unlocked vm
-  $heading = '';
-  if(array_key_exists('field_p_header',$variables['content'])) {
-    $header = $variables['content']['field_p_header'][0]['#paragraph'];
-    if($header->hasField('field_heading') && !empty($header->field_heading->getValue())) {
-      $$heading = $header->field_heading->getValue();
+  // Get correct heading for unlocked view mode.
+  if (isset($variables['content']['field_p_header'])) {
+
+    $header_items = Element::children($variables['content']['field_p_header']);
+
+    if ($header_items) {
+      $first_item = reset($header_items);
+
+      /** @var \Drupal\paragraphs\ParagraphInterface $header */
+      $header = $first_item['#paragraph'];
+
+      if ($header && $header->hasField('field_heading') && !$header->get('field_heading')->isEmpty()) {
+        $heading = $header->get('field_heading')->getString();
+      }
     }
   }
 
-  if($heading) {
+  if (isset($heading)) {
     $variables['heading'] = $heading;
-  } else {
+  }
+  else {
     $variables['heading'] = $node->getTitle();
   }
   themekit_get_insight_data($node, $variables);
