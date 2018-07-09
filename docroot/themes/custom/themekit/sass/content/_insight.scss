@@ -174,4 +174,53 @@
       @include top-bottom(padding, rem-calc(40));
     }
   }
+
+  &.node--view-mode-teaser {
+    .node--image {
+      position: relative;
+      margin-bottom: 5px;
+      .field--name-field-insight-type {
+        position: absolute;
+        left: 15px;
+        top: 15px;
+        @include insight-label();
+      }
+      .field--name-field-teaser-image {
+        position: relative;
+        overflow: hidden;
+        border-radius: 3px;
+        .paragraph--type--summary-insights & {
+          max-height: 100px;
+        }
+        &:after {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          background: $black;
+          opacity: 0.1;
+        }
+        img {
+          width: 100%;
+          .paragraph--type--summary-insights & {
+            margin-top: -40px;
+          }
+        }
+      }
+    }
+    .node--content {
+      h5 {
+        font-weight: 700;
+        a {
+          color: $dark-gray;
+        }
+      }
+      .date {
+        font-size: rem-calc(13);
+      }
+    }
+  }
+
 }
