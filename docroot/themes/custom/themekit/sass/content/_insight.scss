@@ -26,6 +26,7 @@
           width: 64%;
           max-width: 650px;
           position: relative;
+          z-index: z(content, sidebar);
         }
       }
       > .node--sidebar {
