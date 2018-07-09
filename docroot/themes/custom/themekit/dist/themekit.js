@@ -3454,7 +3454,7 @@ $.magnificPopup.registerModule(RETINA_NS, {
 
 
 
-Drupal.behaviors.magnificPopup = {
+Drupal.behaviors.menuMain = {
   attach: function (context, settings) {
     let $mainMenuItem = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.menu-level-0 > li.menu-item--expanded', context),
         $mainMenuItemLink = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.menu-level-0 > li.menu-item--expanded > a', context);

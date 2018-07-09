@@ -5,7 +5,7 @@
 
 import $ from 'jquery';
 
-Drupal.behaviors.magnificPopup = {
+Drupal.behaviors.menuMain = {
   attach: function (context, settings) {
     let $mainMenuItem = $('.menu-level-0 > li.menu-item--expanded', context),
         $mainMenuItemLink = $('.menu-level-0 > li.menu-item--expanded > a', context);

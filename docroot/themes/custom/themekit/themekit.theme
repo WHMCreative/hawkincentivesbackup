@@ -13,6 +13,7 @@ use Drupal\image\Entity\ImageStyle;
 use Drupal\block\Entity\Block;
 use Drupal\views\Views;
 use Drupal\taxonomy\Entity\Term;
+use Drupal\node\NodeInterface;
 use Drupal\Core\Render\Element;
 
 //*********************************************
@@ -103,6 +104,7 @@ function themekit_preprocess_node_insight(&$variables) {
   else {
     $variables['heading'] = $node->getTitle();
   }
+  themekit_get_insight_data($node, $variables);
 }
 
 
@@ -138,20 +140,7 @@ function themekit_preprocess_paragraph(&$variables) {
 function themekit_preprocess_paragraph_banner_hero(&$variables) {
   $paragraph = $variables['paragraph'];
   $node = $paragraph->getParentEntity();
-  $bundle = $node->bundle();
-
-  if ($bundle === 'insight') {
-    if (!$node->get('field_insight_type')->isEmpty()) {
-      $type = $node->get('field_insight_type')->first()->entity->label();
-      $variables['insight_type'] = $type;
-      if ($type === 'webinar') {
-        $variables['date'] = ''; // @todo Add webinar date
-      } else {
-        $variables['date'] = date('M j, Y', $node->getCreatedTime());
-      }
-
-    }
-  }
+  themekit_get_insight_data($node, $variables);
 
   $variables['image_inline_style'] = themekit_get_entity_image_inline_style($paragraph, 'field_media', 'banner_hero');
 
@@ -355,6 +344,23 @@ function themekit_get_term_slug($paragraph, $field) {
   if ($paragraph->hasField($field)) {
     if (!empty($term = $paragraph->$field->getValue())) {
       return Term::load($term[0]['target_id'])->field_slug->value;
+    }
+  }
+}
+
+function themekit_get_insight_data(NodeInterface $node, &$variables) {
+  $bundle = $node->bundle();
+
+  if ($bundle === 'insight') {
+    if (!$node->get('field_insight_type')->isEmpty()) {
+      $type = $node->get('field_insight_type')->first()->entity->label();
+      $variables['insight_type'] = $type;
+      if ($type === 'webinar') {
+        $variables['insight_date'] = ''; // @todo Add webinar date
+      } else {
+        $variables['insight_date'] = date('M j, Y', $node->getCreatedTime());
+      }
+
     }
   }
 }
