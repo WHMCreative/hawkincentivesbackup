@@ -11,6 +11,7 @@ dependencies:
     - paragraphs.paragraphs_type.compound_stat_bar
     - paragraphs.paragraphs_type.compound_tabbed_content
     - paragraphs.paragraphs_type.layout_grid
+    - paragraphs.paragraphs_type.microquiz_quiz
     - paragraphs.paragraphs_type.reference_block
     - paragraphs.paragraphs_type.reference_card_browser
     - paragraphs.paragraphs_type.reference_featured_insight
@@ -42,11 +43,12 @@ settings:
       compound_tabbed_content: compound_tabbed_content
       reference_card_browser: reference_card_browser
       reference_marketo_form: reference_marketo_form
-      simple_content: simple_content
       compound_slider: compound_slider
+      simple_content: simple_content
       layout_grid: layout_grid
       reference_block: reference_block
       reference_featured_insight: reference_featured_insight
+      microquiz_quiz: microquiz_quiz
       summary_cards: summary_cards
     target_bundles_drag_drop:
       single_image:
@@ -103,10 +105,10 @@ settings:
       reference_marketo_form:
         enabled: true
         weight: 31
-      simple_content:
+      compound_slider:
         enabled: true
         weight: 32
-      compound_slider:
+      simple_content:
         enabled: true
         weight: 32
       simple_icon_content:
@@ -133,6 +135,15 @@ settings:
       reference_featured_insight:
         enabled: true
         weight: 43
+      microquiz_conditional:
+        weight: 48
+        enabled: false
+      microquiz_question:
+        weight: 49
+        enabled: false
+      microquiz_quiz:
+        enabled: true
+        weight: 50
       summary_cards:
         enabled: true
         weight: 53

@@ -10,6 +10,7 @@ module:
   ban: 0
   bhk_card_browser: 0
   bhk_infogram: 0
+  bhk_micro_quiz: 0
   bhk_page_banners: 0
   bhk_remote_entity: 0
   bhk_summary_paragraphs: 0

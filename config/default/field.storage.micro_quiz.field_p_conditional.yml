@@ -1,0 +1,21 @@
+uuid: 8c8d7c9b-7dd8-4f6f-a28e-74760e68d911
+langcode: en
+status: true
+dependencies:
+  module:
+    - bhk_micro_quiz
+    - entity_reference_revisions
+    - paragraphs
+id: micro_quiz.field_p_conditional
+field_name: field_p_conditional
+entity_type: micro_quiz
+type: entity_reference_revisions
+settings:
+  target_type: paragraph
+module: entity_reference_revisions
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

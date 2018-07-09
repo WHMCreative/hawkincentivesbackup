@@ -1,0 +1,10 @@
+micro-quiz:
+  version: 1.x
+  js:
+    js/micro-quiz.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.cookie
+    - core/drupal
+    - core/drupal.ajax
+    - core/drupalSettings

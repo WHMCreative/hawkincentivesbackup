@@ -49,6 +49,10 @@ groups:
     label: Single
     id: single
     weight: '14'
+  microquiz:
+    label: MicroQuiz
+    id: microquiz
+    weight: '15'
 map:
   link_file: link
   link_url: link
@@ -78,3 +82,6 @@ map:
   reference_card_browser: reference
   compound_slider: compound
   link_form_modal: link
+  microquiz_question: microquiz
+  microquiz_conditional: microquiz
+  microquiz_quiz: microquiz

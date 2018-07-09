@@ -1,0 +1,9 @@
+uuid: 9f6a8486-9ede-49d9-9d7d-d1fcce30a1b8
+langcode: en
+status: true
+dependencies: {  }
+id: microquiz_quiz
+label: 'MicroQuiz - Quiz'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

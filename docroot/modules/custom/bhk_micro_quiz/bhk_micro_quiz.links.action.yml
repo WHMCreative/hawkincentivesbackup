@@ -1,0 +1,11 @@
+entity.micro_quiz.add_form:
+  route_name: entity.micro_quiz.add_page
+  title: 'Add MicroQuiz'
+  appears_on:
+    - entity.micro_quiz.collection
+entity.micro_quiz_type.add_form:
+  route_name: entity.micro_quiz_type.add_form
+  title: 'Add MicroQuiz type'
+  appears_on:
+    - entity.micro_quiz_type.collection
+

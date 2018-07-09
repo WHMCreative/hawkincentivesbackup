@@ -1,0 +1,7 @@
+entity.micro_quiz_type.collection:
+  path: '/admin/structure/micro_quiz_types'
+  defaults:
+    _entity_list: 'micro_quiz_type'
+    _title: 'MicroQuiz Bundles'
+  requirements:
+    _permission: 'administer site configuration'

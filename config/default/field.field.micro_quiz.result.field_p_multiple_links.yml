@@ -1,0 +1,23 @@
+uuid: 4bdad691-dea6-4fc4-8be1-6ac63213e30b
+langcode: en
+status: true
+dependencies:
+  config:
+    - bhk_micro_quiz.micro_quiz_type.result
+    - field.storage.micro_quiz.field_p_multiple_links
+  module:
+    - entity_reference_revisions
+id: micro_quiz.result.field_p_multiple_links
+field_name: field_p_multiple_links
+entity_type: micro_quiz
+bundle: result
+label: Link
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings: {  }
+field_type: entity_reference_revisions
