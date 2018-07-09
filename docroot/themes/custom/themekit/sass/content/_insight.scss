@@ -223,4 +223,45 @@
     }
   }
 
+  &.node--view-mode-featured {
+    @include breakpoint(marge) {
+      display: flex;
+      justify-content: space-between;
+    }
+    .node--image {
+      position: relative;
+      max-width: 470px;
+      @include breakpoint(medium down) {
+        margin: 0 auto 20px;
+      }
+      @include breakpoint(marge) {
+        width: 46%;
+      }
+      .field--name-field-insight-type {
+        position: absolute;
+        left: 22px;
+        top: 22px;
+        @include insight-label();
+      }
+      .field--name-field-teaser-image {
+        @include frame($secondary-color-light, 1px, 10px, 3px);
+        img {
+          border-radius: 3px;
+        }
+      }
+    }
+    .node--content {
+      @include breakpoint(marge) {
+        width: 47%;
+        max-width: 480px;
+      }
+      h2 {
+        margin-bottom: 0.6em;
+      }
+      .field--name-field-intro-copy {
+        font-size: rem-calc(14);
+      }
+    }
+  }
+
 }

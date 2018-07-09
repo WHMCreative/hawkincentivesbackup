@@ -5,7 +5,6 @@ dependencies:
   config:
     - field.field.node.insight.body
     - field.field.node.insight.field_author
-    - field.field.node.insight.field_featured_image
     - field.field.node.insight.field_gated
     - field.field.node.insight.field_insight_type
     - field.field.node.insight.field_intro_copy
@@ -89,7 +88,6 @@ content:
     region: content
 hidden:
   content_moderation_control: true
-  field_featured_image: true
   field_gated: true
   field_insight_type: true
   field_p_form: true

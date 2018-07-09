@@ -6,7 +6,6 @@ dependencies:
     - entity_browser.browser.image
     - field.field.node.insight.body
     - field.field.node.insight.field_author
-    - field.field.node.insight.field_featured_image
     - field.field.node.insight.field_gated
     - field.field.node.insight.field_insight_type
     - field.field.node.insight.field_intro_copy
@@ -129,20 +128,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
-    region: content
-  field_featured_image:
-    weight: 16
-    settings:
-      entity_browser: image
-      field_widget_display: rendered_entity
-      field_widget_remove: true
-      open: true
-      selection_mode: selection_append
-      field_widget_display_settings:
-        view_mode: form_preview
-      field_widget_edit: false
-    third_party_settings: {  }
-    type: entity_browser_entity_reference
     region: content
   field_gated:
     weight: 104

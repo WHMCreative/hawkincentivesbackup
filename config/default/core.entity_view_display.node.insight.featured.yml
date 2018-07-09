@@ -6,7 +6,6 @@ dependencies:
     - core.entity_view_mode.node.featured
     - field.field.node.insight.body
     - field.field.node.insight.field_author
-    - field.field.node.insight.field_featured_image
     - field.field.node.insight.field_gated
     - field.field.node.insight.field_insight_type
     - field.field.node.insight.field_intro_copy
@@ -18,23 +17,13 @@ dependencies:
     - field.field.node.insight.field_teaser_image
     - node.type.insight
   module:
-    - entity_reference_revisions
-    - text
+    - smart_trim
     - user
 id: node.insight.featured
 targetEntityType: node
 bundle: insight
 mode: featured
 content:
-  field_featured_image:
-    weight: 0
-    label: hidden
-    settings:
-      view_mode: featured_teaser
-      link: false
-    third_party_settings: {  }
-    type: entity_reference_entity_view
-    region: content
   field_insight_type:
     weight: 2
     label: hidden
@@ -44,30 +33,43 @@ content:
     type: entity_reference_label
     region: content
   field_intro_copy:
-    type: text_default
+    type: smart_trim
     weight: 1
     region: content
     label: hidden
-    settings: {  }
+    settings:
+      trim_length: 40
+      trim_type: words
+      trim_suffix: ...
+      wrap_class: trimmed
+      more_text: More
+      more_class: more-link
+      wrap_output: false
+      more_link: false
+      trim_options:
+        text: false
+        trim_zero: false
+      summary_handler: full
     third_party_settings: {  }
-  field_p_form:
-    type: entity_reference_revisions_entity_view
-    weight: 3
+  field_teaser_image:
+    type: entity_reference_entity_view
+    weight: 0
+    region: content
     label: hidden
     settings:
-      view_mode: default
-      link: ''
+      view_mode: featured_teaser
+      link: false
     third_party_settings: {  }
-    region: content
 hidden:
+  addtoany: true
   body: true
   content_moderation_control: true
   field_author: true
   field_gated: true
+  field_p_form: true
   field_p_header: true
   field_p_insight: true
   field_p_related_insights: true
   field_references: true
-  field_teaser_image: true
   langcode: true
   links: true

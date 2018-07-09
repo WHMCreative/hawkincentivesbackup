@@ -11,3 +11,17 @@
     margin-bottom: rem-calc(16);
   }
 }
+
+.paragraph--type--reference-featured-insight {
+  background: $gray-gradient;
+  padding: 40px 0;
+  @include breakpoint(medium) {
+    padding: 60px 0;
+  }
+  @include breakpoint(large) {
+    padding: 95px 0;
+  }
+  .paragraph-content {
+    @include content-width(default);
+  }
+}
