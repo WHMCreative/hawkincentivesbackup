@@ -13,6 +13,7 @@ use Drupal\image\Entity\ImageStyle;
 use Drupal\block\Entity\Block;
 use Drupal\views\Views;
 use Drupal\taxonomy\Entity\Term;
+use Drupal\Core\Render\Element;
 
 //*********************************************
 // 1. Preprocess hooks
@@ -64,20 +65,30 @@ function themekit_preprocess_node_article(&$variables) {
 }
 
 function themekit_preprocess_node_insight(&$variables) {
+  /** @var \Drupal\node\NodeInterface $node */
   $node = $variables['node'];
 
-  // Get correct heading for unlocked vm
-  $heading = '';
-  if(array_key_exists('field_p_header',$variables['content'])) {
-    $header = $variables['content']['field_p_header'][0]['#paragraph'];
-    if($header->hasField('field_heading') && !empty($header->field_heading->getValue())) {
-      $$heading = $header->field_heading->getValue();
+  // Get correct heading for unlocked view mode.
+  if (isset($variables['content']['field_p_header'])) {
+
+    $header_items = Element::children($variables['content']['field_p_header']);
+
+    if ($header_items) {
+      $first_item = reset($header_items);
+
+      /** @var \Drupal\paragraphs\ParagraphInterface $header */
+      $header = $first_item['#paragraph'];
+
+      if ($header && $header->hasField('field_heading') && !$header->get('field_heading')->isEmpty()) {
+        $heading = $header->get('field_heading')->getString();
+      }
     }
   }
 
-  if($heading) {
+  if (isset($heading)) {
     $variables['heading'] = $heading;
-  } else {
+  }
+  else {
     $variables['heading'] = $node->getTitle();
   }
 }
