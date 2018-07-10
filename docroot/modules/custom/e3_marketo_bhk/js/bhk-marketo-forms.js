@@ -18,11 +18,15 @@
        *   Marketo Settings.
        * @param values
        *   Submitted values.
+       * @param {String} dataInstance
+       *   Configuration instance index.
        */
-      Drupal.behaviors.marketoForms.redirectUser = function (form, marketoConfig, values) {
+      Drupal.behaviors.marketoForms.redirectUser = function (form, marketoConfig, values, dataInstance) {
 
-        if (typeof(marketoConfig.redirectPath) !== 'undefined' && marketoConfig.redirectPath ) {
-          setTimeout(function() { window.location.replace(marketoConfig.redirectPath) }, 500);
+        let instanceConfig = marketoConfig[dataInstance];
+
+        if (typeof(instanceConfig.redirectPath) !== 'undefined' && instanceConfig.redirectPath ) {
+          setTimeout(function() { window.location.replace(instanceConfig.redirectPath) }, 500);
         }
       };
     }
