@@ -27,6 +27,25 @@
     background-repeat: no-repeat;
     background-size: cover;
   }
+  @each $overlay in $overlays {
+    &.overlay--#{$overlay} {
+      .bg-container {
+        &:after {
+          content: '';
+          position: absolute;
+          z-index: z(banner,overlay);
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-image: url(img-get('banners/#{$overlay}.png'));
+        }
+      }
+    }
+  }
+
   .paragraph-content {
     @include content-width(default);
     position: relative;
