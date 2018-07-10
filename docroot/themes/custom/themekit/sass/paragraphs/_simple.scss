@@ -127,6 +127,73 @@
   }
 }
 
+// Simple - Media Tile
+.paragraph--type--simple-media-tile {
+  & > .paragraph-content {
+    background: $white;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+    padding: rem-calc(50);
+    height: 100%;
+    position: relative;
+
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      border: 1px solid $secondary-color-light;
+      width: 100%;
+      height: 100%;
+      z-index: z(video-modal,flourish);
+      border-radius: 1px;
+      top: rem-calc(16);
+      left: rem-calc(16);
+      transition: all ease 0.5s;
+    }
+
+    .field--name-field-p-media {
+      position: relative;
+      z-index: z(just-above);
+
+      .paragraph--type--media-image {
+        position: relative;
+        top: rem-calc(-70);
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+        display: inline-block;
+        margin-bottom: rem-calc(-50);
+
+        div {
+          display: inline-block;
+        }
+      }
+    }
+
+    .content {
+      margin: 0 auto;
+      position: relative;
+      z-index: z(just-above);
+
+      @include breakpoint(medium) {
+        max-width: rem-calc(175);
+      }
+    }
+
+    .field--name-field-heading {
+      color: $secondary-color-dark;
+      font-size: rem-calc(20);
+    }
+
+    .field--name-field-description {
+      font-size: rem-calc(14);
+    }
+
+    .field--name-field-link a {
+      @include link(default);
+      display: block;
+      margin-top: rem-calc(16);
+    }
+  }
+}
+
 // Simple - Stat
 .paragraph--type--simple-stat {
   .paragraph-content {
