@@ -1,0 +1,17 @@
+uuid: 4d8238d1-d193-4954-8911-e16f43dfaa9c
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: teaser_small
+label: 'Teaser Small (82x82)'
+effects:
+  b3968b46-2070-4529-aae2-29672d3e652a:
+    uuid: b3968b46-2070-4529-aae2-29672d3e652a
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 82
+      height: 82
+      crop_type: focal_point

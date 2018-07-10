@@ -29,7 +29,7 @@ function themekit_preprocess_html(&$variables) {
   $current_node = \Drupal::routeMatch()->getParameter('node');
 
   // Prevent banner from being placed on unlocked Insights.
-  if ($current_node && $current_node instanceof \Drupal\node\NodeInterface) {
+  if ($current_node && $current_node instanceof NodeInterface) {
     if ($current_node->hasField('field_gated') && $current_node->get('field_gated')->value) {
 
       if (!_e3_content_is_gated($current_node)) {
@@ -210,6 +210,51 @@ function themekit_preprocess_paragraph_media_image(&$variables) {
     }
   }
 }
+
+function themekit_preprocess_block(&$variables) {
+  $plugin_id = $variables['plugin_id'];
+
+  if($plugin_id === 'page_banner') {
+
+    /** @var \Drupal\node\NodeInterface $current_node */
+    $current_node = \Drupal::routeMatch()->getParameter('node');
+
+    if ($current_node && $current_node instanceof NodeInterface) {
+      $type = $current_node->getType();
+      if ($type === 'news') {
+        $node_date = date('M j, Y', $current_node->getCreatedTime());
+        $node_title = $current_node->getTitle();
+        $header_render_array = [
+          '#type' => 'container',
+          '#attributes' => [
+            'class' => 'header-banner-plain',
+          ],
+          'header_content' => [
+            '#type' => 'container',
+            '#attributes' => [
+              'class' => 'header-banner-plain__content',
+            ],
+            'header_date' => [
+              '#type' => 'html_tag',
+              '#tag' => 'span',
+              '#attributes' => [
+                'class' => 'date',
+              ],
+              '#value' => $node_date,
+            ],
+            'header_title' => [
+              '#type' => 'html_tag',
+              '#tag' => 'h1',
+              '#value' => t($node_title),
+            ],
+          ],
+        ];
+        $variables['content'] = $header_render_array;
+      }
+    }
+  }
+}
+
 
 //*********************************************
 // 2. Theme suggestions
@@ -432,7 +477,7 @@ function themekit_get_insight_data(NodeInterface $node, &$variables) {
       if ($type === 'webinar') {
         $variables['insight_date'] = ''; // @todo Add webinar date
       } else {
-        $variables['insight_date'] = date('M j, Y', $node->getCreatedTime());
+        $variables['insight_date'] = \Drupal::service('date.formatter')->format($node->getCreatedTime(), 'custom', 'M j, Y');
       }
 
     }

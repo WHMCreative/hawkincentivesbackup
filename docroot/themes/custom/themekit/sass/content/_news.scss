@@ -1,0 +1,66 @@
+////
+/// News
+////
+
+.node--type-news {
+  &.node--view-mode-full {
+    > .node--content-wrapper {
+      @include layout-content-sidebar();
+    }
+    @include a2a-kit();
+    .field--name-body {
+      ul,
+      ol {
+        list-style-position: inside;
+        margin-left: 10px;
+        @include breakpoint(marge) {
+          margin-left: 30px;
+        }
+        @include breakpoint(large) {
+          margin-left: 50px;
+        }
+      }
+    }
+    .field--name-field-references {
+      font-size: rem-calc(12);
+      font-style: italic;
+    }
+  }
+
+  &.node--view-mode-teaser {
+    &.type-news {
+      display: flex;
+      justify-content: space-between;
+      .node--content {
+        width: 82%;
+        max-width: 520px;
+      }
+    }
+    .node--image {
+      width: 16%;
+      max-width: 82px;
+    }
+    .node--content {
+      h5 {
+        font-weight: 700;
+        margin-bottom: 10px;
+        a {
+          color: $dark-gray;
+        }
+      }
+      .field--name-body {
+        font-size: rem-calc(13);
+        margin-bottom: 10px;
+        @include breakpoint(medium) {
+          font-size: rem-calc(14);
+        }
+        p {
+          margin: 0;
+        }
+      }
+      .date {
+        font-size: rem-calc(13);
+      }
+    }
+  }
+}
