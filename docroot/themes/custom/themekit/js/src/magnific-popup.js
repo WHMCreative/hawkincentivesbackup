@@ -8,6 +8,7 @@ import { magnificPopup } from "magnific-popup/dist/jquery.magnific-popup";
 Drupal.behaviors.magnificPopup = {
   attach: function (context, settings) {
 
+    // Markeo Forms
     let $link = $('a.marketo-modal-cta-link', context);
     if(!$link.length) return;
 

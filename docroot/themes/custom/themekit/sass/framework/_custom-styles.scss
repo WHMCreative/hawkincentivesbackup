@@ -72,3 +72,13 @@
     color: $white;
   }
 }
+
+@mixin play-btn($size: 28) {
+  display: block;
+  height: rem-calc($size);
+  width: rem-calc($size);
+  background-image: url(img-get('svg/play-btn.svg'));
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+}

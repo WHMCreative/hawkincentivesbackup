@@ -131,18 +131,20 @@
   .paragraph--type--layout-2-column & {
     & > .paragraph-content {
       position: relative;
-      padding-left: rem-calc(80);
       display: flex;
       align-items: center;
 
-      &:after {
-        content: '';
-        width: 1px;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        background: $medium-gray;
+      @include breakpoint(medium){
+        padding-left: rem-calc(80);
+        &:after {
+          content: '';
+          width: 1px;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          background: $medium-gray;
+        }
       }
     }
 

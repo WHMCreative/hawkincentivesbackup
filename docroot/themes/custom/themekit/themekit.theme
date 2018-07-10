@@ -109,19 +109,6 @@ function themekit_preprocess_node_insight(&$variables) {
 
 
 /**
- * Implements template_preprocess_media().
- */
-function themekit_preprocess_media__svg(&$variables) {
-
-  if (!empty($variables['content']['field_svg'])) {
-    $svg_file_entity = $variables['content']['field_svg']['0']['#file'];
-    if (is_object($svg_file_entity) && method_exists($svg_file_entity, 'getFileUri')) {
-      $variables['svg_url'] = file_create_url($svg_file_entity->getFileUri());
-    }
-  }
-}
-
-/**
  * Paragraphs preprocess.
  */
 function themekit_preprocess_paragraph(&$variables) {
@@ -159,6 +146,15 @@ function themekit_preprocess_paragraph_banner_hero(&$variables) {
 
 }
 
+function themekit_preprocess_paragraph_media_video_modal(&$variables) {
+  $paragraph = $variables['paragraph'];
+
+
+  if (!$paragraph->field_media->isEmpty()) {
+    $variables['video_url'] = $paragraph->field_media->entity->field_video->value;
+  }
+}
+
 function themekit_preprocess_paragraph_compound_content_bar(&$variables) {
   $paragraph = $variables['paragraph'];
 
@@ -175,6 +171,16 @@ function themekit_preprocess_paragraph_layout_2_column(&$variables) {
 /**
  * Implements template_preprocess_media().
  */
+
+function themekit_preprocess_media__svg(&$variables) {
+
+  if (!empty($variables['content']['field_svg'])) {
+    $svg_file_entity = $variables['content']['field_svg']['0']['#file'];
+    if (is_object($svg_file_entity) && method_exists($svg_file_entity, 'getFileUri')) {
+      $variables['svg_url'] = file_create_url($svg_file_entity->getFileUri());
+    }
+  }
+}
 
 function themekit_preprocess_paragraph_media_image(&$variables) {
   /* @var $paragraph Drupal\paragraphs\Entity\Paragraph */
