@@ -7,7 +7,6 @@ dependencies:
     - field.field.paragraph.simple_media_tile.field_bg_color
     - field.field.paragraph.simple_media_tile.field_description
     - field.field.paragraph.simple_media_tile.field_heading
-    - field.field.paragraph.simple_media_tile.field_label
     - field.field.paragraph.simple_media_tile.field_p_link
     - field.field.paragraph.simple_media_tile.field_p_media
     - paragraphs.paragraphs_type.simple_media_tile
@@ -19,14 +18,6 @@ targetEntityType: paragraph
 bundle: simple_media_tile
 mode: preview
 content:
-  field_bg_color:
-    weight: 3
-    label: hidden
-    settings:
-      link: false
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
   field_description:
     weight: 1
     label: hidden
@@ -36,14 +27,6 @@ content:
     region: content
   field_heading:
     weight: 0
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-    region: content
-  field_label:
-    weight: 5
     label: hidden
     settings:
       link_to_entity: false
@@ -60,7 +43,7 @@ content:
     type: entity_reference_revisions_entity_view
     region: content
   field_p_media:
-    weight: 4
+    weight: 3
     label: hidden
     settings:
       view_mode: preview
@@ -68,4 +51,5 @@ content:
     third_party_settings: {  }
     type: entity_reference_revisions_entity_view
     region: content
-hidden: {  }
+hidden:
+  field_bg_color: true

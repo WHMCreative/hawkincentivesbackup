@@ -135,21 +135,8 @@
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
     padding: rem-calc(50);
     height: 100%;
+    @include frame($secondary-color-light, 1px, 16px, 3px, $z-index: z(video-modal,flourish));
     position: relative;
-
-    &:after {
-      content: '';
-      display: block;
-      position: absolute;
-      border: 1px solid $secondary-color-light;
-      width: 100%;
-      height: 100%;
-      z-index: z(video-modal,flourish);
-      border-radius: 1px;
-      top: rem-calc(16);
-      left: rem-calc(16);
-      transition: all ease 0.5s;
-    }
 
     .field--name-field-p-media {
       position: relative;
