@@ -45,7 +45,7 @@
 
       <div class="card-info">
         <div class="media">
-          <img :src=card.image.entity.fieldMediaImage.entity.fieldImage.url :alt=card.image.entity.fieldMediaImage.entity.fieldImage.alt />
+          <img :src=card.image.entity.fieldMediaImage.entity.fieldImage.image.url :alt=card.image.entity.fieldMediaImage.entity.fieldImage.alt />
         </div>
         <div class="content">
           <h3 class="card-title">

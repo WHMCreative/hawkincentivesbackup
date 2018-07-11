@@ -16286,7 +16286,8 @@ var render = function() {
             _c("img", {
               attrs: {
                 src:
-                  _vm.card.image.entity.fieldMediaImage.entity.fieldImage.url,
+                  _vm.card.image.entity.fieldMediaImage.entity.fieldImage.image
+                    .url,
                 alt: _vm.card.image.entity.fieldMediaImage.entity.fieldImage.alt
               }
             })
