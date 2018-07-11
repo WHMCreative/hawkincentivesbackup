@@ -51,7 +51,7 @@
           <h3 class="card-title">
             {{ card.title }}
           </h3>
-          <div class="description" v-html="card.description.processed">
+          <div class="description" v-if="card.description" v-html="card.description.processed">
             {{ card.description.processed }}
           </div>
         </div>

@@ -16298,20 +16298,24 @@ var render = function() {
               _vm._v("\n          " + _vm._s(_vm.card.title) + "\n        ")
             ]),
             _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "description",
-                domProps: { innerHTML: _vm._s(_vm.card.description.processed) }
-              },
-              [
-                _vm._v(
-                  "\n          " +
-                    _vm._s(_vm.card.description.processed) +
-                    "\n        "
+            _vm.card.description
+              ? _c(
+                  "div",
+                  {
+                    staticClass: "description",
+                    domProps: {
+                      innerHTML: _vm._s(_vm.card.description.processed)
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n          " +
+                        _vm._s(_vm.card.description.processed) +
+                        "\n        "
+                    )
+                  ]
                 )
-              ]
-            )
+              : _vm._e()
           ])
         ]),
         _vm._v(" "),
@@ -19607,22 +19611,24 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _vm._l(_vm.sidebarContent, function(content) {
-                  return _c(
-                    "div",
-                    {
-                      staticClass: "description",
-                      domProps: {
-                        innerHTML: _vm._s(content.description.processed)
-                      }
-                    },
-                    [
-                      _vm._v(
-                        "\n            " +
-                          _vm._s(content.description.processed) +
-                          "\n          "
+                  return content.description
+                    ? _c(
+                        "div",
+                        {
+                          staticClass: "description",
+                          domProps: {
+                            innerHTML: _vm._s(content.description.processed)
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n            " +
+                              _vm._s(content.description.processed) +
+                              "\n          "
+                          )
+                        ]
                       )
-                    ]
-                  )
+                    : _vm._e()
                 })
               ],
               2

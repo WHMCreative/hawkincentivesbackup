@@ -35,7 +35,7 @@
           </div>
           <div class="box-filter content">
             <h3 class="filter-title">About Our Rewards</h3>
-            <div class="description" v-for="content in sidebarContent" v-html="content.description.processed">
+            <div class="description" v-for="content in sidebarContent" v-if="content.description" v-html="content.description.processed">
               {{ content.description.processed }}
             </div>
           </div>
