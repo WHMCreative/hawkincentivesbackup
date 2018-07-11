@@ -28,7 +28,7 @@ display:
       access:
         type: perm
         options:
-          perm: 'access content'
+          perm: 'access draggableviews'
       cache:
         type: tag
         options: {  }
@@ -183,6 +183,11 @@ display:
           plugin_id: standard
       defaults:
         sorts: false
+        access: false
+      access:
+        type: perm
+        options:
+          perm: 'access content'
     cache_metadata:
       max-age: -1
       contexts:
