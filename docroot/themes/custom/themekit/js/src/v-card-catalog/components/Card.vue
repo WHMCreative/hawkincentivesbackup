@@ -1,9 +1,11 @@
 <template>
-  <div class="card" :class="[{ selectable: !selected}, 'card-' + card.id]">
+  <div class="card" :class="['card-' + card.id]">
     <div class="card-overview">
       <div class="media">
-        <button class="heart" @click="handleClick" ></button>
-        <img :src=card.image.entity.fieldMediaImage.entity.fieldImage.url :alt=card.image.entity.fieldMediaImage.entity.fieldImage.alt />
+        <div class="media-content">
+          <button class="heart" @click="handleClick" ></button>
+          <img :src=card.image.entity.fieldMediaImage.entity.fieldImage.image.url :alt=card.image.entity.fieldMediaImage.entity.fieldImage.alt />
+        </div>
       </div>
       <div class="content" v-show="!selected">
         <h3 class="card-title">

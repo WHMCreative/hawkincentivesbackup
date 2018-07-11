@@ -2244,6 +2244,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 exports.default = {
   name: 'CardList',
@@ -2262,12 +2268,15 @@ exports.default = {
   data: function data() {
     return {
       allCards: null,
+      sidebar: null,
       filters: [{ key: 'coBrand', value: 'Co-brandable' }, { key: 'customization', value: 'Customization' }, { key: 'fulfillment', value: 'Fast Fulfillment Available' }, { key: 'virtual', value: 'Virtual Option' }, { key: 'phsyical', value: 'Physical Option' }],
       cardsToShow: 3,
       cardCount: 0,
+      hasSelectedCards: false,
       multipler: 1,
       selectedCards: [],
       selectedFilters: [],
+      selectedRadioOption: "All",
       visibleCards: 0
     };
   },
@@ -2275,6 +2284,20 @@ exports.default = {
 
 
   methods: {
+
+    afterLeave: function afterLeave(el, done) {
+      this.selectedCards = [];
+      this.updateMarketo();
+    },
+
+    // Check if this card is selected
+    checkIfSelected: function checkIfSelected(id) {
+      for (var i in this.selectedCards) {
+        if (this.selectedCards[i] == id) return true;
+      }
+      return false;
+    },
+
 
     // Get card object by ID
     getCardById: function getCardById(cardId) {
@@ -2351,6 +2374,8 @@ exports.default = {
         return filter.type === type;
       });
 
+      this.selectedRadioOption = value;
+
       //Remove existing filters of same type
       if (index > -1) {
         this.selectedFilters.splice(index, 1);
@@ -2381,13 +2406,21 @@ exports.default = {
 
     // Updated selected cards
     selectCard: function selectCard(id) {
+      this.hasSelectedCards = true;
+
       if (this.selectedCards.indexOf(id) !== -1) {
-        this.selectedCards = this.selectedCards.filter(function (card_id) {
-          return card_id !== id;
-        });
+        if (this.selectedCards.length !== 1) {
+          this.selectedCards = this.selectedCards.filter(function (card_id) {
+            return card_id !== id;
+          });
+        } else {
+          this.hasSelectedCards = false;
+        }
       } else {
         this.selectedCards.push(id);
       }
+
+      this.updateMarketo();
     },
 
 
@@ -2396,6 +2429,21 @@ exports.default = {
       if (a < b) return -1;
       if (a > b) return 1;
       return 0;
+    },
+    updateMarketo: function updateMarketo() {
+      // Get cards names
+      var cardName = [];
+      for (var i in this.selectedCards) {
+        cardName.push(this.getCardById(this.selectedCards[i]).title);
+      }
+
+      // Update marketo form with card names
+      var formInput = document.querySelector('.form--card-browser input[name="cardName"]');
+      if (cardName) {
+        formInput.value = cardName.join(', ');
+      } else {
+        formInput.value = '';
+      }
     }
   },
 
@@ -2409,10 +2457,8 @@ exports.default = {
 
       if (allCards) {
 
-        var total = allCards.length;
-
         if (this.selectedFilters.length > 0) {
-          for (var i in this.selectedFilters) {
+          var _loop = function _loop(i) {
             allCards = allCards.filter(function (card) {
               // Get filter type
               var type = _this.selectedFilters[i].type,
@@ -2429,6 +2475,10 @@ exports.default = {
                 return card[type] === value;
               }
             });
+          };
+
+          for (var i in this.selectedFilters) {
+            _loop(i);
           }
         }
 
@@ -2444,6 +2494,21 @@ exports.default = {
 
         // Return the amount of cards per pager
         return allCards.slice(0, this.visibleCards);
+      }
+    },
+
+
+    // Get content for sidebar
+    sidebarContent: function sidebarContent() {
+      var sidebar = this.sidebar ? this.sidebar.fieldPContent : [];
+      if (sidebar) {
+        var content = [];
+        for (var i in sidebar) {
+          if (sidebar[i].entity.bundle === 'reference_card_browser') {
+            content.push(sidebar[i].entity);
+          }
+        }
+        return content;
       }
     },
 
@@ -2466,8 +2531,21 @@ exports.default = {
   },
 
   apollo: {
-    // Simple query that will update the 'hello' vue property
-    allCards: (0, _graphqlTag2.default)('{\n      allCards: cardQuery(sort:{\n        direction: ASC\n        field: "name"\n      },\n      filter: {\n        conditions:[{\n          field: "status"\n          value: "1"\n        }],\n      }) {\n        entities {\n          ... on Card {\n            id: entityId\n            title: entityLabel\n            cashBack: fieldCashBack\n            coBrand: fieldCoBrand\n            customization: fieldCustomization\n            image: fieldPMedia {\n              entity {\n                fieldMediaImage {\n                  entity {\n                    fieldImage {\n                      url\n                      alt\n                    }\n                  }\n                }\n              }\n            }\n            cardCategory:fieldCardCategory {\n              entity {\n                entityLabel\n              }\n            }\n            cost: fieldCost\n            currency:fieldCurrency {\n              entity {\n                entityLabel\n              }\n            }\n            delivery:fieldDelivery\n            description:fieldDescription {\n              processed\n            }\n            fulfillment: fieldFulfillment\n            filtered: fieldFiltered\n            greetingCard: fieldGreetingCard\n            issance: fieldIssuance\n            virtual: fieldVirtual\n            loadMax: fieldLoadMax\n            network: fieldNetwork\n            numMechants: fieldNumMechants\n            personalization: fieldPersonalization\n            prepaidLoad: fieldPrepaidLoad\n            prepaidType: fieldPrepaidType\n            cardType:fieldCardType\n          }\n        }\n      }\n    }')
+    // Query for all the published cards
+    allCards: (0, _graphqlTag2.default)('{\n      allCards: cardQuery(sort:{\n        direction: ASC\n        field: "name"\n      },\n      filter: {\n        conditions:[{\n          field: "status"\n          value: "1"\n        }],\n      }) {\n        entities {\n          ... on Card {\n            id: entityId\n            title: entityLabel\n            cashBack: fieldCashBack\n            coBrand: fieldCoBrand\n            customization: fieldCustomization\n            image: fieldPMedia {\n              entity {\n                fieldMediaImage {\n                  entity {\n                    fieldImage {\n                      image: derivative(style:FOURTH_COLUMN) {\n                        url\n                      }\n                      alt\n                    }\n                  }\n                }\n              }\n            }\n            cardCategory:fieldCardCategory {\n              entity {\n                entityLabel\n              }\n            }\n            cost: fieldCost\n            currency:fieldCurrency {\n              entity {\n                entityLabel\n              }\n            }\n            delivery:fieldDelivery\n            description:fieldDescription {\n              processed\n            }\n            fulfillment: fieldFulfillment\n            filtered: fieldFiltered\n            greetingCard: fieldGreetingCard\n            issance: fieldIssuance\n            virtual: fieldVirtual\n            loadMax: fieldLoadMax\n            network: fieldNetwork\n            numMechants: fieldNumMechants\n            personalization: fieldPersonalization\n            prepaidLoad: fieldPrepaidLoad\n            prepaidType: fieldPrepaidType\n            cardType:fieldCardType\n          }\n        }\n      }\n    }'),
+
+    // Query for sidebar content
+    sidebar: {
+      query: (0, _graphqlTag2.default)('query ($nid:String!){\n        sidebar:nodeById (id: $nid) {\n          entityLabel\n          fieldPContent {\n            entity {\n              bundle:entityBundle\n              description: fieldDescription {\n                processed\n              }\n            }\n          }\n        }\n      }'),
+      variables: function variables() {
+        return {
+          nid: this.nodeId
+        };
+      },
+      skip: function skip() {
+        return !this.nodeId;
+      }
+    }
   }
 };
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
@@ -2482,6 +2560,8 @@ exports.default = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+//
+//
 //
 //
 //
@@ -2981,6 +3061,13 @@ exports.default = {
         'prepaid': 'PrePaid'
       }
     };
+  },
+
+
+  methods: {
+    handleClick: function handleClick($event) {
+      this.$emit('selectRadio', $event);
+    }
   }
 };
 
@@ -4435,20 +4522,10 @@ const httpLinkOptions = new __WEBPACK_IMPORTED_MODULE_3_apollo_link_http__["a" /
   credentials: 'same-origin'
 });
 
-/* harmony default export */ __webpack_exports__["default"] = (new __WEBPACK_IMPORTED_MODULE_2_apollo_client__["a" /* ApolloClient */]({
-  // By default, this client will send queries to the
-  //  `/graphql` endpoint on the same host
-  // Pass the configuration option { uri: YOUR_GRAPHQL_API_URL } to the `HttpLink` to connect
-  // to a different host
-  link: new __WEBPACK_IMPORTED_MODULE_3_apollo_link_http__["a" /* HttpLink */](httpLinkOptions),
-  cache: new __WEBPACK_IMPORTED_MODULE_4_apollo_cache_inmemory__["a" /* InMemoryCache */]({ fragmentMatcher }),
-  connectToDevTools: true,
-}));
-
 // Create the apollo client
 const apolloClient = new __WEBPACK_IMPORTED_MODULE_2_apollo_client__["a" /* ApolloClient */]({
-  link: httpLinkOptions,
-  cache: new __WEBPACK_IMPORTED_MODULE_4_apollo_cache_inmemory__["a" /* InMemoryCache */](),
+  link: new __WEBPACK_IMPORTED_MODULE_3_apollo_link_http__["a" /* HttpLink */](httpLinkOptions),
+  cache: new __WEBPACK_IMPORTED_MODULE_4_apollo_cache_inmemory__["a" /* InMemoryCache */]({ fragmentMatcher }),
   connectToDevTools: true,
 })
 
@@ -15788,7 +15865,7 @@ exports = module.exports = __webpack_require__(5)(false);
 
 
 // module
-exports.push([module.i, "\n#card-catalog {\n  font-family: 'Avenir', Helvetica, Arial, sans-serif;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  text-align: center;\n  color: #2c3e50;\n  margin-top: 60px;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -15924,7 +16001,7 @@ exports = module.exports = __webpack_require__(5)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -16041,15 +16118,10 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      staticClass: "card",
-      class: [{ selectable: !_vm.selected }, "card-" + _vm.card.id]
-    },
-    [
-      _c("div", { staticClass: "card-overview" }, [
-        _c("div", { staticClass: "media" }, [
+  return _c("div", { staticClass: "card", class: ["card-" + _vm.card.id] }, [
+    _c("div", { staticClass: "card-overview" }, [
+      _c("div", { staticClass: "media" }, [
+        _c("div", { staticClass: "media-content" }, [
           _c("button", {
             staticClass: "heart",
             on: { click: _vm.handleClick }
@@ -16057,138 +16129,13 @@ var render = function() {
           _vm._v(" "),
           _c("img", {
             attrs: {
-              src: _vm.card.image.entity.fieldMediaImage.entity.fieldImage.url,
+              src:
+                _vm.card.image.entity.fieldMediaImage.entity.fieldImage.image
+                  .url,
               alt: _vm.card.image.entity.fieldMediaImage.entity.fieldImage.alt
             }
           })
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            directives: [
-              {
-                name: "show",
-                rawName: "v-show",
-                value: !_vm.selected,
-                expression: "!selected"
-              }
-            ],
-            staticClass: "content"
-          },
-          [
-            _c("h3", { staticClass: "card-title" }, [
-              _vm._v("\n        " + _vm._s(_vm.card.title) + "\n      ")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "features" }, [
-              _c("div", { staticClass: "top-level-info" }, [
-                _c("div", { staticClass: "type", class: _vm.card.cardType }, [
-                  _vm._v(
-                    "\n            " +
-                      _vm._s(_vm.typeMap[_vm.card.cardType]) +
-                      "\n          "
-                  )
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value:
-                          _vm.card.cardType === "prepaid" ||
-                          _vm.card.cardType === "gift_card",
-                        expression:
-                          "card.cardType === 'prepaid' || card.cardType === 'gift_card'"
-                      }
-                    ],
-                    staticClass: "cost"
-                  },
-                  [
-                    _vm._v(
-                      "\n            " +
-                        _vm._s(_vm.costMap[_vm.card.cost]) +
-                        "\n          "
-                    )
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "content boolean" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass: "feature icon co-brand",
-                    class: { true: _vm.card.coBrand }
-                  },
-                  [_vm._v("\n            Co-Brandable\n          ")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "feature icon fulfillment",
-                    class: { true: _vm.card.fulfillment }
-                  },
-                  [_vm._v("\n            Fast Fulfillment\n          ")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "feature icon customization",
-                    class: { true: _vm.card.customization }
-                  },
-                  [_vm._v("\n            Customization\n          ")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value:
-                          _vm.card.cardType === "prepaid" ||
-                          _vm.card.cardType === "gift_card",
-                        expression:
-                          "card.cardType === 'prepaid' || card.cardType === 'gift_card'"
-                      }
-                    ],
-                    staticClass: "feature icon virtual",
-                    class: { true: _vm.card.virtual }
-                  },
-                  [_vm._v("\n            Virtual Options\n          ")]
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: !_vm.selected,
-                    expression: "!selected"
-                  }
-                ],
-                staticClass: "view-details",
-                on: {
-                  click: function($event) {
-                    _vm.details(_vm.card.id)
-                  }
-                }
-              },
-              [_vm._v("View Details")]
-            )
-          ]
-        )
+        ])
       ]),
       _vm._v(" "),
       _c(
@@ -16202,53 +16149,20 @@ var render = function() {
               expression: "!selected"
             }
           ],
-          staticClass: "card card-modal mfp-hide",
-          class: "modal--card-" + _vm.card.id
+          staticClass: "content"
         },
         [
-          _c("div", { staticClass: "card-info" }, [
-            _c("div", { staticClass: "media" }, [
-              _c("img", {
-                attrs: {
-                  src:
-                    _vm.card.image.entity.fieldMediaImage.entity.fieldImage.url,
-                  alt:
-                    _vm.card.image.entity.fieldMediaImage.entity.fieldImage.alt
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "content" }, [
-              _c("h3", { staticClass: "card-title" }, [
-                _vm._v("\n          " + _vm._s(_vm.card.title) + "\n        ")
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "description",
-                  domProps: {
-                    innerHTML: _vm._s(_vm.card.description.processed)
-                  }
-                },
-                [
-                  _vm._v(
-                    "\n          " +
-                      _vm._s(_vm.card.description.processed) +
-                      "\n        "
-                  )
-                ]
-              )
-            ])
+          _c("h3", { staticClass: "card-title" }, [
+            _vm._v("\n        " + _vm._s(_vm.card.title) + "\n      ")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "features" }, [
             _c("div", { staticClass: "top-level-info" }, [
               _c("div", { staticClass: "type", class: _vm.card.cardType }, [
                 _vm._v(
-                  "\n          " +
+                  "\n            " +
                     _vm._s(_vm.typeMap[_vm.card.cardType]) +
-                    "\n        "
+                    "\n          "
                 )
               ]),
               _vm._v(" "),
@@ -16270,344 +16184,91 @@ var render = function() {
                 },
                 [
                   _vm._v(
-                    "\n          " +
+                    "\n            " +
                       _vm._s(_vm.costMap[_vm.card.cost]) +
-                      "\n        "
+                      "\n          "
                   )
                 ]
               )
             ]),
             _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "content boolean" },
-              [
-                _vm.card.cardType === "prepaid" ||
-                _vm.card.cardType === "gift_card"
-                  ? [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "feature icon co-brand",
-                          class: { true: _vm.card.coBrand }
-                        },
-                        [_vm._v("\n            Co-Brandable\n          ")]
-                      )
-                    ]
-                  : _vm._e(),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "feature icon fulfillment",
-                    class: { true: _vm.card.fulfillment }
-                  },
-                  [_vm._v("\n          Fast Fulfillment\n        ")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "feature icon customization",
-                    class: { true: _vm.card.customization }
-                  },
-                  [_vm._v("\n          Customization\n        ")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "feature icon virtual",
-                    class: { true: _vm.card.virtual }
-                  },
-                  [_vm._v("\n          Virtual Options\n        ")]
-                ),
-                _vm._v(" "),
-                _vm.card.cardType === "prepaid"
-                  ? [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "feature icon cashBack",
-                          class: { true: _vm.card.cashBack }
-                        },
-                        [_vm._v("\n            5% Cash Back\n          ")]
-                      )
-                    ]
-                  : _vm._e(),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "feature icon filtered",
-                    class: { true: _vm.card.filtered }
-                  },
-                  [_vm._v("\n          Filterable\n        ")]
-                ),
-                _vm._v(" "),
-                _vm.card.cardType === "prepaid" ||
-                _vm.card.cardType === "gift_card"
-                  ? [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "feature icon greetingCard",
-                          class: { true: _vm.card.greetingCard }
-                        },
-                        [_vm._v("\n            Greeting Card\n          ")]
-                      )
-                    ]
-                  : _vm._e()
-              ],
-              2
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "content varied" },
-              [
-                _vm.card.cardType === "prepaid"
-                  ? [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "feature personalization",
-                          class: { true: _vm.card.personalization }
-                        },
-                        [
-                          _c("span", { staticClass: "label" }, [
-                            _vm._v("Personalization")
-                          ]),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "value" }, [
-                            _vm._v(
-                              _vm._s(
-                                _vm.personalizationMap[_vm.card.personalization]
-                              )
-                            )
-                          ])
-                        ]
-                      )
-                    ]
-                  : _vm._e(),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "feature delivery",
-                    class: { true: _vm.card.delivery }
-                  },
-                  [
-                    _c("span", { staticClass: "label" }, [
-                      _vm._v("Delivery/Shipping")
-                    ]),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "value" }, [
-                      _vm._v(_vm._s(_vm.devlieryMap[_vm.card.delivery]))
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _vm.card.cardType === "gift_card" ||
-                _vm.card.cardType === "omnicodes"
-                  ? [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "feature cardCategory",
-                          class: { true: _vm.card.cardCategory }
-                        },
-                        [
-                          _c("span", { staticClass: "label" }, [
-                            _vm._v("Card Category")
-                          ]),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "value" }, [
-                            _vm._v(
-                              _vm._s(_vm.card.cardCategory.entity.entityLabel)
-                            )
-                          ])
-                        ]
-                      )
-                    ]
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.card.cardType === "gift_card" ||
-                _vm.card.cardType === "omnicodes"
-                  ? [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "feature currency",
-                          class: { true: _vm.card.currency }
-                        },
-                        [
-                          _c("span", { staticClass: "label" }, [
-                            _vm._v("Currency")
-                          ]),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "value" }, [
-                            _vm._v(_vm._s(_vm.card.currency.entity.entityLabel))
-                          ])
-                        ]
-                      )
-                    ]
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.card.cardType === "prepaid" &&
-                (_vm.card.prepaidType === "pre_filtered" ||
-                  _vm.card.prepaidType === "filtered")
-                  ? [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "feature numMechants",
-                          class: { true: _vm.card.numMechants }
-                        },
-                        [
-                          _c("span", { staticClass: "label" }, [
-                            _vm._v("Number of Merchants")
-                          ]),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "value" }, [
-                            _vm._v(_vm._s(_vm.card.numMechants))
-                          ])
-                        ]
-                      )
-                    ]
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.card.cardType === "gift_card" ||
-                _vm.card.cardType === "omnicodes"
-                  ? [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "feature issuance",
-                          class: { true: _vm.card.issance }
-                        },
-                        [
-                          _c("span", { staticClass: "label" }, [
-                            _vm._v("Issuance")
-                          ]),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "value" }, [
-                            _vm._v(_vm._s(_vm.issuanceMap[_vm.card.issance]))
-                          ])
-                        ]
-                      )
-                    ]
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.card.cardType === "gift_card" ||
-                _vm.card.cardType === "omnicodes"
-                  ? [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "feature loadMax",
-                          class: { true: _vm.card.loadMax }
-                        },
-                        [
-                          _c("span", { staticClass: "label" }, [
-                            _vm._v("Load Max")
-                          ]),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "value" }, [
-                            _vm._v("$" + _vm._s(_vm.card.loadMax))
-                          ])
-                        ]
-                      )
-                    ]
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.card.cardType === "prepaid"
-                  ? [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "feature network",
-                          class: { true: _vm.card.network }
-                        },
-                        [
-                          _c("span", { staticClass: "label" }, [
-                            _vm._v("Network")
-                          ]),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "value" }, [
-                            _vm._v(_vm._s(_vm.networkMap[_vm.card.network]))
-                          ])
-                        ]
-                      )
-                    ]
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.card.cardType === "prepaid"
-                  ? [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "feature prepaidLoad",
-                          class: { true: _vm.card.prepaidLoad }
-                        },
-                        [
-                          _c("span", { staticClass: "label" }, [
-                            _vm._v("Prepaid Load")
-                          ]),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "value" }, [
-                            _vm._v(
-                              _vm._s(_vm.prepaidLoadMap[_vm.card.prepaidLoad])
-                            )
-                          ])
-                        ]
-                      )
-                    ]
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.card.cardType === "prepaid"
-                  ? [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "feature prepaidType",
-                          class: { true: _vm.card.prepaidType }
-                        },
-                        [
-                          _c("span", { staticClass: "label" }, [
-                            _vm._v("Prepaid Type")
-                          ]),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "value" }, [
-                            _vm._v(
-                              _vm._s(_vm.prepaidTypeMap[_vm.card.prepaidType])
-                            )
-                          ])
-                        ]
-                      )
-                    ]
-                  : _vm._e()
-              ],
-              2
-            )
+            _c("div", { staticClass: "content boolean" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "feature icon co-brand",
+                  class: { true: _vm.card.coBrand }
+                },
+                [_vm._v("\n            Co-Brandable\n          ")]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "feature icon fulfillment",
+                  class: { true: _vm.card.fulfillment }
+                },
+                [_vm._v("\n            Fast Fulfillment\n          ")]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "feature icon customization",
+                  class: { true: _vm.card.customization }
+                },
+                [_vm._v("\n            Customization\n          ")]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value:
+                        _vm.card.cardType === "prepaid" ||
+                        _vm.card.cardType === "gift_card",
+                      expression:
+                        "card.cardType === 'prepaid' || card.cardType === 'gift_card'"
+                    }
+                  ],
+                  staticClass: "feature icon virtual",
+                  class: { true: _vm.card.virtual }
+                },
+                [_vm._v("\n            Virtual Options\n          ")]
+              )
+            ])
           ]),
           _vm._v(" "),
           _c(
             "button",
             {
-              staticClass: "marketo-modal-cta-link",
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: !_vm.selected,
+                  expression: "!selected"
+                }
+              ],
+              staticClass: "view-details",
               on: {
                 click: function($event) {
-                  _vm.$emit("openFrom")
+                  _vm.details(_vm.card.id)
                 }
               }
             },
-            [_vm._v("Start a Conversation")]
+            [_vm._v("View Details")]
           )
         ]
-      ),
-      _vm._v(" "),
-      _c("input", {
+      )
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
         directives: [
           {
             name: "show",
@@ -16616,11 +16277,421 @@ var render = function() {
             expression: "!selected"
           }
         ],
-        attrs: { id: "checkBox", type: "checkbox" },
-        domProps: { checked: _vm.card.selected }
-      })
-    ]
-  )
+        staticClass: "card card-modal mfp-hide",
+        class: "modal--card-" + _vm.card.id
+      },
+      [
+        _c("div", { staticClass: "card-info" }, [
+          _c("div", { staticClass: "media" }, [
+            _c("img", {
+              attrs: {
+                src:
+                  _vm.card.image.entity.fieldMediaImage.entity.fieldImage.url,
+                alt: _vm.card.image.entity.fieldMediaImage.entity.fieldImage.alt
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "content" }, [
+            _c("h3", { staticClass: "card-title" }, [
+              _vm._v("\n          " + _vm._s(_vm.card.title) + "\n        ")
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "description",
+                domProps: { innerHTML: _vm._s(_vm.card.description.processed) }
+              },
+              [
+                _vm._v(
+                  "\n          " +
+                    _vm._s(_vm.card.description.processed) +
+                    "\n        "
+                )
+              ]
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "features" }, [
+          _c("div", { staticClass: "top-level-info" }, [
+            _c("div", { staticClass: "type", class: _vm.card.cardType }, [
+              _vm._v(
+                "\n          " +
+                  _vm._s(_vm.typeMap[_vm.card.cardType]) +
+                  "\n        "
+              )
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value:
+                      _vm.card.cardType === "prepaid" ||
+                      _vm.card.cardType === "gift_card",
+                    expression:
+                      "card.cardType === 'prepaid' || card.cardType === 'gift_card'"
+                  }
+                ],
+                staticClass: "cost"
+              },
+              [
+                _vm._v(
+                  "\n          " +
+                    _vm._s(_vm.costMap[_vm.card.cost]) +
+                    "\n        "
+                )
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "content boolean" },
+            [
+              _vm.card.cardType === "prepaid" ||
+              _vm.card.cardType === "gift_card"
+                ? [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "feature icon co-brand",
+                        class: { true: _vm.card.coBrand }
+                      },
+                      [_vm._v("\n            Co-Brandable\n          ")]
+                    )
+                  ]
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "feature icon fulfillment",
+                  class: { true: _vm.card.fulfillment }
+                },
+                [_vm._v("\n          Fast Fulfillment\n        ")]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "feature icon customization",
+                  class: { true: _vm.card.customization }
+                },
+                [_vm._v("\n          Customization\n        ")]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "feature icon virtual",
+                  class: { true: _vm.card.virtual }
+                },
+                [_vm._v("\n          Virtual Options\n        ")]
+              ),
+              _vm._v(" "),
+              _vm.card.cardType === "prepaid"
+                ? [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "feature icon cashBack",
+                        class: { true: _vm.card.cashBack }
+                      },
+                      [_vm._v("\n            5% Cash Back\n          ")]
+                    )
+                  ]
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "feature icon filtered",
+                  class: { true: _vm.card.filtered }
+                },
+                [_vm._v("\n          Filterable\n        ")]
+              ),
+              _vm._v(" "),
+              _vm.card.cardType === "prepaid" ||
+              _vm.card.cardType === "gift_card"
+                ? [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "feature icon greetingCard",
+                        class: { true: _vm.card.greetingCard }
+                      },
+                      [_vm._v("\n            Greeting Card\n          ")]
+                    )
+                  ]
+                : _vm._e()
+            ],
+            2
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "content varied" },
+            [
+              _vm.card.cardType === "prepaid"
+                ? [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "feature personalization",
+                        class: { true: _vm.card.personalization }
+                      },
+                      [
+                        _c("span", { staticClass: "label" }, [
+                          _vm._v("Personalization")
+                        ]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "value" }, [
+                          _vm._v(
+                            _vm._s(
+                              _vm.personalizationMap[_vm.card.personalization]
+                            )
+                          )
+                        ])
+                      ]
+                    )
+                  ]
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "feature delivery",
+                  class: { true: _vm.card.delivery }
+                },
+                [
+                  _c("span", { staticClass: "label" }, [
+                    _vm._v("Delivery/Shipping")
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "value" }, [
+                    _vm._v(_vm._s(_vm.devlieryMap[_vm.card.delivery]))
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _vm.card.cardType === "gift_card" ||
+              _vm.card.cardType === "omnicodes"
+                ? [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "feature cardCategory",
+                        class: { true: _vm.card.cardCategory }
+                      },
+                      [
+                        _c("span", { staticClass: "label" }, [
+                          _vm._v("Card Category")
+                        ]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "value" }, [
+                          _vm._v(
+                            _vm._s(_vm.card.cardCategory.entity.entityLabel)
+                          )
+                        ])
+                      ]
+                    )
+                  ]
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.card.cardType === "gift_card" ||
+              _vm.card.cardType === "omnicodes"
+                ? [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "feature currency",
+                        class: { true: _vm.card.currency }
+                      },
+                      [
+                        _c("span", { staticClass: "label" }, [
+                          _vm._v("Currency")
+                        ]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "value" }, [
+                          _vm._v(_vm._s(_vm.card.currency.entity.entityLabel))
+                        ])
+                      ]
+                    )
+                  ]
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.card.cardType === "prepaid" &&
+              (_vm.card.prepaidType === "pre_filtered" ||
+                _vm.card.prepaidType === "filtered")
+                ? [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "feature numMechants",
+                        class: { true: _vm.card.numMechants }
+                      },
+                      [
+                        _c("span", { staticClass: "label" }, [
+                          _vm._v("Number of Merchants")
+                        ]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "value" }, [
+                          _vm._v(_vm._s(_vm.card.numMechants))
+                        ])
+                      ]
+                    )
+                  ]
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.card.cardType === "gift_card" ||
+              _vm.card.cardType === "omnicodes"
+                ? [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "feature issuance",
+                        class: { true: _vm.card.issance }
+                      },
+                      [
+                        _c("span", { staticClass: "label" }, [
+                          _vm._v("Issuance")
+                        ]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "value" }, [
+                          _vm._v(_vm._s(_vm.issuanceMap[_vm.card.issance]))
+                        ])
+                      ]
+                    )
+                  ]
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.card.cardType === "gift_card" ||
+              _vm.card.cardType === "omnicodes"
+                ? [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "feature loadMax",
+                        class: { true: _vm.card.loadMax }
+                      },
+                      [
+                        _c("span", { staticClass: "label" }, [
+                          _vm._v("Load Max")
+                        ]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "value" }, [
+                          _vm._v("$" + _vm._s(_vm.card.loadMax))
+                        ])
+                      ]
+                    )
+                  ]
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.card.cardType === "prepaid"
+                ? [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "feature network",
+                        class: { true: _vm.card.network }
+                      },
+                      [
+                        _c("span", { staticClass: "label" }, [
+                          _vm._v("Network")
+                        ]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "value" }, [
+                          _vm._v(_vm._s(_vm.networkMap[_vm.card.network]))
+                        ])
+                      ]
+                    )
+                  ]
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.card.cardType === "prepaid"
+                ? [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "feature prepaidLoad",
+                        class: { true: _vm.card.prepaidLoad }
+                      },
+                      [
+                        _c("span", { staticClass: "label" }, [
+                          _vm._v("Prepaid Load")
+                        ]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "value" }, [
+                          _vm._v(
+                            _vm._s(_vm.prepaidLoadMap[_vm.card.prepaidLoad])
+                          )
+                        ])
+                      ]
+                    )
+                  ]
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.card.cardType === "prepaid"
+                ? [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "feature prepaidType",
+                        class: { true: _vm.card.prepaidType }
+                      },
+                      [
+                        _c("span", { staticClass: "label" }, [
+                          _vm._v("Prepaid Type")
+                        ]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "value" }, [
+                          _vm._v(
+                            _vm._s(_vm.prepaidTypeMap[_vm.card.prepaidType])
+                          )
+                        ])
+                      ]
+                    )
+                  ]
+                : _vm._e()
+            ],
+            2
+          )
+        ]),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "marketo-modal-cta-link",
+            on: {
+              click: function($event) {
+                _vm.$emit("openFrom")
+              }
+            }
+          },
+          [_vm._v("Start a Conversation")]
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _c("input", {
+      directives: [
+        {
+          name: "show",
+          rawName: "v-show",
+          value: !_vm.selected,
+          expression: "!selected"
+        }
+      ],
+      attrs: { id: "checkBox", type: "checkbox" },
+      domProps: { checked: _vm.card.selected }
+    })
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -19380,7 +19451,7 @@ exports = module.exports = __webpack_require__(5)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -19403,7 +19474,7 @@ var render = function() {
         domProps: { value: _vm.filter },
         on: {
           change: function($event) {
-            _vm.$emit("selectRadio", $event)
+            _vm.handleClick($event)
           }
         }
       }),
@@ -19436,50 +19507,57 @@ var render = function() {
     "div",
     { staticClass: "card-catalog" },
     [
-      _c("transition", { attrs: { name: "slide", appear: "" } }, [
-        _c(
-          "div",
-          {
-            directives: [
-              {
-                name: "show",
-                rawName: "v-show",
-                value: _vm.selectedCards.length > 0,
-                expression: "selectedCards.length > 0"
-              }
-            ],
-            staticClass: "selected-cards"
-          },
-          [
-            _c("div", { staticClass: "content-wrapper" }, [
-              _c("div", { staticClass: "content" }, [
-                _c(
-                  "div",
-                  { staticClass: "cards" },
-                  _vm._l(_vm.selectedCards, function(card_id) {
-                    return _c("Card", {
-                      key: card_id,
-                      attrs: { card: _vm.getCardById(card_id), selected: true },
-                      on: { selectCard: _vm.selectCard }
-                    })
-                  })
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "actions" }, [
+      _c(
+        "transition",
+        { attrs: { name: "slide" }, on: { "after-leave": _vm.afterLeave } },
+        [
+          _c(
+            "div",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.hasSelectedCards,
+                  expression: "hasSelectedCards"
+                }
+              ],
+              staticClass: "selected-cards"
+            },
+            [
+              _c("div", { staticClass: "content-wrapper" }, [
+                _c("div", { staticClass: "content" }, [
                   _c(
-                    "button",
-                    {
-                      staticClass: "marketo-modal-cta-link",
-                      on: { click: _vm.openFrom }
-                    },
-                    [_vm._v("Start a Conversation")]
-                  )
+                    "div",
+                    { staticClass: "cards" },
+                    _vm._l(_vm.selectedCards, function(card_id) {
+                      return _c("Card", {
+                        key: card_id,
+                        attrs: {
+                          card: _vm.getCardById(card_id),
+                          selected: true
+                        },
+                        on: { selectCard: _vm.selectCard }
+                      })
+                    })
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "actions" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "marketo-modal-cta-link",
+                        on: { click: _vm.openFrom }
+                      },
+                      [_vm._v("Start a Conversation")]
+                    )
+                  ])
                 ])
               ])
-            ])
-          ]
-        )
-      ]),
+            ]
+          )
+        ]
+      ),
       _vm._v(" "),
       _c("div", { staticClass: "card-list" }, [
         _c("div", { staticClass: "filters" }, [
@@ -19493,6 +19571,7 @@ var render = function() {
                   _vm._l(_vm.types, function(type) {
                     return _c("RadioFilter", {
                       key: type,
+                      class: { selected: _vm.selectedRadioOption === type },
                       attrs: { filter: type, type: "cardType" },
                       on: { selectRadio: _vm.selectRadio }
                     })
@@ -19516,7 +19595,37 @@ var render = function() {
                     })
                   )
                 : _vm._e()
-            ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "box-filter content" },
+              [
+                _c("h3", { staticClass: "filter-title" }, [
+                  _vm._v("About Our Rewards")
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.sidebarContent, function(content) {
+                  return _c(
+                    "div",
+                    {
+                      staticClass: "description",
+                      domProps: {
+                        innerHTML: _vm._s(content.description.processed)
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "\n            " +
+                          _vm._s(content.description.processed) +
+                          "\n          "
+                      )
+                    ]
+                  )
+                })
+              ],
+              2
+            )
           ])
         ]),
         _vm._v(" "),
@@ -19540,7 +19649,7 @@ var render = function() {
               _vm._l(_vm.cards, function(card) {
                 return _c("Card", {
                   key: card.id,
-                  class: { selected: card.selected },
+                  class: { selected: _vm.checkIfSelected(card.id) },
                   attrs: { card: card },
                   on: { selectCard: _vm.selectCard, openFrom: _vm.openFrom }
                 })
