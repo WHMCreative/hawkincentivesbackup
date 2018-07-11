@@ -94,7 +94,8 @@
     "drupal/editor_advanced_link": "^1.4",
     "drupal/block_field": "^1.0@alpha",
     "drupal/graphql": "^3.0",
-    "drupal/addtoany": "^1.10"
+    "drupal/addtoany": "^1.10",
+    "drupal/draggableviews": "^1.0"
   },
   "conflict": {
       "drupal/drupal": "*"

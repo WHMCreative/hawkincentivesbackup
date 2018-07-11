@@ -3891,6 +3891,75 @@
         }
     },
     {
+        "name": "drupal/draggableviews",
+        "version": "1.0.0",
+        "version_normalized": "1.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupal.org/project/draggableviews",
+            "reference": "8.x-1.0"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://ftp.drupal.org/files/projects/draggableviews-8.x-1.0.zip",
+            "reference": "8.x-1.0",
+            "shasum": "007082c2621b45bd8cf73fe5fdd4d292ee88a458"
+        },
+        "require": {
+            "drupal/core": "*"
+        },
+        "type": "drupal-module",
+        "extra": {
+            "branch-alias": {
+                "dev-1.x": "1.x-dev"
+            },
+            "drupal": {
+                "version": "8.x-1.0",
+                "datestamp": "1477076039",
+                "security-coverage": {
+                    "status": "covered",
+                    "message": "Covered by Drupal's security advisory policy"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0-or-later"
+        ],
+        "authors": [
+            {
+                "name": "dixon_",
+                "homepage": "https://www.drupal.org/user/239911"
+            },
+            {
+                "name": "ginc",
+                "homepage": "https://www.drupal.org/user/332249"
+            },
+            {
+                "name": "iStryker",
+                "homepage": "https://www.drupal.org/user/303676"
+            },
+            {
+                "name": "podarok",
+                "homepage": "https://www.drupal.org/user/116002"
+            },
+            {
+                "name": "sevi",
+                "homepage": "https://www.drupal.org/user/199290"
+            },
+            {
+                "name": "ygerasimov",
+                "homepage": "https://www.drupal.org/user/257311"
+            }
+        ],
+        "description": "Complete rewrite of D7 draggableviews",
+        "homepage": "https://www.drupal.org/project/draggableviews",
+        "support": {
+            "source": "http://cgit.drupalcode.org/draggableviews"
+        }
+    },
+    {
         "name": "drupal/drupal-driver",
         "version": "v1.3.2",
         "version_normalized": "1.3.2.0",
