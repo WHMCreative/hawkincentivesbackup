@@ -80,6 +80,9 @@ $buttons: (
     }
     @if (map-has-key($button, active-color)) {
       color: key($button, active-color);
+      @supports (-webkit-text-fill-color: transparent) {
+        -webkit-text-fill-color: key($button, active-color);
+      }
     }
 
     @if (map-has-key($button, active-border)) {

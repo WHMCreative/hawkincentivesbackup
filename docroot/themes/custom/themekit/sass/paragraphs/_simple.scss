@@ -108,7 +108,8 @@
   }
 
   // When placed on insight
-  .field--name-field-p-insight & {
+  .field--name-field-p-insight &,
+  .field--name-field-p-sidebar & {
     @include top-bottom(padding, rem-calc(40));
 
     & > .paragraph-content {

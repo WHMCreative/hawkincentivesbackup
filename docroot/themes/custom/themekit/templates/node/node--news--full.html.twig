@@ -91,6 +91,7 @@ view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
 %}
 
 {% set rendered_content = content|without(
+  'field_p_sidebar',
   'field_references'
   ) %}
 
@@ -103,6 +104,7 @@ view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
       {{ rendered_content }}
     </div>
     <div class="node--sidebar">
+      {{ content.field_p_sidebar }}
       {% if content.field_references|render %}
         <h3>{{ 'References'|t }}</h3>
         {{ content.field_references }}

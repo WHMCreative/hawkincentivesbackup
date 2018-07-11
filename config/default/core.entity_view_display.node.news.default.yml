@@ -6,10 +6,12 @@ dependencies:
     - field.field.node.news.body
     - field.field.node.news.field_external_link
     - field.field.node.news.field_news_type
+    - field.field.node.news.field_p_sidebar
     - field.field.node.news.field_references
     - field.field.node.news.field_teaser_image
     - node.type.news
   module:
+    - entity_reference_revisions
     - text
     - user
 id: node.news.default
@@ -34,9 +36,18 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_p_sidebar:
+    type: entity_reference_revisions_entity_view
+    weight: 4
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
   field_references:
     type: text_default
-    weight: 4
+    weight: 5
     region: content
     label: hidden
     settings: {  }
