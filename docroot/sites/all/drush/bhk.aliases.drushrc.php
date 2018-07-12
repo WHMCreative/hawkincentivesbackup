@@ -36,7 +36,7 @@ $aliases['prod'] = array(
   'remote-host' => '199.167.77.119',
   'remote-user' => 'hawk1',
   'path-aliases' => array(
-    '%files' => 'sites/default/files',
+    '%files' => '/mnt/gluster/files/bhk-d8.prod.e3develop.com/files',
     '%dump-dir' => '/home/hawk1/tmp'
   ),
   'command-specific' => array(
