@@ -22,7 +22,7 @@
     # db credentials will change.
     # name == site @ docroot/sites/*
     site_roots:
-      - {name: 'default', db_name: hawkincentives-D8, db_user: hawkincentives, db_pass: xj>S=e!7aA!4EnN5}
+      - {name: 'default', db_name: hawkincentives-D8, db_user: hawkincentives, db_pass: $hSMVN8+]qd&?-t#}
 
     mysql_login_host: localhost
 
