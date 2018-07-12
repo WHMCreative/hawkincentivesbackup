@@ -168,8 +168,8 @@ if(isset($_SERVER['AH_SITE_ENVIRONMENT'])) {
       $config['shield.settings']['pass'] = '3ditHawk';
 
       //@TODO Configure this
-      //    $settings['file_private_path'] = "/var/www/bhk-d8.dev.e3develop.com/application/shared/private";
-      //    $config['system.file']['path']['temporary'] = "/var/www/bhk-d8.dev.e3develop.com/application/shared/private/tmp";
+          $settings['file_private_path'] = "/var/www/bhk-d8.prod.e3develop.com/application/shared/private";
+          $config['system.file']['path']['temporary'] = "/var/www/bhk-d8.prod.e3develop.com/application/shared/private/tmp";
 
       // Set logging level on production.
       $config['system.logging']['error_level'] = 'hide';
