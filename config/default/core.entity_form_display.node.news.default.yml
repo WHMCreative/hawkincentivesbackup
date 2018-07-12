@@ -6,6 +6,7 @@ dependencies:
     - entity_browser.browser.image
     - field.field.node.news.body
     - field.field.node.news.field_external_link
+    - field.field.node.news.field_metatags
     - field.field.node.news.field_news_type
     - field.field.node.news.field_p_sidebar
     - field.field.node.news.field_references
@@ -16,6 +17,7 @@ dependencies:
     - entity_browser
     - field_group
     - link_attributes
+    - metatag
     - paragraphs_browser
     - path
     - scheduler
@@ -99,6 +101,12 @@ content:
         accesskey: false
     third_party_settings: {  }
     type: link_attributes
+    region: content
+  field_metatags:
+    weight: 26
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_firehose
     region: content
   field_news_type:
     weight: 5

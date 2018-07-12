@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.people.body
     - field.field.node.people.field_media_image
+    - field.field.node.people.field_metatags
     - field.field.node.people.field_notable_quality
     - field.field.node.people.field_title
     - field.field.node.people.field_type
@@ -60,5 +61,7 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  addtoany: true
+  field_metatags: true
   field_type: true
   langcode: true
