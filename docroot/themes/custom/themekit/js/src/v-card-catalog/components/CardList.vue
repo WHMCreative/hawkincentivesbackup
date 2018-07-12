@@ -3,8 +3,8 @@
   <div class="card-catalog">
 
     <!-- Begin Selected Cards -->
-    <transition name="slide" appear>
-      <div class="selected-cards" v-show="selectedCards.length > 0">
+    <transition name="slide" v-on:after-leave="afterLeave">
+      <div class="selected-cards" v-show="hasSelectedCards" >
         <div class="content-wrapper">
         <div class="content">
           <div class="cards">
@@ -25,12 +25,18 @@
         <div class="content">
           <h3 class="filter-title">Reward Types</h3>
           <div class="filter filter--type" v-if="types.length > 0">
-            <RadioFilter v-for="type in types" :filter="type" :type="'cardType'" :key="type" @selectRadio='selectRadio'></RadioFilter>
+            <RadioFilter v-for="type in types" :filter="type" :type="'cardType'" :key="type" @selectRadio='selectRadio' :class="{selected: selectedRadioOption === type}"></RadioFilter>
           </div>
           <div class="box-filter">
             <h3 class="filter-title">Filters</h3>
             <div class="filter filter--category" v-if="filters.length > 0">
               <FilterItem v-for="filter in filters" :filter="filter" :type="'boolean'" :key="filter.key" @selectFilter='selectFilter'></FilterItem>
+            </div>
+          </div>
+          <div class="box-filter content">
+            <h3 class="filter-title">About Our Rewards</h3>
+            <div class="description" v-for="content in sidebarContent" v-if="content.description" v-html="content.description.processed">
+              {{ content.description.processed }}
             </div>
           </div>
         </div>
@@ -43,7 +49,7 @@
         </div>
         <!-- Begin ALl Cards -->
         <div class="all-cards">
-          <Card v-for="card in cards" :card="card" :key="card.id" @selectCard='selectCard' @openFrom='openFrom' v-bind:class="{selected: card.selected}"></Card>
+          <Card v-for="card in cards" :card="card" :key="card.id" @selectCard='selectCard' @openFrom='openFrom' :class="{selected: checkIfSelected(card.id)}"></Card>
         </div>
         <div class="no-results" v-if="cards.length == 0">
           <p>No results</p>
@@ -82,6 +88,7 @@ export default {
   data () {
     return {
       allCards: null,
+      sidebar: null,
       filters: [
         {key:'coBrand', value:'Co-brandable'},
         {key:'customization', value:'Customization'},
@@ -91,9 +98,11 @@ export default {
       ],
       cardsToShow: 3,
       cardCount: 0,
+      hasSelectedCards: false,
       multipler: 1,
       selectedCards: [],
       selectedFilters: [],
+      selectedRadioOption: "All",
       visibleCards: 0,
     }
   },
@@ -103,6 +112,19 @@ export default {
   },
 
   methods: {
+
+    afterLeave: function (el, done) {
+      this.selectedCards = [];
+      this.updateMarketo();
+    },
+
+    // Check if this card is selected
+    checkIfSelected(id) {
+      for (let i in this.selectedCards) {
+        if (this.selectedCards[i] == id) return true;
+      }
+      return false;
+    },
 
     // Get card object by ID
     getCardById (cardId) {
@@ -115,7 +137,7 @@ export default {
 
     // Get index of multidimensional array
     getIndexOf(arr, value, type) {
-      for (var i = 0; i < arr.length; i++) {
+      for (let i = 0; i < arr.length; i++) {
         if(arr[i].value === value && arr[i].type === type) {
           return i;
         }
@@ -169,6 +191,8 @@ export default {
           type = filter.target.name,
           index = this.selectedFilters.findIndex(filter => filter.type === type);
 
+      this.selectedRadioOption = value;
+
       //Remove existing filters of same type
       if (index > -1) {
         this.selectedFilters.splice(index, 1);
@@ -197,11 +221,19 @@ export default {
 
     // Updated selected cards
     selectCard(id) {
+      this.hasSelectedCards = true;
+
       if (this.selectedCards.includes(id)) {
-        this.selectedCards = this.selectedCards.filter(card_id => card_id !== id);
+        if (this.selectedCards.length !== 1) {
+          this.selectedCards = this.selectedCards.filter(card_id => card_id !== id);
+        } else {
+          this.hasSelectedCards = false;
+        }
       } else {
         this.selectedCards.push(id);
       }
+
+      this.updateMarketo();
     },
 
     // Sort array
@@ -209,6 +241,22 @@ export default {
       if(a < b) return -1;
       if(a > b) return 1;
       return 0;
+    },
+
+    updateMarketo() {
+      // Get cards names
+      let cardName = [];
+      for (let i in this.selectedCards) {
+        cardName.push(this.getCardById(this.selectedCards[i]).title);
+      }
+
+      // Update marketo form with card names
+      let formInput = document.querySelector('.form--card-browser input[name="cardName"]');
+      if (cardName) {
+        formInput.value = cardName.join(', ');
+      } else {
+        formInput.value = '';
+      }
     }
   },
 
@@ -220,10 +268,8 @@ export default {
 
       if (allCards) {
 
-        let total = allCards.length;
-
         if (this.selectedFilters.length > 0) {
-          for (var i in this.selectedFilters) {
+          for (let i in this.selectedFilters) {
             allCards = allCards.filter((card) => {
               // Get filter type
               let type = this.selectedFilters[i].type,
@@ -259,13 +305,27 @@ export default {
       }
     },
 
+    // Get content for sidebar
+    sidebarContent () {
+      let sidebar = this.sidebar ? this.sidebar.fieldPContent : [];
+      if (sidebar) {
+        let content = [];
+        for (let i in sidebar) {
+          if(sidebar[i].entity.bundle === 'reference_card_browser') {
+            content.push(sidebar[i].entity);
+          }
+        }
+        return content;
+      }
+    },
+
     // Return all unique types sorted
     types() {
       let allCards = this.allCards ? this.allCards.entities : [],
         types = ['All'];
       if (allCards) {
-        for (var i in allCards) {
-          for (var j in allCards[i].cardType) {
+        for (let i in allCards) {
+          for (let j in allCards[i].cardType) {
             types.push(allCards[i].cardType);
           }
         }
@@ -277,7 +337,7 @@ export default {
   },
 
   apollo: {
-    // Simple query that will update the 'hello' vue property
+    // Query for all the published cards
     allCards: gql(`{
       allCards: cardQuery(sort:{
         direction: ASC
@@ -301,7 +361,9 @@ export default {
                 fieldMediaImage {
                   entity {
                     fieldImage {
-                      url
+                      image: derivative(style:FOURTH_COLUMN) {
+                        url
+                      }
                       alt
                     }
                   }
@@ -339,6 +401,32 @@ export default {
         }
       }
     }`),
+
+    // Query for sidebar content
+    sidebar: {
+      query: gql(`query ($nid:String!){
+        sidebar:nodeById (id: $nid) {
+          entityLabel
+          fieldPContent {
+            entity {
+              bundle:entityBundle
+              description: fieldDescription {
+                processed
+              }
+            }
+          }
+        }
+      }`),
+      variables() {
+        return {
+          nid: this.nodeId
+        }
+      },
+
+       skip() {
+        return !this.nodeId;
+      }
+    },
   }
 }
 </script>

@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.reference_card_browser.field_description
     - field.field.paragraph.reference_card_browser.field_p_form
     - paragraphs.paragraphs_type.reference_card_browser
   module:
@@ -21,4 +22,5 @@ content:
       link: ''
     third_party_settings: {  }
     region: content
-hidden: {  }
+hidden:
+  field_description: true

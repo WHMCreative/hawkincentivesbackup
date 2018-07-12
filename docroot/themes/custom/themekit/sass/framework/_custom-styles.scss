@@ -31,7 +31,7 @@
 /// @param {string} $radius - Value of the frame's border radius, in px
 /// @param {string} $pseudo-element - Element to use for adding the frame. Default value: after
 /// @param {boolean} $animate - Animate frame's position on teaser active states. Default value: false
-@mixin frame($color, $size, $offset, $radius, $pseudo-element: after, $animate: false) {
+@mixin frame($color, $size, $offset, $radius, $pseudo-element: after, $animate: false, $z-index: 0) {
   position: relative;
   &:#{$pseudo-element} {
     content: '';
@@ -42,6 +42,7 @@
     height: 100%;
     border: $size solid $color;
     border-radius: $radius;
+    z-index: $z-index;
     @if ($animate == true) {
       transition: transform 250ms;
     }

@@ -79,4 +79,8 @@ map:
   compound_slider: compound
   link_form_modal: link
   layout_2_column: layout
+  simple_media_tile: media
+  media_svg: media
+  media_video: media
+  media_image: media
   simple_cta: simple
