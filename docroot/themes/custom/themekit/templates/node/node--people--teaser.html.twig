@@ -78,6 +78,8 @@
  *    {% has_fieldname = content.field_fieldname|render %}
  */
 #}
+{% set name = node.label()|split(' ')|first %}
+{% set link_title = 'View ' ~ name ~ '\'s Perspectives' %}
 
 {%
 set classes = [
@@ -107,6 +109,9 @@ view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
     <h3{{ title_attributes }}>{{ label }}</h3>
     {{ title_suffix }}
     {{ rendered_content }}
+    {% if resources_url %}
+      {{ link(link_title, resources_url, {'class':['view-more']}) }}
+    {% endif %}
   </div>
 
 </article>

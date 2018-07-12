@@ -50,6 +50,10 @@
       }
       .field--name-body {
         font-size: rem-calc(14);
+        margin-bottom: 15px;
+      }
+      a.view-more {
+        @include link(default);
       }
     }
   }
@@ -73,6 +77,9 @@
       .field--name-field-title {
         font-size: rem-calc(14);
         font-style: italic;
+      }
+      a.view-more {
+        @include link(default);
       }
     }
   }

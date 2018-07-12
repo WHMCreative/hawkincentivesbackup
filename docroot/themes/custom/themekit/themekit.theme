@@ -15,6 +15,7 @@ use Drupal\views\Views;
 use Drupal\taxonomy\Entity\Term;
 use Drupal\node\NodeInterface;
 use Drupal\Core\Render\Element;
+use Drupal\Core\Url;
 
 //*********************************************
 // 1. Preprocess hooks
@@ -59,22 +60,17 @@ function themekit_preprocess_node(&$variables) {
 
 
 /**
- * Implements template_preprocess_page().
+ * Implements template_preprocess_node().
  */
-function themekit_preprocess_page(&$variables) {
-}
-
-/**
- * Implements template_preprocess_field().
- */
-function themekit_preprocess_field(&$variables) {
-
-}
-
-/**
- * Implements template_preprocess_node_article().
- */
-function themekit_preprocess_node_article(&$variables) {
+function themekit_preprocess_node_people(&$variables) {
+  /** @var \Drupal\node\NodeInterface $node */
+  $node = $variables['node'];
+  if ($node->hasField('field_type') && !$node->get('field_type')->isEmpty()) {
+    if ($node->field_type->target_id === '6') {
+      $node_id = $node->id();
+      $variables['resources_url'] = Url::fromRoute('view.insights.page_resources', [], ['query' => ['author'=>$node_id]]);
+    }
+  }
 }
 
 function themekit_preprocess_node_insight(&$variables) {
