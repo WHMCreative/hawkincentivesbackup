@@ -8,7 +8,16 @@ weight: 5
 is_admin: null
 permissions:
   - 'access content overview'
+  - 'access file entity browser pages'
+  - 'access image entity browser pages'
+  - 'access image_embed entity browser pages'
+  - 'access infogram entity browser pages'
+  - 'access infogram_embed entity browser pages'
+  - 'access media overview'
+  - 'access svg entity browser pages'
   - 'access toolbar'
+  - 'access video entity browser pages'
+  - 'access video_embed entity browser pages'
   - 'create component_page content'
   - 'create insight content'
   - 'create news content'

@@ -1,84 +1,13 @@
-webpackJsonp([1],[
-/* 0 */
+webpackJsonp([1],{
+
+/***/ 0:
 /***/ (function(module, exports) {
 
 module.exports = jQuery;
 
 /***/ }),
-/* 1 */,
-/* 2 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return rtl; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GetYoDigits; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return transitionend; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
-
-
-
-
-// Core Foundation Utilities, utilized in a number of places.
-
-  /**
-   * Returns a boolean for RTL support
-   */
-function rtl() {
-  return __WEBPACK_IMPORTED_MODULE_0_jquery___default()('html').attr('dir') === 'rtl';
-}
-
-/**
- * returns a random base-36 uid with namespacing
- * @function
- * @param {Number} length - number of random base-36 digits desired. Increase for more random strings.
- * @param {String} namespace - name of plugin to be incorporated in uid, optional.
- * @default {String} '' - if no plugin name is provided, nothing is appended to the uid.
- * @returns {String} - unique id
- */
-function GetYoDigits(length, namespace){
-  length = length || 6;
-  return Math.round((Math.pow(36, length + 1) - Math.random() * Math.pow(36, length))).toString(36).slice(1) + (namespace ? `-${namespace}` : '');
-}
-
-function transitionend($elem){
-  var transitions = {
-    'transition': 'transitionend',
-    'WebkitTransition': 'webkitTransitionEnd',
-    'MozTransition': 'transitionend',
-    'OTransition': 'otransitionend'
-  };
-  var elem = document.createElement('div'),
-      end;
-
-  for (var t in transitions){
-    if (typeof elem.style[t] !== 'undefined'){
-      end = transitions[t];
-    }
-  }
-  if(end){
-    return end;
-  }else{
-    end = setTimeout(function(){
-      $elem.triggerHandler('transitionend', [$elem]);
-    }, 1);
-    return 'transitionend';
-  }
-}
-
-
-
-
-/***/ }),
-/* 3 */,
-/* 4 */,
-/* 5 */,
-/* 6 */,
-/* 7 */,
-/* 8 */,
-/* 9 */,
-/* 10 */,
-/* 11 */
+/***/ 11:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -322,15 +251,104 @@ function parseStyleToObject(str) {
 
 
 /***/ }),
-/* 12 */,
-/* 13 */,
-/* 14 */,
-/* 15 */,
-/* 16 */,
-/* 17 */,
-/* 18 */,
-/* 19 */,
-/* 20 */
+
+/***/ 134:
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(jQuery) {/**
+ * @file external-links.js
+ *
+ * Add target=_blank to all external links.
+ */
+
+!function ($) {
+  // Always use strict mode to enable better error handling in modern browsers.
+  "use strict";
+
+  // Add target="_blank" to all external links.
+  $('a').each(function() {
+    const a = new RegExp('/' + window.location.host + '/');
+    if (!a.test(this.href) && this.href !== '') {
+      $(this).attr('target', '_blank');
+    }
+  });
+
+  // Add target="_blank" to all files.
+  $('.file > a').each(function() {
+    $(this).attr('target', '_blank');
+  });
+
+}(jQuery);
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+
+/***/ 2:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return rtl; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GetYoDigits; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return transitionend; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
+
+
+
+
+// Core Foundation Utilities, utilized in a number of places.
+
+  /**
+   * Returns a boolean for RTL support
+   */
+function rtl() {
+  return __WEBPACK_IMPORTED_MODULE_0_jquery___default()('html').attr('dir') === 'rtl';
+}
+
+/**
+ * returns a random base-36 uid with namespacing
+ * @function
+ * @param {Number} length - number of random base-36 digits desired. Increase for more random strings.
+ * @param {String} namespace - name of plugin to be incorporated in uid, optional.
+ * @default {String} '' - if no plugin name is provided, nothing is appended to the uid.
+ * @returns {String} - unique id
+ */
+function GetYoDigits(length, namespace){
+  length = length || 6;
+  return Math.round((Math.pow(36, length + 1) - Math.random() * Math.pow(36, length))).toString(36).slice(1) + (namespace ? `-${namespace}` : '');
+}
+
+function transitionend($elem){
+  var transitions = {
+    'transition': 'transitionend',
+    'WebkitTransition': 'webkitTransitionEnd',
+    'MozTransition': 'transitionend',
+    'OTransition': 'otransitionend'
+  };
+  var elem = document.createElement('div'),
+      end;
+
+  for (var t in transitions){
+    if (typeof elem.style[t] !== 'undefined'){
+      end = transitions[t];
+    }
+  }
+  if(end){
+    return end;
+  }else{
+    end = setTimeout(function(){
+      $elem.triggerHandler('transitionend', [$elem]);
+    }, 1);
+    return 'transitionend';
+  }
+}
+
+
+
+
+/***/ }),
+
+/***/ 20:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -446,7 +464,8 @@ function animate(isIn, element, animation, cb) {
 
 
 /***/ }),
-/* 21 */
+
+/***/ 21:
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(__webpack_provided_window_dot_jQuery) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! Magnific Popup - v1.1.0 - 2016-02-20
@@ -2315,42 +2334,25 @@ $.magnificPopup.registerModule(RETINA_NS, {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 22 */,
-/* 23 */,
-/* 24 */,
-/* 25 */,
-/* 26 */,
-/* 27 */,
-/* 28 */,
-/* 29 */,
-/* 30 */,
-/* 31 */,
-/* 32 */,
-/* 33 */,
-/* 34 */,
-/* 35 */,
-/* 36 */,
-/* 37 */,
-/* 38 */,
-/* 39 */,
-/* 40 */,
-/* 41 */,
-/* 42 */,
-/* 43 */
+
+/***/ 43:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation_setup__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__skip_link__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__magnific_popup__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__video_modal__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__menu__ = __webpack_require__(54);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__sticky__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__external_links__ = __webpack_require__(134);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__external_links___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__external_links__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__skip_link__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__magnific_popup__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__video_modal__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__menu__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__sticky__ = __webpack_require__(55);
 /**
  * theme.js
  * Entry point for all theme related js.
  */
+
 
 
 
@@ -2363,7 +2365,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /***/ }),
-/* 44 */
+
+/***/ 44:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2425,7 +2428,8 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).foundation();
 
 
 /***/ }),
-/* 45 */
+
+/***/ 45:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2774,7 +2778,8 @@ function hyphenate(str) {
 
 
 /***/ }),
-/* 46 */
+
+/***/ 46:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3014,7 +3019,8 @@ function GetExplicitOffsets(element, anchor, position, alignment, vOffset, hOffs
 
 
 /***/ }),
-/* 47 */
+
+/***/ 47:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3069,7 +3075,8 @@ function onImagesLoaded(images, callback){
 
 
 /***/ }),
-/* 48 */
+
+/***/ 48:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3242,7 +3249,8 @@ function getKeyCodes(kcs) {
 
 
 /***/ }),
-/* 49 */
+
+/***/ 49:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3319,7 +3327,8 @@ const Nest = {
 
 
 /***/ }),
-/* 50 */
+
+/***/ 50:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3377,7 +3386,8 @@ function Timer(elem, options, cb) {
 
 
 /***/ }),
-/* 51 */
+
+/***/ 51:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3403,7 +3413,8 @@ $skipLink.on('click', function(e) {
 });
 
 /***/ }),
-/* 52 */
+
+/***/ 52:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3444,7 +3455,8 @@ Drupal.behaviors.magnificPopup = {
 
 
 /***/ }),
-/* 53 */
+
+/***/ 53:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3479,7 +3491,8 @@ Drupal.behaviors.videoModal = {
 
 
 /***/ }),
-/* 54 */
+
+/***/ 54:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3516,7 +3529,8 @@ Drupal.behaviors.menuMain = {
 
 
 /***/ }),
-/* 55 */
+
+/***/ 55:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3534,7 +3548,8 @@ new __WEBPACK_IMPORTED_MODULE_1_foundation_sites_js_foundation_sticky__["a" /* S
 
 
 /***/ }),
-/* 56 */
+
+/***/ 56:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4055,7 +4070,8 @@ function emCalc(em) {
 
 
 /***/ }),
-/* 57 */
+
+/***/ 57:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4120,7 +4136,8 @@ function getPluginName(obj) {
 
 
 /***/ }),
-/* 58 */
+
+/***/ 58:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4399,5 +4416,6 @@ Triggers.init = function($, Foundation) {
 
 
 /***/ })
-],[43]);
+
+},[43]);
 //# sourceMappingURL=themekit.js.map
