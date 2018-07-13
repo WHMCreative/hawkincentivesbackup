@@ -111,6 +111,15 @@
   .field--name-field-p-insight &,
   .field--name-field-p-sidebar & {
     @include top-bottom(padding, rem-calc(40));
+    @include breakpoint(medium) {
+      min-height: 190px;
+    }
+    @include breakpoint(large) {
+      min-height: 215px;
+    }
+    @include breakpoint(xlarge) {
+      min-height: 245px;
+    }
 
     & > .paragraph-content {
       text-align: left;

@@ -67,32 +67,16 @@
         margin-right: -40px;
       }
     }
-    .field--name-field-p-insight {
-      @include breakpoint(marge) {
-        margin-top: -225px;
-        min-height: 230px;
-      }
-      @include breakpoint(large) {
-        margin-top: -245px;
-        min-height: 250px;
-      }
-      @include breakpoint(xlarge) {
-        margin-top: -265px;
-        min-height: 270px;
-      }
-    }
+    .field--name-field-p-insight,
     .field--name-field-p-form {
       @include breakpoint(marge) {
         margin-top: -180px;
-        min-height: 270px;
       }
       @include breakpoint(large) {
-        margin-top: -200px;
-        min-height: 290px;
+        margin-top: -205px;
       }
       @include breakpoint(xlarge) {
-        margin-top: -230px;
-        min-height: 320px;
+        margin-top: -235px;
       }
     }
 
