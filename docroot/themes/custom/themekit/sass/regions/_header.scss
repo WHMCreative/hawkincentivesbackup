@@ -129,13 +129,8 @@
                   }
                   @include breakpoint(large) {
                     &:before {
-                      content: '';
-                      position: absolute;
                       left: 0;
-                      bottom: -14px;
                       right: 20px;
-                      height: 3px;
-                      background: linear-gradient(-45deg, $secondary-color-light 0%, $secondary-color 100%);
                     }
                   }
                 }
@@ -154,6 +149,16 @@
                 }
                 @include breakpoint(large) {
                   padding-right: 20px;
+                  &:before {
+                    content: '';
+                    position: absolute;
+                    left: calc(50% - 10px);
+                    bottom: -14px;
+                    right: calc(50% + 10px);
+                    height: 3px;
+                    background: linear-gradient(-45deg, $secondary-color-light 0%, $secondary-color 100%);
+                    transition: left 250ms, right 250ms;
+                  }
                 }
               }
             }
@@ -162,6 +167,9 @@
               line-height: 1.5;
               font-weight: 700;
               color: $dark-gray;
+              &:hover {
+                color: $medium-gray;
+              }
             }
           }
         }
