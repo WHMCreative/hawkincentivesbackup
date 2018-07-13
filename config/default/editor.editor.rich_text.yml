@@ -17,6 +17,8 @@ settings:
           items:
             - Bold
             - Italic
+            - Superscript
+            - Subscript
         -
           name: Alignment
           items:
@@ -36,11 +38,11 @@ settings:
         -
           name: Media
           items:
-            - Blockquote
+            - HorizontalRule
+            - Callout
             - image_embed
             - video_embed
             - infogram
-            - Callout
         -
           name: 'Block Formatting'
           items:

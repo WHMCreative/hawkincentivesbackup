@@ -161,3 +161,29 @@
 .admin-paragraphs-draggable-item .admin-paragraphs-draggable-item .admin-paragraphs-draggable-item .paragraph--view-mode--preview.expandable:after {
   background: linear-gradient(to bottom, rgba($level-3-bg-color, 0) 0%, $level-3-bg-color 100%);
 }
+
+
+// Custom Link Styles
+.field--type-link {
+  .fieldset-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+
+    .js-form-item {
+      flex: 1;
+      margin-left: 16px;
+
+      &:first-child{
+        margin-left: 0;
+      }
+    }
+
+    input {
+      width: 100%;
+    }
+
+    details {
+      flex: 0 0 100%;
+    }
+  }
+}
