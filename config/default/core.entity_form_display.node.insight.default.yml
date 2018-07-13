@@ -47,7 +47,6 @@ third_party_settings:
         - field_insight_type
         - field_intro_copy
         - body
-        - field_featured_image
         - field_teaser_image
       parent_name: group_tabs
       weight: 15
@@ -76,9 +75,9 @@ third_party_settings:
     group_sidebar:
       children:
         - field_p_insight
-        - field_p_related_insights
         - field_author
         - field_references
+        - field_p_related_insights
       parent_name: group_tabs
       weight: 17
       format_type: tab
@@ -123,7 +122,7 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_author:
-    weight: 17
+    weight: 16
     settings:
       match_operator: CONTAINS
       size: 60
@@ -204,11 +203,11 @@ content:
     third_party_settings: {  }
     region: content
   field_p_related_insights:
-    weight: 16
+    weight: 18
     settings:
       title: 'Related Insights'
       title_plural: 'Related Insights'
-      edit_mode: preview
+      edit_mode: open
       add_mode: paragraphs_browser
       form_display_mode: default
       default_paragraph_type: summary_insights
@@ -219,7 +218,7 @@ content:
     type: entity_reference_paragraphs_browser
     region: content
   field_references:
-    weight: 18
+    weight: 17
     settings:
       rows: 5
       placeholder: ''
