@@ -2,10 +2,10 @@
 /// Footer
 ////
 
-.region-footer {
+footer {
   background: $primary-color;
   color: $white;
-  .region-inner {
+  .footer-content {
     @include content-width(default);
     .menu--social {
       ul.menu {
