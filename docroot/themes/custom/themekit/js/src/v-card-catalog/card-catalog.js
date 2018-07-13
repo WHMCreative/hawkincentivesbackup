@@ -4,13 +4,13 @@ import { ApolloClient } from 'apollo-client'
 import { HttpLink } from 'apollo-link-http'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import VueApollo from 'vue-apollo'
-import { InMemoryCache, IntrospectionFragmentMatcher } from 'apollo-cache-inmemory';
+// import { InMemoryCache, IntrospectionFragmentMatcher } from 'apollo-cache-inmemory';
 import introspectionQueryResultData from '../fragmentTypes.json';
 
 
-const fragmentMatcher = new IntrospectionFragmentMatcher({
-  introspectionQueryResultData
-});
+// const fragmentMatcher = new IntrospectionFragmentMatcher({
+//   introspectionQueryResultData
+// });
 
 const httpLinkOptions = new HttpLink({
   credentials: 'same-origin'
@@ -19,7 +19,8 @@ const httpLinkOptions = new HttpLink({
 // Create the apollo client
 const apolloClient = new ApolloClient({
   link: new HttpLink(httpLinkOptions),
-  cache: new InMemoryCache({ fragmentMatcher }),
+  cache: new InMemoryCache(),
+  // cache: new InMemoryCache({ fragmentMatcher }),
   connectToDevTools: true,
 })
 
