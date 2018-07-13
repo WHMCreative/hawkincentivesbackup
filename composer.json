@@ -150,6 +150,9 @@
       },
       "drupal/paragraphs": {
         "Add additional subform alters": "https://www.drupal.org/files/issues/2868155-16.patch"
+      },
+      "drupal/metatag": {
+        "GraphQL throws an error due to Metatag's use of a custom data structure": "https://www.drupal.org/files/issues/2018-06-05/metatag-n2977545-5.patch"
       }
     }
   },

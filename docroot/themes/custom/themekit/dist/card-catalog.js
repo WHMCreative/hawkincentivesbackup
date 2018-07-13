@@ -3504,7 +3504,7 @@ function getKey(operation) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__writeToStore__ = __webpack_require__(39);
 /* unused harmony namespace reexport */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__fragmentMatcher__ = __webpack_require__(38);
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_3__fragmentMatcher__["b"]; });
+/* unused harmony namespace reexport */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__objectCache__ = __webpack_require__(19);
 /* unused harmony namespace reexport */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__recordingCache__ = __webpack_require__(42);
@@ -3523,7 +3523,7 @@ function getKey(operation) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HeuristicFragmentMatcher; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return IntrospectionFragmentMatcher; });
+/* unused harmony export IntrospectionFragmentMatcher */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_apollo_utilities__ = __webpack_require__(1);
 
 var haveWarned = false;
@@ -4511,13 +4511,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
+// import { InMemoryCache, IntrospectionFragmentMatcher } from 'apollo-cache-inmemory';
 
 
 
-
-const fragmentMatcher = new __WEBPACK_IMPORTED_MODULE_4_apollo_cache_inmemory__["b" /* IntrospectionFragmentMatcher */]({
-  introspectionQueryResultData: __WEBPACK_IMPORTED_MODULE_6__fragmentTypes_json___default.a
-});
+// const fragmentMatcher = new IntrospectionFragmentMatcher({
+//   introspectionQueryResultData
+// });
 
 const httpLinkOptions = new __WEBPACK_IMPORTED_MODULE_3_apollo_link_http__["a" /* HttpLink */]({
   credentials: 'same-origin'
@@ -4526,7 +4526,8 @@ const httpLinkOptions = new __WEBPACK_IMPORTED_MODULE_3_apollo_link_http__["a" /
 // Create the apollo client
 const apolloClient = new __WEBPACK_IMPORTED_MODULE_2_apollo_client__["a" /* ApolloClient */]({
   link: new __WEBPACK_IMPORTED_MODULE_3_apollo_link_http__["a" /* HttpLink */](httpLinkOptions),
-  cache: new __WEBPACK_IMPORTED_MODULE_4_apollo_cache_inmemory__["a" /* InMemoryCache */]({ fragmentMatcher }),
+  cache: new __WEBPACK_IMPORTED_MODULE_4_apollo_cache_inmemory__["a" /* InMemoryCache */](),
+  // cache: new InMemoryCache({ fragmentMatcher }),
   connectToDevTools: true,
 })
 
