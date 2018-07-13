@@ -62,14 +62,7 @@
     // Utility menu
     .menu--utility {
       display: none;
-      &[id=block-utility--2] {
-        display: block;
-        padding: 15px 32px 0;
-      }
       @include breakpoint(large) {
-        &[id=block-utility--2] {
-          display: none;
-        }
         display: block;
         padding-bottom: 11px;
         margin-bottom: 25px;
@@ -145,6 +138,13 @@
         .menu-open & {
           transform: translateX(0);
           overflow-y: auto;
+        }
+      }
+      .menu--utility {
+        display: block;
+        padding: 15px 32px 0;
+        @include breakpoint(large) {
+          display: none;
         }
       }
       ul.menu {
