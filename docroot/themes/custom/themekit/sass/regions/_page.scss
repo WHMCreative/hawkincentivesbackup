@@ -13,4 +13,9 @@ body {
       padding-top: $header-height + 79px !important;
     }
   }
+  &.menu-open {
+    @include breakpoint(marge down) {
+      overflow-y: hidden;
+    }
+  }
 }

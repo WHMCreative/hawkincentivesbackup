@@ -3525,7 +3525,8 @@ Drupal.behaviors.videoModal = {
 Drupal.behaviors.menuMain = {
   attach: function (context, settings) {
     let $mainMenuItem = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.menu-level-0 > li.menu-item--expanded', context),
-        $mainMenuItemLink = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.menu-level-0 > li.menu-item--expanded > a', context);
+        $mainMenuItemLink = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.menu-level-0 > li.menu-item--expanded > a', context),
+        $menuToggle = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.region-header .menu-toggle');
 
     $mainMenuItemLink.on('click', function (e) {
       e.preventDefault();
@@ -3539,6 +3540,10 @@ Drupal.behaviors.menuMain = {
       if($acitveMenuItem.length && !$acitveMenuItem.has(e.target).length > 0) {
         $acitveMenuItem.removeClass('active');
       }
+    });
+
+    $menuToggle.once('menu-toggle').on('click', function (e) {
+      __WEBPACK_IMPORTED_MODULE_0_jquery___default()('body').toggleClass('menu-open');
     });
 
   }

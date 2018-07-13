@@ -249,6 +249,12 @@ function themekit_preprocess_block(&$variables) {
       }
     }
   }
+
+  // Duplicate utility menu to be displayed on mobile
+  if($plugin_id == 'system_menu_block:main') {
+    $id = 'utility';
+    $variables['utility_menu'] = themekit_block_to_renderable_array($id);
+  }
 }
 
 
