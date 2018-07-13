@@ -6,22 +6,26 @@
   background: $body-background;
   box-shadow: 0 2px 10px rgba($black, 0.05);
   z-index: z(header, base);
-  &.sticky.is-stuck {
-    z-index: z(header, base);
+  @include breakpoint(large) {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
     .toolbar-horizontal & {
-      top: 39px !important;
+      top: 39px;
     }
     .toolbar-horizontal.toolbar-tray-open & {
-      top: 79px !important;
+      top: 79px;
     }
   }
   .region-inner {
     @include content-width(1370px);
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
 
     @include breakpoint(large) {
-      display: flex;
+      justify-content: flex-start;
       flex-wrap: wrap;
       align-items: center;
       padding-top: 10px;
@@ -33,14 +37,21 @@
         a {
           display: block;
           text-indent: -9999px;
-          width: 281px;
-          height: 38px;
+          width: 150px;
+          height: 18px;
           background-image: url(img-get('svg/logo.svg'));
           background-size: contain;
+          @include breakpoint(large) {
+            width: 281px;
+            height: 38px;
+          }
         }
       }
     }
     .menu-toggle {
+      @include hamburger($secondary-color-dark, $secondary-color-dark, 22px, 16px, 2px);
+      text-indent: -9999px;
+      order: 3;
       @include breakpoint(large) {
         display: none;
       }
@@ -48,7 +59,15 @@
 
     // Utility menu
     .menu--utility {
+      display: none;
+      &[id=block-utility-2] {
+        display: block;
+      }
       @include breakpoint(large) {
+        &[id=block-utility-2] {
+          display: none;
+        }
+        display: block;
         padding-bottom: 11px;
         margin-bottom: 25px;
         width: 100%;

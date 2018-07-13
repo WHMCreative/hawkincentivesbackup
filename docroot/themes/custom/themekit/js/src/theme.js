@@ -9,6 +9,4 @@ import './magnific-popup';
 import './video-modal';
 import './menu';
 
-// FOUNDATION COMPONENT USAGE
-import './sticky';
 

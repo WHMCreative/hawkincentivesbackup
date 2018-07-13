@@ -1,0 +1,16 @@
+////
+/// Page
+////
+
+body {
+  min-width: 320px;
+  @include breakpoint(large) {
+    padding-top: $header-height;
+    &.toolbar-horizontal {
+      padding-top: $header-height + 39px !important;
+    }
+    &.toolbar-horizontal.toolbar-tray-open {
+      padding-top: $header-height + 79px !important;
+    }
+  }
+}

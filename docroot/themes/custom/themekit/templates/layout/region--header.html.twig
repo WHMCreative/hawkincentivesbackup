@@ -15,12 +15,11 @@
 {%
   set classes = [
     'region',
-    'region-' ~ region|clean_class,
-    'sticky'
+    'region-' ~ region|clean_class
   ]
 %}
 {% if content %}
-  <div{{ attributes.addClass(classes).setAttribute('data-sticky', '').setAttribute('data-margin-top', '0').setAttribute('data-sticky-on', 'large') }}>
+  <div{{ attributes.addClass(classes) }}>
     <div class="region-inner">
       <button class="menu-toggle" type="button">{{ 'Toggle menu'|t }}</button>
       {{ content }}
