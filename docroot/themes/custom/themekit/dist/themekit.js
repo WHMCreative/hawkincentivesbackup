@@ -6,7 +6,8 @@ module.exports = jQuery;
 
 /***/ }),
 /* 1 */,
-/* 2 */
+/* 2 */,
+/* 3 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -70,7 +71,6 @@ function transitionend($elem){
 
 
 /***/ }),
-/* 3 */,
 /* 4 */,
 /* 5 */,
 /* 6 */,
@@ -78,7 +78,15 @@ function transitionend($elem){
 /* 8 */,
 /* 9 */,
 /* 10 */,
-/* 11 */
+/* 11 */,
+/* 12 */,
+/* 13 */,
+/* 14 */,
+/* 15 */,
+/* 16 */,
+/* 17 */,
+/* 18 */,
+/* 19 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -322,131 +330,7 @@ function parseStyleToObject(str) {
 
 
 /***/ }),
-/* 12 */,
-/* 13 */,
-/* 14 */,
-/* 15 */,
-/* 16 */,
-/* 17 */,
-/* 18 */,
-/* 19 */,
 /* 20 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return Move; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Motion; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation_util_core__ = __webpack_require__(2);
-
-
-
-
-
-/**
- * Motion module.
- * @module foundation.motion
- */
-
-const initClasses   = ['mui-enter', 'mui-leave'];
-const activeClasses = ['mui-enter-active', 'mui-leave-active'];
-
-const Motion = {
-  animateIn: function(element, animation, cb) {
-    animate(true, element, animation, cb);
-  },
-
-  animateOut: function(element, animation, cb) {
-    animate(false, element, animation, cb);
-  }
-}
-
-function Move(duration, elem, fn){
-  var anim, prog, start = null;
-  // console.log('called');
-
-  if (duration === 0) {
-    fn.apply(elem);
-    elem.trigger('finished.zf.animate', [elem]).triggerHandler('finished.zf.animate', [elem]);
-    return;
-  }
-
-  function move(ts){
-    if(!start) start = ts;
-    // console.log(start, ts);
-    prog = ts - start;
-    fn.apply(elem);
-
-    if(prog < duration){ anim = window.requestAnimationFrame(move, elem); }
-    else{
-      window.cancelAnimationFrame(anim);
-      elem.trigger('finished.zf.animate', [elem]).triggerHandler('finished.zf.animate', [elem]);
-    }
-  }
-  anim = window.requestAnimationFrame(move);
-}
-
-/**
- * Animates an element in or out using a CSS transition class.
- * @function
- * @private
- * @param {Boolean} isIn - Defines if the animation is in or out.
- * @param {Object} element - jQuery or HTML object to animate.
- * @param {String} animation - CSS class to use.
- * @param {Function} cb - Callback to run when animation is finished.
- */
-function animate(isIn, element, animation, cb) {
-  element = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(element).eq(0);
-
-  if (!element.length) return;
-
-  var initClass = isIn ? initClasses[0] : initClasses[1];
-  var activeClass = isIn ? activeClasses[0] : activeClasses[1];
-
-  // Set up the animation
-  reset();
-
-  element
-    .addClass(animation)
-    .css('transition', 'none');
-
-  requestAnimationFrame(() => {
-    element.addClass(initClass);
-    if (isIn) element.show();
-  });
-
-  // Start the animation
-  requestAnimationFrame(() => {
-    element[0].offsetWidth;
-    element
-      .css('transition', '')
-      .addClass(activeClass);
-  });
-
-  // Clean up the animation when it finishes
-  element.one(Object(__WEBPACK_IMPORTED_MODULE_1__foundation_util_core__["c" /* transitionend */])(element), finish);
-
-  // Hides the element (for out animations), resets the element, and runs a callback
-  function finish() {
-    if (!isIn) element.hide();
-    reset();
-    if (cb) cb.apply(element);
-  }
-
-  // Resets transitions and removes motion-specific classes
-  function reset() {
-    element[0].style.transitionDuration = 0;
-    element.removeClass(`${initClass} ${activeClass} ${animation}`);
-  }
-}
-
-
-
-
-
-/***/ }),
-/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(__webpack_provided_window_dot_jQuery) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! Magnific Popup - v1.1.0 - 2016-02-20
@@ -2315,6 +2199,7 @@ $.magnificPopup.registerModule(RETINA_NS, {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
+/* 21 */,
 /* 22 */,
 /* 23 */,
 /* 24 */,
@@ -2334,20 +2219,18 @@ $.magnificPopup.registerModule(RETINA_NS, {
 /* 38 */,
 /* 39 */,
 /* 40 */,
-/* 41 */,
-/* 42 */,
-/* 43 */
+/* 41 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation_setup__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__external_links__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation_setup__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__external_links__ = __webpack_require__(50);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__external_links___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__external_links__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__skip_link__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__magnific_popup__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__video_modal__ = __webpack_require__(54);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__menu__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__skip_link__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__magnific_popup__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__video_modal__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__menu__ = __webpack_require__(54);
 /**
  * theme.js
  * Entry point for all theme related js.
@@ -2363,21 +2246,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /***/ }),
-/* 44 */
+/* 42 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_foundation_sites_js_foundation_core__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_foundation_sites_js_foundation_util_core__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_foundation_sites_js_foundation_util_box__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_foundation_sites_js_foundation_util_imageLoader__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_foundation_sites_js_foundation_util_keyboard__ = __webpack_require__(48);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_foundation_sites_js_foundation_util_mediaQuery__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_foundation_sites_js_foundation_util_motion__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_foundation_sites_js_foundation_util_nest__ = __webpack_require__(49);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_foundation_sites_js_foundation_util_timer__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_foundation_sites_js_foundation_core__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_foundation_sites_js_foundation_util_core__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_foundation_sites_js_foundation_util_box__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_foundation_sites_js_foundation_util_imageLoader__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_foundation_sites_js_foundation_util_keyboard__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_foundation_sites_js_foundation_util_mediaQuery__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_foundation_sites_js_foundation_util_motion__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_foundation_sites_js_foundation_util_nest__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_foundation_sites_js_foundation_util_timer__ = __webpack_require__(49);
 /**
  * @file foundation-setup.js
  *
@@ -2425,15 +2308,15 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).foundation();
 
 
 /***/ }),
-/* 45 */
+/* 43 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Foundation; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation_util_core__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation_util_mediaQuery__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation_util_core__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation_util_mediaQuery__ = __webpack_require__(19);
 
 
 
@@ -2774,12 +2657,12 @@ function hyphenate(str) {
 
 
 /***/ }),
-/* 46 */
+/* 44 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Box; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation_util_core__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation_util_core__ = __webpack_require__(3);
 
 
 
@@ -3014,7 +2897,7 @@ function GetExplicitOffsets(element, anchor, position, alignment, vOffset, hOffs
 
 
 /***/ }),
-/* 47 */
+/* 45 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3069,14 +2952,14 @@ function onImagesLoaded(images, callback){
 
 
 /***/ }),
-/* 48 */
+/* 46 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Keyboard; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation_util_core__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation_util_core__ = __webpack_require__(3);
 /*******************************************
  *                                         *
  * This util was created by Marius Olbertz *
@@ -3242,7 +3125,123 @@ function getKeyCodes(kcs) {
 
 
 /***/ }),
-/* 49 */
+/* 47 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return Move; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Motion; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation_util_core__ = __webpack_require__(3);
+
+
+
+
+
+/**
+ * Motion module.
+ * @module foundation.motion
+ */
+
+const initClasses   = ['mui-enter', 'mui-leave'];
+const activeClasses = ['mui-enter-active', 'mui-leave-active'];
+
+const Motion = {
+  animateIn: function(element, animation, cb) {
+    animate(true, element, animation, cb);
+  },
+
+  animateOut: function(element, animation, cb) {
+    animate(false, element, animation, cb);
+  }
+}
+
+function Move(duration, elem, fn){
+  var anim, prog, start = null;
+  // console.log('called');
+
+  if (duration === 0) {
+    fn.apply(elem);
+    elem.trigger('finished.zf.animate', [elem]).triggerHandler('finished.zf.animate', [elem]);
+    return;
+  }
+
+  function move(ts){
+    if(!start) start = ts;
+    // console.log(start, ts);
+    prog = ts - start;
+    fn.apply(elem);
+
+    if(prog < duration){ anim = window.requestAnimationFrame(move, elem); }
+    else{
+      window.cancelAnimationFrame(anim);
+      elem.trigger('finished.zf.animate', [elem]).triggerHandler('finished.zf.animate', [elem]);
+    }
+  }
+  anim = window.requestAnimationFrame(move);
+}
+
+/**
+ * Animates an element in or out using a CSS transition class.
+ * @function
+ * @private
+ * @param {Boolean} isIn - Defines if the animation is in or out.
+ * @param {Object} element - jQuery or HTML object to animate.
+ * @param {String} animation - CSS class to use.
+ * @param {Function} cb - Callback to run when animation is finished.
+ */
+function animate(isIn, element, animation, cb) {
+  element = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(element).eq(0);
+
+  if (!element.length) return;
+
+  var initClass = isIn ? initClasses[0] : initClasses[1];
+  var activeClass = isIn ? activeClasses[0] : activeClasses[1];
+
+  // Set up the animation
+  reset();
+
+  element
+    .addClass(animation)
+    .css('transition', 'none');
+
+  requestAnimationFrame(() => {
+    element.addClass(initClass);
+    if (isIn) element.show();
+  });
+
+  // Start the animation
+  requestAnimationFrame(() => {
+    element[0].offsetWidth;
+    element
+      .css('transition', '')
+      .addClass(activeClass);
+  });
+
+  // Clean up the animation when it finishes
+  element.one(Object(__WEBPACK_IMPORTED_MODULE_1__foundation_util_core__["c" /* transitionend */])(element), finish);
+
+  // Hides the element (for out animations), resets the element, and runs a callback
+  function finish() {
+    if (!isIn) element.hide();
+    reset();
+    if (cb) cb.apply(element);
+  }
+
+  // Resets transitions and removes motion-specific classes
+  function reset() {
+    element[0].style.transitionDuration = 0;
+    element.removeClass(`${initClass} ${activeClass} ${animation}`);
+  }
+}
+
+
+
+
+
+/***/ }),
+/* 48 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3319,7 +3318,7 @@ const Nest = {
 
 
 /***/ }),
-/* 50 */
+/* 49 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3377,7 +3376,7 @@ function Timer(elem, options, cb) {
 
 
 /***/ }),
-/* 51 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(jQuery) {/**
@@ -3407,7 +3406,7 @@ function Timer(elem, options, cb) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 52 */
+/* 51 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3433,13 +3432,13 @@ $skipLink.on('click', function(e) {
 });
 
 /***/ }),
-/* 53 */
+/* 52 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_magnific_popup_dist_jquery_magnific_popup__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_magnific_popup_dist_jquery_magnific_popup__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_magnific_popup_dist_jquery_magnific_popup___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_magnific_popup_dist_jquery_magnific_popup__);
 /**
  * @file
@@ -3474,13 +3473,13 @@ Drupal.behaviors.magnificPopup = {
 
 
 /***/ }),
-/* 54 */
+/* 53 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_magnific_popup_dist_jquery_magnific_popup__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_magnific_popup_dist_jquery_magnific_popup__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_magnific_popup_dist_jquery_magnific_popup___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_magnific_popup_dist_jquery_magnific_popup__);
 /**
  * @file
@@ -3509,7 +3508,7 @@ Drupal.behaviors.videoModal = {
 
 
 /***/ }),
-/* 55 */
+/* 54 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3551,5 +3550,5 @@ Drupal.behaviors.menuMain = {
 
 
 /***/ })
-],[43]);
+],[41]);
 //# sourceMappingURL=themekit.js.map
