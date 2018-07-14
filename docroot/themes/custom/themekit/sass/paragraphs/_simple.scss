@@ -137,6 +137,42 @@
   }
 }
 
+// Simple Icon Content
+.paragraph--type--simple-icon-content {
+  > .paragraph-content {
+    display: flex;
+    align-items: center;
+    font-size: rem-calc(13);
+    line-height: 1.3;
+
+    .field--name-field-media-image {
+      margin-right: rem-calc(12);
+
+      img {
+        min-width: 33px;
+      }
+    }
+
+    .field--name-field-description {
+      display: none;
+
+      .paragraph--type--banner-hero & {
+        max-width: rem-calc(150);
+      }
+
+      @include breakpoint(medium) {
+        display: block;
+      }
+    }
+
+    .field--name-field-mobile-description {
+      @include breakpoint(medium) {
+        display: none;
+      }
+    }
+  }
+}
+
 // Simple - Media Tile
 .paragraph--type--simple-media-tile {
   & > .paragraph-content {
