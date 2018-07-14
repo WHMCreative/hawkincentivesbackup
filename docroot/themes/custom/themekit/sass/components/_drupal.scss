@@ -259,3 +259,28 @@ ul.primary {
   background-image: none;
   padding-left: 0;
 }
+
+.block-local-tasks-block {
+  @include content-width(default);
+}
+
+.user-login-form {
+  @include content-width(default);
+
+  .js-form-item {
+    max-width: rem-calc(300);
+    input {
+      margin-bottom: rem-calc(4);
+    }
+  }
+
+  .form-actions {
+    .button {
+      @include btn(blue);
+    }
+  }
+}
+
+article.profile {
+  @include content-width(default);
+}

@@ -11,6 +11,32 @@
     align-items: center;
   }
 
+  // Placed at the top level
+  .field--name-field-p-content > & {
+    > .paragraph-content {
+      @include content-width(narrow);
+      text-align: center;
+
+      .field--name-field-p-multiple-links {
+        justify-content: center;
+
+        & > .paragraph {
+          margin: 0 8px;
+          a {
+            @include link(default);
+          }
+
+          &:nth-last-child(2) {
+            a {
+              @include btn(blue);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Placed inside content bar
   .paragraph--type--compound-content-bar & {
     .field--name-field-heading {
       color: $secondary-color-dark;
@@ -265,7 +291,6 @@
 
   .paragraph--type--layout-2-column & {
     .paragraph-content {
-      //align-content: center;
       justify-content: flex-start;
     }
     .field--name-field-description p {

@@ -313,9 +313,9 @@ function themekit_theme_suggestions_field_alter(array &$suggestions, array $vari
       case 'compound_content_bar':
       case 'layout_2_column':
       case 'simple_cta':
+      case 'simple_content':
       array_unshift($suggestions, 'field__heading_2');
         break;
-      case 'simple_content':
       case 'single_heading':
       case 'simple_media_tile':
       case 'summary_insights':
