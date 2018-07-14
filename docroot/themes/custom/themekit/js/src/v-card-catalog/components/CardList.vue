@@ -103,7 +103,7 @@ export default {
       selectedCards: [],
       selectedFilters: [],
       selectedRadioOption: "All",
-      visibleCards: 0,
+      visibleCards: 0
     }
   },
 
@@ -285,7 +285,6 @@ export default {
                 // Find cards that match filter
                 return card[type] === value;
               }
-
             })
           }
         }
@@ -333,7 +332,7 @@ export default {
         types = types.sort( this.sortABC );
       }
       return types;
-    },
+    }
   },
 
   apollo: {
@@ -426,7 +425,7 @@ export default {
        skip() {
         return !this.nodeId;
       }
-    },
+    }
   }
 }
 </script>
