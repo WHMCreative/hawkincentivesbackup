@@ -41,3 +41,5 @@ matchers:
         thumbnail_image_style: null
       substitution_type: file
       metadata: 'Direct link to file'
+      file_extensions: ''
+      file_status: 1

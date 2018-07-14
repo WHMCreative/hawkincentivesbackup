@@ -12,6 +12,7 @@ module:
   bhk_card_browser: 0
   bhk_ckeditor_plugins: 0
   bhk_infogram: 0
+  bhk_menus: 0
   bhk_page_banners: 0
   bhk_remote_entity: 0
   bhk_summary_paragraphs: 0
