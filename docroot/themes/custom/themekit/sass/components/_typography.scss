@@ -24,6 +24,10 @@ h3 {
     &.blue {
       @include btn(blue);
     }
+
+    &.blue-ghost {
+      @include btn(ghost);
+    }
   }
 
   .embedded-entity {

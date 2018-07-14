@@ -198,6 +198,15 @@
           display: inline-block;
         }
       }
+
+      .paragraph--type--media-svg {
+        margin-bottom: rem-calc(16);
+
+        svg {
+          max-height: rem-calc(90);
+        }
+      }
+
     }
 
     .content {

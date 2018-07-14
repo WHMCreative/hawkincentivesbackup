@@ -4,9 +4,10 @@
  */
 import './foundation-setup';
 import './external-links';
-import './skip-link';
+import './inject-svg'
 import './magnific-popup';
-import './video-modal';
 import './menu';
+import './skip-link';
+import './video-modal';
 
 

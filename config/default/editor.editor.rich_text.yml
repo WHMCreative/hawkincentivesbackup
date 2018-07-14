@@ -63,7 +63,7 @@ settings:
       language_list: un
     linkitstyles:
       enable: 1
-      styles: '.btn.blue|Blue Button'
+      styles: ".btn.blue|Blue Button\r\n.btn.blue-ghost|Blue Ghost Button"
 image_upload:
   status: false
   scheme: public
