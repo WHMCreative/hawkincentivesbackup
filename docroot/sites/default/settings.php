@@ -134,8 +134,8 @@ if(isset($_SERVER['AH_SITE_ENVIRONMENT'])) {
   switch ($_SERVER['AH_SITE_ENVIRONMENT']) {
     case 'dev':
       // Configure shield for dev environment.
-      $config['shield.settings']['user'] = 'hawkincentives';
-      $config['shield.settings']['pass'] = '3ditHawk';
+      $config['shield.settings']['credentials']['shield']['user'] = 'hawkincentives';
+      $config['shield.settings']['credentials']['shield']['pass'] = '3ditHawk';
 
       $settings['file_private_path'] = "/var/www/bhk-d8.dev.e3develop.com/application/shared/private";
       $config['system.file']['path']['temporary'] = "/var/www/bhk-d8.dev.e3develop.com/application/shared/private/tmp";
@@ -164,8 +164,8 @@ if(isset($_SERVER['AH_SITE_ENVIRONMENT'])) {
     case 'prod':
 
       //@TODO remove before launch
-      $config['shield.settings']['user'] = 'hawkincentives';
-      $config['shield.settings']['pass'] = '3ditHawk';
+      $config['shield.settings']['credentials']['shield']['user'] = 'hawkincentives';
+      $config['shield.settings']['credentials']['shield']['pass'] = '3ditHawk';
 
       //@TODO Configure this
           $settings['file_private_path'] = "/var/www/bhk-d8.prod.e3develop.com/application/shared/private";

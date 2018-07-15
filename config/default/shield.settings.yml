@@ -1,5 +1,3 @@
-user: ''
-pass: ''
 print: ''
 allow_cli: true
 _core:
@@ -8,4 +6,6 @@ method: 0
 paths: /graphql
 credential_provider: shield
 credentials:
-  shield: null
+  shield:
+    user: ''
+    pass: ''
