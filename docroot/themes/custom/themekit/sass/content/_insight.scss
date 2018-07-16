@@ -133,6 +133,8 @@
         top: 15px;
         @include insight-label();
       }
+      .field--name-field-media,
+      .default-insight-image,
       .field--name-field-teaser-image {
         position: relative;
         overflow: hidden;

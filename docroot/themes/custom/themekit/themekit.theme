@@ -94,6 +94,12 @@ function themekit_preprocess_node_insight(&$variables) {
     }
   }
 
+  if(!empty($node->field_p_header->getValue())) {
+    $header_p = $node->field_p_header->entity;
+    $view_builder = \Drupal::entityTypeManager()->getViewBuilder('paragraph');
+    $variables['header_image'] = $view_builder->viewField($header_p->field_media, 'teaser');
+  }
+
   if (isset($heading)) {
     $variables['heading'] = $heading;
   }
