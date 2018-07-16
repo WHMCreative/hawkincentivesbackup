@@ -6,6 +6,7 @@ footer {
   background: $primary-color;
   color: $white;
   .footer-content {
+    padding:70px;
     display: flex;
     flex-direction: row;
     @include content-width(default);
@@ -24,7 +25,9 @@ footer {
            line-height: 40px;
          }
         p + p {
-          background-color: red;
+          a{
+            @include btn(white-with-hover);
+          }
         }
       }
 
@@ -33,6 +36,8 @@ footer {
           display: flex;
           list-style: none;
           margin: 0;
+          margin-top: 20px;
+          margin-bottom: 20px;
           li {
             margin-left: 0;
             margin-right: 13px;
@@ -59,8 +64,10 @@ footer {
           }
         }
         #block-copyright {
-          margin-top: 20px;
+
           h2 {
+            margin-top: 40px;
+            margin-bottom: 20px;
             font-size: 12px;
             line-height: 16px;
             letter-spacing: -0.09px;
@@ -74,7 +81,15 @@ footer {
       .menu--footer {
         .menu {
           list-style: none;
-          margin-left: 0!important;
+          margin-left: 0;
+          li:last-child {
+            span,a {
+              font-weight: 700;
+            }
+            a {
+              font-size: 14px;
+            }
+          }
         }
         > ul {
           @include breakpoint(medium) {

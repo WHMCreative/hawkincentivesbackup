@@ -70,6 +70,13 @@ $buttons: (
     background: $white,
     color: $primary-color
   ),
+  white-with-hover: (
+    extend:white,
+    color: $secondary-color,
+    active-border: transparent,
+    active-background: #2a5b7c,
+    active-color: $white
+  ),
   ghost: (
     background: $white,
     border: transparent,
