@@ -116,7 +116,7 @@ if(isset($_SERVER['AH_SITE_ENVIRONMENT'])) {
 
   $config['environment_indicator.indicator']['bg_color'] = '#930007';
   $config['environment_indicator.indicator']['fg_color'] = '#ffffff';
-  $config['environment_indicator.indicator']['name'] = 'DrupalVM ' . $_SERVER['AH_SITE_ENVIRONMENT'];
+  $config['environment_indicator.indicator']['name'] = 'BlackMesh ' . $_SERVER['AH_SITE_ENVIRONMENT'];
 
   // Set trusted host pattern for the acquia paragon site. We need to set this because we cannot add additional
   // aliases to a free acquia account. This can be deleted for any new project created from paragon.

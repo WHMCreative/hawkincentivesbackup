@@ -21,7 +21,7 @@ Drupal.behaviors.magnificPopup = {
             src: $modalSrc,
             type: 'inline'
           },
-          closeBtnInside: false,
+          closeBtnInside: true,
         });
       }
       e.preventDefault();

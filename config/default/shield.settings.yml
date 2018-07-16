@@ -1,11 +1,11 @@
-print: ''
-allow_cli: true
-_core:
-  default_config_hash: NfapC3dpo1sgPOpAyD-rqMkL3OzOfjJyi8FIK0GWpW8
-method: 0
-paths: /graphql
 credential_provider: shield
 credentials:
   shield:
     user: ''
     pass: ''
+print: ''
+allow_cli: true
+method: 0
+paths: /graphql
+_core:
+  default_config_hash: zbV37k_Zk4h5cGrcNYniwFjllfec25BZdX5q-4XUrvY

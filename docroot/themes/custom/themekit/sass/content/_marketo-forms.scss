@@ -4,14 +4,120 @@
 
 .marketo-form-wrapper {
   h2 {
-   font-size: rem-calc(20);
+    margin-bottom: 20px;
+    font-size: rem-calc(20);
     font-weight: $global-weight-bold;
+    line-height: rem-calc(27);
     color: $white;
+  }
+
+  .marketo-form-item {
+    position: relative;
+
+    label {
+      transform: translateY(150%);
+      padding-left: 5px;
+      font-size: rem-calc(13);
+      line-height: 1.25;
+      color: $white;
+      transition: all .15s ease-out;
+
+      &.form-required:after {
+        content: '*';
+        background-image: none;
+        vertical-align: text-top;
+      }
+    }
+
+    input {
+      margin-bottom: 7px;
+      padding: 8px 5px;
+      border-top: 0;
+      border-left: 0;
+      border-bottom: 1px solid rgba(255, 255, 255, .6);
+      border-right: 0;
+      background-color: transparent;
+      box-shadow: none;
+      font-size: rem-calc(13);
+      color: $white;
+      transition: all .25s ease-in-out;
+
+      &[type="email"] {
+        max-width: 85%;
+        min-width: 225px;
+      }
+      &[type="tel"] {
+        max-width: 56%;
+        min-width: 150px;
+      }
+    }
+
+    select {
+      position: relative;
+      z-index: 1;
+      padding-left: 5px;
+      background-color: transparent;
+      background-image: url('../../images/svg/arrow-down-white.svg');
+      background-position: right -20px center;
+      background-size: 8px 8px;
+      border-top: 0;
+      border-left: 0;
+      border-bottom: 1px solid rgba(255, 255, 255, .6);
+      border-right: 0;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      font-size: rem-calc(13);
+      color: $white;
+
+      &::-ms-expand {
+        display: none;
+      }
+
+      option {
+        background-color: $secondary-color;
+      }
+
+      &:focus {
+        box-shadow: 0 1px 0 0 $white;
+      }
+    }
+
+    textarea {
+      padding: 8px 5px;
+      background: none;
+      border-top: 0;
+      border-left: 0;
+      border-bottom: 1px solid rgba(255, 255, 255, .6);
+      border-right: 0;
+      box-shadow: none;
+      resize:none;
+      font-size: rem-calc(13);
+      color: $white;
+      transition: all .25s ease-in-out;
+
+      &:focus {
+        box-shadow: 0 1px 0 0 $white;
+      }
+    }
+
+    &.has-value,
+    &.marketo-focus-form-item {
+      label {
+        transform: translateY(0);
+      }
+    }
+  }
+
+  .mktoError {
+    margin: -5px 0 0 5px;
+    font-size: rem-calc(13);
   }
 
   .mktoButtonRow {
     button {
       @include btn(ghost-white);
+      margin-top: 20px;
+      margin-left: 5px;
       cursor: pointer;
     }
   }

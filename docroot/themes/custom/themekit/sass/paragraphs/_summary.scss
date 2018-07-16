@@ -1,0 +1,104 @@
+////
+/// Paragraphs - Summary
+////
+
+.paragraph--type--summary-insights {
+  overflow: hidden;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  @include paragraph-paddings;
+  @include full-width-bg-color(#f4f4f4, before);
+
+  &:before {
+    background: linear-gradient(135deg, rgba(244, 244, 244, .4) 0%, rgba(228, 228, 228, .4) 100%);
+    bottom: 0;
+    height: auto;
+
+    @include breakpoint(small) {
+      margin-top: rem-calc(-40);
+      margin-bottom: rem-calc(-40);
+    }
+    @include breakpoint(medium) {
+      margin-top: rem-calc(-60);
+      margin-bottom: rem-calc(-60);
+    }
+    @include breakpoint(large) {
+      margin-top: rem-calc(-85);
+      margin-bottom: rem-calc(-85);
+    }
+  }
+
+  > .paragraph-content {
+    @include content-width(default);
+    @include breakpoint(marge down) {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    @include breakpoint(large) {
+      @include clear;
+    }
+  }
+
+  .field--name-field-heading {
+    width: 100%;
+    margin-bottom: 20px;
+    text-align: center;
+    color: $secondary-color-dark;
+    font-family: $body-font-family;
+    font-size: rem-calc(32);
+    font-weight: $global-weight-light;
+    line-height: rem-calc(40);
+
+    @include breakpoint(large) {
+      width: 25%;
+      float: left;
+      margin-bottom: 8px;
+      text-align: left;
+    }
+  }
+
+  .summary-output {
+    width: 100%;
+    @include breakpoint(medium) {
+      @include tk-flex-block-grid(3, 'article', $gutter: 18px);
+    }
+    @include breakpoint(large) {
+      width: 75%;
+      float: right;
+    }
+
+    > article {
+      margin-bottom: 20px;
+      @include breakpoint(medium) {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .field--name-field-p-link {
+    @include breakpoint(marge down) {
+      order: 9;
+      margin-top: 20px;
+      width: 100%;
+      text-align: center;
+    }
+    @include breakpoint(large) {
+      float: left;
+    }
+
+    a {
+      background: -webkit-linear-gradient(-45deg, #1969b7 0%, #6bcec9 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: $secondary-color;
+      font-size: rem-calc(14);
+      font-weight: $global-weight-bold;
+      text-transform: capitalize;
+    }
+  }
+
+  .field--name-field-description {
+    clear: both;
+    padding-top: 25px;
+  }
+}
