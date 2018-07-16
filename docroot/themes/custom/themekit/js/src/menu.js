@@ -14,7 +14,9 @@ Drupal.behaviors.menuMain = {
     $mainMenuItemLink.on('click', function (e) {
       e.preventDefault();
       e.stopPropagation();
-      $(this).parent().toggleClass('active');
+      let $parent = $(this).parent();
+      $parent.siblings().removeClass('active'); // hide open dropdowns
+      $parent.toggleClass('active');
     });
 
     // hide dropdown when clicked outside
