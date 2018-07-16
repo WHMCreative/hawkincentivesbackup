@@ -130,7 +130,8 @@
     "enable-patching": true,
     "patches": {
       "drupal/core": {
-        "Node revision routes don't convert {node} param": "https://www.drupal.org/files/issues/2730631-41.patch"
+        "Node revision routes don't convert {node} param": "https://www.drupal.org/files/issues/2730631-41.patch",
+        "MenuLinkContentAccessControlHandler does not allow 'view' access without admin permission": "https://www.drupal.org/files/issues/menu_link_content-view-permissions-2915792-12.patch"
       },
       "drupal/media_entity": {
         "Allow updates to thumbnails on save": "https://www.drupal.org/files/issues/2749695_14_media_entity.patch"

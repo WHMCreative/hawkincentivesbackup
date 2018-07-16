@@ -9096,20 +9096,59 @@ Drupal.behaviors.menuMain = {
     $mainMenuItemLink.on('click', function (e) {
       e.preventDefault();
       e.stopPropagation();
-      __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).parent().toggleClass('active');
+      let $parent = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).parent();
+      $parent.siblings().removeClass('active'); // hide open dropdowns
+      $parent.toggleClass('active');
+    });
+
+    alignMenuDropdown();
+
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).on('changed.zf.mediaquery', function(event, newSize, oldSize) {
+      if (newSize === 'marge' || oldSize === 'marge') {
+        alignMenuDropdown();
+      }
     });
 
     // hide dropdown when clicked outside
     __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).once('document-click').on('click', function (e) {
-      let $acitveMenuItem = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.menu-level-0 > li.active', context);
+      let $acitveMenuItem = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.menu-level-0 > li.active', context),
+          $menuMain = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.menu--main', context);
       if($acitveMenuItem.length && !$acitveMenuItem.has(e.target).length > 0) {
         $acitveMenuItem.removeClass('active');
       }
+
+      // handling mobile off-canvas menu
+      if($menuMain.length && !$menuMain.has(e.target).length > 0) {
+        let targetClassList = e.target.classList;
+        if (!~__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.inArray('menu-toggle', targetClassList) && !~__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.inArray('menu--main', targetClassList)) {
+          __WEBPACK_IMPORTED_MODULE_0_jquery___default()('body').removeClass('menu-open');
+        }
+      }
+
     });
 
     $menuToggle.once('menu-toggle').on('click', function (e) {
       __WEBPACK_IMPORTED_MODULE_0_jquery___default()('body').toggleClass('menu-open');
     });
+
+
+    function alignMenuDropdown() {
+      if (Foundation.MediaQuery.atLeast('large')) {
+        $mainMenuItemLink.each(function () {
+          if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).hasClass('align-second-column')) {
+            let $menuLink = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this),
+              $firstItemWidth = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.menu-level-0 > li:first-child', context).outerWidth(true);
+            $menuLink.parent().addClass('static');
+            $menuLink.next().addClass('align-second-column').css('left', $firstItemWidth - 5);
+          }
+        });
+      } else {
+        let $alignSecondColumnDropdown = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.menu-level-0 > li .menu-dropdown.align-second-column', context);
+        if($alignSecondColumnDropdown.length) {
+          $alignSecondColumnDropdown.css('left', '').removeClass('align-second-column');
+        }
+      }
+    }
 
   }
 };
