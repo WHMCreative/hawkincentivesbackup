@@ -5,6 +5,7 @@
 .region-header {
   background: $body-background;
   box-shadow: 0 2px 10px rgba($black, 0.05);
+  position: relative;
   z-index: z(header, base);
   height: 48px;
   @include breakpoint(large) {
