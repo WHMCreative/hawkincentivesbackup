@@ -24,6 +24,16 @@
     margin-left: auto;
     margin-right: auto;
   }
+
+  .block--component & {
+    background: $gray-gradient;
+    @include paragraph-margins((small: 0));
+    color: $secondary-color;
+
+    >.paragraph-content {
+      @include content-width(default);
+    }
+  }
 }
 
 .paragraph--type--reference-featured-insight {

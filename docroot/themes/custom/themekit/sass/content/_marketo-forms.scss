@@ -121,4 +121,31 @@
       cursor: pointer;
     }
   }
+
+  .block--component & {
+
+    h2 {
+      color: $secondary-color;
+      text-align: center;
+      @include header-font-size(h2);
+      font-weight: $global-weight-normal;
+    }
+
+    .marketo-form-item {
+
+      label {
+        color: $medium-gray;
+      }
+
+      select,
+      textarea,
+      input {
+        border-bottom: 1px solid $medium-gray;
+      }
+    }
+
+    .marketo-steps-wrapper {
+      @include content-width(narrow);
+    }
+  }
 }
