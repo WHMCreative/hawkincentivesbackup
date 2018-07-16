@@ -15,9 +15,8 @@
     position: relative;
 
     label {
-      position: absolute;
-      top: 9px;
-      left: 5px;
+      transform: translateY(150%);
+      padding-left: 5px;
       font-size: rem-calc(13);
       line-height: 1.25;
       color: $white;
@@ -31,7 +30,7 @@
     }
 
     input {
-      margin-bottom: 20px;
+      margin-bottom: 7px;
       padding: 8px 5px;
       border-top: 0;
       border-left: 0;
@@ -45,9 +44,11 @@
 
       &[type="email"] {
         max-width: 85%;
+        min-width: 225px;
       }
       &[type="tel"] {
         max-width: 56%;
+        min-width: 150px;
       }
     }
 
@@ -102,20 +103,13 @@
     &.has-value,
     &.marketo-focus-form-item {
       label {
-        top: -10px;
-      }
-    }
-
-    &.simple-label {
-      label {
-        position: static;
-        padding-left: 5px;
+        transform: translateY(0);
       }
     }
   }
 
   .mktoError {
-    margin: -15px 0 0 5px;
+    margin: -5px 0 0 5px;
     font-size: rem-calc(13);
   }
 
