@@ -321,9 +321,7 @@
               }
             }
             .field--name-field-cta {
-              @include breakpoint(marge down) {
-                display: none;
-              }
+              margin-top: 10px;
               @include breakpoint(large) {
                 margin-top: 20px;
               }
@@ -337,6 +335,11 @@
                     font-weight: 300;
                     display: inline-block;
                     vertical-align: top;
+                  }
+                }
+                .field--name-field-description {
+                  @include breakpoint(marge down) {
+                    display: none;
                   }
                 }
               }
