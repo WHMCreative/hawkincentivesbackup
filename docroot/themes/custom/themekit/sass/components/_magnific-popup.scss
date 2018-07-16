@@ -3,8 +3,15 @@
 ////
 
 .mfp-close-btn-in .mfp-close {
-  color: $lighter-gray;
+  right: 13px;
+  top: 9px;
+  color: $dove-colored;
   font-size: rem-calc(34);
+  opacity: .9;
+
+  @include selectors('active') {
+    opacity: 1;
+  }
 }
 
 .mfp-content {
