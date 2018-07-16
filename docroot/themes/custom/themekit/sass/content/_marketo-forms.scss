@@ -63,9 +63,14 @@
       border-left: 0;
       border-bottom: 1px solid rgba(255, 255, 255, .6);
       border-right: 0;
-      -webkit-appearance: initial;
+      -webkit-appearance: none;
+      -moz-appearance: none;
       font-size: rem-calc(13);
       color: $white;
+
+      &::-ms-expand {
+        display: none;
+      }
 
       option {
         background-color: $secondary-color;
