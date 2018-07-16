@@ -216,6 +216,7 @@
                     &:before {
                       left: 0;
                       right: 20px;
+                      opacity: 1;
                     }
                   }
                 }
@@ -246,7 +247,8 @@
                     right: calc(50% + 10px);
                     height: 3px;
                     background: linear-gradient(-45deg, $secondary-color-light 0%, $secondary-color 100%);
-                    transition: left 250ms, right 250ms;
+                    opacity: 0;
+                    transition: left 250ms, right 250ms, opacity 250ms;
                   }
                 }
               }
