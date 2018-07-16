@@ -1,8 +1,8 @@
 credential_provider: shield
 credentials:
   shield:
-    user: ''
-    pass: ''
+    user: hawkincentives
+    pass: 3ditHawk
 print: ''
 allow_cli: true
 method: 0
