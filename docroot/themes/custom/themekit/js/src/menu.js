@@ -22,7 +22,6 @@ Drupal.behaviors.menuMain = {
     alignMenuDropdown();
 
     $(window).on('changed.zf.mediaquery', function(event, newSize, oldSize) {
-      console.log(newSize);
       if (newSize === 'marge' || oldSize === 'marge') {
         alignMenuDropdown();
       }
@@ -30,10 +29,20 @@ Drupal.behaviors.menuMain = {
 
     // hide dropdown when clicked outside
     $(document).once('document-click').on('click', function (e) {
-      let $acitveMenuItem = $('.menu-level-0 > li.active', context);
+      let $acitveMenuItem = $('.menu-level-0 > li.active', context),
+          $menuMain = $('.menu--main', context);
       if($acitveMenuItem.length && !$acitveMenuItem.has(e.target).length > 0) {
         $acitveMenuItem.removeClass('active');
       }
+
+      // handling mobile off-canvas menu
+      if($menuMain.length && !$menuMain.has(e.target).length > 0) {
+        let targetClassList = e.target.classList;
+        if (!~$.inArray('menu-toggle', targetClassList) && !~$.inArray('menu--main', targetClassList)) {
+          $('body').removeClass('menu-open');
+        }
+      }
+
     });
 
     $menuToggle.once('menu-toggle').on('click', function (e) {

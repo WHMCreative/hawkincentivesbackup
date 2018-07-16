@@ -9106,7 +9106,6 @@ Drupal.behaviors.menuMain = {
     alignMenuDropdown();
 
     __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).on('changed.zf.mediaquery', function(event, newSize, oldSize) {
-      console.log(newSize);
       if (newSize === 'marge' || oldSize === 'marge') {
         alignMenuDropdown();
       }
@@ -9114,10 +9113,20 @@ Drupal.behaviors.menuMain = {
 
     // hide dropdown when clicked outside
     __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).once('document-click').on('click', function (e) {
-      let $acitveMenuItem = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.menu-level-0 > li.active', context);
+      let $acitveMenuItem = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.menu-level-0 > li.active', context),
+          $menuMain = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.menu--main', context);
       if($acitveMenuItem.length && !$acitveMenuItem.has(e.target).length > 0) {
         $acitveMenuItem.removeClass('active');
       }
+
+      // handling mobile off-canvas menu
+      if($menuMain.length && !$menuMain.has(e.target).length > 0) {
+        let targetClassList = e.target.classList;
+        if (!~__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.inArray('menu-toggle', targetClassList) && !~__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.inArray('menu--main', targetClassList)) {
+          __WEBPACK_IMPORTED_MODULE_0_jquery___default()('body').removeClass('menu-open');
+        }
+      }
+
     });
 
     $menuToggle.once('menu-toggle').on('click', function (e) {
