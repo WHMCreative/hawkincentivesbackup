@@ -323,6 +323,7 @@ function themekit_theme_suggestions_field_alter(array &$suggestions, array $vari
       array_unshift($suggestions, 'field__heading_2');
         break;
       case 'single_heading':
+      case 'simple_icon_content':
       case 'simple_media_tile':
       case 'summary_insights':
         array_unshift($suggestions, 'field__heading_3');
@@ -359,6 +360,16 @@ function themekit_theme_suggestions_field_alter(array &$suggestions, array $vari
           case 'simple_content':
             if ($field_name == 'field_heading') {
               $suggestions[] = 'field__heading_2';
+            }
+            break;
+        }
+      }
+
+      if ($parent_field == 'field_p_callout_content') {
+        switch($bundle) {
+          case 'simple_icon_content':
+            if ($field_name == 'field_heading') {
+              $suggestions[] = 'field';
             }
             break;
         }

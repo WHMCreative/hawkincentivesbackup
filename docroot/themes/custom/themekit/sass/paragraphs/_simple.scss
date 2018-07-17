@@ -166,25 +166,20 @@
 // Simple Icon Content
 .paragraph--type--simple-icon-content {
   > .paragraph-content {
-    display: flex;
-    align-items: center;
-    font-size: rem-calc(13);
-    line-height: 1.3;
 
-    .field--name-field-media-image {
-      margin-right: rem-calc(12);
+    .field--name-field-p-media {
+      margin-bottom: rem-calc(16);
 
-      img {
-        min-width: 33px;
+      img,
+      svg {
+        height: rem-calc(45);
       }
     }
 
+
     .field--name-field-description {
       display: none;
-
-      .paragraph--type--banner-hero & {
-        max-width: rem-calc(150);
-      }
+      font-size: rem-calc(13);
 
       @include breakpoint(medium) {
         display: block;
@@ -194,6 +189,47 @@
     .field--name-field-mobile-description {
       @include breakpoint(medium) {
         display: none;
+      }
+    }
+  }
+
+
+  // When placed in callout
+  .field--name-field-p-callout-content & {
+    & > .paragraph-content {
+      display: flex;
+      align-items: center;
+      font-size: rem-calc(13);
+      line-height: 1.3;
+
+      .field--name-field-p-media {
+        margin-bottom: 0;
+      }
+
+
+      .field--name-field-media-image {
+        margin-right: rem-calc(12);
+
+        img {
+          height: auto;
+          min-width: 33px;
+        }
+      }
+
+      .field--name-field-description {
+        max-width: rem-calc(150);
+      }
+    }
+
+    .paragraph--type--layout-2-column & {
+      .field--name-field-heading {
+        color: $secondary-color-dark;
+        font-weight: $global-weight-bold;
+        font-size: rem-calc(20);
+      }
+
+      .field--name-field-media-image {
+        margin-right: rem-calc(18);
       }
     }
   }
