@@ -14,8 +14,11 @@ Drupal.behaviors.menuMain = {
     $mainMenuItemLink.on('click', function (e) {
       e.preventDefault();
       e.stopPropagation();
-      let $parent = $(this).parent();
-      $parent.siblings().removeClass('active'); // hide open dropdowns
+      let $parent = $(this).parent(),
+          $siblings = $parent.siblings('.active');
+      if($siblings.length) {
+        $siblings.removeClass('active'); // hide open dropdown
+      }
       $parent.toggleClass('active');
     });
 
