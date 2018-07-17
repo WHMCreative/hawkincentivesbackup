@@ -230,6 +230,14 @@ function themekit_preprocess_paragraph_media_image(&$variables) {
           '#uri' => $uri,
         ];
         break;
+      case 'simple_icon_content':
+        $uri = $paragraph->field_media_image->entity->field_image->entity->getFileUri();
+        $variables['custom_image_style'] = [
+          '#theme' => 'image_style',
+          '#style_name' => 'thumbnail',
+          '#uri' => $uri,
+        ];
+        break;
       case 'layout_2_column':
         $uri = $paragraph->field_media_image->entity->field_image->entity->getFileUri();
         $variables['custom_image_style'] = [

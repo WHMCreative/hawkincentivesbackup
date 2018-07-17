@@ -99,6 +99,7 @@
       width: 24%;
       float: left;
       padding-top: 15px;
+      font-size: rem-calc(13);
       @include breakpoint(marge down) {
         order: 9;
         width: 100%;
@@ -108,6 +109,11 @@
   }
 
   .node--sidebar & {
+    @include paragraph-margins((small: 0));
+
+    &.bg-color-gray {
+      background: none;
+    }
     .field--name-field-heading {
       color: $secondary-color-dark;
       font-family: $body-font-family;

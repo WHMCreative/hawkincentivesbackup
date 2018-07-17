@@ -75,7 +75,8 @@ Drupal.behaviors.mediaTile = {
 
     $content.each(function () {
 
-      let $this = $(this);
+      let $this = $(this),
+        $slides = $this.find('.field--name-field-p-media-tile-content');
 
       $this.on('init reInit afterChange', function(event, slick, currentSlide, nextSlide) {
         let $count = $this.find('.slick-counter'),
@@ -86,19 +87,24 @@ Drupal.behaviors.mediaTile = {
         $count.text(i + '/' + slick.slideCount);
       });
 
-      $this.find('.field--name-field-p-media-tile-content').slick({
-        slidesToShow: 1,
-        arrows: true,
-        dots: true,
-        adaptiveHeight: true,
-        infinite: false,
-        mobileFirst: true,
-        responsive: [
-          {
-            breakpoint: 800,
-            settings: 'unslick'
+      $(window).on('load resize orientationchange', function() {
+        // slick on mobile
+        if ($(window).width() > 800) {
+          if ($slides.hasClass('slick-initialized')) {
+            $slides.slick('unslick');
           }
-        ]
+        }
+        else{
+          if (!$slides.hasClass('slick-initialized')) {
+            $slides.slick({
+              slidesToShow: 1,
+              arrows: true,
+              dots: true,
+              adaptiveHeight: true,
+              infinite: false,
+            });
+          }
+        }
       });
     });
   }

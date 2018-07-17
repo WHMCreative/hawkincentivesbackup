@@ -169,13 +169,7 @@
 
     .field--name-field-p-media {
       margin-bottom: rem-calc(16);
-
-      img,
-      svg {
-        height: rem-calc(45);
-      }
     }
-
 
     .field--name-field-description {
       display: none;
@@ -193,6 +187,19 @@
     }
   }
 
+  .field--name-field-p-compound-content & {
+    .field--name-field-p-media {
+      margin-bottom: rem-calc(16);
+
+      img,
+      svg {
+        height: rem-calc(45);
+        width: auto;
+        margin: 0 auto;
+      }
+    }
+  }
+
 
   // When placed in callout
   .field--name-field-p-callout-content & {
@@ -204,32 +211,37 @@
 
       .field--name-field-p-media {
         margin-bottom: 0;
-      }
-
-
-      .field--name-field-media-image {
         margin-right: rem-calc(12);
+        width: rem-calc(50);
+        min-width: rem-calc(50);
 
-        img {
-          height: auto;
-          min-width: 33px;
+        * {
+          text-align: center;
         }
-      }
-
-      .field--name-field-description {
-        max-width: rem-calc(150);
       }
     }
 
+    // When placed in banner hero
+    .paragraph--type--banner-hero & {
+      .field--name-field-p-media {
+        width: rem-calc(30);
+        min-width: rem-calc(30);
+
+        img,
+        svg {
+          height: auto;
+          width: auto;
+          margin: 0 auto;
+        }
+      }
+    }
+
+    // When placed in layout 2 column
     .paragraph--type--layout-2-column & {
       .field--name-field-heading {
         color: $secondary-color-dark;
         font-weight: $global-weight-bold;
         font-size: rem-calc(20);
-      }
-
-      .field--name-field-media-image {
-        margin-right: rem-calc(18);
       }
     }
   }
