@@ -16,13 +16,14 @@
 // Add anything from bower/npm here
 @import "../node_modules/magnific-popup/src/css/settings";
 @import "../node_modules/magnific-popup/src/css/main";
-@import "../node_modules/slick-carousel/slick/slick";
-@import "../node_modules/slick-carousel/slick/slick-theme";
 
 @import "base/settings";
 @import "base/app";
 @import "base/animation";
 @import "base/config";
+
+@import "../node_modules/slick-carousel/slick/slick";
+@import "../node_modules/slick-carousel/slick/slick-theme";
 
 @import "regions/page";
 @import "regions/header";
@@ -32,6 +33,7 @@
 @import "components/accessibility";
 @import "components/card-browser";
 @import "components/magnific-popup";
+@import "components/slick";
 @import "components/svg";
 @import "components/typography";
 @import "components/social";

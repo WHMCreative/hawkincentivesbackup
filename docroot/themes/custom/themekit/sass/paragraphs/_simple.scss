@@ -237,6 +237,10 @@
 
 // Simple - Media Tile
 .paragraph--type--simple-media-tile {
+  padding: rem-calc(20);
+  @include breakpoint(large) {
+    padding: 0;
+  }
   & > .paragraph-content {
     background: $white;
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);

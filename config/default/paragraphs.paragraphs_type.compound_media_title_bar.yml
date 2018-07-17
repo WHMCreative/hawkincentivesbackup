@@ -1,0 +1,9 @@
+uuid: e6597e37-dfd4-483d-9571-e9b8c76753c4
+langcode: en
+status: true
+dependencies: {  }
+id: compound_media_title_bar
+label: 'Compound - Media Tile Bar'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

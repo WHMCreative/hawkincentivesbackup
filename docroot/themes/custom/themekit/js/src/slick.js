@@ -67,3 +67,39 @@ Drupal.behaviors.slickCustom = {
 
   }
 };
+
+Drupal.behaviors.mediaTile = {
+  attach: function (context, settings) {
+    let $content = $('.paragraph--type--compound-media-title-bar .field--name-field-p-media-tile-content', context);
+    if(!$content.length) return;
+
+    $content.each(function () {
+
+      let $this = $(this);
+
+      $this.on('init reInit afterChange', function(event, slick, currentSlide, nextSlide) {
+        let $count = $this.find('.slick-counter'),
+          i = (currentSlide ? currentSlide : 0) + 1;
+        if ($count.length == 0) {
+          $this.append('<div class="slick-counter">' + i + '/' + slick.slideCount + '</div>');
+        }
+        $count.text(i + '/' + slick.slideCount);
+      });
+
+      $this.slick({
+        slidesToShow: 1,
+        arrows: true,
+        dots: true,
+        adaptiveHeight: true,
+        infinite: false,
+        mobileFirst: true,
+        responsive: [
+          {
+            breakpoint: 768,
+            settings: 'unslick'
+          }
+        ]
+      });
+    });
+  }
+};

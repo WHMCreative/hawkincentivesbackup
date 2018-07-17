@@ -90,11 +90,6 @@
       }
     }
   }
-
-
-
-
-
 }
 
 // Compound - Callout
@@ -275,6 +270,96 @@
         &:last-child {
           margin-bottom: 0;
         }
+      }
+    }
+  }
+}
+
+// Compound - Media Tile Bar
+.paragraph--type--compound-media-title-bar {
+  text-align: center;
+  > .paragraph-content {
+    @include content-width(wide);
+    > .field--name-field-heading {
+      @include breakpoint(large) {
+        @include content-width(narrow);
+      }
+    }
+    > .field--name-field-description {
+      margin-bottom: rem-calc(48);
+      @include breakpoint(medium) {
+        @include content-width(narrow);
+      }
+    }
+
+    .field--name-field-heading + .field--name-field-p-media-tile-content {
+      margin-top: rem-calc(24);
+      @include breakpoint(medium) {
+        margin-top: rem-calc(32);
+      }
+    }
+
+    .field--name-field-p-media-tile-content {
+      @include content-width(wide);
+      @include breakpoint(marge) {
+        @include tk-flex-equal-width-items($grid-column-gutter, '.paragraph');
+      }
+    }
+
+    .field--name-field-p-compound-content > .paragraph {
+      margin-bottom: rem-calc(48);
+
+      @include breakpoint(marge) {
+        margin-bottom: 0;
+      }
+    }
+
+    > .field--name-field-p-multiple-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+      @include breakpoint(large) {
+        margin-top: 40px;
+      }
+
+      & > .paragraph {
+        margin: 0 8px;
+        a {
+          @include link(default);
+        }
+
+        &:nth-last-child(2) {
+          a {
+            @include btn(blue);
+          }
+        }
+      }
+    }
+  }
+
+  &.column-count-1,
+  &.column-count-2 {
+    & > .paragraph-content > .field--name-field-p-media-tile-content {
+      @include content-width(narrow);
+      @include breakpoint(medium) {
+        @include tk-flex-equal-width-items($grid-column-gutter, '.paragraph');
+      }
+
+      & > .paragraph {
+        margin-bottom: rem-calc(48);
+
+        @include breakpoint(medium) {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  &.column-count-3 {
+    & > .paragraph-content > .field--name-field-p-media-tile-content {
+      @include breakpoint(marge) {
+        @include tk-flex-equal-width-items((small: 30px, medium: 60px), '.paragraph');
       }
     }
   }

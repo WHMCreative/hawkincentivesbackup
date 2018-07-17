@@ -7,6 +7,7 @@ dependencies:
     - node.type.component_page
     - paragraphs.paragraphs_type.compound_callout
     - paragraphs.paragraphs_type.compound_content_bar
+    - paragraphs.paragraphs_type.compound_media_title_bar
     - paragraphs.paragraphs_type.compound_slider
     - paragraphs.paragraphs_type.compound_stat_bar
     - paragraphs.paragraphs_type.compound_tabbed_content
@@ -43,12 +44,13 @@ settings:
       compound_stat_bar: compound_stat_bar
       compound_tabbed_content: compound_tabbed_content
       reference_card_browser: reference_card_browser
+      reference_marketo_form: reference_marketo_form
       layout_2_column: layout_2_column
       simple_cta: simple_cta
-      reference_marketo_form: reference_marketo_form
       compound_slider: compound_slider
       simple_content: simple_content
       layout_grid: layout_grid
+      compound_media_title_bar: compound_media_title_bar
       reference_block: reference_block
       reference_featured_insight: reference_featured_insight
       summary_cards: summary_cards
@@ -77,31 +79,31 @@ settings:
       marketo_hidden_field:
         weight: 27
         enabled: false
-      banner_featured_insights:
-        weight: 28
-        enabled: false
       marketo_submission_confirmation:
         weight: 28
         enabled: false
-      reference_card_browser:
-        enabled: true
-        weight: 29
+      banner_featured_insights:
+        weight: 28
+        enabled: false
       media_image_slider:
         weight: 29
         enabled: false
       banner_hero:
         weight: 29
         enabled: false
+      reference_card_browser:
+        enabled: true
+        weight: 29
       media_video_modal:
         weight: 30
         enabled: false
+      reference_marketo_form:
+        enabled: true
+        weight: 31
       layout_2_column:
         enabled: true
         weight: 31
       simple_cta:
-        enabled: true
-        weight: 31
-      reference_marketo_form:
         enabled: true
         weight: 31
       compound_slider:
@@ -116,15 +118,18 @@ settings:
       simple_media_bar:
         weight: 34
         enabled: false
-      layout_grid:
-        enabled: true
-        weight: 35
       simple_media_tile:
         weight: 35
         enabled: false
+      layout_grid:
+        enabled: true
+        weight: 35
       simple_stat:
         weight: 36
         enabled: false
+      compound_media_title_bar:
+        enabled: true
+        weight: 37
       link_form_modal:
         weight: 39
         enabled: false
@@ -139,6 +144,9 @@ settings:
         enabled: false
       media_video:
         weight: 47
+        enabled: false
+      media_svg:
+        weight: 50
         enabled: false
       summary_cards:
         enabled: true

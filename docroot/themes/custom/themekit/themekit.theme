@@ -166,6 +166,14 @@ function themekit_preprocess_paragraph_compound_content_bar(&$variables) {
   $variables['column_count'] = $paragraph->get('field_p_compound_content')->count();
 }
 
+
+function themekit_preprocess_paragraph_compound_media_title_bar(&$variables) {
+  $paragraph = $variables['paragraph'];
+
+  $variables['column_count'] = $paragraph->get('field_p_media_tile_content')->count();
+}
+
+
 function themekit_preprocess_paragraph_compound_callout(&$variables) {
   $paragraph = $variables['paragraph'];
 
@@ -325,6 +333,7 @@ function themekit_theme_suggestions_field_alter(array &$suggestions, array $vari
         array_unshift($suggestions, $large_heading ? 'field__heading_5' : 'field__heading_1');
         break;
       case 'compound_content_bar':
+      case 'compound_media_title_bar':
       case 'layout_2_column':
       case 'simple_cta':
       case 'simple_content':
