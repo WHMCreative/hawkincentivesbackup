@@ -53,25 +53,27 @@
 
             // Add field name class for form row.
             form.getFormElem().find('.mktoField').each(function (e) {
-              let elementName = $(this).attr('name');
+              let $formField = $(this),
+                elementName = $formField.attr('name');
+
               if (typeof elementName !== 'undefined') {
-                $(this).parents('.mktoFormRow').addClass('mktoField' + elementName);
+                $formField.parents('.mktoFormRow').addClass('mktoField' + elementName);
               }
 
-              if($(this).is('input:not([type=checkbox])') && $(this).is('input:not([type=radio])')) {
-                setInputStateTracker($(this));
+              if($formField.is('input:not([type=checkbox])') && $formField.is('input:not([type=radio])')) {
+                setInputStateTracker($formField);
               }
 
-              if($(this).is('select') || $(this).is('textarea')) {
-                $(this).parents('.mktoFieldWrap').addClass('marketo-form-item marketo-focus-form-item');
+              if($formField.is('select') || $formField.is('textarea')) {
+                $formField.parents('.mktoFieldWrap').addClass('marketo-form-item marketo-focus-form-item');
               }
 
-              if($(this).is('input[type=checkbox]')) {
-                $(this).parents('.mktoFieldWrap').addClass('marketo-checkbox');
+              if($formField.is('input[type=checkbox]')) {
+                $formField.parents('.mktoFieldWrap').addClass('marketo-checkbox');
               }
 
-              if($(this).is('input[type=radio]')) {
-                $(this).parents('.mktoFieldWrap').addClass('marketo-radio');
+              if($formField.is('input[type=radio]')) {
+                $formField.parents('.mktoFieldWrap').addClass('marketo-radio');
               }
             });
           }
@@ -116,11 +118,13 @@
         });
 
         input.bind(states, function () {
-          let text_val = $(this).val();
-          if (text_val === "" || text_val.length < 1) {
-            $(this).closest(item).removeClass('has-value');
+          let $focusedItem = $(this),
+            textVal = $focusedItem.val();
+
+          if (textVal === "" || textVal.length < 1) {
+            $focusedItem.closest(item).removeClass('has-value');
           } else {
-            $(this).closest(item).addClass('has-value');
+            $focusedItem.closest(item).addClass('has-value');
           }
         });
 
@@ -320,9 +324,15 @@
           }
         });
 
-        let mktoInlineStyles = $('#mktoForms2ThemeStyle').next('style');
+        let mktoInlineStyles = $('#mktoForms2ThemeStyle').next('style'),
+          mktoinlineFormStyles = $form.find('style');
+
         if (mktoInlineStyles.length > 0) {
           mktoInlineStyles.remove();
+        }
+
+        if (mktoinlineFormStyles.length > 0) {
+          mktoinlineFormStyles.remove();
         }
       };
 
