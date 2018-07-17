@@ -324,6 +324,12 @@
           }
         });
 
+        // Remove inline marketo custom fonts.
+        let mktoInlineFonts = $('#mktoFontUrl');
+        if (mktoInlineFonts.length > 0) {
+          mktoInlineFonts.remove();
+        }
+
         let mktoInlineStyles = $('#mktoForms2ThemeStyle').next('style'),
           mktoinlineFormStyles = $form.find('style');
 
