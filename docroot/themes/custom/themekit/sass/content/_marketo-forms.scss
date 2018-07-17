@@ -24,14 +24,14 @@
       top: 10px;
       font-size: rem-calc(13);
       padding-left: 5px;
-      line-height: 1.25;
+      line-height: 1;
       color: $white;
       transition: all .15s ease-out;
 
       &.form-required:after {
         content: '*';
         background-image: none;
-        vertical-align: text-top;
+        vertical-align: top;
       }
     }
 
