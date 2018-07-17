@@ -9299,14 +9299,14 @@ Drupal.behaviors.slickCustom = {
   }
 };
 
-Drupal.behaviors.mediaTile = {
+/*Drupal.behaviors.mediaTile = {
   attach: function (context, settings) {
-    let $content = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.paragraph--type--compound-media-title-bar .field--name-field-p-media-tile-content', context);
+    let $content = $('.paragraph--type--compound-media-title-bar .field--name-field-p-media-tile-content', context);
     if(!$content.length) return;
 
     $content.each(function () {
 
-      let $this = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this);
+      let $this = $(this);
 
       $this.on('init reInit afterChange', function(event, slick, currentSlide, nextSlide) {
         let $count = $this.find('.slick-counter'),
@@ -9333,7 +9333,7 @@ Drupal.behaviors.mediaTile = {
       });
     });
   }
-};
+};*/
 
 
 /***/ }),

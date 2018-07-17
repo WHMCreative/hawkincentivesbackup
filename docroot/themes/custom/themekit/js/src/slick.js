@@ -68,7 +68,7 @@ Drupal.behaviors.slickCustom = {
   }
 };
 
-Drupal.behaviors.mediaTile = {
+/*Drupal.behaviors.mediaTile = {
   attach: function (context, settings) {
     let $content = $('.paragraph--type--compound-media-title-bar .field--name-field-p-media-tile-content', context);
     if(!$content.length) return;
@@ -102,4 +102,4 @@ Drupal.behaviors.mediaTile = {
       });
     });
   }
-};
+};*/
