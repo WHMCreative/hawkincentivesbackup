@@ -27,6 +27,7 @@ footer {
         p + p {
           a{
             @include btn(white-with-hover);
+            margin-top: 10px;
           }
         }
       }
@@ -83,11 +84,8 @@ footer {
           list-style: none;
           margin-left: 0;
           li:last-child {
-            span,a {
+            span, .featured {
               font-weight: 700;
-            }
-            a {
-              font-size: 14px;
             }
           }
         }

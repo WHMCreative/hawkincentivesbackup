@@ -27,7 +27,7 @@ regions:
   highlighted: Highlighted
   content_above: 'Content above'
   content: Content
-  content_below:'Content below'
+  content_below: 'Content below'
   footer_first: 'Footer First'
   footer_second: 'Footer Second'
   none: 'Rendered Programmatically'
