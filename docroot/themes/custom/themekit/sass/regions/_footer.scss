@@ -2,42 +2,108 @@
 /// Footer
 ////
 
-.region-footer {
+footer {
   background: $primary-color;
   color: $white;
-  .region-inner {
+  .footer-content {
+    padding:70px;
+    display: flex;
+    flex-direction: row;
     @include content-width(default);
-    .menu--social {
-      ul.menu {
-        display: flex;
-        list-style: none;
-        margin: 0;
-        li {
-          margin-left: 13px;
-          &:first-child {
-            margin-left: 0;
+    a,h2 {
+      color: $white;
+    }
+    .region-footer-first {
+      margin-right: 20px;
+      .clearfix {
+         p:first-child {
+           width: 211px;
+           height: 121px;
+           color: #ffffff;
+           font-size: 32px;
+           font-weight: 300;
+           line-height: 40px;
+         }
+        p + p {
+          a{
+            @include btn(white-with-hover);
+            margin-top: 10px;
           }
-          a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: $white;
-            background: $primary-color-light;
-            border-radius: 50%;
-            width: 32px;
-            height: 32px;
-            transition: background-color ease 0.5s;
-            @each $social in $socials {
-              &[href*=#{$social}] {
-                @include replace-text-with-icon(#{$social}, 17px);
+        }
+      }
+
+      .menu--social {
+        ul.menu {
+          display: flex;
+          list-style: none;
+          margin: 0;
+          margin-top: 20px;
+          margin-bottom: 20px;
+          li {
+            margin-left: 0;
+            margin-right: 13px;
+            }
+            a {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: $white;
+              background: $primary-color-light;
+              border-radius: 50%;
+              width: 32px;
+              height: 32px;
+              transition: background-color ease 0.5s;
+              @each $social in $socials {
+                &[href*=#{$social}] {
+                  @include replace-text-with-icon(#{$social}, 17px);
+                }
+              }
+              @include selectors(active) {
+                background: $secondary-color;
               }
             }
-            @include selectors(active) {
-              background: $secondary-color;
+          }
+        }
+        #block-copyright {
+
+          h2 {
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 12px;
+            line-height: 16px;
+            letter-spacing: -0.09px;
+            font-style: italic;
+          }
+        }
+      }
+    }
+    .region-footer-second {
+      margin-top: 15px;
+      .menu--footer {
+        .menu {
+          list-style: none;
+          margin-left: 0;
+          li:last-child {
+            span, .featured {
+              font-weight: 700;
             }
+          }
+        }
+        > ul {
+          @include breakpoint(medium) {
+            @include tk-flex-block-grid(2, li);
+          }
+          @include breakpoint(large) {
+            @include tk-flex-block-grid(4, li);
+          }
+        .menu-item--expanded{
+          > a {
+            color: $white;
+            font-weight: 700;
           }
         }
       }
     }
   }
 }
+

@@ -10,8 +10,8 @@ dependencies:
     - themekit
 id: copyright
 theme: themekit
-region: footer
-weight: -5
+region: footer_first
+weight: -6
 provider: null
 plugin: 'block_content:60c4951d-2ec1-481d-89d1-6f19cf577c5b'
 settings:
