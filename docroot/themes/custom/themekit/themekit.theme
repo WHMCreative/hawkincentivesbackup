@@ -137,6 +137,14 @@ function themekit_preprocess_paragraph(&$variables) {
   $variables['color_scheme'] = 'color-scheme-' . themekit_color_scheme($bg_color);
 }
 
+function themekit_preprocess_paragraph_simple_media_bar(&$variables) {
+  $paragraph = $variables['paragraph'];
+
+  if ($paragraph->hasField('field_media') && empty($paragraph->field_media->value)) {
+    $variables['image_inline_style'] = themekit_get_entity_image_inline_style($paragraph, 'field_media', 'banner_hero');
+  }
+}
+
 function themekit_preprocess_paragraph_banner_hero(&$variables) {
   $paragraph = $variables['paragraph'];
   $node = $paragraph->getParentEntity();

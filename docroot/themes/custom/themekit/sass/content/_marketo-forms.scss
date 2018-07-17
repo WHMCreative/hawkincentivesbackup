@@ -49,8 +49,10 @@
       transition: all .25s ease-in-out;
 
       &[type="email"] {
-        max-width: 85%;
-        min-width: 225px;
+        .mfp-content & {
+          max-width: 85%;
+          min-width: 225px;
+        }
       }
     }
 

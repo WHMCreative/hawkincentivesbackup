@@ -334,3 +334,83 @@
     }
   }
 }
+
+// Simple - Media Bar
+.paragraph--type--simple-media-bar {
+  position: relative;
+  color: $white;
+
+  @include breakpoint(marge) {
+    min-height: 500px;
+  }
+
+  > .paragraph-content {
+    max-width: 950px;
+    margin: 0 auto;
+    padding: 50px 1rem;
+
+    @include breakpoint(marge) {
+      padding: 120px 1rem 120px;
+    }
+
+    .content--wrapper {
+      @include breakpoint(marge) {
+        @include tk-flex-block-grid(2, 'div', 60px);
+      }
+    }
+
+    .field--name-field-label {
+      display: none;
+    }
+
+    .field--name-field-heading,
+    .field--name-field-callout {
+      font-size: rem-calc(48);
+      line-height: rem-calc(45);
+      letter-spacing: rem-calc(-.69);
+    }
+
+    .field--name-field-heading {
+      font-weight: $global-weight-bold;
+    }
+
+    .field--name-field-callout {
+      font-weight: $global-weight-light;
+    }
+
+    .field--name-field-description {
+      font-size: rem-calc(16);
+      line-height: rem-calc(26);
+    }
+
+    .field--name-field-p-link {
+      margin-top: 10px;
+      font-size: rem-calc(14);
+      font-weight: $global-weight-bold;
+    }
+
+    a {
+      color: inherit;
+    }
+  }
+
+  .bg-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    @include bg-style(cover);
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: rgba($primary-color, .85);
+    }
+  }
+}
