@@ -334,7 +334,10 @@
               }
             }
             .field--name-field-cta {
-              margin-top: 10px;
+              @include breakpoint(medium down) {
+                font-size: rem-calc(11);
+                line-height: 1.45;
+              }
               @include breakpoint(marge) {
                 margin-top: 20px;
               }

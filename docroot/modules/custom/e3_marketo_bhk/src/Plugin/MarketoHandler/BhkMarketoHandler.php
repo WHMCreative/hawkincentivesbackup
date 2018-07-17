@@ -96,7 +96,8 @@ class BhkMarketoHandler extends DefaultMarketoHandler {
    * {@inheritdoc}
    */
   public function alterScriptParameters(&$params, MarketoFormEntityInterface $marketo_form) {
-    $params['submissionCallbacks'] = $this->getSubmissionCallbacks();
+
+    $params[$this->instance]['submissionCallbacks'] = $this->getSubmissionCallbacks();
 
     $parent = $this->parentComponent;
 
@@ -110,7 +111,7 @@ class BhkMarketoHandler extends DefaultMarketoHandler {
       try {
         /** @var \Drupal\Core\Url $url */
         $url = $parent->get('field_thank_you_url')->first()->getUrl();
-        $params['redirectPath'] = $url->toString();
+        $params[$this->instance]['redirectPath'] = $url->toString();
       } catch (MissingDataException $e) {
         // TODO - add log entry on error?
       }
