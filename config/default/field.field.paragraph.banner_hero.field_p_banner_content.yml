@@ -6,7 +6,7 @@ dependencies:
     - field.storage.paragraph.field_p_banner_content
     - paragraphs.paragraphs_type.banner_hero
     - paragraphs.paragraphs_type.compound_callout
-    - paragraphs.paragraphs_type.compound_content_bar
+    - paragraphs.paragraphs_type.compound_media_title_bar
     - paragraphs.paragraphs_type.compound_slider
     - paragraphs.paragraphs_type.compound_stat_bar
     - paragraphs.paragraphs_type.media_video_modal
@@ -28,10 +28,10 @@ settings:
     negate: 0
     target_bundles:
       compound_callout: compound_callout
-      compound_content_bar: compound_content_bar
       compound_slider: compound_slider
       compound_stat_bar: compound_stat_bar
       media_video_modal: media_video_modal
+      compound_media_title_bar: compound_media_title_bar
     target_bundles_drag_drop:
       banner_hero:
         weight: 23
@@ -40,8 +40,8 @@ settings:
         enabled: true
         weight: 24
       compound_content_bar:
-        enabled: true
         weight: 25
+        enabled: false
       compound_slider:
         enabled: true
         weight: 26
@@ -78,6 +78,9 @@ settings:
       simple_content:
         weight: 36
         enabled: false
+      compound_media_title_bar:
+        enabled: true
+        weight: 37
       simple_icon_content:
         weight: 37
         enabled: false

@@ -68,9 +68,9 @@ Drupal.behaviors.slickCustom = {
   }
 };
 
-/*Drupal.behaviors.mediaTile = {
+Drupal.behaviors.mediaTile = {
   attach: function (context, settings) {
-    let $content = $('.paragraph--type--compound-media-title-bar .field--name-field-p-media-tile-content', context);
+    let $content = $('.paragraph--type--compound-media-title-bar', context);
     if(!$content.length) return;
 
     $content.each(function () {
@@ -81,12 +81,12 @@ Drupal.behaviors.slickCustom = {
         let $count = $this.find('.slick-counter'),
           i = (currentSlide ? currentSlide : 0) + 1;
         if ($count.length == 0) {
-          $this.append('<div class="slick-counter">' + i + '/' + slick.slideCount + '</div>');
+          $this.find('> .paragraph-content').append('<div class="slick-counter">' + i + '/' + slick.slideCount + '</div>');
         }
         $count.text(i + '/' + slick.slideCount);
       });
 
-      $this.slick({
+      $this.find('.field--name-field-p-media-tile-content').slick({
         slidesToShow: 1,
         arrows: true,
         dots: true,
@@ -95,11 +95,11 @@ Drupal.behaviors.slickCustom = {
         mobileFirst: true,
         responsive: [
           {
-            breakpoint: 768,
+            breakpoint: 800,
             settings: 'unslick'
           }
         ]
       });
     });
   }
-};*/
+};
