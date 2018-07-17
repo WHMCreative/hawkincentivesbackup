@@ -9,7 +9,9 @@ use Drupal\Core\Link;
 use Drupal\Core\Template\Attribute;
 use Drupal\e3_marketo\Annotation\MarketoHandler;
 use Drupal\e3_marketo\Entity\MarketoFormEntityInterface;
+use Drupal\e3_marketo\Entity\MarketoViewBuilder;
 use Drupal\e3_marketo\Plugin\MarketoHandlerBase;
+use Drupal\e3_marketo\Plugin\MarketoHandlerManager;
 
 /**
  * Default handler to build output for Marketo Forms.
@@ -24,12 +26,20 @@ use Drupal\e3_marketo\Plugin\MarketoHandlerBase;
  */
 class DefaultMarketoHandler extends MarketoHandlerBase {
 
+  public static $marketoInstances;
+
+  protected $htmlClass;
+
+  protected $instance;
+
   /**
    * {@inheritdoc}
    */
   public function embedMarketoForm(MarketoFormEntityInterface $marketo_form, array &$build) {
     $marketo_form_id = $marketo_form->getFormId();
-    $html_id = "marketo-form-{$marketo_form_id}";
+
+    $this->htmlClass = "marketo-form-{$marketo_form_id}";
+
 
     // Do not embed the form if key Marketo settings are missing.
     if (!$this->verifyMarketoSettings()) {
@@ -41,20 +51,34 @@ class DefaultMarketoHandler extends MarketoHandlerBase {
     if (empty($build['marketo_form_embed']['#form_attributes'])
       || empty($build['marketo_form_embed']['#attached']['drupalSettings']['marketoForms'])) {
 
+      // Set Marketo instance.
+      if (!isset(static::$marketoInstances[$marketo_form_id])) {
+        $instance = 0;
+        static::$marketoInstances[$marketo_form_id] = $instance;
+      }
+      else {
+        static::$marketoInstances[$marketo_form_id]++;
+        $instance = static::$marketoInstances[$marketo_form_id];
+      }
+      $this->instance = $instance;
+
+
       $build['marketo_form_embed'] = [
         '#theme' => 'marketo_form_embed',
-        '#form_attributes' => $this->getMarketoFormAttributes($marketo_form, $html_id),
+        '#form_attributes' => $this->getMarketoFormAttributes($marketo_form),
+        '#marketo_form_id' => $marketo_form_id,
         '#attached' => [
           'library' => ['e3_marketo/marketo-forms'],
           'drupalSettings' => [
-            'marketoForms' => $this->getMarketoScriptParameters($marketo_form, $html_id),
+            'marketoForms' => $this->getMarketoScriptParameters($marketo_form),
           ],
         ],
       ];
     }
     else {
       // Otherwise only update the dynamic parameters.
-      $this->alterScriptParameters($build['marketo_form_embed']['#attached']['drupalSettings']['marketoForms'], $marketo_form);
+      $this->instance = static::$marketoInstances[$marketo_form_id];
+      $this->alterScriptParameters($build['marketo_form_embed']['#attached']['drupalSettings']['marketoForms'][$this->htmlClass], $marketo_form);
     }
   }
 
@@ -63,31 +87,34 @@ class DefaultMarketoHandler extends MarketoHandlerBase {
    *
    * @param \Drupal\e3_marketo\Entity\MarketoFormEntityInterface $marketo_form
    *   Marketo form entity.
-   * @param $html_id
-   *   Html Id genrated for this marketo form.
    *
    * @return array
    *   Array of parameters to add to drupalSettings.
    */
-  public function getMarketoScriptParameters(MarketoFormEntityInterface $marketo_form, $html_id) {
+  public function getMarketoScriptParameters(MarketoFormEntityInterface $marketo_form) {
+    $form_id = $marketo_form->getFormId();
+
+    $html_class = $this->htmlClass;
     $submission_callbacks = $this->getSubmissionCallbacks();
 
     $result = [
-      'formWrapper' => '.marketo-form',
-      'entityWrapper' => '.marketo-form-entity-ajax-wrapper',
       'munchkinId' => $this->marketoConfig->get('munchkin_id'),
       'instanceHost' => $this->marketoConfig->get('instance_host'),
-      'htmlId' => $html_id,
-      'formId' => $marketo_form->getFormId(),
-      'removeSourceStyles' => $marketo_form->bundle->entity->getRemoveSourceStyles(),
-      'submissionCallbacks' => $submission_callbacks,
-      'alternativeInstanceHost' => $this->marketoConfig->get('alt_instance_host'),
+      'formId' => $form_id,
       'loadErrorMessage' => $this->marketoConfig->get('load_error_message.value'),
+      'alternativeInstanceHost' => $this->marketoConfig->get('alt_instance_host'),
+      'entityWrapper' => '.marketo-form-entity-ajax-wrapper',
+      'formWrapper' => '.marketo-form',
+      'htmlClass' => $html_class,
+      'removeSourceStyles' => $marketo_form->bundle->entity->getRemoveSourceStyles(),
+      $this->instance => [
+        'submissionCallbacks' => $submission_callbacks,
+      ],
     ];
 
     // Figure out if any redirects set up within Marketo should be skipped.
     if (!empty($submission_callbacks)) {
-      $result['skipMarketoRedirects'] = TRUE;
+      $result[$this->instance]['skipMarketoRedirects'] = TRUE;
     }
 
     // Check if Thank You component has been added.
@@ -118,14 +145,16 @@ class DefaultMarketoHandler extends MarketoHandlerBase {
         $hidden_fields = $this->getMarketoHiddenFields($parent_entity);
 
         if ($hidden_fields) {
-          $result['hiddenFields'] = $hidden_fields;
+          $result[$this->instance]['hiddenFields'] = $hidden_fields;
         }
       }
     }
 
     $this->alterScriptParameters($result, $marketo_form);
 
-    return $result;
+    $params[$html_class] = $result;
+
+    return $params;
   }
 
   /**
@@ -146,17 +175,19 @@ class DefaultMarketoHandler extends MarketoHandlerBase {
    *
    * @param \Drupal\e3_marketo\Entity\MarketoFormEntityInterface $marketo_form
    *   Marketo form entity.
-   * @param $html_id
-   *   Html Id genrated for this marketo form.
    *
    * @return \Drupal\Core\Template\Attribute
    *   Html attributes to pass into template as 'form_attributes'.
    */
-  public function getMarketoFormAttributes(MarketoFormEntityInterface $marketo_form, $html_id) {
+  public function getMarketoFormAttributes(MarketoFormEntityInterface $marketo_form) {
+    $html_class = $this->htmlClass;
+    $form_id = $marketo_form->getFormId();
+
     $attributes = new Attribute();
-    $attributes->setAttribute('id', $html_id);
     $attributes->setAttribute('data-form-id', $marketo_form->getFormId());
-    $attributes->addClass('marketo-form-load');
+    $attributes->addClass(['marketo-form-load', $html_class]);
+
+    $attributes->setAttribute('data-instance', $this->instance);
 
     return $attributes;
   }
@@ -169,9 +200,9 @@ class DefaultMarketoHandler extends MarketoHandlerBase {
    */
   public function verifyMarketoSettings() {
     if (!$this->marketoConfig->get('instance_host') || !$this->marketoConfig->get('munchkin_id')) {
-      drupal_set_message($this->t("Marketo Form could not be loaded, because some of the required Marketo Settings are missing. Please, visit the @link to fill them.", [
+      $this->messenger->addError($this->t("Marketo Form could not be loaded, because some of the required Marketo Settings are missing. Please, visit the @link to fill them.", [
         '@link' => Link::createFromRoute($this->t("Settings Page"), 'marketo_form.settings')->toString(),
-      ]), 'error');
+      ]));
 
       return FALSE;
     }
