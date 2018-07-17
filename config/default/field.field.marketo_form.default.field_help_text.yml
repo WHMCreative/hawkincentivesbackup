@@ -1,0 +1,29 @@
+uuid: 71d4e84a-a471-42ac-82d5-eb41b7e399d1
+langcode: en
+status: true
+dependencies:
+  config:
+    - e3_marketo.bundle.default
+    - field.storage.marketo_form.field_help_text
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    limited_rich_text: limited_rich_text
+    heading: '0'
+    rich_text: '0'
+    plain_text: '0'
+    html: '0'
+id: marketo_form.default.field_help_text
+field_name: field_help_text
+entity_type: marketo_form
+bundle: default
+label: 'Help Text'
+description: 'Provide help text for the form (i.e Can''t wait? Call us at XXX-XXX-XXXX)'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long
