@@ -10,19 +10,16 @@
 
 .paragraph--type--reference-marketo-form {
   background: $blue-gradient-reverse;
-  padding: rem-calc(36) rem-calc(42);
+  padding: rem-calc(18) rem-calc(20);
   border-radius: 3px;
   color: $white;
 
-  .marketo-form-description {
-    margin-bottom: rem-calc(16);
+  @include breakpoint(medium) {
+    padding: rem-calc(36) rem-calc(42);
   }
 
-  .mfp-content & {
-    position: relative;
-    max-width: 720px;
-    margin-left: auto;
-    margin-right: auto;
+  .marketo-form-description {
+    margin-bottom: rem-calc(16);
   }
 
   .block--component & {

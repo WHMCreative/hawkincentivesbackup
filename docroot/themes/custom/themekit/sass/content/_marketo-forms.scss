@@ -5,19 +5,25 @@
 .marketo-form-wrapper {
   h2 {
     margin-bottom: 20px;
+    padding-right: 40px;
     font-size: rem-calc(20);
     font-weight: $global-weight-bold;
     line-height: rem-calc(27);
     color: $white;
+
+    @include breakpoint(medium) {
+      padding-right: 0;
+    }
   }
 
   .marketo-form-item {
     position: relative;
 
     label {
-      transform: translateY(150%);
-      padding-left: 5px;
+      position: absolute;
+      top: 10px;
       font-size: rem-calc(13);
+      padding-left: 5px;
       line-height: 1.25;
       color: $white;
       transition: all .15s ease-out;
@@ -30,7 +36,7 @@
     }
 
     input {
-      margin-bottom: 7px;
+      margin-bottom: 20px;
       padding: 8px 5px;
       border-top: 0;
       border-left: 0;
@@ -46,15 +52,12 @@
         max-width: 85%;
         min-width: 225px;
       }
-      &[type="tel"] {
-        max-width: 56%;
-        min-width: 150px;
-      }
     }
 
     select {
       position: relative;
       z-index: 1;
+      margin-bottom: 20px;
       padding-left: 5px;
       background-color: transparent;
       background-image: url('../../images/svg/arrow-down-white.svg');
@@ -67,7 +70,7 @@
       -webkit-appearance: none;
       -moz-appearance: none;
       font-size: rem-calc(13);
-      color: $white;
+      color: transparent;
 
       &::-ms-expand {
         display: none;
@@ -83,6 +86,8 @@
     }
 
     textarea {
+      height: rem-calc(39);
+      min-height: rem-calc(39);
       padding: 8px 5px;
       background: none;
       border-top: 0;
@@ -103,13 +108,22 @@
     &.has-value,
     &.marketo-focus-form-item {
       label {
-        transform: translateY(0);
+        top: -10px;
+        font-size: rem-calc(10);
+      }
+
+      textarea {
+        height: 80px;
+      }
+
+      select {
+        color: $white;
       }
     }
   }
 
   .mktoError {
-    margin: -5px 0 0 5px;
+    margin: -15px 0 10px 5px;
     font-size: rem-calc(13);
   }
 
