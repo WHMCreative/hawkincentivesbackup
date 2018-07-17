@@ -12181,8 +12181,11 @@ Drupal.behaviors.menuMain = {
     $mainMenuItemLink.on('click', function (e) {
       e.preventDefault();
       e.stopPropagation();
-      let $parent = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).parent();
-      $parent.siblings().removeClass('active'); // hide open dropdowns
+      let $parent = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).parent(),
+          $siblings = $parent.siblings('.active');
+      if($siblings.length) {
+        $siblings.removeClass('active'); // hide open dropdown
+      }
       $parent.toggleClass('active');
     });
 

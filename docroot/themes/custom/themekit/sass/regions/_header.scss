@@ -179,7 +179,7 @@
                 @include breakpoint(medium down) {
                   overflow: hidden;
                   max-height: 0;
-                  transition: max-height 500ms;
+                  transition: max-height 250ms cubic-bezier(1,.71,.08,.96);
                   padding-left: 10px;
                 }
                 @include breakpoint(marge) {
@@ -202,7 +202,7 @@
                 }
                 > .menu-dropdown {
                   @include breakpoint(medium down) {
-                    max-height: 1000px;
+                    max-height: 450px;
                   }
                   @include breakpoint(marge) {
                     display: block;
