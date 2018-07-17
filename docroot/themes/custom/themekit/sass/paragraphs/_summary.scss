@@ -54,8 +54,14 @@
         &.node--type-insight.node--view-mode-teaser .node--image {
           .field--name-field-teaser-image,
           .field--name-field-media {
-            max-height: 180px;
-            height: 180px;
+            @include breakpoint(marge) {
+              max-height: 180px;
+              height: 180px;
+            }
+            @include breakpoint(small down) {
+              max-height: 180px;
+              height: 180px;
+            }
 
             img {
               margin-top: 0;
