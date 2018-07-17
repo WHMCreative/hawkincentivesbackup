@@ -368,6 +368,10 @@
 // Compound - Tabbed Content
 .paragraph--type--compound-tabbed-content {
   position: relative;
+  
+  .field--name-field-p-content > & {
+    @include paragraph-margins((small: 0));
+  }
 
   .slick-tab-nav {
     border-top: 1px solid $white;
