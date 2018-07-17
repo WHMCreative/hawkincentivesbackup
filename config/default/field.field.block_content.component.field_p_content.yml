@@ -1,20 +1,28 @@
-uuid: b811c925-020e-4672-8ea4-89e459dea898
+uuid: f15b32fd-7e91-44cb-8734-bdfba2538f63
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_p_link
-    - paragraphs.paragraphs_type.link_url
+    - block_content.type.component
+    - field.storage.block_content.field_p_content
+    - paragraphs.paragraphs_type.compound_content_bar
+    - paragraphs.paragraphs_type.compound_stat_bar
+    - paragraphs.paragraphs_type.compound_tabbed_content
+    - paragraphs.paragraphs_type.layout_2_column
+    - paragraphs.paragraphs_type.layout_grid
+    - paragraphs.paragraphs_type.reference_marketo_form
+    - paragraphs.paragraphs_type.simple_cta
+    - paragraphs.paragraphs_type.summary_cards
     - paragraphs.paragraphs_type.summary_insights
   module:
     - entity_reference_revisions
-id: paragraph.summary_insights.field_p_link
-field_name: field_p_link
-entity_type: paragraph
-bundle: summary_insights
-label: Link
+id: block_content.component.field_p_content
+field_name: field_p_content
+entity_type: block_content
+bundle: component
+label: Content
 description: ''
-required: false
+required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''
@@ -23,11 +31,16 @@ settings:
   handler_settings:
     negate: 0
     target_bundles:
-      link_url: link_url
+      compound_content_bar: compound_content_bar
+      compound_stat_bar: compound_stat_bar
+      compound_tabbed_content: compound_tabbed_content
+      layout_2_column: layout_2_column
+      layout_grid: layout_grid
+      reference_marketo_form: reference_marketo_form
+      simple_cta: simple_cta
+      summary_cards: summary_cards
+      summary_insights: summary_insights
     target_bundles_drag_drop:
-      summary_insights:
-        weight: 12
-        enabled: false
       banner_featured_insights:
         weight: 32
         enabled: false
@@ -38,23 +51,23 @@ settings:
         weight: 34
         enabled: false
       compound_content_bar:
+        enabled: true
         weight: 35
-        enabled: false
       compound_slider:
         weight: 36
         enabled: false
       compound_stat_bar:
+        enabled: true
         weight: 37
-        enabled: false
       compound_tabbed_content:
+        enabled: true
         weight: 38
-        enabled: false
       layout_2_column:
+        enabled: true
         weight: 39
-        enabled: false
       layout_grid:
+        enabled: true
         weight: 40
-        enabled: false
       link_file:
         weight: 41
         enabled: false
@@ -62,8 +75,8 @@ settings:
         weight: 42
         enabled: false
       link_url:
-        enabled: true
         weight: 43
+        enabled: false
       marketo_hidden_field:
         weight: 44
         enabled: false
@@ -95,14 +108,14 @@ settings:
         weight: 53
         enabled: false
       reference_marketo_form:
+        enabled: true
         weight: 54
-        enabled: false
       simple_content:
         weight: 55
         enabled: false
       simple_cta:
+        enabled: true
         weight: 56
-        enabled: false
       simple_icon_content:
         weight: 57
         enabled: false
@@ -116,6 +129,9 @@ settings:
         weight: 60
         enabled: false
       summary_cards:
+        enabled: true
         weight: 61
-        enabled: false
+      summary_insights:
+        enabled: true
+        weight: 62
 field_type: entity_reference_revisions

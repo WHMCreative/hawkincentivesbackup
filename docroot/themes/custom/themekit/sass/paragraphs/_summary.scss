@@ -1,0 +1,123 @@
+////
+/// Paragraphs - Summary
+////
+
+.paragraph--type--summary-insights {
+  .node--content & {
+    @include paragraph-paddings;
+
+    > .paragraph-content {
+      @include content-width(default);
+      @include breakpoint(marge down) {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      @include breakpoint(large) {
+        @include clear;
+      }
+    }
+
+    .field--name-field-heading {
+      width: 100%;
+      margin-bottom: 20px;
+      text-align: center;
+      color: $secondary-color-dark;
+      font-family: $body-font-family;
+      font-size: rem-calc(32);
+      font-weight: $global-weight-light;
+      line-height: rem-calc(40);
+
+      @include breakpoint(large) {
+        width: 24%;
+        float: left;
+        margin-bottom: 8px;
+        text-align: left;
+      }
+    }
+
+    .summary-output {
+      width: 100%;
+      @include breakpoint(medium) {
+        @include tk-flex-block-grid(3, 'article', $gutter: 18px);
+      }
+      @include breakpoint(large) {
+        width: 76%;
+        float: right;
+      }
+
+      > article {
+        margin-bottom: 20px;
+        @include breakpoint(medium) {
+          margin-bottom: 0;
+        }
+
+        &.node--type-insight.node--view-mode-teaser .node--image {
+          .field--name-field-teaser-image,
+          .field--name-field-media {
+            max-height: 180px;
+            height: 180px;
+
+            img {
+              margin-top: 0;
+            }
+          }
+        }
+      }
+    }
+
+    .field--name-field-p-link {
+      @include breakpoint(marge down) {
+        order: 8;
+        width: 100%;
+        margin-top: 20px;
+        text-align: center;
+      }
+      @include breakpoint(small down) {
+        margin-top: 0;
+      }
+      @include breakpoint(large) {
+        float: left;
+        width: 24%;
+      }
+
+      a {
+        background: -webkit-linear-gradient(-45deg, #1969b7 0%, #6bcec9 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: $secondary-color;
+        font-size: rem-calc(14);
+        font-weight: $global-weight-bold;
+        text-transform: capitalize;
+      }
+    }
+
+    .field--name-field-description {
+      width: 24%;
+      float: left;
+      padding-top: 15px;
+      @include breakpoint(marge down) {
+        order: 9;
+        width: 100%;
+        float: none;
+      }
+    }
+  }
+
+  .node--sidebar & {
+    .field--name-field-heading {
+      color: $secondary-color-dark;
+      font-family: $body-font-family;
+      font-size: rem-calc(20);
+      font-weight: $global-weight-bold;
+    }
+
+    .summary-output {
+      > article {
+        margin-bottom: 30px;
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}

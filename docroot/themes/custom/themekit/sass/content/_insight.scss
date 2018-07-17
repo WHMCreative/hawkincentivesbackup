@@ -133,6 +133,8 @@
         top: 15px;
         @include insight-label();
       }
+      .field--name-field-media,
+      .default-insight-image,
       .field--name-field-teaser-image {
         position: relative;
         overflow: hidden;
@@ -161,12 +163,14 @@
     .node--content {
       h5 {
         font-weight: 700;
+        color: $dark-gray;
         a {
-          color: $dark-gray;
+          color: inherit;
         }
       }
       .date {
         font-size: rem-calc(13);
+        color: $medium-gray;
       }
     }
   }

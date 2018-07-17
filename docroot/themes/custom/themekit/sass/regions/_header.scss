@@ -8,7 +8,7 @@
   position: relative;
   z-index: z(header, base);
   height: 48px;
-  @include breakpoint(large) {
+  @include breakpoint(marge) {
     height: $header-height;
     position: fixed;
     left: 0;
@@ -27,7 +27,7 @@
     display: flex;
     justify-content: space-between;
 
-    @include breakpoint(large) {
+    @include breakpoint(marge) {
       justify-content: flex-start;
       flex-wrap: wrap;
       align-items: center;
@@ -55,7 +55,7 @@
       @include hamburger($secondary-color-dark, $secondary-color-dark, 22px, 16px, 2px);
       text-indent: -9999px;
       order: 3;
-      @include breakpoint(large) {
+      @include breakpoint(marge) {
         display: none;
       }
     }
@@ -63,7 +63,7 @@
     // Utility menu
     .menu--utility {
       display: none;
-      @include breakpoint(large) {
+      @include breakpoint(marge) {
         display: block;
         padding-bottom: 11px;
         margin-bottom: 25px;
@@ -83,21 +83,21 @@
       ul.menu {
         margin: 0;
         list-style: none;
-        @include breakpoint(large) {
+        @include breakpoint(marge) {
           display: flex;
           justify-content: flex-end;
         }
         li {
           font-size: rem-calc(13);
-          @include breakpoint(marge down) {
+          @include breakpoint(medium down) {
             margin-bottom: 12px;
           }
-          @include breakpoint(large) {
+          @include breakpoint(marge) {
             margin-left: 20px;
           }
           a {
             color: $medium-gray;
-            @include breakpoint(large) {
+            @include breakpoint(marge) {
               padding: 0 3px;
             }
             @include selectors(active) {
@@ -114,7 +114,7 @@
 
     // Main menu
     .menu--main {
-      @include breakpoint(marge down) {
+      @include breakpoint(medium down) {
         position: fixed;
         z-index: z(header, menu);
         right: 0;
@@ -144,7 +144,7 @@
       .menu--utility {
         display: block;
         padding: 15px 32px 0;
-        @include breakpoint(large) {
+        @include breakpoint(marge) {
           display: none;
         }
       }
@@ -155,17 +155,17 @@
       > ul.menu {
         &.menu-level-0 {
 
-          @include breakpoint(large) {
+          @include breakpoint(marge) {
             display: flex;
             position: relative;
             z-index: z(header, menu);
           }
           > li {
-            @include breakpoint(marge down) {
+            @include breakpoint(medium down) {
               padding-left: 22px;
               padding-right: 45px;
             }
-            @include breakpoint(large) {
+            @include breakpoint(marge) {
               margin-left: 30px;
             }
             &.menu-item--expanded {
@@ -176,32 +176,35 @@
                 }
               }
               > .menu-dropdown {
-                @include breakpoint(marge down) {
+                @include breakpoint(medium down) {
                   overflow: hidden;
                   max-height: 0;
                   transition: max-height 500ms;
                   padding-left: 10px;
                 }
-                @include breakpoint(large) {
+                @include breakpoint(marge) {
                   display: none;
                   position: absolute;
                   z-index: z(header, menu);
-                  left: -35px;
+                  left: -5px;
                   top: calc(100% + 26px);
                   background: $white;
                   box-shadow: 0 10px 15px rgba($black, 0.1);
                   padding: 35px;
                 }
+                @include breakpoint(large) {
+                  left: -35px;
+                }
               }
               &.active {
-                @include breakpoint(marge down) {
+                @include breakpoint(medium down) {
                   background: rgba($lighter-gray, 0.4);
                 }
                 > .menu-dropdown {
-                  @include breakpoint(marge down) {
+                  @include breakpoint(medium down) {
                     max-height: 1000px;
                   }
-                  @include breakpoint(large) {
+                  @include breakpoint(marge) {
                     display: block;
                   }
                 }
@@ -209,10 +212,11 @@
                   &:after {
                     transform: rotate(-180deg);
                   }
-                  @include breakpoint(large) {
+                  @include breakpoint(marge) {
                     &:before {
                       left: 0;
                       right: 20px;
+                      opacity: 1;
                     }
                   }
                 }
@@ -228,7 +232,7 @@
 
                   transition: transform 250ms;
                 }
-                @include breakpoint(large) {
+                @include breakpoint(marge) {
                   padding-right: 20px;
                   &:after {
                     position: absolute;
@@ -243,7 +247,8 @@
                     right: calc(50% + 10px);
                     height: 3px;
                     background: linear-gradient(-45deg, $secondary-color-light 0%, $secondary-color 100%);
-                    transition: left 250ms, right 250ms;
+                    opacity: 0;
+                    transition: left 250ms, right 250ms, opacity 250ms;
                   }
                 }
               }
@@ -251,12 +256,12 @@
             > a {
               font-size: rem-calc(15);
               font-weight: 300;
-              @include breakpoint(marge down) {
+              @include breakpoint(medium down) {
                 padding: 12px 10px;
                 border-bottom: 1px solid #f1f1f1;
                 display: block;
               }
-              @include breakpoint(large) {
+              @include breakpoint(marge) {
                 color: $dark-gray;
                 font-size: rem-calc(16);
                 line-height: 1.5;
@@ -270,19 +275,27 @@
           }
         }
         .menu-level-1 {
-          @include breakpoint(marge down) {
+          @include breakpoint(medium down) {
             margin-top: 10px;
           }
-          @include breakpoint(large) {
+          @include breakpoint(marge) {
             display: flex;
           }
           > li {
-            @include breakpoint(large) {
-              min-width: 260px;
-              margin-right: 40px;
+            @include breakpoint(marge) {
+              min-width: 180px;
+              margin-right: 15px;
               &:last-child {
                 margin-right: 0;
               }
+            }
+            @include breakpoint(large) {
+              min-width: 240px;
+              margin-right: 40px;
+            }
+            @include breakpoint(xlarge) {
+              min-width: 260px;
+              margin-right: 40px;
             }
             > span {
               display: none;
@@ -292,7 +305,7 @@
         .menu-level-2 {
           > li {
             margin-bottom: 15px;
-            @include breakpoint(large) {
+            @include breakpoint(marge) {
               margin-bottom: 25px;
               &:last-child {
                 margin-bottom: 0;
@@ -311,7 +324,7 @@
 
             .field--name-field-description {
               font-size: rem-calc(11);
-              @include breakpoint(large) {
+              @include breakpoint(marge) {
                 font-size: rem-calc(13);
                 overflow: hidden;
               }
@@ -322,14 +335,14 @@
             }
             .field--name-field-cta {
               margin-top: 10px;
-              @include breakpoint(large) {
+              @include breakpoint(marge) {
                 margin-top: 20px;
               }
             }
             .menu-dropdown {
               &.view-mode-featured {
                 > a {
-                  @include breakpoint(large) {
+                  @include breakpoint(marge) {
                     font-size: rem-calc(20);
                     margin-bottom: 10px;
                     font-weight: 300;
@@ -338,7 +351,7 @@
                   }
                 }
                 .field--name-field-description {
-                  @include breakpoint(marge down) {
+                  @include breakpoint(medium down) {
                     display: none;
                   }
                 }
@@ -349,7 +362,7 @@
                 line-height: 1.5;
                 font-weight: 700;
                 color: $secondary-color;
-                @include breakpoint(large) {
+                @include breakpoint(marge) {
                   font-size: rem-calc(14);
                 }
               }

@@ -97,23 +97,31 @@ view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
 
 {{ attach_library('classy/node') }}
 <article{{ attributes.addClass(classes) }} data-id="{{ node.id }}">
+  <a href="{{ url }}" rel="bookmark">
+    <div class="node--image">
+      {% if content.field_teaser_image|render %}
+        {{ content.field_teaser_image }}
+      {% elseif header_image|render %}
+        {{ header_image }}
+      {% else %}
+        <div class="default-insight-image">
+          <img src="/{{ base_path ~ directory }}/images/insight-default-image.jpg" alt="Inisght" />
+        </div>
+      {% endif %}
+      {{ content.field_insight_type }}
+    </div>
 
-  <div class="node--image">
-    {{ content.field_teaser_image }}
-    {{ content.field_insight_type }}
-  </div>
-
-  <div{{ content_attributes.addClass('node--content') }}>
-    {{ title_prefix }}
-      <h5{{ title_attributes }}>
-        <a href="{{ url }}" rel="bookmark">{{ label }}</a>
-      </h5>
-    {{ title_suffix }}
-    {% if insight_date %}
-      <div class="date">{{ insight_date }}</div>
-    {% endif %}
-    {{ rendered_content }}
-  </div>
-
+    <div{{ content_attributes.addClass('node--content') }}>
+      {{ title_prefix }}
+        <h5{{ title_attributes }}>
+          {{ label }}
+        </h5>
+      {{ title_suffix }}
+      {% if insight_date %}
+        <div class="date">{{ insight_date }}</div>
+      {% endif %}
+      {{ rendered_content }}
+    </div>
+  </a>
 </article>
 

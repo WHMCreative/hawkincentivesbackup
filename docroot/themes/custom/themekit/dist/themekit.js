@@ -2245,8 +2245,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-
-
 /***/ }),
 /* 42 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -9066,7 +9064,7 @@ Drupal.behaviors.magnificPopup = {
             src: $modalSrc,
             type: 'inline'
           },
-          closeBtnInside: false,
+          closeBtnInside: true,
         });
       }
       e.preventDefault();
@@ -9106,7 +9104,7 @@ Drupal.behaviors.menuMain = {
     alignMenuDropdown();
 
     __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).on('changed.zf.mediaquery', function(event, newSize, oldSize) {
-      if (newSize === 'marge' || oldSize === 'marge') {
+      if (newSize === 'medium' || oldSize === 'medium') {
         alignMenuDropdown();
       }
     });

@@ -94,6 +94,12 @@ function themekit_preprocess_node_insight(&$variables) {
     }
   }
 
+  if(!empty($node->field_p_header->getValue())) {
+    $header_p = $node->field_p_header->entity;
+    $view_builder = \Drupal::entityTypeManager()->getViewBuilder('paragraph');
+    $variables['header_image'] = $view_builder->viewField($header_p->field_media, 'teaser');
+  }
+
   if (isset($heading)) {
     $variables['heading'] = $heading;
   }
@@ -317,6 +323,7 @@ function themekit_theme_suggestions_field_alter(array &$suggestions, array $vari
       array_unshift($suggestions, 'field__heading_2');
         break;
       case 'single_heading':
+      case 'simple_icon_content':
       case 'simple_media_tile':
       case 'summary_insights':
         array_unshift($suggestions, 'field__heading_3');
@@ -353,6 +360,16 @@ function themekit_theme_suggestions_field_alter(array &$suggestions, array $vari
           case 'simple_content':
             if ($field_name == 'field_heading') {
               $suggestions[] = 'field__heading_2';
+            }
+            break;
+        }
+      }
+
+      if ($parent_field == 'field_p_callout_content') {
+        switch($bundle) {
+          case 'simple_icon_content':
+            if ($field_name == 'field_heading') {
+              $suggestions[] = 'field';
             }
             break;
         }

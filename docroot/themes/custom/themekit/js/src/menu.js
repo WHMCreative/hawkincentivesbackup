@@ -22,7 +22,7 @@ Drupal.behaviors.menuMain = {
     alignMenuDropdown();
 
     $(window).on('changed.zf.mediaquery', function(event, newSize, oldSize) {
-      if (newSize === 'marge' || oldSize === 'marge') {
+      if (newSize === 'medium' || oldSize === 'medium') {
         alignMenuDropdown();
       }
     });
