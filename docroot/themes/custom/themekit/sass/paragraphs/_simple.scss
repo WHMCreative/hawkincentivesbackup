@@ -353,80 +353,110 @@
 
 // Simple - Media Bar
 .paragraph--type--simple-media-bar {
-  position: relative;
-  color: $white;
 
-  @include breakpoint(marge) {
-    min-height: 500px;
-  }
-
-  > .paragraph-content {
-    max-width: 950px;
-    margin: 0 auto;
-    padding: 50px 1rem;
+  &.paragraph--view-mode--nested {
+    position: relative;
+    color: $white;
 
     @include breakpoint(marge) {
-      padding: 120px 1rem 120px;
+      min-height: 500px;
     }
 
-    .content--wrapper {
+    > .paragraph-content {
+      max-width: 950px;
+      margin: 0 auto;
+      padding: 30px 1rem 120px;
+      text-align: center;
+
       @include breakpoint(marge) {
-        @include tk-flex-block-grid(2, 'div', 60px);
+        padding: 120px 1rem 140px;
+        text-align: left;
+      }
+
+      .content--wrapper {
+        @include breakpoint(marge) {
+          @include tk-flex-block-grid(2, 'div', 60px);
+        }
+      }
+
+      .field--name-field-label {
+        display: none;
+      }
+
+      .field--name-field-heading,
+      .field--name-field-callout {
+        font-size: rem-calc(48);
+        line-height: rem-calc(56);
+        letter-spacing: rem-calc(-.69);
+        p {
+          line-height: inherit;
+        }
+      }
+
+      .field--name-field-heading {
+        display: inline;
+        padding-right: 5px;
+        font-weight: $global-weight-light;
+        @include breakpoint(marge) {
+          font-weight: $global-weight-bold;
+        }
+      }
+
+      .field--name-field-callout {
+        display: inline-block;
+        font-weight: $global-weight-light;
+      }
+
+      .field--name-field-description {
+        margin-top: 25px;
+        font-size: rem-calc(16);
+        line-height: rem-calc(26);
+        @include breakpoint(marge) {
+          margin-top: 0;
+        }
+      }
+
+      .field--name-field-p-link {
+        margin-top: 10px;
+        font-size: rem-calc(14);
+        font-weight: $global-weight-bold;
+        @include breakpoint(medium down) {
+          margin-top: 16px;
+        }
+
+        a {
+          @include breakpoint(medium down) {
+            font-size: 16px;
+            border-bottom: 1px solid;
+            padding-bottom: 4px;
+          }
+        }
+      }
+
+      a {
+        color: inherit;
       }
     }
 
-    .field--name-field-label {
-      display: none;
-    }
-
-    .field--name-field-heading,
-    .field--name-field-callout {
-      font-size: rem-calc(48);
-      line-height: rem-calc(45);
-      letter-spacing: rem-calc(-.69);
-    }
-
-    .field--name-field-heading {
-      font-weight: $global-weight-bold;
-    }
-
-    .field--name-field-callout {
-      font-weight: $global-weight-light;
-    }
-
-    .field--name-field-description {
-      font-size: rem-calc(16);
-      line-height: rem-calc(26);
-    }
-
-    .field--name-field-p-link {
-      margin-top: 10px;
-      font-size: rem-calc(14);
-      font-weight: $global-weight-bold;
-    }
-
-    a {
-      color: inherit;
-    }
-  }
-
-  .bg-container {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -1;
-    @include bg-style(cover);
-
-    &:after {
-      content: '';
+    .bg-container {
       position: absolute;
       top: 0;
       right: 0;
       bottom: 0;
       left: 0;
-      background-color: rgba($primary-color, .85);
+      z-index: -1;
+      @include bg-style(cover);
+
+      &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        //background-color: rgba($primary-color, .85);
+      }
     }
   }
+
 }

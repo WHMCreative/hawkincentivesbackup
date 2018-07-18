@@ -12,40 +12,64 @@ Drupal.behaviors.slickCustom = {
     const tabContent = $(tabContentSelector, context);
     if(!tabContent.length) return;
     const tabLabel = tabContent.find('.field--name-field-label');
-    let tabNavElement = '';
+    let tabNavElement;
 
-    let buildNav = (labels, placeAfter) => {
+    let buildNav = (labels, place) => {
       const result = $.Deferred();
+      tabNavElement = '';
 
       labels.each((i, el) => {
         tabNavElement += `<a href="#" class="slick-tab-nav--element">${$(el).text()}</a>`;
       });
-      placeAfter.after(`<div class="slick-tab-nav">${tabNavElement}</div>`);
+      place.after(`<div class="slick-tab-nav">${tabNavElement}</div>`);
 
       return result;
     };
 
-    let buildSlick = (mainSelector, navSelector) => {
+    let buildNavCount = (labels, place) => {
+      let tabNavElementNumbers = '',
+          tabNavElementLabels = '';
+
+      labels.each((i, el) => {
+        tabNavElementNumbers += `<span>${i + 1}/${labels.length}</span>`;
+        tabNavElementLabels += `<span>${$(el).text()}</span>`;
+      });
+
+      if (!place.find('.slick-counter-numbers').length) {
+        place.prepend(`<div class="slick-counter-numbers">${tabNavElementNumbers}</div>`);
+      }
+      if (!place.find('.slick-counter-labels').length) {
+        place.prepend(`<div class="slick-counter-labels">${tabNavElementLabels}</div>`);
+      }
+
+      // Init
+      $('.slick-counter-numbers span:nth-of-type(1)').addClass('active');
+      $('.slick-counter-labels span:nth-of-type(1)').addClass('active');
+    };
+
+    let buildSlick = (mainSelector, navSelector, labelQuantity) => {
       $(mainSelector).slick({
         slidesToShow: 1,
         arrows: false,
         fade: true,
         adaptiveHeight: true,
         asNavFor: navSelector,
+        responsive: [
+          {
+            breakpoint: 800,
+            settings: {
+              dots: true,
+            }
+          },
+        ]
       });
 
       $(navSelector).slick({
-        slidesToShow: tabLabel.length,
+        slidesToShow: labelQuantity.length,
         asNavFor: mainSelector,
         dots: false,
         centerMode: true,
         focusOnSelect: true,
-        // responsive: [{
-        //   breakpoint: 1024,
-        //   settings: {
-        //     slidesToShow: 1,
-        //   }
-        // }]
       });
 
       // Set tabindex to 0 after slick init
@@ -63,9 +87,24 @@ Drupal.behaviors.slickCustom = {
       });
     });
 
-    // Now call the functions one after the other
-    buildNav(tabLabel, tabContent).done( buildSlick(tabContentSelector, tabNavSelector) );
+    $(document).on('click', '.slick-dots button', (event) => {
+      const index = $(event.currentTarget).parent().index();
 
+      $(event.currentTarget).closest('.paragraph').find(`.slick-counter-numbers span`).removeClass('active');
+      $(event.currentTarget).closest('.paragraph').find(`.slick-counter-numbers span:nth-of-type(${index + 1})`).addClass('active');
+
+      $(event.currentTarget).closest('.paragraph').find(`.slick-counter-labels span`).removeClass('active');
+      $(event.currentTarget).closest('.paragraph').find(`.slick-counter-labels span:nth-of-type(${index + 1})`).addClass('active');
+    });
+
+    // Now call the functions one after the other
+    buildNav(tabLabel, tabContent).done( buildSlick(tabContentSelector, tabNavSelector, tabLabel) );
+
+    $(window).on('load resize orientationchange', function() {
+      if ($(window).width() <= 800 && !$('.slick-counter-numbers').length) {
+        buildNavCount(tabLabel, $(tabNavSelector));
+      }
+    });
   }
 };
 

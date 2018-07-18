@@ -9243,40 +9243,64 @@ Drupal.behaviors.slickCustom = {
     const tabContent = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(tabContentSelector, context);
     if(!tabContent.length) return;
     const tabLabel = tabContent.find('.field--name-field-label');
-    let tabNavElement = '';
+    let tabNavElement;
 
-    let buildNav = (labels, placeAfter) => {
+    let buildNav = (labels, place) => {
       const result = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.Deferred();
+      tabNavElement = '';
 
       labels.each((i, el) => {
         tabNavElement += `<a href="#" class="slick-tab-nav--element">${__WEBPACK_IMPORTED_MODULE_0_jquery___default()(el).text()}</a>`;
       });
-      placeAfter.after(`<div class="slick-tab-nav">${tabNavElement}</div>`);
+      place.after(`<div class="slick-tab-nav">${tabNavElement}</div>`);
 
       return result;
     };
 
-    let buildSlick = (mainSelector, navSelector) => {
+    let buildNavCount = (labels, place) => {
+      let tabNavElementNumbers = '',
+          tabNavElementLabels = '';
+
+      labels.each((i, el) => {
+        tabNavElementNumbers += `<span>${i + 1}/${labels.length}</span>`;
+        tabNavElementLabels += `<span>${__WEBPACK_IMPORTED_MODULE_0_jquery___default()(el).text()}</span>`;
+      });
+
+      if (!place.find('.slick-counter-numbers').length) {
+        place.prepend(`<div class="slick-counter-numbers">${tabNavElementNumbers}</div>`);
+      }
+      if (!place.find('.slick-counter-labels').length) {
+        place.prepend(`<div class="slick-counter-labels">${tabNavElementLabels}</div>`);
+      }
+
+      // Init
+      __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.slick-counter-numbers span:nth-of-type(1)').addClass('active');
+      __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.slick-counter-labels span:nth-of-type(1)').addClass('active');
+    };
+
+    let buildSlick = (mainSelector, navSelector, labelQuantity) => {
       __WEBPACK_IMPORTED_MODULE_0_jquery___default()(mainSelector).slick({
         slidesToShow: 1,
         arrows: false,
         fade: true,
         adaptiveHeight: true,
         asNavFor: navSelector,
+        responsive: [
+          {
+            breakpoint: 800,
+            settings: {
+              dots: true,
+            }
+          },
+        ]
       });
 
       __WEBPACK_IMPORTED_MODULE_0_jquery___default()(navSelector).slick({
-        slidesToShow: tabLabel.length,
+        slidesToShow: labelQuantity.length,
         asNavFor: mainSelector,
         dots: false,
         centerMode: true,
         focusOnSelect: true,
-        // responsive: [{
-        //   breakpoint: 1024,
-        //   settings: {
-        //     slidesToShow: 1,
-        //   }
-        // }]
       });
 
       // Set tabindex to 0 after slick init
@@ -9294,9 +9318,24 @@ Drupal.behaviors.slickCustom = {
       });
     });
 
-    // Now call the functions one after the other
-    buildNav(tabLabel, tabContent).done( buildSlick(tabContentSelector, tabNavSelector) );
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).on('click', '.slick-dots button', (event) => {
+      const index = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(event.currentTarget).parent().index();
 
+      __WEBPACK_IMPORTED_MODULE_0_jquery___default()(event.currentTarget).closest('.paragraph').find(`.slick-counter-numbers span`).removeClass('active');
+      __WEBPACK_IMPORTED_MODULE_0_jquery___default()(event.currentTarget).closest('.paragraph').find(`.slick-counter-numbers span:nth-of-type(${index + 1})`).addClass('active');
+
+      __WEBPACK_IMPORTED_MODULE_0_jquery___default()(event.currentTarget).closest('.paragraph').find(`.slick-counter-labels span`).removeClass('active');
+      __WEBPACK_IMPORTED_MODULE_0_jquery___default()(event.currentTarget).closest('.paragraph').find(`.slick-counter-labels span:nth-of-type(${index + 1})`).addClass('active');
+    });
+
+    // Now call the functions one after the other
+    buildNav(tabLabel, tabContent).done( buildSlick(tabContentSelector, tabNavSelector, tabLabel) );
+
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).on('load resize orientationchange', function() {
+      if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).width() <= 800 && !__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.slick-counter-numbers').length) {
+        buildNavCount(tabLabel, __WEBPACK_IMPORTED_MODULE_0_jquery___default()(tabNavSelector));
+      }
+    });
   }
 };
 

@@ -367,30 +367,101 @@
 
 // Compound - Tabbed Content
 .paragraph--type--compound-tabbed-content {
-  position: relative;
+  > .paragraph-content {
+    position: relative;
+  }
   
   .field--name-field-p-content > & {
     @include paragraph-margins((small: 0));
   }
 
+  .slick-dots {
+    bottom: 40px;
+    white-space: nowrap;
+
+    li button:before {
+      color: transparent;
+    }
+    li.slick-active button:before {
+      color: $white;
+    }
+    button {
+      position: relative;
+      &:after {
+        content: '';
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        border: 1px solid $white;
+        width: 9px;
+        height: 9px;
+        display: inline-block;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  .slick-counter-numbers {
+    text-align: center;
+    color: $white;
+    white-space: nowrap;
+    @include breakpoint(marge) {
+      display: none;
+    }
+
+    span {
+      opacity: 0;
+      padding: 0 5px;
+      font-size: 13px;
+      &.active {
+        opacity: 1;
+      }
+    }
+  }
+  .slick-counter-labels {
+    position: absolute;
+    left: 0;
+    bottom: 45px;
+    right: 0;
+    text-align: center;
+    color: $white;
+    font-weight: $global-weight-bold;
+    white-space: nowrap;
+    @include breakpoint(marge) {
+      display: none;
+    }
+
+    span {
+      display: none;
+      font-size: 13px;
+      &.active {
+        display: block;
+      }
+    }
+  }
+
   .slick-tab-nav {
-    border-top: 1px solid $white;
-    @include breakpoint(large) {
-      position: absolute;
-      left: 0;
+    position: absolute;
+    left: 0;
+    bottom: 20px;
+    right: 0;
+    @include breakpoint(marge) {
+      border-top: 1px solid $white;
       bottom: 0;
-      right: 0;
     }
 
     &:after {
-      content: '';
+      content: none;
       position: absolute;
       top: 0;
       right: 0;
       bottom: 0;
       left: 0;
       z-index: 0;
-      background-color: rgba($primary-color, .6);
+      @include breakpoint(marge) {
+        content: '';
+      }
+      //background-color: rgba($primary-color, .6);
     }
 
     .slick-list {
@@ -398,8 +469,9 @@
       margin: 0 auto;
       position: relative;
       z-index: 1;
-      @include breakpoint(marge down) {
+      @include breakpoint(medium down) {
         padding: 0 !important;
+        display: none;
       }
 
       .slick-track {
@@ -414,7 +486,7 @@
       color: $white;
       text-align: center;
 
-      @include breakpoint(marge down) {
+      @include breakpoint(medium down) {
         width: 100% !important;
         padding: 0 1rem;
       }
@@ -427,7 +499,7 @@
         outline: 0;
         opacity: .6;
 
-        @include breakpoint(large) {
+        @include breakpoint(marge) {
           padding: 21px 0;
         }
 
@@ -438,8 +510,60 @@
 
       &.slick-current {
         a {
-          border-top: 6px solid $primary-color-lighter;
+          //border-top: 6px solid $primary-color-lighter;
           opacity: 1;
+        }
+      }
+    }
+  }
+
+  &.with-bg {
+    background: none !important;
+  }
+
+  &.bg-color-green {
+    .paragraph {
+      .bg-container {
+        &:after {
+          background-color: rgba($primary-color, .85);
+        }
+      }
+    }
+
+    .slick-tab-nav {
+      &:after {
+        background-color: rgba($primary-color, .6);
+      }
+
+      .slick-slide {
+        &.slick-current {
+          a {
+            border-top: 6px solid $primary-color-lighter;
+          }
+        }
+      }
+    }
+  }
+
+  &.bg-color-blue {
+    .paragraph {
+      .bg-container {
+        &:after {
+          background-color: rgba($secondary-color-dark, .85);
+        }
+      }
+    }
+
+    .slick-tab-nav {
+      &:after {
+        background-color: rgba($secondary-color-dark, .6);
+      }
+
+      .slick-slide {
+        &.slick-current {
+          a {
+            border-top: 6px solid $secondary-color-light;
+          }
         }
       }
     }

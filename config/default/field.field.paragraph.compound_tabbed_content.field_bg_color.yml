@@ -11,7 +11,7 @@ entity_type: paragraph
 bundle: compound_tabbed_content
 label: 'Background Color'
 description: ''
-required: false
+required: true
 translatable: true
 default_value: {  }
 default_value_callback: ''

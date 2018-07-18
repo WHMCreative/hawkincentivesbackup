@@ -13,14 +13,6 @@ targetEntityType: paragraph
 bundle: compound_tabbed_content
 mode: default
 content:
-  field_bg_color:
-    weight: 1
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
   field_p_tab_content:
     type: entity_reference_revisions_entity_view
     weight: 0
@@ -30,4 +22,5 @@ content:
       link: ''
     third_party_settings: {  }
     region: content
-hidden: {  }
+hidden:
+  field_bg_color: true
