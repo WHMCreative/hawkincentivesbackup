@@ -5,6 +5,9 @@ dependencies:
   config:
     - bhk_micro_quiz.micro_quiz_type.result
     - field.storage.micro_quiz.field_p_multiple_links
+    - paragraphs.paragraphs_type.link_file
+    - paragraphs.paragraphs_type.link_form_modal
+    - paragraphs.paragraphs_type.link_url
   module:
     - entity_reference_revisions
 id: micro_quiz.result.field_p_multiple_links
@@ -19,5 +22,110 @@ default_value: {  }
 default_value_callback: ''
 settings:
   handler: 'default:paragraph'
-  handler_settings: {  }
+  handler_settings:
+    negate: 0
+    target_bundles:
+      link_file: link_file
+      link_form_modal: link_form_modal
+      link_url: link_url
+    target_bundles_drag_drop:
+      banner_featured_insights:
+        weight: 34
+        enabled: false
+      banner_hero:
+        weight: 35
+        enabled: false
+      compound_callout:
+        weight: 36
+        enabled: false
+      compound_content_bar:
+        weight: 37
+        enabled: false
+      compound_slider:
+        weight: 38
+        enabled: false
+      compound_stat_bar:
+        weight: 39
+        enabled: false
+      compound_tabbed_content:
+        weight: 40
+        enabled: false
+      layout_grid:
+        weight: 41
+        enabled: false
+      link_file:
+        enabled: true
+        weight: 42
+      link_form_modal:
+        enabled: true
+        weight: 43
+      link_url:
+        enabled: true
+        weight: 44
+      marketo_hidden_field:
+        weight: 45
+        enabled: false
+      marketo_submission_confirmation:
+        weight: 46
+        enabled: false
+      media_image_slider:
+        weight: 47
+        enabled: false
+      media_video_modal:
+        weight: 48
+        enabled: false
+      microquiz_conditional:
+        weight: 49
+        enabled: false
+      microquiz_question:
+        weight: 50
+        enabled: false
+      microquiz_quiz:
+        weight: 51
+        enabled: false
+      reference_block:
+        weight: 52
+        enabled: false
+      reference_card_browser:
+        weight: 53
+        enabled: false
+      reference_featured_insight:
+        weight: 54
+        enabled: false
+      reference_marketo_form:
+        weight: 55
+        enabled: false
+      simple_content:
+        weight: 56
+        enabled: false
+      simple_cta:
+        weight: 57
+        enabled: false
+      simple_icon_content:
+        weight: 58
+        enabled: false
+      simple_media_bar:
+        weight: 59
+        enabled: false
+      simple_media_tile:
+        weight: 60
+        enabled: false
+      simple_stat:
+        weight: 61
+        enabled: false
+      single_image:
+        weight: 62
+        enabled: false
+      single_svg:
+        weight: 63
+        enabled: false
+      single_video:
+        weight: 64
+        enabled: false
+      summary_cards:
+        weight: 65
+        enabled: false
+      summary_insights:
+        weight: 66
+        enabled: false
 field_type: entity_reference_revisions

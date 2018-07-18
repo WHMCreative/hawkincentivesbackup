@@ -5,6 +5,7 @@ dependencies:
   config:
     - bhk_micro_quiz.micro_quiz_type.result
     - field.storage.micro_quiz.field_p_conditional
+    - paragraphs.paragraphs_type.microquiz_conditional
   module:
     - entity_reference_revisions
 id: micro_quiz.result.field_p_conditional
@@ -21,7 +22,8 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     negate: 0
-    target_bundles: null
+    target_bundles:
+      microquiz_conditional: microquiz_conditional
     target_bundles_drag_drop:
       banner_featured_insights:
         weight: 30
@@ -80,11 +82,20 @@ settings:
       reference_marketo_form:
         weight: 48
         enabled: false
+      microquiz_conditional:
+        enabled: true
+        weight: 49
       simple_content:
         weight: 49
         enabled: false
       simple_icon_content:
         weight: 50
+        enabled: false
+      microquiz_question:
+        weight: 50
+        enabled: false
+      microquiz_quiz:
+        weight: 51
         enabled: false
       simple_media_bar:
         weight: 51
@@ -103,6 +114,9 @@ settings:
         enabled: false
       single_video:
         weight: 56
+        enabled: false
+      simple_cta:
+        weight: 57
         enabled: false
       summary_cards:
         weight: 57

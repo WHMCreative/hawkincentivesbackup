@@ -5,3 +5,17 @@ entity.micro_quiz_type.collection:
     _title: 'MicroQuiz Bundles'
   requirements:
     _permission: 'administer site configuration'
+
+bhk_micro_quiz.results:
+  path: '/micro_quiz/results'
+  defaults:
+    _controller: '\Drupal\bhk_micro_quiz\Controller\MicroQuizController::getSurveyResults'
+  requirements:
+    _access: 'TRUE'
+
+bhk_micro_quiz.reset:
+  path: '/micro_quiz/reset'
+  defaults:
+    _controller: '\Drupal\bhk_micro_quiz\Controller\MicroQuizController::resetMicroQuiz'
+  requirements:
+    _access: 'TRUE'

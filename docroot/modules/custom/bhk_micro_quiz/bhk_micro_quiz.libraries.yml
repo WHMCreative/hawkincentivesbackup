@@ -8,3 +8,9 @@ micro-quiz:
     - core/drupal
     - core/drupal.ajax
     - core/drupalSettings
+
+bhk_micro_quiz.commands:
+  js:
+    js/reload-page.js: {}
+  dependencies:
+    - core/drupal.ajax

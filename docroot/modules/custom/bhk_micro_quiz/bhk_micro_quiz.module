@@ -6,10 +6,7 @@
  */
 
 use Drupal\Core\Routing\RouteMatchInterface;
-use Drupal\Core\Entity\EntityInterface;
-use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
-use Drupal\Core\Url;
-use Drupal\Core\Render\Element;
+use Drupal\Core\Template\Attribute;
 
 /**
  * Implements hook_help().
@@ -53,83 +50,79 @@ function bhk_micro_quiz_theme_suggestions_micro_quiz(array $variables) {
   $entity = $variables['elements']['#micro_quiz'];
   $sanitized_view_mode = strtr($variables['elements']['#view_mode'], '.', '_');
 
-  $suggestions[] = 'micro_quiz__' . $sanitized_view_mode;
-  $suggestions[] = 'micro_quiz__' . $entity->bundle();
-  $suggestions[] = 'micro_quiz__' . $entity->bundle() . '__' . $sanitized_view_mode;
-  $suggestions[] = 'micro_quiz__' . $entity->id();
-  $suggestions[] = 'micro_quiz__' . $entity->id() . '__' . $sanitized_view_mode;
+  $suggestions[] = "micro_quiz__{$sanitized_view_mode}";
+  $suggestions[] = "micro_quiz__{$entity->bundle()}";
+  $suggestions[] = "micro_quiz__{$entity->bundle()}__{$sanitized_view_mode}";
+  $suggestions[] = "micro_quiz__{$entity->id()}";
+  $suggestions[] = "micro_quiz__{$entity->id()}__{$sanitized_view_mode}";
   return $suggestions;
 }
 
 /**
- * Preprocess micro_quiz templates.
+ * Preprocess MicroQuiz templates.
  *
  * @param array $variables
+ *   Template variables.
  */
 function bhk_micro_quiz_preprocess_micro_quiz(array &$variables) {
-  $variables['bundle'] = $variables['elements']['#micro_quiz']->bundle();
-}
+  /** @var \Drupal\bhk_micro_quiz\Entity\MicroQuizEntityInterface $micro_quiz */
+  $micro_quiz = $variables['elements']['#micro_quiz'];
+  $bundle = $micro_quiz->bundle();
+  $variables['bundle'] = $bundle;
 
-function bhk_micro_quiz_paragraph_view_alter(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display) {
-  if ($entity->bundle() === 'microquiz_quiz' && isset($build['field_p_questions'])) {
+  if ($bundle === 'answer' && !$variables['attributes']) {
 
-    $build['#attached']['library'][] = 'bhk_micro_quiz/micro-quiz';
-
-    $question_keys = Element::children($build['field_p_questions']);
-    $total_questions = count($question_keys);
-
-    $last_question = FALSE;
-
-    foreach ($question_keys as $key) {
-      if ($key === end($question_keys)) {
-        $last_question = TRUE;
-      }
-
-      $current = $key + 1;
-
-      $action_component = [
-        '#type' => 'container',
-        '#attributes' => [
-          'class' => ['quiz-action-wrapper']
-        ],
-        'link' => [
-          '#type' => 'link',
-          '#title' => $last_question ? t('Get Results!') : t('Next'),
-          '#url' => Url::fromRoute('<current>'),
-          '#attributes' => [
-            'class' => $last_question ? 'quiz-action-finish disabled' : 'quiz-action-next disabled',
-          ],
-        ],
-        'current_step' => [
-          '#type' => 'container',
-          '#markup' => "{$current} of {$total_questions}",
-          '#attributes' => [
-            'class' => 'quiz-current-step'
-          ],
-        ]
-      ];
-
-      $build['field_p_questions'][$key]['#suffix'] = \Drupal::service('renderer')->render($action_component);
-
-      $build['field_p_questions'][$key] = [
-        '#type' => 'container',
-        "question_{$key}" => $build['field_p_questions'][$key],
-      ];
-
-      if ($key === reset($question_keys)) {
-        $question_class = 'active-question';
-      }
-      else {
-        $question_class = 'hidden';
-      }
-
-      $build['field_p_questions'][$key]['#attributes']['class'] = [$question_class, 'quiz-question-wrapper'];
+    // Set helper data attributes for microquiz answers.
+    if ($variables['attributes'] instanceof Attribute) {
+      $variables['attributes']->setAttribute('data-marketo-value', $micro_quiz->get('field_marketo_value')->value);
+      $variables['attributes']->setAttribute('data-answer-id', $micro_quiz->id());
+    }
+    else {
+      $variables['attributes']['data-marketo-value'] = $micro_quiz->get('field_marketo_value')->value;
+      $variables['attributes']['data-answer-id'] = $micro_quiz->id();
     }
   }
 }
 
-function bhk_micro_quiz_micro_quiz_view_alter(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display) {
-  if ($entity->bundle() === 'answer' && $entity->hasField('field_marketo_value')) {
-    $build['#attributes']['data-marketo-value'] = $entity->get('field_marketo_value')->value;
+/**
+ * Preprocess MicroQuiz-related component templates.
+ *
+ * @param array $variables
+ *   Template variables.
+ */
+function bhk_micro_quiz_preprocess_paragraph(array &$variables) {
+  $bundle = $variables['paragraph']->bundle();
+
+  // Build a form step for each quiz question.
+  if ($bundle === 'microquiz_question') {
+    $question_form = \Drupal::formBuilder()
+      ->getForm('Drupal\bhk_micro_quiz\Form\MicroQuizQuestionForm', $variables);
+
+    $variables['content'] = $question_form;
+
+    if ($question_form['step']['#value'] === 'active') {
+      $variables['attributes'] = new Attribute(['class' => 'active-question']);
+    }
+    else {
+      $variables['attributes'] = new Attribute(['class' => 'hidden']);
+    }
+  }
+
+  if ($bundle === 'microquiz_quiz') {
+
+    // Attach appropriate js library to the quiz.
+    $variables['content']['field_p_questions']['#attached']['library'][] = 'bhk_micro_quiz/micro-quiz';
+
+    // Load quiz results immediately if cookies have been set.
+    $request = \Drupal::requestStack()->getCurrentRequest();
+    $cookies = $request->cookies;
+
+    $mq_answers = $cookies->get('mq_answers');
+
+    if ($mq_answers) {
+      $answers = explode(',', $mq_answers);
+      $output['#markup'] = \Drupal::service('bhk_micro_quiz.quiz_helper')->getSurveyResult($answers);
+      $variables['content'] = $output;
+    }
   }
 }
