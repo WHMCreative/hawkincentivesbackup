@@ -1,0 +1,54 @@
+////
+/// Views
+////
+
+.view-news {
+  &.view-display-id-block_news {
+    @include breakpoint(marge) {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    > .view-filters {
+      @include breakpoint(marge) {
+        min-width: 100vw;
+        background: $secondary-color-dark;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        color: $white;
+      }
+      .views-exposed-form {
+        @include content-width(default);
+      }
+    }
+    > .attachment-before {
+      @include breakpoint(marge) {
+        max-width: 385px;
+        width: 50%;
+      }
+    }
+    > .view-content {
+      @include breakpoint(marge) {
+        max-width: 520px;
+        width: 50%;
+      }
+    }
+    > .pager {
+      width: 100%;
+      margin: 15px 0 0;
+      display: flex;
+      justify-content: center;
+      @include breakpoint(marge) {
+        margin-top: 25px;
+      }
+      li {
+        margin: 0;
+        padding: 0;
+        a {
+          @include btn(blue);
+        }
+      }
+    }
+  }
+}

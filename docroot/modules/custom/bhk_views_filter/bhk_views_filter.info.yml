@@ -1,0 +1,5 @@
+name: BHK Views Custom Filter
+description: 'Custom filter which allows filtering by year'
+type: module
+core: 8.x
+package: Custom
