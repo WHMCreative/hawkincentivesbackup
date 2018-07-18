@@ -10,6 +10,7 @@ Drupal.behaviors.slickCustom = {
     const tabContentSelector = '.paragraph--type--compound-tabbed-content .field--name-field-p-tab-content';
     const tabNavSelector = '.slick-tab-nav';
     const tabContent = $(tabContentSelector, context);
+    if(!tabContent.length) return;
     const tabLabel = tabContent.find('.field--name-field-label');
     let tabNavElement = '';
 
