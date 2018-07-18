@@ -1,5 +1,5 @@
 <template>
-  <label><span><input type="radio" :name="type" :value="filter" @change="$emit('selectRadio', $event)">{{ typeMap[filter]}}</span></label>
+  <label><span><input type="radio" :name="type" :value="filter" @change="handleClick($event)">{{ typeMap[filter]}}</span></label>
 </template>
 
 <script>
@@ -16,6 +16,12 @@ export default {
       }
     }
   },
+
+  methods: {
+    handleClick($event) {
+      this.$emit('selectRadio', $event);
+    }
+  }
 };
 </script>
 

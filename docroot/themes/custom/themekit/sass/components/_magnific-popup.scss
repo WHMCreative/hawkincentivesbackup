@@ -3,18 +3,36 @@
 ////
 
 .mfp-close-btn-in .mfp-close {
-  color: $lighter-gray;
+  right: 13px;
+  top: 9px;
+  color: $white;
   font-size: rem-calc(34);
+  opacity: .4;
+
+  @include selectors('active') {
+    opacity: 1;
+  }
 }
 
 .mfp-content {
+  > div {
+    position: relative;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   .card-modal {
     width: 90%;
     max-width: rem-calc(700);
     background: $white;
     margin: auto;
-    padding: rem-calc(40);
+    padding: rem-calc(20);
     position: relative;
+
+    @include breakpoint(medium) {
+      padding: rem-calc(40);
+    }
   }
 }
 

@@ -87,9 +87,13 @@
 
   {{ page.content_below }}
 
-  {% if page.footer %}
+  {% if page.footer_first or page.footer_second %}
     <footer role="contentinfo">
-      {{ page.footer }}
+        <div class="footer-content">
+
+      {{ page.footer_first }}
+      {{ page.footer_second }}
+        </div>
     </footer>
   {% endif %}
 

@@ -1,0 +1,40 @@
+uuid: 0b89300d-5239-429f-a966-9bcac3daea39
+langcode: en
+status: true
+dependencies:
+  config:
+    - entity_browser.browser.svg
+    - field.field.paragraph.media_svg.field_svg
+    - paragraphs.paragraphs_type.media_svg
+  module:
+    - content_moderation
+    - entity_browser
+id: paragraph.media_svg.default
+targetEntityType: paragraph
+bundle: media_svg
+mode: default
+content:
+  field_svg:
+    weight: 101
+    settings:
+      entity_browser: svg
+      field_widget_display: rendered_entity
+      field_widget_remove: true
+      open: true
+      selection_mode: selection_append
+      field_widget_display_settings:
+        view_mode: default
+      field_widget_edit: false
+    third_party_settings: {  }
+    type: entity_browser_entity_reference
+    region: content
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    settings: {  }
+    region: content
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

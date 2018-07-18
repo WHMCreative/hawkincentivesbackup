@@ -1,0 +1,115 @@
+uuid: 776d5640-a57a-4ca8-b0d7-934607c51273
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_media
+    - paragraphs.paragraphs_type.media_image
+    - paragraphs.paragraphs_type.simple_stat
+  module:
+    - entity_reference_revisions
+id: paragraph.simple_stat.field_p_media
+field_name: field_p_media
+entity_type: paragraph
+bundle: simple_stat
+label: Stat
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      media_image: media_image
+    target_bundles_drag_drop:
+      banner_featured_insights:
+        weight: 31
+        enabled: false
+      banner_hero:
+        weight: 32
+        enabled: false
+      compound_callout:
+        weight: 33
+        enabled: false
+      compound_content_bar:
+        weight: 34
+        enabled: false
+      compound_slider:
+        weight: 35
+        enabled: false
+      compound_stat_bar:
+        weight: 36
+        enabled: false
+      compound_tabbed_content:
+        weight: 37
+        enabled: false
+      layout_grid:
+        weight: 38
+        enabled: false
+      link_file:
+        weight: 39
+        enabled: false
+      link_form_modal:
+        weight: 40
+        enabled: false
+      link_url:
+        weight: 41
+        enabled: false
+      marketo_hidden_field:
+        weight: 42
+        enabled: false
+      marketo_submission_confirmation:
+        weight: 43
+        enabled: false
+      media_image:
+        enabled: true
+        weight: 43
+      media_image_slider:
+        weight: 44
+        enabled: false
+      media_video_modal:
+        weight: 45
+        enabled: false
+      reference_block:
+        weight: 46
+        enabled: false
+      reference_card_browser:
+        weight: 47
+        enabled: false
+      reference_featured_insight:
+        weight: 48
+        enabled: false
+      reference_marketo_form:
+        weight: 49
+        enabled: false
+      simple_content:
+        weight: 50
+        enabled: false
+      simple_cta:
+        weight: 51
+        enabled: false
+      simple_icon_content:
+        weight: 52
+        enabled: false
+      simple_media_bar:
+        weight: 53
+        enabled: false
+      simple_media_tile:
+        weight: 54
+        enabled: false
+      simple_stat:
+        weight: 55
+        enabled: false
+      media_video:
+        weight: 58
+        enabled: false
+      summary_cards:
+        weight: 59
+        enabled: false
+      summary_insights:
+        weight: -59
+        enabled: false
+field_type: entity_reference_revisions

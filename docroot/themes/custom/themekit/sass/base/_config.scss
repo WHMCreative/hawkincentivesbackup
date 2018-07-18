@@ -46,6 +46,12 @@ $z-layers: (
     base: 5,
     sidebar: 7
   ),
+  video-modal: (
+    base: 1,
+    overlay: 3,
+    play: 5,
+    flourish: 7
+  )
 );
 
 /// Button config
@@ -64,6 +70,13 @@ $buttons: (
     background: $white,
     color: $primary-color
   ),
+  white-with-hover: (
+    extend:white,
+    color: $secondary-color,
+    active-border: transparent,
+    active-background: #2a5b7c,
+    active-color: $white
+  ),
   ghost: (
     background: $white,
     border: transparent,
@@ -79,7 +92,7 @@ $buttons: (
     color: $white,
     active-border: $white,
     active-background: $white,
-    active-color: $primary-color,
+    active-color: $secondary-color,
   ),
 );
 
@@ -103,6 +116,12 @@ $links: (
   blue: (
     extend: _base
   ),
+
+  white: (
+    extend: _base,
+    color: $white,
+    active-color: $secondary-color-light,
+  )
 );
 
 

@@ -6,25 +6,37 @@
 
   .card-list {
     @include content-width(default);
-    display: flex;
+    @include breakpoint(marge) {
+      display: flex;
+    }
   }
 
   // Filters
   .filters {
-    min-width: rem-calc(320);
-    padding-right: rem-calc(50);
     position: relative;
     text-align: left;
     @include top-bottom(padding, rem-calc(50));
+
+    @include breakpoint(marge) {
+      flex: 0 0 rem-calc(320);
+      padding-right: rem-calc(50);
+    }
 
     &:before {
       content: "";
       position: absolute;
       top: 0;
       bottom: 0;
-      width: 9600px;
-      right: 0;
+      width: calc(100% + 60px);
+      left: rem-calc(-30);
+      right: rem-calc(-30);
       background-image: $gray-gradient;
+
+      @include breakpoint(marge) {
+        width: 9600px;
+        right: 0;
+        left: auto;
+      }
     }
 
     .content {
@@ -35,17 +47,66 @@
     .filter-title {
       font-size: rem-calc(20);
       font-weight: $global-weight-bold;
+      color: $secondary-color-dark;
     }
 
     .box-filter {
       padding: rem-calc(20);
       background: $white;
       box-shadow: 0 5px 15px rgba(153, 153, 153, 0.15);
+      border-bottom: $lighter-gray solid 1px;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &.content {
+        display: none;
+        @include breakpoint(marge) {
+          display: block;
+        }
+      }
+
+      .filter--category {
+        label {
+          &:last-child {
+            input {
+              margin-bottom: 0;
+            }
+          }
+        }
+        @include breakpoint(marge down) {
+          display: flex;
+          flex-wrap: wrap;
+          label {
+            margin-right: rem-calc(20);
+            &:last-child {
+              margin-right: 0;
+            }
+          }
+        }
+
+      }
+
+      .description{
+        h3 {
+          color: $medium-gray;
+          font-size: rem-calc(13);
+        }
+
+        p {
+          font-size: rem-calc(13);
+        }
+      }
     }
 
     .filter--type {
       @include tk-flex-block-grid(2, 'label', $gutter: 16px, $bottom-gutter: 16px);
       margin-bottom: rem-calc(32);
+
+      @include breakpoint(medium only) {
+        @include tk-flex-block-grid(4, 'label', $gutter: 16px, $bottom-gutter: 16px);
+      }
 
       input[type=radio] {
         display: none;
@@ -61,10 +122,15 @@
         box-shadow: 0 5px 15px rgba(153, 153, 153, 0.15);
         cursor: pointer;
 
-        &:hover {
+        @include selectors(active){
           background: $secondary-color-dark;
           color: $white;
         }
+      }
+
+      label.selected span {
+        background: $secondary-color-dark;
+        color: $white;
       }
     }
   }
@@ -73,9 +139,11 @@
   .card-list {
     /* Cards */
     > .cards {
-      //flex: 2;
       @include top-bottom(padding, rem-calc(50));
-      padding-left: rem-calc(50);
+
+      @include breakpoint(marge) {
+        padding-left: rem-calc(50);
+      }
     }
 
     .count {
@@ -97,12 +165,27 @@
   // Selected Cards Area
   .selected-cards {
     background-image: $blue-gradient;
-    padding: 10px 0;
     position: absolute;
     width: 100%;
-    max-height: 500px;
     z-index: z(just-above);
-    transition: max-height 1s;
+    transition: all 1s;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    height: rem-calc(140);
+    padding: 30px 0;
+    top: rem-calc(500);
+
+    @include breakpoint(medium) {
+      height: rem-calc(140);
+      padding: 30px 0;
+      top: rem-calc(240);
+    }
+
+    @include breakpoint(large) {
+      height: rem-calc(190);
+      top: rem-calc(120);
+      padding: 40px 0;
+    }
 
     &.slide-enter-active,
     &.slide-leave-active {
@@ -110,14 +193,14 @@
 
     &.slide-enter,
     &.slide-leave-to {
-      transition: max-height 1s;
-      max-height: 0;
-      overflow: hidden;
+      transition: all 0.5s;
+      height: 0;
+      padding: 0;
     }
 
     .content-wrapper {
       @include content-width(wide);
-      max-width: 80rem;
+      max-width: rem-calc(1400);
     }
 
     .content {
@@ -127,9 +210,15 @@
       justify-content: space-between;
 
       & > .cards {
-        @include tk-block-grid(6, '.card');
+        @include tk-block-grid(6, '.card', $gutter: 15px);
         flex-grow: 1;
 
+        .card {
+          margin-bottom: 0;
+          img {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+          }
+        }
       }
     }
 
@@ -252,12 +341,39 @@
   .card-list & {
     .card-overview {
       min-height: 100px;
-      display: flex;
+      margin-bottom: rem-calc(48);
+
+      @include breakpoint(medium) {
+        display: flex;
+      }
 
       .media {
-        width: rem-calc(300);
-        margin-right: rem-calc(24);
+        margin-bottom: rem-calc(24);
+        display: flex;
 
+        @include breakpoint(medium) {
+          width: rem-calc(300);
+          margin-right: rem-calc(24);
+          margin-bottom: 0;
+          //align-items: center;
+        }
+
+        @include breakpoint(marge) {
+          width: rem-calc(180);
+        }
+
+        @include breakpoint(large) {
+          width: rem-calc(300);
+          //align-items: flex-start;
+        }
+
+        .media-content {
+          position: relative;
+          width: 50%;
+          @include breakpoint(medium) {
+            width: 100%;
+          }
+        }
         img {
           width: 100%;
         }
@@ -286,11 +402,18 @@
     text-align: left;
 
     .card-info {
-      display: flex;
+
+      @include breakpoint(medium) {
+        display: flex;
+      }
 
       .media {
         flex: 1;
-        margin-right: rem-calc(24);
+        margin-bottom: rem-calc(24);
+        @include breakpoint(medium) {
+          margin-right: rem-calc(24);
+          margin-bottom: 0;
+        }
       }
 
       .content {
@@ -306,7 +429,11 @@
       margin: rem-calc(32 0);
 
       .content.boolean {
-        @include tk-flex-block-grid(3, '.feature', $gutter: 16px, $bottom-gutter: 10px);
+        @include tk-flex-block-grid(1, '.feature', $gutter: 16px, $bottom-gutter: 10px);
+
+        @include breakpoint(medium) {
+          @include tk-flex-block-grid(3, '.feature', $gutter: 16px, $bottom-gutter: 10px);
+        }
       }
 
       .feature {
@@ -323,8 +450,18 @@
       }
 
       .varied {
-        @include tk-flex-block-grid(3, '.feature', $gutter: 16px, $bottom-gutter: 10px);
         margin-top: rem-calc(32);
+        @include breakpoint(medium) {
+          @include tk-flex-block-grid(3, '.feature', $gutter: 16px, $bottom-gutter: 10px);
+        }
+
+        .feature {
+          margin-bottom: rem-calc(4);
+
+          @include breakpoint(medium) {
+            margin-bottom: 0;
+          }
+        }
 
         &:before {
           position: absolute;
@@ -338,23 +475,18 @@
 
     .marketo-modal-cta-link {
       @include btn(blue);
+      cursor: pointer;
     }
-  }
-
-  // Main
-  .cards & {
-    margin-bottom: rem-calc(48);
   }
 
   // Selected
   .selected-cards & {
     max-width: 300px;
-    margin-bottom: 0;
   }
 
-  .selected-cards .content>.cards & {
-    margin-bottom: 0;
+  &.selected {
+    .heart {
+      background: red;
+    }
   }
 }
-
-

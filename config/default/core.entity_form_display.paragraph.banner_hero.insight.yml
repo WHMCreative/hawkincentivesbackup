@@ -21,6 +21,12 @@ targetEntityType: paragraph
 bundle: banner_hero
 mode: insight
 content:
+  field_bg_color:
+    type: options_select
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_heading:
     type: string_textfield
     weight: 0
@@ -45,7 +51,6 @@ content:
     region: content
 hidden:
   created: true
-  field_bg_color: true
   field_description: true
   field_large_heading: true
   field_p_banner_content: true

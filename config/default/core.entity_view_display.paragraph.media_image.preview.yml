@@ -1,0 +1,26 @@
+uuid: a54a6a63-31f1-4af4-ac97-413872ce922d
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.preview
+    - field.field.paragraph.media_image.field_media_image
+    - image.style.thumbnail
+    - paragraphs.paragraphs_type.media_image
+  module:
+    - media_entity
+id: paragraph.media_image.preview
+targetEntityType: paragraph
+bundle: media_image
+mode: preview
+content:
+  field_media_image:
+    weight: 0
+    label: hidden
+    settings:
+      image_style: thumbnail
+      image_link: ''
+    third_party_settings: {  }
+    type: media_thumbnail
+    region: content
+hidden: {  }

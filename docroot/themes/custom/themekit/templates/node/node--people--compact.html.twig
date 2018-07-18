@@ -103,6 +103,9 @@ view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
   <div{{ content_attributes.addClass('node--content') }}>
     <h4{{ title_attributes }}>{{ label }}</h4>
     {{ rendered_content }}
+    {% if resources_url %}
+      {{ link('More Articles', resources_url, {'class':['view-more']}) }}
+    {% endif %}
   </div>
 
 </article>

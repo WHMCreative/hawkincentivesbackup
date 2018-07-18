@@ -85,3 +85,9 @@ map:
   microquiz_question: microquiz
   microquiz_conditional: microquiz
   microquiz_quiz: microquiz
+  layout_2_column: layout
+  simple_media_tile: media
+  media_svg: media
+  media_video: media
+  media_image: media
+  simple_cta: simple

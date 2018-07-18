@@ -5,7 +5,8 @@
 $colors: (
   default: (
     default: #89ae43, // Hawk Green
-    light: #a8b234,
+    light: #a4cd29,
+    lighter: #e9fe77,
   ),
   secondary: (
     default: #1969b7, // Hawk Blue
@@ -25,6 +26,8 @@ $colors: (
 
 
 $primary-color: color(default, default);
+$primary-color-light: color(default, light);
+$primary-color-lighter: color(default, lighter);
 $secondary-color: color(secondary, default);
 $secondary-color-light: color(secondary, light);
 $secondary-color-dark: color(secondary, dark);
@@ -35,6 +38,7 @@ $lighter-gray: color(gray, lighter);
 $medium-gray: color(gray, default);
 $dark-gray: color(gray, dark);
 
+$dove-colored: #6bcec9;
 
 $gray-gradient: linear-gradient(135deg, rgba(244, 244, 244, 0.4) 0%, rgba(228, 228, 228, 0.4) 100%);
 $green-gradient: linear-gradient(135deg, rgba(180, 203, 77, 0.9) 0%, rgba(67, 132, 29, 0.9) 100%);
@@ -42,5 +46,9 @@ $blue-gradient: linear-gradient(135deg, $secondary-color-light 0%, $secondary-co
 $blue-gradient-reverse: linear-gradient(135deg, $secondary-color 0%, $secondary-color-light 100%);
 
 $bg-colors: (
-
+  green: $primary-color,
+  blue: $secondary-color,
+  gray: $gray-gradient
 );
+
+$overlays: blue, green, navy, orange, purple;

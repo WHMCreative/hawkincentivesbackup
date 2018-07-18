@@ -4,9 +4,9 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_p_media
+    - paragraphs.paragraphs_type.media_image
+    - paragraphs.paragraphs_type.media_svg
     - paragraphs.paragraphs_type.simple_icon_content
-    - paragraphs.paragraphs_type.single_image
-    - paragraphs.paragraphs_type.single_svg
   module:
     - entity_reference_revisions
 id: paragraph.simple_icon_content.field_p_media
@@ -24,8 +24,8 @@ settings:
   handler_settings:
     negate: 0
     target_bundles:
-      single_image: single_image
-      single_svg: single_svg
+      media_svg: media_svg
+      media_image: media_image
     target_bundles_drag_drop:
       link_file:
         weight: 16
@@ -60,16 +60,7 @@ settings:
       simple_stat:
         weight: 26
         enabled: false
-      single_image:
-        enabled: true
-        weight: 27
-      single_svg:
-        enabled: true
-        weight: 28
       banner_featured_insights:
-        weight: 29
-        enabled: false
-      single_video:
         weight: 29
         enabled: false
       summary_insights:
@@ -81,6 +72,9 @@ settings:
       compound_callout:
         weight: 31
         enabled: false
+      media_svg:
+        enabled: true
+        weight: 32
       compound_content_bar:
         weight: 32
         enabled: false
@@ -96,6 +90,12 @@ settings:
       layout_grid:
         weight: 36
         enabled: false
+      layout_2_column:
+        weight: 38
+        enabled: false
+      link_form_modal:
+        weight: 41
+        enabled: false
       reference_block:
         weight: 43
         enabled: false
@@ -105,8 +105,17 @@ settings:
       reference_featured_insight:
         weight: 45
         enabled: false
+      media_image:
+        enabled: true
+        weight: 45
+      media_video:
+        weight: 47
+        enabled: false
       simple_media_bar:
         weight: 49
+        enabled: false
+      simple_cta:
+        weight: 54
         enabled: false
       summary_cards:
         weight: 55

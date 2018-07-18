@@ -1,0 +1,25 @@
+uuid: 0b17e204-528d-436a-b384-70f97ac50bb8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_bg_color
+    - paragraphs.paragraphs_type.layout_2_column
+id: paragraph.layout_2_column.field_bg_color
+field_name: field_bg_color
+entity_type: paragraph
+bundle: layout_2_column
+label: 'Background Color'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: display_settings
+      display_name: colors_basic
+      arguments: {  }
+field_type: entity_reference

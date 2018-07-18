@@ -64,8 +64,14 @@
                 setInputStateTracker($formField);
               }
 
-              if($formField.is('select') || $formField.is('textarea')) {
-                $formField.parents('.mktoFieldWrap').addClass('marketo-form-item marketo-focus-form-item');
+              if($formField.is('select')) {
+                $formField.parents('.mktoFieldWrap').addClass('marketo-form-item');
+                setSelectStateTracker($formField);
+              }
+
+              if($formField.is('textarea')) {
+                $formField.parents('.mktoFieldWrap').addClass('marketo-form-item');
+                setInputStateTracker($formField);
               }
 
               if($formField.is('input[type=checkbox]')) {
@@ -129,6 +135,33 @@
         });
 
         input.filter(function () {
+          return this.value;
+        }).closest(item).addClass('has-value');
+      };
+
+      /**
+       * Initialize focus and state trackers for select theming.
+       *
+       * @param {object} select
+       *   Select object to process.
+       */
+      const setSelectStateTracker = function (select) {
+        select.parents('.mktoFieldWrap').addClass('marketo-form-item');
+
+        let item = $('.marketo-form-item', context),
+          states = 'change';
+
+        select.focus(function () {
+          $(this).closest(item).addClass('marketo-focus-form-item');
+        }).blur(function () {
+          $(this).closest(item).removeClass('marketo-focus-form-item');
+        });
+
+        select.bind(states, function () {
+          $(this).closest(item).addClass('has-value');
+        });
+
+        select.filter(function () {
           return this.value;
         }).closest(item).addClass('has-value');
       };
@@ -324,6 +357,13 @@
           }
         });
 
+        // Remove inline marketo custom fonts.
+        let mktoInlineFonts = $('#mktoFontUrl');
+        if (mktoInlineFonts.length > 0) {
+          mktoInlineFonts.remove();
+        }
+
+        // Remove the rest of inline styles.
         let mktoInlineStyles = $('#mktoForms2ThemeStyle').next('style'),
           mktoinlineFormStyles = $form.find('style');
 

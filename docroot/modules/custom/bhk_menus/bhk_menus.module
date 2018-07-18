@@ -1,0 +1,53 @@
+<?php
+
+/**
+ * @file
+ * Contains bhk_menus.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_help().
+ */
+function bhk_menus_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the bhk_modal module.
+    case 'help.page.bhk_menus':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Add customization and conditional fields for menus.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Set conditional fields for the extra menu item content.
+ */
+function bhk_menus_form_menu_link_content_main_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+
+  $form['field_cta']['#states'] = [
+    'visible' => [
+      ['select[name="view_mode[0][value]"]' => ['value' => 'featured']],
+    ],
+  ];
+
+  $form['field_description']['#states'] = [
+    'visible' => [
+      ['select[name="view_mode[0][value]"]' => ['value' => 'featured']],
+      ['select[name="view_mode[0][value]"]' => ['value' => 'default']],
+    ],
+  ];
+
+  $form['field_media_image']['#states'] = [
+    'visible' => [
+      ['select[name="view_mode[0][value]"]' => ['value' => 'default']],
+    ],
+  ];
+}

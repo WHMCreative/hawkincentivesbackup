@@ -1,0 +1,27 @@
+uuid: 0109d8bd-8fd6-40b8-9248-ce17ab9671ac
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_news_type
+field_name: field_news_type
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: press_release
+      label: 'Press Release'
+    -
+      value: news
+      label: News
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -14,12 +14,24 @@
   }
 }
 
+@mixin paragraph-paddings($spacing: $paragraph-spacing) {
+  @if type-of($spacing == map) {
+    @each $bp, $size in $spacing {
+      $size: rem-calc($size);
+      @include breakpoint($bp) {
+        @include top-bottom(padding, $size);
+      }
+    }
+  }
+}
+
 @mixin insight-label($font-size: 11) {
   font-size: rem-calc($font-size);
   line-height: 2;
   padding: 2px 7px;
   background: rgba($black, 0.25);
   border-radius: 3px;
+  color: $white;
 }
 
 /// Adds frame for teaser image
@@ -30,7 +42,7 @@
 /// @param {string} $radius - Value of the frame's border radius, in px
 /// @param {string} $pseudo-element - Element to use for adding the frame. Default value: after
 /// @param {boolean} $animate - Animate frame's position on teaser active states. Default value: false
-@mixin frame($color, $size, $offset, $radius, $pseudo-element: after, $animate: false) {
+@mixin frame($color, $size, $offset, $radius, $pseudo-element: after, $animate: false, $z-index: 0) {
   position: relative;
   &:#{$pseudo-element} {
     content: '';
@@ -41,6 +53,7 @@
     height: 100%;
     border: $size solid $color;
     border-radius: $radius;
+    z-index: $z-index;
     @if ($animate == true) {
       transition: transform 250ms;
     }
@@ -62,5 +75,69 @@
     width: 100%;
     height: rem-calc(10);
     background: $green-gradient;
+  }
+}
+
+// Text colors schemes
+@mixin color-scheme ($scheme: dark) {
+  h1, h2, h3, h4, h5, h6, div, p, li {
+    color: $white;
+  }
+}
+
+@mixin play-btn($size: 28) {
+  display: block;
+  height: rem-calc($size);
+  width: rem-calc($size);
+  background-image: url(img-get('svg/play-btn.svg'));
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+@mixin layout-content-sidebar() {
+  @include content-width(default);
+  padding-top: 40px;
+  margin-bottom: 40px;
+  @include breakpoint(marge) {
+    padding-top: 85px;
+    margin-bottom: 85px;
+    display: flex;
+    justify-content: space-between;
+  }
+  > .node--content {
+    margin-bottom: 40px;
+    @include breakpoint(marge) {
+      margin-bottom: 0;
+      width: 64%;
+      max-width: 650px;
+      position: relative;
+    }
+  }
+  > .node--sidebar {
+    @include breakpoint(marge) {
+      max-width: 250px;
+      width: 26%;
+    }
+
+    h3 {
+      margin-bottom: 12px;
+    }
+  }
+}
+
+@mixin a2a-kit() {
+  .a2a_kit {
+    margin-bottom: 20px;
+    @include breakpoint(marge) {
+      position: absolute;
+      left: 0;
+      top: -45px;
+    }
+    @include breakpoint(xlarge) {
+      width: 32px;
+      top: 0;
+      left: -90px;
+    }
   }
 }

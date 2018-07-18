@@ -1,0 +1,22 @@
+uuid: 779b0659-61ef-4867-a668-7fa1b623a1c7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.media_svg.field_svg
+    - paragraphs.paragraphs_type.media_svg
+id: paragraph.media_svg.default
+targetEntityType: paragraph
+bundle: media_svg
+mode: default
+content:
+  field_svg:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+hidden: {  }

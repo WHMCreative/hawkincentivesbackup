@@ -1,0 +1,76 @@
+uuid: bca0cd92-9855-4251-863c-50258200e104
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.compound_media_title_bar.field_bg_color
+    - field.field.paragraph.compound_media_title_bar.field_description
+    - field.field.paragraph.compound_media_title_bar.field_heading
+    - field.field.paragraph.compound_media_title_bar.field_p_media_tile_content
+    - field.field.paragraph.compound_media_title_bar.field_p_multiple_links
+    - paragraphs.paragraphs_type.compound_media_title_bar
+  module:
+    - paragraphs_browser
+    - text
+id: paragraph.compound_media_title_bar.default
+targetEntityType: paragraph
+bundle: compound_media_title_bar
+mode: default
+content:
+  field_bg_color:
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_description:
+    weight: 1
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_heading:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_p_media_tile_content:
+    type: entity_reference_paragraphs_browser
+    weight: 2
+    settings:
+      title: Component
+      title_plural: Components
+      edit_mode: preview
+      add_mode: paragraphs_browser
+      form_display_mode: default
+      default_paragraph_type: simple_media_tile
+      paragraphs_browser: browser
+      modal_width: 80%
+      modal_height: auto
+    third_party_settings: {  }
+    region: content
+  field_p_multiple_links:
+    weight: 3
+    settings:
+      title: Link
+      title_plural: Links
+      edit_mode: preview
+      add_mode: paragraphs_browser
+      form_display_mode: default
+      default_paragraph_type: _none
+      paragraphs_browser: browser
+      modal_width: 80%
+      modal_height: auto
+    third_party_settings: {  }
+    type: entity_reference_paragraphs_browser
+    region: content
+hidden:
+  created: true
+  moderation_state: true
+  status: true
+  uid: true

@@ -10,9 +10,14 @@
 
 .paragraph--type--link-url {
   a {
-    @include btn(blue);
+    //@include btn(blue);
     .menu-dropdown & {
-      @include btn(ghost);
+      @include breakpoint(medium down) {
+        color: inherit;
+      }
+      @include breakpoint(marge) {
+        @include btn(ghost);
+      }
     }
   }
 }

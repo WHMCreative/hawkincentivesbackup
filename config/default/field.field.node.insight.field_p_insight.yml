@@ -13,7 +13,7 @@ id: node.insight.field_p_insight
 field_name: field_p_insight
 entity_type: node
 bundle: insight
-label: Insight
+label: 'Banner Feature'
 description: ''
 required: false
 translatable: false
@@ -27,27 +27,18 @@ settings:
       simple_cta: simple_cta
       media_video_modal: media_video_modal
     target_bundles_drag_drop:
-      single_image:
-        weight: 7
-        enabled: false
-      single_svg:
-        weight: 8
-        enabled: false
-      single_video:
-        weight: 10
-        enabled: false
       banner_featured_insights:
         weight: 29
         enabled: false
       banner_hero:
         weight: 30
         enabled: false
-      simple_cta:
-        enabled: true
-        weight: 31
       compound_callout:
         weight: 31
         enabled: false
+      simple_cta:
+        enabled: true
+        weight: 31
       compound_content_bar:
         weight: 32
         enabled: false
@@ -68,6 +59,9 @@ settings:
         enabled: false
       link_url:
         weight: 38
+        enabled: false
+      layout_2_column:
+        weight: 39
         enabled: false
       link_form_modal:
         weight: 39
@@ -96,11 +90,20 @@ settings:
       reference_marketo_form:
         weight: 46
         enabled: false
+      media_image:
+        weight: 46
+        enabled: false
       simple_content:
         weight: 47
         enabled: false
+      media_svg:
+        weight: 48
+        enabled: false
       simple_icon_content:
         weight: 48
+        enabled: false
+      media_video:
+        weight: 49
         enabled: false
       simple_media_bar:
         weight: 49

@@ -1,9 +1,11 @@
 <template>
-  <div class="card" :class="[{ selectable: !selected}, 'card-' + card.id]">
+  <div class="card" :class="['card-' + card.id]">
     <div class="card-overview">
       <div class="media">
-        <button class="heart" @click="handleClick" ></button>
-        <img :src=card.image.entity.fieldMediaImage.entity.fieldImage.url :alt=card.image.entity.fieldMediaImage.entity.fieldImage.alt />
+        <div class="media-content">
+          <button class="heart" @click="handleClick" ></button>
+          <img :src=card.image.entity.fieldMediaImage.entity.fieldImage.image.url :alt=card.image.entity.fieldMediaImage.entity.fieldImage.alt />
+        </div>
       </div>
       <div class="content" v-show="!selected">
         <h3 class="card-title">
@@ -43,13 +45,13 @@
 
       <div class="card-info">
         <div class="media">
-          <img :src=card.image.entity.fieldMediaImage.entity.fieldImage.url :alt=card.image.entity.fieldMediaImage.entity.fieldImage.alt />
+          <img :src=card.image.entity.fieldMediaImage.entity.fieldImage.image.url :alt=card.image.entity.fieldMediaImage.entity.fieldImage.alt />
         </div>
         <div class="content">
           <h3 class="card-title">
             {{ card.title }}
           </h3>
-          <div class="description" v-html="card.description.processed">
+          <div class="description" v-if="card.description" v-html="card.description.processed">
             {{ card.description.processed }}
           </div>
         </div>

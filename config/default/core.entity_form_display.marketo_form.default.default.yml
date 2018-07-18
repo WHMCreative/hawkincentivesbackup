@@ -4,9 +4,14 @@ status: true
 dependencies:
   config:
     - e3_marketo.bundle.default
+    - field.field.marketo_form.default.field_help_text
+    - field.field.marketo_form.default.field_p_media
     - field.field.marketo_form.default.field_submission_confirmation
   module:
+    - content_moderation
     - paragraphs
+    - paragraphs_browser
+    - text
 _core:
   default_config_hash: MB7KlA9WbewdrCebYoMO6wWEEsEMACDqBWUVhGERebw
 id: marketo_form.default.default
@@ -14,6 +19,29 @@ targetEntityType: marketo_form
 bundle: default
 mode: default
 content:
+  field_help_text:
+    weight: 26
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_p_media:
+    type: entity_reference_paragraphs_browser
+    weight: 2
+    settings:
+      title: Image
+      title_plural: Images
+      edit_mode: open
+      add_mode: paragraphs_browser
+      form_display_mode: default
+      default_paragraph_type: media_image
+      paragraphs_browser: browser
+      modal_width: 80%
+      modal_height: auto
+    third_party_settings: {  }
+    region: content
   field_submission_confirmation:
     type: entity_reference_paragraphs
     weight: 4
@@ -28,7 +56,7 @@ content:
     region: content
   langcode:
     type: language_select
-    weight: 2
+    weight: 3
     region: content
     settings:
       include_locked: true
@@ -39,6 +67,12 @@ content:
     region: content
     settings:
       placeholder: ''
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 5
+    settings: {  }
+    region: content
     third_party_settings: {  }
   name:
     type: string_textfield

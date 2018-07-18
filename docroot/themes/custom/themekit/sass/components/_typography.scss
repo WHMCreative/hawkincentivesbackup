@@ -16,9 +16,17 @@ h3 {
     font-size: rem-calc(14);
   }
 
+  hr {
+    border-bottom-color: $lighter-gray;
+  }
+
   .btn {
     &.blue {
       @include btn(blue);
+    }
+
+    &.blue-ghost {
+      @include btn(ghost);
     }
   }
 

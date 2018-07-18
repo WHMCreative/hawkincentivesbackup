@@ -1,0 +1,22 @@
+uuid: ba9f9a3a-4f75-4324-bf17-1040a1b52376
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node_insights
+label: 'Node - Insights'
+type: 'canonical_entities:node'
+pattern: 'insights/[node:title]'
+selection_criteria:
+  fc3a75de-6838-4ced-91ec-dd46be6135b0:
+    id: node_type
+    bundles:
+      insight: insight
+    negate: false
+    context_mapping:
+      node: node
+    uuid: fc3a75de-6838-4ced-91ec-dd46be6135b0
+selection_logic: and
+weight: -5
+relationships: {  }

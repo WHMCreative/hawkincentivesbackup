@@ -1,0 +1,23 @@
+uuid: 9fd17bfe-cc22-4fd8-a161-76448f494c82
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metatags
+    - node.type.insight
+  module:
+    - metatag
+id: node.insight.field_metatags
+field_name: field_metatags
+entity_type: node
+bundle: insight
+label: Metatags
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 'a:0:{}'
+default_value_callback: ''
+settings: {  }
+field_type: metatag

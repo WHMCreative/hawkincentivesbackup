@@ -1,0 +1,9 @@
+uuid: 1d0ba7fe-4715-4722-8411-c74a25eb57b3
+langcode: en
+status: true
+dependencies: {  }
+id: layout_2_column
+label: 'Layout - 2 Column'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

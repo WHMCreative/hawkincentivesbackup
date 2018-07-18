@@ -62,7 +62,7 @@ content:
     settings:
       title: Icon
       title_plural: Icons
-      edit_mode: preview
+      edit_mode: open
       add_mode: paragraphs_browser
       form_display_mode: default
       default_paragraph_type: _none

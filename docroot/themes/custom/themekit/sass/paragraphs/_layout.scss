@@ -1,0 +1,65 @@
+////
+/// Paragraphs - Layout
+////
+
+.paragraph--type--layout-2-column {
+  & > .paragraph-content {
+    @include content-width(default);
+    position: relative;
+    @include breakpoint(medium) {
+      display: flex;
+    }
+
+    .field--name-field-p-layout-content {
+
+      @include breakpoint(medium) {
+        flex: 3;
+        max-width: rem-calc(685);
+        padding-right: rem-calc(40);
+      }
+      @include breakpoint(large) {
+        padding-right: rem-calc(80);
+
+      }
+
+    }
+
+    .field--name-field-p-layout-media {
+      margin-top: rem-calc(32);
+
+      @include breakpoint(medium) {
+        flex: 1;
+        margin-top: 0;
+      }
+
+      & > .paragraph {
+        height: 100%;
+        min-width: rem-calc(340);
+
+        & > .paragraph-content {
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  &.column-width-50_50 {
+    & > .paragraph-content {
+      display: block;
+      @include breakpoint(marge) {
+        display: flex;
+      }
+    }
+    .field--name-field-p-layout-content {
+      flex: 0 0 50%;
+    }
+
+    .field--name-field-p-layout-media {
+      flex: 0 0 50%;
+      margin-top: rem-calc(32);
+      @include breakpoint(marge) {
+        margin-top: 0;
+      }
+    }
+  }
+}

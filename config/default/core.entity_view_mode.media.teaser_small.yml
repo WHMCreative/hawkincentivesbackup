@@ -1,0 +1,10 @@
+uuid: a7580b4c-a053-455d-97be-40176bbcc0a6
+langcode: en
+status: true
+dependencies:
+  module:
+    - media_entity
+id: media.teaser_small
+label: 'Teaser Small'
+targetEntityType: media
+cache: true

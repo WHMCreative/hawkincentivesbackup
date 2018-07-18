@@ -6,10 +6,10 @@ dependencies:
     - entity_browser.browser.image
     - field.field.node.insight.body
     - field.field.node.insight.field_author
-    - field.field.node.insight.field_featured_image
     - field.field.node.insight.field_gated
     - field.field.node.insight.field_insight_type
     - field.field.node.insight.field_intro_copy
+    - field.field.node.insight.field_metatags
     - field.field.node.insight.field_p_form
     - field.field.node.insight.field_p_header
     - field.field.node.insight.field_p_insight
@@ -21,6 +21,7 @@ dependencies:
     - content_moderation
     - entity_browser
     - field_group
+    - metatag
     - paragraphs_browser
     - path
     - scheduler
@@ -33,7 +34,6 @@ third_party_settings:
         - group_main_content
         - group_gated_settings
         - group_sidebar
-        - group_relationships
       parent_name: ''
       weight: 1
       format_type: tabs
@@ -47,7 +47,6 @@ third_party_settings:
         - field_insight_type
         - field_intro_copy
         - body
-        - field_featured_image
         - field_teaser_image
       parent_name: group_tabs
       weight: 15
@@ -63,7 +62,6 @@ third_party_settings:
       children:
         - field_gated
         - field_p_form
-        - field_p_related_insights
       parent_name: group_tabs
       weight: 16
       format_type: tab
@@ -79,6 +77,7 @@ third_party_settings:
         - field_p_insight
         - field_author
         - field_references
+        - field_p_related_insights
       parent_name: group_tabs
       weight: 17
       format_type: tab
@@ -123,27 +122,13 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_author:
-    weight: 17
+    weight: 16
     settings:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
-    region: content
-  field_featured_image:
-    weight: 16
-    settings:
-      entity_browser: image
-      field_widget_display: rendered_entity
-      field_widget_remove: true
-      open: true
-      selection_mode: selection_append
-      field_widget_display_settings:
-        view_mode: form_preview
-      field_widget_edit: false
-    third_party_settings: {  }
-    type: entity_browser_entity_reference
     region: content
   field_gated:
     weight: 104
@@ -165,6 +150,12 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
+    region: content
+  field_metatags:
+    weight: 106
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_firehose
     region: content
   field_p_form:
     type: entity_reference_paragraphs_browser
@@ -212,11 +203,11 @@ content:
     third_party_settings: {  }
     region: content
   field_p_related_insights:
-    weight: 106
+    weight: 18
     settings:
       title: 'Related Insights'
       title_plural: 'Related Insights'
-      edit_mode: preview
+      edit_mode: open
       add_mode: paragraphs_browser
       form_display_mode: default
       default_paragraph_type: summary_insights
@@ -227,7 +218,7 @@ content:
     type: entity_reference_paragraphs_browser
     region: content
   field_references:
-    weight: 18
+    weight: 17
     settings:
       rows: 5
       placeholder: ''

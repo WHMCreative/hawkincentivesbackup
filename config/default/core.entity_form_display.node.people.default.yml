@@ -6,6 +6,7 @@ dependencies:
     - entity_browser.browser.image
     - field.field.node.people.body
     - field.field.node.people.field_media_image
+    - field.field.node.people.field_metatags
     - field.field.node.people.field_notable_quality
     - field.field.node.people.field_title
     - field.field.node.people.field_type
@@ -13,6 +14,7 @@ dependencies:
   module:
     - content_moderation
     - entity_browser
+    - metatag
     - path
     - scheduler
     - text
@@ -49,6 +51,12 @@ content:
       field_widget_edit: false
     third_party_settings: {  }
     type: entity_browser_entity_reference
+    region: content
+  field_metatags:
+    weight: 26
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_firehose
     region: content
   field_notable_quality:
     weight: 4

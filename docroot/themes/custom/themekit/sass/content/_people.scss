@@ -3,6 +3,60 @@
 ////
 
 .node--type-people {
+  &.node--view-mode-teaser {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    @include breakpoint(medium) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    .node--image {
+      width: 142px;
+      margin-bottom: 20px;
+      flex: 1 0 auto;
+      @include breakpoint(medium) {
+        margin-right: 40px;
+        margin-bottom: 0;
+      }
+      .field--name-field-media-image {
+        @include frame($secondary-color-light, 1px, 10px, 3px);
+        img {
+          border-radius: 3px;
+        }
+      }
+      .field--name-field-notable-quality {
+        font-size: rem-calc(14);
+        font-weight: 700;
+        color: $primary-color-light;
+        text-transform: uppercase;
+        padding: 4px 10px;
+        background: $white;
+        display: inline-block;
+        vertical-align: top;
+        position: relative;
+        max-width: 80%;
+      }
+    }
+    .node--content {
+      flex-grow: 1;
+      h3 {
+        margin: 0;
+      }
+      .field--name-field-title {
+        font-size: rem-calc(18);
+        font-weight: 300;
+        margin-bottom: 24px;
+      }
+      .field--name-body {
+        font-size: rem-calc(14);
+        margin-bottom: 15px;
+      }
+      a.view-more {
+        @include link(default);
+      }
+    }
+  }
   &.node--view-mode-compact {
     display: flex;
     justify-content: space-between;
@@ -23,6 +77,9 @@
       .field--name-field-title {
         font-size: rem-calc(14);
         font-style: italic;
+      }
+      a.view-more {
+        @include link(default);
       }
     }
   }

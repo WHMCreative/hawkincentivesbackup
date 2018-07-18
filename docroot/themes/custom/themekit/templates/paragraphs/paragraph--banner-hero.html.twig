@@ -48,31 +48,50 @@
 #}
 
 {% set bg_image = content.field_media|render %}
+{% set additional_content = content.field_p_banner_content|render %}
+{% set additional_content_type = paragraph.field_p_banner_content.entity.bundle %}
+
+{%
+  set additional_content_below = [
+  'compound_media_title_bar'
+]
+%}
 
 {%
 set classes = [
-'paragraph',
-'paragraph--type--' ~ paragraph.bundle|clean_class,
-view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+  'paragraph',
+  'paragraph--type--' ~ paragraph.bundle|clean_class,
+  view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+  overlay_color ? 'overlay--' ~ overlay_color
+
 ]
 %}
 
 {% set rendered_content = content|without(
-  'field_media'
-  ) %}
+  'field_media',
+  'field_p_banner_content'
+) %}
 
 <div{{ attributes.addClass(classes) }}>
-  <div class="bg-overlay" style="background-image:url('/{{ base_path ~ directory }}/images/banners/{{ overlay_color }}.png')" ></div>
-  {% if bg_image %}
+  {#{% if bg_image %}#}
     <div class="bg-container" {{ image_inline_style|raw }}></div>
-  {% endif %}
-  <div class="paragraph-content">
+  {#{% endif %}#}
+  <div class="paragraph-content{% if additional_content_type in additional_content_below %} has-additional-content-section{% endif %}">
     {% if insight_type %}
       <div class="insight-type">{{ insight_type }}</div>
     {% endif %}
-    {% if date %}
-      <div class="date">{{ date }}</div>
+    {% if insight_date %}
+      <div class="date">{{ insight_date }}</div>
     {% endif %}
     {{ rendered_content }}
   </div>
+  {% if additional_content_type not in additional_content_below %}
+    {{ additional_content }}
+  {% endif %}
 </div>
+
+{% if additional_content_type in additional_content_below %}
+  <div class="paragraph--type--banner-hero-additional">
+    {{ additional_content }}
+  </div>
+{% endif %}

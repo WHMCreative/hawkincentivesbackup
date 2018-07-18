@@ -25,6 +25,12 @@ $links: (
   padding: 0;
   border: 0;
 
+  @supports (-webkit-text-fill-color: transparent) {
+    background: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: key($link-conf, color);
+  }
+
   @if (map-has-key($link-conf, background)) {
     @supports (-webkit-text-fill-color: transparent) {
       background: key($link-conf, background);

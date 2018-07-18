@@ -1,0 +1,35 @@
+uuid: 6f6267b3-f666-4a2a-8e09-2f7efe792d41
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.teaser_small
+    - field.field.media.image.field_image
+    - field.field.media.image.field_image_type
+    - field.field.media.image.field_tags
+    - image.style.teaser_small
+    - media_entity.bundle.image
+  module:
+    - image
+id: media.image.teaser_small
+targetEntityType: media
+bundle: image
+mode: teaser_small
+content:
+  field_image:
+    type: image
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      image_style: teaser_small
+      image_link: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_image_type: true
+  field_tags: true
+  langcode: true
+  name: true
+  thumbnail: true
+  uid: true

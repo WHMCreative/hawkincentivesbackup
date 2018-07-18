@@ -1,0 +1,21 @@
+uuid: 7c8df7b5-3763-4a88-b5d0-0e61e182efd4
+langcode: en
+status: true
+dependencies:
+  module:
+    - e3_marketo
+    - entity_reference_revisions
+    - paragraphs
+id: marketo_form.field_p_media
+field_name: field_p_media
+entity_type: marketo_form
+type: entity_reference_revisions
+settings:
+  target_type: paragraph
+module: entity_reference_revisions
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

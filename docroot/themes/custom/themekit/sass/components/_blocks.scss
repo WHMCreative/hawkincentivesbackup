@@ -1,0 +1,36 @@
+////
+/// Blocks
+////
+
+.block-page-banner {
+  .header-banner-plain {
+    background: $secondary-color-dark;
+    .header-banner-plain__content {
+      @include content-width(default);
+      color: $white;
+      @each $bp, $size in $banner-spacing {
+        $size: rem-calc($size);
+        @include breakpoint($bp) {
+          @include top-bottom(padding, $size);
+        }
+      }
+      .date {
+        display: block;
+        font-size: rem-calc(13);
+        line-height: 2;
+      }
+      h1 {
+        color: inherit;
+        max-width: 600px;
+        margin: 5px 0 0;
+        font-size: rem-calc(26);
+        @include breakpoint(medium) {
+          font-size: rem-calc(35);
+        }
+        @include breakpoint(large) {
+          margin: 10px 0 0;
+        }
+      }
+    }
+  }
+}

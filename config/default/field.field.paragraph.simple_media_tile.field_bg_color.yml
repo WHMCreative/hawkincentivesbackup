@@ -12,7 +12,7 @@ entity_type: paragraph
 bundle: simple_media_tile
 label: 'Background Color'
 description: ''
-required: true
+required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''

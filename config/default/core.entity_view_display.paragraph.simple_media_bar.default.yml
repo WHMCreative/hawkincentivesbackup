@@ -49,14 +49,13 @@ content:
     type: string
     region: content
   field_media:
+    type: entity_reference_label
     weight: 5
+    region: content
     label: hidden
     settings:
       link: true
-      view_mode: default
     third_party_settings: {  }
-    type: entity_reference_entity_view
-    region: content
   field_p_link:
     weight: 4
     label: hidden

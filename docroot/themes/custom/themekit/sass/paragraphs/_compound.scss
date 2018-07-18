@@ -2,24 +2,45 @@
 /// Paragraphs - Compound
 ////
 
+// Compound - Content Bar
 .paragraph--type--compound-content-bar {
-  @include paragraph-margins();
   text-align: center;
   > .paragraph-content {
     @include content-width(wide);
     > .field--name-field-heading {
       @include breakpoint(large) {
         @include content-width(narrow);
-        margin-bottom: rem-calc(40);
       }
     }
     > .field--name-field-description {
-      margin-bottom: 10px;
+      margin-bottom: rem-calc(48);
       @include breakpoint(medium) {
         @include content-width(narrow);
-          margin-bottom: rem-calc(20);
       }
     }
+
+    .field--name-field-heading + .field--name-field-p-compound-content {
+     margin-top: rem-calc(24);
+     @include breakpoint(medium) {
+      margin-top: rem-calc(32);
+     }
+    }
+
+    .field--name-field-p-compound-content {
+      @include content-width(wide);
+      @include breakpoint(marge) {
+        @include tk-flex-equal-width-items($grid-column-gutter, '.paragraph');
+      }
+    }
+
+    .field--name-field-p-compound-content > .paragraph {
+      margin-bottom: rem-calc(48);
+
+      @include breakpoint(marge) {
+        margin-bottom: 0;
+      }
+    }
+
     > .field--name-field-p-multiple-links {
       display: flex;
       align-items: center;
@@ -28,63 +49,397 @@
       @include breakpoint(large) {
         margin-top: 40px;
       }
-      .paragraph {
-        margin: 0 10px;
-        + .paragraph {
+
+      & > .paragraph {
+        margin: 0 8px;
+        a {
+          @include link(default);
+        }
+
+        &:nth-last-child(2) {
           a {
-            @include link();
+            @include btn(blue);
           }
         }
       }
     }
   }
 
-  &.columns-wide {
-    .field--name-field-p-compound-content {
-      @include content-width(wide);
-      @include breakpoint(marge) {
+  &.column-count-1,
+  &.column-count-2 {
+    & > .paragraph-content > .field--name-field-p-compound-content {
+      @include content-width(narrow);
+      @include breakpoint(medium) {
         @include tk-flex-equal-width-items($grid-column-gutter, '.paragraph');
+      }
+
+      & > .paragraph {
+        margin-bottom: rem-calc(48);
+
+        @include breakpoint(medium) {
+          margin-bottom: 0;
+        }
       }
     }
   }
 
-  &.columns-narrow {
-    .field--name-field-p-compound-content {
-      @include content-width(narrow);
-      @include breakpoint(medium) {
-        @include tk-flex-equal-width-items($grid-column-gutter, '.paragraph');
+  &.column-count-3 {
+    & > .paragraph-content > .field--name-field-p-compound-content {
+      @include breakpoint(marge) {
+        @include tk-flex-equal-width-items((small: 30px, medium: 60px), '.paragraph');
       }
     }
   }
 }
 
-.paragraph--type--compound-stat-bar {
-  @include paragraph-margins();
-  background: $light-gray;
-  padding: 40px 0;
-  @include breakpoint(large) {
-    padding: 80px 0;
+// Compound - Callout
+.paragraph--type--compound-callout {
+  position: relative;
+
+  // Inside Banner Hero
+  .paragraph--type--banner-hero & {
+    color: $white;
+    z-index: z(banner, content);
+
+    > .paragraph-content {
+      @include content-width(default);
+      @include top-bottom(padding, rem-calc(30));
+    }
+
+    .field--name-field-p-callout-content {
+      @include breakpoint(medium) {
+        @include tk-flex-block-grid(2, '.paragraph');
+      }
+      @include breakpoint(marge) {
+        @include tk-flex-equal-width-items($grid-column-gutter, '.paragraph');
+      }
+
+      > .paragraph {
+        margin-bottom: rem-calc(16);
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        @include breakpoint(medium) {
+          margin-bottom: 0;
+        }
+
+        @include breakpoint(marge) {
+          margin-top: 0;
+        }
+      }
+    }
+
+    &:not(.has-heading) {
+      &:before {
+        content: '';
+        width: 100%;
+        height: 1px;
+        background: $white;
+        position: absolute;
+        top: 0;
+        opacity: 0.4;
+      }
+    }
+
+    .heading {
+      display: flex;
+      align-items: center;
+      position: relative;
+      color: inherit;
+      font-weight: 700;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: rem-calc(0.93);
+
+      &:before,
+      &:after {
+        content: '';
+        flex: 1;
+        display: inline-block;
+        height: 2px;
+        background-color: $white;
+        opacity: 0.4;
+      }
+
+      &:before {
+        margin-right: rem-calc(16);
+      }
+
+      &:after {
+        margin-left: rem-calc(16);
+      }
+    }
   }
+
+  // Inside Layout 2 Column
+  .paragraph--type--layout-2-column & {
+    position: relative;
+
+    @include breakpoint(medium){
+      padding-left: rem-calc(80);
+      &:after {
+        content: '';
+        width: 1px;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: $light-gray;
+      }
+    }
+
+    > .field--name-field-heading {
+      color: $primary-color;
+      text-transform: uppercase;
+      font-weight: $global-weight-bold;
+      font-size: rem-calc(14);
+      margin-bottom: rem-calc(28);
+    }
+
+    .field--name-field-p-callout-content {
+      & > .paragraph {
+        margin-bottom: rem-calc(28);
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+// Compound Stat Bar
+.paragraph--type--compound-stat-bar {
   > .paragraph-content {
-    @include content-width(default);
   }
   .field--name-field-p-stat-content {
-    @include breakpoint(medium) {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
     > .paragraph {
       margin-bottom: 20px;
       &:last-child {
         margin-bottom: 0;
       }
       @include breakpoint(medium) {
-        width: 30%;
-        margin-left: 5%;
         margin-bottom: 0;
         &:first-child {
           margin-left: 0;
+        }
+      }
+    }
+  }
+
+  // When placed at the top level
+  .field--name-field-p-content > & {
+    > .paragraph-content {
+      @include content-width(default);
+
+      .field--name-field-p-stat-content {
+        @include breakpoint(medium) {
+          @include tk-flex-equal-width-items($grid-column-gutter, '.paragraph');
+        }
+      }
+    }
+  }
+
+  // Inside Layout 2 Column
+  .paragraph--type--layout-2-column & {
+    & > .paragraph-content {
+      position: relative;
+      display: flex;
+      align-items: center;
+
+      @include breakpoint(medium){
+        padding-left: rem-calc(80);
+        &:after {
+          content: '';
+          width: 1px;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          background: $light-gray;
+        }
+      }
+    }
+
+    .field--name-field-p-stat-content {
+      & > .paragraph {
+        margin-bottom: rem-calc(28);
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+// Compound - Media Tile Bar
+.paragraph--type--compound-media-title-bar {
+  text-align: center;
+  > .paragraph-content {
+    @include content-width(wide);
+    > .field--name-field-heading {
+      @include breakpoint(large) {
+        @include content-width(narrow);
+      }
+    }
+    > .field--name-field-description {
+      margin-bottom: rem-calc(48);
+      @include breakpoint(medium) {
+        @include content-width(narrow);
+      }
+    }
+
+    .field--name-field-heading + .field--name-field-p-media-tile-content {
+      margin-top: rem-calc(24);
+      @include breakpoint(medium) {
+        margin-top: rem-calc(32);
+      }
+    }
+
+    .field--name-field-p-media-tile-content {
+      @include content-width(wide);
+      @include breakpoint(marge) {
+        @include tk-flex-equal-width-items($grid-column-gutter, '.paragraph');
+      }
+    }
+
+    .field--name-field-p-compound-content > .paragraph {
+      margin-bottom: rem-calc(48);
+
+      @include breakpoint(marge) {
+        margin-bottom: 0;
+      }
+    }
+
+    > .field--name-field-p-multiple-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+      @include breakpoint(large) {
+        margin-top: 40px;
+      }
+
+      & > .paragraph {
+        margin: 0 8px;
+        a {
+          @include link(default);
+        }
+
+        &:nth-last-child(2) {
+          a {
+            @include btn(blue);
+          }
+        }
+      }
+    }
+  }
+
+  &.column-count-1,
+  &.column-count-2 {
+    & > .paragraph-content > .field--name-field-p-media-tile-content {
+      @include content-width(narrow);
+      @include breakpoint(medium) {
+        @include tk-flex-equal-width-items($grid-column-gutter, '.paragraph');
+      }
+
+      & > .paragraph {
+        margin-bottom: rem-calc(48);
+
+        @include breakpoint(medium) {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  &.column-count-3 {
+    & > .paragraph-content > .field--name-field-p-media-tile-content {
+      @include breakpoint(marge) {
+        @include tk-flex-equal-width-items((small: 10px, large: 60px), '.paragraph');
+      }
+    }
+  }
+}
+
+// Compound - Tabbed Content
+.paragraph--type--compound-tabbed-content {
+  position: relative;
+  
+  .field--name-field-p-content > & {
+    @include paragraph-margins((small: 0));
+  }
+
+  .slick-tab-nav {
+    border-top: 1px solid $white;
+    @include breakpoint(large) {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      right: 0;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 0;
+      background-color: rgba($primary-color, .6);
+    }
+
+    .slick-list {
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      @include breakpoint(marge down) {
+        padding: 0 !important;
+      }
+
+      .slick-track {
+        transform: none !important;
+      }
+    }
+
+    .slick-slide {
+      padding: 0 2%;
+      font-size: rem-calc(14);
+      font-weight: $global-weight-bold;
+      color: $white;
+      text-align: center;
+
+      @include breakpoint(marge down) {
+        width: 100% !important;
+        padding: 0 1rem;
+      }
+
+      a {
+        display: block;
+        padding: 10px 0;
+        border-top: 6px solid transparent;
+        color: inherit;
+        outline: 0;
+        opacity: .6;
+
+        @include breakpoint(large) {
+          padding: 21px 0;
+        }
+
+        @include selectors('active') {
+          opacity: 1;
+        }
+      }
+
+      &.slick-current {
+        a {
+          border-top: 6px solid $primary-color-lighter;
+          opacity: 1;
         }
       }
     }

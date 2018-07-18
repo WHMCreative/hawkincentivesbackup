@@ -4,9 +4,10 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.simple_stat.field_description
-    - field.field.paragraph.simple_stat.field_media
+    - field.field.paragraph.simple_stat.field_p_media
     - paragraphs.paragraphs_type.simple_stat
   module:
+    - entity_reference_revisions
     - text
 id: paragraph.simple_stat.default
 targetEntityType: paragraph
@@ -20,13 +21,13 @@ content:
     third_party_settings: {  }
     type: text_default
     region: content
-  field_media:
+  field_p_media:
     weight: 0
     label: hidden
     settings:
-      view_mode: stat
-      link: false
+      view_mode: default
+      link: ''
     third_party_settings: {  }
-    type: entity_reference_entity_view
+    type: entity_reference_revisions_entity_view
     region: content
 hidden: {  }

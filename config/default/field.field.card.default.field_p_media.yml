@@ -5,7 +5,7 @@ dependencies:
   config:
     - bhk_card_browser.card_type.default
     - field.storage.card.field_p_media
-    - paragraphs.paragraphs_type.single_image
+    - paragraphs.paragraphs_type.media_image
   module:
     - entity_reference_revisions
 id: card.default.field_p_media
@@ -14,7 +14,7 @@ entity_type: card
 bundle: default
 label: 'Card Image'
 description: ''
-required: true
+required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
@@ -23,7 +23,7 @@ settings:
   handler_settings:
     negate: 0
     target_bundles:
-      single_image: single_image
+      media_image: media_image
     target_bundles_drag_drop:
       banner_featured_insights:
         weight: 30
@@ -67,6 +67,9 @@ settings:
       media_image_slider:
         weight: 43
         enabled: false
+      media_image:
+        enabled: true
+        weight: 43
       media_video_modal:
         weight: 44
         enabled: false
@@ -88,6 +91,9 @@ settings:
       simple_icon_content:
         weight: 50
         enabled: false
+      simple_cta:
+        weight: 51
+        enabled: false
       simple_media_bar:
         weight: 51
         enabled: false
@@ -97,19 +103,13 @@ settings:
       simple_stat:
         weight: 53
         enabled: false
-      single_image:
-        enabled: true
-        weight: 54
-      single_svg:
-        weight: 55
-        enabled: false
-      single_video:
-        weight: 56
-        enabled: false
       summary_cards:
         weight: 57
         enabled: false
       summary_insights:
+        weight: 58
+        enabled: false
+      media_video:
         weight: 58
         enabled: false
 field_type: entity_reference_revisions

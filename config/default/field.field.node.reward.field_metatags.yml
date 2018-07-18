@@ -1,0 +1,23 @@
+uuid: 910af53b-ffb2-4767-9acb-8030590d229a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metatags
+    - node.type.reward
+  module:
+    - metatag
+id: node.reward.field_metatags
+field_name: field_metatags
+entity_type: node
+bundle: reward
+label: Metatags
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 'a:0:{}'
+default_value_callback: ''
+settings: {  }
+field_type: metatag

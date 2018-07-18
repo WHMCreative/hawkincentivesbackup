@@ -20,7 +20,7 @@ mode: teaser
 content:
   body:
     type: text_default
-    weight: 2
+    weight: 3
     region: content
     label: hidden
     settings: {  }
@@ -34,9 +34,17 @@ content:
       view_mode: people
       link: false
     third_party_settings: {  }
-  field_title:
+  field_notable_quality:
     type: string
     weight: 1
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  field_title:
+    type: string
+    weight: 2
     region: content
     label: hidden
     settings:
@@ -45,7 +53,6 @@ content:
 hidden:
   addtoany: true
   content_moderation_control: true
-  field_notable_quality: true
   field_type: true
   langcode: true
   links: true

@@ -13,6 +13,7 @@ module:
   bhk_ckeditor_plugins: 0
   bhk_infogram: 0
   bhk_micro_quiz: 0
+  bhk_menus: 0
   bhk_page_banners: 0
   bhk_remote_entity: 0
   bhk_summary_paragraphs: 0
@@ -40,6 +41,7 @@ module:
   datetime: 0
   datetime_range: 0
   dblog: 0
+  draggableviews: 0
   dynamic_page_cache: 0
   e3_gated_content: 0
   e3_google_tag: 0
@@ -86,6 +88,8 @@ module:
   menu_item_extras: 0
   menu_ui: 0
   metatag: 0
+  metatag_open_graph: 0
+  metatag_twitter_cards: 0
   name: 0
   node: 0
   options: 0
@@ -93,6 +97,7 @@ module:
   paragraphs_browser: 0
   paragraphs_previewer: 0
   path: 0
+  path_redirect_import: 0
   pathauto: 0
   purge: 0
   purge_drush: 0

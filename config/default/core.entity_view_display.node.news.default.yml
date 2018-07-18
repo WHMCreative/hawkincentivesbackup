@@ -5,11 +5,14 @@ dependencies:
   config:
     - field.field.node.news.body
     - field.field.node.news.field_external_link
+    - field.field.node.news.field_metatags
+    - field.field.node.news.field_news_type
+    - field.field.node.news.field_p_sidebar
     - field.field.node.news.field_references
     - field.field.node.news.field_teaser_image
     - node.type.news
   module:
-    - link
+    - entity_reference_revisions
     - text
     - user
 id: node.news.default
@@ -17,10 +20,15 @@ targetEntityType: node
 bundle: news
 mode: default
 content:
+  addtoany:
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   body:
     label: hidden
     type: text_default
-    weight: 2
+    weight: 3
     settings: {  }
     third_party_settings: {  }
     region: content
@@ -29,21 +37,18 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_external_link:
-    weight: 3
+  field_p_sidebar:
+    type: entity_reference_revisions_entity_view
+    weight: 4
     label: hidden
     settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
+      view_mode: default
+      link: ''
     third_party_settings: {  }
-    type: link
     region: content
   field_references:
     type: text_default
-    weight: 4
+    weight: 5
     region: content
     label: hidden
     settings: {  }
@@ -54,5 +59,8 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_external_link: true
+  field_metatags: true
+  field_news_type: true
   field_teaser_image: true
   langcode: true

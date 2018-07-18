@@ -1,0 +1,43 @@
+////
+/// Slick
+////
+
+
+.slick-slider {
+  .slick-arrow {
+    @include icon-before(arrow-down);
+    opacity: 1;
+
+    &:before {
+      color: $primary-color;
+    }
+
+    &.slick-prev {
+      left: -10px;
+      &:before {
+        transform: rotate(90deg);
+      }
+    }
+
+    &.slick-next {
+      right: -10px;
+      &:before {
+        transform: rotate(-90deg);
+      }
+    }
+
+    &.slick-disabled {
+      opacity: 0;
+    }
+  }
+
+  .paragraph--type--compound-content-bar & {
+    margin-bottom: rem-calc(50);
+  }
+}
+
+.slick-counter {
+  @include breakpoint(marge) {
+    display: none;
+  }
+}

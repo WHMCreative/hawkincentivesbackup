@@ -6,7 +6,6 @@ dependencies:
     - core.entity_view_mode.node.gated
     - field.field.node.insight.body
     - field.field.node.insight.field_author
-    - field.field.node.insight.field_featured_image
     - field.field.node.insight.field_gated
     - field.field.node.insight.field_insight_type
     - field.field.node.insight.field_intro_copy
@@ -70,7 +69,6 @@ content:
     third_party_settings: {  }
 hidden:
   field_author: true
-  field_featured_image: true
   field_gated: true
   field_insight_type: true
   field_p_insight: true

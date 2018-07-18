@@ -1,0 +1,31 @@
+////
+/// Paragraphs - General Styling
+////
+
+.field--name-field-p-content {
+  & > .paragraph {
+    @include paragraph-margins();
+  }
+}
+
+.paragraph {
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  &.with-bg {
+    position: relative;
+    margin: 0;
+    @include top-bottom(padding, $paragraphs-default-spacing);
+  }
+
+  @each $name, $color in $bg-colors {
+    &.bg-color-#{$name} {
+      background: $color;
+      & + & {
+        padding-top: 0;
+      }
+    }
+  }
+}
