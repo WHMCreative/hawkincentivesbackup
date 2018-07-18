@@ -124,14 +124,27 @@
   }
 
   &.node--view-mode-teaser {
+    > a {
+      @include breakpoint(small down) {
+        display: flex;
+        flex-wrap: nowrap;
+      }
+    }
     .node--image {
       position: relative;
       margin-bottom: 5px;
+      @include breakpoint(small down) {
+        margin-bottom: 0;
+        margin-right: 20px;
+      }
       .field--name-field-insight-type {
         position: absolute;
         left: 15px;
         top: 15px;
         @include insight-label();
+        @include breakpoint(small down) {
+          display: none;
+        }
       }
       .field--name-field-media,
       .default-insight-image,
@@ -139,7 +152,18 @@
         position: relative;
         overflow: hidden;
         border-radius: 3px;
-        .paragraph--type--summary-insights & {
+        @include breakpoint(marge) {
+          max-height: 180px;
+          height: 180px;
+        }
+        @include breakpoint(small down) {
+          width: 70px;
+          height: 70px;
+          max-height: 70px;
+          border-radius: 0;
+        }
+
+        .node--sidebar .paragraph--type--summary-insights & {
           max-height: 100px;
         }
         &:after {
@@ -154,16 +178,28 @@
         }
         img {
           width: 100%;
-          .paragraph--type--summary-insights & {
+          .node--sidebar .paragraph--type--summary-insights & {
             margin-top: -40px;
+          }
+          @include breakpoint(small down) {
+            width: auto;
+            max-width: 200%;
+            height: 100%;
+            max-height: 70px;
           }
         }
       }
     }
     .node--content {
+      @include breakpoint(small down) {
+        padding-top: 5px;
+      }
       h5 {
         font-weight: 700;
         color: $dark-gray;
+        @include breakpoint(small down) {
+          margin-bottom: 2px;
+        }
         a {
           color: inherit;
         }
@@ -171,6 +207,9 @@
       .date {
         font-size: rem-calc(13);
         color: $medium-gray;
+        @include breakpoint(small down) {
+          font-size: rem-calc(11);
+        }
       }
     }
   }
