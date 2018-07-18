@@ -15,12 +15,9 @@ mode: default
 content:
   field_bg_color:
     weight: 1
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: options_select
     region: content
   field_p_tab_content:
     type: entity_reference_paragraphs_browser
