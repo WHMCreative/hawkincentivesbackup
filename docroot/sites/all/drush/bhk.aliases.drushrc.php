@@ -46,6 +46,22 @@ $aliases['prod'] = array(
   ),
 );
 
+$aliases['prod2'] = array(
+  'root' => '/var/www/bhk-d8.prod.e3develop.com/htdocs',
+  'uri' => 'bhk-d8.prod.e3develop.com',
+  'remote-host' => '199.167.77.121',
+  'remote-user' => 'hawk1',
+  'path-aliases' => array(
+    '%files' => '/mnt/gluster/files/bhk-d8.prod.e3develop.com/files',
+    '%dump-dir' => '/home/hawk1/tmp'
+  ),
+  'command-specific' => array(
+    'sql-sync' => array(
+      'no-cache' => TRUE,
+    ),
+  ),
+);
+
 $aliases['dev'] = array(
   'root' => '/var/www/bhk-d8.dev.e3develop.com/htdocs',
   'uri' => 'bhk-d8.dev.e3develop.com',
