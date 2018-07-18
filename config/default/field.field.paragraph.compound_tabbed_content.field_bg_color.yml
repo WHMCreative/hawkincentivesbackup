@@ -1,0 +1,25 @@
+uuid: 0b906c58-6f2b-4123-9db4-53606f4b6860
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_bg_color
+    - paragraphs.paragraphs_type.compound_tabbed_content
+id: paragraph.compound_tabbed_content.field_bg_color
+field_name: field_bg_color
+entity_type: paragraph
+bundle: compound_tabbed_content
+label: 'Background Color'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: display_settings
+      display_name: entity_reference_1
+      arguments: {  }
+field_type: entity_reference
