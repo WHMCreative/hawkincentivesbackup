@@ -5,9 +5,9 @@
 .mfp-close-btn-in .mfp-close {
   right: 13px;
   top: 9px;
-  color: $dove-colored;
+  color: $white;
   font-size: rem-calc(34);
-  opacity: .9;
+  opacity: .4;
 
   @include selectors('active') {
     opacity: 1;

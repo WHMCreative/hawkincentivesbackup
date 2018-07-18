@@ -179,7 +179,9 @@
         img {
           width: 100%;
           .node--sidebar .paragraph--type--summary-insights & {
-            margin-top: -40px;
+            @include breakpoint(medium) {
+              margin-top: -40px;
+            }
           }
           @include breakpoint(small down) {
             width: auto;

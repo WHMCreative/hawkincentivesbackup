@@ -3,6 +3,13 @@
 ////
 
 .marketo-form-wrapper {
+  &.with-image {
+    @include breakpoint(medium) {
+      margin-left: 50%;
+      padding-left: rem-calc(42);
+    }
+  }
+
   h2 {
     margin-bottom: 20px;
     padding-right: 40px;
@@ -52,6 +59,12 @@
         .mfp-content & {
           max-width: 85%;
           min-width: 225px;
+        }
+      }
+      &[type="tel"] {
+        .mfp-content & {
+          max-width: 56%;
+          min-width: 150px;
         }
       }
     }
@@ -124,6 +137,16 @@
     }
   }
 
+  .field--name-field-help-text {
+    margin-top: 25px;
+    font-size: rem-calc(14);
+
+    a {
+      font-weight: $global-weight-bold;
+      color: inherit;
+    }
+  }
+
   .mktoError {
     margin: -15px 0 10px 5px;
     font-size: rem-calc(13);
@@ -164,4 +187,44 @@
       @include content-width(narrow);
     }
   }
+}
+
+.field--name-field-p-media {
+  display: none;
+  overflow: hidden;
+  width: 50%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  @include breakpoint(medium) {
+    display: block;
+  }
+
+  &:before {
+    content: '';
+    box-shadow: inset -2px 0px 10px 3px rgba(0, 0, 0, .1);
+    display: block;
+    position: absolute;
+    top: -4px;
+    bottom: -4px;
+    right: 0;
+    left: -4px;
+    z-index: 1;
+    background-color: rgba($secondary-color-dark, .9);
+  }
+
+  .field--name-field-media-image {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+
+    img {
+      height: 100%;
+      width: auto;
+      max-width: 999rem;
+    }
+  }
+
 }
