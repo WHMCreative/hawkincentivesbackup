@@ -12,12 +12,11 @@ module:
   bhk_card_browser: 0
   bhk_ckeditor_plugins: 0
   bhk_infogram: 0
-  bhk_micro_quiz: 0
   bhk_menus: 0
+  bhk_micro_quiz: 0
   bhk_page_banners: 0
   bhk_remote_entity: 0
   bhk_summary_paragraphs: 0
-  big_pipe: 0
   block: 0
   block_content: 0
   block_field: 0

@@ -5,8 +5,8 @@ dependencies:
   config:
     - bhk_micro_quiz.micro_quiz_type.answer
     - field.storage.micro_quiz.field_p_media
-    - paragraphs.paragraphs_type.single_image
-    - paragraphs.paragraphs_type.single_svg
+    - paragraphs.paragraphs_type.media_image
+    - paragraphs.paragraphs_type.media_svg
   module:
     - entity_reference_revisions
 id: micro_quiz.answer.field_p_media
@@ -24,8 +24,8 @@ settings:
   handler_settings:
     negate: 0
     target_bundles:
-      single_image: single_image
-      single_svg: single_svg
+      media_image: media_image
+      media_svg: media_svg
     target_bundles_drag_drop:
       banner_featured_insights:
         weight: 30
@@ -60,6 +60,9 @@ settings:
       link_url:
         weight: 40
         enabled: false
+      compound_media_title_bar:
+        weight: 40
+        enabled: false
       marketo_hidden_field:
         weight: 41
         enabled: false
@@ -68,6 +71,9 @@ settings:
         enabled: false
       media_image_slider:
         weight: 43
+        enabled: false
+      layout_2_column:
+        weight: 44
         enabled: false
       media_video_modal:
         weight: 44
@@ -81,10 +87,10 @@ settings:
       reference_featured_insight:
         weight: 47
         enabled: false
-      microquiz_conditional:
+      reference_marketo_form:
         weight: 48
         enabled: false
-      reference_marketo_form:
+      microquiz_conditional:
         weight: 48
         enabled: false
       simple_content:
@@ -93,34 +99,37 @@ settings:
       microquiz_question:
         weight: 49
         enabled: false
-      microquiz_quiz:
+      simple_icon_content:
         weight: 50
         enabled: false
-      simple_icon_content:
+      microquiz_quiz:
         weight: 50
         enabled: false
       simple_media_bar:
         weight: 51
         enabled: false
+      media_image:
+        enabled: true
+        weight: 51
       simple_media_tile:
         weight: 52
         enabled: false
       simple_stat:
         weight: 53
         enabled: false
-      single_image:
+      media_svg:
         enabled: true
+        weight: 53
+      media_video:
         weight: 54
-      single_svg:
-        enabled: true
-        weight: 55
-      single_video:
-        weight: 56
         enabled: false
       summary_cards:
         weight: 57
         enabled: false
       summary_insights:
         weight: 58
+        enabled: false
+      simple_cta:
+        weight: 64
         enabled: false
 field_type: entity_reference_revisions

@@ -258,7 +258,7 @@
               let filledValues = form.vals(),
                 formElem = form.getFormElem();
 
-              formElem.find('input').each(function () {
+              formElem.find('input,textarea,select').each(function () {
                 let elemName = $(this).attr('name');
 
                 if (
