@@ -1,0 +1,21 @@
+uuid: 44b11e37-68e0-41b7-b72e-753fcbc58b2a
+langcode: en
+status: true
+dependencies:
+  module:
+    - bhk_micro_quiz
+    - entity_reference_revisions
+    - paragraphs
+id: micro_quiz.field_p_media
+field_name: field_p_media
+entity_type: micro_quiz
+type: entity_reference_revisions
+settings:
+  target_type: paragraph
+module: entity_reference_revisions
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

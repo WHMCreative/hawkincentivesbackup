@@ -117,6 +117,18 @@ class BhkMarketoHandler extends DefaultMarketoHandler {
       }
     }
 
+    // Add MicroQuiz data to the form, if it's available.
+    $request = $this->requestStack->getCurrentRequest();
+    $cookies = $request->cookies;
+
+    $mq_intention = $cookies->get('mq_intention');
+    $mq_quantity = $cookies->get('mq_quantity');
+
+    if ($mq_intention && $mq_quantity) {
+      $params[$this->instance]['hiddenFields']->mqintention = $mq_intention;
+      $params[$this->instance]['hiddenFields']->mqquantity = $mq_quantity;
+    }
+
     return $params;
   }
 

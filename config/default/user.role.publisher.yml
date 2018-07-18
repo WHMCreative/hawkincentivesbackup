@@ -50,3 +50,4 @@ permissions:
   - 'view the administration theme'
   - 'view unpublished card entities'
   - 'view unpublished marketo form entity entities'
+  - 'view unpublished microquiz entities'

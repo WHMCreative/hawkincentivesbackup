@@ -1,0 +1,7 @@
+uuid: fa0d45d6-2a78-4851-87d9-4aa78b1dc34f
+langcode: en
+status: true
+dependencies: {  }
+id: result
+label: Result
+description: ''
