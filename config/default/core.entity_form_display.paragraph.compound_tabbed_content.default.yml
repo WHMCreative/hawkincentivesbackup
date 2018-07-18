@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.compound_tabbed_content.field_bg_color
     - field.field.paragraph.compound_tabbed_content.field_p_tab_content
     - paragraphs.paragraphs_type.compound_tabbed_content
   module:
@@ -12,6 +13,15 @@ targetEntityType: paragraph
 bundle: compound_tabbed_content
 mode: default
 content:
+  field_bg_color:
+    weight: 1
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
   field_p_tab_content:
     type: entity_reference_paragraphs_browser
     weight: 0
