@@ -70,7 +70,9 @@ function bhk_micro_quiz_preprocess_micro_quiz(array &$variables) {
   $bundle = $micro_quiz->bundle();
   $variables['bundle'] = $bundle;
 
-  if ($bundle === 'answer' && !$variables['attributes']) {
+  $current_route = \Drupal::routeMatch()->getRouteName();
+
+  if ($current_route === 'entity.node.canonical' && $bundle === 'answer' && !$variables['attributes']) {
 
     // Set helper data attributes for microquiz answers.
     if ($variables['attributes'] instanceof Attribute) {
@@ -93,36 +95,41 @@ function bhk_micro_quiz_preprocess_micro_quiz(array &$variables) {
 function bhk_micro_quiz_preprocess_paragraph(array &$variables) {
   $bundle = $variables['paragraph']->bundle();
 
-  // Build a form step for each quiz question.
-  if ($bundle === 'microquiz_question') {
-    $question_form = \Drupal::formBuilder()
-      ->getForm('Drupal\bhk_micro_quiz\Form\MicroQuizQuestionForm', $variables);
+  $current_route = \Drupal::routeMatch()->getRouteName();
 
-    $variables['content'] = $question_form;
+  if ($current_route === 'entity.node.canonical') {
 
-    if ($question_form['step']['#value'] === 'active') {
-      $variables['attributes'] = new Attribute(['class' => 'active-question']);
+    // Build a form step for each quiz question.
+    if ($bundle === 'microquiz_question') {
+      $question_form = \Drupal::formBuilder()
+        ->getForm('Drupal\bhk_micro_quiz\Form\MicroQuizQuestionForm', $variables);
+
+      $variables['content'] = $question_form;
+
+      if ($question_form['step']['#value'] === 'active') {
+        $variables['attributes'] = new Attribute(['class' => 'active-question']);
+      }
+      else {
+        $variables['attributes'] = new Attribute(['class' => 'hidden']);
+      }
     }
-    else {
-      $variables['attributes'] = new Attribute(['class' => 'hidden']);
-    }
-  }
 
-  if ($bundle === 'microquiz_quiz') {
+    if ($bundle === 'microquiz_quiz') {
 
-    // Attach appropriate js library to the quiz.
-    $variables['content']['field_p_questions']['#attached']['library'][] = 'bhk_micro_quiz/micro-quiz';
+      // Attach appropriate js library to the quiz.
+      $variables['content']['field_p_questions']['#attached']['library'][] = 'bhk_micro_quiz/micro-quiz';
 
-    // Load quiz results immediately if cookies have been set.
-    $request = \Drupal::requestStack()->getCurrentRequest();
-    $cookies = $request->cookies;
+      // Load quiz results immediately if cookies have been set.
+      $request = \Drupal::requestStack()->getCurrentRequest();
+      $cookies = $request->cookies;
 
-    $mq_answers = $cookies->get('mq_answers');
+      $mq_answers = $cookies->get('mq_answers');
 
-    if ($mq_answers) {
-      $answers = explode(',', $mq_answers);
-      $output['#markup'] = \Drupal::service('bhk_micro_quiz.quiz_helper')->getSurveyResult($answers);
-      $variables['content'] = $output;
+      if ($mq_answers) {
+        $answers = explode(',', $mq_answers);
+        $output['#markup'] = \Drupal::service('bhk_micro_quiz.quiz_helper')->getSurveyResult($answers);
+        $variables['content'] = $output;
+      }
     }
   }
 }
