@@ -337,6 +337,7 @@ function themekit_theme_suggestions_field_alter(array &$suggestions, array $vari
   // Apply theme suggestions for "field_heading" based on paragraph bundle.
   if ($field_name == 'field_heading' && $is_paragraph) {
     switch($bundle) {
+      case 'banner_featured_insights':
       case 'banner_hero':
         array_unshift($suggestions, $large_heading ? 'field__heading_5' : 'field__heading_1');
         break;

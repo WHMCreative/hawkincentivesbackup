@@ -48,17 +48,21 @@
 #}
 
 {%
-set classes = [
-'paragraph',
-'paragraph--type--' ~ paragraph.bundle|clean_class,
-view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class
+  set classes = [
+  'paragraph',
+  'paragraph--type--' ~ paragraph.bundle|clean_class,
+  view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class
 ]
 %}
 
-{% set rendered_content = content|without('') %}
+{% set rendered_content = content|without('field_heading') %}
 
 <div{{ attributes.addClass(classes) }}>
   <div class="paragraph-content">
-    {{ rendered_content }}
+    {{ content.field_heading }}
+
+    <div class="content-wrapper">
+      {{ rendered_content }}
+    </div>
   </div>
 </div>
