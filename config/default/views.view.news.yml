@@ -73,7 +73,7 @@ display:
       pager:
         type: infinite_scroll
         options:
-          items_per_page: 5
+          items_per_page: 4
           offset: 0
           id: 0
           total_pages: null
@@ -89,7 +89,7 @@ display:
             offset: false
             offset_label: Offset
           views_infinite_scroll:
-            button_text: 'Load More'
+            button_text: 'Load More PR'
             automatically_load_content: false
       style:
         type: default
@@ -270,20 +270,7 @@ display:
             label: ''
           granularity: second
       title: ''
-      header:
-        area:
-          id: area
-          table: views
-          field: area
-          relationship: none
-          group_type: group
-          admin_label: ''
-          empty: false
-          tokenize: false
-          content:
-            value: Header
-            format: heading
-          plugin_id: text
+      header: {  }
       footer: {  }
       empty: {  }
       relationships: {  }
@@ -304,37 +291,6 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags: {  }
-  attachment_press_releases:
-    display_plugin: attachment
-    id: attachment_press_releases
-    display_title: 'Press Releases'
-    position: 3
-    display_options:
-      display_extenders: {  }
-      display_description: ''
-      title: 'Press Releases'
-      defaults:
-        title: false
-        header: false
-      displays:
-        block_news: block_news
-      inherit_exposed_filters: true
-      header: {  }
-      inherit_pager: true
-      pager:
-        type: some
-        options:
-          items_per_page: 4
-          offset: 0
-    cache_metadata:
-      max-age: -1
-      contexts:
-        - 'languages:language_content'
-        - 'languages:language_interface'
-        - url
-        - 'user.node_grants:view'
-        - user.permissions
-      tags: {  }
   block_news:
     display_plugin: block
     id: block_news
@@ -352,13 +308,14 @@ display:
           group_type: group
           admin_label: ''
           empty: true
-          view_to_insert: 'news:block_press_releases'
+          view_to_insert: 'news:block_press_release'
           inherit_arguments: false
           plugin_id: view
       defaults:
         header: false
         filters: false
         filter_groups: false
+        pager: false
       filters:
         status:
           value: '1'
@@ -467,6 +424,45 @@ display:
         operator: AND
         groups:
           1: AND
+      pager:
+        type: infinite_scroll
+        options:
+          items_per_page: 5
+          offset: 0
+          id: 0
+          total_pages: null
+          tags:
+            previous: '‹ Previous'
+            next: 'Next ›'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          views_infinite_scroll:
+            button_text: 'Load More'
+            automatically_load_content: false
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  block_press_release:
+    display_plugin: block
+    id: block_press_release
+    display_title: 'Press Releases'
+    position: 3
+    display_options:
+      display_extenders: {  }
+      display_description: ''
     cache_metadata:
       max-age: -1
       contexts:
