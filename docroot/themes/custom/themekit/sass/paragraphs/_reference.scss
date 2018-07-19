@@ -93,7 +93,7 @@
 }
 
 .paragraph--type--reference-block {
-  .paragraph-content {
-    @include content-width(default);
+  .field--name-field-p-content > & {
+    @include paragraph-margins((small: 0));
   }
 }

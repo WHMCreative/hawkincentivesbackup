@@ -164,7 +164,7 @@
   .block--component & {
 
     h2 {
-      color: $secondary-color;
+      color: $secondary-color-dark;
       text-align: center;
       @include header-font-size(h2);
       font-weight: $global-weight-normal;
@@ -180,7 +180,14 @@
       textarea,
       input {
         border-bottom: 1px solid $medium-gray;
+        color: $medium-gray;
       }
+    }
+
+    .mktoButton {
+      @include btn(blue);
+      margin-top: 0;
+      margin-left: rem-calc(12);
     }
 
     .marketo-steps-wrapper {

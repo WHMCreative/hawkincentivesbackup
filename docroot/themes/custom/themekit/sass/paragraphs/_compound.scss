@@ -524,6 +524,7 @@
 
   &.with-bg {
     background: none !important;
+    @include top-bottom(padding, 0);
   }
 
   &.bg-color-green {
