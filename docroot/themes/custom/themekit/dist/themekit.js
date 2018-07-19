@@ -9238,39 +9238,75 @@ Drupal.behaviors.videoModal = {
 
 Drupal.behaviors.slickCustom = {
   attach: function (context, settings) {
-    const tabContentSelector = '.paragraph--type--compound-tabbed-content .field--name-field-p-tab-content';
+    const tabContainerSelector = '.paragraph--type--compound-tabbed-content .field--name-field-p-tab-content';
     const tabNavSelector = '.slick-tab-nav';
-    const tabContent = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(tabContentSelector, context);
-    if(!tabContent.length) return;
-    const tabLabel = tabContent.find('.field--name-field-label');
-    let tabNavElement;
+    const tabContainer = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(tabContainerSelector, context);
+    const tabLabelSelector = '.field--name-field-label';
 
-    let buildNav = (labels, place) => {
-      const result = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.Deferred();
-      tabNavElement = '';
+    if (!tabContainer.length) return;
+
+    /**
+     * Do some things for the container.
+     */
+    const manipulateContainer = (container, containerUniqueClass) => {
+      const r = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.Deferred();
+
+      container.addClass(containerUniqueClass);
+
+      return r;
+    };
+
+    /**
+     * Build navigation using labels.
+     *
+     * @param {Object} container
+     *   Tab container.
+     * @param {String} containerIndex
+     *   Tab container index.
+     * @param {String} labelSelector
+     *   Label selector.
+     *
+     */
+    const buildNav = (container, containerIndex, labelSelector) => {
+      const r = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.Deferred();
+      const labels = container.find(labelSelector);
+      let tabNavElement = '';
 
       labels.each((i, el) => {
         tabNavElement += `<a href="#" class="slick-tab-nav--element">${__WEBPACK_IMPORTED_MODULE_0_jquery___default()(el).text()}</a>`;
       });
-      place.after(`<div class="slick-tab-nav">${tabNavElement}</div>`);
+      container.after(`<div class="slick-tab-nav slick-tab-nav-${containerIndex}">${tabNavElement}</div>`);
 
-      return result;
+      return r;
     };
 
-    let buildNavCount = (labels, place) => {
+    /**
+     * Build navigation with counts.
+     *
+     * @param {Object} container
+     *   Tab container.
+     * @param {String} navSelector
+     *   Navigation selector.
+     * @param {String} labelSelector
+     *   Label selector.
+     *
+     */
+    const buildNavCount = (container, navSelector, labelSelector) => {
       let tabNavElementNumbers = '',
-          tabNavElementLabels = '';
+          tabNavElementLabels = '',
+          currentContainer = container,
+          labels = currentContainer.find(labelSelector);
 
       labels.each((i, el) => {
         tabNavElementNumbers += `<span>${i + 1}/${labels.length}</span>`;
         tabNavElementLabels += `<span>${__WEBPACK_IMPORTED_MODULE_0_jquery___default()(el).text()}</span>`;
       });
 
-      if (!place.find('.slick-counter-numbers').length) {
-        place.prepend(`<div class="slick-counter-numbers">${tabNavElementNumbers}</div>`);
+      if (!currentContainer.find('.slick-counter-numbers').length) {
+        currentContainer.next(navSelector).prepend(`<div class="slick-counter-numbers">${tabNavElementNumbers}</div>`);
       }
-      if (!place.find('.slick-counter-labels').length) {
-        place.prepend(`<div class="slick-counter-labels">${tabNavElementLabels}</div>`);
+      if (!currentContainer.find('.slick-counter-labels').length) {
+        currentContainer.next(navSelector).prepend(`<div class="slick-counter-labels">${tabNavElementLabels}</div>`);
       }
 
       // Init
@@ -9278,13 +9314,30 @@ Drupal.behaviors.slickCustom = {
       __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.slick-counter-labels span:nth-of-type(1)').addClass('active');
     };
 
-    let buildSlick = (mainSelector, navSelector, labelQuantity) => {
-      __WEBPACK_IMPORTED_MODULE_0_jquery___default()(mainSelector).slick({
+    /**
+     * Init slick.
+     *
+     * @param {String} containerSelector
+     *   Tab container selector.
+     * @param {String} indexContainer
+     *   Tab container index.
+     * @param {String} uniqueContainerSelector
+     *   Tab container unique selector.
+     * @param {String} navSelector
+     *   Navigation selector.
+     * @param {String} labelSelector
+     *   Label selector.
+     *
+     */
+    const buildSlick = (containerSelector, indexContainer, uniqueContainerSelector, navSelector, labelSelector) => {
+      const slidesCount = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(containerSelector).eq(indexContainer).find(labelSelector).length;
+
+      __WEBPACK_IMPORTED_MODULE_0_jquery___default()(containerSelector).eq(indexContainer).slick({
         slidesToShow: 1,
         arrows: false,
         fade: true,
         adaptiveHeight: true,
-        asNavFor: navSelector,
+        asNavFor: `${navSelector}-${indexContainer}`,
         responsive: [
           {
             breakpoint: 800,
@@ -9295,9 +9348,9 @@ Drupal.behaviors.slickCustom = {
         ]
       });
 
-      __WEBPACK_IMPORTED_MODULE_0_jquery___default()(navSelector).slick({
-        slidesToShow: labelQuantity.length,
-        asNavFor: mainSelector,
+      __WEBPACK_IMPORTED_MODULE_0_jquery___default()(`${navSelector}-${indexContainer}`).slick({
+        slidesToShow: slidesCount,
+        asNavFor: `.${uniqueContainerSelector}`,
         dots: false,
         centerMode: true,
         focusOnSelect: true,
@@ -9309,6 +9362,28 @@ Drupal.behaviors.slickCustom = {
       });
     };
 
+    tabContainer.each((indexTabContainer, elemTabContainer) => {
+      let elementTC = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(elemTabContainer);
+      const uniqueClass = `tabbed-content-${indexTabContainer}`;
+
+      // Now call the functions one after the other
+      manipulateContainer(elementTC, uniqueClass).done(
+        buildNav(elementTC, indexTabContainer, tabLabelSelector).done(
+          buildSlick(tabContainerSelector, indexTabContainer, uniqueClass, tabNavSelector, tabLabelSelector)
+        )
+      );
+    });
+
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).on('load resize orientationchange', () => {
+      if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).width() <= 800 && !__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.slick-counter-numbers').length) {
+        tabContainer.each((indexTabContainer, elemTabContainer) => {
+          let elementTC = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(elemTabContainer);
+
+          buildNavCount(elementTC, tabNavSelector, tabLabelSelector);
+        });
+      }
+    });
+
     __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).on('click', '.slick-tab-nav--element', (event) => {
       event.preventDefault();
 
@@ -9319,23 +9394,19 @@ Drupal.behaviors.slickCustom = {
     });
 
     __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).on('click', '.slick-dots button', (event) => {
-      const index = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(event.currentTarget).parent().index();
+      const $this = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(event.currentTarget);
+      const index = $this.parent().index();
+      const myContainer = $this.closest('.paragraph');
 
-      __WEBPACK_IMPORTED_MODULE_0_jquery___default()(event.currentTarget).closest('.paragraph').find(`.slick-counter-numbers span`).removeClass('active');
-      __WEBPACK_IMPORTED_MODULE_0_jquery___default()(event.currentTarget).closest('.paragraph').find(`.slick-counter-numbers span:nth-of-type(${index + 1})`).addClass('active');
+      // Update slick counter numbers class
+      myContainer.find(`.slick-counter-numbers span`).removeClass('active');
+      myContainer.find(`.slick-counter-numbers span:nth-of-type(${index + 1})`).addClass('active');
 
-      __WEBPACK_IMPORTED_MODULE_0_jquery___default()(event.currentTarget).closest('.paragraph').find(`.slick-counter-labels span`).removeClass('active');
-      __WEBPACK_IMPORTED_MODULE_0_jquery___default()(event.currentTarget).closest('.paragraph').find(`.slick-counter-labels span:nth-of-type(${index + 1})`).addClass('active');
+      // Update slick counter labels class
+      myContainer.find(`.slick-counter-labels span`).removeClass('active');
+      myContainer.find(`.slick-counter-labels span:nth-of-type(${index + 1})`).addClass('active');
     });
 
-    // Now call the functions one after the other
-    buildNav(tabLabel, tabContent).done( buildSlick(tabContentSelector, tabNavSelector, tabLabel) );
-
-    __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).on('load resize orientationchange', function() {
-      if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).width() <= 800 && !__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.slick-counter-numbers').length) {
-        buildNavCount(tabLabel, __WEBPACK_IMPORTED_MODULE_0_jquery___default()(tabNavSelector));
-      }
-    });
   }
 };
 

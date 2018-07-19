@@ -375,6 +375,10 @@
     @include paragraph-margins((small: 0));
   }
 
+  .slick-dotted.slick-slider {
+    margin-bottom: 0;
+  }
+
   .slick-dots {
     bottom: 40px;
     white-space: nowrap;
@@ -418,6 +422,7 @@
       }
     }
   }
+
   .slick-counter-labels {
     position: absolute;
     left: 0;
@@ -458,10 +463,10 @@
       bottom: 0;
       left: 0;
       z-index: 0;
+      //background-color: rgba($primary-color, .6);
       @include breakpoint(marge) {
         content: '';
       }
-      //background-color: rgba($primary-color, .6);
     }
 
     .slick-list {
@@ -522,6 +527,10 @@
   }
 
   &.bg-color-green {
+    > .paragraph-content {
+      background-color: rgba($primary-color, .85);
+    }
+
     .paragraph {
       .bg-container {
         &:after {
@@ -546,6 +555,10 @@
   }
 
   &.bg-color-blue {
+    > .paragraph-content {
+      background-color: rgba($secondary-color-dark, .85);
+    }
+
     .paragraph {
       .bg-container {
         &:after {
