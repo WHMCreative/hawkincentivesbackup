@@ -1,0 +1,32 @@
+uuid: 539b302d-985d-418d-b99a-d3aa8dadab47
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.microquiz_question.field_answers
+    - field.field.paragraph.microquiz_question.field_question
+    - paragraphs.paragraphs_type.microquiz_question
+  module:
+    - text
+id: paragraph.microquiz_question.default
+targetEntityType: paragraph
+bundle: microquiz_question
+mode: default
+content:
+  field_answers:
+    weight: 1
+    label: hidden
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_question:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden: {  }

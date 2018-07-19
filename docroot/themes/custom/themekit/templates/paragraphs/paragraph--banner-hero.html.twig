@@ -52,6 +52,12 @@
 {% set additional_content_type = paragraph.field_p_banner_content.entity.bundle %}
 
 {%
+  set additional_content_below = [
+  'compound_media_title_bar'
+]
+%}
+
+{%
 set classes = [
   'paragraph',
   'paragraph--type--' ~ paragraph.bundle|clean_class,
@@ -70,7 +76,7 @@ set classes = [
   {#{% if bg_image %}#}
     <div class="bg-container" {{ image_inline_style|raw }}></div>
   {#{% endif %}#}
-  <div class="paragraph-content{% if additional_content_type == 'compound_content_bar' %} has-additional-content-section{% endif %}">
+  <div class="paragraph-content{% if additional_content_type in additional_content_below %} has-additional-content-section{% endif %}">
     {% if insight_type %}
       <div class="insight-type">{{ insight_type }}</div>
     {% endif %}
@@ -79,12 +85,12 @@ set classes = [
     {% endif %}
     {{ rendered_content }}
   </div>
-  {% if additional_content_type == 'compound_callout' %}
+  {% if additional_content_type not in additional_content_below %}
     {{ additional_content }}
   {% endif %}
 </div>
 
-{% if additional_content_type == 'compound_content_bar' %}
+{% if additional_content_type in additional_content_below %}
   <div class="paragraph--type--banner-hero-additional">
     {{ additional_content }}
   </div>

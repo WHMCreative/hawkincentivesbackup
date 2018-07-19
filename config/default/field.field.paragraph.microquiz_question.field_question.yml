@@ -1,0 +1,28 @@
+uuid: 6d06f7c0-45c5-4ddd-a2f1-73d9a71c828f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_question
+    - paragraphs.paragraphs_type.microquiz_question
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    limited_rich_text: '0'
+    rich_text: '0'
+    plain_text: '0'
+    html: '0'
+id: paragraph.microquiz_question.field_question
+field_name: field_question
+entity_type: paragraph
+bundle: microquiz_question
+label: Question
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

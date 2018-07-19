@@ -1,0 +1,10 @@
+uuid: e4813f35-e80a-49c4-a276-c6059fc71095
+langcode: en
+status: true
+dependencies:
+  module:
+    - e3_marketo
+id: marketo_form.with_image
+label: 'With Image'
+targetEntityType: marketo_form
+cache: true

@@ -1,0 +1,15 @@
+uuid: 8bbaa0b9-31c9-4ad3-8bb1-d77110c21cc5
+langcode: en
+status: true
+dependencies: {  }
+name: featured_big_teaser
+label: 'Featured Big Teaser (740x460)'
+effects:
+  db7d38cb-0640-4d3b-9c44-29bc74b55c4e:
+    uuid: db7d38cb-0640-4d3b-9c44-29bc74b55c4e
+    id: image_scale
+    weight: 1
+    data:
+      width: 740
+      height: null
+      upscale: true

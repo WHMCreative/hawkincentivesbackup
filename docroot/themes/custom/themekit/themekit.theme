@@ -137,6 +137,14 @@ function themekit_preprocess_paragraph(&$variables) {
   $variables['color_scheme'] = 'color-scheme-' . themekit_color_scheme($bg_color);
 }
 
+function themekit_preprocess_paragraph_simple_media_bar(&$variables) {
+  $paragraph = $variables['paragraph'];
+
+  if ($paragraph->hasField('field_media') && empty($paragraph->field_media->value)) {
+    $variables['image_inline_style'] = themekit_get_entity_image_inline_style($paragraph, 'field_media', 'banner_hero');
+  }
+}
+
 function themekit_preprocess_paragraph_banner_hero(&$variables) {
   $paragraph = $variables['paragraph'];
   $node = $paragraph->getParentEntity();
@@ -157,6 +165,14 @@ function themekit_preprocess_paragraph_compound_content_bar(&$variables) {
 
   $variables['column_count'] = $paragraph->get('field_p_compound_content')->count();
 }
+
+
+function themekit_preprocess_paragraph_compound_media_title_bar(&$variables) {
+  $paragraph = $variables['paragraph'];
+
+  $variables['column_count'] = $paragraph->get('field_p_media_tile_content')->count();
+}
+
 
 function themekit_preprocess_paragraph_compound_callout(&$variables) {
   $paragraph = $variables['paragraph'];
@@ -211,6 +227,14 @@ function themekit_preprocess_paragraph_media_image(&$variables) {
         $variables['custom_image_style'] = [
           '#theme' => 'image_style',
           '#style_name' => 'stat',
+          '#uri' => $uri,
+        ];
+        break;
+      case 'simple_icon_content':
+        $uri = $paragraph->field_media_image->entity->field_image->entity->getFileUri();
+        $variables['custom_image_style'] = [
+          '#theme' => 'image_style',
+          '#style_name' => 'thumbnail',
           '#uri' => $uri,
         ];
         break;
@@ -313,10 +337,12 @@ function themekit_theme_suggestions_field_alter(array &$suggestions, array $vari
   // Apply theme suggestions for "field_heading" based on paragraph bundle.
   if ($field_name == 'field_heading' && $is_paragraph) {
     switch($bundle) {
+      case 'banner_featured_insights':
       case 'banner_hero':
         array_unshift($suggestions, $large_heading ? 'field__heading_5' : 'field__heading_1');
         break;
       case 'compound_content_bar':
+      case 'compound_media_title_bar':
       case 'layout_2_column':
       case 'simple_cta':
       case 'simple_content':

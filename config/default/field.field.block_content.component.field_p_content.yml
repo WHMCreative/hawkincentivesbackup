@@ -6,6 +6,7 @@ dependencies:
     - block_content.type.component
     - field.storage.block_content.field_p_content
     - paragraphs.paragraphs_type.compound_content_bar
+    - paragraphs.paragraphs_type.compound_media_title_bar
     - paragraphs.paragraphs_type.compound_stat_bar
     - paragraphs.paragraphs_type.compound_tabbed_content
     - paragraphs.paragraphs_type.layout_2_column
@@ -32,6 +33,7 @@ settings:
     negate: 0
     target_bundles:
       compound_content_bar: compound_content_bar
+      compound_media_title_bar: compound_media_title_bar
       compound_stat_bar: compound_stat_bar
       compound_tabbed_content: compound_tabbed_content
       layout_2_column: layout_2_column
@@ -56,6 +58,9 @@ settings:
       compound_slider:
         weight: 36
         enabled: false
+      compound_media_title_bar:
+        enabled: true
+        weight: 37
       compound_stat_bar:
         enabled: true
         weight: 37

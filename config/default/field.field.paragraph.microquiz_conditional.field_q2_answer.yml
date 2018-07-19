@@ -1,0 +1,28 @@
+uuid: 88e2d7dc-1c9b-4c5d-9d89-7334068e4ab5
+langcode: en
+status: true
+dependencies:
+  config:
+    - bhk_micro_quiz.micro_quiz_type.answer
+    - field.storage.paragraph.field_q2_answer
+    - paragraphs.paragraphs_type.microquiz_conditional
+id: paragraph.microquiz_conditional.field_q2_answer
+field_name: field_q2_answer
+entity_type: paragraph
+bundle: microquiz_conditional
+label: 'Question 2 Answer'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:micro_quiz'
+  handler_settings:
+    target_bundles:
+      answer: answer
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,22 @@
+add microquiz entities:
+  title: 'Create new MicroQuiz entities'
+
+administer microquiz entities:
+  title: 'Administer MicroQuiz entities'
+  description: 'Allow to access the administration form to configure MicroQuiz entities.'
+  restrict access: true
+
+delete microquiz entities:
+  title: 'Delete MicroQuiz entities'
+
+edit microquiz entities:
+  title: 'Edit MicroQuiz entities'
+
+view published microquiz entities:
+  title: 'View published MicroQuiz entities'
+
+view unpublished microquiz entities:
+  title: 'View unpublished MicroQuiz entities'
+
+access microquiz entity overview:
+  title: 'Access MicroQuiz admin overview'

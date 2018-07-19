@@ -7,6 +7,7 @@ dependencies:
     - node.type.reward
     - paragraphs.paragraphs_type.compound_callout
     - paragraphs.paragraphs_type.compound_content_bar
+    - paragraphs.paragraphs_type.compound_media_title_bar
     - paragraphs.paragraphs_type.compound_slider
     - paragraphs.paragraphs_type.compound_stat_bar
     - paragraphs.paragraphs_type.compound_tabbed_content
@@ -46,6 +47,7 @@ settings:
       compound_stat_bar: compound_stat_bar
       compound_tabbed_content: compound_tabbed_content
       layout_grid: layout_grid
+      compound_media_title_bar: compound_media_title_bar
       reference_block: reference_block
       reference_featured_insight: reference_featured_insight
       simple_content: simple_content
@@ -96,6 +98,9 @@ settings:
       link_file:
         weight: 37
         enabled: false
+      compound_media_title_bar:
+        enabled: true
+        weight: 37
       link_url:
         weight: 38
         enabled: false
@@ -120,17 +125,20 @@ settings:
       media_image:
         weight: 45
         enabled: false
-      media_video:
-        weight: 47
-        enabled: false
       simple_content:
         enabled: true
         weight: 47
+      media_video:
+        weight: 47
+        enabled: false
       simple_icon_content:
         weight: 48
         enabled: false
       simple_media_bar:
         weight: 49
+        enabled: false
+      media_svg:
+        weight: 50
         enabled: false
       simple_media_tile:
         weight: 50

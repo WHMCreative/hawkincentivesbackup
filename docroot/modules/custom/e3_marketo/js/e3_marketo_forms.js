@@ -140,7 +140,7 @@
       };
 
       /**
-       * Initialise focus and state trackers for theming.
+       * Initialize focus and state trackers for select theming.
        *
        * @param {object} select
        *   Select object to process.
@@ -258,7 +258,7 @@
               let filledValues = form.vals(),
                 formElem = form.getFormElem();
 
-              formElem.find('input').each(function () {
+              formElem.find('input,textarea,select').each(function () {
                 let elemName = $(this).attr('name');
 
                 if (
@@ -363,6 +363,7 @@
           mktoInlineFonts.remove();
         }
 
+        // Remove the rest of inline styles.
         let mktoInlineStyles = $('#mktoForms2ThemeStyle').next('style'),
           mktoinlineFormStyles = $form.find('style');
 

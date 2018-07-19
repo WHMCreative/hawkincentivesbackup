@@ -3,6 +3,13 @@
 ////
 
 .marketo-form-wrapper {
+  &.with-image {
+    @include breakpoint(medium) {
+      margin-left: 50%;
+      padding-left: rem-calc(42);
+    }
+  }
+
   h2 {
     margin-bottom: 20px;
     padding-right: 40px;
@@ -24,14 +31,14 @@
       top: 10px;
       font-size: rem-calc(13);
       padding-left: 5px;
-      line-height: 1.25;
+      line-height: 1;
       color: $white;
       transition: all .15s ease-out;
 
       &.form-required:after {
         content: '*';
         background-image: none;
-        vertical-align: text-top;
+        vertical-align: top;
       }
     }
 
@@ -49,8 +56,16 @@
       transition: all .25s ease-in-out;
 
       &[type="email"] {
-        max-width: 85%;
-        min-width: 225px;
+        .mfp-content & {
+          max-width: 85%;
+          min-width: 225px;
+        }
+      }
+      &[type="tel"] {
+        .mfp-content & {
+          max-width: 56%;
+          min-width: 150px;
+        }
       }
     }
 
@@ -119,6 +134,16 @@
       select {
         color: $white;
       }
+    }
+  }
+
+  .field--name-field-help-text {
+    margin-top: 25px;
+    font-size: rem-calc(14);
+
+    a {
+      font-weight: $global-weight-bold;
+      color: inherit;
     }
   }
 

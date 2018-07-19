@@ -10,8 +10,8 @@ dependencies:
     - themekit
 id: startaconversation
 theme: themekit
-region: footer
-weight: -7
+region: footer_first
+weight: -8
 provider: null
 plugin: 'block_content:b719e5d9-ae0c-403b-b058-38763e713b28'
 settings:

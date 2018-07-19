@@ -90,11 +90,6 @@
       }
     }
   }
-
-
-
-
-
 }
 
 // Compound - Callout
@@ -274,6 +269,314 @@
 
         &:last-child {
           margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+// Compound - Media Tile Bar
+.paragraph--type--compound-media-title-bar {
+  text-align: center;
+  > .paragraph-content {
+    @include content-width(wide);
+    > .field--name-field-heading {
+      @include breakpoint(large) {
+        @include content-width(narrow);
+      }
+    }
+    > .field--name-field-description {
+      margin-bottom: rem-calc(48);
+      @include breakpoint(medium) {
+        @include content-width(narrow);
+      }
+    }
+
+    .field--name-field-heading + .field--name-field-p-media-tile-content {
+      margin-top: rem-calc(24);
+      @include breakpoint(medium) {
+        margin-top: rem-calc(32);
+      }
+    }
+
+    .field--name-field-p-media-tile-content {
+      @include content-width(wide);
+      @include breakpoint(marge) {
+        @include tk-flex-equal-width-items($grid-column-gutter, '.paragraph');
+      }
+    }
+
+    .field--name-field-p-compound-content > .paragraph {
+      margin-bottom: rem-calc(48);
+
+      @include breakpoint(marge) {
+        margin-bottom: 0;
+      }
+    }
+
+    > .field--name-field-p-multiple-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+      @include breakpoint(large) {
+        margin-top: 40px;
+      }
+
+      & > .paragraph {
+        margin: 0 8px;
+        a {
+          @include link(default);
+        }
+
+        &:nth-last-child(2) {
+          a {
+            @include btn(blue);
+          }
+        }
+      }
+    }
+  }
+
+  &.column-count-1,
+  &.column-count-2 {
+    & > .paragraph-content > .field--name-field-p-media-tile-content {
+      @include content-width(narrow);
+      @include breakpoint(medium) {
+        @include tk-flex-equal-width-items($grid-column-gutter, '.paragraph');
+      }
+
+      & > .paragraph {
+        margin-bottom: rem-calc(48);
+
+        @include breakpoint(medium) {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  &.column-count-3 {
+    & > .paragraph-content > .field--name-field-p-media-tile-content {
+      @include breakpoint(marge) {
+        @include tk-flex-equal-width-items((small: 10px, large: 60px), '.paragraph');
+      }
+    }
+  }
+}
+
+// Compound - Tabbed Content
+.paragraph--type--compound-tabbed-content {
+  > .paragraph-content {
+    position: relative;
+  }
+  
+  .field--name-field-p-content > & {
+    @include paragraph-margins((small: 0));
+  }
+
+  .slick-dotted.slick-slider {
+    margin-bottom: 0;
+  }
+
+  .slick-dots {
+    bottom: 40px;
+    white-space: nowrap;
+
+    li button:before {
+      color: transparent;
+    }
+    li.slick-active button:before {
+      color: $white;
+    }
+    button {
+      position: relative;
+      &:after {
+        content: '';
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        border: 1px solid $white;
+        width: 9px;
+        height: 9px;
+        display: inline-block;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  .slick-counter-numbers {
+    text-align: center;
+    color: $white;
+    white-space: nowrap;
+    @include breakpoint(marge) {
+      display: none;
+    }
+
+    span {
+      opacity: 0;
+      padding: 0 5px;
+      font-size: 13px;
+      &.active {
+        opacity: 1;
+      }
+    }
+  }
+
+  .slick-counter-labels {
+    position: absolute;
+    left: 0;
+    bottom: 45px;
+    right: 0;
+    text-align: center;
+    color: $white;
+    font-weight: $global-weight-bold;
+    white-space: nowrap;
+    @include breakpoint(marge) {
+      display: none;
+    }
+
+    span {
+      display: none;
+      font-size: 13px;
+      &.active {
+        display: block;
+      }
+    }
+  }
+
+  .slick-tab-nav {
+    position: absolute;
+    left: 0;
+    bottom: 20px;
+    right: 0;
+    @include breakpoint(marge) {
+      border-top: 1px solid $white;
+      bottom: 0;
+    }
+
+    &:after {
+      content: none;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 0;
+      //background-color: rgba($primary-color, .6);
+      @include breakpoint(marge) {
+        content: '';
+      }
+    }
+
+    .slick-list {
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      @include breakpoint(medium down) {
+        padding: 0 !important;
+        display: none;
+      }
+
+      .slick-track {
+        transform: none !important;
+      }
+    }
+
+    .slick-slide {
+      padding: 0 2%;
+      font-size: rem-calc(14);
+      font-weight: $global-weight-bold;
+      color: $white;
+      text-align: center;
+
+      @include breakpoint(medium down) {
+        width: 100% !important;
+        padding: 0 1rem;
+      }
+
+      a {
+        display: block;
+        padding: 10px 0;
+        border-top: 6px solid transparent;
+        color: inherit;
+        outline: 0;
+        opacity: .6;
+
+        @include breakpoint(marge) {
+          padding: 21px 0;
+        }
+
+        @include selectors('active') {
+          opacity: 1;
+        }
+      }
+
+      &.slick-current {
+        a {
+          //border-top: 6px solid $primary-color-lighter;
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &.with-bg {
+    background: none !important;
+  }
+
+  &.bg-color-green {
+    > .paragraph-content {
+      background-color: rgba($primary-color, .85);
+    }
+
+    .paragraph {
+      .bg-container {
+        &:after {
+          background-color: rgba($primary-color, .85);
+        }
+      }
+    }
+
+    .slick-tab-nav {
+      &:after {
+        background-color: rgba($primary-color, .6);
+      }
+
+      .slick-slide {
+        &.slick-current {
+          a {
+            border-top: 6px solid $primary-color-lighter;
+          }
+        }
+      }
+    }
+  }
+
+  &.bg-color-blue {
+    > .paragraph-content {
+      background-color: rgba($secondary-color-dark, .85);
+    }
+
+    .paragraph {
+      .bg-container {
+        &:after {
+          background-color: rgba($secondary-color-dark, .85);
+        }
+      }
+    }
+
+    .slick-tab-nav {
+      &:after {
+        background-color: rgba($secondary-color-dark, .6);
+      }
+
+      .slick-slide {
+        &.slick-current {
+          a {
+            border-top: 6px solid $secondary-color-light;
+          }
         }
       }
     }

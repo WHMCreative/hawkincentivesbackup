@@ -20,13 +20,18 @@
     .field--name-field-heading {
       width: 100%;
       margin-bottom: 20px;
-      text-align: center;
       color: $secondary-color-dark;
       font-family: $body-font-family;
       font-size: rem-calc(32);
       font-weight: $global-weight-light;
       line-height: rem-calc(40);
 
+      @include breakpoint(small down) {
+        margin-bottom: 8px;
+      }
+      @include breakpoint(medium) {
+        text-align: center;
+      }
       @include breakpoint(large) {
         width: 24%;
         float: left;
@@ -37,6 +42,11 @@
 
     .summary-output {
       width: 100%;
+
+      @include breakpoint(small down) {
+        order: 2;
+        margin-top: 30px;
+      }
       @include breakpoint(medium) {
         @include tk-flex-block-grid(3, 'article', $gutter: 18px);
       }
@@ -50,30 +60,20 @@
         @include breakpoint(medium) {
           margin-bottom: 0;
         }
-
-        &.node--type-insight.node--view-mode-teaser .node--image {
-          .field--name-field-teaser-image,
-          .field--name-field-media {
-            max-height: 180px;
-            height: 180px;
-
-            img {
-              margin-top: 0;
-            }
-          }
-        }
       }
     }
 
     .field--name-field-p-link {
       @include breakpoint(marge down) {
-        order: 8;
+        order: 4;
         width: 100%;
         margin-top: 20px;
         text-align: center;
       }
       @include breakpoint(small down) {
+        order: 1;
         margin-top: 0;
+        text-align: left;
       }
       @include breakpoint(large) {
         float: left;
@@ -86,6 +86,11 @@
         font-size: rem-calc(14);
         font-weight: $global-weight-bold;
         text-transform: capitalize;
+        @include breakpoint(small down) {
+          border-bottom: 1px solid;
+          padding-bottom: 3px;
+          font-size: rem-calc(15);
+        }
       }
     }
 
@@ -93,8 +98,9 @@
       width: 24%;
       float: left;
       padding-top: 15px;
+      font-size: rem-calc(13);
       @include breakpoint(marge down) {
-        order: 9;
+        order: 5;
         width: 100%;
         float: none;
       }
@@ -102,6 +108,11 @@
   }
 
   .node--sidebar & {
+    @include paragraph-margins((small: 0));
+
+    &.bg-color-gray {
+      background: none;
+    }
     .field--name-field-heading {
       color: $secondary-color-dark;
       font-family: $body-font-family;
@@ -115,6 +126,87 @@
         &:last-child {
           margin-bottom: 0;
         }
+      }
+    }
+  }
+}
+
+.paragraph--type--summary-cards {
+  > .paragraph-content {
+    @include content-width(default);
+    @include breakpoint(marge down) {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    @include breakpoint(large) {
+      @include clear;
+    }
+  }
+
+  .field--name-field-heading {
+    width: 100%;
+    margin-bottom: 20px;
+    color: $secondary-color-dark;
+    font-family: $body-font-family;
+    font-size: rem-calc(32);
+    font-weight: $global-weight-light;
+    line-height: rem-calc(40);
+
+    @include breakpoint(small down) {
+      margin-bottom: 15px;
+    }
+    @include breakpoint(medium) {
+      text-align: center;
+    }
+    @include breakpoint(large) {
+      width: 24%;
+      float: left;
+      margin-bottom: 35px;
+      text-align: left;
+    }
+  }
+
+  .field--name-field-p-multiple-links {
+    @include breakpoint(marge down) {
+      order: 4;
+      width: 100%;
+      margin-top: 20px;
+      text-align: center;
+    }
+    @include breakpoint(small down) {
+      order: 1;
+      margin-top: 0;
+      text-align: left;
+    }
+    @include breakpoint(large) {
+      float: left;
+      width: 24%;
+    }
+
+    a {
+      @include btn(blue);
+    }
+  }
+
+  .field--name-field-cards {
+    width: 100%;
+
+    @include breakpoint(small down) {
+      order: 2;
+      margin-top: 30px;
+    }
+    @include breakpoint(medium) {
+      @include tk-flex-block-grid(3, '.field__item', $gutter: 18px);
+    }
+    @include breakpoint(large) {
+      width: 76%;
+      float: right;
+    }
+
+    > .field__item {
+      margin-bottom: 20px;
+      @include breakpoint(medium) {
+        margin-bottom: 0;
       }
     }
   }

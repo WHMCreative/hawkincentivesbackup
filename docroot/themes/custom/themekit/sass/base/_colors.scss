@@ -6,6 +6,7 @@ $colors: (
   default: (
     default: #89ae43, // Hawk Green
     light: #a4cd29,
+    lighter: #e9fe77,
   ),
   secondary: (
     default: #1969b7, // Hawk Blue
@@ -26,6 +27,7 @@ $colors: (
 
 $primary-color: color(default, default);
 $primary-color-light: color(default, light);
+$primary-color-lighter: color(default, lighter);
 $secondary-color: color(secondary, default);
 $secondary-color-light: color(secondary, light);
 $secondary-color-dark: color(secondary, dark);

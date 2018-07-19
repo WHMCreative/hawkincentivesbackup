@@ -169,13 +169,7 @@
 
     .field--name-field-p-media {
       margin-bottom: rem-calc(16);
-
-      img,
-      svg {
-        height: rem-calc(45);
-      }
     }
-
 
     .field--name-field-description {
       display: none;
@@ -193,6 +187,19 @@
     }
   }
 
+  .field--name-field-p-compound-content & {
+    .field--name-field-p-media {
+      margin-bottom: rem-calc(16);
+
+      img,
+      svg {
+        height: rem-calc(45);
+        width: auto;
+        margin: 0 auto;
+      }
+    }
+  }
+
 
   // When placed in callout
   .field--name-field-p-callout-content & {
@@ -204,32 +211,37 @@
 
       .field--name-field-p-media {
         margin-bottom: 0;
-      }
-
-
-      .field--name-field-media-image {
         margin-right: rem-calc(12);
+        width: rem-calc(50);
+        min-width: rem-calc(50);
 
-        img {
-          height: auto;
-          min-width: 33px;
+        * {
+          text-align: center;
         }
-      }
-
-      .field--name-field-description {
-        max-width: rem-calc(150);
       }
     }
 
+    // When placed in banner hero
+    .paragraph--type--banner-hero & {
+      .field--name-field-p-media {
+        width: rem-calc(30);
+        min-width: rem-calc(30);
+
+        img,
+        svg {
+          height: auto;
+          width: auto;
+          margin: 0 auto;
+        }
+      }
+    }
+
+    // When placed in layout 2 column
     .paragraph--type--layout-2-column & {
       .field--name-field-heading {
         color: $secondary-color-dark;
         font-weight: $global-weight-bold;
         font-size: rem-calc(20);
-      }
-
-      .field--name-field-media-image {
-        margin-right: rem-calc(18);
       }
     }
   }
@@ -237,6 +249,10 @@
 
 // Simple - Media Tile
 .paragraph--type--simple-media-tile {
+  padding: rem-calc(20);
+  @include breakpoint(large) {
+    padding: 0;
+  }
   & > .paragraph-content {
     background: $white;
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
@@ -333,4 +349,114 @@
       font-size: rem-calc(13);
     }
   }
+}
+
+// Simple - Media Bar
+.paragraph--type--simple-media-bar {
+
+  &.paragraph--view-mode--nested {
+    position: relative;
+    color: $white;
+
+    @include breakpoint(marge) {
+      min-height: 500px;
+    }
+
+    > .paragraph-content {
+      max-width: 950px;
+      margin: 0 auto;
+      padding: 30px 1rem 120px;
+      text-align: center;
+
+      @include breakpoint(marge) {
+        padding: 120px 1rem 140px;
+        text-align: left;
+      }
+
+      .content--wrapper {
+        @include breakpoint(marge) {
+          @include tk-flex-block-grid(2, 'div', 60px);
+        }
+      }
+
+      .field--name-field-label {
+        display: none;
+      }
+
+      .field--name-field-heading,
+      .field--name-field-callout {
+        font-size: rem-calc(48);
+        line-height: rem-calc(56);
+        letter-spacing: rem-calc(-.69);
+        p {
+          line-height: inherit;
+        }
+      }
+
+      .field--name-field-heading {
+        display: inline;
+        padding-right: 5px;
+        font-weight: $global-weight-light;
+        @include breakpoint(marge) {
+          font-weight: $global-weight-bold;
+        }
+      }
+
+      .field--name-field-callout {
+        display: inline-block;
+        font-weight: $global-weight-light;
+      }
+
+      .field--name-field-description {
+        margin-top: 25px;
+        font-size: rem-calc(16);
+        line-height: rem-calc(26);
+        @include breakpoint(marge) {
+          margin-top: 0;
+        }
+      }
+
+      .field--name-field-p-link {
+        margin-top: 10px;
+        font-size: rem-calc(14);
+        font-weight: $global-weight-bold;
+        @include breakpoint(medium down) {
+          margin-top: 16px;
+        }
+
+        a {
+          @include breakpoint(medium down) {
+            font-size: 16px;
+            border-bottom: 1px solid;
+            padding-bottom: 4px;
+          }
+        }
+      }
+
+      a {
+        color: inherit;
+      }
+    }
+
+    .bg-container {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+      @include bg-style(cover);
+
+      &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        //background-color: rgba($primary-color, .85);
+      }
+    }
+  }
+
 }

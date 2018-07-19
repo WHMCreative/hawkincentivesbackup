@@ -1,0 +1,10 @@
+uuid: bfe92853-6ce8-4dbd-aa6c-6e17f98adf12
+langcode: en
+status: true
+dependencies:
+  module:
+    - media_entity
+id: media.featured_big_teaser
+label: 'Featured Big Teaser'
+targetEntityType: media
+cache: true
