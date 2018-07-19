@@ -8,7 +8,8 @@ var entryPoints = {
   themekit: './js/src/theme.js',
   style: './sass/style.scss',
   wysiwyg: './sass/wysiwyg.scss',
-  'card-catalog': './js/src/v-card-catalog/card-catalog.js'
+  'card-catalog': './js/src/v-card-catalog/card-catalog.js',
+  'whatwg-fetch': 'whatwg-fetch'
   // hotelFilters: "./js/src/v-hotel-filters/hotel-filters.js",
 };
 
@@ -76,25 +77,19 @@ var config = {
     autoprefixer,
   ],
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.vue$/,
-        loader: 'vue'
+        loader: 'vue-loader'
       },
       {
         test: /\.js$/,
         // must add exceptions to this exlude statement for anything that needs to be transpiled by babel
         exclude: /node_modules\/(?!foundation-sites)/,
-        loader: 'babel-loader',
-        query: {
-          presets: ["env"]
+        use: {
+          loader: 'babel-loader',
+          options: { babelrc: true }
         }
-      }
-    ],
-    rules: [
-      {
-        test: /\.vue$/,
-        loader: 'vue-loader'
       },
       { // regular css files
         test: /\.css$/,

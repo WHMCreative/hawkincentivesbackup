@@ -8,25 +8,29 @@ module.exports = jQuery;
 /* 1 */,
 /* 2 */,
 /* 3 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return rtl; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GetYoDigits; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return transitionend; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.transitionend = exports.GetYoDigits = exports.rtl = undefined;
 
+var _jquery = __webpack_require__(0);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // Core Foundation Utilities, utilized in a number of places.
 
-  /**
-   * Returns a boolean for RTL support
-   */
+/**
+ * Returns a boolean for RTL support
+ */
 function rtl() {
-  return __WEBPACK_IMPORTED_MODULE_0_jquery___default()('html').attr('dir') === 'rtl';
+  return (0, _jquery2.default)('html').attr('dir') === 'rtl';
 }
 
 /**
@@ -37,12 +41,12 @@ function rtl() {
  * @default {String} '' - if no plugin name is provided, nothing is appended to the uid.
  * @returns {String} - unique id
  */
-function GetYoDigits(length, namespace){
+function GetYoDigits(length, namespace) {
   length = length || 6;
-  return Math.round((Math.pow(36, length + 1) - Math.random() * Math.pow(36, length))).toString(36).slice(1) + (namespace ? `-${namespace}` : '');
+  return Math.round(Math.pow(36, length + 1) - Math.random() * Math.pow(36, length)).toString(36).slice(1) + (namespace ? '-' + namespace : '');
 }
 
-function transitionend($elem){
+function transitionend($elem) {
   var transitions = {
     'transition': 'transitionend',
     'WebkitTransition': 'webkitTransitionEnd',
@@ -52,23 +56,24 @@ function transitionend($elem){
   var elem = document.createElement('div'),
       end;
 
-  for (var t in transitions){
-    if (typeof elem.style[t] !== 'undefined'){
+  for (var t in transitions) {
+    if (typeof elem.style[t] !== 'undefined') {
       end = transitions[t];
     }
   }
-  if(end){
+  if (end) {
     return end;
-  }else{
-    end = setTimeout(function(){
+  } else {
+    end = setTimeout(function () {
       $elem.triggerHandler('transitionend', [$elem]);
     }, 1);
     return 'transitionend';
   }
 }
 
-
-
+exports.rtl = rtl;
+exports.GetYoDigits = GetYoDigits;
+exports.transitionend = transitionend;
 
 /***/ }),
 /* 4 */,
@@ -87,55 +92,58 @@ function transitionend($elem){
 /* 17 */,
 /* 18 */,
 /* 19 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MediaQuery; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.MediaQuery = undefined;
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var _jquery = __webpack_require__(0);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // Default set of media queries
-const defaultQueries = {
-  'default' : 'only screen',
-  landscape : 'only screen and (orientation: landscape)',
-  portrait : 'only screen and (orientation: portrait)',
-  retina : 'only screen and (-webkit-min-device-pixel-ratio: 2),' +
-    'only screen and (min--moz-device-pixel-ratio: 2),' +
-    'only screen and (-o-min-device-pixel-ratio: 2/1),' +
-    'only screen and (min-device-pixel-ratio: 2),' +
-    'only screen and (min-resolution: 192dpi),' +
-    'only screen and (min-resolution: 2dppx)'
-  };
-
+var defaultQueries = {
+  'default': 'only screen',
+  landscape: 'only screen and (orientation: landscape)',
+  portrait: 'only screen and (orientation: portrait)',
+  retina: 'only screen and (-webkit-min-device-pixel-ratio: 2),' + 'only screen and (min--moz-device-pixel-ratio: 2),' + 'only screen and (-o-min-device-pixel-ratio: 2/1),' + 'only screen and (min-device-pixel-ratio: 2),' + 'only screen and (min-resolution: 192dpi),' + 'only screen and (min-resolution: 2dppx)'
+};
 
 // matchMedia() polyfill - Test a CSS media type/query in JS.
 // Authors & copyright (c) 2012: Scott Jehl, Paul Irish, Nicholas Zakas, David Knight. Dual MIT/BSD license
-let matchMedia = window.matchMedia || (function() {
+var matchMedia = window.matchMedia || function () {
   'use strict';
 
   // For browsers that support matchMedium api such as IE 9 and webkit
-  var styleMedia = (window.styleMedia || window.media);
+
+  var styleMedia = window.styleMedia || window.media;
 
   // For those that don't support matchMedium
   if (!styleMedia) {
-    var style   = document.createElement('style'),
-    script      = document.getElementsByTagName('script')[0],
-    info        = null;
+    var style = document.createElement('style'),
+        script = document.getElementsByTagName('script')[0],
+        info = null;
 
-    style.type  = 'text/css';
-    style.id    = 'matchmediajs-test';
+    style.type = 'text/css';
+    style.id = 'matchmediajs-test';
 
     script && script.parentNode && script.parentNode.insertBefore(style, script);
 
     // 'style.currentStyle' is used by IE <= 8 and 'window.getComputedStyle' for all other browsers
-    info = ('getComputedStyle' in window) && window.getComputedStyle(style, null) || style.currentStyle;
+    info = 'getComputedStyle' in window && window.getComputedStyle(style, null) || style.currentStyle;
 
     styleMedia = {
-      matchMedium(media) {
-        var text = `@media ${media}{ #matchmediajs-test { width: 1px; } }`;
+      matchMedium: function matchMedium(media) {
+        var text = '@media ' + media + '{ #matchmediajs-test { width: 1px; } }';
 
         // 'style.styleSheet' is used by IE <= 8 and 'style.textContent' for all other browsers
         if (style.styleSheet) {
@@ -147,16 +155,16 @@ let matchMedia = window.matchMedia || (function() {
         // Test if media query is true or false
         return info.width === '1px';
       }
-    }
+    };
   }
 
-  return function(media) {
+  return function (media) {
     return {
       matches: styleMedia.matchMedium(media || 'all'),
       media: media || 'all'
     };
-  }
-})();
+  };
+}();
 
 var MediaQuery = {
   queries: [],
@@ -168,23 +176,23 @@ var MediaQuery = {
    * @function
    * @private
    */
-  _init() {
+  _init: function _init() {
     var self = this;
-    var $meta = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('meta.foundation-mq');
-    if(!$meta.length){
-      __WEBPACK_IMPORTED_MODULE_0_jquery___default()('<meta class="foundation-mq">').appendTo(document.head);
+    var $meta = (0, _jquery2.default)('meta.foundation-mq');
+    if (!$meta.length) {
+      (0, _jquery2.default)('<meta class="foundation-mq">').appendTo(document.head);
     }
 
-    var extractedStyles = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.foundation-mq').css('font-family');
+    var extractedStyles = (0, _jquery2.default)('.foundation-mq').css('font-family');
     var namedQueries;
 
     namedQueries = parseStyleToObject(extractedStyles);
 
     for (var key in namedQueries) {
-      if(namedQueries.hasOwnProperty(key)) {
+      if (namedQueries.hasOwnProperty(key)) {
         self.queries.push({
           name: key,
-          value: `only screen and (min-width: ${namedQueries[key]})`
+          value: 'only screen and (min-width: ' + namedQueries[key] + ')'
         });
       }
     }
@@ -194,13 +202,14 @@ var MediaQuery = {
     this._watcher();
   },
 
+
   /**
    * Checks if the screen is at least as wide as a breakpoint.
    * @function
    * @param {String} size - Name of the breakpoint to check.
    * @returns {Boolean} `true` if the breakpoint matches, `false` if it's smaller.
    */
-  atLeast(size) {
+  atLeast: function atLeast(size) {
     var query = this.get(size);
 
     if (query) {
@@ -210,21 +219,23 @@ var MediaQuery = {
     return false;
   },
 
+
   /**
    * Checks if the screen matches to a breakpoint.
    * @function
    * @param {String} size - Name of the breakpoint to check, either 'small only' or 'small'. Omitting 'only' falls back to using atLeast() method.
    * @returns {Boolean} `true` if the breakpoint matches, `false` if it does not.
    */
-  is(size) {
+  is: function is(size) {
     size = size.trim().split(' ');
-    if(size.length > 1 && size[1] === 'only') {
-      if(size[0] === this._getCurrentSize()) return true;
+    if (size.length > 1 && size[1] === 'only') {
+      if (size[0] === this._getCurrentSize()) return true;
     } else {
       return this.atLeast(size[0]);
     }
     return false;
   },
+
 
   /**
    * Gets the media query of a breakpoint.
@@ -232,9 +243,9 @@ var MediaQuery = {
    * @param {String} size - Name of the breakpoint to get.
    * @returns {String|null} - The media query of the breakpoint, or `null` if the breakpoint doesn't exist.
    */
-  get(size) {
+  get: function get(size) {
     for (var i in this.queries) {
-      if(this.queries.hasOwnProperty(i)) {
+      if (this.queries.hasOwnProperty(i)) {
         var query = this.queries[i];
         if (size === query.name) return query.value;
       }
@@ -243,13 +254,14 @@ var MediaQuery = {
     return null;
   },
 
+
   /**
    * Gets the current breakpoint name by testing every breakpoint and returning the last one to match (the biggest one).
    * @function
    * @private
    * @returns {String} Name of the current breakpoint.
    */
-  _getCurrentSize() {
+  _getCurrentSize: function _getCurrentSize() {
     var matched;
 
     for (var i = 0; i < this.queries.length; i++) {
@@ -260,34 +272,36 @@ var MediaQuery = {
       }
     }
 
-    if (typeof matched === 'object') {
+    if ((typeof matched === 'undefined' ? 'undefined' : _typeof(matched)) === 'object') {
       return matched.name;
     } else {
       return matched;
     }
   },
 
+
   /**
    * Activates the breakpoint watcher, which fires an event on the window whenever the breakpoint changes.
    * @function
    * @private
    */
-  _watcher() {
-    __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).off('resize.zf.mediaquery').on('resize.zf.mediaquery', () => {
-      var newSize = this._getCurrentSize(), currentSize = this.current;
+  _watcher: function _watcher() {
+    var _this = this;
+
+    (0, _jquery2.default)(window).off('resize.zf.mediaquery').on('resize.zf.mediaquery', function () {
+      var newSize = _this._getCurrentSize(),
+          currentSize = _this.current;
 
       if (newSize !== currentSize) {
         // Change the current media query
-        this.current = newSize;
+        _this.current = newSize;
 
         // Broadcast the media query change on the window
-        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).trigger('changed.zf.mediaquery', [newSize, currentSize]);
+        (0, _jquery2.default)(window).trigger('changed.zf.mediaquery', [newSize, currentSize]);
       }
     });
   }
 };
-
-
 
 // Thank you: https://github.com/sindresorhus/query-string
 function parseStyleToObject(str) {
@@ -303,7 +317,7 @@ function parseStyleToObject(str) {
     return styleObject;
   }
 
-  styleObject = str.split('&').reduce(function(ret, param) {
+  styleObject = str.split('&').reduce(function (ret, param) {
     var parts = param.replace(/\+/g, ' ').split('=');
     var key = parts[0];
     var val = parts[1];
@@ -326,8 +340,7 @@ function parseStyleToObject(str) {
   return styleObject;
 }
 
-
-
+exports.MediaQuery = MediaQuery;
 
 /***/ }),
 /* 20 */
@@ -2220,110 +2233,113 @@ $.magnificPopup.registerModule(RETINA_NS, {
 /* 39 */,
 /* 40 */,
 /* 41 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation_setup__ = __webpack_require__(42);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__external_links__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__external_links___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__external_links__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__inject_svg__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__magnific_popup__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__menu__ = __webpack_require__(54);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__skip_link__ = __webpack_require__(55);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__video_modal__ = __webpack_require__(56);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__slick__ = __webpack_require__(57);
-/**
- * theme.js
- * Entry point for all theme related js.
- */
 
 
+__webpack_require__(42);
 
+__webpack_require__(50);
 
+__webpack_require__(51);
 
+__webpack_require__(53);
 
+__webpack_require__(54);
 
+__webpack_require__(55);
 
+__webpack_require__(56);
 
+__webpack_require__(57);
 
 /***/ }),
 /* 42 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_foundation_sites_js_foundation_core__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_foundation_sites_js_foundation_util_core__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_foundation_sites_js_foundation_util_box__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_foundation_sites_js_foundation_util_imageLoader__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_foundation_sites_js_foundation_util_keyboard__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_foundation_sites_js_foundation_util_mediaQuery__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_foundation_sites_js_foundation_util_motion__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_foundation_sites_js_foundation_util_nest__ = __webpack_require__(48);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_foundation_sites_js_foundation_util_timer__ = __webpack_require__(49);
-/**
- * @file foundation-setup.js
- *
- * This is required for any foundation functionality. It should be imported at the top
- * of any file that is implementing a foundation component. Webpack determines
- * dependencies so this will only be added once. Keep in mind this is where the global
- * Foundation is being initialized `$(document).foudnation()`, so it's probably reasonable
- * to include this in the `theme.js` file first, as well as Foundation component files.
- */
 
 
-window.$ = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a;
+var _jquery = __webpack_require__(0);
 
+var _jquery2 = _interopRequireDefault(_jquery);
 
-__WEBPACK_IMPORTED_MODULE_1_foundation_sites_js_foundation_core__["a" /* Foundation */].addToJquery(__WEBPACK_IMPORTED_MODULE_0_jquery___default.a);
+var _foundation = __webpack_require__(43);
+
+var _foundationUtil = __webpack_require__(3);
+
+var _foundationUtil2 = __webpack_require__(44);
+
+var _foundationUtil3 = __webpack_require__(45);
+
+var _foundationUtil4 = __webpack_require__(46);
+
+var _foundationUtil5 = __webpack_require__(19);
+
+var _foundationUtil6 = __webpack_require__(47);
+
+var _foundationUtil7 = __webpack_require__(48);
+
+var _foundationUtil8 = __webpack_require__(49);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+window.$ = _jquery2.default; /**
+                              * @file foundation-setup.js
+                              *
+                              * This is required for any foundation functionality. It should be imported at the top
+                              * of any file that is implementing a foundation component. Webpack determines
+                              * dependencies so this will only be added once. Keep in mind this is where the global
+                              * Foundation is being initialized `$(document).foudnation()`, so it's probably reasonable
+                              * to include this in the `theme.js` file first, as well as Foundation component files.
+                              */
+
+_foundation.Foundation.addToJquery(_jquery2.default);
 
 // Add Foundation Utils to Foundation global namespace for backwards
 // compatibility.
 
+_foundation.Foundation.rtl = _foundationUtil.rtl;
+_foundation.Foundation.GetYoDigits = _foundationUtil.GetYoDigits;
+_foundation.Foundation.transitionend = _foundationUtil.transitionend;
 
-__WEBPACK_IMPORTED_MODULE_1_foundation_sites_js_foundation_core__["a" /* Foundation */].rtl = __WEBPACK_IMPORTED_MODULE_2_foundation_sites_js_foundation_util_core__["b" /* rtl */];
-__WEBPACK_IMPORTED_MODULE_1_foundation_sites_js_foundation_core__["a" /* Foundation */].GetYoDigits = __WEBPACK_IMPORTED_MODULE_2_foundation_sites_js_foundation_util_core__["a" /* GetYoDigits */];
-__WEBPACK_IMPORTED_MODULE_1_foundation_sites_js_foundation_core__["a" /* Foundation */].transitionend = __WEBPACK_IMPORTED_MODULE_2_foundation_sites_js_foundation_util_core__["c" /* transitionend */];
-
-
-
-
-
-
-
-
-
-__WEBPACK_IMPORTED_MODULE_1_foundation_sites_js_foundation_core__["a" /* Foundation */].Box = __WEBPACK_IMPORTED_MODULE_3_foundation_sites_js_foundation_util_box__["a" /* Box */];
-__WEBPACK_IMPORTED_MODULE_1_foundation_sites_js_foundation_core__["a" /* Foundation */].onImagesLoaded = __WEBPACK_IMPORTED_MODULE_4_foundation_sites_js_foundation_util_imageLoader__["a" /* onImagesLoaded */];
-__WEBPACK_IMPORTED_MODULE_1_foundation_sites_js_foundation_core__["a" /* Foundation */].Keyboard = __WEBPACK_IMPORTED_MODULE_5_foundation_sites_js_foundation_util_keyboard__["a" /* Keyboard */];
-__WEBPACK_IMPORTED_MODULE_1_foundation_sites_js_foundation_core__["a" /* Foundation */].MediaQuery = __WEBPACK_IMPORTED_MODULE_6_foundation_sites_js_foundation_util_mediaQuery__["a" /* MediaQuery */];
-__WEBPACK_IMPORTED_MODULE_1_foundation_sites_js_foundation_core__["a" /* Foundation */].Motion = __WEBPACK_IMPORTED_MODULE_7_foundation_sites_js_foundation_util_motion__["a" /* Motion */];
-__WEBPACK_IMPORTED_MODULE_1_foundation_sites_js_foundation_core__["a" /* Foundation */].Move = __WEBPACK_IMPORTED_MODULE_7_foundation_sites_js_foundation_util_motion__["b" /* Move */];
-__WEBPACK_IMPORTED_MODULE_1_foundation_sites_js_foundation_core__["a" /* Foundation */].Nest = __WEBPACK_IMPORTED_MODULE_8_foundation_sites_js_foundation_util_nest__["a" /* Nest */];
-__WEBPACK_IMPORTED_MODULE_1_foundation_sites_js_foundation_core__["a" /* Foundation */].Timer = __WEBPACK_IMPORTED_MODULE_9_foundation_sites_js_foundation_util_timer__["a" /* Timer */];
+_foundation.Foundation.Box = _foundationUtil2.Box;
+_foundation.Foundation.onImagesLoaded = _foundationUtil3.onImagesLoaded;
+_foundation.Foundation.Keyboard = _foundationUtil4.Keyboard;
+_foundation.Foundation.MediaQuery = _foundationUtil5.MediaQuery;
+_foundation.Foundation.Motion = _foundationUtil6.Motion;
+_foundation.Foundation.Move = _foundationUtil6.Move;
+_foundation.Foundation.Nest = _foundationUtil7.Nest;
+_foundation.Foundation.Timer = _foundationUtil8.Timer;
 
 // Initializing foundation - if you are relying on components generated from classes or attributes,
 // you may need to make sure to appropriate modules are included beforehand
-__WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).foundation();
-
+(0, _jquery2.default)(document).foundation();
 
 /***/ }),
 /* 43 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Foundation; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation_util_core__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation_util_mediaQuery__ = __webpack_require__(19);
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Foundation = undefined;
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
+var _jquery = __webpack_require__(0);
 
+var _jquery2 = _interopRequireDefault(_jquery);
+
+var _foundationUtil = __webpack_require__(3);
+
+var _foundationUtil2 = __webpack_require__(19);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var FOUNDATION_VERSION = '6.4.3';
 
@@ -2346,16 +2362,16 @@ var Foundation = {
    * Defines a Foundation plugin, adding it to the `Foundation` namespace and the list of plugins to initialize when reflowing.
    * @param {Object} plugin - The constructor of the plugin.
    */
-  plugin: function(plugin, name) {
+  plugin: function plugin(_plugin, name) {
     // Object key to use when adding to global Foundation object
     // Examples: Foundation.Reveal, Foundation.OffCanvas
-    var className = (name || functionName(plugin));
+    var className = name || functionName(_plugin);
     // Object key to use when storing the plugin, also used to create the identifying data attribute for the plugin
     // Examples: data-reveal, data-off-canvas
-    var attrName  = hyphenate(className);
+    var attrName = hyphenate(className);
 
     // Add to the Foundation object and the plugins list (for reflowing)
-    this._plugins[attrName] = this[className] = plugin;
+    this._plugins[attrName] = this[className] = _plugin;
   },
   /**
    * @function
@@ -2366,17 +2382,21 @@ var Foundation = {
    * @param {String} name - the name of the plugin, passed as a camelCased string.
    * @fires Plugin#init
    */
-  registerPlugin: function(plugin, name){
+  registerPlugin: function registerPlugin(plugin, name) {
     var pluginName = name ? hyphenate(name) : functionName(plugin.constructor).toLowerCase();
-    plugin.uuid = Object(__WEBPACK_IMPORTED_MODULE_1__foundation_util_core__["a" /* GetYoDigits */])(6, pluginName);
+    plugin.uuid = (0, _foundationUtil.GetYoDigits)(6, pluginName);
 
-    if(!plugin.$element.attr(`data-${pluginName}`)){ plugin.$element.attr(`data-${pluginName}`, plugin.uuid); }
-    if(!plugin.$element.data('zfPlugin')){ plugin.$element.data('zfPlugin', plugin); }
-          /**
-           * Fires when the plugin has initialized.
-           * @event Plugin#init
-           */
-    plugin.$element.trigger(`init.zf.${pluginName}`);
+    if (!plugin.$element.attr('data-' + pluginName)) {
+      plugin.$element.attr('data-' + pluginName, plugin.uuid);
+    }
+    if (!plugin.$element.data('zfPlugin')) {
+      plugin.$element.data('zfPlugin', plugin);
+    }
+    /**
+     * Fires when the plugin has initialized.
+     * @event Plugin#init
+     */
+    plugin.$element.trigger('init.zf.' + pluginName);
 
     this._uuids.push(plugin.uuid);
 
@@ -2390,18 +2410,18 @@ var Foundation = {
    * @param {Object} plugin - an instance of a plugin, usually `this` in context.
    * @fires Plugin#destroyed
    */
-  unregisterPlugin: function(plugin){
+  unregisterPlugin: function unregisterPlugin(plugin) {
     var pluginName = hyphenate(functionName(plugin.$element.data('zfPlugin').constructor));
 
     this._uuids.splice(this._uuids.indexOf(plugin.uuid), 1);
-    plugin.$element.removeAttr(`data-${pluginName}`).removeData('zfPlugin')
-          /**
-           * Fires when the plugin has been destroyed.
-           * @event Plugin#destroyed
-           */
-          .trigger(`destroyed.zf.${pluginName}`);
-    for(var prop in plugin){
-      plugin[prop] = null;//clean up script to prep for garbage collection.
+    plugin.$element.removeAttr('data-' + pluginName).removeData('zfPlugin')
+    /**
+     * Fires when the plugin has been destroyed.
+     * @event Plugin#destroyed
+     */
+    .trigger('destroyed.zf.' + pluginName);
+    for (var prop in plugin) {
+      plugin[prop] = null; //clean up script to prep for garbage collection.
     }
     return;
   },
@@ -2412,46 +2432,46 @@ var Foundation = {
    * @param {String} plugins - optional string of an individual plugin key, attained by calling `$(element).data('pluginName')`, or string of a plugin class i.e. `'dropdown'`
    * @default If no argument is passed, reflow all currently active plugins.
    */
-   reInit: function(plugins){
-     var isJQ = plugins instanceof __WEBPACK_IMPORTED_MODULE_0_jquery___default.a;
-     try{
-       if(isJQ){
-         plugins.each(function(){
-           __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).data('zfPlugin')._init();
-         });
-       }else{
-         var type = typeof plugins,
-         _this = this,
-         fns = {
-           'object': function(plgs){
-             plgs.forEach(function(p){
-               p = hyphenate(p);
-               __WEBPACK_IMPORTED_MODULE_0_jquery___default()('[data-'+ p +']').foundation('_init');
-             });
-           },
-           'string': function(){
-             plugins = hyphenate(plugins);
-             __WEBPACK_IMPORTED_MODULE_0_jquery___default()('[data-'+ plugins +']').foundation('_init');
-           },
-           'undefined': function(){
-             this['object'](Object.keys(_this._plugins));
-           }
-         };
-         fns[type](plugins);
-       }
-     }catch(err){
-       console.error(err);
-     }finally{
-       return plugins;
-     }
-   },
+  reInit: function reInit(plugins) {
+    var isJQ = plugins instanceof _jquery2.default;
+    try {
+      if (isJQ) {
+        plugins.each(function () {
+          (0, _jquery2.default)(this).data('zfPlugin')._init();
+        });
+      } else {
+        var type = typeof plugins === 'undefined' ? 'undefined' : _typeof(plugins),
+            _this = this,
+            fns = {
+          'object': function object(plgs) {
+            plgs.forEach(function (p) {
+              p = hyphenate(p);
+              (0, _jquery2.default)('[data-' + p + ']').foundation('_init');
+            });
+          },
+          'string': function string() {
+            plugins = hyphenate(plugins);
+            (0, _jquery2.default)('[data-' + plugins + ']').foundation('_init');
+          },
+          'undefined': function undefined() {
+            this['object'](Object.keys(_this._plugins));
+          }
+        };
+        fns[type](plugins);
+      }
+    } catch (err) {
+      console.error(err);
+    } finally {
+      return plugins;
+    }
+  },
 
   /**
    * Initialize plugins on any elements within `elem` (and `elem` itself) that aren't already initialized.
    * @param {Object} elem - jQuery object containing the element to check inside. Also checks the element itself, unless it's the `document` object.
    * @param {String|Array} plugins - A list of plugins to initialize. Leave this out to initialize everything.
    */
-  reflow: function(elem, plugins) {
+  reflow: function reflow(elem, plugins) {
 
     // If plugins is undefined, just grab everything
     if (typeof plugins === 'undefined') {
@@ -2459,40 +2479,42 @@ var Foundation = {
     }
     // If plugins is a string, convert it to an array with one item
     else if (typeof plugins === 'string') {
-      plugins = [plugins];
-    }
+        plugins = [plugins];
+      }
 
     var _this = this;
 
     // Iterate through each plugin
-    __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.each(plugins, function(i, name) {
+    _jquery2.default.each(plugins, function (i, name) {
       // Get the current plugin
       var plugin = _this._plugins[name];
 
       // Localize the search to all elements inside elem, as well as elem itself, unless elem === document
-      var $elem = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(elem).find('[data-'+name+']').addBack('[data-'+name+']');
+      var $elem = (0, _jquery2.default)(elem).find('[data-' + name + ']').addBack('[data-' + name + ']');
 
       // For each plugin found, initialize it
-      $elem.each(function() {
-        var $el = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this),
+      $elem.each(function () {
+        var $el = (0, _jquery2.default)(this),
             opts = {};
         // Don't double-dip on plugins
         if ($el.data('zfPlugin')) {
-          console.warn("Tried to initialize "+name+" on an element that already has a Foundation plugin.");
+          console.warn("Tried to initialize " + name + " on an element that already has a Foundation plugin.");
           return;
         }
 
-        if($el.attr('data-options')){
-          var thing = $el.attr('data-options').split(';').forEach(function(e, i){
-            var opt = e.split(':').map(function(el){ return el.trim(); });
-            if(opt[0]) opts[opt[0]] = parseValue(opt[1]);
+        if ($el.attr('data-options')) {
+          var thing = $el.attr('data-options').split(';').forEach(function (e, i) {
+            var opt = e.split(':').map(function (el) {
+              return el.trim();
+            });
+            if (opt[0]) opts[opt[0]] = parseValue(opt[1]);
           });
         }
-        try{
-          $el.data('zfPlugin', new plugin(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this), opts));
-        }catch(er){
+        try {
+          $el.data('zfPlugin', new plugin((0, _jquery2.default)(this), opts));
+        } catch (er) {
           console.error(er);
-        }finally{
+        } finally {
           return;
         }
       });
@@ -2500,41 +2522,48 @@ var Foundation = {
   },
   getFnName: functionName,
 
-  addToJquery: function($) {
+  addToJquery: function addToJquery($) {
     // TODO: consider not making this a jQuery function
     // TODO: need way to reflow vs. re-initialize
     /**
      * The Foundation jQuery method.
      * @param {String|Array} method - An action to perform on the current jQuery object.
      */
-    var foundation = function(method) {
-      var type = typeof method,
+    var foundation = function foundation(method) {
+      var type = typeof method === 'undefined' ? 'undefined' : _typeof(method),
           $noJS = $('.no-js');
 
-      if($noJS.length){
+      if ($noJS.length) {
         $noJS.removeClass('no-js');
       }
 
-      if(type === 'undefined'){//needs to initialize the Foundation object, or an individual plugin.
-        __WEBPACK_IMPORTED_MODULE_2__foundation_util_mediaQuery__["a" /* MediaQuery */]._init();
+      if (type === 'undefined') {
+        //needs to initialize the Foundation object, or an individual plugin.
+        _foundationUtil2.MediaQuery._init();
         Foundation.reflow(this);
-      }else if(type === 'string'){//an individual method to invoke on a plugin or group of plugins
-        var args = Array.prototype.slice.call(arguments, 1);//collect all the arguments, if necessary
-        var plugClass = this.data('zfPlugin');//determine the class of plugin
+      } else if (type === 'string') {
+        //an individual method to invoke on a plugin or group of plugins
+        var args = Array.prototype.slice.call(arguments, 1); //collect all the arguments, if necessary
+        var plugClass = this.data('zfPlugin'); //determine the class of plugin
 
-        if(plugClass !== undefined && plugClass[method] !== undefined){//make sure both the class and method exist
-          if(this.length === 1){//if there's only one, call it directly.
-              plugClass[method].apply(plugClass, args);
-          }else{
-            this.each(function(i, el){//otherwise loop through the jQuery collection and invoke the method on each
+        if (plugClass !== undefined && plugClass[method] !== undefined) {
+          //make sure both the class and method exist
+          if (this.length === 1) {
+            //if there's only one, call it directly.
+            plugClass[method].apply(plugClass, args);
+          } else {
+            this.each(function (i, el) {
+              //otherwise loop through the jQuery collection and invoke the method on each
               plugClass[method].apply($(el).data('zfPlugin'), args);
             });
           }
-        }else{//error for no class or no method
+        } else {
+          //error for no class or no method
           throw new ReferenceError("We're sorry, '" + method + "' is not an available method for " + (plugClass ? functionName(plugClass) : 'this element') + '.');
         }
-      }else{//error for invalid argument type
-        throw new TypeError(`We're sorry, ${type} is not a valid parameter. You must use a string representing the method you wish to invoke.`);
+      } else {
+        //error for invalid argument type
+        throw new TypeError('We\'re sorry, ' + type + ' is not a valid parameter. You must use a string representing the method you wish to invoke.');
       }
       return this;
     };
@@ -2551,11 +2580,12 @@ Foundation.util = {
    * @param {Number} delay - Time in ms to delay the call of `func`.
    * @returns function
    */
-  throttle: function (func, delay) {
+  throttle: function throttle(func, delay) {
     var timer = null;
 
     return function () {
-      var context = this, args = arguments;
+      var context = this,
+          args = arguments;
 
       if (timer === null) {
         timer = setTimeout(function () {
@@ -2570,55 +2600,54 @@ Foundation.util = {
 window.Foundation = Foundation;
 
 // Polyfill for requestAnimationFrame
-(function() {
-  if (!Date.now || !window.Date.now)
-    window.Date.now = Date.now = function() { return new Date().getTime(); };
+(function () {
+  if (!Date.now || !window.Date.now) window.Date.now = Date.now = function () {
+    return new Date().getTime();
+  };
 
   var vendors = ['webkit', 'moz'];
   for (var i = 0; i < vendors.length && !window.requestAnimationFrame; ++i) {
-      var vp = vendors[i];
-      window.requestAnimationFrame = window[vp+'RequestAnimationFrame'];
-      window.cancelAnimationFrame = (window[vp+'CancelAnimationFrame']
-                                 || window[vp+'CancelRequestAnimationFrame']);
+    var vp = vendors[i];
+    window.requestAnimationFrame = window[vp + 'RequestAnimationFrame'];
+    window.cancelAnimationFrame = window[vp + 'CancelAnimationFrame'] || window[vp + 'CancelRequestAnimationFrame'];
   }
-  if (/iP(ad|hone|od).*OS 6/.test(window.navigator.userAgent)
-    || !window.requestAnimationFrame || !window.cancelAnimationFrame) {
+  if (/iP(ad|hone|od).*OS 6/.test(window.navigator.userAgent) || !window.requestAnimationFrame || !window.cancelAnimationFrame) {
     var lastTime = 0;
-    window.requestAnimationFrame = function(callback) {
-        var now = Date.now();
-        var nextTime = Math.max(lastTime + 16, now);
-        return setTimeout(function() { callback(lastTime = nextTime); },
-                          nextTime - now);
+    window.requestAnimationFrame = function (callback) {
+      var now = Date.now();
+      var nextTime = Math.max(lastTime + 16, now);
+      return setTimeout(function () {
+        callback(lastTime = nextTime);
+      }, nextTime - now);
     };
     window.cancelAnimationFrame = clearTimeout;
   }
   /**
    * Polyfill for performance.now, required by rAF
    */
-  if(!window.performance || !window.performance.now){
+  if (!window.performance || !window.performance.now) {
     window.performance = {
       start: Date.now(),
-      now: function(){ return Date.now() - this.start; }
+      now: function now() {
+        return Date.now() - this.start;
+      }
     };
   }
 })();
 if (!Function.prototype.bind) {
-  Function.prototype.bind = function(oThis) {
+  Function.prototype.bind = function (oThis) {
     if (typeof this !== 'function') {
       // closest thing possible to the ECMAScript 5
       // internal IsCallable function
       throw new TypeError('Function.prototype.bind - what is trying to be bound is not callable');
     }
 
-    var aArgs   = Array.prototype.slice.call(arguments, 1),
+    var aArgs = Array.prototype.slice.call(arguments, 1),
         fToBind = this,
-        fNOP    = function() {},
-        fBound  = function() {
-          return fToBind.apply(this instanceof fNOP
-                 ? this
-                 : oThis,
-                 aArgs.concat(Array.prototype.slice.call(arguments)));
-        };
+        fNOP = function fNOP() {},
+        fBound = function fBound() {
+      return fToBind.apply(this instanceof fNOP ? this : oThis, aArgs.concat(Array.prototype.slice.call(arguments)));
+    };
 
     if (this.prototype) {
       // native functions don't have a prototype
@@ -2633,20 +2662,16 @@ if (!Function.prototype.bind) {
 function functionName(fn) {
   if (Function.prototype.name === undefined) {
     var funcNameRegex = /function\s([^(]{1,})\(/;
-    var results = (funcNameRegex).exec((fn).toString());
-    return (results && results.length > 1) ? results[1].trim() : "";
-  }
-  else if (fn.prototype === undefined) {
+    var results = funcNameRegex.exec(fn.toString());
+    return results && results.length > 1 ? results[1].trim() : "";
+  } else if (fn.prototype === undefined) {
     return fn.constructor.name;
-  }
-  else {
+  } else {
     return fn.prototype.constructor.name;
   }
 }
-function parseValue(str){
-  if ('true' === str) return true;
-  else if ('false' === str) return false;
-  else if (!isNaN(str * 1)) return parseFloat(str);
+function parseValue(str) {
+  if ('true' === str) return true;else if ('false' === str) return false;else if (!isNaN(str * 1)) return parseFloat(str);
   return str;
 }
 // Convert PascalCase to kebab-case
@@ -2655,20 +2680,21 @@ function hyphenate(str) {
   return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
 }
 
-
-
+exports.Foundation = Foundation;
 
 /***/ }),
 /* 44 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Box; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation_util_core__ = __webpack_require__(3);
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Box = undefined;
 
-
+var _foundationUtil = __webpack_require__(3);
 
 var Box = {
   ImNotTouchingYou: ImNotTouchingYou,
@@ -2676,44 +2702,45 @@ var Box = {
   GetDimensions: GetDimensions,
   GetOffsets: GetOffsets,
   GetExplicitOffsets: GetExplicitOffsets
-}
 
-/**
- * Compares the dimensions of an element to a container and determines collision events with container.
- * @function
- * @param {jQuery} element - jQuery object to test for collisions.
- * @param {jQuery} parent - jQuery object to use as bounding container.
- * @param {Boolean} lrOnly - set to true to check left and right values only.
- * @param {Boolean} tbOnly - set to true to check top and bottom values only.
- * @default if no parent object passed, detects collisions with `window`.
- * @returns {Boolean} - true if collision free, false if a collision in any direction.
- */
-function ImNotTouchingYou(element, parent, lrOnly, tbOnly, ignoreBottom) {
+  /**
+   * Compares the dimensions of an element to a container and determines collision events with container.
+   * @function
+   * @param {jQuery} element - jQuery object to test for collisions.
+   * @param {jQuery} parent - jQuery object to use as bounding container.
+   * @param {Boolean} lrOnly - set to true to check left and right values only.
+   * @param {Boolean} tbOnly - set to true to check top and bottom values only.
+   * @default if no parent object passed, detects collisions with `window`.
+   * @returns {Boolean} - true if collision free, false if a collision in any direction.
+   */
+};function ImNotTouchingYou(element, parent, lrOnly, tbOnly, ignoreBottom) {
   return OverlapArea(element, parent, lrOnly, tbOnly, ignoreBottom) === 0;
 };
 
 function OverlapArea(element, parent, lrOnly, tbOnly, ignoreBottom) {
   var eleDims = GetDimensions(element),
-  topOver, bottomOver, leftOver, rightOver;
+      topOver,
+      bottomOver,
+      leftOver,
+      rightOver;
   if (parent) {
     var parDims = GetDimensions(parent);
 
-    bottomOver = (parDims.height + parDims.offset.top) - (eleDims.offset.top + eleDims.height);
-    topOver    = eleDims.offset.top - parDims.offset.top;
-    leftOver   = eleDims.offset.left - parDims.offset.left;
-    rightOver  = (parDims.width + parDims.offset.left) - (eleDims.offset.left + eleDims.width);
-  }
-  else {
-    bottomOver = (eleDims.windowDims.height + eleDims.windowDims.offset.top) - (eleDims.offset.top + eleDims.height);
-    topOver    = eleDims.offset.top - eleDims.windowDims.offset.top;
-    leftOver   = eleDims.offset.left - eleDims.windowDims.offset.left;
-    rightOver  = eleDims.windowDims.width - (eleDims.offset.left + eleDims.width);
+    bottomOver = parDims.height + parDims.offset.top - (eleDims.offset.top + eleDims.height);
+    topOver = eleDims.offset.top - parDims.offset.top;
+    leftOver = eleDims.offset.left - parDims.offset.left;
+    rightOver = parDims.width + parDims.offset.left - (eleDims.offset.left + eleDims.width);
+  } else {
+    bottomOver = eleDims.windowDims.height + eleDims.windowDims.offset.top - (eleDims.offset.top + eleDims.height);
+    topOver = eleDims.offset.top - eleDims.windowDims.offset.top;
+    leftOver = eleDims.offset.left - eleDims.windowDims.offset.left;
+    rightOver = eleDims.windowDims.width - (eleDims.offset.left + eleDims.width);
   }
 
   bottomOver = ignoreBottom ? 0 : Math.min(bottomOver, 0);
-  topOver    = Math.min(topOver, 0);
-  leftOver   = Math.min(leftOver, 0);
-  rightOver  = Math.min(rightOver, 0);
+  topOver = Math.min(topOver, 0);
+  leftOver = Math.min(leftOver, 0);
+  rightOver = Math.min(rightOver, 0);
 
   if (lrOnly) {
     return leftOver + rightOver;
@@ -2723,7 +2750,7 @@ function OverlapArea(element, parent, lrOnly, tbOnly, ignoreBottom) {
   }
 
   // use sum of squares b/c we care about overlap area.
-  return Math.sqrt((topOver * topOver) + (bottomOver * bottomOver) + (leftOver * leftOver) + (rightOver * rightOver));
+  return Math.sqrt(topOver * topOver + bottomOver * bottomOver + leftOver * leftOver + rightOver * rightOver);
 }
 
 /**
@@ -2733,7 +2760,7 @@ function OverlapArea(element, parent, lrOnly, tbOnly, ignoreBottom) {
  * @returns {Object} - nested object of integer pixel values
  * TODO - if element is window, return only those values.
  */
-function GetDimensions(elem){
+function GetDimensions(elem) {
   elem = elem.length ? elem[0] : elem;
 
   if (elem === window || elem === document) {
@@ -2769,7 +2796,7 @@ function GetDimensions(elem){
         left: winX
       }
     }
-  }
+  };
 }
 
 /**
@@ -2790,13 +2817,9 @@ function GetOffsets(element, anchor, position, vOffset, hOffset, isOverflow) {
   console.log("NOTE: GetOffsets is deprecated in favor of GetExplicitOffsets and will be removed in 6.5");
   switch (position) {
     case 'top':
-      return Object(__WEBPACK_IMPORTED_MODULE_0__foundation_util_core__["b" /* rtl */])() ?
-        GetExplicitOffsets(element, anchor, 'top', 'left', vOffset, hOffset, isOverflow) :
-        GetExplicitOffsets(element, anchor, 'top', 'right', vOffset, hOffset, isOverflow);
+      return (0, _foundationUtil.rtl)() ? GetExplicitOffsets(element, anchor, 'top', 'left', vOffset, hOffset, isOverflow) : GetExplicitOffsets(element, anchor, 'top', 'right', vOffset, hOffset, isOverflow);
     case 'bottom':
-      return Object(__WEBPACK_IMPORTED_MODULE_0__foundation_util_core__["b" /* rtl */])() ?
-        GetExplicitOffsets(element, anchor, 'bottom', 'left', vOffset, hOffset, isOverflow) :
-        GetExplicitOffsets(element, anchor, 'bottom', 'right', vOffset, hOffset, isOverflow);
+      return (0, _foundationUtil.rtl)() ? GetExplicitOffsets(element, anchor, 'bottom', 'left', vOffset, hOffset, isOverflow) : GetExplicitOffsets(element, anchor, 'bottom', 'right', vOffset, hOffset, isOverflow);
     case 'center top':
       return GetExplicitOffsets(element, anchor, 'top', 'center', vOffset, hOffset, isOverflow);
     case 'center bottom':
@@ -2813,35 +2836,34 @@ function GetOffsets(element, anchor, position, vOffset, hOffset, isOverflow) {
     // classes are the only ones that didn't reference anchor
     case 'center':
       return {
-        left: ($eleDims.windowDims.offset.left + ($eleDims.windowDims.width / 2)) - ($eleDims.width / 2) + hOffset,
-        top: ($eleDims.windowDims.offset.top + ($eleDims.windowDims.height / 2)) - ($eleDims.height / 2 + vOffset)
-      }
+        left: $eleDims.windowDims.offset.left + $eleDims.windowDims.width / 2 - $eleDims.width / 2 + hOffset,
+        top: $eleDims.windowDims.offset.top + $eleDims.windowDims.height / 2 - ($eleDims.height / 2 + vOffset)
+      };
     case 'reveal':
       return {
         left: ($eleDims.windowDims.width - $eleDims.width) / 2 + hOffset,
         top: $eleDims.windowDims.offset.top + vOffset
-      }
+      };
     case 'reveal full':
       return {
         left: $eleDims.windowDims.offset.left,
         top: $eleDims.windowDims.offset.top
-      }
+      };
       break;
     default:
       return {
-        left: (Object(__WEBPACK_IMPORTED_MODULE_0__foundation_util_core__["b" /* rtl */])() ? $anchorDims.offset.left - $eleDims.width + $anchorDims.width - hOffset: $anchorDims.offset.left + hOffset),
+        left: (0, _foundationUtil.rtl)() ? $anchorDims.offset.left - $eleDims.width + $anchorDims.width - hOffset : $anchorDims.offset.left + hOffset,
         top: $anchorDims.offset.top + $anchorDims.height + vOffset
-      }
+      };
 
   }
-
 }
 
 function GetExplicitOffsets(element, anchor, position, alignment, vOffset, hOffset, isOverflow) {
   var $eleDims = GetDimensions(element),
       $anchorDims = anchor ? GetDimensions(anchor) : null;
 
-      var topVal, leftVal;
+  var topVal, leftVal;
 
   // set position related attribute
 
@@ -2860,7 +2882,6 @@ function GetExplicitOffsets(element, anchor, position, alignment, vOffset, hOffs
       break;
   }
 
-
   // set alignment related attribute
   switch (position) {
     case 'top':
@@ -2873,7 +2894,7 @@ function GetExplicitOffsets(element, anchor, position, alignment, vOffset, hOffs
           leftVal = $anchorDims.offset.left - $eleDims.width + $anchorDims.width - hOffset;
           break;
         case 'center':
-          leftVal = isOverflow ? hOffset : (($anchorDims.offset.left + ($anchorDims.width / 2)) - ($eleDims.width / 2)) + hOffset;
+          leftVal = isOverflow ? hOffset : $anchorDims.offset.left + $anchorDims.width / 2 - $eleDims.width / 2 + hOffset;
           break;
       }
       break;
@@ -2884,38 +2905,43 @@ function GetExplicitOffsets(element, anchor, position, alignment, vOffset, hOffs
           topVal = $anchorDims.offset.top - vOffset + $anchorDims.height - $eleDims.height;
           break;
         case 'top':
-          topVal = $anchorDims.offset.top + vOffset
+          topVal = $anchorDims.offset.top + vOffset;
           break;
         case 'center':
-          topVal = ($anchorDims.offset.top + vOffset + ($anchorDims.height / 2)) - ($eleDims.height / 2)
+          topVal = $anchorDims.offset.top + vOffset + $anchorDims.height / 2 - $eleDims.height / 2;
           break;
       }
       break;
   }
-  return {top: topVal, left: leftVal};
+  return { top: topVal, left: leftVal };
 }
 
-
-
+exports.Box = Box;
 
 /***/ }),
 /* 45 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return onImagesLoaded; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.onImagesLoaded = undefined;
 
+var _jquery = __webpack_require__(0);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
  * Runs a callback function when images are fully loaded.
  * @param {Object} images - Image(s) to check if loaded.
  * @param {Func} callback - Function to execute when image is fully loaded.
  */
-function onImagesLoaded(images, callback){
+function onImagesLoaded(images, callback) {
   var self = this,
       unloaded = images.length;
 
@@ -2923,22 +2949,21 @@ function onImagesLoaded(images, callback){
     callback();
   }
 
-  images.each(function(){
+  images.each(function () {
     // Check if image is loaded
     if (this.complete && this.naturalWidth !== undefined) {
       singleImageLoaded();
-    }
-    else {
+    } else {
       // If the above check failed, simulate loading on detached element.
       var image = new Image();
       // Still count image as loaded if it finalizes with an error.
       var events = "load.zf.images error.zf.images";
-      __WEBPACK_IMPORTED_MODULE_0_jquery___default()(image).one(events, function me(event){
+      (0, _jquery2.default)(image).one(events, function me(event) {
         // Unbind the event listeners. We're using 'one' but only one of the two events will have fired.
-        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).off(events, me);
+        (0, _jquery2.default)(this).off(events, me);
         singleImageLoaded();
       });
-      image.src = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).attr('src');
+      image.src = (0, _jquery2.default)(this).attr('src');
     }
   });
 
@@ -2950,18 +2975,13 @@ function onImagesLoaded(images, callback){
   }
 }
 
-
-
+exports.onImagesLoaded = onImagesLoaded;
 
 /***/ }),
 /* 46 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Keyboard; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation_util_core__ = __webpack_require__(3);
 /*******************************************
  *                                         *
  * This util was created by Marius Olbertz *
@@ -2972,10 +2992,20 @@ function onImagesLoaded(images, callback){
 
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Keyboard = undefined;
 
+var _jquery = __webpack_require__(0);
 
+var _jquery2 = _interopRequireDefault(_jquery);
 
-const keyCodes = {
+var _foundationUtil = __webpack_require__(3);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var keyCodes = {
   9: 'TAB',
   13: 'ENTER',
   27: 'ESCAPE',
@@ -2986,15 +3016,19 @@ const keyCodes = {
   38: 'ARROW_UP',
   39: 'ARROW_RIGHT',
   40: 'ARROW_DOWN'
-}
+};
 
-var commands = {}
+var commands = {};
 
 // Functions pulled out to be referenceable from internals
 function findFocusable($element) {
-  if(!$element) {return false; }
-  return $element.find('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]').filter(function() {
-    if (!__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).is(':visible') || __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).attr('tabindex') < 0) { return false; } //only have visible elements and those that have a tabindex greater or equal 0
+  if (!$element) {
+    return false;
+  }
+  return $element.find('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]').filter(function () {
+    if (!(0, _jquery2.default)(this).is(':visible') || (0, _jquery2.default)(this).attr('tabindex') < 0) {
+      return false;
+    } //only have visible elements and those that have a tabindex greater or equal 0
     return true;
   });
 }
@@ -3005,9 +3039,9 @@ function parseKey(event) {
   // Remove un-printable characters, e.g. for `fromCharCode` calls for CTRL only events
   key = key.replace(/\W+/, '');
 
-  if (event.shiftKey) key = `SHIFT_${key}`;
-  if (event.ctrlKey) key = `CTRL_${key}`;
-  if (event.altKey) key = `ALT_${key}`;
+  if (event.shiftKey) key = 'SHIFT_' + key;
+  if (event.ctrlKey) key = 'CTRL_' + key;
+  if (event.altKey) key = 'ALT_' + key;
 
   // Remove trailing underscore, in case only modifiers were used (e.g. only `CTRL_ALT`)
   key = key.replace(/_$/, '');
@@ -3032,36 +3066,40 @@ var Keyboard = {
    * @param {String} component - Foundation component's name, e.g. Slider or Reveal
    * @param {Objects} functions - collection of functions that are to be executed
    */
-  handleKey(event, component, functions) {
+  handleKey: function handleKey(event, component, functions) {
     var commandList = commands[component],
-      keyCode = this.parseKey(event),
-      cmds,
-      command,
-      fn;
+        keyCode = this.parseKey(event),
+        cmds,
+        command,
+        fn;
 
     if (!commandList) return console.warn('Component not defined!');
 
-    if (typeof commandList.ltr === 'undefined') { // this component does not differentiate between ltr and rtl
-        cmds = commandList; // use plain list
-    } else { // merge ltr and rtl: if document is rtl, rtl overwrites ltr and vice versa
-        if (Object(__WEBPACK_IMPORTED_MODULE_1__foundation_util_core__["b" /* rtl */])()) cmds = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, commandList.ltr, commandList.rtl);
-
-        else cmds = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, commandList.rtl, commandList.ltr);
+    if (typeof commandList.ltr === 'undefined') {
+      // this component does not differentiate between ltr and rtl
+      cmds = commandList; // use plain list
+    } else {
+      // merge ltr and rtl: if document is rtl, rtl overwrites ltr and vice versa
+      if ((0, _foundationUtil.rtl)()) cmds = _jquery2.default.extend({}, commandList.ltr, commandList.rtl);else cmds = _jquery2.default.extend({}, commandList.rtl, commandList.ltr);
     }
     command = cmds[keyCode];
 
     fn = functions[command];
-    if (fn && typeof fn === 'function') { // execute function  if exists
+    if (fn && typeof fn === 'function') {
+      // execute function  if exists
       var returnValue = fn.apply();
-      if (functions.handled || typeof functions.handled === 'function') { // execute function when event was handled
-          functions.handled(returnValue);
+      if (functions.handled || typeof functions.handled === 'function') {
+        // execute function when event was handled
+        functions.handled(returnValue);
       }
     } else {
-      if (functions.unhandled || typeof functions.unhandled === 'function') { // execute function when event was not handled
-          functions.unhandled();
+      if (functions.unhandled || typeof functions.unhandled === 'function') {
+        // execute function when event was not handled
+        functions.unhandled();
       }
     }
   },
+
 
   /**
    * Finds all focusable elements within the given `$element`
@@ -3077,7 +3115,7 @@ var Keyboard = {
    * @return String componentName
    */
 
-  register(componentName, cmds) {
+  register: function register(componentName, cmds) {
     commands[componentName] = cmds;
   },
 
@@ -3088,30 +3126,30 @@ var Keyboard = {
    * Traps the focus in the given element.
    * @param  {jQuery} $element  jQuery object to trap the foucs into.
    */
-  trapFocus($element) {
+  trapFocus: function trapFocus($element) {
     var $focusable = findFocusable($element),
         $firstFocusable = $focusable.eq(0),
         $lastFocusable = $focusable.eq(-1);
 
-    $element.on('keydown.zf.trapfocus', function(event) {
+    $element.on('keydown.zf.trapfocus', function (event) {
       if (event.target === $lastFocusable[0] && parseKey(event) === 'TAB') {
         event.preventDefault();
         $firstFocusable.focus();
-      }
-      else if (event.target === $firstFocusable[0] && parseKey(event) === 'SHIFT_TAB') {
+      } else if (event.target === $firstFocusable[0] && parseKey(event) === 'SHIFT_TAB') {
         event.preventDefault();
         $lastFocusable.focus();
       }
     });
   },
+
   /**
    * Releases the trapped focus from the given element.
    * @param  {jQuery} $element  jQuery object to release the focus for.
    */
-  releaseFocus($element) {
+  releaseFocus: function releaseFocus($element) {
     $element.off('keydown.zf.trapfocus');
   }
-}
+};
 
 /*
  * Constants for easier comparing.
@@ -3119,48 +3157,55 @@ var Keyboard = {
  */
 function getKeyCodes(kcs) {
   var k = {};
-  for (var kc in kcs) k[kcs[kc]] = kcs[kc];
-  return k;
+  for (var kc in kcs) {
+    k[kcs[kc]] = kcs[kc];
+  }return k;
 }
 
-
-
+exports.Keyboard = Keyboard;
 
 /***/ }),
 /* 47 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return Move; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Motion; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation_util_core__ = __webpack_require__(3);
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Motion = exports.Move = undefined;
 
+var _jquery = __webpack_require__(0);
 
+var _jquery2 = _interopRequireDefault(_jquery);
+
+var _foundationUtil = __webpack_require__(3);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
  * Motion module.
  * @module foundation.motion
  */
 
-const initClasses   = ['mui-enter', 'mui-leave'];
-const activeClasses = ['mui-enter-active', 'mui-leave-active'];
+var initClasses = ['mui-enter', 'mui-leave'];
+var activeClasses = ['mui-enter-active', 'mui-leave-active'];
 
-const Motion = {
-  animateIn: function(element, animation, cb) {
+var Motion = {
+  animateIn: function animateIn(element, animation, cb) {
     animate(true, element, animation, cb);
   },
 
-  animateOut: function(element, animation, cb) {
+  animateOut: function animateOut(element, animation, cb) {
     animate(false, element, animation, cb);
   }
-}
+};
 
-function Move(duration, elem, fn){
-  var anim, prog, start = null;
+function Move(duration, elem, fn) {
+  var anim,
+      prog,
+      start = null;
   // console.log('called');
 
   if (duration === 0) {
@@ -3169,14 +3214,15 @@ function Move(duration, elem, fn){
     return;
   }
 
-  function move(ts){
-    if(!start) start = ts;
+  function move(ts) {
+    if (!start) start = ts;
     // console.log(start, ts);
     prog = ts - start;
     fn.apply(elem);
 
-    if(prog < duration){ anim = window.requestAnimationFrame(move, elem); }
-    else{
+    if (prog < duration) {
+      anim = window.requestAnimationFrame(move, elem);
+    } else {
       window.cancelAnimationFrame(anim);
       elem.trigger('finished.zf.animate', [elem]).triggerHandler('finished.zf.animate', [elem]);
     }
@@ -3194,7 +3240,7 @@ function Move(duration, elem, fn){
  * @param {Function} cb - Callback to run when animation is finished.
  */
 function animate(isIn, element, animation, cb) {
-  element = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(element).eq(0);
+  element = (0, _jquery2.default)(element).eq(0);
 
   if (!element.length) return;
 
@@ -3204,25 +3250,21 @@ function animate(isIn, element, animation, cb) {
   // Set up the animation
   reset();
 
-  element
-    .addClass(animation)
-    .css('transition', 'none');
+  element.addClass(animation).css('transition', 'none');
 
-  requestAnimationFrame(() => {
+  requestAnimationFrame(function () {
     element.addClass(initClass);
     if (isIn) element.show();
   });
 
   // Start the animation
-  requestAnimationFrame(() => {
+  requestAnimationFrame(function () {
     element[0].offsetWidth;
-    element
-      .css('transition', '')
-      .addClass(activeClass);
+    element.css('transition', '').addClass(activeClass);
   });
 
   // Clean up the animation when it finishes
-  element.one(Object(__WEBPACK_IMPORTED_MODULE_1__foundation_util_core__["c" /* transitionend */])(element), finish);
+  element.one((0, _foundationUtil.transitionend)(element), finish);
 
   // Hides the element (for out animations), resets the element, and runs a callback
   function finish() {
@@ -3234,44 +3276,51 @@ function animate(isIn, element, animation, cb) {
   // Resets transitions and removes motion-specific classes
   function reset() {
     element[0].style.transitionDuration = 0;
-    element.removeClass(`${initClass} ${activeClass} ${animation}`);
+    element.removeClass(initClass + ' ' + activeClass + ' ' + animation);
   }
 }
 
-
-
-
+exports.Move = Move;
+exports.Motion = Motion;
 
 /***/ }),
 /* 48 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Nest; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Nest = undefined;
 
+var _jquery = __webpack_require__(0);
 
-const Nest = {
-  Feather(menu, type = 'zf') {
+var _jquery2 = _interopRequireDefault(_jquery);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Nest = {
+  Feather: function Feather(menu) {
+    var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'zf';
+
     menu.attr('role', 'menubar');
 
-    var items = menu.find('li').attr({'role': 'menuitem'}),
-        subMenuClass = `is-${type}-submenu`,
-        subItemClass = `${subMenuClass}-item`,
-        hasSubClass = `is-${type}-submenu-parent`,
-        applyAria = (type !== 'accordion'); // Accordions handle their own ARIA attriutes.
+    var items = menu.find('li').attr({ 'role': 'menuitem' }),
+        subMenuClass = 'is-' + type + '-submenu',
+        subItemClass = subMenuClass + '-item',
+        hasSubClass = 'is-' + type + '-submenu-parent',
+        applyAria = type !== 'accordion'; // Accordions handle their own ARIA attriutes.
 
-    items.each(function() {
-      var $item = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this),
+    items.each(function () {
+      var $item = (0, _jquery2.default)(this),
           $sub = $item.children('ul');
 
       if ($sub.length) {
         $item.addClass(hasSubClass);
-        $sub.addClass(`submenu ${subMenuClass}`).attr({'data-submenu': ''});
-        if(applyAria) {
+        $sub.addClass('submenu ' + subMenuClass).attr({ 'data-submenu': '' });
+        if (applyAria) {
           $item.attr({
             'aria-haspopup': true,
             'aria-label': $item.children('a:first').text()
@@ -3279,109 +3328,112 @@ const Nest = {
           // Note:  Drilldowns behave differently in how they hide, and so need
           // additional attributes.  We should look if this possibly over-generalized
           // utility (Nest) is appropriate when we rework menus in 6.4
-          if(type === 'drilldown') {
-            $item.attr({'aria-expanded': false});
+          if (type === 'drilldown') {
+            $item.attr({ 'aria-expanded': false });
           }
         }
-        $sub
-          .addClass(`submenu ${subMenuClass}`)
-          .attr({
-            'data-submenu': '',
-            'role': 'menu'
-          });
-        if(type === 'drilldown') {
-          $sub.attr({'aria-hidden': true});
+        $sub.addClass('submenu ' + subMenuClass).attr({
+          'data-submenu': '',
+          'role': 'menu'
+        });
+        if (type === 'drilldown') {
+          $sub.attr({ 'aria-hidden': true });
         }
       }
 
       if ($item.parent('[data-submenu]').length) {
-        $item.addClass(`is-submenu-item ${subItemClass}`);
+        $item.addClass('is-submenu-item ' + subItemClass);
       }
     });
 
     return;
   },
-
-  Burn(menu, type) {
+  Burn: function Burn(menu, type) {
     var //items = menu.find('li'),
-        subMenuClass = `is-${type}-submenu`,
-        subItemClass = `${subMenuClass}-item`,
-        hasSubClass = `is-${type}-submenu-parent`;
+    subMenuClass = 'is-' + type + '-submenu',
+        subItemClass = subMenuClass + '-item',
+        hasSubClass = 'is-' + type + '-submenu-parent';
 
-    menu
-      .find('>li, .menu, .menu > li')
-      .removeClass(`${subMenuClass} ${subItemClass} ${hasSubClass} is-submenu-item submenu is-active`)
-      .removeAttr('data-submenu').css('display', '');
-
+    menu.find('>li, .menu, .menu > li').removeClass(subMenuClass + ' ' + subItemClass + ' ' + hasSubClass + ' is-submenu-item submenu is-active').removeAttr('data-submenu').css('display', '');
   }
-}
+};
 
-
-
+exports.Nest = Nest;
 
 /***/ }),
 /* 49 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Timer; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Timer = undefined;
 
+var _jquery = __webpack_require__(0);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Timer(elem, options, cb) {
   var _this = this,
-      duration = options.duration,//options is an object for easily adding features later.
-      nameSpace = Object.keys(elem.data())[0] || 'timer',
+      duration = options.duration,
+      //options is an object for easily adding features later.
+  nameSpace = Object.keys(elem.data())[0] || 'timer',
       remain = -1,
       start,
       timer;
 
   this.isPaused = false;
 
-  this.restart = function() {
+  this.restart = function () {
     remain = -1;
     clearTimeout(timer);
     this.start();
-  }
+  };
 
-  this.start = function() {
+  this.start = function () {
     this.isPaused = false;
     // if(!elem.data('paused')){ return false; }//maybe implement this sanity check if used for other things.
     clearTimeout(timer);
     remain = remain <= 0 ? duration : remain;
     elem.data('paused', false);
     start = Date.now();
-    timer = setTimeout(function(){
-      if(options.infinite){
-        _this.restart();//rerun the timer.
+    timer = setTimeout(function () {
+      if (options.infinite) {
+        _this.restart(); //rerun the timer.
       }
-      if (cb && typeof cb === 'function') { cb(); }
+      if (cb && typeof cb === 'function') {
+        cb();
+      }
     }, remain);
-    elem.trigger(`timerstart.zf.${nameSpace}`);
-  }
+    elem.trigger('timerstart.zf.' + nameSpace);
+  };
 
-  this.pause = function() {
+  this.pause = function () {
     this.isPaused = true;
     //if(elem.data('paused')){ return false; }//maybe implement this sanity check if used for other things.
     clearTimeout(timer);
     elem.data('paused', true);
     var end = Date.now();
     remain = remain - (end - start);
-    elem.trigger(`timerpaused.zf.${nameSpace}`);
-  }
+    elem.trigger('timerpaused.zf.' + nameSpace);
+  };
 }
 
-
-
+exports.Timer = Timer;
 
 /***/ }),
 /* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(jQuery) {/**
+"use strict";
+/* WEBPACK VAR INJECTION */(function(jQuery) {
+
+/**
  * @file external-links.js
  *
  * Add target=_blank to all external links.
@@ -3392,59 +3444,62 @@ function Timer(elem, options, cb) {
   "use strict";
 
   // Add target="_blank" to all external links.
-  $('a').each(function() {
-    const a = new RegExp('/' + window.location.host + '/');
+
+  $('a').each(function () {
+    var a = new RegExp('/' + window.location.host + '/');
     if (!a.test(this.href) && this.href !== '') {
       $(this).attr('target', '_blank');
     }
   });
 
   // Add target="_blank" to all files.
-  $('.file > a').each(function() {
+  $('.file > a').each(function () {
     $(this).attr('target', '_blank');
   });
-
 }(jQuery);
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
 /* 51 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_svg_js__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_svg_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_svg_js__);
+
+
+var _jquery = __webpack_require__(0);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+__webpack_require__(52);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// This test is for ie11 and lower, but not edge.
 /**
  * @file inject-svg.js
  *
  * Use svg-injector.js to replace an svg <img> tag with the inline svg.
  */
-
-
-
-// This test is for ie11 and lower, but not edge.
-let supportsResponsiveInlineSvg = Modernizr.cssfilters;
+var supportsResponsiveInlineSvg = Modernizr.cssfilters;
 
 // Elements to inject
-let $mySVGsToInject = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('img.inject-me');
+var $mySVGsToInject = (0, _jquery2.default)('img.inject-me');
 
-$mySVGsToInject.each(function(i, el) {
-  const $element = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this),
-        $parent = $element.parent(),
-        url = $element.attr('src');
+$mySVGsToInject.each(function (i, el) {
+  var $element = (0, _jquery2.default)(this),
+      $parent = $element.parent(),
+      url = $element.attr('src');
 
   $element.remove();
 
-  $parent.load(url + ' svg', function(response, status) {
+  $parent.load(url + ' svg', function (response, status) {
     if (status === 'success') {
-      const $svgContainer = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this),
-            svgDomElement = $svgContainer.children().get(0);
+      var $svgContainer = (0, _jquery2.default)(this),
+          svgDomElement = $svgContainer.children().get(0);
 
       // Adopt the svg element into svg.js context and set as `element` for future use.
-      const element = SVG.adopt(svgDomElement),
-            svgRoot = SVG.select('svg');
+      var element = SVG.adopt(svgDomElement),
+          svgRoot = SVG.select('svg');
 
       // Remove height and width attributes from the svg element.
       svgRoot.attr({
@@ -3458,19 +3513,18 @@ $mySVGsToInject.each(function(i, el) {
       // will be used. This will give a reasonable fallback in most cases. There
       // is also corresponded css for ie11 targeting the `no-cssfilters` class.
       if (!supportsResponsiveInlineSvg) {
-        const viewbox = element.viewbox();
+        var viewbox = element.viewbox();
 
         if (viewbox) {
           element.viewbox().height = 200;
 
-          const percentage = Math.ceil(viewbox.height/viewbox.width * 100) + '%';
+          var percentage = Math.ceil(viewbox.height / viewbox.width * 100) + '%';
           $parent.css('padding-top', percentage);
         }
       }
     }
   });
 });
-
 
 /***/ }),
 /* 52 */
@@ -9036,37 +9090,40 @@ return SVG
 
 /***/ }),
 /* 53 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_magnific_popup_dist_jquery_magnific_popup__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_magnific_popup_dist_jquery_magnific_popup___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_magnific_popup_dist_jquery_magnific_popup__);
+
+
+var _jquery = __webpack_require__(0);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+var _jquery3 = __webpack_require__(20);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 /**
  * @file
  * Magnific Popup
  */
-
-
-
 Drupal.behaviors.magnificPopup = {
-  attach: function (context, settings) {
+  attach: function attach(context, settings) {
 
     // Markeo Forms
-    let $link = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('a.marketo-modal-cta-link', context);
-    if(!$link.length) return;
+    var $link = (0, _jquery2.default)('a.marketo-modal-cta-link', context);
+    if (!$link.length) return;
 
-    $link.on('click', function(e) {
-      let $parent_paragraph = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).parents('.paragraph--type--link-form-modal'),
-        $modalSrc = $parent_paragraph.find('.paragraph--type--reference-marketo-form');
+    $link.on('click', function (e) {
+      var $parent_paragraph = (0, _jquery2.default)(this).parents('.paragraph--type--link-form-modal'),
+          $modalSrc = $parent_paragraph.find('.paragraph--type--reference-marketo-form');
       if ($modalSrc.length) {
-        __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.magnificPopup.open({
+        _jquery2.default.magnificPopup.open({
           items: {
             src: $modalSrc,
             type: 'inline'
           },
-          closeBtnInside: true,
+          closeBtnInside: true
         });
       }
       e.preventDefault();
@@ -9074,33 +9131,31 @@ Drupal.behaviors.magnificPopup = {
   }
 };
 
-
 /***/ }),
 /* 54 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
-/**
- * @file
- * Menu
- */
 
 
+var _jquery = __webpack_require__(0);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 Drupal.behaviors.menuMain = {
-  attach: function (context, settings) {
-    let $mainMenuItem = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.menu-level-0 > li.menu-item--expanded', context),
-        $mainMenuItemLink = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.menu-level-0 > li.menu-item--expanded > a', context),
-        $menuToggle = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.region-header .menu-toggle');
+  attach: function attach(context, settings) {
+    var $mainMenuItem = (0, _jquery2.default)('.menu-level-0 > li.menu-item--expanded', context),
+        $mainMenuItemLink = (0, _jquery2.default)('.menu-level-0 > li.menu-item--expanded > a', context),
+        $menuToggle = (0, _jquery2.default)('.region-header .menu-toggle');
 
     $mainMenuItemLink.on('click', function (e) {
       e.preventDefault();
       e.stopPropagation();
-      let $parent = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).parent(),
+      var $parent = (0, _jquery2.default)(this).parent(),
           $siblings = $parent.siblings('.active');
-      if($siblings.length) {
+      if ($siblings.length) {
         $siblings.removeClass('active'); // hide open dropdown
       }
       $parent.toggleClass('active');
@@ -9108,105 +9163,111 @@ Drupal.behaviors.menuMain = {
 
     alignMenuDropdown();
 
-    __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).on('changed.zf.mediaquery', function(event, newSize, oldSize) {
+    (0, _jquery2.default)(window).on('changed.zf.mediaquery', function (event, newSize, oldSize) {
       if (newSize === 'medium' || oldSize === 'medium') {
         alignMenuDropdown();
       }
     });
 
     // hide dropdown when clicked outside
-    __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).once('document-click').on('click', function (e) {
-      let $acitveMenuItem = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.menu-level-0 > li.active', context),
-          $menuMain = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.menu--main', context);
-      if($acitveMenuItem.length && !$acitveMenuItem.has(e.target).length > 0) {
+    (0, _jquery2.default)(document).once('document-click').on('click', function (e) {
+      var $acitveMenuItem = (0, _jquery2.default)('.menu-level-0 > li.active', context),
+          $menuMain = (0, _jquery2.default)('.menu--main', context);
+      if ($acitveMenuItem.length && !$acitveMenuItem.has(e.target).length > 0) {
         $acitveMenuItem.removeClass('active');
       }
 
       // handling mobile off-canvas menu
-      if($menuMain.length && !$menuMain.has(e.target).length > 0) {
-        let targetClassList = e.target.classList;
-        if (!~__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.inArray('menu-toggle', targetClassList) && !~__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.inArray('menu--main', targetClassList)) {
-          __WEBPACK_IMPORTED_MODULE_0_jquery___default()('body').removeClass('menu-open');
+      if ($menuMain.length && !$menuMain.has(e.target).length > 0) {
+        var targetClassList = e.target.classList;
+        if (!~_jquery2.default.inArray('menu-toggle', targetClassList) && !~_jquery2.default.inArray('menu--main', targetClassList)) {
+          (0, _jquery2.default)('body').removeClass('menu-open');
         }
       }
-
     });
 
     $menuToggle.once('menu-toggle').on('click', function (e) {
-      __WEBPACK_IMPORTED_MODULE_0_jquery___default()('body').toggleClass('menu-open');
+      (0, _jquery2.default)('body').toggleClass('menu-open');
     });
-
 
     function alignMenuDropdown() {
       if (Foundation.MediaQuery.atLeast('large')) {
         $mainMenuItemLink.each(function () {
-          if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).hasClass('align-second-column')) {
-            let $menuLink = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this),
-              $firstItemWidth = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.menu-level-0 > li:first-child', context).outerWidth(true);
+          if ((0, _jquery2.default)(this).hasClass('align-second-column')) {
+            var $menuLink = (0, _jquery2.default)(this),
+                $firstItemWidth = (0, _jquery2.default)('.menu-level-0 > li:first-child', context).outerWidth(true);
             $menuLink.parent().addClass('static');
             $menuLink.next().addClass('align-second-column').css('left', $firstItemWidth - 5);
           }
         });
       } else {
-        let $alignSecondColumnDropdown = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.menu-level-0 > li .menu-dropdown.align-second-column', context);
-        if($alignSecondColumnDropdown.length) {
+        var $alignSecondColumnDropdown = (0, _jquery2.default)('.menu-level-0 > li .menu-dropdown.align-second-column', context);
+        if ($alignSecondColumnDropdown.length) {
           $alignSecondColumnDropdown.css('left', '').removeClass('align-second-column');
         }
       }
     }
-
   }
-};
-
+}; /**
+    * @file
+    * Menu
+    */
 
 /***/ }),
 /* 55 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
-/**
- * @file
- * Skip link for accessibility
- */
 
 
-let $skipLinkHolder = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#skip-to-content'),
-  $skipLink = $skipLinkHolder.find('.skip-to-content-link');
+var _jquery = __webpack_require__(0);
 
-$skipLink.on('click', function(e) {
+var _jquery2 = _interopRequireDefault(_jquery);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var $skipLinkHolder = (0, _jquery2.default)('#skip-to-content'),
+    $skipLink = $skipLinkHolder.find('.skip-to-content-link'); /**
+                                                                * @file
+                                                                * Skip link for accessibility
+                                                                */
+
+
+$skipLink.on('click', function (e) {
   e.preventDefault();
-  let $target = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).attr('href'));
+  var $target = (0, _jquery2.default)((0, _jquery2.default)(this).attr('href'));
   $target.attr('tabindex', '-1');
   $target.focus();
-  $target.on('blur focusout', function() {
-    __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).removeAttr('tabindex');
+  $target.on('blur focusout', function () {
+    (0, _jquery2.default)(this).removeAttr('tabindex');
   });
 });
 
 /***/ }),
 /* 56 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_magnific_popup_dist_jquery_magnific_popup__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_magnific_popup_dist_jquery_magnific_popup___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_magnific_popup_dist_jquery_magnific_popup__);
+
+
+var _jquery = __webpack_require__(0);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+var _jquery3 = __webpack_require__(20);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 /**
  * @file
  * Magnific Popup
  */
-
-
-
 Drupal.behaviors.videoModal = {
-  attach: function (context, settings) {
+  attach: function attach(context, settings) {
 
     // Video Modal
-    let $link = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('a.video-modal', context);
-    if(!$link.length) return;
+    var $link = (0, _jquery2.default)('a.video-modal', context);
+    if (!$link.length) return;
 
     $link.magnificPopup({
       type: 'iframe',
@@ -9219,37 +9280,39 @@ Drupal.behaviors.videoModal = {
   }
 };
 
-
 /***/ }),
 /* 57 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_slick_carousel_slick_slick__ = __webpack_require__(58);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_slick_carousel_slick_slick___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_slick_carousel_slick_slick__);
+
+
+var _jquery = __webpack_require__(0);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+var _slick = __webpack_require__(58);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 /**
  * @file
  * Slick
  */
-
-
-
 Drupal.behaviors.slickCustom = {
-  attach: function (context, settings) {
-    const tabContainerSelector = '.paragraph--type--compound-tabbed-content .field--name-field-p-tab-content';
-    const tabNavSelector = '.slick-tab-nav';
-    const tabContainer = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(tabContainerSelector, context);
-    const tabLabelSelector = '.field--name-field-label';
+  attach: function attach(context, settings) {
+    var tabContainerSelector = '.paragraph--type--compound-tabbed-content .field--name-field-p-tab-content';
+    var tabNavSelector = '.slick-tab-nav';
+    var tabContainer = (0, _jquery2.default)(tabContainerSelector, context);
+    var tabLabelSelector = '.field--name-field-label';
 
     if (!tabContainer.length) return;
 
     /**
      * Do some things for the container.
      */
-    const manipulateContainer = (container, containerUniqueClass) => {
-      const r = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.Deferred();
+    var manipulateContainer = function manipulateContainer(container, containerUniqueClass) {
+      var r = _jquery2.default.Deferred();
 
       container.addClass(containerUniqueClass);
 
@@ -9267,15 +9330,15 @@ Drupal.behaviors.slickCustom = {
      *   Label selector.
      *
      */
-    const buildNav = (container, containerIndex, labelSelector) => {
-      const r = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.Deferred();
-      const labels = container.find(labelSelector);
-      let tabNavElement = '';
+    var buildNav = function buildNav(container, containerIndex, labelSelector) {
+      var r = _jquery2.default.Deferred();
+      var labels = container.find(labelSelector);
+      var tabNavElement = '';
 
-      labels.each((i, el) => {
-        tabNavElement += `<a href="#" class="slick-tab-nav--element">${__WEBPACK_IMPORTED_MODULE_0_jquery___default()(el).text()}</a>`;
+      labels.each(function (i, el) {
+        tabNavElement += '<a href="#" class="slick-tab-nav--element">' + (0, _jquery2.default)(el).text() + '</a>';
       });
-      container.after(`<div class="slick-tab-nav slick-tab-nav-${containerIndex}">${tabNavElement}</div>`);
+      container.after('<div class="slick-tab-nav slick-tab-nav-' + containerIndex + '">' + tabNavElement + '</div>');
 
       return r;
     };
@@ -9291,27 +9354,27 @@ Drupal.behaviors.slickCustom = {
      *   Label selector.
      *
      */
-    const buildNavCount = (container, navSelector, labelSelector) => {
-      let tabNavElementNumbers = '',
+    var buildNavCount = function buildNavCount(container, navSelector, labelSelector) {
+      var tabNavElementNumbers = '',
           tabNavElementLabels = '',
           currentContainer = container,
           labels = currentContainer.find(labelSelector);
 
-      labels.each((i, el) => {
-        tabNavElementNumbers += `<span>${i + 1}/${labels.length}</span>`;
-        tabNavElementLabels += `<span>${__WEBPACK_IMPORTED_MODULE_0_jquery___default()(el).text()}</span>`;
+      labels.each(function (i, el) {
+        tabNavElementNumbers += '<span>' + (i + 1) + '/' + labels.length + '</span>';
+        tabNavElementLabels += '<span>' + (0, _jquery2.default)(el).text() + '</span>';
       });
 
       if (!currentContainer.find('.slick-counter-numbers').length) {
-        currentContainer.next(navSelector).prepend(`<div class="slick-counter-numbers">${tabNavElementNumbers}</div>`);
+        currentContainer.next(navSelector).prepend('<div class="slick-counter-numbers">' + tabNavElementNumbers + '</div>');
       }
       if (!currentContainer.find('.slick-counter-labels').length) {
-        currentContainer.next(navSelector).prepend(`<div class="slick-counter-labels">${tabNavElementLabels}</div>`);
+        currentContainer.next(navSelector).prepend('<div class="slick-counter-labels">' + tabNavElementLabels + '</div>');
       }
 
       // Init
-      __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.slick-counter-numbers span:nth-of-type(1)').addClass('active');
-      __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.slick-counter-labels span:nth-of-type(1)').addClass('active');
+      (0, _jquery2.default)('.slick-counter-numbers span:nth-of-type(1)').addClass('active');
+      (0, _jquery2.default)('.slick-counter-labels span:nth-of-type(1)').addClass('active');
     };
 
     /**
@@ -9329,121 +9392,113 @@ Drupal.behaviors.slickCustom = {
      *   Label selector.
      *
      */
-    const buildSlick = (containerSelector, indexContainer, uniqueContainerSelector, navSelector, labelSelector) => {
-      const slidesCount = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(containerSelector).eq(indexContainer).find(labelSelector).length;
+    var buildSlick = function buildSlick(containerSelector, indexContainer, uniqueContainerSelector, navSelector, labelSelector) {
+      var slidesCount = (0, _jquery2.default)(containerSelector).eq(indexContainer).find(labelSelector).length;
 
-      __WEBPACK_IMPORTED_MODULE_0_jquery___default()(containerSelector).eq(indexContainer).slick({
+      (0, _jquery2.default)(containerSelector).eq(indexContainer).slick({
         slidesToShow: 1,
         arrows: false,
         fade: true,
         adaptiveHeight: true,
-        asNavFor: `${navSelector}-${indexContainer}`,
-        responsive: [
-          {
-            breakpoint: 800,
-            settings: {
-              dots: true,
-            }
-          },
-        ]
+        asNavFor: navSelector + '-' + indexContainer,
+        responsive: [{
+          breakpoint: 800,
+          settings: {
+            dots: true
+          }
+        }]
       });
 
-      __WEBPACK_IMPORTED_MODULE_0_jquery___default()(`${navSelector}-${indexContainer}`).slick({
+      (0, _jquery2.default)(navSelector + '-' + indexContainer).slick({
         slidesToShow: slidesCount,
-        asNavFor: `.${uniqueContainerSelector}`,
+        asNavFor: '.' + uniqueContainerSelector,
         dots: false,
         centerMode: true,
-        focusOnSelect: true,
+        focusOnSelect: true
       });
 
       // Set tabindex to 0 after slick init
-      __WEBPACK_IMPORTED_MODULE_0_jquery___default()(`${navSelector}--element`).each((i, el) => {
-        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(el).attr('tabindex', '0');
+      (0, _jquery2.default)(navSelector + '--element').each(function (i, el) {
+        (0, _jquery2.default)(el).attr('tabindex', '0');
       });
     };
 
-    tabContainer.each((indexTabContainer, elemTabContainer) => {
-      let elementTC = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(elemTabContainer);
-      const uniqueClass = `tabbed-content-${indexTabContainer}`;
+    tabContainer.each(function (indexTabContainer, elemTabContainer) {
+      var elementTC = (0, _jquery2.default)(elemTabContainer);
+      var uniqueClass = 'tabbed-content-' + indexTabContainer;
 
       // Now call the functions one after the other
-      manipulateContainer(elementTC, uniqueClass).done(
-        buildNav(elementTC, indexTabContainer, tabLabelSelector).done(
-          buildSlick(tabContainerSelector, indexTabContainer, uniqueClass, tabNavSelector, tabLabelSelector)
-        )
-      );
+      manipulateContainer(elementTC, uniqueClass).done(buildNav(elementTC, indexTabContainer, tabLabelSelector).done(buildSlick(tabContainerSelector, indexTabContainer, uniqueClass, tabNavSelector, tabLabelSelector)));
     });
 
-    __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).on('load resize orientationchange', () => {
-      if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).width() <= 800 && !__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.slick-counter-numbers').length) {
-        tabContainer.each((indexTabContainer, elemTabContainer) => {
-          let elementTC = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(elemTabContainer);
+    (0, _jquery2.default)(window).on('load resize orientationchange', function () {
+      if ((0, _jquery2.default)(window).width() <= 800 && !(0, _jquery2.default)('.slick-counter-numbers').length) {
+        tabContainer.each(function (indexTabContainer, elemTabContainer) {
+          var elementTC = (0, _jquery2.default)(elemTabContainer);
 
           buildNavCount(elementTC, tabNavSelector, tabLabelSelector);
         });
       }
     });
 
-    __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).on('click', '.slick-tab-nav--element', (event) => {
+    (0, _jquery2.default)(document).on('click', '.slick-tab-nav--element', function (event) {
       event.preventDefault();
 
       // Set tabindex to 0 after click
-      __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.slick-tab-nav--element').each((i, el) => {
-        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(el).attr('tabindex', '0');
+      (0, _jquery2.default)('.slick-tab-nav--element').each(function (i, el) {
+        (0, _jquery2.default)(el).attr('tabindex', '0');
       });
     });
 
-    __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).on('click', '.slick-dots button', (event) => {
-      const $this = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(event.currentTarget);
-      const index = $this.parent().index();
-      const myContainer = $this.closest('.paragraph');
+    (0, _jquery2.default)(document).on('click', '.slick-dots button', function (event) {
+      var $this = (0, _jquery2.default)(event.currentTarget);
+      var index = $this.parent().index();
+      var myContainer = $this.closest('.paragraph');
 
       // Update slick counter numbers class
-      myContainer.find(`.slick-counter-numbers span`).removeClass('active');
-      myContainer.find(`.slick-counter-numbers span:nth-of-type(${index + 1})`).addClass('active');
+      myContainer.find('.slick-counter-numbers span').removeClass('active');
+      myContainer.find('.slick-counter-numbers span:nth-of-type(' + (index + 1) + ')').addClass('active');
 
       // Update slick counter labels class
-      myContainer.find(`.slick-counter-labels span`).removeClass('active');
-      myContainer.find(`.slick-counter-labels span:nth-of-type(${index + 1})`).addClass('active');
+      myContainer.find('.slick-counter-labels span').removeClass('active');
+      myContainer.find('.slick-counter-labels span:nth-of-type(' + (index + 1) + ')').addClass('active');
     });
-
   }
 };
 
 Drupal.behaviors.mediaTile = {
-  attach: function (context, settings) {
-    let $content = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.paragraph--type--compound-media-title-bar', context);
-    if(!$content.length) return;
+  attach: function attach(context, settings) {
+    var $content = (0, _jquery2.default)('.paragraph--type--compound-media-title-bar', context);
+    if (!$content.length) return;
 
     $content.each(function () {
 
-      let $this = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this),
-        $slides = $this.find('.field--name-field-p-media-tile-content');
+      var $this = (0, _jquery2.default)(this),
+          $slides = $this.find('.field--name-field-p-media-tile-content');
 
-      $this.on('init reInit afterChange', function(event, slick, currentSlide, nextSlide) {
-        let $count = $this.find('.slick-counter'),
-          i = (currentSlide ? currentSlide : 0) + 1;
+      $this.on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
+        var $count = $this.find('.slick-counter'),
+            i = (currentSlide ? currentSlide : 0) + 1;
         if ($count.length == 0) {
           $this.find('> .paragraph-content').append('<div class="slick-counter">' + i + '/' + slick.slideCount + '</div>');
         }
         $count.text(i + '/' + slick.slideCount);
       });
 
-      __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).on('load resize orientationchange', function() {
+      (0, _jquery2.default)(window).on('load resize orientationchange', function () {
         // slick on mobile
-        if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).width() > 800) {
+        if ((0, _jquery2.default)(window).width() > 800) {
           if ($slides.hasClass('slick-initialized')) {
             $slides.slick('unslick');
           }
-        }
-        else{
+        } else {
           if (!$slides.hasClass('slick-initialized')) {
             $slides.slick({
               slidesToShow: 1,
               arrows: true,
               dots: true,
               adaptiveHeight: true,
-              infinite: false,
+              infinite: false
             });
           }
         }
@@ -9451,7 +9506,6 @@ Drupal.behaviors.mediaTile = {
     });
   }
 };
-
 
 /***/ }),
 /* 58 */

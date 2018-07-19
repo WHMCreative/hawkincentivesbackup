@@ -3604,11 +3604,11 @@ var IntrospectionFragmentMatcher = /** @class */ (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export WriteError */
-/* unused harmony export enhanceErrorWithDocument */
-/* unused harmony export writeQueryToStore */
-/* harmony export (immutable) */ __webpack_exports__["a"] = writeResultToStore;
-/* unused harmony export writeSelectionSetToStore */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WriteError; });
+/* harmony export (immutable) */ __webpack_exports__["b"] = enhanceErrorWithDocument;
+/* harmony export (immutable) */ __webpack_exports__["c"] = writeQueryToStore;
+/* harmony export (immutable) */ __webpack_exports__["d"] = writeResultToStore;
+/* harmony export (immutable) */ __webpack_exports__["e"] = writeSelectionSetToStore;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_graphql_language_printer__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_graphql_language_printer___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_graphql_language_printer__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_apollo_utilities__ = __webpack_require__(1);
@@ -3983,10 +3983,10 @@ function processArrayValue(value, generatedId, selectionSet, context) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export ID_KEY */
-/* harmony export (immutable) */ __webpack_exports__["b"] = readQueryFromStore;
-/* harmony export (immutable) */ __webpack_exports__["a"] = diffQueryAgainstStore;
-/* unused harmony export assertIdValue */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ID_KEY; });
+/* harmony export (immutable) */ __webpack_exports__["d"] = readQueryFromStore;
+/* harmony export (immutable) */ __webpack_exports__["c"] = diffQueryAgainstStore;
+/* harmony export (immutable) */ __webpack_exports__["b"] = assertIdValue;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_graphql_anywhere__ = __webpack_require__(132);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_apollo_utilities__ = __webpack_require__(1);
 var __assign = (this && this.__assign) || Object.assign || function(t) {
@@ -4387,8 +4387,8 @@ function merge(dest, src) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export RecordingCache */
-/* harmony export (immutable) */ __webpack_exports__["a"] = record;
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RecordingCache; });
+/* harmony export (immutable) */ __webpack_exports__["b"] = record;
 var __assign = (this && this.__assign) || Object.assign || function(t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
         s = arguments[i];
@@ -4467,64 +4467,73 @@ function record(startingState, transaction) {
 /* 59 */,
 /* 60 */,
 /* 61 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__App_vue__ = __webpack_require__(65);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_apollo_client__ = __webpack_require__(96);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_apollo_link_http__ = __webpack_require__(121);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_apollo__ = __webpack_require__(124);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_apollo_cache_inmemory__ = __webpack_require__(125);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__fragmentTypes_json__ = __webpack_require__(134);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__fragmentTypes_json___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__fragmentTypes_json__);
 
 
+var _vue = __webpack_require__(62);
 
+var _vue2 = _interopRequireDefault(_vue);
 
+var _App = __webpack_require__(65);
+
+var _App2 = _interopRequireDefault(_App);
+
+var _apolloClient = __webpack_require__(96);
+
+var _apolloLinkHttp = __webpack_require__(121);
+
+var _vueApollo = __webpack_require__(124);
+
+var _vueApollo2 = _interopRequireDefault(_vueApollo);
+
+var _apolloCacheInmemory = __webpack_require__(125);
+
+var _fragmentTypes = __webpack_require__(134);
+
+var _fragmentTypes2 = _interopRequireDefault(_fragmentTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var fragmentMatcher = new _apolloCacheInmemory.IntrospectionFragmentMatcher({
+  introspectionQueryResultData: _fragmentTypes2.default
+});
 // import { InMemoryCache } from 'apollo-cache-inmemory'
 
 
-
-
-
-const fragmentMatcher = new __WEBPACK_IMPORTED_MODULE_5_apollo_cache_inmemory__["b" /* IntrospectionFragmentMatcher */]({
-  introspectionQueryResultData: __WEBPACK_IMPORTED_MODULE_6__fragmentTypes_json___default.a
-});
-
-const httpLinkOptions = new __WEBPACK_IMPORTED_MODULE_3_apollo_link_http__["a" /* HttpLink */]({
+var httpLinkOptions = new _apolloLinkHttp.HttpLink({
   credentials: 'same-origin'
 });
 
 // Create the apollo client
-const apolloClient = new __WEBPACK_IMPORTED_MODULE_2_apollo_client__["a" /* ApolloClient */]({
-  link: new __WEBPACK_IMPORTED_MODULE_3_apollo_link_http__["a" /* HttpLink */](httpLinkOptions),
+var apolloClient = new _apolloClient.ApolloClient({
+  link: new _apolloLinkHttp.HttpLink(httpLinkOptions),
   // cache: new InMemoryCache(),
-  cache: new __WEBPACK_IMPORTED_MODULE_5_apollo_cache_inmemory__["a" /* InMemoryCache */]({ fragmentMatcher }),
+  cache: new _apolloCacheInmemory.InMemoryCache({ fragmentMatcher: fragmentMatcher }),
   connectToDevTools: true
-})
+});
 
 // Install the vue plugin
-__WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODULE_4_vue_apollo__["a" /* default */])
+_vue2.default.use(_vueApollo2.default);
 
-const apolloProvider = new __WEBPACK_IMPORTED_MODULE_4_vue_apollo__["a" /* default */]({
-  defaultClient: apolloClient,
-})
+var apolloProvider = new _vueApollo2.default({
+  defaultClient: apolloClient
+});
 
-window.cardCatalog = new __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */]({
+window.cardCatalog = new _vue2.default({
   el: '#card-catalog',
   provide: apolloProvider.provide(),
   template: '<App/>',
-  components: { App: __WEBPACK_IMPORTED_MODULE_1__App_vue__["default"] }
+  components: { App: _App2.default }
 });
-
 
 /***/ }),
 /* 62 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function(process, global, setImmediate) {/*!
  * Vue.js v2.5.16
  * (c) 2014-2018 Evan You
@@ -15482,7 +15491,7 @@ function getOuterHTML (el) {
 
 Vue.compile = compileToFunctions;
 
-/* harmony default export */ __webpack_exports__["a"] = (Vue);
+/* harmony default export */ __webpack_exports__["default"] = (Vue);
 
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(11), __webpack_require__(4), __webpack_require__(63).setImmediate))
 
@@ -15751,9 +15760,10 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_App_vue__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_App_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_App_vue__);
-/* unused harmony namespace reexport */
+/* harmony namespace reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_App_vue__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_App_vue__[key]; }) }(__WEBPACK_IMPORT_KEY__));
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_5bb1e590_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_App_vue__ = __webpack_require__(95);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(7);
 var disposed = false
@@ -19705,19 +19715,20 @@ if (false) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_graphql_language_printer__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_graphql_language_printer___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_graphql_language_printer__);
-/* unused harmony reexport printAST */
+/* harmony reexport (binding) */ if(__webpack_require__.o(__WEBPACK_IMPORTED_MODULE_0_graphql_language_printer__, "print")) __webpack_require__.d(__webpack_exports__, "printAST", function() { return __WEBPACK_IMPORTED_MODULE_0_graphql_language_printer__["print"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_ObservableQuery__ = __webpack_require__(13);
-/* unused harmony reexport ObservableQuery */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "ObservableQuery", function() { return __WEBPACK_IMPORTED_MODULE_1__core_ObservableQuery__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_networkStatus__ = __webpack_require__(8);
-/* unused harmony reexport NetworkStatus */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "NetworkStatus", function() { return __WEBPACK_IMPORTED_MODULE_2__core_networkStatus__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_types__ = __webpack_require__(10);
-/* unused harmony namespace reexport */
+/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "FetchType", function() { return __WEBPACK_IMPORTED_MODULE_3__core_types__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__errors_ApolloError__ = __webpack_require__(17);
-/* unused harmony reexport ApolloError */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "ApolloError", function() { return __WEBPACK_IMPORTED_MODULE_4__errors_ApolloError__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ApolloClient__ = __webpack_require__(112);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_5__ApolloClient__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "ApolloClient", function() { return __WEBPACK_IMPORTED_MODULE_5__ApolloClient__["a"]; });
 
 
 
@@ -19726,7 +19737,7 @@ if (false) {
 
 // export the client as both default and named
 
-/* unused harmony default export */ var _unused_webpack_default_export = (__WEBPACK_IMPORTED_MODULE_5__ApolloClient__["a" /* default */]);
+/* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_5__ApolloClient__["a" /* default */]);
 //# sourceMappingURL=index.js.map
 
 /***/ }),
@@ -23449,8 +23460,10 @@ exports.version = "2.3.2"
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__httpLink__ = __webpack_require__(122);
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__httpLink__["a"]; });
+/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "createHttpLink", function() { return __WEBPACK_IMPORTED_MODULE_0__httpLink__["b"]; });
+/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "HttpLink", function() { return __WEBPACK_IMPORTED_MODULE_0__httpLink__["a"]; });
 
 //# sourceMappingURL=index.js.map
 
@@ -23459,7 +23472,7 @@ exports.version = "2.3.2"
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export createHttpLink */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return createHttpLink; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HttpLink; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_apollo_link__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_apollo_link_http_common__ = __webpack_require__(123);
@@ -23828,12 +23841,13 @@ var selectURI = function (operation, fallbackURI) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(global) {/* unused harmony export install */
-/* unused harmony export ApolloProvider */
-/* unused harmony export ApolloQuery */
-/* unused harmony export ApolloSubscribeToMore */
-/* unused harmony export ApolloMutation */
-/* unused harmony export willPrefetch */
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* WEBPACK VAR INJECTION */(function(global) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "install", function() { return install; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ApolloProvider", function() { return ApolloProvider$1; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ApolloQuery", function() { return ApolloQuery; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ApolloSubscribeToMore", function() { return ApolloSubscribeToMore; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ApolloMutation", function() { return ApolloMutation; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "willPrefetch", function() { return willPrefetch; });
 /* eslint-disable no-undefined,no-param-reassign,no-shadow */
 
 /**
@@ -25893,7 +25907,7 @@ if (GlobalVue) {
   GlobalVue.use(ApolloProvider);
 }
 
-/* harmony default export */ __webpack_exports__["a"] = (ApolloProvider);
+/* harmony default export */ __webpack_exports__["default"] = (ApolloProvider);
 
 
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(4)))
@@ -25903,19 +25917,30 @@ if (GlobalVue) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__inMemoryCache__ = __webpack_require__(126);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__inMemoryCache__["a"]; });
-/* unused harmony reexport defaultDataIdFromObject */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "InMemoryCache", function() { return __WEBPACK_IMPORTED_MODULE_0__inMemoryCache__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "defaultDataIdFromObject", function() { return __WEBPACK_IMPORTED_MODULE_0__inMemoryCache__["b"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__readFromStore__ = __webpack_require__(38);
-/* unused harmony namespace reexport */
+/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "ID_KEY", function() { return __WEBPACK_IMPORTED_MODULE_1__readFromStore__["a"]; });
+/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "readQueryFromStore", function() { return __WEBPACK_IMPORTED_MODULE_1__readFromStore__["d"]; });
+/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "diffQueryAgainstStore", function() { return __WEBPACK_IMPORTED_MODULE_1__readFromStore__["c"]; });
+/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "assertIdValue", function() { return __WEBPACK_IMPORTED_MODULE_1__readFromStore__["b"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__writeToStore__ = __webpack_require__(37);
-/* unused harmony namespace reexport */
+/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "WriteError", function() { return __WEBPACK_IMPORTED_MODULE_2__writeToStore__["a"]; });
+/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "enhanceErrorWithDocument", function() { return __WEBPACK_IMPORTED_MODULE_2__writeToStore__["b"]; });
+/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "writeQueryToStore", function() { return __WEBPACK_IMPORTED_MODULE_2__writeToStore__["c"]; });
+/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "writeResultToStore", function() { return __WEBPACK_IMPORTED_MODULE_2__writeToStore__["d"]; });
+/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "writeSelectionSetToStore", function() { return __WEBPACK_IMPORTED_MODULE_2__writeToStore__["e"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__fragmentMatcher__ = __webpack_require__(36);
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_3__fragmentMatcher__["b"]; });
+/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "HeuristicFragmentMatcher", function() { return __WEBPACK_IMPORTED_MODULE_3__fragmentMatcher__["a"]; });
+/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "IntrospectionFragmentMatcher", function() { return __WEBPACK_IMPORTED_MODULE_3__fragmentMatcher__["b"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__objectCache__ = __webpack_require__(18);
-/* unused harmony namespace reexport */
+/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "ObjectCache", function() { return __WEBPACK_IMPORTED_MODULE_4__objectCache__["a"]; });
+/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "defaultNormalizedCacheFactory", function() { return __WEBPACK_IMPORTED_MODULE_4__objectCache__["b"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__recordingCache__ = __webpack_require__(40);
-/* unused harmony namespace reexport */
+/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "RecordingCache", function() { return __WEBPACK_IMPORTED_MODULE_5__recordingCache__["a"]; });
+/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "record", function() { return __WEBPACK_IMPORTED_MODULE_5__recordingCache__["b"]; });
 
 
 
@@ -25929,7 +25954,7 @@ if (GlobalVue) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export defaultDataIdFromObject */
+/* harmony export (immutable) */ __webpack_exports__["b"] = defaultDataIdFromObject;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InMemoryCache; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_apollo_cache__ = __webpack_require__(127);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_apollo_utilities__ = __webpack_require__(1);
@@ -26021,7 +26046,7 @@ var InMemoryCache = /** @class */ (function (_super) {
         if (query.rootId && this.data.get(query.rootId) === undefined) {
             return null;
         }
-        return Object(__WEBPACK_IMPORTED_MODULE_4__readFromStore__["b" /* readQueryFromStore */])({
+        return Object(__WEBPACK_IMPORTED_MODULE_4__readFromStore__["d" /* readQueryFromStore */])({
             store: this.config.storeFactory(this.extract(query.optimistic)),
             query: this.transformDocument(query.query),
             variables: query.variables,
@@ -26032,7 +26057,7 @@ var InMemoryCache = /** @class */ (function (_super) {
         });
     };
     InMemoryCache.prototype.write = function (write) {
-        Object(__WEBPACK_IMPORTED_MODULE_3__writeToStore__["a" /* writeResultToStore */])({
+        Object(__WEBPACK_IMPORTED_MODULE_3__writeToStore__["d" /* writeResultToStore */])({
             dataId: write.dataId,
             result: write.result,
             variables: write.variables,
@@ -26044,7 +26069,7 @@ var InMemoryCache = /** @class */ (function (_super) {
         this.broadcastWatches();
     };
     InMemoryCache.prototype.diff = function (query) {
-        return Object(__WEBPACK_IMPORTED_MODULE_4__readFromStore__["a" /* diffQueryAgainstStore */])({
+        return Object(__WEBPACK_IMPORTED_MODULE_4__readFromStore__["c" /* diffQueryAgainstStore */])({
             store: this.config.storeFactory(this.extract(query.optimistic)),
             query: this.transformDocument(query.query),
             variables: query.variables,
@@ -26095,7 +26120,7 @@ var InMemoryCache = /** @class */ (function (_super) {
     InMemoryCache.prototype.recordOptimisticTransaction = function (transaction, id) {
         var _this = this;
         this.silenceBroadcast = true;
-        var patch = Object(__WEBPACK_IMPORTED_MODULE_6__recordingCache__["a" /* record */])(this.extract(true), function (recordingCache) {
+        var patch = Object(__WEBPACK_IMPORTED_MODULE_6__recordingCache__["b" /* record */])(this.extract(true), function (recordingCache) {
             // swapping data instance on 'this' is currently necessary
             // because of the current architecture
             var dataCache = _this.data;
