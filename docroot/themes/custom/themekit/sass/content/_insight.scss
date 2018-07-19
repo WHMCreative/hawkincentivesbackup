@@ -163,7 +163,8 @@
           border-radius: 0;
         }
 
-        .node--sidebar .paragraph--type--summary-insights & {
+        .node--sidebar .paragraph--type--summary-insights &,
+        .field--name-field-top-insights & {
           max-height: 100px;
         }
         &:after {
@@ -178,7 +179,8 @@
         }
         img {
           width: 100%;
-          .node--sidebar .paragraph--type--summary-insights & {
+          .node--sidebar .paragraph--type--summary-insights &,
+          .field--name-field-top-insights & {
             @include breakpoint(medium) {
               margin-top: -40px;
             }
@@ -253,6 +255,49 @@
       }
       .field--name-field-intro-copy {
         font-size: rem-calc(14);
+      }
+    }
+  }
+
+  &.node--view-mode-compact {
+    .node--image {
+      position: relative;
+      min-height: 40px;
+      margin-bottom: 10px;
+      @include breakpoint(medium) {
+        margin-bottom: 20px;
+      }
+
+      .field--name-field-image {
+        img {
+          width: 100%;
+          border-radius: 3px;
+        }
+      }
+
+      .field--name-field-insight-type {
+        position: absolute;
+        left: 15px;
+        top: 15px;
+        @include insight-label();
+        @include breakpoint(small down) {
+          display: none;
+        }
+      }
+    }
+
+    .field--name-title {
+      color: $secondary-color-dark;
+      a {
+        color: inherit;
+      }
+    }
+
+    .date {
+      font-size: rem-calc(13);
+      color: $medium-gray;
+      @include breakpoint(small down) {
+        font-size: rem-calc(11);
       }
     }
   }

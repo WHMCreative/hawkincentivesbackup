@@ -1,0 +1,107 @@
+////
+/// Views
+////
+
+.view-news {
+  &.view-display-id-block_news {
+    @include breakpoint(marge) {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    > .view-filters {
+      margin-bottom: 40px;
+      @include breakpoint(marge) {
+        margin-bottom: 85px;
+        min-width: 100vw;
+        background: $secondary-color-dark;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        color: $white;
+      }
+      .views-exposed-form {
+        @include content-width(default);
+        padding-top: 25px;
+        padding-bottom: 25px;
+      }
+      .form-radios {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        @include breakpoint(marge) {
+          flex-direction: row;
+        }
+        .form-item {
+          margin: 0 12px;
+          position: relative;
+          input {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            margin: 0;
+            &:checked + label {
+              font-weight: 700;
+            }
+          }
+          label {
+            color: inherit;
+            margin: 0;
+            font-size: rem-calc(16);
+            @include breakpoint(marge) {
+              font-size: rem-calc(18);
+            }
+          }
+        }
+      }
+      .form-actions {
+        margin: 0;
+      }
+    }
+    h3 {
+      margin-bottom: 30px;
+    }
+    > .view-header {
+      @include breakpoint(marge) {
+        max-width: 385px;
+        width: 50%;
+      }
+      .view-filters {
+        display: none;
+      }
+      .pager {
+        display: none;
+      }
+    }
+    > .view-content {
+      @include breakpoint(marge) {
+        max-width: 520px;
+        width: 50%;
+      }
+    }
+    > .pager {
+      width: 100%;
+      margin: 15px 0 0;
+      display: flex;
+      justify-content: center;
+      @include breakpoint(marge) {
+        margin-top: 25px;
+      }
+      li {
+        margin: 0;
+        padding: 0;
+        a {
+          @include btn(blue);
+        }
+      }
+    }
+    .views-row {
+      margin-bottom: 20px;
+      @include breakpoint(marge) {
+        margin-bottom: 35px;
+      }
+    }
+  }
+}

@@ -134,3 +134,52 @@
   margin-top: rem-calc(-90);
   z-index: z(banner, content);
 }
+
+.paragraph--type--banner-featured-insights {
+  @include content-width(default);
+
+  .field--name-field-heading {
+    margin-bottom: 30px;
+    color: $secondary-color-dark;
+    font-weight: $global-weight-light;
+    text-align: center;
+    @include breakpoint(marge) {
+      margin-bottom: 50px;
+    }
+  }
+
+  .content-wrapper {
+    @include breakpoint(marge) {
+      display: flex;
+      flex-wrap: nowrap;
+    }
+  }
+
+  .field--name-field-insight {
+    margin-bottom: 30px;
+    @include breakpoint(marge) {
+      width: 72%;
+      margin-bottom: 0;
+    }
+  }
+
+  .field--name-field-top-insights {
+    @include breakpoint(marge) {
+      width: 28%;
+      padding-left: 4%;
+    }
+
+    > .field__label {
+      margin-top: -7px;
+      margin-bottom: 20px;
+      color: $secondary-color-dark;
+      font-size: rem-calc(20);
+      font-weight: $global-weight-bold;
+    }
+
+    > .field__item,
+    > .field__items > .field__item {
+      margin-bottom: 35px;
+    }
+  }
+}

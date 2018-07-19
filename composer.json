@@ -96,7 +96,9 @@
     "drupal/graphql": "^3.0",
     "drupal/addtoany": "^1.10",
     "drupal/draggableviews": "^1.0",
-    "drupal/path_redirect_import": "^1.0"
+    "drupal/path_redirect_import": "^1.0",
+    "drupal/views_infinite_scroll": "^1.5",
+    "drupal/better_exposed_filters": "^3.0@alpha"
   },
   "conflict": {
       "drupal/drupal": "*"

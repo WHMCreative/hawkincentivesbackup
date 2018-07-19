@@ -7,39 +7,75 @@ import { Slick } from "slick-carousel/slick/slick";
 
 Drupal.behaviors.slickCustom = {
   attach: function (context, settings) {
-    const tabContentSelector = '.paragraph--type--compound-tabbed-content .field--name-field-p-tab-content';
+    const tabContainerSelector = '.paragraph--type--compound-tabbed-content .field--name-field-p-tab-content';
     const tabNavSelector = '.slick-tab-nav';
-    const tabContent = $(tabContentSelector, context);
-    if(!tabContent.length) return;
-    const tabLabel = tabContent.find('.field--name-field-label');
-    let tabNavElement;
+    const tabContainer = $(tabContainerSelector, context);
+    const tabLabelSelector = '.field--name-field-label';
 
-    let buildNav = (labels, place) => {
-      const result = $.Deferred();
-      tabNavElement = '';
+    if (!tabContainer.length) return;
+
+    /**
+     * Do some things for the container.
+     */
+    const manipulateContainer = (container, containerUniqueClass) => {
+      const r = $.Deferred();
+
+      container.addClass(containerUniqueClass);
+
+      return r;
+    };
+
+    /**
+     * Build navigation using labels.
+     *
+     * @param {Object} container
+     *   Tab container.
+     * @param {String} containerIndex
+     *   Tab container index.
+     * @param {String} labelSelector
+     *   Label selector.
+     *
+     */
+    const buildNav = (container, containerIndex, labelSelector) => {
+      const r = $.Deferred();
+      const labels = container.find(labelSelector);
+      let tabNavElement = '';
 
       labels.each((i, el) => {
         tabNavElement += `<a href="#" class="slick-tab-nav--element">${$(el).text()}</a>`;
       });
-      place.after(`<div class="slick-tab-nav">${tabNavElement}</div>`);
+      container.after(`<div class="slick-tab-nav slick-tab-nav-${containerIndex}">${tabNavElement}</div>`);
 
-      return result;
+      return r;
     };
 
-    let buildNavCount = (labels, place) => {
+    /**
+     * Build navigation with counts.
+     *
+     * @param {Object} container
+     *   Tab container.
+     * @param {String} navSelector
+     *   Navigation selector.
+     * @param {String} labelSelector
+     *   Label selector.
+     *
+     */
+    const buildNavCount = (container, navSelector, labelSelector) => {
       let tabNavElementNumbers = '',
-          tabNavElementLabels = '';
+          tabNavElementLabels = '',
+          currentContainer = container,
+          labels = currentContainer.find(labelSelector);
 
       labels.each((i, el) => {
         tabNavElementNumbers += `<span>${i + 1}/${labels.length}</span>`;
         tabNavElementLabels += `<span>${$(el).text()}</span>`;
       });
 
-      if (!place.find('.slick-counter-numbers').length) {
-        place.prepend(`<div class="slick-counter-numbers">${tabNavElementNumbers}</div>`);
+      if (!currentContainer.find('.slick-counter-numbers').length) {
+        currentContainer.next(navSelector).prepend(`<div class="slick-counter-numbers">${tabNavElementNumbers}</div>`);
       }
-      if (!place.find('.slick-counter-labels').length) {
-        place.prepend(`<div class="slick-counter-labels">${tabNavElementLabels}</div>`);
+      if (!currentContainer.find('.slick-counter-labels').length) {
+        currentContainer.next(navSelector).prepend(`<div class="slick-counter-labels">${tabNavElementLabels}</div>`);
       }
 
       // Init
@@ -47,13 +83,30 @@ Drupal.behaviors.slickCustom = {
       $('.slick-counter-labels span:nth-of-type(1)').addClass('active');
     };
 
-    let buildSlick = (mainSelector, navSelector, labelQuantity) => {
-      $(mainSelector).slick({
+    /**
+     * Init slick.
+     *
+     * @param {String} containerSelector
+     *   Tab container selector.
+     * @param {String} indexContainer
+     *   Tab container index.
+     * @param {String} uniqueContainerSelector
+     *   Tab container unique selector.
+     * @param {String} navSelector
+     *   Navigation selector.
+     * @param {String} labelSelector
+     *   Label selector.
+     *
+     */
+    const buildSlick = (containerSelector, indexContainer, uniqueContainerSelector, navSelector, labelSelector) => {
+      const slidesCount = $(containerSelector).eq(indexContainer).find(labelSelector).length;
+
+      $(containerSelector).eq(indexContainer).slick({
         slidesToShow: 1,
         arrows: false,
         fade: true,
         adaptiveHeight: true,
-        asNavFor: navSelector,
+        asNavFor: `${navSelector}-${indexContainer}`,
         responsive: [
           {
             breakpoint: 800,
@@ -64,9 +117,9 @@ Drupal.behaviors.slickCustom = {
         ]
       });
 
-      $(navSelector).slick({
-        slidesToShow: labelQuantity.length,
-        asNavFor: mainSelector,
+      $(`${navSelector}-${indexContainer}`).slick({
+        slidesToShow: slidesCount,
+        asNavFor: `.${uniqueContainerSelector}`,
         dots: false,
         centerMode: true,
         focusOnSelect: true,
@@ -78,6 +131,28 @@ Drupal.behaviors.slickCustom = {
       });
     };
 
+    tabContainer.each((indexTabContainer, elemTabContainer) => {
+      let elementTC = $(elemTabContainer);
+      const uniqueClass = `tabbed-content-${indexTabContainer}`;
+
+      // Now call the functions one after the other
+      manipulateContainer(elementTC, uniqueClass).done(
+        buildNav(elementTC, indexTabContainer, tabLabelSelector).done(
+          buildSlick(tabContainerSelector, indexTabContainer, uniqueClass, tabNavSelector, tabLabelSelector)
+        )
+      );
+    });
+
+    $(window).on('load resize orientationchange', () => {
+      if ($(window).width() <= 800 && !$('.slick-counter-numbers').length) {
+        tabContainer.each((indexTabContainer, elemTabContainer) => {
+          let elementTC = $(elemTabContainer);
+
+          buildNavCount(elementTC, tabNavSelector, tabLabelSelector);
+        });
+      }
+    });
+
     $(document).on('click', '.slick-tab-nav--element', (event) => {
       event.preventDefault();
 
@@ -88,23 +163,19 @@ Drupal.behaviors.slickCustom = {
     });
 
     $(document).on('click', '.slick-dots button', (event) => {
-      const index = $(event.currentTarget).parent().index();
+      const $this = $(event.currentTarget);
+      const index = $this.parent().index();
+      const myContainer = $this.closest('.paragraph');
 
-      $(event.currentTarget).closest('.paragraph').find(`.slick-counter-numbers span`).removeClass('active');
-      $(event.currentTarget).closest('.paragraph').find(`.slick-counter-numbers span:nth-of-type(${index + 1})`).addClass('active');
+      // Update slick counter numbers class
+      myContainer.find(`.slick-counter-numbers span`).removeClass('active');
+      myContainer.find(`.slick-counter-numbers span:nth-of-type(${index + 1})`).addClass('active');
 
-      $(event.currentTarget).closest('.paragraph').find(`.slick-counter-labels span`).removeClass('active');
-      $(event.currentTarget).closest('.paragraph').find(`.slick-counter-labels span:nth-of-type(${index + 1})`).addClass('active');
+      // Update slick counter labels class
+      myContainer.find(`.slick-counter-labels span`).removeClass('active');
+      myContainer.find(`.slick-counter-labels span:nth-of-type(${index + 1})`).addClass('active');
     });
 
-    // Now call the functions one after the other
-    buildNav(tabLabel, tabContent).done( buildSlick(tabContentSelector, tabNavSelector, tabLabel) );
-
-    $(window).on('load resize orientationchange', function() {
-      if ($(window).width() <= 800 && !$('.slick-counter-numbers').length) {
-        buildNavCount(tabLabel, $(tabNavSelector));
-      }
-    });
   }
 };
 
