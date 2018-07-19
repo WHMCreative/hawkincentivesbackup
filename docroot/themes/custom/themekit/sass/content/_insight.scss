@@ -262,6 +262,7 @@
   &.node--view-mode-compact {
     .node--image {
       position: relative;
+      min-height: 40px;
       margin-bottom: 10px;
       @include breakpoint(medium) {
         margin-bottom: 20px;
