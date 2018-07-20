@@ -161,7 +161,7 @@
     @include breakpoint(large) {
       width: 24%;
       float: left;
-      margin-bottom: 35px;
+      margin-bottom: 24px;
       text-align: left;
     }
   }
@@ -196,7 +196,11 @@
       margin-top: 30px;
     }
     @include breakpoint(medium) {
-      @include tk-flex-block-grid(3, '.field__item', $gutter: 18px);
+      @include tk-flex-block-grid(3, '.field__item', $gutter: 32px);
+    }
+    @include breakpoint(marge down) {
+      margin-left: 0;
+      margin-right: 0;
     }
     @include breakpoint(large) {
       width: 76%;
@@ -207,6 +211,42 @@
       margin-bottom: 20px;
       @include breakpoint(medium) {
         margin-bottom: 0;
+      }
+
+      .field--name-field-p-media {
+        margin-bottom: 10px;
+        img {
+          width: 100%;
+        }
+      }
+
+      .field--name-name {
+        color: $secondary-color-dark;
+        font-weight: $global-weight-bold;
+      }
+
+      .type {
+        display: inline-block;
+      }
+
+      .field--name-field-cost {
+        display: inline-block;
+        margin-left: 7px;
+        font-size: rem-calc(14);
+        font-weight: $global-weight-bold;
+        color: $secondary-color-dark;
+      }
+
+      .features {
+        padding-top: 5px;
+        border-top: 0;
+        border-bottom-width: 1px;
+      }
+
+      .view-details {
+        cursor: pointer;
+        @include link(blue);
+        margin-top: rem-calc(10);
       }
     }
   }

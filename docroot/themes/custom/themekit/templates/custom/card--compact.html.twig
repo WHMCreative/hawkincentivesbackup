@@ -1,0 +1,39 @@
+{#
+/**
+ * @file card.html.twig
+ * Default theme implementation to present Card data.
+ *
+ * This template is used when viewing Card pages.
+ *
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ * - attributes: HTML attributes for the container element.
+ *
+ * @see template_preprocess_card()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{% set rendered_content = content|without(
+  'field_card_type',
+  'field_cost'
+) %}
+
+<div{{ attributes.addClass('card') }}>
+  {% if content %}
+    {{ rendered_content }}
+
+    <div class="features">
+      <div class="type {{ card_type }}">
+        {{ content.field_card_type }}
+      </div>
+
+      {{ content.field_cost }}
+    </div>
+
+    <button class="view-details">{% trans %}View Details{% endtrans %}</button>
+
+  {% endif %}
+</div>

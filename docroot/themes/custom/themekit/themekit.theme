@@ -142,6 +142,21 @@ function themekit_preprocess_node_insight(&$variables) {
   themekit_get_insight_data($node, $variables);
 }
 
+/**
+ * Implements template_preprocess_card().
+ */
+function themekit_preprocess_card(&$variables) {
+  $card = $variables['elements'];
+  $view_mode = $card['#view_mode'];
+
+  if ($view_mode === 'compact') {
+    $field = $card['field_card_type'];
+    $content = strtolower($field[0]['#markup']);
+    $content = str_replace(' ', '_', $content);
+
+    $variables['card_type'] = $content;
+  }
+}
 
 /**
  * Paragraphs preprocess.
