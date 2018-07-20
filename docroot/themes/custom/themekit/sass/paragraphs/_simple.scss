@@ -197,6 +197,17 @@
         width: auto;
         margin: 0 auto;
       }
+
+      .no-cssfilters & {
+        .svg-container {
+          padding-top: 0 !important;
+          height: auto;
+          svg {
+            padding-top: 0;
+            position: relative;
+          }
+        }
+      }
     }
   }
 
@@ -281,7 +292,19 @@
         margin-bottom: rem-calc(16);
 
         svg {
-          max-height: rem-calc(90);
+          height: rem-calc(90);
+        }
+
+        // Allow height to be used on svg in IE 11
+        .no-cssfilters & {
+          .svg-container {
+            padding-top: 0 !important;
+            height: auto;
+            svg {
+              padding-top: 0;
+              position: relative;
+            }
+          }
         }
       }
 
@@ -336,7 +359,6 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: center;
       min-width: rem-calc(100);
     }
   }

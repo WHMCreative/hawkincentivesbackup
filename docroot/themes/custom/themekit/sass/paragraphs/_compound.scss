@@ -246,8 +246,8 @@
   .paragraph--type--layout-2-column & {
     & > .paragraph-content {
       position: relative;
-      display: flex;
-      align-items: center;
+      //display: flex;
+      //align-items: center;
 
       @include breakpoint(medium){
         padding-left: rem-calc(80);
