@@ -1,22 +1,17 @@
-webpackJsonp([1],[
-/* 0 */
+webpackJsonp([1],{
+
+/***/ 0:
 /***/ (function(module, exports) {
 
 module.exports = jQuery;
 
 /***/ }),
-/* 1 */,
-/* 2 */,
-/* 3 */
+
+/***/ 136:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.transitionend = exports.GetYoDigits = exports.rtl = undefined;
 
 var _jquery = __webpack_require__(0);
 
@@ -24,74 +19,105 @@ var _jquery2 = _interopRequireDefault(_jquery);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// Core Foundation Utilities, utilized in a number of places.
+Drupal.behaviors.emailManipulations = {
+  attach: function attach(context, settings) {
+    var component = (0, _jquery2.default)('.paragraph--type--reference-featured-insight .node--type-insight', context);
+    var labelText = Drupal.t('Step 1/2  •  Email Address');
+    var btnText = Drupal.t('Download Now');
+    var validationText = Drupal.t('Must be valid email. example@yourdomain.com');
 
-/**
- * Returns a boolean for RTL support
- */
-function rtl() {
-  return (0, _jquery2.default)('html').attr('dir') === 'rtl';
-}
+    /**
+     * Validate form.
+     *
+     * @param {object} element
+     *   Form.
+     */
+    var validateDownloadForm = function validateDownloadForm(element) {
+      var email = element.find('[name="email"]');
+      var emailVal = email.val();
+      var errorElement = email.next('.error-msg');
 
-/**
- * returns a random base-36 uid with namespacing
- * @function
- * @param {Number} length - number of random base-36 digits desired. Increase for more random strings.
- * @param {String} namespace - name of plugin to be incorporated in uid, optional.
- * @default {String} '' - if no plugin name is provided, nothing is appended to the uid.
- * @returns {String} - unique id
- */
-function GetYoDigits(length, namespace) {
-  length = length || 6;
-  return Math.round(Math.pow(36, length + 1) - Math.random() * Math.pow(36, length)).toString(36).slice(1) + (namespace ? '-' + namespace : '');
-}
+      if (emailVal === '') {
+        errorElement.addClass('showed');
+        return false;
+      } else {
+        errorElement.removeClass('showed');
+        return true;
+      }
+    };
 
-function transitionend($elem) {
-  var transitions = {
-    'transition': 'transitionend',
-    'WebkitTransition': 'webkitTransitionEnd',
-    'MozTransition': 'transitionend',
-    'OTransition': 'otransitionend'
-  };
-  var elem = document.createElement('div'),
-      end;
+    /**
+     * Initialise focus and value trackers for theming.
+     *
+     * @param {object} input
+     *   Input object to process.
+     */
+    var setInputStateTracker = function setInputStateTracker(input) {
+      var item = (0, _jquery2.default)('.form-item'),
+          states = 'propertychange change paste input';
 
-  for (var t in transitions) {
-    if (typeof elem.style[t] !== 'undefined') {
-      end = transitions[t];
+      input.on('focus', function (e) {
+        (0, _jquery2.default)(e.currentTarget).closest(item).addClass('focus-form-item');
+      }).on('blur', function (e) {
+        (0, _jquery2.default)(e.currentTarget).closest(item).removeClass('focus-form-item');
+      });
+
+      input.on(states, function (e) {
+        var $focusedItem = (0, _jquery2.default)(e.currentTarget),
+            textVal = $focusedItem.val();
+
+        if (textVal === '' || textVal.length < 1) {
+          $focusedItem.closest(item).removeClass('has-value');
+        } else {
+          $focusedItem.closest(item).addClass('has-value');
+        }
+      });
+    };
+
+    // Build form
+    if (component.length) {
+      component.each(function (i, el) {
+        var $this = (0, _jquery2.default)(el);
+        var componentId = $this.attr('data-id');
+        var form = '<form class="download-form" action="/node/' + componentId + '" method="get">\n                      <div class="form-item">\n                        <label for="email--download-form" class="form-required">' + labelText + '</label>\n                        <input type="email" id="email--download-form" name="email" value="">\n                        <div class="error-msg">' + validationText + '</div>\n                      </div>\n                      <div class="form-actions">\n                        <input type="submit" value="' + btnText + '">\n                      </div>\n                    </form>';
+
+        $this.find('.node--content').append(form);
+
+        $this.find('.node--content .download-form').on('submit', function (e) {
+          return validateDownloadForm((0, _jquery2.default)(e.currentTarget));
+        });
+      });
+
+      setInputStateTracker(component.find('.form-item input'));
     }
-  }
-  if (end) {
-    return end;
-  } else {
-    end = setTimeout(function () {
-      $elem.triggerHandler('transitionend', [$elem]);
-    }, 1);
-    return 'transitionend';
-  }
-}
 
-exports.rtl = rtl;
-exports.GetYoDigits = GetYoDigits;
-exports.transitionend = transitionend;
+    // Auto set up email from url
+    var setToForm = (0, _jquery2.default)('.node--type-insight .paragraph--type--reference-marketo-form form', context);
+    var setToFormId = setToForm.attr('data-form-id');
+    var url = window.location.href;
+    var urlTargetString = '?email=';
+    var emailString = '';
+
+    if (url.indexOf(urlTargetString) + 1) {
+      emailString = url.split(urlTargetString)[1];
+    }
+
+    // Fill in the email field after the form is rendered
+    (0, _jquery2.default)(setToForm).on('whenFormElRendered' + setToFormId, function () {
+      var setToFormEmail = setToForm.find('[type="email"]');
+
+      setToFormEmail.closest('.marketo-form-item').addClass('has-value');
+      setToFormEmail.val(emailString);
+    });
+  }
+}; /**
+    * @file
+    * Email manipulations
+    */
 
 /***/ }),
-/* 4 */,
-/* 5 */,
-/* 6 */,
-/* 7 */,
-/* 8 */,
-/* 9 */,
-/* 10 */,
-/* 11 */,
-/* 12 */,
-/* 13 */,
-/* 14 */,
-/* 15 */,
-/* 16 */,
-/* 17 */,
-/* 18 */,
-/* 19 */
+
+/***/ 19:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -343,7 +369,8 @@ function parseStyleToObject(str) {
 exports.MediaQuery = MediaQuery;
 
 /***/ }),
-/* 20 */
+
+/***/ 20:
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(__webpack_provided_window_dot_jQuery) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! Magnific Popup - v1.1.0 - 2016-02-20
@@ -2212,27 +2239,78 @@ $.magnificPopup.registerModule(RETINA_NS, {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 21 */,
-/* 22 */,
-/* 23 */,
-/* 24 */,
-/* 25 */,
-/* 26 */,
-/* 27 */,
-/* 28 */,
-/* 29 */,
-/* 30 */,
-/* 31 */,
-/* 32 */,
-/* 33 */,
-/* 34 */,
-/* 35 */,
-/* 36 */,
-/* 37 */,
-/* 38 */,
-/* 39 */,
-/* 40 */,
-/* 41 */
+
+/***/ 3:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.transitionend = exports.GetYoDigits = exports.rtl = undefined;
+
+var _jquery = __webpack_require__(0);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// Core Foundation Utilities, utilized in a number of places.
+
+/**
+ * Returns a boolean for RTL support
+ */
+function rtl() {
+  return (0, _jquery2.default)('html').attr('dir') === 'rtl';
+}
+
+/**
+ * returns a random base-36 uid with namespacing
+ * @function
+ * @param {Number} length - number of random base-36 digits desired. Increase for more random strings.
+ * @param {String} namespace - name of plugin to be incorporated in uid, optional.
+ * @default {String} '' - if no plugin name is provided, nothing is appended to the uid.
+ * @returns {String} - unique id
+ */
+function GetYoDigits(length, namespace) {
+  length = length || 6;
+  return Math.round(Math.pow(36, length + 1) - Math.random() * Math.pow(36, length)).toString(36).slice(1) + (namespace ? '-' + namespace : '');
+}
+
+function transitionend($elem) {
+  var transitions = {
+    'transition': 'transitionend',
+    'WebkitTransition': 'webkitTransitionEnd',
+    'MozTransition': 'transitionend',
+    'OTransition': 'otransitionend'
+  };
+  var elem = document.createElement('div'),
+      end;
+
+  for (var t in transitions) {
+    if (typeof elem.style[t] !== 'undefined') {
+      end = transitions[t];
+    }
+  }
+  if (end) {
+    return end;
+  } else {
+    end = setTimeout(function () {
+      $elem.triggerHandler('transitionend', [$elem]);
+    }, 1);
+    return 'transitionend';
+  }
+}
+
+exports.rtl = rtl;
+exports.GetYoDigits = GetYoDigits;
+exports.transitionend = transitionend;
+
+/***/ }),
+
+/***/ 41:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2254,8 +2332,11 @@ __webpack_require__(56);
 
 __webpack_require__(57);
 
+__webpack_require__(136);
+
 /***/ }),
-/* 42 */
+
+/***/ 42:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2318,7 +2399,8 @@ _foundation.Foundation.Timer = _foundationUtil8.Timer;
 (0, _jquery2.default)(document).foundation();
 
 /***/ }),
-/* 43 */
+
+/***/ 43:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2683,7 +2765,8 @@ function hyphenate(str) {
 exports.Foundation = Foundation;
 
 /***/ }),
-/* 44 */
+
+/***/ 44:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2919,7 +3002,8 @@ function GetExplicitOffsets(element, anchor, position, alignment, vOffset, hOffs
 exports.Box = Box;
 
 /***/ }),
-/* 45 */
+
+/***/ 45:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2978,7 +3062,8 @@ function onImagesLoaded(images, callback) {
 exports.onImagesLoaded = onImagesLoaded;
 
 /***/ }),
-/* 46 */
+
+/***/ 46:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3165,7 +3250,8 @@ function getKeyCodes(kcs) {
 exports.Keyboard = Keyboard;
 
 /***/ }),
-/* 47 */
+
+/***/ 47:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3284,7 +3370,8 @@ exports.Move = Move;
 exports.Motion = Motion;
 
 /***/ }),
-/* 48 */
+
+/***/ 48:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3361,7 +3448,8 @@ var Nest = {
 exports.Nest = Nest;
 
 /***/ }),
-/* 49 */
+
+/***/ 49:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3427,7 +3515,8 @@ function Timer(elem, options, cb) {
 exports.Timer = Timer;
 
 /***/ }),
-/* 50 */
+
+/***/ 50:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3460,7 +3549,8 @@ exports.Timer = Timer;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 51 */
+
+/***/ 51:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3527,7 +3617,8 @@ $mySVGsToInject.each(function (i, el) {
 });
 
 /***/ }),
-/* 52 */
+
+/***/ 52:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -9089,7 +9180,8 @@ return SVG
 }));
 
 /***/ }),
-/* 53 */
+
+/***/ 53:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9132,7 +9224,8 @@ Drupal.behaviors.magnificPopup = {
 };
 
 /***/ }),
-/* 54 */
+
+/***/ 54:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9214,7 +9307,8 @@ Drupal.behaviors.menuMain = {
     */
 
 /***/ }),
-/* 55 */
+
+/***/ 55:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9244,7 +9338,8 @@ $skipLink.on('click', function (e) {
 });
 
 /***/ }),
-/* 56 */
+
+/***/ 56:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9281,7 +9376,8 @@ Drupal.behaviors.videoModal = {
 };
 
 /***/ }),
-/* 57 */
+
+/***/ 57:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9521,7 +9617,8 @@ Drupal.behaviors.mediaTile = {
 };
 
 /***/ }),
-/* 58 */
+
+/***/ 58:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -12541,5 +12638,6 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 
 /***/ })
-],[41]);
+
+},[41]);
 //# sourceMappingURL=themekit.js.map

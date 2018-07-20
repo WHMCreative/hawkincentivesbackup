@@ -84,6 +84,9 @@
             });
           }
 
+          // Setting a unique event for use in external scripts
+          $form.trigger('whenFormElRendered' + $($form).attr('data-form-id'));
+
           if (typeof(marketoConfig.removeSourceStyles) !== 'undefined' && marketoConfig.removeSourceStyles) {
             removeMarketoSourceStylesheets(form, marketoConfig);
           }
