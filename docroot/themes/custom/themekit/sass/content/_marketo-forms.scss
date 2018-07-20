@@ -16,7 +16,7 @@
     font-size: rem-calc(20);
     font-weight: $global-weight-bold;
     line-height: rem-calc(27);
-    color: $white;
+    color: $secondary-color-dark;
 
     @include breakpoint(medium) {
       padding-right: 0;
@@ -32,7 +32,7 @@
       font-size: rem-calc(13);
       padding-left: 5px;
       line-height: 1;
-      color: $white;
+      color: $medium-gray;
       transition: all .15s ease-out;
 
       &.form-required:after {
@@ -47,12 +47,12 @@
       padding: 8px 5px;
       border-top: 0;
       border-left: 0;
-      border-bottom: 1px solid rgba(255, 255, 255, .6);
+      border-bottom: 1px solid $medium-gray;
       border-right: 0;
       background-color: transparent;
       box-shadow: none;
       font-size: rem-calc(13);
-      color: $white;
+      color: $medium-gray;
       transition: all .25s ease-in-out;
 
       &[type="email"] {
@@ -75,12 +75,12 @@
       margin-bottom: 20px;
       padding-left: 5px;
       background-color: transparent;
-      background-image: url('../../images/svg/arrow-down-white.svg');
+      background-image: url('../../images/svg/arrow-down-gray.svg');
       background-position: right -20px center;
       background-size: 8px 8px;
       border-top: 0;
       border-left: 0;
-      border-bottom: 1px solid rgba(255, 255, 255, .6);
+      border-bottom: 1px solid $medium-gray;
       border-right: 0;
       -webkit-appearance: none;
       -moz-appearance: none;
@@ -96,7 +96,7 @@
       }
 
       &:focus {
-        box-shadow: 0 1px 0 0 $white;
+        box-shadow: 0 1px 0 0 $medium-gray;
       }
     }
 
@@ -107,16 +107,16 @@
       background: none;
       border-top: 0;
       border-left: 0;
-      border-bottom: 1px solid rgba(255, 255, 255, .6);
+      border-bottom: 1px solid $medium-gray;
       border-right: 0;
       box-shadow: none;
       resize:none;
       font-size: rem-calc(13);
-      color: $white;
+      color: $medium-gray;
       transition: all .25s ease-in-out;
 
       &:focus {
-        box-shadow: 0 1px 0 0 $white;
+        box-shadow: 0 1px 0 0 $medium-gray;
       }
     }
 
@@ -132,7 +132,7 @@
       }
 
       select {
-        color: $white;
+        color: $medium-gray;
       }
     }
   }
@@ -154,38 +154,72 @@
 
   .mktoButtonRow {
     button {
-      @include btn(ghost-white);
+      @include btn(blue);
       margin-top: 20px;
       margin-left: 5px;
       cursor: pointer;
     }
   }
 
-  .block--component & {
-
+  .mfp-content &,
+  .node--sidebar & {
     h2 {
-      color: $secondary-color-dark;
-      text-align: center;
-      @include header-font-size(h2);
-      font-weight: $global-weight-normal;
+      color: $white;
     }
 
     .marketo-form-item {
 
       label {
-        color: $medium-gray;
+        color: $white;
       }
 
-      select,
-      textarea,
       input {
-        border-bottom: 1px solid $medium-gray;
-        color: $medium-gray;
+        border-bottom: 1px solid rgba(255, 255, 255, .6);
+        color: $white;
+      }
+
+      select {
+        border-bottom: 1px solid rgba(255, 255, 255, .6);
+        background-image: url('../../images/svg/arrow-down-white.svg');
+
+        &:focus {
+          box-shadow: 0 1px 0 0 $white;
+        }
+      }
+
+      textarea {
+        border-bottom: 1px solid rgba(255, 255, 255, .6);
+        color: $white;
+
+        &:focus {
+          box-shadow: 0 1px 0 0 $white;
+        }
+      }
+
+      &.has-value,
+      &.marketo-focus-form-item {
+        select {
+          color: $white;
+        }
       }
     }
 
+    .mktoButtonRow {
+      button {
+        @include btn(ghost-white);
+      }
+    }
+  }
+
+  .block--component & {
+
+    h2 {
+      text-align: center;
+      @include header-font-size(h2);
+      font-weight: $global-weight-normal;
+    }
+
     .mktoButton {
-      @include btn(blue);
       margin-top: 0;
       margin-left: rem-calc(12);
     }

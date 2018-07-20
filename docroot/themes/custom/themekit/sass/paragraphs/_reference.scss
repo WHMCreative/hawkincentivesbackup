@@ -9,10 +9,9 @@
 }
 
 .paragraph--type--reference-marketo-form {
-  background: $blue-gradient-reverse;
   padding: rem-calc(18) rem-calc(20);
   border-radius: 3px;
-  color: $white;
+  color: $medium-gray;
 
   @include breakpoint(medium) {
     padding: rem-calc(36) rem-calc(42);
@@ -62,6 +61,22 @@
     }
   }
 
+
+  .field--name-field-p-content > & {
+    background: none;
+    >.paragraph-content {
+      @include content-width(narrow);
+    }
+  }
+
+  .mfp-content &,
+  .node--sidebar & {
+    background: $blue-gradient-reverse;
+    color: $white;
+  }
+
+
+  // Subscribe form
   .block--component & {
     background: $gray-gradient;
     @include paragraph-margins((small: 0));
@@ -70,6 +85,22 @@
     >.paragraph-content {
       @include content-width(default);
     }
+  }
+
+  &.form-id--1351 {
+    @include top-bottom(padding, 100px);
+    .marketo-steps-wrapper {
+      .mktoForm {
+        display: flex;
+        max-width: rem-calc(430);
+        margin: 0 auto;
+
+        .mktoFieldEmail {
+          flex-grow: 1;
+        }
+      }
+    }
+
   }
 }
 

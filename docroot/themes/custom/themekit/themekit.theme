@@ -247,6 +247,15 @@ function themekit_preprocess_paragraph_media_video_modal(&$variables) {
   }
 }
 
+function themekit_preprocess_paragraph_reference_marketo_form(&$variables) {
+  $paragraph = $variables['paragraph'];
+
+  if (!empty($paragraph->field_marketo_form->entity)) {
+    $form = $paragraph->field_marketo_form->entity;
+    $variables['attributes']['class'][] = 'form-id--' . $form->marketo_form_id->value;
+  }
+}
+
 /**
  * Implements template_preprocess_media().
  */

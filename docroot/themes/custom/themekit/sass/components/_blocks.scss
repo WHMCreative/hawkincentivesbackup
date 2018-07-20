@@ -34,22 +34,3 @@
     }
   }
 }
-
-#block-subscribeblock {
-
-  .paragraph--type--reference-marketo-form {
-    @include top-bottom(padding, 100px);
-  }
-
-  .marketo-steps-wrapper {
-    .mktoForm {
-      display: flex;
-      max-width: rem-calc(430);
-      margin: 0 auto;
-
-      .mktoFieldEmail {
-        flex-grow: 1;
-      }
-    }
-  }
-}
