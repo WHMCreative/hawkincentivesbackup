@@ -1,0 +1,10 @@
+uuid: 92db558a-f842-42c3-8e09-e5decad20ac1
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+id: taxonomy_term.featured_big_teaser
+label: 'Featured Big Teaser'
+targetEntityType: taxonomy_term
+cache: true

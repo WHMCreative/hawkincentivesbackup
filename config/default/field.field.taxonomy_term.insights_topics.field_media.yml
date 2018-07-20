@@ -1,0 +1,28 @@
+uuid: fd9b19ee-37bf-46ad-978c-dd766e307f29
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_media
+    - media_entity.bundle.image
+    - taxonomy.vocabulary.insights_topics
+id: taxonomy_term.insights_topics.field_media
+field_name: field_media
+entity_type: taxonomy_term
+bundle: insights_topics
+label: Media
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

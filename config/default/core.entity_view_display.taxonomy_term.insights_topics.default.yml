@@ -1,0 +1,31 @@
+uuid: c7b6c00a-7ec4-4bb9-8068-b14c4ebc5a22
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.insights_topics.field_media
+    - taxonomy.vocabulary.insights_topics
+  module:
+    - text
+id: taxonomy_term.insights_topics.default
+targetEntityType: taxonomy_term
+bundle: insights_topics
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_media:
+    weight: 1
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+hidden:
+  langcode: true

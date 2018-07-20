@@ -73,9 +73,11 @@ set classes = [
 ) %}
 
 <div{{ attributes.addClass(classes) }}>
-  {#{% if bg_image %}#}
+  {% if image_inline_style %}
     <div class="bg-container" {{ image_inline_style|raw }}></div>
-  {#{% endif %}#}
+  {% elseif topic_image %}
+    <div class="bg-container" {{ topic_image|raw }}></div>
+  {% endif %}
   <div class="paragraph-content{% if additional_content_type in additional_content_below %} has-additional-content-section{% endif %}">
     {% if insight_type %}
       <div class="insight-type">{{ insight_type }}</div>

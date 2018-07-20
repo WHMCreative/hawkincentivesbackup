@@ -99,7 +99,18 @@ view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
 <article{{ attributes.addClass(classes) }} data-id="{{ node.id }}">
 
   <div class="node--image">
-    {{ content.field_teaser_image }}
+    {% if content.field_teaser_image|render %}
+      {{ content.field_teaser_image }}
+    {% elseif header_image|render %}
+      {{ header_image }}
+    {% elseif topic_image %}
+      {{ topic_image }}
+    {% else %}
+      <div class="default-insight-image">
+        <img src="/{{ base_path ~ directory }}/images/insight-default-image.jpg" alt="Inisght" />
+      </div>
+    {% endif %}
+
     {{ content.field_insight_type }}
   </div>
 

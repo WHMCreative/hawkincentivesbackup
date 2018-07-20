@@ -76,6 +76,7 @@ function themekit_preprocess_node_people(&$variables) {
 function themekit_preprocess_node_insight(&$variables) {
   /** @var \Drupal\node\NodeInterface $node */
   $node = $variables['node'];
+  $view_mode = $variables['view_mode'];
 
   // Get correct heading for unlocked view mode.
   if (isset($variables['content']['field_p_header'])) {
@@ -94,10 +95,42 @@ function themekit_preprocess_node_insight(&$variables) {
     }
   }
 
+  // Get Banner Image
   if(!empty($node->field_p_header->getValue())) {
     $header_p = $node->field_p_header->entity;
     $view_builder = \Drupal::entityTypeManager()->getViewBuilder('paragraph');
-    $variables['header_image'] = $view_builder->viewField($header_p->field_media, 'teaser');
+    switch ($view_mode) {
+      case 'teaser':
+        $variables['header_image'] = $view_builder->viewField($header_p->field_media, 'teaser');
+        break;
+      case 'featured':
+        $variables['header_image'] = $view_builder->viewField($header_p->field_media, 'featured_teaser');
+        break;
+      case 'compact':
+        $variables['header_image'] = $view_builder->viewField($header_p->field_media, 'featured_big_teaser');
+        break;
+    }
+  }
+
+  // Get topic image
+  if (!empty($term = $node->field_insight_topic->getValue())) {
+    $topic = Term::load($term[0]['target_id']);
+    if ($topic && !empty($topic->field_media->getValue())) {
+      $view_builder = \Drupal::entityTypeManager()->getViewBuilder('taxonomy_term');
+
+      switch ($view_mode) {
+        case 'teaser':
+          $variables['topic_image'] = $view_builder->viewField($topic->field_media, 'teaser');
+          break;
+        case 'featured':
+          $variables['topic_image'] = $view_builder->viewField($topic->field_media, 'featured_teaser');
+          break;
+        case 'compact':
+          $variables['topic_image'] = $view_builder->viewField($topic->field_media, 'featured_big_teaser');
+          break;
+      }
+
+    }
   }
 
   if (isset($heading)) {
@@ -542,6 +575,14 @@ function themekit_get_insight_data(NodeInterface $node, &$variables) {
         $variables['insight_date'] = \Drupal::service('date.formatter')->format($node->getCreatedTime(), 'custom', 'M j, Y');
       }
 
+    }
+
+    // Get topic image
+    if (!empty($term = $node->field_insight_topic->getValue())) {
+      $topic = Term::load($term[0]['target_id']);
+      if ($topic && !empty($topic->field_media->getValue())) {
+        $variables['topic_image'] = themekit_get_entity_image_inline_style($topic, 'field_media', 'banner_hero');
+      }
     }
   }
 }

@@ -1,21 +1,20 @@
-uuid: f6b443b7-d445-4d4a-a0fa-f2ddc836726f
+uuid: 6a410ce9-98a6-4609-bb7c-8200370ef941
 langcode: en
 status: true
 dependencies:
   config:
     - entity_browser.browser.image
-    - field.field.paragraph.media_image.field_media_image
-    - paragraphs.paragraphs_type.media_image
+    - field.field.taxonomy_term.insights_topics.field_media
+    - taxonomy.vocabulary.insights_topics
   module:
-    - content_moderation
     - entity_browser
-id: paragraph.media_image.default
-targetEntityType: paragraph
-bundle: media_image
+id: taxonomy_term.insights_topics.default
+targetEntityType: taxonomy_term
+bundle: insights_topics
 mode: default
 content:
-  field_media_image:
-    weight: 101
+  field_media:
+    weight: 1
     settings:
       entity_browser: image
       field_widget_display: rendered_entity
@@ -28,13 +27,15 @@ content:
     third_party_settings: {  }
     type: entity_browser_entity_reference
     region: content
-  moderation_state:
-    type: moderation_state_default
-    weight: 100
-    settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
     region: content
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
 hidden:
-  created: true
-  status: true
-  uid: true
+  description: true
+  langcode: true
+  path: true

@@ -103,11 +103,14 @@ view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
         {{ content.field_teaser_image }}
       {% elseif header_image|render %}
         {{ header_image }}
+      {% elseif topic_image %}
+        {{ topic_image }}
       {% else %}
         <div class="default-insight-image">
           <img src="/{{ base_path ~ directory }}/images/insight-default-image.jpg" alt="Inisght" />
         </div>
       {% endif %}
+
       {{ content.field_insight_type }}
     </div>
 
