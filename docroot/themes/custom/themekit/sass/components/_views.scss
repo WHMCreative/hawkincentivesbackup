@@ -2,6 +2,10 @@
 /// Views
 ////
 
+
+.block-views-blocknews-block-news {
+  @include content-width(default);
+}
 .view-news {
   &.view-display-id-block_news {
     @include breakpoint(marge) {
