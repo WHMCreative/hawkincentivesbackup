@@ -140,6 +140,7 @@
     /* Cards */
     > .cards {
       @include top-bottom(padding, rem-calc(50));
+      flex-grow: 1;
 
       @include breakpoint(marge) {
         padding-left: rem-calc(50);

@@ -1,11 +1,11 @@
-webpackJsonp([3],{
+webpackJsonp([4],{
 
-/***/ 60:
+/***/ 185:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ })
 
-},[60]);
+},[185]);
 //# sourceMappingURL=wysiwyg.js.map

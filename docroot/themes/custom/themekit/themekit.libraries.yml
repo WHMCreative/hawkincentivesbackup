@@ -23,6 +23,7 @@ themekit:
   version: VERSION
   js:
     dist/commons.js: {}
+    dist/babel-polyfill.js: {}
     dist/whatwg-fetch.js: {}
     dist/themekit.js: {}
   css:
