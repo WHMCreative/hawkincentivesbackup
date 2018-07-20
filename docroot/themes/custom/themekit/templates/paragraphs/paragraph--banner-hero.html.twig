@@ -77,6 +77,8 @@ set classes = [
     <div class="bg-container" {{ image_inline_style|raw }}></div>
   {% elseif topic_image %}
     <div class="bg-container" {{ topic_image|raw }}></div>
+  {% else %}
+    <div class="bg-container"></div>
   {% endif %}
   <div class="paragraph-content{% if additional_content_type in additional_content_below %} has-additional-content-section{% endif %}">
     {% if insight_type %}
