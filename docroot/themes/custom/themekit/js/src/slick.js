@@ -64,23 +64,28 @@ Drupal.behaviors.slickCustom = {
       let tabNavElementNumbers = '',
           tabNavElementLabels = '',
           currentContainer = container,
-          labels = currentContainer.find(labelSelector);
+          labels = currentContainer.find(labelSelector),
+          currentSlideIndex = currentContainer.find('.slick-current').index(),
+          navContainer = currentContainer.next(navSelector);
 
-      labels.each((i, el) => {
-        tabNavElementNumbers += `<span>${i + 1}/${labels.length}</span>`;
-        tabNavElementLabels += `<span>${$(el).text()}</span>`;
-      });
+      if (!navContainer.find('.slick-counter-numbers').length &&
+          !navContainer.find('.slick-counter-labels').length)
+      {
+        labels.each((i, el) => {
+          tabNavElementNumbers += `<span>${i + 1}/${labels.length}</span>`;
+          tabNavElementLabels += `<span>${$(el).text()}</span>`;
+        });
 
-      if (!currentContainer.find('.slick-counter-numbers').length) {
-        currentContainer.next(navSelector).prepend(`<div class="slick-counter-numbers">${tabNavElementNumbers}</div>`);
-      }
-      if (!currentContainer.find('.slick-counter-labels').length) {
-        currentContainer.next(navSelector).prepend(`<div class="slick-counter-labels">${tabNavElementLabels}</div>`);
+        navContainer.prepend(`<div class="slick-counter-numbers">${tabNavElementNumbers}</div>`);
+        navContainer.prepend(`<div class="slick-counter-labels">${tabNavElementLabels}</div>`);
       }
 
       // Init
-      $('.slick-counter-numbers span:nth-of-type(1)').addClass('active');
-      $('.slick-counter-labels span:nth-of-type(1)').addClass('active');
+      navContainer.find('.slick-counter-numbers span').removeClass('active');
+      navContainer.find('.slick-counter-labels span').removeClass('active');
+
+      navContainer.find('.slick-counter-numbers span').eq(currentSlideIndex).addClass('active');
+      navContainer.find('.slick-counter-labels span').eq(currentSlideIndex).addClass('active');
     };
 
     /**
@@ -144,7 +149,7 @@ Drupal.behaviors.slickCustom = {
     });
 
     $(window).on('load resize orientationchange', () => {
-      if ($(window).width() <= 800 && !$('.slick-counter-numbers').length) {
+      if ($(window).width() <= 800) {
         tabContainer.each((indexTabContainer, elemTabContainer) => {
           let elementTC = $(elemTabContainer);
 
@@ -191,11 +196,22 @@ Drupal.behaviors.mediaTile = {
 
       $this.on('init reInit afterChange', function(event, slick, currentSlide, nextSlide) {
         let $count = $this.find('.slick-counter'),
-          i = (currentSlide ? currentSlide : 0) + 1;
-        if ($count.length == 0) {
-          $this.find('> .paragraph-content').append('<div class="slick-counter">' + i + '/' + slick.slideCount + '</div>');
+          i = currentSlide ? currentSlide : 0,
+          counterElements = '';
+
+        if (!$count.length) {
+          for (let n = 1; n <= slick.slideCount; n++) {
+            if (n === 1) {
+              counterElements += `<span class="active">${n}/${slick.slideCount}</span>`;
+            } else
+            counterElements += `<span>${n}/${slick.slideCount}</span>`;
+          }
+          $this.find('> .paragraph-content').append('<div class="slick-counter">' + counterElements + '</div>');
+          $count.find('span').eq(i).addClass('active');
         }
-        $count.text(i + '/' + slick.slideCount);
+
+        $count.find('span').removeClass('active');
+        $count.find('span').eq(i).addClass('active');
       });
 
       $(window).on('load resize orientationchange', function() {
