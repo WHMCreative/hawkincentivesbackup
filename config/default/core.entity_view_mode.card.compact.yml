@@ -1,0 +1,10 @@
+uuid: cba2937d-c0cd-4b9c-90e1-9b64d140a62d
+langcode: en
+status: true
+dependencies:
+  module:
+    - bhk_card_browser
+id: card.compact
+label: Compact
+targetEntityType: card
+cache: true
