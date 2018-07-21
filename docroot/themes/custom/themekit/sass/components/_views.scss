@@ -109,3 +109,15 @@
     }
   }
 }
+
+
+.view-people {
+  @include content-width(default);
+  .view-content {
+    @include paragraph-margins();
+
+    @include breakpoint(marge) {
+      @include tk-flex-block-grid(2, '.views-row');
+    }
+  }
+}

@@ -21,4 +21,5 @@ settings:
   plugin_ids:
     'block_content:406b4e34-6106-4cbb-b6f0-ab5b7c43fd95': 'block_content:406b4e34-6106-4cbb-b6f0-ab5b7c43fd95'
     'views_block:news-block_news': 'views_block:news-block_news'
+    'views_block:people-block_people': 'views_block:people-block_people'
 field_type: block_field
