@@ -11,6 +11,7 @@ dependencies:
 third_party_settings:
   allowed_formats:
     limited_rich_text: limited_rich_text
+    heading: '0'
     rich_text: '0'
     plain_text: '0'
     html: '0'
@@ -20,7 +21,7 @@ entity_type: paragraph
 bundle: simple_media_tile
 label: Description
 description: ''
-required: true
+required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''

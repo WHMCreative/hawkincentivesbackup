@@ -5,7 +5,6 @@ dependencies:
   config:
     - field.storage.paragraph.field_bg_color
     - paragraphs.paragraphs_type.layout_grid
-    - taxonomy.vocabulary.display_settings
 id: paragraph.layout_grid.field_bg_color
 field_name: field_bg_color
 entity_type: paragraph
@@ -17,13 +16,10 @@ translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
-  handler: 'default:taxonomy_term'
+  handler: views
   handler_settings:
-    target_bundles:
-      display_settings: display_settings
-    sort:
-      field: name
-      direction: asc
-    auto_create: false
-    auto_create_bundle: ''
+    view:
+      view_name: display_settings
+      display_name: colors_gray
+      arguments: {  }
 field_type: entity_reference

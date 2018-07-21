@@ -238,6 +238,18 @@ function themekit_preprocess_paragraph_layout_2_column(&$variables) {
   }
 }
 
+function themekit_preprocess_paragraph_layout_grid(&$variables) {
+  $paragraph = $variables['paragraph'];
+
+  $variables['column_count'] = $paragraph->field_column_count->value;
+
+  if ($paragraph->hasField('field_component_bg_color')) {
+    $bg_color = themekit_get_term_slug($paragraph, 'field_component_bg_color');
+    $variables['component_bg_color'] = (!empty($bg_color)) ? 'component-bg-color-' . $bg_color : '';
+  }
+
+}
+
 function themekit_preprocess_paragraph_media_video_modal(&$variables) {
   $paragraph = $variables['paragraph'];
 
@@ -253,6 +265,15 @@ function themekit_preprocess_paragraph_reference_marketo_form(&$variables) {
   if (!empty($paragraph->field_marketo_form->entity)) {
     $form = $paragraph->field_marketo_form->entity;
     $variables['attributes']['class'][] = 'form-id--' . $form->marketo_form_id->value;
+  }
+}
+
+function themekit_preprocess_paragraph_simple_media_tile(&$variables) {
+  $paragraph = $variables['paragraph'];
+
+  if($paragraph->hasField('field_link') && !empty($paragraph->field_link->getValue())) {
+
+    $variables['url'] = $paragraph->field_link->first()->getUrl();
   }
 }
 
@@ -278,29 +299,42 @@ function themekit_preprocess_paragraph_media_image(&$variables) {
   // Identify the implementing bundle and use any additional conditions as well and add either `image_inline_style` or `custom_image_style` var
   $parent = $paragraph->getParentEntity();
   if ($parent->getEntityTypeId() === 'paragraph') {
+    $media = $uri = $paragraph->field_media_image->entity->field_image;
+    $uri = $media->entity->getFileUri();
+    $alt = $media->first()->get('alt')->getString();
+
     switch ($parent->getType()) {
       case 'simple_stat':
-        $uri = $paragraph->field_media_image->entity->field_image->entity->getFileUri();
         $variables['custom_image_style'] = [
           '#theme' => 'image_style',
           '#style_name' => 'stat',
           '#uri' => $uri,
+          '#alt' => $alt,
         ];
         break;
       case 'simple_icon_content':
-        $uri = $paragraph->field_media_image->entity->field_image->entity->getFileUri();
         $variables['custom_image_style'] = [
           '#theme' => 'image_style',
           '#style_name' => 'thumbnail',
           '#uri' => $uri,
+          '#alt' => $alt,
         ];
         break;
       case 'layout_2_column':
-        $uri = $paragraph->field_media_image->entity->field_image->entity->getFileUri();
         $variables['custom_image_style'] = [
           '#theme' => 'image_style',
           '#style_name' => 'half_column',
           '#uri' => $uri,
+          '#alt' => $alt,
+        ];
+        break;
+
+      case 'simple_media_tile':
+        $variables['custom_image_style'] = [
+          '#theme' => 'image_style',
+          '#style_name' => 'third_column',
+          '#uri' => $uri,
+          '#alt' => $alt,
         ];
         break;
     }
@@ -401,6 +435,7 @@ function themekit_theme_suggestions_field_alter(array &$suggestions, array $vari
       case 'compound_content_bar':
       case 'compound_media_title_bar':
       case 'layout_2_column':
+      case 'layout_grid':
       case 'simple_cta':
       case 'simple_content':
       array_unshift($suggestions, 'field__heading_2');

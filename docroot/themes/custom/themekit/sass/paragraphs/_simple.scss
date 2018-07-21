@@ -307,7 +307,6 @@
           }
         }
       }
-
     }
 
     .content {
@@ -333,6 +332,109 @@
       @include link(default);
       display: block;
       margin-top: rem-calc(16);
+    }
+  }
+
+  .paragraph--type--compound-media-title-bar & {
+
+  }
+
+  .paragraph--type--layout-grid & {
+
+    & > .paragraph-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      &:after {
+        transition: transform 250ms;
+      }
+    }
+    .field--name-field-heading {
+      font-size: rem-calc(16);
+      font-weight: $global-weight-normal;
+      margin-bottom: 0;
+    }
+    .field--name-field-p-media {
+      margin-bottom: rem-calc(16);
+
+      .paragraph--type--media-image {
+        top: 0;
+        box-shadow: none;
+        display: inline-block;
+        margin-bottom: 0;
+
+        img {
+          max-height: rem-calc(25);
+        }
+
+        div {
+          display: inline-block;
+        }
+      }
+
+      .paragraph--type--media-svg {
+
+        svg {
+          height: rem-calc(25);
+        }
+
+        // Allow height to be used on svg in IE 11
+        .no-cssfilters & {
+          .svg-container {
+            padding-top: 0 !important;
+            height: auto;
+            svg {
+              padding-top: 0;
+              position: relative;
+            }
+          }
+        }
+      }
+    }
+    @include selectors(active) {
+      & > .paragraph-content {
+        .field--name-field-heading {
+          font-weight: $global-weight-bold;
+        }
+        &:after {
+          transform: translate(-14px, -14px);
+        }
+      }
+    }
+  }
+
+  .paragraph--type--layout-grid.component-bg-color-blue & {
+    & > .paragraph-content {
+      background: $secondary-color-dark;
+      box-shadow: none;
+    }
+
+    .field--name-field-heading {
+      color: $white;
+    }
+
+    @include selectors(active) {
+      & > .paragraph-content {
+        background: $blue-gradient-reverse;
+      }
+    }
+  }
+
+  .paragraph--type--layout-grid.component-bg-color-green & {
+    & > .paragraph-content {
+      background: $primary-color;
+      box-shadow: none;
+    }
+
+    .field--name-field-heading {
+      color: $white;
+    }
+
+    @include selectors(active) {
+      & > .paragraph-content {
+        background: $blue-gradient-reverse;
+      }
     }
   }
 }

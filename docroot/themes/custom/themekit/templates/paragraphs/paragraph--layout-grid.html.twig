@@ -51,28 +51,19 @@
 set classes = [
 'paragraph',
 'paragraph--type--' ~ paragraph.bundle|clean_class,
-view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class
+view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+'column-count-' ~ column_count,
+bg_status,
+bg_color,
+color_scheme,
+component_bg_color
 ]
 %}
 
-{% set rendered_content = content|without(
-'field_p_media',
-'field_link'
-) %}
+{% set rendered_content = content|without('') %}
 
-{% if url %}
-  <a href="{{ url }}" {{ attributes.addClass(classes) }}>
-{% else %}
-  <div{{ attributes.addClass(classes) }}>
-{% endif %}
+<div{{ attributes.addClass(classes) }}>
   <div class="paragraph-content">
-    {{ content.field_p_media }}
-    <div class="content">
-      {{ rendered_content }}
-    </div>
+    {{ rendered_content }}
   </div>
-{% if url %}
-  </a>
-{% else %}
-  </div>
-{% endif %}
+</div>
