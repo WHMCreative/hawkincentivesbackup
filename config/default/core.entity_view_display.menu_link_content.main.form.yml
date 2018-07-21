@@ -1,42 +1,33 @@
-uuid: 0878ceae-00d8-461d-9299-5fcc575f8f79
+uuid: b6cbec75-0db9-4b9c-9449-f1107bad8511
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.menu_link_content.form
     - field.field.menu_link_content.main.field_cta
     - field.field.menu_link_content.main.field_description
     - field.field.menu_link_content.main.field_form
     - field.field.menu_link_content.main.field_media_image
     - system.menu.main
   module:
-    - text
-id: menu_link_content.main.default
+    - entity_reference_revisions
+id: menu_link_content.main.form
 targetEntityType: menu_link_content
 bundle: main
-mode: default
+mode: form
 content:
-  children:
-    weight: 1
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  field_description:
-    weight: 2
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    type: text_default
-    region: content
-  field_media_image:
+  field_form:
+    type: entity_reference_revisions_entity_view
     weight: 0
     label: hidden
     settings:
-      view_mode: menu
-      link: false
+      view_mode: default
+      link: ''
     third_party_settings: {  }
-    type: entity_reference_entity_view
     region: content
 hidden:
+  children: true
   field_cta: true
-  field_form: true
+  field_description: true
+  field_media_image: true
   langcode: true

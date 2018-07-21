@@ -4,12 +4,16 @@
  */
 
 import $ from 'jquery';
+import { magnificPopup } from "magnific-popup/dist/jquery.magnific-popup";
 
 Drupal.behaviors.menuMain = {
   attach: function (context, settings) {
-    let $mainMenuItem = $('.menu-level-0 > li.menu-item--expanded', context),
-        $mainMenuItemLink = $('.menu-level-0 > li.menu-item--expanded > a', context),
-        $menuToggle = $('.region-header .menu-toggle');
+    let $header = $('.region-header', context);
+    if(!$header.length) return;
+
+    let $mainMenuItem = $header.find('.menu-level-0 > li.menu-item--expanded'),
+        $mainMenuItemLink = $header.find('.menu-level-0 > li.menu-item--expanded > a'),
+        $menuToggle = $header.find('.menu-toggle');
 
     $mainMenuItemLink.on('click', function (e) {
       e.preventDefault();
@@ -22,18 +26,10 @@ Drupal.behaviors.menuMain = {
       $parent.toggleClass('active');
     });
 
-    alignMenuDropdown();
-
-    $(window).on('changed.zf.mediaquery', function(event, newSize, oldSize) {
-      if (newSize === 'medium' || oldSize === 'medium') {
-        alignMenuDropdown();
-      }
-    });
-
     // hide dropdown when clicked outside
     $(document).once('document-click').on('click', function (e) {
-      let $acitveMenuItem = $('.menu-level-0 > li.active', context),
-          $menuMain = $('.menu--main', context);
+      let $acitveMenuItem = $header.find('.menu-level-0 > li.active'),
+          $menuMain = $header.find('.menu--main');
       if($acitveMenuItem.length && !$acitveMenuItem.has(e.target).length > 0) {
         $acitveMenuItem.removeClass('active');
       }
@@ -52,24 +48,36 @@ Drupal.behaviors.menuMain = {
       $('body').toggleClass('menu-open');
     });
 
+  }
 
-    function alignMenuDropdown() {
-      if (Foundation.MediaQuery.atLeast('large')) {
-        $mainMenuItemLink.each(function () {
-          if ($(this).hasClass('align-second-column')) {
-            let $menuLink = $(this),
-              $firstItemWidth = $('.menu-level-0 > li:first-child', context).outerWidth(true);
-            $menuLink.parent().addClass('static');
-            $menuLink.next().addClass('align-second-column').css('left', $firstItemWidth - 5);
-          }
+};
+
+Drupal.behaviors.menuFeaturedItems = {
+  attach: function (context, settings) {
+
+    // Copy featured button for mobile use
+    let $header = $('.region-inner', context);
+    if(!$header.length) return;
+
+    let $featuredItem = $header.find('.featured-item .menu_link_content').clone();
+
+    let $link = $featuredItem.find('a.marketo-modal-cta-link');
+
+    $link.on('click', function(e) {
+      let $parent_paragraph = $(this).parents('.paragraph--type--link-form-modal'),
+        $modalSrc = $parent_paragraph.find('.paragraph--type--reference-marketo-form');
+      if ($modalSrc.length) {
+        $.magnificPopup.open({
+          items: {
+            src: $modalSrc,
+            type: 'inline'
+          },
+          closeBtnInside: true,
         });
-      } else {
-        let $alignSecondColumnDropdown = $('.menu-level-0 > li .menu-dropdown.align-second-column', context);
-        if($alignSecondColumnDropdown.length) {
-          $alignSecondColumnDropdown.css('left', '').removeClass('align-second-column');
-        }
       }
-    }
+      e.preventDefault();
+    });
 
+    $header.append($featuredItem);
   }
 };

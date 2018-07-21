@@ -6,6 +6,7 @@ dependencies:
     - entity_browser.browser.image
     - field.field.menu_link_content.main.field_cta
     - field.field.menu_link_content.main.field_description
+    - field.field.menu_link_content.main.field_form
     - field.field.menu_link_content.main.field_media_image
     - system.menu.main
   module:
@@ -42,8 +43,23 @@ content:
     third_party_settings: {  }
     type: text_textarea
     region: content
-  field_media_image:
+  field_form:
+    type: entity_reference_paragraphs_browser
     weight: 4
+    settings:
+      title: Form
+      title_plural: Form
+      edit_mode: open
+      add_mode: paragraphs_browser
+      form_display_mode: default
+      default_paragraph_type: link_form_modal
+      paragraphs_browser: browser
+      modal_width: 80%
+      modal_height: auto
+    third_party_settings: {  }
+    region: content
+  field_media_image:
+    weight: 5
     settings:
       entity_browser: image
       field_widget_display: rendered_entity

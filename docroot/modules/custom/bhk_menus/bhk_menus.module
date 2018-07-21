@@ -50,4 +50,10 @@ function bhk_menus_form_menu_link_content_main_form_alter(&$form, FormStateInter
       ['select[name="view_mode[0][value]"]' => ['value' => 'default']],
     ],
   ];
+
+  $form['field_form']['#states'] = [
+    'visible' => [
+      ['select[name="view_mode[0][value]"]' => ['value' => 'form']],
+    ],
+  ];
 }

@@ -1,0 +1,133 @@
+uuid: 382eb045-7ba5-4507-be2a-ccf4443198a8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.menu_link_content.field_form
+    - paragraphs.paragraphs_type.link_form_modal
+    - system.menu.main
+  module:
+    - entity_reference_revisions
+id: menu_link_content.main.field_form
+field_name: field_form
+entity_type: menu_link_content
+bundle: main
+label: Form
+description: 'Content added here will override the <strong>Menu link title </strong> and <strong>Link</strong>.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      link_form_modal: link_form_modal
+    target_bundles_drag_drop:
+      banner_featured_insights:
+        weight: 36
+        enabled: false
+      banner_hero:
+        weight: 37
+        enabled: false
+      compound_callout:
+        weight: 38
+        enabled: false
+      compound_content_bar:
+        weight: 39
+        enabled: false
+      compound_media_title_bar:
+        weight: 40
+        enabled: false
+      compound_slider:
+        weight: 41
+        enabled: false
+      compound_stat_bar:
+        weight: 42
+        enabled: false
+      compound_tabbed_content:
+        weight: 43
+        enabled: false
+      layout_2_column:
+        weight: 44
+        enabled: false
+      layout_grid:
+        weight: 45
+        enabled: false
+      link_file:
+        weight: 46
+        enabled: false
+      link_form_modal:
+        enabled: true
+        weight: 47
+      link_url:
+        weight: 48
+        enabled: false
+      marketo_hidden_field:
+        weight: 49
+        enabled: false
+      marketo_submission_confirmation:
+        weight: 50
+        enabled: false
+      media_image:
+        weight: 51
+        enabled: false
+      media_image_slider:
+        weight: 52
+        enabled: false
+      media_svg:
+        weight: 53
+        enabled: false
+      media_video:
+        weight: 54
+        enabled: false
+      media_video_modal:
+        weight: 55
+        enabled: false
+      microquiz_conditional:
+        weight: 56
+        enabled: false
+      microquiz_question:
+        weight: 57
+        enabled: false
+      microquiz_quiz:
+        weight: 58
+        enabled: false
+      reference_block:
+        weight: 59
+        enabled: false
+      reference_card_browser:
+        weight: 60
+        enabled: false
+      reference_featured_insight:
+        weight: 61
+        enabled: false
+      reference_marketo_form:
+        weight: 62
+        enabled: false
+      simple_content:
+        weight: 63
+        enabled: false
+      simple_cta:
+        weight: 64
+        enabled: false
+      simple_icon_content:
+        weight: 65
+        enabled: false
+      simple_media_bar:
+        weight: 66
+        enabled: false
+      simple_media_tile:
+        weight: 67
+        enabled: false
+      simple_stat:
+        weight: 68
+        enabled: false
+      summary_cards:
+        weight: 69
+        enabled: false
+      summary_insights:
+        weight: 70
+        enabled: false
+field_type: entity_reference_revisions

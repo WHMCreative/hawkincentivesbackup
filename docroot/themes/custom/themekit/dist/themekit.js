@@ -9048,13 +9048,23 @@ var _jquery = __webpack_require__(6);
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
+var _jquery3 = __webpack_require__(110);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * @file
+ * Menu
+ */
 
 Drupal.behaviors.menuMain = {
   attach: function attach(context, settings) {
-    var $mainMenuItem = (0, _jquery2.default)('.menu-level-0 > li.menu-item--expanded', context),
-        $mainMenuItemLink = (0, _jquery2.default)('.menu-level-0 > li.menu-item--expanded > a', context),
-        $menuToggle = (0, _jquery2.default)('.region-header .menu-toggle');
+    var $header = (0, _jquery2.default)('.region-header', context);
+    if (!$header.length) return;
+
+    var $mainMenuItem = $header.find('.menu-level-0 > li.menu-item--expanded'),
+        $mainMenuItemLink = $header.find('.menu-level-0 > li.menu-item--expanded > a'),
+        $menuToggle = $header.find('.menu-toggle');
 
     $mainMenuItemLink.on('click', function (e) {
       e.preventDefault();
@@ -9067,18 +9077,10 @@ Drupal.behaviors.menuMain = {
       $parent.toggleClass('active');
     });
 
-    alignMenuDropdown();
-
-    (0, _jquery2.default)(window).on('changed.zf.mediaquery', function (event, newSize, oldSize) {
-      if (newSize === 'medium' || oldSize === 'medium') {
-        alignMenuDropdown();
-      }
-    });
-
     // hide dropdown when clicked outside
     (0, _jquery2.default)(document).once('document-click').on('click', function (e) {
-      var $acitveMenuItem = (0, _jquery2.default)('.menu-level-0 > li.active', context),
-          $menuMain = (0, _jquery2.default)('.menu--main', context);
+      var $acitveMenuItem = $header.find('.menu-level-0 > li.active'),
+          $menuMain = $header.find('.menu--main');
       if ($acitveMenuItem.length && !$acitveMenuItem.has(e.target).length > 0) {
         $acitveMenuItem.removeClass('active');
       }
@@ -9095,29 +9097,39 @@ Drupal.behaviors.menuMain = {
     $menuToggle.once('menu-toggle').on('click', function (e) {
       (0, _jquery2.default)('body').toggleClass('menu-open');
     });
-
-    function alignMenuDropdown() {
-      if (Foundation.MediaQuery.atLeast('large')) {
-        $mainMenuItemLink.each(function () {
-          if ((0, _jquery2.default)(this).hasClass('align-second-column')) {
-            var $menuLink = (0, _jquery2.default)(this),
-                $firstItemWidth = (0, _jquery2.default)('.menu-level-0 > li:first-child', context).outerWidth(true);
-            $menuLink.parent().addClass('static');
-            $menuLink.next().addClass('align-second-column').css('left', $firstItemWidth - 5);
-          }
-        });
-      } else {
-        var $alignSecondColumnDropdown = (0, _jquery2.default)('.menu-level-0 > li .menu-dropdown.align-second-column', context);
-        if ($alignSecondColumnDropdown.length) {
-          $alignSecondColumnDropdown.css('left', '').removeClass('align-second-column');
-        }
-      }
-    }
   }
-}; /**
-    * @file
-    * Menu
-    */
+
+};
+
+Drupal.behaviors.menuFeaturedItems = {
+  attach: function attach(context, settings) {
+
+    // Copy featured button for mobile use
+    var $header = (0, _jquery2.default)('.region-inner', context);
+    if (!$header.length) return;
+
+    var $featuredItem = $header.find('.featured-item .menu_link_content').clone();
+
+    var $link = $featuredItem.find('a.marketo-modal-cta-link');
+
+    $link.on('click', function (e) {
+      var $parent_paragraph = (0, _jquery2.default)(this).parents('.paragraph--type--link-form-modal'),
+          $modalSrc = $parent_paragraph.find('.paragraph--type--reference-marketo-form');
+      if ($modalSrc.length) {
+        _jquery2.default.magnificPopup.open({
+          items: {
+            src: $modalSrc,
+            type: 'inline'
+          },
+          closeBtnInside: true
+        });
+      }
+      e.preventDefault();
+    });
+
+    $header.append($featuredItem);
+  }
+};
 
 /***/ }),
 

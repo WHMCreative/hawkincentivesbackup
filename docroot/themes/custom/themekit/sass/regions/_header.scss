@@ -90,7 +90,7 @@
         li {
           font-size: rem-calc(13);
           @include breakpoint(medium down) {
-            margin-bottom: 12px;
+            //margin-bottom: 12px;
           }
           @include breakpoint(marge) {
             margin-left: 20px;
@@ -114,6 +114,8 @@
 
     // Main menu
     .menu--main {
+      flex-grow: 1;
+      //Mobile
       @include breakpoint(medium down) {
         position: fixed;
         z-index: z(header, menu);
@@ -157,6 +159,7 @@
 
           @include breakpoint(marge) {
             display: flex;
+            align-items: center;
             position: relative;
             z-index: z(header, menu);
           }
@@ -168,11 +171,30 @@
             @include breakpoint(marge) {
               margin-left: 30px;
             }
+
+            &.featured-item {
+              display: none;
+              margin-left: auto;
+              @include breakpoint(marge) {
+                display: block;
+              }
+            }
+
             &.menu-item--expanded {
-              @include breakpoint(large) {
                 position: relative;
-                &.static {
-                  position: static;
+
+              &.align-second-column {
+                .menu_link_content {
+
+                  @include breakpoint(marge) {
+                    left: -232px;
+                  }
+                  @include breakpoint(large) {
+                    left: -313px;
+                  }
+                  @include breakpoint(xlarge) {
+                    left: -333px;
+                  }
                 }
               }
               > .menu-dropdown {
@@ -192,7 +214,7 @@
                   box-shadow: 0 10px 15px rgba($black, 0.1);
                   padding: 35px;
                 }
-                @include breakpoint(large) {
+                @include breakpoint(marge) {
                   left: -35px;
                 }
               }
@@ -265,7 +287,7 @@
                 color: $dark-gray;
                 font-size: rem-calc(16);
                 line-height: 1.5;
-                font-weight: 700;
+                font-weight: $global-weight-bold;
 
                 &:hover {
                   color: $medium-gray;
@@ -376,5 +398,25 @@
       }
     }
 
+    // Form Buttons
+    .menu_link_content.view-mode-form {
+      a {
+        @include breakpoint(marge down) {
+          font-size: rem-calc(11);
+          padding: rem-calc(5 10);
+        }
+        @include btn(blue);
+      }
+    }
+
+    > .menu_link_content.view-mode-form {
+      position: absolute;
+      top: 9px;
+      right: 55px;
+
+      @include breakpoint(marge) {
+        display: none;
+      }
+    }
   }
 }
