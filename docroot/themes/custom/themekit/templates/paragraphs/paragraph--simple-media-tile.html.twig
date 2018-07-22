@@ -51,7 +51,8 @@
 set classes = [
 'paragraph',
 'paragraph--type--' ~ paragraph.bundle|clean_class,
-view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class
+view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+bg_image ? 'has-bg-image'
 ]
 %}
 
@@ -65,7 +66,7 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class
 {% else %}
   <div{{ attributes.addClass(classes) }}>
 {% endif %}
-  <div class="paragraph-content">
+  <div class="paragraph-content" {{ bg_image|raw }}>
     {{ content.field_p_media }}
     <div class="content">
       {{ rendered_content }}

@@ -6,18 +6,10 @@ dependencies:
     - core.entity_view_mode.paragraph.preview
     - field.field.paragraph.reference_block.field_block
     - paragraphs.paragraphs_type.reference_block
-  module:
-    - block_field
 id: paragraph.reference_block.preview
 targetEntityType: paragraph
 bundle: reference_block
 mode: preview
-content:
-  field_block:
-    weight: 0
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    type: block_field
-    region: content
-hidden: {  }
+content: {  }
+hidden:
+  field_block: true

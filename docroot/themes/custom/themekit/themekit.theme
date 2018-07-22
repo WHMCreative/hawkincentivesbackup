@@ -272,8 +272,11 @@ function themekit_preprocess_paragraph_simple_media_tile(&$variables) {
   $paragraph = $variables['paragraph'];
 
   if($paragraph->hasField('field_link') && !empty($paragraph->field_link->getValue())) {
-
     $variables['url'] = $paragraph->field_link->first()->getUrl();
+  }
+
+  if($paragraph->hasField('field_media') && !empty($paragraph->field_media->getValue())) {
+    $variables['bg_image'] = themekit_get_entity_image_inline_style($paragraph, 'field_media', 'third_column_bw');
   }
 }
 

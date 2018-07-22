@@ -261,6 +261,8 @@
 // Simple - Media Tile
 .paragraph--type--simple-media-tile {
   padding: rem-calc(20);
+  @include bg-style(cover);
+
   @include breakpoint(large) {
     padding: 0;
   }
@@ -271,6 +273,15 @@
     height: 100%;
     @include frame($secondary-color-light, 1px, 16px, 3px, $z-index: z(video-modal,flourish));
     position: relative;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
 
     .field--name-field-p-media {
       position: relative;
@@ -332,6 +343,15 @@
       @include link(default);
       display: block;
       margin-top: rem-calc(16);
+    }
+  }
+
+  &.has-bg-image {
+    & > .paragraph-content {
+
+      &:before {
+        opacity: 0.4;
+      }
     }
   }
 
@@ -406,8 +426,11 @@
 
   .paragraph--type--layout-grid.component-bg-color-blue & {
     & > .paragraph-content {
-      background: $secondary-color-dark;
       box-shadow: none;
+
+      &:before {
+        background: $secondary-color-dark;
+      }
     }
 
     .field--name-field-heading {
@@ -416,15 +439,20 @@
 
     @include selectors(active) {
       & > .paragraph-content {
-        background: $blue-gradient-reverse;
+        &:before {
+          background: $blue-gradient-reverse;
+        }
       }
     }
   }
 
   .paragraph--type--layout-grid.component-bg-color-green & {
     & > .paragraph-content {
-      background: $primary-color;
       box-shadow: none;
+
+      &:before {
+        background: $primary-color;
+      }
     }
 
     .field--name-field-heading {
@@ -433,7 +461,9 @@
 
     @include selectors(active) {
       & > .paragraph-content {
-        background: $blue-gradient-reverse;
+        &:before {
+          background: $blue-gradient-reverse;
+        }
       }
     }
   }

@@ -1,0 +1,20 @@
+uuid: cec09774-664f-4fbb-ab96-64b9c79ae198
+langcode: en
+status: true
+dependencies: {  }
+name: third_column_bw
+label: 'Third Column BW (400W)'
+effects:
+  43510c9e-d23c-449d-b340-fb990856767c:
+    uuid: 43510c9e-d23c-449d-b340-fb990856767c
+    id: image_scale
+    weight: 1
+    data:
+      width: 400
+      height: null
+      upscale: false
+  b920e1e3-c562-47d7-a76d-8981b02c532b:
+    uuid: b920e1e3-c562-47d7-a76d-8981b02c532b
+    id: image_desaturate
+    weight: 2
+    data: {  }
