@@ -5,27 +5,23 @@ dependencies:
   config:
     - field.field.paragraph.media_image_slider.field_label
     - field.field.paragraph.media_image_slider.field_media
+    - image.style.full_screen
     - paragraphs.paragraphs_type.media_image_slider
+  module:
+    - media_entity_image
 id: paragraph.media_image_slider.default
 targetEntityType: paragraph
 bundle: media_image_slider
 mode: default
 content:
-  field_label:
+  field_media:
     weight: 0
     label: hidden
     settings:
-      link_to_entity: false
+      image_style: full_screen
+      image_link: ''
     third_party_settings: {  }
-    type: string
+    type: media_image
     region: content
-  field_media:
-    weight: 1
-    label: hidden
-    settings:
-      link: true
-      view_mode: default
-    third_party_settings: {  }
-    type: entity_reference_entity_view
-    region: content
-hidden: {  }
+hidden:
+  field_label: true

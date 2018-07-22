@@ -205,7 +205,6 @@ function themekit_preprocess_paragraph_banner_hero(&$variables) {
   if ($paragraph->hasField('field_large_heading') && empty($paragraph->field_large_heading->value)) {
     $variables['attributes']['class'][] = 'only-heading-field';
   }
-
 }
 
 function themekit_preprocess_paragraph_compound_content_bar(&$variables) {
@@ -231,6 +230,29 @@ function themekit_preprocess_paragraph_compound_callout(&$variables) {
 
 }
 
+function themekit_preprocess_paragraph_compound_slider(&$variables) {
+  $paragraph = $variables['paragraph'];
+
+  if($paragraph->hasField('field_p_slider_content') && !empty($paragraph->field_p_slider_content->getValue())) {
+    $slides = $paragraph->field_p_slider_content->referencedEntities();
+
+    $labels['#prefix'] = '<ul class="slider-nav">';
+    $labels['#suffix'] = '</ul>';
+    foreach ($slides as $slide) {
+      if ($slide->bundle() == 'media_image_slider') {
+        if($slide->hasField('field_label') && !empty($slide->field_label->value)) {
+          $label['#plain_text'] = $slide->field_label->value;
+          $label['#prefix'] = '<li>';
+          $label['#suffix'] = '<div class="progress-bar"><span class="bar"></span></div></li>';
+          $labels[] = $label;
+        }
+      }
+    }
+
+    $variables['slider_nav'] = $labels;
+  }
+}
+
 function themekit_preprocess_paragraph_layout_2_column(&$variables) {
   $paragraph = $variables['paragraph'];
   if ($paragraph->hasField('field_width')) {
@@ -247,7 +269,6 @@ function themekit_preprocess_paragraph_layout_grid(&$variables) {
     $bg_color = themekit_get_term_slug($paragraph, 'field_component_bg_color');
     $variables['component_bg_color'] = (!empty($bg_color)) ? 'component-bg-color-' . $bg_color : '';
   }
-
 }
 
 function themekit_preprocess_paragraph_media_video_modal(&$variables) {
@@ -343,6 +364,14 @@ function themekit_preprocess_paragraph_media_image(&$variables) {
     }
   }
 }
+
+function themekit_preprocess_paragraph_media_image_slider(&$variables) {
+  /* @var $paragraph Drupal\paragraphs\Entity\Paragraph */
+  $paragraph = $variables['paragraph'];
+  $image_style = (isset($variables['content']['field_media'][0]['#image_style'])) ? $variables['content']['field_media'][0]['#image_style'] : NULL;
+  $variables['image_inline_style'] = themekit_get_entity_image_inline_style($paragraph, 'field_media', $image_style);
+}
+
 
 function themekit_preprocess_block(&$variables) {
   $plugin_id = $variables['plugin_id'];

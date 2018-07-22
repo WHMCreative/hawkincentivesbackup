@@ -277,6 +277,8 @@ __webpack_require__(181);
 
 __webpack_require__(183);
 
+__webpack_require__(463);
+
 /***/ }),
 
 /***/ 166:
@@ -10701,6 +10703,102 @@ Drupal.behaviors.emailManipulations = {
     * @file
     * Email manipulations
     */
+
+/***/ }),
+
+/***/ 463:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _jquery = __webpack_require__(6);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+var _slick = __webpack_require__(182);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * @file
+ * Slick
+ */
+Drupal.behaviors.heroSlider = {
+  attach: function attach(context, settings) {
+    var $content = (0, _jquery2.default)('.paragraph--type--compound-slider', context);
+    if (!$content.length) return;
+
+    var time = 5;
+
+    $content.each(function () {
+
+      var isPause = void 0,
+          tick = void 0,
+          percentTime = void 0,
+          $nav = $content.find('.slider-nav'),
+          $slides = $content.find('.field--name-field-p-slider-content');
+
+      // Init Nav
+      $nav.slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        asNavFor: '.field--name-field-p-slider-content',
+        dots: false,
+        focusOnSelect: true
+      });
+
+      // Init Slides
+      $slides.slick({
+        slidesToShow: 1,
+        arrows: false,
+        dots: false,
+        fade: true,
+        adaptiveHeight: false,
+        infinite: true
+      });
+
+      // Update nav for current slide
+      $slides.on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+        $nav.find('.slick-slide').removeClass('slick-current');
+        $nav.find('.slick-slide').eq(nextSlide).addClass('slick-current');
+      });
+
+      // Start the progress bar
+      function startProgressbar() {
+        resetProgressbar();
+        percentTime = 0;
+        isPause = false;
+        tick = setInterval(interval, 10);
+      }
+
+      // Animate progress bar based on time
+      function interval() {
+        if (isPause === false) {
+          percentTime += 1 / (time + 0.1);
+          $nav.find('.slick-current .progress-bar .bar').css({
+            width: percentTime + "%"
+          });
+          if (percentTime >= 100) {
+            $slides.slick('slickNext');
+            startProgressbar();
+          }
+        }
+      }
+
+      // Reset progress bar
+      function resetProgressbar() {
+        $nav.find('.progress-bar .bar').css({
+          width: 0 + '%'
+        });
+        clearTimeout(tick);
+      }
+
+      // Starts progress bar and timing for slides
+      startProgressbar();
+    });
+  }
+};
 
 /***/ }),
 
