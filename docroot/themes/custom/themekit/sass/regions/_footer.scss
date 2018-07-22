@@ -15,22 +15,7 @@ footer {
     }
     .region-footer-first {
       margin-right: 20px;
-      .clearfix {
-         p:first-child {
-           width: 211px;
-           height: 121px;
-           color: #ffffff;
-           font-size: 32px;
-           font-weight: 300;
-           line-height: 40px;
-         }
-        p + p {
-          a{
-            @include btn(white-with-hover);
-            margin-top: 10px;
-          }
-        }
-      }
+      flex: 0 0 25%;
 
       .menu--social {
         ul.menu {
