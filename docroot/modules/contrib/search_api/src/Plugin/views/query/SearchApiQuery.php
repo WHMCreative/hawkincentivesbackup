@@ -9,6 +9,7 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\Url;
 use Drupal\search_api\Entity\Index;
 use Drupal\search_api\LoggerTrait;
@@ -116,6 +117,13 @@ class SearchApiQuery extends QueryPluginBase {
   protected $moduleHandler;
 
   /**
+   * The messenger.
+   *
+   * @var \Drupal\Core\Messenger\MessengerInterface|null
+   */
+  protected $messenger;
+
+  /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
@@ -123,6 +131,7 @@ class SearchApiQuery extends QueryPluginBase {
     $plugin = parent::create($container, $configuration, $plugin_id, $plugin_definition);
 
     $plugin->setModuleHandler($container->get('module_handler'));
+    $plugin->setMessenger($container->get('messenger'));
     $plugin->setLogger($container->get('logger.channel.search_api'));
 
     return $plugin;
@@ -205,6 +214,29 @@ class SearchApiQuery extends QueryPluginBase {
    */
   public function setModuleHandler(ModuleHandlerInterface $module_handler) {
     $this->moduleHandler = $module_handler;
+    return $this;
+  }
+
+  /**
+   * Retrieves the messenger.
+   *
+   * @return \Drupal\Core\Messenger\MessengerInterface
+   *   The messenger.
+   */
+  public function getMessenger() {
+    return $this->messenger ?: \Drupal::service('messenger');
+  }
+
+  /**
+   * Sets the messenger.
+   *
+   * @param \Drupal\Core\Messenger\MessengerInterface $messenger
+   *   The new messenger.
+   *
+   * @return $this
+   */
+  public function setMessenger(MessengerInterface $messenger) {
+    $this->messenger = $messenger;
     return $this;
   }
 
@@ -427,7 +459,7 @@ class SearchApiQuery extends QueryPluginBase {
     if ($this->shouldAbort()) {
       if (error_displayable()) {
         foreach ($this->errors as $msg) {
-          drupal_set_message(Html::escape($msg), 'error');
+          $this->getMessenger()->addError(Html::escape($msg));
         }
       }
       $view->result = [];
@@ -465,10 +497,11 @@ class SearchApiQuery extends QueryPluginBase {
 
       // Store the results.
       if (!$skip_result_count) {
-        $view->pager->total_items = $view->total_rows = $results->getResultCount();
+        $view->pager->total_items = $results->getResultCount();
         if (!empty($view->pager->options['offset'])) {
           $view->pager->total_items -= $view->pager->options['offset'];
         }
+        $view->total_rows = $view->pager->total_items;
       }
       $view->result = [];
       if ($results->getResultItems()) {
@@ -679,8 +712,8 @@ class SearchApiQuery extends QueryPluginBase {
   /**
    * Retrieves the parse mode.
    *
-   * @return \Drupal\search_api\ParseMode\ParseModeInterface
-   *   The parse mode.
+   * @return \Drupal\search_api\ParseMode\ParseModeInterface|null
+   *   The parse mode, or NULL if the query was aborted.
    *
    * @see \Drupal\search_api\Query\QueryInterface::getParseMode()
    */

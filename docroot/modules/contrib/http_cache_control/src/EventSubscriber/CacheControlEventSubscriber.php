@@ -1,4 +1,5 @@
 <?php
+
 namespace Drupal\http_cache_control\EventSubscriber;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -6,7 +7,7 @@ use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
 
 /**
- * Subscriber for adding http cache ontrol headers.
+ * Subscriber for adding http cache control headers.
  */
 class CacheControlEventSubscriber implements EventSubscriberInterface {
 
@@ -38,7 +39,9 @@ class CacheControlEventSubscriber implements EventSubscriberInterface {
         break;
     }
 
-    // Allow modules that set thier own max age to retain it.
+    // Allow modules that set their own max age to retain it.
+    // If a response max-age is different to the page max-age
+    // then this suggests the max-age has already been manipulated.
     if ($max_age != $config->get('cache.page.max_age')) {
       $ttl = $max_age;
     }
