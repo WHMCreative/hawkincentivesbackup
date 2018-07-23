@@ -22,14 +22,24 @@
 
         & > .paragraph {
           margin: 0 8px;
-          a {
-            @include link(default);
-          }
 
-          &:nth-last-child(2) {
-            a {
-              @include btn(blue);
-            }
+          &:first-child {
+            margin-left: 0;
+          }
+        }
+
+        &.link-count-1 {
+          > .paragraph a {
+            @include btn(blue);
+          }
+        }
+
+        &.link-count-2 {
+          > .paragraph:first-child a {
+            @include btn(blue);
+          }
+          > .paragraph:nth-child(2) a {
+            @include link(default);
           }
         }
       }
@@ -47,14 +57,24 @@
 
       & > .paragraph {
         margin: 0 8px;
-        a {
+
+        &:first-child {
+          margin-left: 0;
+        }
+      }
+
+      &.link-count-1 {
+        > .paragraph a {
           @include link(default);
         }
+      }
 
-        &:nth-last-child(2) {
-          a {
-            @include btn(blue);
-          }
+      &.link-count-2 {
+        > .paragraph:first-child a {
+          @include btn(blue);
+        }
+        > .paragraph:nth-child(2) a {
+          @include link(default);
         }
       }
     }
@@ -74,15 +94,24 @@
 
       & > .paragraph {
         margin: 0 8px;
-        a {
-            @include link(default);
-        }
 
         &:first-child {
           margin-left: 0;
-          a {
-            @include btn(blue);
-          }
+        }
+      }
+
+      &.link-count-1 {
+        > .paragraph a {
+          @include btn(blue);
+        }
+      }
+
+      &.link-count-2 {
+        > .paragraph:first-child a {
+          @include btn(blue);
+        }
+        > .paragraph:nth-child(2) a {
+          @include link(default);
         }
       }
     }
@@ -91,15 +120,18 @@
   .paragraph--type--layout-2-column.color-scheme-dark & {
     .field--name-field-p-multiple-links {
 
-      & > .paragraph {
-        a {
-          @include link(white);
+      &.link-count-1 {
+        > .paragraph a {
+          @include btn(ghost-white);
         }
+      }
 
-        &:first-child {
-          a {
-            @include btn(ghost-white);
-          }
+      &.link-count-2 {
+        > .paragraph:first-child a {
+          @include btn(ghost-white);
+        }
+        > .paragraph:nth-child(2) a {
+          @include link(white);
         }
       }
     }
@@ -341,7 +373,7 @@
 
     .field--name-field-link a {
       @include link(default);
-      display: block;
+      display: inline-block;
       margin-top: rem-calc(16);
     }
   }
@@ -350,7 +382,7 @@
     & > .paragraph-content {
 
       &:before {
-        opacity: 0.4;
+        opacity: 0.8;
       }
     }
   }

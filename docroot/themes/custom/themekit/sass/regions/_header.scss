@@ -9,8 +9,8 @@
   z-index: z(header, base);
   height: 48px;
   @include breakpoint(marge) {
-    height: $header-height;
     position: fixed;
+    height: $header-height;
     left: 0;
     top: 0;
     width: 100%;

@@ -4,7 +4,7 @@
 
 body {
   min-width: 320px;
-  @include breakpoint(large) {
+  @include breakpoint(marge) {
     padding-top: $header-height;
     &.toolbar-horizontal {
       padding-top: $header-height + 39px !important;

@@ -64,19 +64,18 @@ $buttons: (
     active-color: #fff,
   ),
   blue: (
-    background: linear-gradient(-45deg, $secondary-color-light 0%, $secondary-color 100%),
-    color: $white
+    background: $secondary-color,
+    color: $white,
+    gradient: linear-gradient(-45deg, $secondary-color 0%, $secondary-color-light 50%, $secondary-color 100%),
 ),
   white: (
-    background: $white,
-    color: $primary-color
-  ),
-  white-with-hover: (
     extend:white,
     color: $secondary-color,
-    active-border: transparent,
-    active-background: #2a5b7c,
-    active-color: $white
+    border: none,
+    active-color: $white,
+    active-border: none,
+    gradient: linear-gradient(-45deg, $secondary-color 0%, $secondary-color 20%, $white 60%, $white 100%),
+    gradient-active: linear-gradient(-45deg, $secondary-color 0%, $secondary-color 50%, $white 60%, $white 100%),
   ),
   ghost: (
     background: $white,
@@ -85,14 +84,17 @@ $buttons: (
     active-border: transparent,
     active-background: transparent,
     active-color: $white,
-    gradient: linear-gradient(-45deg, $secondary-color-light 0%, $secondary-color 100%),
+    gradient: linear-gradient(-45deg, $secondary-color-light 0%, $secondary-color 20%, $white 60%, $white 100%),
+    gradient-text: linear-gradient(-45deg, $secondary-color-light 0%, $secondary-color 100%),
+    gradient-active: linear-gradient(-45deg, $secondary-color-light 0%, $secondary-color 50%, $white 60%, $white 100%),
   ),
   ghost-white: (
+    gradient: linear-gradient(-45deg, $white 0%, $white 20%, rgba(255,255,255,0) 60%, rgba(255,255,255,0) 100%),
+    gradient-active: linear-gradient(-45deg, $white 0%, $white 50%, rgba(255,255,255,0) 60%, rgba(255,255,255,0) 100%),
     background: transparent,
     border: $white,
     color: $white,
     active-border: $white,
-    active-background: $white,
     active-color: $secondary-color,
   ),
 );
@@ -101,8 +103,9 @@ $buttons: (
 $links: (
   _base: (
     color: $secondary-color,
-    font-weight: 700,
+    font-weight: $global-weight-bold,
     active-color: $secondary-color-light,
+    background: $secondary-color,
   ),
 
 
@@ -121,7 +124,7 @@ $links: (
   white: (
     extend: _base,
     color: $white,
-    active-color: $secondary-color-light,
+    background: $white,
   )
 );
 

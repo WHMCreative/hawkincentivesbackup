@@ -145,7 +145,12 @@
 }
 
 .paragraph--type--banner-featured-insights {
-  @include content-width(default);
+  @include top-border;
+
+  > .paragraph-content {
+    padding-top: $paragraphs-default-spacing;
+    @include content-width(default);
+  }
 
   .field--name-field-heading {
     margin-bottom: 30px;

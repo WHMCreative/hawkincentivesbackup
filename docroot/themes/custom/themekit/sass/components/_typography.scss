@@ -20,7 +20,14 @@ h3 {
     border-bottom-color: $lighter-gray;
   }
 
-  .btn {
+  a:not(.btn) {
+    @include link(blue);
+    &:after {
+      bottom: -4px;
+    }
+  }
+
+  a.btn {
     &.blue {
       @include btn(blue);
     }

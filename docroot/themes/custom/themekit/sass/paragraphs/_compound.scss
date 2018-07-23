@@ -52,14 +52,24 @@
 
       & > .paragraph {
         margin: 0 8px;
-        a {
-          @include link(default);
-        }
 
-        &:nth-last-child(2) {
-          a {
-            @include btn(blue);
-          }
+        &:first-child {
+          margin-left: 0;
+        }
+      }
+
+      &.link-count-1 {
+        > .paragraph a {
+          @include btn(blue);
+        }
+      }
+
+      &.link-count-2 {
+        > .paragraph:first-child a {
+          @include btn(blue);
+        }
+        > .paragraph:nth-child(2) a {
+          @include link(default);
         }
       }
     }

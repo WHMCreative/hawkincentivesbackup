@@ -172,19 +172,21 @@
     transition: all 1s;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-    height: rem-calc(140);
+    height: rem-calc(80);
     padding: 30px 0;
-    top: rem-calc(500);
+    top: rem-calc(48);
 
     @include breakpoint(medium) {
       height: rem-calc(140);
       padding: 30px 0;
-      top: rem-calc(240);
+    }
+
+    @include breakpoint(marge) {
+      top: rem-calc(120);
     }
 
     @include breakpoint(large) {
       height: rem-calc(190);
-      top: rem-calc(120);
       padding: 40px 0;
     }
 

@@ -423,6 +423,13 @@ function themekit_preprocess_block(&$variables) {
   }
 }
 
+function themekit_preprocess_field(&$variables) {
+
+  if( $variables['element']['#field_name'] == 'field_p_multiple_links') {
+    $variables['attributes']['class'][] = 'link-count-' . count($variables['items']);
+  }
+}
+
 
 //*********************************************
 // 2. Theme suggestions

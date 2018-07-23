@@ -59,7 +59,7 @@
   .paragraph--type--link-form-modal {
     @include top-bottom(margin, rem-calc(16));
     a {
-      @include btn(white-with-hover);
+      @include btn(white);
     }
   }
 }
