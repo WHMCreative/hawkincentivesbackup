@@ -1,7 +1,12 @@
 uuid: ea98a232-0701-4e64-b264-f6a2932bac18
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - paragraphs_browser
+third_party_settings:
+  paragraphs_browser:
+    image_path: 'public://simple-content.png'
 id: banner_hero
 label: 'Banner - Hero'
 icon_uuid: null

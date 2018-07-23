@@ -4,6 +4,7 @@ status: true
 dependencies:
   module:
     - bhk_summary_paragraphs
+    - paragraphs_browser
 third_party_settings:
   bhk_summary_paragraphs:
     enable_summary: 1
@@ -11,7 +12,9 @@ third_party_settings:
     summary_content_types:
       insight: insight
     summary_view_mode: teaser
-    summary_add_fields: 1
+    summary_add_fields: 0
+  paragraphs_browser:
+    image_path: 'public://Group 22.png'
 id: summary_insights
 label: 'Summary - Insights'
 icon_uuid: null

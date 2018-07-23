@@ -1,7 +1,12 @@
 uuid: 3c98e454-2ad3-4347-a974-7bf099457bfc
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - paragraphs_browser
+third_party_settings:
+  paragraphs_browser:
+    image_path: 'public://banner-callout.png'
 id: compound_callout
 label: 'Compound - Callout'
 icon_uuid: null

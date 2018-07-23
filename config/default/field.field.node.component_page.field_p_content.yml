@@ -5,7 +5,6 @@ dependencies:
   config:
     - field.storage.node.field_p_content
     - node.type.component_page
-    - paragraphs.paragraphs_type.compound_callout
     - paragraphs.paragraphs_type.compound_content_bar
     - paragraphs.paragraphs_type.compound_media_title_bar
     - paragraphs.paragraphs_type.compound_slider
@@ -40,14 +39,13 @@ settings:
     negate: 0
     target_bundles:
       summary_insights: summary_insights
-      compound_callout: compound_callout
       compound_content_bar: compound_content_bar
       compound_stat_bar: compound_stat_bar
       compound_tabbed_content: compound_tabbed_content
       reference_card_browser: reference_card_browser
-      reference_marketo_form: reference_marketo_form
       layout_2_column: layout_2_column
       simple_cta: simple_cta
+      reference_marketo_form: reference_marketo_form
       compound_slider: compound_slider
       simple_content: simple_content
       layout_grid: layout_grid
@@ -61,8 +59,8 @@ settings:
         enabled: true
         weight: 12
       compound_callout:
-        enabled: true
         weight: 21
+        enabled: false
       compound_content_bar:
         enabled: true
         weight: 22
@@ -90,22 +88,22 @@ settings:
       media_image_slider:
         weight: 29
         enabled: false
-      banner_hero:
-        weight: 29
-        enabled: false
       reference_card_browser:
         enabled: true
         weight: 29
+      banner_hero:
+        weight: 29
+        enabled: false
       media_video_modal:
         weight: 30
         enabled: false
-      reference_marketo_form:
-        enabled: true
-        weight: 31
       layout_2_column:
         enabled: true
         weight: 31
       simple_cta:
+        enabled: true
+        weight: 31
+      reference_marketo_form:
         enabled: true
         weight: 31
       compound_slider:
@@ -120,12 +118,12 @@ settings:
       simple_media_bar:
         weight: 34
         enabled: false
-      simple_media_tile:
-        weight: 35
-        enabled: false
       layout_grid:
         enabled: true
         weight: 35
+      simple_media_tile:
+        weight: 35
+        enabled: false
       simple_stat:
         weight: 36
         enabled: false
@@ -141,6 +139,12 @@ settings:
       reference_featured_insight:
         enabled: true
         weight: 43
+      media_image:
+        weight: 45
+        enabled: false
+      media_video:
+        weight: 47
+        enabled: false
       microquiz_conditional:
         weight: 48
         enabled: false
@@ -150,12 +154,6 @@ settings:
       microquiz_quiz:
         enabled: true
         weight: 50
-      media_image:
-        weight: 45
-        enabled: false
-      media_video:
-        weight: 47
-        enabled: false
       media_svg:
         weight: 50
         enabled: false

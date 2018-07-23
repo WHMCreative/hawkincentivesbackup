@@ -1,7 +1,12 @@
 uuid: 39372e21-73d6-4fb9-ba98-2ab4e14c1a1f
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - paragraphs_browser
+third_party_settings:
+  paragraphs_browser:
+    image_path: 'public://simple-content_0.png'
 id: simple_content
 label: 'Simple - Content'
 icon_uuid: null
