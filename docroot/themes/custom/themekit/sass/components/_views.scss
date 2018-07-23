@@ -3,26 +3,29 @@
 ////
 
 
-.block-views-blocknews-block-news {
+.block-views-blocknews-block-news-all {
   @include content-width(default);
 }
 .view-news {
-  &.view-display-id-block_news {
+  &.view-display-id-block_news_all {
+    position: relative;
+    padding-bottom: 52px;
     @include breakpoint(marge) {
+      padding-bottom: 62px;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
     }
     > .view-filters {
       margin-bottom: 40px;
+      min-width: 100vw;
+      background: $secondary-color-dark;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      color: $white;
       @include breakpoint(marge) {
         margin-bottom: 85px;
-        min-width: 100vw;
-        background: $secondary-color-dark;
-        position: relative;
-        left: 50%;
-        transform: translateX(-50%);
-        color: $white;
       }
       .views-exposed-form {
         @include content-width(default);
@@ -34,12 +37,18 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        @include breakpoint(marge) {
+        @include breakpoint(medium) {
           flex-direction: row;
         }
         .form-item {
-          margin: 0 12px;
+          margin: 0 12px 10px;
           position: relative;
+          &:last-child {
+            margin-bottom: 0;
+          }
+          @include breakpoint(medium) {
+            margin-bottom: 0;
+          }
           input {
             position: absolute;
             left: 0;
@@ -75,24 +84,24 @@
       .view-filters {
         display: none;
       }
-      .pager {
-        display: none;
-      }
     }
-    > .view-content {
+    > .view-footer {
       @include breakpoint(marge) {
         max-width: 520px;
         width: 50%;
       }
+      .view-filters {
+        display: none;
+      }
     }
-    > .pager {
+    .pager {
+      position: absolute;
+      left: 0;
+      bottom: 0;
       width: 100%;
-      margin: 15px 0 0;
+      margin: 0;
       display: flex;
       justify-content: center;
-      @include breakpoint(marge) {
-        margin-top: 25px;
-      }
       li {
         margin: 0;
         padding: 0;
