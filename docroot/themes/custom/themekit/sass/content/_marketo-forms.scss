@@ -85,7 +85,7 @@
       -webkit-appearance: none;
       -moz-appearance: none;
       font-size: rem-calc(13);
-      color: rgba(0, 0, 0, 0);
+      color: rgba($secondary-color, .001); // not just "transparent" because of IE
 
       &::-ms-expand {
         display: none;
