@@ -5,7 +5,7 @@ dependencies:
   config:
     - field.field.paragraph.media_image_slider.field_label
     - field.field.paragraph.media_image_slider.field_media
-    - image.style.full_screen
+    - image.style.banner_square
     - paragraphs.paragraphs_type.media_image_slider
   module:
     - media_entity_image
@@ -18,7 +18,7 @@ content:
     weight: 0
     label: hidden
     settings:
-      image_style: full_screen
+      image_style: banner_square
       image_link: ''
     third_party_settings: {  }
     type: media_image

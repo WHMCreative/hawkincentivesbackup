@@ -1,0 +1,17 @@
+uuid: 22205395-46f8-4495-9902-a00b4fb5cf5a
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: banner_square
+label: 'Banner Square'
+effects:
+  2ce1bc6d-daa8-4a4c-9765-823ad1a2d678:
+    uuid: 2ce1bc6d-daa8-4a4c-9765-823ad1a2d678
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 800
+      height: 800
+      crop_type: focal_point

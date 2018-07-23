@@ -430,13 +430,19 @@
     }
   }
   .slider-content {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    position: relative;
     z-index: z(banner, image);
     pointer-events: none;
+    margin-bottom: rem-calc(16);
+
+    @include breakpoint(medium) {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      margin-bottom: 0;
+    }
 
     div {
       height: 100%;
@@ -444,7 +450,10 @@
   }
 
   .paragraph--type--banner-hero & {
-    margin-top: rem-calc(80);
+    margin-top: rem-calc(20);
+    @include breakpoint(medium) {
+      margin-top: rem-calc(80);
+    }
 
     @each $bp, $size in $banner-spacing {
       $size: rem-calc($size);
