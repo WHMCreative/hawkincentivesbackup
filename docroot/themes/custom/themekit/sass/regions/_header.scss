@@ -184,7 +184,7 @@
                 position: relative;
 
               &.align-second-column {
-                .menu_link_content {
+                > .menu_link_content {
 
                   @include breakpoint(marge) {
                     left: -232px;
@@ -310,14 +310,32 @@
               &:last-child {
                 margin-right: 0;
               }
+
+              @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+                /* IE10+ CSS styles go here */
+                min-width: 180px;
+                width: 180px;
+              }
             }
             @include breakpoint(large) {
               min-width: 240px;
               margin-right: 40px;
+
+              @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+                /* IE10+ CSS styles go here */
+                min-width: 240px;
+                width: 240px;
+              }
             }
             @include breakpoint(xlarge) {
               min-width: 260px;
               margin-right: 40px;
+
+              @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+                /* IE10+ CSS styles go here */
+                min-width: 260px;
+                width: 260px;
+              }
             }
             > span {
               display: none;
