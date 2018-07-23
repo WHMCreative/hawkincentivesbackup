@@ -100,8 +100,10 @@ Drupal.behaviors.emailManipulations = {
     $(setToForm).on('whenFormElRendered' + setToFormId, () => {
       const setToFormEmail = setToForm.find('[type="email"]');
 
-      setToFormEmail.closest('.marketo-form-item').addClass('has-value');
-      setToFormEmail.val(emailString);
+      if (emailString.length) {
+        setToFormEmail.closest('.marketo-form-item').addClass('has-value');
+        setToFormEmail.val(emailString);
+      }
     });
 
   }

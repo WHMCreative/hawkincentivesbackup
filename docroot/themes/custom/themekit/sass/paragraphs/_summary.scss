@@ -41,18 +41,26 @@
     }
 
     .summary-output {
-      width: 100%;
-
       @include breakpoint(small down) {
         order: 2;
         margin-top: 30px;
       }
       @include breakpoint(medium) {
         @include tk-flex-block-grid(3, 'article', $gutter: 18px);
+
+        &:first-child {
+          margin-left: 0;
+          margin-right: 0;
+        }
       }
       @include breakpoint(large) {
         width: 76%;
         float: right;
+
+        &:first-child {
+          width: auto;
+          float: none;
+        }
       }
 
       > article {
@@ -128,6 +136,11 @@
         }
       }
     }
+  }
+
+  .node--type-insight.node--view-mode-unlocked .node--content & {
+    margin-left: calc((100vw - 100%)/ (-2));
+    margin-right: calc((100vw - 100%) / (-2));
   }
 }
 

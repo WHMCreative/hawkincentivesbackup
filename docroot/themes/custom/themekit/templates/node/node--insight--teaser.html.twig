@@ -80,13 +80,13 @@
 #}
 
 {%
-set classes = [
-'node',
-'node--type-' ~ node.bundle|clean_class,
-node.isPromoted() ? 'node--promoted',
-node.isSticky() ? 'node--sticky',
-not node.isPublished() ? 'node--unpublished',
-view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+  set classes = [
+  'node',
+  'node--type-' ~ node.bundle|clean_class,
+  node.isPromoted() ? 'node--promoted',
+  node.isSticky() ? 'node--sticky',
+  not node.isPublished() ? 'node--unpublished',
+  view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
 ]
 %}
 
@@ -97,8 +97,9 @@ view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
 
 {{ attach_library('classy/node') }}
 <article{{ attributes.addClass(classes) }} data-id="{{ node.id }}">
-  <a href="{{ url }}" rel="bookmark">
-    <div class="node--image">
+
+  <div class="node--image">
+    <a href="{{ url }}" rel="bookmark">
       {% if content.field_teaser_image|render %}
         {{ content.field_teaser_image }}
       {% elseif header_image|render %}
@@ -112,19 +113,22 @@ view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
       {% endif %}
 
       {{ content.field_insight_type }}
-    </div>
+    </a>
+  </div>
 
-    <div{{ content_attributes.addClass('node--content') }}>
+  <div{{ content_attributes.addClass('node--content') }}>
+    <a href="{{ url }}" rel="bookmark">
       {{ title_prefix }}
-        <h5{{ title_attributes }}>
-          {{ label }}
-        </h5>
+      <h5{{ title_attributes }}>
+        {{ label }}
+      </h5>
       {{ title_suffix }}
       {% if insight_date %}
         <div class="date">{{ insight_date }}</div>
       {% endif %}
       {{ rendered_content }}
-    </div>
-  </a>
+    </a>
+  </div>
+
 </article>
 
