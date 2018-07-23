@@ -126,6 +126,21 @@
     }
   }
 
+  &.addtional-content--media-video-modal + .paragraph--type--banner-hero-additional {
+    @include content-width(default);
+    margin-top: rem-calc(-180);
+    padding-top: rem-calc(32);
+
+    @include breakpoint(medium) {
+      padding-top: 0;
+    }
+
+    .field--name-field-p-banner-content {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+
   &.only-heading-field {
     > .paragraph-content {
       .field--name-field-heading {
