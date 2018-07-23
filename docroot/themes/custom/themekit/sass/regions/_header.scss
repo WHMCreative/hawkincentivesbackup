@@ -184,7 +184,7 @@
                 position: relative;
 
               &.align-second-column {
-                .menu_link_content {
+                > .menu_link_content {
 
                   @include breakpoint(marge) {
                     left: -232px;
@@ -311,14 +311,30 @@
                 margin-right: 0;
               }
             }
+            /* IE10+ CSS styles go here */
+            @media (max-width: $global-width) and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+              min-width: 180px;
+              width: 180px;
+            }
+
             @include breakpoint(large) {
               min-width: 240px;
               margin-right: 40px;
             }
+            @media (min-width: $global-width) and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+              min-width: 240px;
+              width: 240px;
+            }
+
             @include breakpoint(xlarge) {
               min-width: 260px;
               margin-right: 40px;
             }
+            @media (min-width: 1200px) and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+              min-width: 260px;
+              width: 260px;
+            }
+
             > span {
               display: none;
             }
