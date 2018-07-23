@@ -38,9 +38,13 @@
             // Look through processed data and reload the page if content is
             // unlocked.
             if (!!data) {
-
-              // Add the offer type parameter.
-              window.location.search += data['query_string'];
+              if (window.location.search.length) {
+                // Add the offer type parameter. When several parameters are in the query
+                window.location.search += '&' + data['query_string'];
+              } else {
+                // Add the offer type parameter. When the query is empty
+                window.location.search += data['query_string'];
+              }
             }
           });
       }

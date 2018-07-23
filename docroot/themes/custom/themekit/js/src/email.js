@@ -93,7 +93,12 @@ Drupal.behaviors.emailManipulations = {
     let emailString = '';
 
     if (url.indexOf(urlTargetString) + 1) {
-      emailString = url.split(urlTargetString)[1];
+      // When several parameters are in the query
+      if (url.indexOf('&') + 1) {
+        emailString = url.split(urlTargetString)[1].split('&')[0];
+      } else {
+        emailString = url.split(urlTargetString)[1];
+      }
     }
 
     // Fill in the email field after the form is rendered
