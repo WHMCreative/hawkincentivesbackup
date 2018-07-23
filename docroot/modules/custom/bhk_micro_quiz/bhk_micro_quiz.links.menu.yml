@@ -13,14 +13,13 @@ entity.micro_quiz_type.collection:
   description: 'List of available MicroQuiz bundles'
   parent: system.admin_structure
 
-entity.micro_quiz.add:
-  title: 'Add a new MicroQuiz'
-  parent: entity.micro_quiz.collection
-  description: 'Add a new MicroQuiz entity.'
-  route_name: entity.micro_quiz.add_page
-
 entity.micro_quiz_type.add:
   title: 'Add a new MicroQuiz type'
   parent: entity.micro_quiz_type.collection
   description: 'Add a new MicroQuiz type.'
   route_name: entity.micro_quiz_type.add_form
+
+bhk_micro_quiz.micro_quiz_add:
+  class: Drupal\bhk_micro_quiz\Plugin\Menu\MicroQuizAddLink
+  deriver: Drupal\bhk_micro_quiz\Plugin\Derivative\MicroQuizAddLink
+  parent: entity.micro_quiz.collection
