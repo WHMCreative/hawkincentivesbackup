@@ -75,7 +75,7 @@
     .field--name-field-large-heading {
       color: inherit;
       font-size: rem-calc(26);
-      font-weight: $global-weight-normal;
+      font-weight: $global-weight-light;
 
       @include breakpoint(medium) {
         font-size: rem-calc(35);
@@ -92,6 +92,10 @@
 
     h3 {
       color: inherit;
+    }
+
+    .field--name-field-description {
+      font-size: rem-calc(20);
     }
 
     a {
