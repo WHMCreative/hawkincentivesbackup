@@ -21,10 +21,12 @@ h3 {
   }
 
   a:not(.btn) {
-    @include link(blue);
-    &:after {
-      bottom: -4px;
-    }
+    font-weight: $global-weight-bold;
+    //@include link(blue);
+    //font-size: rem-calc(16);
+    //&:after {
+    //  bottom: -4px;
+    //}
   }
 
   a.btn {
@@ -70,11 +72,18 @@ h3 {
       margin-right: auto;
     }
     .media-infogram.view-mode-entity-embed {
-      @include breakpoint(medium) {
         min-width: 320px;
-      }
       @include breakpoint(large) {
         min-width: $global-width * 0.5;
+      }
+    }
+
+    &.align-left,
+    &.align-right {
+      .media-infogram.view-mode-entity-embed {
+        @include breakpoint(large) {
+          min-width: rem-calc(320);
+        }
       }
     }
   }
