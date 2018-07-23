@@ -10,6 +10,7 @@
   &.view-display-id-block_news_all {
     position: relative;
     padding-bottom: 52px;
+    margin-bottom: rem-calc(32);
     @include breakpoint(marge) {
       padding-bottom: 62px;
       display: flex;
