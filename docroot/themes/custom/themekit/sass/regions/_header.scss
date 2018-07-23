@@ -311,8 +311,8 @@
                 margin-right: 0;
               }
             }
-            @media (max-width: 800px) and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-              /* IE10+ CSS styles go here */
+            /* IE10+ CSS styles go here */
+            @media (max-width: $global-width) and (-ms-high-contrast: none), (-ms-high-contrast: active) {
               min-width: 180px;
               width: 180px;
             }
@@ -321,8 +321,7 @@
               min-width: 240px;
               margin-right: 40px;
             }
-            @media (max-width: $global-width) and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-              /* IE10+ CSS styles go here */
+            @media (min-width: $global-width) and (-ms-high-contrast: none), (-ms-high-contrast: active) {
               min-width: 240px;
               width: 240px;
             }
@@ -331,8 +330,7 @@
               min-width: 260px;
               margin-right: 40px;
             }
-            @media (max-width: 1200px) and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-              /* IE10+ CSS styles go here */
+            @media (min-width: 1200px) and (-ms-high-contrast: none), (-ms-high-contrast: active) {
               min-width: 260px;
               width: 260px;
             }
