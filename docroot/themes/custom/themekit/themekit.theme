@@ -274,9 +274,10 @@ function themekit_preprocess_paragraph_layout_grid(&$variables) {
 function themekit_preprocess_paragraph_media_video_modal(&$variables) {
   $paragraph = $variables['paragraph'];
 
-
   if (!$paragraph->field_media->isEmpty()) {
     $variables['video_url'] = $paragraph->field_media->entity->field_video->value;
+    $view_builder = \Drupal::entityTypeManager()->getViewBuilder('media');
+    $variables['thumbnail'] = $view_builder->viewField($paragraph->field_media->entity->thumbnail, 'thumbnail');
   }
 }
 
