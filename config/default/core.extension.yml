@@ -41,6 +41,7 @@ module:
   ctools: 0
   datetime: 0
   datetime_range: 0
+  dblog: 0
   draggableviews: 0
   dynamic_page_cache: 0
   e3_gated_content: 0

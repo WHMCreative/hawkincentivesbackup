@@ -106,7 +106,10 @@ $config['']['account'] = '';
 $config['config_split.config_split.config_dev']['status'] = FALSE;
 
 // If $_SERVER['AH_SITE_ENVIRONMENT'], load Blackmesh settings.
-if(isset($_SERVER['AH_SITE_ENVIRONMENT'])) {
+if (isset($_SERVER['AH_SITE_ENVIRONMENT'])) {
+
+  $settings['reverse_proxy'] = TRUE;
+  $settings['reverse_proxy_addresses'] = ['127.0.0.1'];
 
   $config['system.performance']['css']['preprocess'] = TRUE;
   $config['system.performance']['js']['preprocess'] = TRUE;
