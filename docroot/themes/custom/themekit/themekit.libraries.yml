@@ -40,6 +40,13 @@ card-catalog:
     dist/whatwg-fetch.js: {}
     dist/card-catalog.js: {}
 
+card-summary:
+  version: 1.x
+  js:
+    dist/babel-polyfill.js: {}
+    dist/whatwg-fetch.js: {}
+    dist/card-summary.js: {}
+
 # Define additional sub-apps here. Be sure to first add it
 # as an entry point in webpack.config.js
 #myApp:

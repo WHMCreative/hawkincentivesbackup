@@ -2,7 +2,7 @@ cache:
   page:
     max_age: 2764800
   http:
-    max_age: '0'
+    max_age: '300'
     404_max_age: '0'
     302_max_age: '0'
 css:

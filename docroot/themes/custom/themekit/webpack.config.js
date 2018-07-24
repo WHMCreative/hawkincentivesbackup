@@ -9,6 +9,7 @@ var entryPoints = {
   style: './sass/style.scss',
   wysiwyg: './sass/wysiwyg.scss',
   'card-catalog': './js/src/v-card-catalog/card-catalog.js',
+  'card-summary': './js/src/v-card-summary/card-summary.js',
   'babel-polyfill': 'babel-polyfill',
   'whatwg-fetch': 'whatwg-fetch'
   // hotelFilters: "./js/src/v-hotel-filters/hotel-filters.js",

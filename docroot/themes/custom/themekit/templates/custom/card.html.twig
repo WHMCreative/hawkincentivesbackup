@@ -18,22 +18,8 @@
 
 {% set card_identifier = card_id ? card_id : '' %}
 
-{% set rendered_content = content|without(
-  'field_card_type',
-  'field_cost'
-) %}
+{% set rendered_content = content|without('') %}
 
 <div{{ attributes.addClass('card') }} data-card-id={{ card_identifier }}>
-  {% if content %}
-    {{ rendered_content }}
-
-    {#<div class="features">#}
-      {#<div class="type {{ card_type }}">#}
-        {#{{ content.field_card_type }}#}
-      {#</div>#}
-
-      {#{{ content.field_cost }}#}
-    {#</div>#}
-
-  {% endif %}
+  {{ rendered_content }}
 </div>

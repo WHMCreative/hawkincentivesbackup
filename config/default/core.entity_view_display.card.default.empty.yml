@@ -1,10 +1,10 @@
-uuid: b5f0aaaf-4b16-41a8-8a6a-d4bc47ca6764
+uuid: a13e45c0-4093-4104-a737-bcac205c68d4
 langcode: en
-status: false
+status: true
 dependencies:
   config:
     - bhk_card_browser.card_type.default
-    - core.entity_view_mode.card.compact
+    - core.entity_view_mode.card.empty
     - field.field.card.default.field_card_category
     - field.field.card.default.field_card_type
     - field.field.card.default.field_cash_back
@@ -26,49 +26,17 @@ dependencies:
     - field.field.card.default.field_prepaid_load
     - field.field.card.default.field_prepaid_type
     - field.field.card.default.field_virtual
-  module:
-    - entity_reference_revisions
-    - options
-id: card.default.compact
+id: card.default.empty
 targetEntityType: card
 bundle: default
-mode: compact
-content:
-  field_card_type:
-    weight: 2
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    type: list_default
-    region: content
-  field_cost:
-    weight: 3
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    type: list_default
-    region: content
-  field_p_media:
-    type: entity_reference_revisions_entity_view
-    weight: 0
-    label: hidden
-    settings:
-      view_mode: default
-      link: ''
-    third_party_settings: {  }
-    region: content
-  name:
-    label: hidden
-    type: string
-    weight: 1
-    region: content
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
+mode: empty
+content: {  }
 hidden:
   field_card_category: true
+  field_card_type: true
   field_cash_back: true
   field_co_brand: true
+  field_cost: true
   field_currency: true
   field_customization: true
   field_delivery: true
@@ -80,9 +48,11 @@ hidden:
   field_load_max: true
   field_network: true
   field_num_mechants: true
+  field_p_media: true
   field_personalization: true
   field_prepaid_load: true
   field_prepaid_type: true
   field_virtual: true
   langcode: true
+  name: true
   user_id: true
