@@ -1,0 +1,10 @@
+uuid: 40e7c117-4217-40fd-b56b-993921dc1d10
+langcode: en
+status: true
+dependencies:
+  module:
+    - bhk_card_browser
+id: card.empty
+label: Empty
+targetEntityType: card
+cache: true
