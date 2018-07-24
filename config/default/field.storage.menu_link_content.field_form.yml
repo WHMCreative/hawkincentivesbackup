@@ -1,0 +1,21 @@
+uuid: a85ed99f-bb59-4765-8255-9a4d2e7a76ee
+langcode: en
+status: true
+dependencies:
+  module:
+    - entity_reference_revisions
+    - menu_link_content
+    - paragraphs
+id: menu_link_content.field_form
+field_name: field_form
+entity_type: menu_link_content
+type: entity_reference_revisions
+settings:
+  target_type: paragraph
+module: entity_reference_revisions
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

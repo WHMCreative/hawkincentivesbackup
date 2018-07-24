@@ -3,11 +3,12 @@
  * Entry point for all theme related js.
  */
 import './foundation-setup';
-import './skip-link';
+import './external-links';
+import './inject-svg'
 import './magnific-popup';
-import './video-modal';
 import './menu';
-
-// FOUNDATION COMPONENT USAGE
-import './sticky';
-
+import './skip-link';
+import './video-modal';
+import './slick';
+import './email';
+import './hero-slider';

@@ -1,0 +1,28 @@
+uuid: 2cdc5575-8731-48ba-bfb6-5c66c0ec1138
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.taxonomy_term.featured_teaser
+    - field.field.taxonomy_term.insights_topics.field_media
+    - image.style.featured_teaser
+    - taxonomy.vocabulary.insights_topics
+  module:
+    - media_entity_image
+id: taxonomy_term.insights_topics.featured_teaser
+targetEntityType: taxonomy_term
+bundle: insights_topics
+mode: featured_teaser
+content:
+  field_media:
+    type: media_image
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      image_style: featured_teaser
+      image_link: ''
+    third_party_settings: {  }
+hidden:
+  description: true
+  langcode: true

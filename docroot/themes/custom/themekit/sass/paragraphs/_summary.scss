@@ -1,0 +1,266 @@
+////
+/// Paragraphs - Summary
+////
+
+.paragraph--type--summary-insights {
+  .node--content & {
+    @include paragraph-paddings;
+
+    > .paragraph-content {
+      @include content-width(default);
+      @include breakpoint(marge down) {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      @include breakpoint(large) {
+        @include clear;
+      }
+    }
+
+    .field--name-field-heading {
+      width: 100%;
+      margin-bottom: 20px;
+      color: $secondary-color-dark;
+      font-family: $body-font-family;
+      font-size: rem-calc(32);
+      font-weight: $global-weight-light;
+      line-height: rem-calc(40);
+
+      @include breakpoint(small down) {
+        margin-bottom: 8px;
+      }
+      @include breakpoint(medium) {
+        text-align: center;
+      }
+      @include breakpoint(large) {
+        width: 24%;
+        float: left;
+        margin-bottom: 8px;
+        text-align: left;
+      }
+    }
+
+    .summary-output {
+      @include breakpoint(small down) {
+        order: 2;
+        margin-top: 30px;
+      }
+      @include breakpoint(medium) {
+        @include tk-flex-block-grid(3, 'article', $gutter: 18px);
+
+        &:first-child {
+          margin-left: 0;
+          margin-right: 0;
+        }
+      }
+      @include breakpoint(large) {
+        width: 76%;
+        float: right;
+
+        &:first-child {
+          width: auto;
+          float: none;
+        }
+      }
+
+      > article {
+        margin-bottom: 20px;
+        @include breakpoint(medium) {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    .field--name-field-p-link {
+      @include breakpoint(marge down) {
+        order: 4;
+        width: 100%;
+        margin-top: 20px;
+        text-align: center;
+      }
+      @include breakpoint(small down) {
+        order: 1;
+        margin-top: 0;
+        text-align: left;
+      }
+      @include breakpoint(large) {
+        float: left;
+        width: 24%;
+      }
+
+      a {
+        @include link(default);
+        color: $secondary-color;
+        font-size: rem-calc(14);
+        font-weight: $global-weight-bold;
+        text-transform: capitalize;
+        @include breakpoint(small down) {
+          border-bottom: 1px solid;
+          padding-bottom: 3px;
+          font-size: rem-calc(15);
+        }
+      }
+    }
+
+    .field--name-field-description {
+      width: 24%;
+      float: left;
+      padding-top: 15px;
+      font-size: rem-calc(13);
+      @include breakpoint(marge down) {
+        order: 5;
+        width: 100%;
+        float: none;
+      }
+    }
+  }
+
+  .node--sidebar & {
+    @include paragraph-margins((small: 0));
+
+    &.bg-color-gray {
+      background: none;
+    }
+    .field--name-field-heading {
+      color: $secondary-color-dark;
+      font-family: $body-font-family;
+      font-size: rem-calc(20);
+      font-weight: $global-weight-bold;
+    }
+
+    .summary-output {
+      > article {
+        margin-bottom: 30px;
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  .node--type-insight.node--view-mode-unlocked .node--content & {
+    margin-left: calc((100vw - 100%)/ (-2));
+    margin-right: calc((100vw - 100%) / (-2));
+  }
+}
+
+.paragraph--type--summary-cards {
+  > .paragraph-content {
+    @include content-width(default);
+    @include breakpoint(marge down) {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    @include breakpoint(large) {
+      @include clear;
+    }
+  }
+
+  .field--name-field-heading {
+    width: 100%;
+    margin-bottom: 20px;
+    color: $secondary-color-dark;
+    font-family: $body-font-family;
+    font-size: rem-calc(32);
+    font-weight: $global-weight-light;
+    line-height: rem-calc(40);
+
+    @include breakpoint(small down) {
+      margin-bottom: 15px;
+    }
+    @include breakpoint(medium) {
+      text-align: center;
+    }
+    @include breakpoint(large) {
+      width: 24%;
+      float: left;
+      margin-bottom: 24px;
+      text-align: left;
+    }
+  }
+
+  .field--name-field-p-multiple-links {
+    @include breakpoint(marge down) {
+      order: 4;
+      width: 100%;
+      margin-top: 20px;
+      text-align: center;
+    }
+    @include breakpoint(small down) {
+      order: 1;
+      margin-top: 0;
+      text-align: left;
+    }
+    @include breakpoint(large) {
+      float: left;
+      width: 24%;
+    }
+
+    a {
+      @include btn(blue);
+    }
+  }
+
+  .field--name-field-cards {
+    width: 100%;
+
+    @include breakpoint(small down) {
+      order: 2;
+      margin-top: 30px;
+    }
+    @include breakpoint(medium) {
+      @include tk-flex-block-grid(3, '.field__item', $gutter: 32px);
+    }
+    @include breakpoint(marge down) {
+      margin-left: 0;
+      margin-right: 0;
+    }
+    @include breakpoint(large) {
+      width: 76%;
+      float: right;
+    }
+
+    > .field__item {
+      margin-bottom: 20px;
+      @include breakpoint(medium) {
+        margin-bottom: 0;
+      }
+
+      .field--name-field-p-media {
+        margin-bottom: 10px;
+        img {
+          width: 100%;
+        }
+      }
+
+      .field--name-name {
+        color: $secondary-color-dark;
+        font-weight: $global-weight-bold;
+      }
+
+      .type {
+        display: inline-block;
+      }
+
+      .field--name-field-cost {
+        display: inline-block;
+        margin-left: 7px;
+        font-size: rem-calc(14);
+        font-weight: $global-weight-bold;
+        color: $secondary-color-dark;
+      }
+
+      .features {
+        padding-top: 5px;
+        border-top: 0;
+        border-bottom-width: 1px;
+      }
+
+      .view-details {
+        cursor: pointer;
+        @include link(blue);
+        margin-top: rem-calc(10);
+      }
+    }
+  }
+}

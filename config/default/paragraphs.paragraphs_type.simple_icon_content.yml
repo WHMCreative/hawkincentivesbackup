@@ -1,7 +1,12 @@
 uuid: 8069e540-520d-4b5c-ad77-67de6531b229
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - paragraphs_browser
+third_party_settings:
+  paragraphs_browser:
+    image_path: 'public://simple-icon-content.png'
 id: simple_icon_content
 label: 'Simple - Icon Content'
 icon_uuid: null

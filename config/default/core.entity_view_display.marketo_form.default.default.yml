@@ -4,6 +4,8 @@ status: true
 dependencies:
   config:
     - e3_marketo.bundle.default
+    - field.field.marketo_form.default.field_help_text
+    - field.field.marketo_form.default.field_p_media
     - field.field.marketo_form.default.field_submission_confirmation
 _core:
   default_config_hash: ACz_X-HL0AUvd0gWx_oEqZIFE1fR78AgNxI20Y0jebI
@@ -26,6 +28,8 @@ content:
       link_to_entity: false
     third_party_settings: {  }
 hidden:
+  field_help_text: true
+  field_p_media: true
   field_submission_confirmation: true
   langcode: true
   marketo_form_id: true

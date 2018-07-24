@@ -3,9 +3,9 @@ name: 'Blackhawk Network'
 mail: no-reply@elevatedthird.com
 slogan: ''
 page:
-  403: ''
-  404: ''
-  front: /node
+  403: /node/10
+  404: /node/11
+  front: /node/9
 admin_compact_mode: false
 weight_select_max: 100
 langcode: en

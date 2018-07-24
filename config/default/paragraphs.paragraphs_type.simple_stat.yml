@@ -1,7 +1,12 @@
 uuid: 7d0e33b3-bf67-4dc9-b27e-a606f6c6e956
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - paragraphs_browser
+third_party_settings:
+  paragraphs_browser:
+    image_path: 'public://single-stat.png'
 id: simple_stat
 label: 'Simple - Stat'
 icon_uuid: null

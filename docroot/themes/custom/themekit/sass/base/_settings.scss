@@ -125,6 +125,7 @@ $banner-spacing: (
 );
 $socials: facebook, linkedin, twitter;
 $paragraphs-default-spacing: 50px;
+$header-height: 124px;
 
 
 // 1.Drupal - All of these settings should be copied over when the _settings.scss partial is updated on new version of foundation!!!
@@ -923,4 +924,20 @@ $grid-padding-gutters: $grid-margin-gutters;
 $grid-container-padding: $grid-padding-gutters;
 $grid-container-max: $global-width;
 $xy-block-grid-max: 8;
+
+
+
+$slick-font-path: "../../fonts/slick/";
+$slick-font-family: "slick";
+$slick-loader-path: "../../images/";
+$slick-arrow-color: $primary-color;
+$slick-dot-color: $primary-color;
+$slick-dot-color-active: $slick-dot-color;
+$slick-prev-character: "\2190";
+$slick-next-character: "\2192";
+$slick-dot-character: "\2022";
+$slick-dot-size: 10px;
+$slick-opacity-default: 0.75;
+$slick-opacity-on-hover: 1;
+$slick-opacity-not-active: 0.25;
 

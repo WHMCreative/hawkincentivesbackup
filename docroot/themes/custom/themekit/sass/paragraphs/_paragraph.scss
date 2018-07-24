@@ -5,6 +5,11 @@
 .field--name-field-p-content {
   & > .paragraph {
     @include paragraph-margins();
+    &.paragraph--type--reference-block {
+      &:first-child {
+        margin-top: 0;
+      }
+    }
   }
 }
 

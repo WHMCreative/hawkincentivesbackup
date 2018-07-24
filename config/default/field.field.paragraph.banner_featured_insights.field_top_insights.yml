@@ -12,7 +12,7 @@ entity_type: paragraph
 bundle: banner_featured_insights
 label: 'Top Insights'
 description: ''
-required: true
+required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''

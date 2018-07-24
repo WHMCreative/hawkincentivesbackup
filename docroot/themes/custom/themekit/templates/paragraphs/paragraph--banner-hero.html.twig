@@ -48,25 +48,40 @@
 #}
 
 {% set bg_image = content.field_media|render %}
+{% set additional_content = content.field_p_banner_content|render %}
+{% set additional_content_type = paragraph.field_p_banner_content.entity.bundle %}
+
+{%
+  set additional_content_below = [
+  'compound_media_title_bar',
+  'media_video_modal'
+]
+%}
 
 {%
 set classes = [
-'paragraph',
-'paragraph--type--' ~ paragraph.bundle|clean_class,
-view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+  'paragraph',
+  'paragraph--type--' ~ paragraph.bundle|clean_class,
+  view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
   overlay_color ? 'overlay--' ~ overlay_color,
+  additional_content_type ? 'addtional-content--' ~ additional_content_type|clean_class
 ]
 %}
 
 {% set rendered_content = content|without(
-  'field_media'
-  ) %}
+  'field_media',
+  'field_p_banner_content'
+) %}
 
 <div{{ attributes.addClass(classes) }}>
-  {% if bg_image %}
+  {% if image_inline_style %}
     <div class="bg-container" {{ image_inline_style|raw }}></div>
+  {% elseif topic_image %}
+    <div class="bg-container" {{ topic_image|raw }}></div>
+  {% else %}
+    <div class="bg-container"></div>
   {% endif %}
-  <div class="paragraph-content">
+  <div class="paragraph-content{% if additional_content_type in additional_content_below %} has-additional-content-section{% endif %}">
     {% if insight_type %}
       <div class="insight-type">{{ insight_type }}</div>
     {% endif %}
@@ -75,4 +90,13 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
     {% endif %}
     {{ rendered_content }}
   </div>
+  {% if additional_content_type not in additional_content_below %}
+    {{ additional_content }}
+  {% endif %}
 </div>
+
+{% if additional_content_type in additional_content_below %}
+  <div class="paragraph--type--banner-hero-additional">
+    {{ additional_content }}
+  </div>
+{% endif %}

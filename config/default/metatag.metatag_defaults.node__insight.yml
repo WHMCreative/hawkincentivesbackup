@@ -1,0 +1,10 @@
+uuid: 913c6f52-5931-4c16-a5c6-3ed924aebdc9
+langcode: en
+status: true
+dependencies: {  }
+id: node__insight
+label: 'Content: Insight'
+tags:
+  description: '[node:field_intro_copy]'
+  og_description: '[node:field_intro_copy]'
+  twitter_cards_description: '[node:field_intro_copy]'

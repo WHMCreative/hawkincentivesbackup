@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\name\Plugin\Field\FieldWidget\NameWidget.
- */
-
 namespace Drupal\name\Plugin\Field\FieldWidget;
 
 use Drupal\Component\Utility\SafeMarkup;
@@ -119,4 +114,20 @@ class NameWidget extends WidgetBase {
 
     return $element;
   }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function massageFormValues(array $values, array $form, FormStateInterface $form_state) {
+    $values = parent::massageFormValues($values, $form, $form_state);
+    $new_values = [];
+    foreach ($values as $item) {
+      $value = implode('', array_intersect_key($item, _name_translations()));
+      if (strlen($value)) {
+        $new_values[] = $item;
+      }
+    }
+    return $new_values;
+  }
+
 }

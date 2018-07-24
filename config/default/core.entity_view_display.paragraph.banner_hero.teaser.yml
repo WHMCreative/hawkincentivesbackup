@@ -1,0 +1,77 @@
+uuid: 2b7b8a5b-ed0d-46eb-b70a-ae9ba38bcb24
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.teaser
+    - field.field.paragraph.banner_hero.field_bg_color
+    - field.field.paragraph.banner_hero.field_description
+    - field.field.paragraph.banner_hero.field_heading
+    - field.field.paragraph.banner_hero.field_large_heading
+    - field.field.paragraph.banner_hero.field_media
+    - field.field.paragraph.banner_hero.field_p_banner_content
+    - field.field.paragraph.banner_hero.field_p_multiple_links
+    - field.field.paragraph.banner_hero.field_use_large_heading
+    - image.style.teaser
+    - paragraphs.paragraphs_type.banner_hero
+  module:
+    - entity_reference_revisions
+    - media_entity_image
+    - text
+id: paragraph.banner_hero.teaser
+targetEntityType: paragraph
+bundle: banner_hero
+mode: teaser
+content:
+  field_description:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_heading:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_large_heading:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_media:
+    type: media_image
+    weight: 5
+    region: content
+    label: hidden
+    settings:
+      image_style: teaser
+      image_link: ''
+    third_party_settings: {  }
+  field_p_banner_content:
+    type: entity_reference_revisions_entity_view
+    weight: 4
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_p_multiple_links:
+    weight: 3
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+hidden:
+  field_bg_color: true
+  field_use_large_heading: true

@@ -18,6 +18,9 @@ libraries-override:
     css:
       component:
         css/components/menu.css: false
+  views_infinite_scroll/views-infinite-scroll:
+    js:
+      js/infinite-scroll.js : js/src/infinite-scroll.js
 
 regions:
   header: Header
@@ -28,5 +31,6 @@ regions:
   content_above: 'Content above'
   content: Content
   content_below: 'Content below'
-  footer: Footer
+  footer_first: 'Footer First'
+  footer_second: 'Footer Second'
   none: 'Rendered Programmatically'

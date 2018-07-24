@@ -16,9 +16,29 @@ h3 {
     font-size: rem-calc(14);
   }
 
-  .btn {
+  hr {
+    border-bottom-color: $lighter-gray;
+  }
+
+  a:not(.btn) {
+    font-weight: $global-weight-bold;
+    //@include link(blue);
+    //font-size: rem-calc(16);
+    //&:after {
+    //  bottom: -4px;
+    //}
+  }
+
+  a.btn {
     &.blue {
       @include btn(blue);
+    }
+
+    &.blue-ghost {
+      @include btn(ghost);
+      @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        border: 0 solid;
+      }
     }
   }
 
@@ -52,11 +72,18 @@ h3 {
       margin-right: auto;
     }
     .media-infogram.view-mode-entity-embed {
-      @include breakpoint(medium) {
         min-width: 320px;
-      }
       @include breakpoint(large) {
         min-width: $global-width * 0.5;
+      }
+    }
+
+    &.align-left,
+    &.align-right {
+      .media-infogram.view-mode-entity-embed {
+        @include breakpoint(large) {
+          min-width: rem-calc(320);
+        }
       }
     }
   }

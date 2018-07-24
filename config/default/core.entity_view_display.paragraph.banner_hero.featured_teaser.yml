@@ -1,0 +1,40 @@
+uuid: 4d764490-e5ca-4d6d-ba0e-1618e523d084
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.featured_teaser
+    - field.field.paragraph.banner_hero.field_bg_color
+    - field.field.paragraph.banner_hero.field_description
+    - field.field.paragraph.banner_hero.field_heading
+    - field.field.paragraph.banner_hero.field_large_heading
+    - field.field.paragraph.banner_hero.field_media
+    - field.field.paragraph.banner_hero.field_p_banner_content
+    - field.field.paragraph.banner_hero.field_p_multiple_links
+    - field.field.paragraph.banner_hero.field_use_large_heading
+    - image.style.featured_teaser
+    - paragraphs.paragraphs_type.banner_hero
+  module:
+    - media_entity_image
+id: paragraph.banner_hero.featured_teaser
+targetEntityType: paragraph
+bundle: banner_hero
+mode: featured_teaser
+content:
+  field_media:
+    type: media_image
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      image_style: featured_teaser
+      image_link: ''
+    third_party_settings: {  }
+hidden:
+  field_bg_color: true
+  field_description: true
+  field_heading: true
+  field_large_heading: true
+  field_p_banner_content: true
+  field_p_multiple_links: true
+  field_use_large_heading: true

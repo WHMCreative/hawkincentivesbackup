@@ -1,0 +1,9 @@
+uuid: e0320b6a-965a-481b-a27d-49b2caa8b48c
+langcode: en
+status: true
+dependencies: {  }
+name: 'Insights Topics'
+vid: insights_topics
+description: ''
+hierarchy: 0
+weight: 0

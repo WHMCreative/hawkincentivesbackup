@@ -1,0 +1,21 @@
+uuid: 0b20be91-b307-4c4e-afe4-7aabbac9e011
+langcode: en
+status: true
+dependencies:
+  module:
+    - bhk_micro_quiz
+    - entity_reference_revisions
+    - paragraphs
+id: micro_quiz.field_p_multiple_links
+field_name: field_p_multiple_links
+entity_type: micro_quiz
+type: entity_reference_revisions
+settings:
+  target_type: paragraph
+module: entity_reference_revisions
+locked: false
+cardinality: 2
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,28 @@
+uuid: 8e248572-942d-4556-a747-a73b496bea91
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_media
+    - media_entity.bundle.image
+    - paragraphs.paragraphs_type.microquiz_quiz
+id: paragraph.microquiz_quiz.field_media
+field_name: field_media
+entity_type: paragraph
+bundle: microquiz_quiz
+label: 'Background Image'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

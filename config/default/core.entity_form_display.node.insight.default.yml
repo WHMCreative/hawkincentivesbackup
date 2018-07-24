@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.insight.body
     - field.field.node.insight.field_author
     - field.field.node.insight.field_gated
+    - field.field.node.insight.field_insight_topic
     - field.field.node.insight.field_insight_type
     - field.field.node.insight.field_intro_copy
     - field.field.node.insight.field_metatags
@@ -45,9 +46,9 @@ third_party_settings:
     group_main_content:
       children:
         - field_insight_type
+        - field_insight_topic
         - field_intro_copy
         - body
-        - field_featured_image
         - field_teaser_image
       parent_name: group_tabs
       weight: 15
@@ -76,9 +77,9 @@ third_party_settings:
     group_sidebar:
       children:
         - field_p_insight
-        - field_p_related_insights
         - field_author
         - field_references
+        - field_p_related_insights
       parent_name: group_tabs
       weight: 17
       format_type: tab
@@ -108,7 +109,7 @@ bundle: insight
 mode: default
 content:
   body:
-    weight: 15
+    weight: 16
     settings:
       rows: 9
       summary_rows: 3
@@ -123,7 +124,7 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_author:
-    weight: 17
+    weight: 6
     settings:
       match_operator: CONTAINS
       size: 60
@@ -138,6 +139,12 @@ content:
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
+  field_insight_topic:
+    weight: 14
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
   field_insight_type:
     weight: 13
     settings: {  }
@@ -145,7 +152,7 @@ content:
     type: options_select
     region: content
   field_intro_copy:
-    weight: 14
+    weight: 15
     settings:
       rows: 5
       placeholder: ''
@@ -153,7 +160,7 @@ content:
     type: text_textarea
     region: content
   field_metatags:
-    weight: 106
+    weight: 13
     settings: {  }
     third_party_settings: {  }
     type: metatag_firehose
@@ -190,7 +197,7 @@ content:
     region: content
   field_p_insight:
     type: entity_reference_paragraphs_browser
-    weight: 15
+    weight: 5
     settings:
       title: Insight
       title_plural: Insights
@@ -204,11 +211,11 @@ content:
     third_party_settings: {  }
     region: content
   field_p_related_insights:
-    weight: 16
+    weight: 8
     settings:
       title: 'Related Insights'
       title_plural: 'Related Insights'
-      edit_mode: preview
+      edit_mode: open
       add_mode: paragraphs_browser
       form_display_mode: default
       default_paragraph_type: summary_insights
@@ -219,7 +226,7 @@ content:
     type: entity_reference_paragraphs_browser
     region: content
   field_references:
-    weight: 18
+    weight: 7
     settings:
       rows: 5
       placeholder: ''
@@ -242,13 +249,13 @@ content:
     region: content
   moderation_state:
     type: moderation_state_default
-    weight: 100
+    weight: 12
     settings: {  }
     region: content
     third_party_settings: {  }
   path:
     type: path
-    weight: 8
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -256,12 +263,12 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 4
+    weight: 5
     region: content
     third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
-    weight: 6
+    weight: 7
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -269,14 +276,14 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 10
+    weight: 11
     region: content
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 5
+    weight: 6
     region: content
     third_party_settings: {  }
   title:
@@ -298,12 +305,12 @@ content:
     third_party_settings: {  }
   unpublish_on:
     type: datetime_timestamp_no_default
-    weight: 7
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
   url_redirects:
-    weight: 9
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }

@@ -1,0 +1,28 @@
+uuid: d1355c67-97a3-445c-8655-74bc067211c2
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.taxonomy_term.teaser
+    - field.field.taxonomy_term.insights_topics.field_media
+    - image.style.teaser
+    - taxonomy.vocabulary.insights_topics
+  module:
+    - media_entity_image
+id: taxonomy_term.insights_topics.teaser
+targetEntityType: taxonomy_term
+bundle: insights_topics
+mode: teaser
+content:
+  field_media:
+    type: media_image
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      image_style: teaser
+      image_link: ''
+    third_party_settings: {  }
+hidden:
+  description: true
+  langcode: true

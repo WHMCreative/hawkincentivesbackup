@@ -1,0 +1,39 @@
+<?php
+
+/**
+ * @file
+ * Contains bhk_views_filter.module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function bhk_views_filter_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the bhk_views_filter module.
+    case 'help.page.bhk_views_filter':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Creates custom view filters') . '</p>';
+      return $output;
+
+    default:
+      return '';
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function bhk_views_filter_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if ($form_id === 'views_exposed_form' && isset($form['authored_year'])) {
+    if (strpos($form['#action'], '/views/ajax') === FALSE) {
+//      $default_year = max(array_keys($form['authored_year']['#options']));
+//      $form['authored_year']['#default_value'] = $default_year;
+//      $form['authored_year']['#value'] = $default_year;
+    }
+  }
+}

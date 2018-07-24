@@ -4,6 +4,7 @@ namespace Drupal\e3_marketo\Entity;
 
 use Drupal\Core\Entity\EntityViewBuilder;
 use Drupal\Core\Render\RendererInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\e3_marketo\Plugin\MarketoHandlerManager;
 use Drupal\paragraphs\ParagraphInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -32,6 +33,13 @@ class MarketoViewBuilder extends EntityViewBuilder {
   protected $renderer;
 
   /**
+   * Current route match.
+   *
+   * @var \Drupal\Core\Routing\RouteMatchInterface
+   */
+  protected $routeMatch;
+
+  /**
    * Constructs a new MarketoViewBuilder.
    *
    * @param \Drupal\Core\Entity\EntityTypeInterface $entity_type
@@ -44,14 +52,25 @@ class MarketoViewBuilder extends EntityViewBuilder {
    *   Marketo Handler Manager.
    * @param \Drupal\Core\Render\RendererInterface $renderer
    *   Renderer service.
+   * @param \Drupal\Core\Routing\RouteMatchInterface $current_route_match
+   *   Current Route Match.
    * @param \Drupal\Core\Theme\Registry $theme_registry
    *   The theme registry.
    */
-  public function __construct(EntityTypeInterface $entity_type, EntityManagerInterface $entity_manager, LanguageManagerInterface $language_manager, MarketoHandlerManager $marketo_handler_manager, RendererInterface $renderer, Registry $theme_registry = NULL) {
+  public function __construct(
+    EntityTypeInterface $entity_type,
+    EntityManagerInterface $entity_manager,
+    LanguageManagerInterface $language_manager,
+    MarketoHandlerManager $marketo_handler_manager,
+    RendererInterface $renderer,
+    RouteMatchInterface $current_route_match,
+    Registry $theme_registry = NULL) {
+
     parent::__construct($entity_type, $entity_manager, $language_manager, $theme_registry);
 
     $this->marketoHandlerManager = $marketo_handler_manager;
     $this->renderer = $renderer;
+    $this->routeMatch = $current_route_match;
   }
 
   /**
@@ -64,6 +83,7 @@ class MarketoViewBuilder extends EntityViewBuilder {
       $container->get('language_manager'),
       $container->get('plugin.manager.marketo_handler_manager'),
       $container->get('renderer'),
+      $container->get('current_route_match'),
       $container->get('theme.registry')
     );
   }
@@ -87,7 +107,11 @@ class MarketoViewBuilder extends EntityViewBuilder {
         }
       }
 
-      if ($displays[$entity->bundle()]->getComponent('marketo_form_embed')) {
+      // Do not inject the form on entity add/edit/etc. forms.
+      $current_route = $this->routeMatch->getRouteName();
+      if (!preg_match('/^entity\.\w+\.\w*form$/', $current_route) && $displays[$entity->bundle()]->getComponent('marketo_form_embed')) {
+
+        // Invoke all handlers to inject the form.
         $this->marketoHandlerManager->invokeHandlers($entity, 'embedMarketoForm', $build[$id]);
       }
     }

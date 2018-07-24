@@ -25,19 +25,16 @@
       box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
       margin-bottom: 20px;
       @include breakpoint(marge) {
-        margin-top: -225px;
-        min-height: 190px;
+        margin-top: -180px;
         margin-left: -30px;
       }
       @include breakpoint(large) {
-        margin-top: -245px;
-        min-height: 210px;
+        margin-top: -205px;
         margin-left: -35px;
         margin-bottom: 40px;
       }
       @include breakpoint(xlarge) {
-        margin-top: -265px;
-        min-height: 230px;
+        margin-top: -235px;
         margin-left: -40px;
         margin-right: -40px;
       }

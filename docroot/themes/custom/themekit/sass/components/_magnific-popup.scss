@@ -2,12 +2,32 @@
 /// Magnific Popup
 ////
 
-.mfp-close-btn-in .mfp-close {
-  color: $lighter-gray;
-  font-size: rem-calc(34);
+.mfp-close-btn-in {
+  .mfp-close {
+    right: 13px;
+    top: 9px;
+    color: $white;
+    font-size: rem-calc(34);
+    opacity: .4;
+
+    @include selectors('active') {
+      opacity: 1;
+    }
+  }
+
+  .card-modal .mfp-close {
+    color: $secondary-color-dark;
+  }
 }
 
 .mfp-content {
+  > div {
+    position: relative;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   .card-modal {
     width: 90%;
     max-width: rem-calc(700);

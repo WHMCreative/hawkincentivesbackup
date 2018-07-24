@@ -1,0 +1,23 @@
+{#
+/**
+ * @file micro-quiz.html.twig
+ * Default theme implementation to present MicroQuiz data.
+ *
+ * This template is used when viewing MicroQuiz pages.
+ *
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ * - attributes: HTML attributes for the container element.
+ * - bundle: MicroQuiz bundle.
+ *
+ * @see template_preprocess_micro_quiz()
+ *
+ * @ingroup themeable
+ */
+#}
+<div{{ attributes.addClass(['micro-quiz', "micro-quiz-#{bundle}"]) }}>
+  {% if content %}
+    {{- content -}}
+  {% endif %}
+</div>

@@ -34,3 +34,32 @@
     }
   }
 }
+
+
+#block-startaconversationfooter {
+  .paragraph--type--simple-content,
+  .paragraph--type--link-form-modal {
+    @include paragraph-margins((small: 0));
+
+    > .paragraph-content {
+      @include content-width(full);
+      text-align: left;
+      max-width: none;
+    }
+  }
+
+  .paragraph--type--simple-content {
+    .field--name-field-description p {
+      font-size: rem-calc(32);
+      font-weight: $global-weight-light;
+      line-height: 40px;
+    }
+  }
+
+  .paragraph--type--link-form-modal {
+    @include top-bottom(margin, rem-calc(16));
+    a {
+      @include btn(white);
+    }
+  }
+}

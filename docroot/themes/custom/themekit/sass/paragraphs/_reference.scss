@@ -9,12 +9,98 @@
 }
 
 .paragraph--type--reference-marketo-form {
-  background: $blue-gradient-reverse;
-  padding: rem-calc(20);
-  color: $white;
+  padding: rem-calc(18) rem-calc(20);
+  border-radius: 3px;
+  color: $medium-gray;
+
+  @include breakpoint(medium) {
+    padding: rem-calc(36) rem-calc(42);
+  }
 
   .marketo-form-description {
     margin-bottom: rem-calc(16);
+  }
+
+  .field--name-field-p-media {
+    display: none;
+    overflow: hidden;
+    width: 50%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    @include breakpoint(medium) {
+      display: block;
+    }
+
+    &:before {
+      content: '';
+      box-shadow: inset -2px 0px 10px 3px rgba(0, 0, 0, .1);
+      display: block;
+      position: absolute;
+      top: -4px;
+      bottom: -4px;
+      right: 0;
+      left: -4px;
+      z-index: 1;
+      background-color: rgba($secondary-color-dark, .9);
+    }
+
+    .field--name-field-media-image {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+
+      img {
+        height: 100%;
+        width: auto;
+        max-width: 999rem;
+      }
+    }
+  }
+
+
+  .field--name-field-p-content > & {
+    background: none;
+    >.paragraph-content {
+      @include content-width(narrow);
+    }
+  }
+
+  .mfp-content &,
+  .node--sidebar & {
+    background: $blue-gradient-reverse;
+    color: $white;
+  }
+
+
+  // Subscribe form
+  .block--component & {
+    background: $gray-gradient;
+    @include paragraph-margins((small: 0));
+    color: $secondary-color;
+
+    >.paragraph-content {
+      @include content-width(default);
+    }
+  }
+
+  &.form-id--1351 {
+    @include top-bottom(padding, 100px);
+    .marketo-steps-wrapper {
+      .mktoForm {
+        display: flex;
+        max-width: rem-calc(430);
+        margin: 0 auto;
+
+        .mktoFieldEmail {
+          flex-grow: 1;
+        }
+      }
+    }
+
   }
 }
 
@@ -38,7 +124,7 @@
 }
 
 .paragraph--type--reference-block {
-  .paragraph-content {
-    @include content-width(default);
+  .field--name-field-p-content > & {
+    @include paragraph-margins((small: 0));
   }
 }

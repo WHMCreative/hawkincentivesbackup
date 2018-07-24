@@ -1,0 +1,7 @@
+name: BHK MicroQuiz
+type: module
+description: Provides the MicroQuiz entity and corresponding dynamic component for BHK project
+core: 8.x
+package: Custom
+dependencies:
+  - drupal:paragraphs

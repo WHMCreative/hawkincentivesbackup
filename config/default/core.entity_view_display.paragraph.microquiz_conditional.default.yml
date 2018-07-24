@@ -1,0 +1,30 @@
+uuid: 1ba21b13-27c1-487f-8f07-e4a1691a9075
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.microquiz_conditional.field_q1_answer
+    - field.field.paragraph.microquiz_conditional.field_q2_answer
+    - paragraphs.paragraphs_type.microquiz_conditional
+id: paragraph.microquiz_conditional.default
+targetEntityType: paragraph
+bundle: microquiz_conditional
+mode: default
+content:
+  field_q1_answer:
+    weight: 0
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_q2_answer:
+    weight: 1
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+hidden: {  }

@@ -1,0 +1,10 @@
+uuid: 4b5666d5-dc58-43b8-874d-31eb980fcac4
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.featured_big_teaser
+label: 'Featured Big Teaser'
+targetEntityType: paragraph
+cache: true

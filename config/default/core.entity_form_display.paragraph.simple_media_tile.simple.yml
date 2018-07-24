@@ -1,0 +1,75 @@
+uuid: ee1b523b-9834-4c4c-81a9-eb3b5c776138
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.paragraph.simple
+    - entity_browser.browser.image
+    - field.field.paragraph.simple_media_tile.field_description
+    - field.field.paragraph.simple_media_tile.field_heading
+    - field.field.paragraph.simple_media_tile.field_link
+    - field.field.paragraph.simple_media_tile.field_media
+    - field.field.paragraph.simple_media_tile.field_p_link
+    - field.field.paragraph.simple_media_tile.field_p_media
+    - paragraphs.paragraphs_type.simple_media_tile
+  module:
+    - entity_browser
+    - link
+    - paragraphs_browser
+id: paragraph.simple_media_tile.simple
+targetEntityType: paragraph
+bundle: simple_media_tile
+mode: simple
+content:
+  field_heading:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_link:
+    type: link_default
+    weight: 3
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_media:
+    type: entity_browser_entity_reference
+    weight: 2
+    region: content
+    settings:
+      entity_browser: image
+      field_widget_display: rendered_entity
+      field_widget_remove: true
+      selection_mode: selection_append
+      field_widget_display_settings:
+        view_mode: form_preview
+      field_widget_edit: false
+      open: false
+    third_party_settings: {  }
+  field_p_media:
+    weight: 0
+    settings:
+      title: Media
+      title_plural: Media
+      edit_mode: open
+      add_mode: paragraphs_browser
+      form_display_mode: default
+      default_paragraph_type: _none
+      paragraphs_browser: browser
+      modal_width: 80%
+      modal_height: auto
+    third_party_settings: {  }
+    type: entity_reference_paragraphs_browser
+    region: content
+hidden:
+  created: true
+  field_description: true
+  field_p_link: true
+  moderation_state: true
+  status: true
+  uid: true

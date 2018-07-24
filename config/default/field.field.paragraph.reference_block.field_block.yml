@@ -18,5 +18,7 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  plugin_ids: {  }
+  plugin_ids:
+    'views_block:news-block_news_all': 'views_block:news-block_news_all'
+    'views_block:people-block_people': 'views_block:people-block_people'
 field_type: block_field

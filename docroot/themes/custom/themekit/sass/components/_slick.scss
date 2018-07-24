@@ -1,0 +1,81 @@
+////
+/// Slick
+////
+
+
+.slick-slider {
+  .slick-arrow {
+    @include icon-before(arrow-down);
+    opacity: 1;
+
+    &:before {
+      color: $primary-color;
+    }
+
+    &.slick-prev {
+      left: -10px;
+      &:before {
+        transform: rotate(90deg);
+      }
+    }
+
+    &.slick-next {
+      right: -10px;
+      &:before {
+        transform: rotate(-90deg);
+      }
+    }
+
+    &.slick-disabled {
+      opacity: 0;
+    }
+  }
+
+  .paragraph--type--compound-content-bar & {
+    margin-bottom: rem-calc(50);
+  }
+}
+
+.slick-dots {
+  left: 0;
+
+  li button:before {
+    color: transparent;
+  }
+  button {
+    position: relative;
+    &:after {
+      content: '';
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      border: 1px solid $primary-color;
+      width: 9px;
+      height: 9px;
+      display: inline-block;
+      border-radius: 50%;
+    }
+  }
+}
+
+.slick-counter {
+  margin-top: -5px;
+  white-space: nowrap;
+  @include breakpoint(marge) {
+    display: none;
+  }
+
+  span {
+    display: inline-block;
+    width: 30px;
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity .25s ease-out;
+    &.active {
+      opacity: 1;
+    }
+  }
+}

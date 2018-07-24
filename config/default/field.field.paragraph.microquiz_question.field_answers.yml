@@ -1,0 +1,28 @@
+uuid: bfdb6f36-4f39-40b1-be21-7733070a0b19
+langcode: en
+status: true
+dependencies:
+  config:
+    - bhk_micro_quiz.micro_quiz_type.answer
+    - field.storage.paragraph.field_answers
+    - paragraphs.paragraphs_type.microquiz_question
+id: paragraph.microquiz_question.field_answers
+field_name: field_answers
+entity_type: paragraph
+bundle: microquiz_question
+label: Answers
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:micro_quiz'
+  handler_settings:
+    target_bundles:
+      answer: answer
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

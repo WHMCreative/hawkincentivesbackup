@@ -1,0 +1,60 @@
+uuid: e6d10701-6884-4429-a349-f9b0a97c6ddd
+langcode: en
+status: true
+dependencies:
+  config:
+    - bhk_micro_quiz.micro_quiz_type.answer
+    - field.field.micro_quiz.answer.field_description
+    - field.field.micro_quiz.answer.field_marketo_value
+    - field.field.micro_quiz.answer.field_p_media
+  module:
+    - paragraphs_browser
+    - text
+id: micro_quiz.answer.default
+targetEntityType: micro_quiz
+bundle: answer
+mode: default
+content:
+  field_description:
+    weight: 2
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_marketo_value:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_p_media:
+    type: entity_reference_paragraphs_browser
+    weight: 1
+    settings:
+      title: Icon
+      title_plural: Icons
+      edit_mode: preview
+      add_mode: paragraphs_browser
+      form_display_mode: default
+      default_paragraph_type: _none
+      paragraphs_browser: browser
+      modal_width: 80%
+      modal_height: auto
+    third_party_settings: {  }
+    region: content
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  langcode: true
+  status: true
+  user_id: true

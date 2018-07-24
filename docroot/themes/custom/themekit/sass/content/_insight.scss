@@ -67,40 +67,24 @@
         margin-right: -40px;
       }
     }
-    .field--name-field-p-insight {
-      @include breakpoint(marge) {
-        margin-top: -225px;
-        min-height: 230px;
-      }
-      @include breakpoint(large) {
-        margin-top: -245px;
-        min-height: 250px;
-      }
-      @include breakpoint(xlarge) {
-        margin-top: -265px;
-        min-height: 270px;
-      }
-    }
+    .field--name-field-p-insight,
     .field--name-field-p-form {
       @include breakpoint(marge) {
         margin-top: -180px;
-        min-height: 270px;
       }
       @include breakpoint(large) {
-        margin-top: -200px;
-        min-height: 290px;
+        margin-top: -205px;
       }
       @include breakpoint(xlarge) {
-        margin-top: -230px;
-        min-height: 320px;
+        margin-top: -235px;
       }
     }
 
     .field--name-field-p-related-insights,
     .field--name-field-author {
-      margin-bottom: 40px;
+      margin-bottom: 25px;
       @include breakpoint(marge) {
-        margin-bottom: 80px;
+        margin-bottom: 65px;
       }
     }
     .field--name-field-references {
@@ -119,10 +103,8 @@
     > .node--content-wrapper {
       @include content-width(default);
       padding-top: 40px;
-      margin-bottom: 40px;
       @include breakpoint(marge) {
         padding-top: 85px;
-        margin-bottom: 85px;
       }
     }
 
@@ -140,20 +122,47 @@
   }
 
   &.node--view-mode-teaser {
+    > a {
+      @include breakpoint(small down) {
+        display: flex;
+        flex-wrap: nowrap;
+      }
+    }
     .node--image {
       position: relative;
       margin-bottom: 5px;
+      @include breakpoint(small down) {
+        margin-bottom: 0;
+        margin-right: 20px;
+      }
       .field--name-field-insight-type {
         position: absolute;
         left: 15px;
         top: 15px;
         @include insight-label();
+        @include breakpoint(small down) {
+          display: none;
+        }
       }
+      .field--name-field-media,
+      .default-insight-image,
       .field--name-field-teaser-image {
         position: relative;
         overflow: hidden;
         border-radius: 3px;
-        .paragraph--type--summary-insights & {
+        @include breakpoint(marge) {
+          max-height: 180px;
+          height: 180px;
+        }
+        @include breakpoint(small down) {
+          width: 70px;
+          height: 70px;
+          max-height: 70px;
+          border-radius: 0;
+        }
+
+        .node--sidebar .paragraph--type--summary-insights &,
+        .field--name-field-top-insights & {
           max-height: 100px;
         }
         &:after {
@@ -168,21 +177,41 @@
         }
         img {
           width: 100%;
-          .paragraph--type--summary-insights & {
-            margin-top: -40px;
+          .node--sidebar .paragraph--type--summary-insights &,
+          .field--name-field-top-insights & {
+            @include breakpoint(medium) {
+              margin-top: -40px;
+            }
+          }
+          @include breakpoint(small down) {
+            width: auto;
+            max-width: 200%;
+            height: 100%;
+            max-height: 70px;
           }
         }
       }
     }
     .node--content {
+      @include breakpoint(small down) {
+        padding-top: 5px;
+      }
       h5 {
         font-weight: 700;
+        color: $dark-gray;
+        @include breakpoint(small down) {
+          margin-bottom: 2px;
+        }
         a {
-          color: $dark-gray;
+          color: inherit;
         }
       }
       .date {
         font-size: rem-calc(13);
+        color: $medium-gray;
+        @include breakpoint(small down) {
+          font-size: rem-calc(11);
+        }
       }
     }
   }
@@ -224,6 +253,49 @@
       }
       .field--name-field-intro-copy {
         font-size: rem-calc(14);
+      }
+    }
+  }
+
+  &.node--view-mode-compact {
+    .node--image {
+      position: relative;
+      min-height: 40px;
+      margin-bottom: 10px;
+      @include breakpoint(medium) {
+        margin-bottom: 20px;
+      }
+
+      .field--name-field-image {
+        img {
+          width: 100%;
+          border-radius: 3px;
+        }
+      }
+
+      .field--name-field-insight-type {
+        position: absolute;
+        left: 15px;
+        top: 15px;
+        @include insight-label();
+        @include breakpoint(small down) {
+          display: none;
+        }
+      }
+    }
+
+    .field--name-title {
+      color: $secondary-color-dark;
+      a {
+        color: inherit;
+      }
+    }
+
+    .date {
+      font-size: rem-calc(13);
+      color: $medium-gray;
+      @include breakpoint(small down) {
+        font-size: rem-calc(11);
       }
     }
   }

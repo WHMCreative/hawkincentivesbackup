@@ -18,3 +18,4 @@ permissions:
   - 'view media'
   - 'view published card entities'
   - 'view published marketo form entity entities'
+  - 'view published microquiz entities'
