@@ -17,9 +17,10 @@
       }
       @include breakpoint(marge) {
         @include btn(ghost);
-        @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-          border: 0 solid;
-        }
+      }
+      /* IE10+ CSS styles go here */
+      @media (min-width: 800px) and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        border: 0 solid;
       }
     }
   }
