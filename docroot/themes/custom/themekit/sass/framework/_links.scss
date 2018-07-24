@@ -17,6 +17,8 @@ $links: (
 ///   @include link(inline)
 @mixin link($link-key: default) {
   $link-conf: extend-in-map($links, $link-key);
+  display: inline-block;
+  vertical-align: baseline;
 
   font-size: rem-calc(14);
   line-height: 1.25;
@@ -54,7 +56,7 @@ $links: (
 
   @include selectors(active) {
     @if (map-has-key($link-conf, active-color)) {
-      color: key($link-conf, active-color);
+      //color: key($link-conf, active-color);
     }
     @if (map-has-key($link-conf, active-background)) {
       @supports (-webkit-text-fill-color: transparent) {

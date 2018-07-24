@@ -43,6 +43,7 @@ Drupal.behaviors.heroSlider = {
       $slides.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
         $nav.find('.slick-slide').removeClass('slick-current');
         $nav.find('.slick-slide').eq(nextSlide).addClass('slick-current');
+        startProgressbar();
       });
 
 

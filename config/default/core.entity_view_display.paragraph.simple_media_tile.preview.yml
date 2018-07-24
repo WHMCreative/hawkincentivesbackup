@@ -53,3 +53,4 @@ content:
     region: content
 hidden:
   field_link: true
+  field_media: true

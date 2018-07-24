@@ -9,9 +9,8 @@
   Drupal.behaviors.ViewsAjaxView = {};
   Drupal.behaviors.ViewsAjaxView.attach = function () {
     if (drupalSettings && drupalSettings.views && drupalSettings.views.ajaxViews) {
-      var ajaxViews = drupalSettings.views.ajaxViews;
-      Object.keys(ajaxViews || {}).forEach(function (i) {
-        Drupal.views.instances[i] = new Drupal.views.ajaxView(ajaxViews[i]);
+      Drupal.views.sortByNestingLevel(drupalSettings.views.ajaxViews).forEach(function (item) {
+        Drupal.views.instances[item.key] = new Drupal.views.ajaxView(item.value);
       });
     }
   };
@@ -20,9 +19,29 @@
 
   Drupal.views.instances = {};
 
+  Drupal.views.sortByNestingLevel = function (ajaxViews) {
+    var ajaxViewsArray = [];
+
+    for (var i in ajaxViews) {
+      if (ajaxViews.hasOwnProperty(i)) {
+        ajaxViews[i].selector = '.js-view-dom-id-' + ajaxViews[i].view_dom_id;
+
+        ajaxViewsArray.push({
+          key: i,
+          value: ajaxViews[i],
+          nestingLevel: $(ajaxViews[i].selector).parents('.view').length
+        });
+      }
+    }
+
+    return ajaxViewsArray.sort(function (a, b) {
+      return b.nestingLevel - a.nestingLevel;
+    });
+  };
+
   Drupal.views.ajaxView = function (settings) {
     var selector = '.js-view-dom-id-' + settings.view_dom_id;
-    this.$view = $(selector);
+    this.$view = $(settings.selector);
 
     var ajaxPath = drupalSettings.views.ajax_path;
 
@@ -43,7 +62,7 @@
       submit: settings,
       setClick: true,
       event: 'click',
-      selector: selector,
+      selector: settings.selector,
       progress: { type: 'fullscreen' }
     };
 
@@ -52,7 +71,7 @@
     this.$exposed_form = $('form#views-exposed-form-' + settings.view_name.replace(/_/g, '-') + '-' + settings.view_display_id.replace(/_/g, '-'));
     this.$exposed_form.once('exposed-form').each($.proxy(this.attachExposedFormAjax, this));
 
-    this.$view.filter($.proxy(this.filterNestedViews, this)).once('ajax-pager').each($.proxy(this.attachPagerAjax, this));
+    this.$view.once('ajax-pager').each($.proxy(this.attachPagerAjax, this));
 
     var selfSettings = $.extend({}, this.element_settings, {
       event: 'RefreshView',
@@ -75,12 +94,8 @@
     });
   };
 
-  Drupal.views.ajaxView.prototype.filterNestedViews = function () {
-    return !this.$view.parents('.view').length;
-  };
-
   Drupal.views.ajaxView.prototype.attachPagerAjax = function () {
-    this.$view.find('ul.js-pager__items > li > a, th.views-field a, .attachment .views-summary a').each($.proxy(this.attachPagerLinkAjax, this));
+    this.$view.find('ul.js-pager__items > li > a, th.views-field a, .attachment .views-summary a').once('attach-pager-ajax').each($.proxy(this.attachPagerLinkAjax, this));
   };
 
   Drupal.views.ajaxView.prototype.attachPagerLinkAjax = function (id, link) {

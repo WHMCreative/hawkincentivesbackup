@@ -1,7 +1,12 @@
 uuid: b43540c6-97c3-4114-b17c-4c2c1cf13b99
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - paragraphs_browser
+third_party_settings:
+  paragraphs_browser:
+    image_path: 'public://Group 13.png'
 id: compound_tabbed_content
 label: 'Compound - Tabbed Content'
 icon_uuid: null

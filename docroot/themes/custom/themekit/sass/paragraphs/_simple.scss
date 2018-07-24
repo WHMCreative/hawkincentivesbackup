@@ -527,6 +527,12 @@
     }
   }
 
+  // Inside Banner
+  .paragraph--type--banner-hero & {
+    color: $white;
+  }
+
+  // Inside Layout 2 Column
   .paragraph--type--layout-2-column & {
     .paragraph-content {
       justify-content: flex-start;

@@ -73,7 +73,7 @@ display:
       pager:
         type: infinite_scroll
         options:
-          items_per_page: 4
+          items_per_page: 2
           offset: 0
           id: 0
           total_pages: null
@@ -295,27 +295,9 @@ display:
     display_plugin: block
     id: block_news
     display_title: News
-    position: 1
+    position: 3
     display_options:
       display_extenders: {  }
-      display_description: ''
-      header:
-        view:
-          id: view
-          table: views
-          field: view
-          relationship: none
-          group_type: group
-          admin_label: ''
-          empty: true
-          view_to_insert: 'news:block_press_release'
-          inherit_arguments: false
-          plugin_id: view
-      defaults:
-        header: false
-        filters: false
-        filter_groups: false
-        pager: false
       filters:
         status:
           value: '1'
@@ -420,6 +402,10 @@ display:
             group_items: {  }
           entity_type: node
           plugin_id: years_date_only
+      defaults:
+        filters: false
+        filter_groups: false
+        pager: false
       filter_groups:
         operator: AND
         groups:
@@ -445,6 +431,7 @@ display:
           views_infinite_scroll:
             button_text: 'Load More'
             automatically_load_content: false
+      display_description: ''
     cache_metadata:
       max-age: -1
       contexts:
@@ -452,6 +439,127 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  block_news_all:
+    display_plugin: block
+    id: block_news_all
+    display_title: 'All News'
+    position: 1
+    display_options:
+      display_extenders: {  }
+      display_description: ''
+      header:
+        view:
+          id: view
+          table: views
+          field: view
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          view_to_insert: 'news:block_press_release'
+          inherit_arguments: false
+          plugin_id: view
+      defaults:
+        header: false
+        filters: false
+        filter_groups: false
+        pager: false
+        footer: false
+      filters:
+        status:
+          value: '1'
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          entity_type: node
+          entity_field: status
+          id: status
+          expose:
+            operator: ''
+          group: 1
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          value:
+            news: news
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+        authored_year:
+          id: authored_year
+          table: node_field_data
+          field: authored_year
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: in
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: authored_year_op
+            label: ''
+            description: ''
+            use_operator: false
+            operator: authored_year_op
+            identifier: authored_year
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              reviewer: '0'
+              contributor: '0'
+              publisher: '0'
+              content_admin: '0'
+            reduce: 0
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          plugin_id: years_date_only
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      pager:
+        type: some
+        options:
+          items_per_page: 0
+          offset: 0
+      footer:
+        view:
+          id: view
+          table: views
+          field: view
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: false
+          view_to_insert: 'news:block_news'
+          inherit_arguments: false
+          plugin_id: view
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
         - 'user.node_grants:view'
         - user.permissions
       tags: {  }
@@ -463,6 +571,29 @@ display:
     display_options:
       display_extenders: {  }
       display_description: ''
+      pager:
+        type: infinite_scroll
+        options:
+          items_per_page: 4
+          offset: 0
+          id: 1
+          total_pages: null
+          tags:
+            previous: '‹ Previous'
+            next: 'Next ›'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          views_infinite_scroll:
+            button_text: 'Load More'
+            automatically_load_content: false
+      defaults:
+        pager: false
     cache_metadata:
       max-age: -1
       contexts:

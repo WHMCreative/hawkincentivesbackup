@@ -56,6 +56,12 @@
       {{ header }}
     </div>
   {% endif %}
+  {% if footer %}
+    <div class="view-footer">
+      <h3>{{ 'In the News'|t }}</h3>
+      {{ footer }}
+    </div>
+  {% endif %}
   {% if attachment_before %}
     <div class="attachment attachment-before">
 
@@ -63,20 +69,8 @@
     </div>
   {% endif %}
 
-  {% if rows %}
-    <div class="view-content">
-      <h3>{{ 'In the News'|t }}</h3>
-      {{ rows }}
-    </div>
-  {% elseif empty %}
-    <div class="view-empty">
-      {{ empty }}
-    </div>
-  {% endif %}
+  {#Removing view-content and pager since press releases and news are displayed in header and footer areas with own pagers#}
 
-  {% if pager %}
-    {{ pager }}
-  {% endif %}
   {% if attachment_after %}
     <div class="attachment attachment-after">
       {{ attachment_after }}
@@ -85,11 +79,7 @@
   {% if more %}
     {{ more }}
   {% endif %}
-  {% if footer %}
-    <div class="view-footer">
-      {{ footer }}
-    </div>
-  {% endif %}
+
   {% if feed_icons %}
     <div class="feed-icons">
       {{ feed_icons }}

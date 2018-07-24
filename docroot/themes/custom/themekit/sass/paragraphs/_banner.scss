@@ -64,13 +64,18 @@
 
     > * + * {
       margin-top: rem-calc(20);
-      max-width: rem-calc(520);
+      @include breakpoint(medium) {
+        max-width: 50%;
+      }
+      @include breakpoint(large) {
+        max-width: rem-calc(520);
+      }
     }
 
     .field--name-field-large-heading {
       color: inherit;
       font-size: rem-calc(26);
-      font-weight: $global-weight-normal;
+      font-weight: $global-weight-light;
 
       @include breakpoint(medium) {
         font-size: rem-calc(35);
@@ -87,6 +92,10 @@
 
     h3 {
       color: inherit;
+    }
+
+    .field--name-field-description {
+      font-size: rem-calc(20);
     }
 
     a {
@@ -111,8 +120,29 @@
   }
 
   .field--name-field-p-banner-content {
-    //position: relative;
-    //z-index: z(banner, content);
+    position: relative;
+    z-index: z(banner, content);
+  }
+
+  &.addtional-content--compound-slider {
+    .field--name-field-p-banner-content {
+      position: static;
+    }
+  }
+
+  &.addtional-content--media-video-modal + .paragraph--type--banner-hero-additional {
+    @include content-width(default);
+    margin-top: rem-calc(-180);
+    padding-top: rem-calc(32);
+
+    @include breakpoint(medium) {
+      padding-top: 0;
+    }
+
+    .field--name-field-p-banner-content {
+      display: flex;
+      justify-content: flex-end;
+    }
   }
 
   &.only-heading-field {

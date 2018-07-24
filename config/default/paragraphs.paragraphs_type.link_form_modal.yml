@@ -1,7 +1,12 @@
 uuid: 02520056-8731-4f62-9f94-4be5e36e2fb4
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - paragraphs_browser
+third_party_settings:
+  paragraphs_browser:
+    image_path: 'public://Screen Shot 2018-07-23 at 3.07.46 PM.png'
 id: link_form_modal
 label: 'Link - Form Modal'
 icon_uuid: null

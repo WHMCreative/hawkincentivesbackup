@@ -1,7 +1,12 @@
 uuid: adfb7475-0a5b-48be-aecd-2ab43e11d870
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - paragraphs_browser
+third_party_settings:
+  paragraphs_browser:
+    image_path: 'public://Group 24.png'
 id: simple_cta
 label: 'Simple - CTA'
 icon_uuid: null

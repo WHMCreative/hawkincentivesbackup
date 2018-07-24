@@ -67,6 +67,7 @@
 
   }
 
+  // Inside Layout 2 Column
   .paragraph--type--layout-2-column .paragraph-content .field--name-field-p-layout-media > & {
     min-width: rem-calc(340);
     height: auto;
@@ -74,6 +75,11 @@
 }
 
 .paragraph--type--media-image-slider {
+  padding-top: 120%;
+
+  @include breakpoint(medium) {
+    padding-top: 0;
+  }
   .simple-image-bg {
     @include bg-style(cover);
     position: absolute;
@@ -81,5 +87,10 @@
     bottom: 0;
     left: 0;
     right: 0;
+
+    @include breakpoint(medium) {
+      background-size: 60%;
+      background-position: right -20% center;
+    }
   }
 }

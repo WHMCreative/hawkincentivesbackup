@@ -1,7 +1,12 @@
 uuid: 9f67fcd0-6ba9-4d94-9072-05b68bc5e767
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - paragraphs_browser
+third_party_settings:
+  paragraphs_browser:
+    image_path: 'public://Screen Shot 2018-07-23 at 2.57.12 PM.png'
 id: summary_cards
 label: 'Summary - Cards'
 icon_uuid: null

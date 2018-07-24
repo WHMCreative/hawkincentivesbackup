@@ -5,7 +5,6 @@ dependencies:
   config:
     - field.storage.node.field_p_content
     - node.type.reward
-    - paragraphs.paragraphs_type.compound_callout
     - paragraphs.paragraphs_type.compound_content_bar
     - paragraphs.paragraphs_type.compound_media_title_bar
     - paragraphs.paragraphs_type.compound_slider
@@ -41,7 +40,6 @@ settings:
       summary_insights: summary_insights
       simple_cta: simple_cta
       layout_2_column: layout_2_column
-      compound_callout: compound_callout
       compound_content_bar: compound_content_bar
       compound_slider: compound_slider
       compound_stat_bar: compound_stat_bar
@@ -71,13 +69,13 @@ settings:
       banner_hero:
         weight: 30
         enabled: false
+      compound_callout:
+        weight: 31
+        enabled: false
       simple_cta:
         enabled: true
         weight: 31
       layout_2_column:
-        enabled: true
-        weight: 31
-      compound_callout:
         enabled: true
         weight: 31
       compound_content_bar:
@@ -95,19 +93,19 @@ settings:
       layout_grid:
         enabled: true
         weight: 36
-      link_file:
-        weight: 37
-        enabled: false
       compound_media_title_bar:
         enabled: true
         weight: 37
+      link_file:
+        weight: 37
+        enabled: false
       link_url:
         weight: 38
         enabled: false
-      media_image_slider:
+      link_form_modal:
         weight: 41
         enabled: false
-      link_form_modal:
+      media_image_slider:
         weight: 41
         enabled: false
       media_video_modal:
@@ -137,10 +135,10 @@ settings:
       simple_media_bar:
         weight: 49
         enabled: false
-      media_svg:
+      simple_media_tile:
         weight: 50
         enabled: false
-      simple_media_tile:
+      media_svg:
         weight: 50
         enabled: false
       simple_stat:
@@ -149,4 +147,13 @@ settings:
       summary_cards:
         enabled: true
         weight: 55
+      microquiz_conditional:
+        weight: 56
+        enabled: false
+      microquiz_question:
+        weight: 57
+        enabled: false
+      microquiz_quiz:
+        weight: 58
+        enabled: false
 field_type: entity_reference_revisions

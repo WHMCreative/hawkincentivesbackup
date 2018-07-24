@@ -68,7 +68,7 @@
         // Filter content by type
         $newRows.each(function () {
           let $row = $(this);
-          if ($row.find('.node--type-news').hasClass(type)) {
+          if ($row.find('[class*='+ type + ']')) {
             $filteredRows = $filteredRows.add($row);
           }
         });
@@ -100,13 +100,6 @@
         // Replace the pager link with the new link and ajaxPageState values.
         $existingPager.replaceWith($newPager);
       }
-
-
-
-
-
-
-
 
       // Run views and VIS behaviors.
       Drupal.attachBehaviors(view.$view[0]);
@@ -147,6 +140,22 @@
           $window.off(scrollEvent);
         }
       }
+    }
+  };
+
+
+  Drupal.behaviors.views_infinite_scroll_pager_handler = {
+    attach : function(context, settings) {
+      $('.view-news .pager a.button', context).on('click', function () {
+        let $button = $(this);
+        $button.addClass('processed');
+        if($(this).parent('.view-header').length) {
+          $('.view-news .view-footer .pager a.button:not(.processed)').trigger('click');
+        } else {
+          $('.view-news .view-header .pager a.button:not(.processed)').trigger('click');
+        }
+      });
+
     }
   };
 
