@@ -5,7 +5,7 @@ dependencies: {  }
 id: f6df662688
 name: 'Blackmesh Varnish Purger'
 invalidationtype: tag
-hostname: localhost
+hostname: 127.0.0.1
 port: 80
 path: /
 request_method: BAN
