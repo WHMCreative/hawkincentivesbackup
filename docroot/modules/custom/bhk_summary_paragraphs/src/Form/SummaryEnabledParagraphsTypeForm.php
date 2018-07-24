@@ -45,6 +45,8 @@ class SummaryEnabledParagraphsTypeForm extends ParagraphsTypeForm {
    *
    * @param \Drupal\paragraphs\ParagraphsBehaviorManager $paragraphs_behavior_manager
    *   The paragraphs type feature manager service.
+   * @param \Drupal\Core\Messenger\Messenger $messenger
+   *   Messenger service.
    * @param \Drupal\bhk_summary_paragraphs\SummaryHandlerManager $summary_handler_manager
    *   Summary handler manager.
    * @param \Drupal\Core\Entity\EntityFieldManager $entity_field_manager
