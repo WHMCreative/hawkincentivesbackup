@@ -202,64 +202,81 @@
   }
 
   .field--name-field-cards {
+    display: none;
+  }
+
+  #card-summary {
     width: 100%;
 
     @include breakpoint(small down) {
       order: 2;
       margin-top: 30px;
     }
-    @include breakpoint(medium) {
-      @include tk-flex-block-grid(3, '.field__item', $gutter: 32px);
-    }
-    @include breakpoint(marge down) {
-      margin-left: 0;
-      margin-right: 0;
-    }
     @include breakpoint(large) {
       width: 76%;
       float: right;
     }
 
-    > .field__item {
-      margin-bottom: 20px;
+    .all-cards {
+      @include breakpoint(marge down) {
+        margin-left: 0;
+        margin-right: 0;
+      }
       @include breakpoint(medium) {
-        margin-bottom: 0;
+        @include tk-flex-block-grid(3, '.card', $gutter: 32px);
       }
+    }
 
-      .field--name-field-p-media {
-        margin-bottom: 10px;
-        img {
-          width: 100%;
+    .card-list {
+      .card {
+        .card-overview {
+          display: block;
+          margin-bottom: 20px;
+          @include breakpoint(medium) {
+            margin-bottom: 0;
+          }
+
+          .media {
+            width: 100%;
+            margin-right: 0;
+            margin-bottom: 10px;
+
+            .media-content {
+              width: auto;
+              @include breakpoint(medium) {
+                width: 100%;
+              }
+              img {
+                width: 100%;
+              }
+            }
+          }
+
+          .card-title {
+            margin-bottom: 20px;
+            font-size: rem-calc(16);
+            font-weight: $global-weight-bold;
+            color: $secondary-color-dark;
+          }
+
+          .features {
+            padding-top: 15px;
+            border-top: 0;
+            border-bottom-width: 1px;
+
+            .cost {
+              display: inline-block;
+              margin-left: 7px;
+              font-size: rem-calc(14);
+              font-weight: $global-weight-bold;
+              color: $secondary-color-dark;
+            }
+          }
+
+          .view-details {
+            margin-top: 12px;
+          }
         }
-      }
-
-      .field--name-name {
-        color: $secondary-color-dark;
-        font-weight: $global-weight-bold;
-      }
-
-      .type {
-        display: inline-block;
-      }
-
-      .field--name-field-cost {
-        display: inline-block;
-        margin-left: 7px;
-        font-size: rem-calc(14);
-        font-weight: $global-weight-bold;
-        color: $secondary-color-dark;
-      }
-
-      .features {
-        padding-top: 5px;
-        border-top: 0;
-        border-bottom-width: 1px;
-      }
-
-      .view-details {
-        cursor: pointer;
-        @include link(blue);
-        margin-top: rem-calc(10);
       }
     }
   }

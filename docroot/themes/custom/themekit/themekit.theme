@@ -146,8 +146,12 @@ function themekit_preprocess_node_insight(&$variables) {
  * Implements template_preprocess_card().
  */
 function themekit_preprocess_card(&$variables) {
+  /** @var Drupal\bhk_card_browser\Entity\CardEntity $card_content */
   $card = $variables['elements'];
   $view_mode = $card['#view_mode'];
+  $card_content = $card['#card'];
+
+  $variables['card_id'] = $card_content->id();
 
   if ($view_mode === 'compact') {
     $field = $card['field_card_type'];
