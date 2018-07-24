@@ -1,0 +1,76 @@
+uuid: 12f9620d-3c2c-4a25-abff-748aacc353d3
+langcode: en
+status: true
+dependencies:
+  config:
+    - entity_browser.browser.image
+    - field.field.paragraph.microquiz_quiz.field_description
+    - field.field.paragraph.microquiz_quiz.field_heading
+    - field.field.paragraph.microquiz_quiz.field_media
+    - field.field.paragraph.microquiz_quiz.field_p_questions
+    - paragraphs.paragraphs_type.microquiz_quiz
+  module:
+    - content_moderation
+    - entity_browser
+    - paragraphs_browser
+    - text
+id: paragraph.microquiz_quiz.default
+targetEntityType: paragraph
+bundle: microquiz_quiz
+mode: default
+content:
+  field_description:
+    weight: 102
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_heading:
+    weight: 101
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_media:
+    weight: 103
+    settings:
+      entity_browser: image
+      field_widget_display: rendered_entity
+      field_widget_remove: true
+      open: true
+      selection_mode: selection_append
+      field_widget_display_settings:
+        view_mode: form_preview
+      field_widget_edit: false
+    third_party_settings: {  }
+    type: entity_browser_entity_reference
+    region: content
+  field_p_questions:
+    type: entity_reference_paragraphs_browser
+    weight: 104
+    settings:
+      title: Question
+      title_plural: Questions
+      edit_mode: preview
+      add_mode: paragraphs_browser
+      form_display_mode: default
+      default_paragraph_type: _none
+      paragraphs_browser: browser
+      modal_width: 80%
+      modal_height: auto
+    third_party_settings: {  }
+    region: content
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    settings: {  }
+    region: content
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

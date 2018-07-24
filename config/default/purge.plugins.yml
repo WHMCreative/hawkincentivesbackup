@@ -1,0 +1,5 @@
+purgers:
+  -
+    order_index: 2
+    instance_id: f6df662688
+    plugin_id: varnishbundled

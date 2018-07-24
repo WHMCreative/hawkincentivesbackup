@@ -5,6 +5,7 @@ namespace Drupal\bhk_summary_paragraphs\Form;
 use Drupal\paragraphs\Form\ParagraphsTypeForm;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\paragraphs\ParagraphsBehaviorManager;
+use Drupal\Core\Messenger\Messenger;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\bhk_summary_paragraphs\SummaryHandlerManager;
 use Drupal\Core\Entity\EntityFieldManager;
@@ -44,6 +45,8 @@ class SummaryEnabledParagraphsTypeForm extends ParagraphsTypeForm {
    *
    * @param \Drupal\paragraphs\ParagraphsBehaviorManager $paragraphs_behavior_manager
    *   The paragraphs type feature manager service.
+   * @param \Drupal\Core\Messenger\Messenger $messenger
+   *   Messenger service.
    * @param \Drupal\bhk_summary_paragraphs\SummaryHandlerManager $summary_handler_manager
    *   Summary handler manager.
    * @param \Drupal\Core\Entity\EntityFieldManager $entity_field_manager
@@ -51,8 +54,8 @@ class SummaryEnabledParagraphsTypeForm extends ParagraphsTypeForm {
    * @param \Drupal\Core\Entity\EntityDisplayRepositoryInterface $entity_display_repository
    *   Entity display repository service.
    */
-  public function __construct(ParagraphsBehaviorManager $paragraphs_behavior_manager, SummaryHandlerManager $summary_handler_manager, EntityFieldManager $entity_field_manager, EntityDisplayRepositoryInterface $entity_display_repository) {
-    parent::__construct($paragraphs_behavior_manager);
+  public function __construct(ParagraphsBehaviorManager $paragraphs_behavior_manager, Messenger $messenger, SummaryHandlerManager $summary_handler_manager, EntityFieldManager $entity_field_manager, EntityDisplayRepositoryInterface $entity_display_repository) {
+    parent::__construct($paragraphs_behavior_manager, $messenger);
 
     $this->summaryManager = $summary_handler_manager;
     $this->entityFieldManager = $entity_field_manager;
@@ -65,6 +68,7 @@ class SummaryEnabledParagraphsTypeForm extends ParagraphsTypeForm {
   public static function create(ContainerInterface $container) {
     return new static(
       $container->get('plugin.manager.paragraphs.behavior'),
+      $container->get('messenger'),
       $container->get('plugin.manager.bhk_summary_paragraphs_handler'),
       $container->get('entity_field.manager'),
       $container->get('entity_display.repository')

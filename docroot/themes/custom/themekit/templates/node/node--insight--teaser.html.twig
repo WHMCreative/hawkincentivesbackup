@@ -80,13 +80,13 @@
 #}
 
 {%
-set classes = [
-'node',
-'node--type-' ~ node.bundle|clean_class,
-node.isPromoted() ? 'node--promoted',
-node.isSticky() ? 'node--sticky',
-not node.isPublished() ? 'node--unpublished',
-view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+  set classes = [
+  'node',
+  'node--type-' ~ node.bundle|clean_class,
+  node.isPromoted() ? 'node--promoted',
+  node.isSticky() ? 'node--sticky',
+  not node.isPublished() ? 'node--unpublished',
+  view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
 ]
 %}
 
@@ -99,20 +99,35 @@ view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
 <article{{ attributes.addClass(classes) }} data-id="{{ node.id }}">
 
   <div class="node--image">
-    {{ content.field_teaser_image }}
-    {{ content.field_insight_type }}
+    <a href="{{ url }}" rel="bookmark">
+      {% if content.field_teaser_image|render %}
+        {{ content.field_teaser_image }}
+      {% elseif header_image|render %}
+        {{ header_image }}
+      {% elseif topic_image %}
+        {{ topic_image }}
+      {% else %}
+        <div class="default-insight-image">
+          <img src="/{{ base_path ~ directory }}/images/insight-default-image.jpg" alt="Insight" />
+        </div>
+      {% endif %}
+
+      {{ content.field_insight_type }}
+    </a>
   </div>
 
   <div{{ content_attributes.addClass('node--content') }}>
-    {{ title_prefix }}
+    <a href="{{ url }}" rel="bookmark">
+      {{ title_prefix }}
       <h5{{ title_attributes }}>
-        <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+        {{ label }}
       </h5>
-    {{ title_suffix }}
-    {% if insight_date %}
-      <div class="date">{{ insight_date }}</div>
-    {% endif %}
-    {{ rendered_content }}
+      {{ title_suffix }}
+      {% if insight_date %}
+        <div class="date">{{ insight_date }}</div>
+      {% endif %}
+      {{ rendered_content }}
+    </a>
   </div>
 
 </article>

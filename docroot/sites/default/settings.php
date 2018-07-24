@@ -116,7 +116,7 @@ if(isset($_SERVER['AH_SITE_ENVIRONMENT'])) {
 
   $config['environment_indicator.indicator']['bg_color'] = '#930007';
   $config['environment_indicator.indicator']['fg_color'] = '#ffffff';
-  $config['environment_indicator.indicator']['name'] = 'DrupalVM ' . $_SERVER['AH_SITE_ENVIRONMENT'];
+  $config['environment_indicator.indicator']['name'] = 'BlackMesh ' . $_SERVER['AH_SITE_ENVIRONMENT'];
 
   // Set trusted host pattern for the acquia paragon site. We need to set this because we cannot add additional
   // aliases to a free acquia account. This can be deleted for any new project created from paragon.
@@ -134,8 +134,8 @@ if(isset($_SERVER['AH_SITE_ENVIRONMENT'])) {
   switch ($_SERVER['AH_SITE_ENVIRONMENT']) {
     case 'dev':
       // Configure shield for dev environment.
-      $config['shield.settings']['user'] = 'hawkincentives';
-      $config['shield.settings']['pass'] = '3ditHawk';
+      $config['shield.settings']['credentials']['shield']['user'] = 'hawkincentives';
+      $config['shield.settings']['credentials']['shield']['pass'] = '3ditHawk';
 
       $settings['file_private_path'] = "/var/www/bhk-d8.dev.e3develop.com/application/shared/private";
       $config['system.file']['path']['temporary'] = "/var/www/bhk-d8.dev.e3develop.com/application/shared/private/tmp";
@@ -164,12 +164,12 @@ if(isset($_SERVER['AH_SITE_ENVIRONMENT'])) {
     case 'prod':
 
       //@TODO remove before launch
-      $config['shield.settings']['user'] = 'hawkincentives';
-      $config['shield.settings']['pass'] = '3ditHawk';
+      $config['shield.settings']['credentials']['shield']['user'] = 'hawkincentives';
+      $config['shield.settings']['credentials']['shield']['pass'] = '3ditHawk';
 
       //@TODO Configure this
-          $settings['file_private_path'] = "/var/www/bhk-d8.prod.e3develop.com/application/shared/private";
-          $config['system.file']['path']['temporary'] = "/var/www/bhk-d8.prod.e3develop.com/application/shared/private/tmp";
+        $settings['file_private_path'] = "/var/www/bhk-d8.prod.e3develop.com/application/shared/private";
+        $config['system.file']['path']['temporary'] = "/var/www/bhk-d8.prod.e3develop.com/application/shared/private/tmp";
 
       // Set logging level on production.
       $config['system.logging']['error_level'] = 'hide';

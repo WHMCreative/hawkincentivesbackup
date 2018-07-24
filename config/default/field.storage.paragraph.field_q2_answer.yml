@@ -1,0 +1,20 @@
+uuid: c6206a80-1cbb-4743-99ea-b09db4cdb0e3
+langcode: en
+status: true
+dependencies:
+  module:
+    - bhk_micro_quiz
+    - paragraphs
+id: paragraph.field_q2_answer
+field_name: field_q2_answer
+entity_type: paragraph
+type: entity_reference
+settings:
+  target_type: micro_quiz
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

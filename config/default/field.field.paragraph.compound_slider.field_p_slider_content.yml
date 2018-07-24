@@ -6,7 +6,6 @@ dependencies:
     - field.storage.paragraph.field_p_slider_content
     - paragraphs.paragraphs_type.compound_slider
     - paragraphs.paragraphs_type.media_image_slider
-    - paragraphs.paragraphs_type.simple_media_tile
   module:
     - entity_reference_revisions
 id: paragraph.compound_slider.field_p_slider_content
@@ -25,7 +24,6 @@ settings:
     negate: 0
     target_bundles:
       media_image_slider: media_image_slider
-      simple_media_tile: simple_media_tile
     target_bundles_drag_drop:
       compound_callout:
         weight: 22
@@ -72,22 +70,64 @@ settings:
       simple_media_bar:
         weight: 36
         enabled: false
-      simple_media_tile:
-        enabled: true
+      banner_featured_insights:
         weight: 37
+        enabled: false
+      simple_media_tile:
+        weight: 37
+        enabled: false
       simple_stat:
         weight: 38
         enabled: false
-      single_image:
-        weight: 39
+      banner_hero:
+        weight: 38
         enabled: false
-      single_svg:
-        weight: 40
-        enabled: false
-      single_video:
+      compound_media_title_bar:
         weight: 41
         enabled: false
       summary_insights:
         weight: 42
+        enabled: false
+      layout_2_column:
+        weight: 45
+        enabled: false
+      layout_grid:
+        weight: 46
+        enabled: false
+      link_form_modal:
+        weight: 48
+        enabled: false
+      media_image:
+        weight: 52
+        enabled: false
+      media_svg:
+        weight: 54
+        enabled: false
+      media_video:
+        weight: 55
+        enabled: false
+      microquiz_conditional:
+        weight: 57
+        enabled: false
+      microquiz_question:
+        weight: 58
+        enabled: false
+      microquiz_quiz:
+        weight: 59
+        enabled: false
+      reference_block:
+        weight: 60
+        enabled: false
+      reference_card_browser:
+        weight: 61
+        enabled: false
+      reference_featured_insight:
+        weight: 62
+        enabled: false
+      simple_cta:
+        weight: 65
+        enabled: false
+      summary_cards:
+        weight: 69
         enabled: false
 field_type: entity_reference_revisions

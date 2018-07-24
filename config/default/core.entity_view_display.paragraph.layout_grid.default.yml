@@ -18,15 +18,6 @@ targetEntityType: paragraph
 bundle: layout_grid
 mode: default
 content:
-  field_column_count:
-    weight: 3
-    label: hidden
-    settings:
-      thousand_separator: ''
-      prefix_suffix: true
-    third_party_settings: {  }
-    type: number_integer
-    region: content
   field_description:
     weight: 1
     label: hidden
@@ -53,4 +44,5 @@ content:
     region: content
 hidden:
   field_bg_color: true
+  field_column_count: true
   field_component_bg_color: true

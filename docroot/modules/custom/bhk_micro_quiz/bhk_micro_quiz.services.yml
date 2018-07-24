@@ -1,0 +1,4 @@
+services:
+  bhk_micro_quiz.quiz_helper:
+    class: Drupal\bhk_micro_quiz\Service\MicroQuizHelper
+    arguments: ['@http_client', '@entity_type.manager', '@renderer', '@e3_marketo.rest_helper']

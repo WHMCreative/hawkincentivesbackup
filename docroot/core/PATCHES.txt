@@ -5,3 +5,11 @@ Node revision routes don't convert {node} param
 Source: https://www.drupal.org/files/issues/2730631-41.patch
 
 
+MenuLinkContentAccessControlHandler does not allow 'view' access without admin permission
+Source: https://www.drupal.org/files/issues/menu_link_content-view-permissions-2915792-12.patch
+
+
+Drupal.views.ajaxView is not initializing pagers in nested views
+Source: https://www.drupal.org/files/issues/2018-03-29/2858890-26.patch
+
+

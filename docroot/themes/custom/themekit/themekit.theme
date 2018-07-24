@@ -76,6 +76,7 @@ function themekit_preprocess_node_people(&$variables) {
 function themekit_preprocess_node_insight(&$variables) {
   /** @var \Drupal\node\NodeInterface $node */
   $node = $variables['node'];
+  $view_mode = $variables['view_mode'];
 
   // Get correct heading for unlocked view mode.
   if (isset($variables['content']['field_p_header'])) {
@@ -94,6 +95,44 @@ function themekit_preprocess_node_insight(&$variables) {
     }
   }
 
+  // Get Banner Image
+  if(!empty($node->field_p_header->getValue())) {
+    $header_p = $node->field_p_header->entity;
+    $view_builder = \Drupal::entityTypeManager()->getViewBuilder('paragraph');
+    switch ($view_mode) {
+      case 'teaser':
+        $variables['header_image'] = $view_builder->viewField($header_p->field_media, 'teaser');
+        break;
+      case 'featured':
+        $variables['header_image'] = $view_builder->viewField($header_p->field_media, 'featured_teaser');
+        break;
+      case 'compact':
+        $variables['header_image'] = $view_builder->viewField($header_p->field_media, 'featured_big_teaser');
+        break;
+    }
+  }
+
+  // Get topic image
+  if (!empty($term = $node->field_insight_topic->getValue())) {
+    $topic = Term::load($term[0]['target_id']);
+    if ($topic && !empty($topic->field_media->getValue())) {
+      $view_builder = \Drupal::entityTypeManager()->getViewBuilder('taxonomy_term');
+
+      switch ($view_mode) {
+        case 'teaser':
+          $variables['topic_image'] = $view_builder->viewField($topic->field_media, 'teaser');
+          break;
+        case 'featured':
+          $variables['topic_image'] = $view_builder->viewField($topic->field_media, 'featured_teaser');
+          break;
+        case 'compact':
+          $variables['topic_image'] = $view_builder->viewField($topic->field_media, 'featured_big_teaser');
+          break;
+      }
+
+    }
+  }
+
   if (isset($heading)) {
     $variables['heading'] = $heading;
   }
@@ -103,6 +142,21 @@ function themekit_preprocess_node_insight(&$variables) {
   themekit_get_insight_data($node, $variables);
 }
 
+/**
+ * Implements template_preprocess_card().
+ */
+function themekit_preprocess_card(&$variables) {
+  $card = $variables['elements'];
+  $view_mode = $card['#view_mode'];
+
+  if ($view_mode === 'compact') {
+    $field = $card['field_card_type'];
+    $content = strtolower($field[0]['#markup']);
+    $content = str_replace(' ', '_', $content);
+
+    $variables['card_type'] = $content;
+  }
+}
 
 /**
  * Paragraphs preprocess.
@@ -131,6 +185,14 @@ function themekit_preprocess_paragraph(&$variables) {
   $variables['color_scheme'] = 'color-scheme-' . themekit_color_scheme($bg_color);
 }
 
+function themekit_preprocess_paragraph_simple_media_bar(&$variables) {
+  $paragraph = $variables['paragraph'];
+
+  if ($paragraph->hasField('field_media') && empty($paragraph->field_media->value)) {
+    $variables['image_inline_style'] = themekit_get_entity_image_inline_style($paragraph, 'field_media', 'banner_hero');
+  }
+}
+
 function themekit_preprocess_paragraph_banner_hero(&$variables) {
   $paragraph = $variables['paragraph'];
   $node = $paragraph->getParentEntity();
@@ -140,14 +202,8 @@ function themekit_preprocess_paragraph_banner_hero(&$variables) {
 
   $variables['overlay_color'] = themekit_get_term_slug($paragraph, 'field_bg_color') ? themekit_get_term_slug($paragraph, 'field_bg_color') : 'blue';
 
-}
-
-function themekit_preprocess_paragraph_media_video_modal(&$variables) {
-  $paragraph = $variables['paragraph'];
-
-
-  if (!$paragraph->field_media->isEmpty()) {
-    $variables['video_url'] = $paragraph->field_media->entity->field_video->value;
+  if ($paragraph->hasField('field_large_heading') && empty($paragraph->field_large_heading->value)) {
+    $variables['attributes']['class'][] = 'only-heading-field';
   }
 }
 
@@ -157,10 +213,92 @@ function themekit_preprocess_paragraph_compound_content_bar(&$variables) {
   $variables['column_count'] = $paragraph->get('field_p_compound_content')->count();
 }
 
+
+function themekit_preprocess_paragraph_compound_media_title_bar(&$variables) {
+  $paragraph = $variables['paragraph'];
+
+  $variables['column_count'] = $paragraph->get('field_p_media_tile_content')->count();
+}
+
+
+function themekit_preprocess_paragraph_compound_callout(&$variables) {
+  $paragraph = $variables['paragraph'];
+
+  if($paragraph->hasField('field_heading') && !empty($paragraph->field_heading->getValue())) {
+    $variables['attributes']['class'][] = 'has-heading';
+  }
+
+}
+
+function themekit_preprocess_paragraph_compound_slider(&$variables) {
+  $paragraph = $variables['paragraph'];
+
+  if($paragraph->hasField('field_p_slider_content') && !empty($paragraph->field_p_slider_content->getValue())) {
+    $slides = $paragraph->field_p_slider_content->referencedEntities();
+
+    $labels['#prefix'] = '<ul class="slider-nav">';
+    $labels['#suffix'] = '</ul>';
+    foreach ($slides as $slide) {
+      if ($slide->bundle() == 'media_image_slider') {
+        if($slide->hasField('field_label') && !empty($slide->field_label->value)) {
+          $label['#plain_text'] = $slide->field_label->value;
+          $label['#prefix'] = '<li>';
+          $label['#suffix'] = '<div class="progress-bar"><span class="bar"></span></div></li>';
+          $labels[] = $label;
+        }
+      }
+    }
+
+    $variables['slider_nav'] = $labels;
+  }
+}
+
 function themekit_preprocess_paragraph_layout_2_column(&$variables) {
   $paragraph = $variables['paragraph'];
   if ($paragraph->hasField('field_width')) {
     $variables['width'] = $paragraph->field_width->getValue()[0]['value'];
+  }
+}
+
+function themekit_preprocess_paragraph_layout_grid(&$variables) {
+  $paragraph = $variables['paragraph'];
+
+  $variables['column_count'] = $paragraph->field_column_count->value;
+
+  if ($paragraph->hasField('field_component_bg_color')) {
+    $bg_color = themekit_get_term_slug($paragraph, 'field_component_bg_color');
+    $variables['component_bg_color'] = (!empty($bg_color)) ? 'component-bg-color-' . $bg_color : '';
+  }
+}
+
+function themekit_preprocess_paragraph_media_video_modal(&$variables) {
+  $paragraph = $variables['paragraph'];
+
+  if (!$paragraph->field_media->isEmpty()) {
+    $variables['video_url'] = $paragraph->field_media->entity->field_video->value;
+    $view_builder = \Drupal::entityTypeManager()->getViewBuilder('media');
+    $variables['thumbnail'] = $view_builder->viewField($paragraph->field_media->entity->thumbnail, 'thumbnail');
+  }
+}
+
+function themekit_preprocess_paragraph_reference_marketo_form(&$variables) {
+  $paragraph = $variables['paragraph'];
+
+  if (!empty($paragraph->field_marketo_form->entity)) {
+    $form = $paragraph->field_marketo_form->entity;
+    $variables['attributes']['class'][] = 'form-id--' . $form->marketo_form_id->value;
+  }
+}
+
+function themekit_preprocess_paragraph_simple_media_tile(&$variables) {
+  $paragraph = $variables['paragraph'];
+
+  if($paragraph->hasField('field_link') && !empty($paragraph->field_link->getValue())) {
+    $variables['url'] = $paragraph->field_link->first()->getUrl();
+  }
+
+  if($paragraph->hasField('field_media') && !empty($paragraph->field_media->getValue())) {
+    $variables['bg_image'] = themekit_get_entity_image_inline_style($paragraph, 'field_media', 'third_column_bw');
   }
 }
 
@@ -186,26 +324,55 @@ function themekit_preprocess_paragraph_media_image(&$variables) {
   // Identify the implementing bundle and use any additional conditions as well and add either `image_inline_style` or `custom_image_style` var
   $parent = $paragraph->getParentEntity();
   if ($parent->getEntityTypeId() === 'paragraph') {
+    $media = $uri = $paragraph->field_media_image->entity->field_image;
+    $uri = $media->entity->getFileUri();
+    $alt = $media->first()->get('alt')->getString();
+
     switch ($parent->getType()) {
       case 'simple_stat':
-        $uri = $paragraph->field_media_image->entity->field_image->entity->getFileUri();
         $variables['custom_image_style'] = [
           '#theme' => 'image_style',
           '#style_name' => 'stat',
           '#uri' => $uri,
+          '#alt' => $alt,
+        ];
+        break;
+      case 'simple_icon_content':
+        $variables['custom_image_style'] = [
+          '#theme' => 'image_style',
+          '#style_name' => 'thumbnail',
+          '#uri' => $uri,
+          '#alt' => $alt,
         ];
         break;
       case 'layout_2_column':
-        $uri = $paragraph->field_media_image->entity->field_image->entity->getFileUri();
         $variables['custom_image_style'] = [
           '#theme' => 'image_style',
           '#style_name' => 'half_column',
           '#uri' => $uri,
+          '#alt' => $alt,
+        ];
+        break;
+
+      case 'simple_media_tile':
+        $variables['custom_image_style'] = [
+          '#theme' => 'image_style',
+          '#style_name' => 'third_column',
+          '#uri' => $uri,
+          '#alt' => $alt,
         ];
         break;
     }
   }
 }
+
+function themekit_preprocess_paragraph_media_image_slider(&$variables) {
+  /* @var $paragraph Drupal\paragraphs\Entity\Paragraph */
+  $paragraph = $variables['paragraph'];
+  $image_style = (isset($variables['content']['field_media'][0]['#image_style'])) ? $variables['content']['field_media'][0]['#image_style'] : NULL;
+  $variables['image_inline_style'] = themekit_get_entity_image_inline_style($paragraph, 'field_media', $image_style);
+}
+
 
 function themekit_preprocess_block(&$variables) {
   $plugin_id = $variables['plugin_id'];
@@ -249,6 +416,19 @@ function themekit_preprocess_block(&$variables) {
       }
     }
   }
+
+  // Duplicate utility menu to be displayed on mobile
+  if($plugin_id == 'system_menu_block:main') {
+    $id = 'utility';
+    $variables['utility_menu'] = themekit_block_to_renderable_array($id);
+  }
+}
+
+function themekit_preprocess_field(&$variables) {
+
+  if( $variables['element']['#field_name'] == 'field_p_multiple_links') {
+    $variables['attributes']['class'][] = 'link-count-' . count($variables['items']);
+  }
 }
 
 
@@ -267,6 +447,7 @@ function themekit_theme_suggestions_field_alter(array &$suggestions, array $vari
   $entity = $variables['element']['#object'];
 
   $large_heading = FALSE;
+  // Check if Large heading
   if ($is_paragraph && $bundle === 'banner_hero' && $entity->hasField('field_use_large_heading') && $entity->field_use_large_heading->value) {
     $large_heading = TRUE;
   }
@@ -287,19 +468,26 @@ function themekit_theme_suggestions_field_alter(array &$suggestions, array $vari
   // Apply theme suggestions for "field_heading" based on paragraph bundle.
   if ($field_name == 'field_heading' && $is_paragraph) {
     switch($bundle) {
+      case 'banner_featured_insights':
       case 'banner_hero':
         array_unshift($suggestions, $large_heading ? 'field__heading_5' : 'field__heading_1');
         break;
       case 'compound_content_bar':
+      case 'compound_media_title_bar':
       case 'layout_2_column':
+      case 'layout_grid':
       case 'simple_cta':
-        array_unshift($suggestions, 'field__heading_2');
-        break;
       case 'simple_content':
+      array_unshift($suggestions, 'field__heading_2');
+        break;
       case 'single_heading':
+      case 'simple_icon_content':
       case 'simple_media_tile':
       case 'summary_insights':
         array_unshift($suggestions, 'field__heading_3');
+        break;
+      case 'compound_callout':
+        array_unshift($suggestions, 'field__heading_5');
         break;
     }
   }
@@ -330,6 +518,16 @@ function themekit_theme_suggestions_field_alter(array &$suggestions, array $vari
           case 'simple_content':
             if ($field_name == 'field_heading') {
               $suggestions[] = 'field__heading_2';
+            }
+            break;
+        }
+      }
+
+      if ($parent_field == 'field_p_callout_content') {
+        switch($bundle) {
+          case 'simple_icon_content':
+            if ($field_name == 'field_heading') {
+              $suggestions[] = 'field';
             }
             break;
         }
@@ -476,6 +674,14 @@ function themekit_get_insight_data(NodeInterface $node, &$variables) {
         $variables['insight_date'] = \Drupal::service('date.formatter')->format($node->getCreatedTime(), 'custom', 'M j, Y');
       }
 
+    }
+
+    // Get topic image
+    if (!empty($term = $node->field_insight_topic->getValue())) {
+      $topic = Term::load($term[0]['target_id']);
+      if ($topic && !empty($topic->field_media->getValue())) {
+        $variables['topic_image'] = themekit_get_entity_image_inline_style($topic, 'field_media', 'banner_hero');
+      }
     }
   }
 }

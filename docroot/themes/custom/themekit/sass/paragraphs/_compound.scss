@@ -2,6 +2,7 @@
 /// Paragraphs - Compound
 ////
 
+// Compound - Content Bar
 .paragraph--type--compound-content-bar {
   text-align: center;
   > .paragraph-content {
@@ -51,14 +52,24 @@
 
       & > .paragraph {
         margin: 0 8px;
-        a {
-          @include link(default);
-        }
 
-        &:nth-last-child(2) {
-          a {
-            @include btn(blue);
-          }
+        &:first-child {
+          margin-left: 0;
+        }
+      }
+
+      &.link-count-1 {
+        > .paragraph a {
+          @include btn(blue);
+        }
+      }
+
+      &.link-count-2 {
+        > .paragraph:first-child a {
+          @include btn(blue);
+        }
+        > .paragraph:nth-child(2) a {
+          @include link(default);
         }
       }
     }
@@ -89,13 +100,127 @@
       }
     }
   }
-
-
-
-
-
 }
 
+// Compound - Callout
+.paragraph--type--compound-callout {
+  position: relative;
+
+  // Inside Banner Hero
+  .paragraph--type--banner-hero & {
+    color: $white;
+    //z-index: z(banner, content);
+
+    > .paragraph-content {
+      @include content-width(default);
+      @include top-bottom(padding, rem-calc(30));
+    }
+
+    .field--name-field-p-callout-content {
+      @include breakpoint(medium) {
+        @include tk-flex-block-grid(2, '.paragraph');
+      }
+      @include breakpoint(marge) {
+        @include tk-flex-equal-width-items($grid-column-gutter, '.paragraph');
+      }
+
+      > .paragraph {
+        margin-bottom: rem-calc(16);
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        @include breakpoint(medium) {
+          margin-bottom: 0;
+        }
+
+        @include breakpoint(marge) {
+          margin-top: 0;
+        }
+      }
+    }
+
+    &:not(.has-heading) {
+      &:before {
+        content: '';
+        width: 100%;
+        height: 1px;
+        background: $white;
+        position: absolute;
+        top: 0;
+        opacity: 0.4;
+      }
+    }
+
+    .heading {
+      display: flex;
+      align-items: center;
+      position: relative;
+      color: inherit;
+      font-weight: 700;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: rem-calc(0.93);
+
+      &:before,
+      &:after {
+        content: '';
+        flex: 1;
+        display: inline-block;
+        height: 2px;
+        background-color: $white;
+        opacity: 0.4;
+      }
+
+      &:before {
+        margin-right: rem-calc(16);
+      }
+
+      &:after {
+        margin-left: rem-calc(16);
+      }
+    }
+  }
+
+  // Inside Layout 2 Column
+  .paragraph--type--layout-2-column & {
+    position: relative;
+
+    @include breakpoint(medium){
+      padding-left: rem-calc(80);
+      &:after {
+        content: '';
+        width: 1px;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: $light-gray;
+      }
+    }
+
+    > .field--name-field-heading {
+      color: $primary-color;
+      text-transform: uppercase;
+      font-weight: $global-weight-bold;
+      font-size: rem-calc(14);
+      margin-bottom: rem-calc(28);
+    }
+
+    .field--name-field-p-callout-content {
+      & > .paragraph {
+        margin-bottom: rem-calc(28);
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+// Compound Stat Bar
 .paragraph--type--compound-stat-bar {
   > .paragraph-content {
   }
@@ -114,7 +239,8 @@
     }
   }
 
-  // When placed at the top level
+  // When placed at the top level or in the banner
+  .paragraph--type--banner-hero &,
   .field--name-field-p-content > & {
     > .paragraph-content {
       @include content-width(default);
@@ -127,12 +253,27 @@
     }
   }
 
+  // Inside banner
+  .paragraph--type--banner-hero & {
+    @include top-bottom(padding, rem-calc(24));
+
+    &:before {
+      content: '';
+      width: 100%;
+      height: 1px;
+      background: $white;
+      position: absolute;
+      top: 0;
+      opacity: 0.4;
+    }
+  }
+
   // Inside Layout 2 Column
   .paragraph--type--layout-2-column & {
     & > .paragraph-content {
       position: relative;
-      display: flex;
-      align-items: center;
+      //display: flex;
+      //align-items: center;
 
       @include breakpoint(medium){
         padding-left: rem-calc(80);
@@ -143,7 +284,7 @@
           position: absolute;
           top: 0;
           left: 0;
-          background: $medium-gray;
+          background: $light-gray;
         }
       }
     }
@@ -154,6 +295,406 @@
 
         &:last-child {
           margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+// Compound - Media Tile Bar
+.paragraph--type--compound-media-title-bar {
+  text-align: center;
+  > .paragraph-content {
+    @include content-width(wide);
+    > .field--name-field-heading {
+      @include breakpoint(large) {
+        @include content-width(narrow);
+      }
+    }
+    > .field--name-field-description {
+      margin-bottom: rem-calc(48);
+      @include breakpoint(medium) {
+        @include content-width(narrow);
+      }
+    }
+
+    .field--name-field-heading + .field--name-field-p-media-tile-content {
+      margin-top: rem-calc(24);
+      @include breakpoint(medium) {
+        margin-top: rem-calc(32);
+      }
+    }
+
+    .field--name-field-p-media-tile-content {
+      @include content-width(wide);
+      @include breakpoint(marge) {
+        @include tk-flex-equal-width-items($grid-column-gutter, '.paragraph');
+      }
+    }
+
+    .field--name-field-p-compound-content > .paragraph {
+      margin-bottom: rem-calc(48);
+
+      @include breakpoint(marge) {
+        margin-bottom: 0;
+      }
+    }
+
+    > .field--name-field-p-multiple-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+      @include breakpoint(large) {
+        margin-top: 40px;
+      }
+
+      & > .paragraph {
+        margin: 0 8px;
+        a {
+          @include link(default);
+        }
+
+        &:nth-last-child(2) {
+          a {
+            @include btn(blue);
+          }
+        }
+      }
+    }
+  }
+
+  &.column-count-1,
+  &.column-count-2 {
+    & > .paragraph-content > .field--name-field-p-media-tile-content {
+      @include content-width(narrow);
+      @include breakpoint(medium) {
+        @include tk-flex-equal-width-items($grid-column-gutter, '.paragraph');
+      }
+
+      & > .paragraph {
+        margin-bottom: rem-calc(48);
+
+        @include breakpoint(medium) {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  &.column-count-3 {
+    & > .paragraph-content > .field--name-field-p-media-tile-content {
+      @include breakpoint(marge) {
+        @include tk-flex-equal-width-items((small: 10px, large: 60px), '.paragraph');
+      }
+    }
+  }
+}
+
+// Compound - Slider
+.paragraph--type--compound-slider {
+  > .paragraph-content {
+    @include content-width(default);
+    position: relative;
+    z-index: z(banner, content);
+  }
+
+  .slider-nav {
+    list-style: none;
+    margin: 0;
+    max-width: rem-calc(520);
+
+    li {
+      font-size: rem-calc(13);
+      font-weight: $global-weight-bold;
+      cursor: pointer;
+      margin-bottom: rem-calc(16);
+      padding-right: rem-calc(32);
+      color: $white;
+
+      .progress-bar {
+        width: 100%;
+        height: 2px;
+        display: block;
+        margin-top: rem-calc(8);
+        position: relative;
+
+        &:before{
+          content: '';
+          position: absolute;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          background: $white;
+          opacity: 0.4;
+        }
+        span {
+          position: absolute;
+          display: block;
+          width: 0%;
+          height: 2px;
+          background: $secondary-color-light;
+          opacity: 1;
+          z-index: 1;
+        }
+      }
+
+    }
+
+    .slick-track {
+      @include left-right(margin, 0);
+    }
+  }
+  .slider-content {
+    position: relative;
+    z-index: z(banner, image);
+    pointer-events: none;
+    margin-bottom: rem-calc(16);
+
+    @include breakpoint(medium) {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      margin-bottom: 0;
+    }
+
+    div {
+      height: 100%;
+    }
+  }
+
+  .paragraph--type--banner-hero & {
+    margin-top: rem-calc(20);
+    @include breakpoint(medium) {
+      margin-top: rem-calc(80);
+    }
+
+    @each $bp, $size in $banner-spacing {
+      $size: rem-calc($size);
+      @include breakpoint($bp) {
+        padding-bottom: $size;
+      }
+    }
+  }
+}
+
+// Compound - Tabbed Content
+.paragraph--type--compound-tabbed-content {
+  > .paragraph-content {
+    position: relative;
+  }
+  
+  .field--name-field-p-content > & {
+    @include paragraph-margins((small: 0));
+  }
+
+  .slick-dotted.slick-slider {
+    margin-bottom: 0;
+  }
+
+  .slick-dots {
+    bottom: 40px;
+    white-space: nowrap;
+
+    li button:before {
+      color: transparent;
+    }
+    li.slick-active button:before {
+      color: $white;
+    }
+    button {
+      position: relative;
+      &:after {
+        content: '';
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        border: 1px solid $white;
+        width: 9px;
+        height: 9px;
+        display: inline-block;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  .slick-counter-numbers {
+    color: $white;
+    text-align: center;
+    white-space: nowrap;
+    @include breakpoint(marge) {
+      display: none;
+    }
+
+    span {
+      display: inline-block;
+      width: 30px;
+      margin: 0;
+      padding: 0;
+      font-size: 13px;
+      opacity: 0;
+      transition: opacity .25s ease-out;
+      &.active {
+        opacity: 1;
+      }
+    }
+  }
+
+  .slick-counter-labels {
+    position: absolute;
+    left: 0;
+    bottom: 45px;
+    right: 0;
+    text-align: center;
+    color: $white;
+    font-weight: $global-weight-bold;
+    white-space: nowrap;
+    @include breakpoint(marge) {
+      display: none;
+    }
+
+    span {
+      display: none;
+      font-size: 13px;
+      &.active {
+        display: block;
+      }
+    }
+  }
+
+  .slick-tab-nav {
+    position: absolute;
+    left: 0;
+    bottom: 20px;
+    right: 0;
+    @include breakpoint(marge) {
+      border-top: 1px solid $white;
+      bottom: 0;
+    }
+
+    &:after {
+      content: none;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 0;
+      @include breakpoint(marge) {
+        content: '';
+      }
+    }
+
+    .slick-list {
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      @include breakpoint(medium down) {
+        padding: 0 !important;
+        display: none;
+      }
+
+      .slick-track {
+        transform: none !important;
+      }
+    }
+
+    .slick-slide {
+      padding: 0 2%;
+      font-size: rem-calc(14);
+      font-weight: $global-weight-bold;
+      color: $white;
+      text-align: center;
+
+      @include breakpoint(medium down) {
+        width: 100% !important;
+        padding: 0 1rem;
+      }
+
+      a {
+        display: block;
+        padding: 10px 0;
+        border-top: 6px solid transparent;
+        color: inherit;
+        outline: 0;
+        opacity: .6;
+
+        @include breakpoint(marge) {
+          padding: 21px 0;
+        }
+
+        @include selectors('active') {
+          opacity: 1;
+        }
+      }
+
+      &.slick-current {
+        a {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &.with-bg {
+    background: none !important;
+    @include top-bottom(padding, 0);
+  }
+
+  &.bg-color-green {
+    > .paragraph-content {
+      background-color: rgba($primary-color, .85);
+    }
+
+    .paragraph {
+      .bg-container {
+        &:after {
+          background-color: rgba($primary-color, .85);
+        }
+      }
+    }
+
+    .slick-tab-nav {
+      &:after {
+        background-color: rgba($primary-color, .6);
+      }
+
+      .slick-slide {
+        &.slick-current {
+          a {
+            border-top: 6px solid $primary-color-lighter;
+          }
+        }
+      }
+    }
+  }
+
+  &.bg-color-blue {
+    > .paragraph-content {
+      background-color: rgba($secondary-color-dark, .85);
+    }
+
+    .paragraph {
+      .bg-container {
+        &:after {
+          background-color: rgba($secondary-color-dark, .85);
+        }
+      }
+    }
+
+    .slick-tab-nav {
+      &:after {
+        background-color: rgba($secondary-color-dark, .6);
+      }
+
+      .slick-slide {
+        &.slick-current {
+          a {
+            border-top: 6px solid $secondary-color-light;
+          }
         }
       }
     }

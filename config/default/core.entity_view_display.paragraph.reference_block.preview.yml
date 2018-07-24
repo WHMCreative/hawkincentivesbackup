@@ -14,10 +14,10 @@ bundle: reference_block
 mode: preview
 content:
   field_block:
+    type: block_field
     weight: 0
-    label: hidden
+    region: content
+    label: above
     settings: {  }
     third_party_settings: {  }
-    type: block_field
-    region: content
 hidden: {  }

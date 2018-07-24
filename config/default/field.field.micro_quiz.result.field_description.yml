@@ -1,0 +1,28 @@
+uuid: 05bc4279-cb29-473b-b8bb-7b6e8d1f5ef5
+langcode: en
+status: true
+dependencies:
+  config:
+    - bhk_micro_quiz.micro_quiz_type.result
+    - field.storage.micro_quiz.field_description
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    limited_rich_text: '0'
+    rich_text: '0'
+    plain_text: '0'
+    html: '0'
+id: micro_quiz.result.field_description
+field_name: field_description
+entity_type: micro_quiz
+bundle: result
+label: Description
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

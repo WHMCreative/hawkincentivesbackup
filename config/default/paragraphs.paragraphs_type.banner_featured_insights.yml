@@ -1,7 +1,12 @@
 uuid: a76967c0-5be6-463f-8e87-936d1f5f59ea
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - paragraphs_browser
+third_party_settings:
+  paragraphs_browser:
+    image_path: 'public://Screen Shot 2018-07-23 at 3.27.42 PM.png'
 id: banner_featured_insights
 label: 'Banner - Featured Insights'
 icon_uuid: null

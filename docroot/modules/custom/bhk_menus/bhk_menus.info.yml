@@ -1,0 +1,5 @@
+name: BHK Menus
+type: module
+description: Add customization and conditional fields for menus
+core: 8.x
+package: Custom

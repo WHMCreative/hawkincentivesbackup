@@ -1,7 +1,12 @@
 uuid: f51aabbb-4a3e-414d-bc42-895d3addcf9c
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - paragraphs_browser
+third_party_settings:
+  paragraphs_browser:
+    image_path: 'public://banner-slider.png'
 id: compound_slider
 label: 'Compound - Slider'
 icon_uuid: null

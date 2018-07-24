@@ -22,6 +22,10 @@
 @import "base/animation";
 @import "base/config";
 
+@import "../node_modules/slick-carousel/slick/slick";
+@import "../node_modules/slick-carousel/slick/slick-theme";
+
+@import "regions/page";
 @import "regions/header";
 @import "regions/footer";
 
@@ -29,10 +33,12 @@
 @import "components/accessibility";
 @import "components/card-browser";
 @import "components/magnific-popup";
+@import "components/slick";
 @import "components/svg";
 @import "components/typography";
 @import "components/social";
 @import "components/blocks";
+@import "components/views";
 
 @import "paragraphs/paragraph";
 @import "paragraphs/banner";
@@ -42,8 +48,10 @@
 @import "paragraphs/layout";
 @import "paragraphs/media";
 @import "paragraphs/reference";
+@import "paragraphs/summary";
 
 @import "content/insight";
 @import "content/people";
 @import "content/marketo-forms";
+@import "content/forms";
 @import "content/news";

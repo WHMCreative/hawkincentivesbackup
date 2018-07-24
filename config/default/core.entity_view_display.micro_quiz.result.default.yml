@@ -1,0 +1,45 @@
+uuid: d0befeca-c95e-4722-b369-4edb3d3af615
+langcode: en
+status: true
+dependencies:
+  config:
+    - bhk_micro_quiz.micro_quiz_type.result
+    - field.field.micro_quiz.result.field_description
+    - field.field.micro_quiz.result.field_p_conditional
+    - field.field.micro_quiz.result.field_p_multiple_links
+  module:
+    - entity_reference_revisions
+    - text
+id: micro_quiz.result.default
+targetEntityType: micro_quiz
+bundle: result
+mode: default
+content:
+  field_description:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_p_multiple_links:
+    type: entity_reference_revisions_entity_view
+    weight: 2
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  name:
+    label: hidden
+    type: string
+    weight: 0
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  field_p_conditional: true
+  langcode: true
+  user_id: true

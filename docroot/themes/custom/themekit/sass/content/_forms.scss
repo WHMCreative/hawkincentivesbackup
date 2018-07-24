@@ -1,0 +1,64 @@
+////
+/// Form styles
+////
+
+.download-form {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+
+  .form-item {
+    position: relative;
+    width: 100%;
+    margin-right: 20px;
+
+    label {
+      position: absolute;
+      top: 10px;
+      padding-left: 5px;
+      color: #9b9b9b;
+      font-size: rem-calc(13);
+      line-height: 1;
+      transition: all .15s ease-out;
+
+      &.form-required:after {
+        content: '*';
+        background-image: none;
+        vertical-align: top;
+      }
+    }
+
+    [type="email"] {
+      border: 0;
+      border-bottom: 1px solid #a8a8a8;
+      background: transparent;
+      box-shadow: none;
+      font-size: rem-calc(13);
+      color: $medium-gray;
+    }
+
+    .error-msg {
+      margin-top: -10px;
+      font-size: rem-calc(13);
+      opacity: 0;
+      &.showed {
+        opacity: 1;
+      }
+    }
+
+    &.has-value,
+    &.focus-form-item {
+      label {
+        top: -10px;
+        padding-left: 7px;
+        font-size: rem-calc(10);
+      }
+    }
+  }
+
+  [type="submit"] {
+    @include btn(blue);
+    border: 0;
+    outline: 0;
+  }
+}

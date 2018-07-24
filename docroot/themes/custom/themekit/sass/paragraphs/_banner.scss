@@ -13,8 +13,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
+    @include bg-style(cover);
   }
 
   .bg-container {
@@ -24,9 +23,9 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
+    @include bg-style(cover);
   }
+
   @each $overlay in $overlays {
     &.overlay--#{$overlay} {
       .bg-container {
@@ -46,64 +45,185 @@
     }
   }
 
-  .paragraph-content {
+  > .paragraph-content {
     @include content-width(default);
     position: relative;
-    z-index: z(banner, content);
     color: $white;
+    z-index: z(banner, content);
+
+    &.has-additional-content-section {
+      padding-bottom: rem-calc(180);
+    }
+
     @each $bp, $size in $banner-spacing {
       $size: rem-calc($size);
       @include breakpoint($bp) {
-        @include top-bottom(padding, $size);
+        @include top-bottom(padding, $size)
       }
     }
 
-    h1 {
+    > * + * {
+      margin-top: rem-calc(20);
+      @include breakpoint(medium) {
+        max-width: 50%;
+      }
+      @include breakpoint(large) {
+        max-width: rem-calc(520);
+      }
+    }
+
+    .field--name-field-large-heading {
       color: inherit;
-      max-width: 520px;
-      margin: 15px 0;
       font-size: rem-calc(26);
+      font-weight: $global-weight-light;
+
       @include breakpoint(medium) {
         font-size: rem-calc(35);
       }
-      @include breakpoint(large) {
-        margin: 20px 0;
-      }
-      p {
-        margin: 0;
-      }
     }
-    h5 {
-      max-width: 520px;
+
+    .field--name-field-heading {
       color: inherit;
       opacity: 0.6;
       font-weight: 700;
       text-transform: uppercase;
-      margin: 0;
-      + h1 {
-        @include header-font-size(h1);
-      }
+      @include header-font-size(h5);
     }
+
     h3 {
       color: inherit;
-      margin: 0;
-      p {
-        margin: 0;
-      }
     }
+
+    .field--name-field-description {
+      font-size: rem-calc(20);
+    }
+
+    a {
+      @include btn(ghost-white);
+    }
+
     .insight-type {
       display: inline-block;
       vertical-align: top;
       @include insight-label();
       margin-right: 8px;
     }
+
     .date {
       display: inline-block;
       vertical-align: top;
       font-size: rem-calc(13);
       line-height: 2;
       opacity: 0.8;
+      margin-top: 0;
+    }
+  }
+
+  .field--name-field-p-banner-content {
+    position: relative;
+    z-index: z(banner, content);
+  }
+
+  &.addtional-content--compound-slider {
+    .field--name-field-p-banner-content {
+      position: static;
+    }
+  }
+
+  &.addtional-content--media-video-modal + .paragraph--type--banner-hero-additional {
+    @include content-width(default);
+    margin-top: rem-calc(-180);
+    padding-top: rem-calc(32);
+
+    @include breakpoint(medium) {
+      padding-top: 0;
     }
 
+    .field--name-field-p-banner-content {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+
+  &.only-heading-field {
+    > .paragraph-content {
+      .field--name-field-heading {
+        color: inherit;
+        font-size: rem-calc(26);
+        font-weight: $global-weight-normal;
+        text-transform: none;
+        opacity: 1;
+
+        @include breakpoint(medium) {
+          font-size: rem-calc(35);
+        }
+      }
+    }
+  }
+
+  &.addtional-content--compound-slider {
+    > .paragraph-content {
+      padding-bottom: 0;
+    }
+  }
+}
+
+.paragraph--type--banner-hero-additional {
+  position: relative;
+  margin-top: rem-calc(-90);
+  z-index: z(banner, content);
+}
+
+.paragraph--type--banner-featured-insights {
+  @include top-border;
+
+  > .paragraph-content {
+    padding-top: $paragraphs-default-spacing;
+    @include content-width(default);
+  }
+
+  .field--name-field-heading {
+    margin-bottom: 30px;
+    color: $secondary-color-dark;
+    font-weight: $global-weight-light;
+    text-align: center;
+    @include breakpoint(marge) {
+      margin-bottom: 50px;
+    }
+  }
+
+  .content-wrapper {
+    @include breakpoint(marge) {
+      display: flex;
+      flex-wrap: nowrap;
+    }
+  }
+
+  .field--name-field-insight {
+    margin-bottom: 30px;
+    @include breakpoint(marge) {
+      width: 72%;
+      margin-bottom: 0;
+    }
+  }
+
+  .field--name-field-top-insights {
+    @include breakpoint(marge) {
+      width: 28%;
+      padding-left: 4%;
+    }
+
+    > .field__label {
+      margin-top: -7px;
+      margin-bottom: 20px;
+      color: $secondary-color-dark;
+      font-size: rem-calc(20);
+      font-weight: $global-weight-bold;
+    }
+
+    > .field__item,
+    > .field__items > .field__item {
+      margin-bottom: 35px;
+    }
   }
 }

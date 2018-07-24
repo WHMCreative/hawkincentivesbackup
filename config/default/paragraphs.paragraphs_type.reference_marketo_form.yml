@@ -5,6 +5,11 @@ dependencies:
   enforced:
     module:
       - e3_marketo
+  module:
+    - paragraphs_browser
+third_party_settings:
+  paragraphs_browser:
+    image_path: 'public://form.png'
 _core:
   default_config_hash: LrSdd55_4uleqOpLGzEyK8qcFXSF6Vcu-Pnc40yQTss
 id: reference_marketo_form

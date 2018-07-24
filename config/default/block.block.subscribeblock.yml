@@ -1,0 +1,33 @@
+uuid: e043c9a6-eaf7-45ae-be61-246aadb489e3
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:component:406b4e34-6106-4cbb-b6f0-ab5b7c43fd95'
+  module:
+    - block_content
+    - ctools
+  theme:
+    - themekit
+id: subscribeblock
+theme: themekit
+region: content_below
+weight: 0
+provider: null
+plugin: 'block_content:406b4e34-6106-4cbb-b6f0-ab5b7c43fd95'
+settings:
+  id: 'block_content:406b4e34-6106-4cbb-b6f0-ab5b7c43fd95'
+  label: 'Subscribe Block'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      insight: insight
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

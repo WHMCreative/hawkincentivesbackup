@@ -3,16 +3,230 @@
 ////
 
 .marketo-form-wrapper {
+  &.with-image {
+    @include breakpoint(medium) {
+      margin-left: 50%;
+      padding-left: rem-calc(42);
+    }
+  }
+
   h2 {
-   font-size: rem-calc(20);
+    margin-bottom: 20px;
+    padding-right: 40px;
+    font-size: rem-calc(20);
     font-weight: $global-weight-bold;
-    color: $white;
+    line-height: rem-calc(27);
+    color: $secondary-color-dark;
+
+    @include breakpoint(medium) {
+      padding-right: 0;
+    }
+  }
+
+  .marketo-form-item {
+    position: relative;
+
+    label {
+      position: absolute;
+      top: 10px;
+      font-size: rem-calc(13);
+      padding-left: 5px;
+      line-height: 1;
+      color: $medium-gray;
+      transition: all .15s ease-out;
+
+      &.form-required:after {
+        content: '*';
+        background-image: none;
+        vertical-align: top;
+      }
+    }
+
+    input {
+      margin-bottom: 20px;
+      padding: 8px 5px;
+      border-top: 0;
+      border-left: 0;
+      border-bottom: 1px solid $medium-gray;
+      border-right: 0;
+      background-color: transparent;
+      box-shadow: none;
+      font-size: rem-calc(13);
+      color: $medium-gray;
+      transition: all .25s ease-in-out;
+
+      &[type="email"] {
+        .mfp-content & {
+          max-width: 85%;
+          min-width: 225px;
+        }
+      }
+      &[type="tel"] {
+        .mfp-content & {
+          max-width: 56%;
+          min-width: 150px;
+        }
+      }
+    }
+
+    select {
+      position: relative;
+      z-index: 1;
+      margin-bottom: 20px;
+      padding-left: 5px;
+      background-color: transparent;
+      background-image: url('../../images/svg/arrow-down-gray.svg');
+      background-position: right -20px center;
+      background-size: 8px 8px;
+      border-top: 0;
+      border-left: 0;
+      border-bottom: 1px solid $medium-gray;
+      border-right: 0;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      font-size: rem-calc(13);
+      color: rgba($secondary-color, .001); // not just "transparent" because of IE ые
+
+
+      &::-ms-expand {
+        display: none;
+      }
+
+      option {
+        background-color: $secondary-color;
+      }
+
+      &:focus {
+        box-shadow: 0 1px 0 0 $medium-gray;
+      }
+    }
+
+    textarea {
+      height: rem-calc(39);
+      min-height: rem-calc(39);
+      padding: 8px 5px;
+      background: none;
+      border-top: 0;
+      border-left: 0;
+      border-bottom: 1px solid $medium-gray;
+      border-right: 0;
+      box-shadow: none;
+      resize:none;
+      font-size: rem-calc(13);
+      color: $medium-gray;
+      transition: all .25s ease-in-out;
+
+      &:focus {
+        box-shadow: 0 1px 0 0 $medium-gray;
+      }
+    }
+
+    &.has-value,
+    &.marketo-focus-form-item {
+      label {
+        top: -10px;
+        font-size: rem-calc(10);
+      }
+
+      textarea {
+        height: 80px;
+      }
+
+      select {
+        color: $medium-gray;
+      }
+    }
+  }
+
+  .field--name-field-help-text {
+    margin-top: 25px;
+    font-size: rem-calc(14);
+
+    a {
+      font-weight: $global-weight-bold;
+      color: inherit;
+    }
+  }
+
+  .mktoError {
+    margin: -15px 0 10px 5px;
+    font-size: rem-calc(13);
   }
 
   .mktoButtonRow {
     button {
-      @include btn(ghost-white);
+      @include btn(blue);
+      margin-top: 20px;
+      margin-left: 5px;
       cursor: pointer;
+    }
+  }
+
+  .mfp-content &,
+  .node--sidebar & {
+    h2 {
+      color: $white;
+    }
+
+    .marketo-form-item {
+
+      label {
+        color: $white;
+      }
+
+      input {
+        border-bottom: 1px solid rgba(255, 255, 255, .6);
+        color: $white;
+      }
+
+      select {
+        border-bottom: 1px solid rgba(255, 255, 255, .6);
+        background-image: url('../../images/svg/arrow-down-white.svg');
+
+        &:focus {
+          box-shadow: 0 1px 0 0 $white;
+        }
+      }
+
+      textarea {
+        border-bottom: 1px solid rgba(255, 255, 255, .6);
+        color: $white;
+
+        &:focus {
+          box-shadow: 0 1px 0 0 $white;
+        }
+      }
+
+      &.has-value,
+      &.marketo-focus-form-item {
+        select {
+          color: $white;
+        }
+      }
+    }
+
+    .mktoButtonRow {
+      button {
+        @include btn(ghost-white);
+      }
+    }
+  }
+
+  .block--component & {
+
+    h2 {
+      text-align: center;
+      @include header-font-size(h2);
+      font-weight: $global-weight-normal;
+    }
+
+    .mktoButton {
+      margin-top: 0;
+      margin-left: rem-calc(12);
+    }
+
+    .marketo-steps-wrapper {
+      @include content-width(narrow);
     }
   }
 }

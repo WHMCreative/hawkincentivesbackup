@@ -1,0 +1,54 @@
+uuid: f85c2f13-7749-4456-8a70-f4ba6ea2f6e6
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.marketo_form.with_image
+    - e3_marketo.bundle.default
+    - field.field.marketo_form.default.field_help_text
+    - field.field.marketo_form.default.field_p_media
+    - field.field.marketo_form.default.field_submission_confirmation
+  module:
+    - entity_reference_revisions
+    - text
+_core:
+  default_config_hash: ACz_X-HL0AUvd0gWx_oEqZIFE1fR78AgNxI20Y0jebI
+id: marketo_form.default.with_image
+targetEntityType: marketo_form
+bundle: default
+mode: with_image
+content:
+  field_help_text:
+    type: text_default
+    weight: 3
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_p_media:
+    type: entity_reference_revisions_entity_view
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  marketo_form_embed:
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  name:
+    label: hidden
+    type: string
+    weight: 0
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  field_submission_confirmation: true
+  langcode: true
+  marketo_form_id: true
+  user_id: true

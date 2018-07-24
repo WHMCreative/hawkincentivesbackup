@@ -1,7 +1,12 @@
 uuid: 21b2a6fe-688a-4455-aaaa-d99374a4125e
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - paragraphs_browser
+third_party_settings:
+  paragraphs_browser:
+    image_path: 'public://media-tile.png'
 id: simple_media_tile
 label: 'Simple - Media Tile'
 icon_uuid: null

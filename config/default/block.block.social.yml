@@ -10,8 +10,8 @@ dependencies:
     - themekit
 id: social
 theme: themekit
-region: footer
-weight: -6
+region: footer_first
+weight: -7
 provider: null
 plugin: 'menu_block:social'
 settings:

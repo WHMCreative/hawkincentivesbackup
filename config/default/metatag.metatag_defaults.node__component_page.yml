@@ -1,0 +1,10 @@
+uuid: d5a9b6c9-3391-4b1c-959e-815dd0e7f129
+langcode: en
+status: true
+dependencies: {  }
+id: node__component_page
+label: 'Content: Component Page'
+tags:
+  description: '[node:field_meta_summary]'
+  og_description: '[node:field_meta_summary]'
+  twitter_cards_description: '[node:field_meta_summary]'

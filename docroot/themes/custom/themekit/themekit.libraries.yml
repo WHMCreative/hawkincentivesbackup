@@ -36,6 +36,8 @@ themekit:
 card-catalog:
   version: 1.x
   js:
+    dist/babel-polyfill.js: {}
+    dist/whatwg-fetch.js: {}
     dist/card-catalog.js: {}
 
 # Define additional sub-apps here. Be sure to first add it

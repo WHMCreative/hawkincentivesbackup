@@ -1,0 +1,19 @@
+uuid: ec7a8360-6eb1-4b9d-a46b-cfd878e6e1fc
+langcode: en
+status: true
+dependencies:
+  config:
+    - bhk_micro_quiz.micro_quiz_type.answer
+    - field.storage.micro_quiz.field_marketo_value
+id: micro_quiz.answer.field_marketo_value
+field_name: field_marketo_value
+entity_type: micro_quiz
+bundle: answer
+label: 'Marketo Value'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

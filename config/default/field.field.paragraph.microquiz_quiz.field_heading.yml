@@ -1,0 +1,19 @@
+uuid: 3bd740d6-59f5-44a7-9ee5-ab70c9e8380a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_heading
+    - paragraphs.paragraphs_type.microquiz_quiz
+id: paragraph.microquiz_quiz.field_heading
+field_name: field_heading
+entity_type: paragraph
+bundle: microquiz_quiz
+label: Heading
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

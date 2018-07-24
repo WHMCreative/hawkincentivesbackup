@@ -1,0 +1,14 @@
+uuid: 9f6a8486-9ede-49d9-9d7d-d1fcce30a1b8
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs_browser
+third_party_settings:
+  paragraphs_browser:
+    image_path: 'public://Microquiz_UI.png'
+id: microquiz_quiz
+label: 'MicroQuiz - Quiz'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

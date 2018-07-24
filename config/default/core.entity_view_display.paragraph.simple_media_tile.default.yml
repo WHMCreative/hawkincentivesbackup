@@ -3,14 +3,16 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.simple_media_tile.field_bg_color
     - field.field.paragraph.simple_media_tile.field_description
     - field.field.paragraph.simple_media_tile.field_heading
+    - field.field.paragraph.simple_media_tile.field_link
+    - field.field.paragraph.simple_media_tile.field_media
     - field.field.paragraph.simple_media_tile.field_p_link
     - field.field.paragraph.simple_media_tile.field_p_media
     - paragraphs.paragraphs_type.simple_media_tile
   module:
     - entity_reference_revisions
+    - link
     - text
 id: paragraph.simple_media_tile.default
 targetEntityType: paragraph
@@ -32,6 +34,18 @@ content:
     third_party_settings: {  }
     type: string
     region: content
+  field_link:
+    weight: 4
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
   field_p_link:
     weight: 3
     label: hidden
@@ -51,4 +65,4 @@ content:
     type: entity_reference_revisions_entity_view
     region: content
 hidden:
-  field_bg_color: true
+  field_media: true

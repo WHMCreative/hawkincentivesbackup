@@ -1,0 +1,11 @@
+uuid: 0a731257-38ab-459b-8980-242aaa3248a8
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.insights_topics
+id: taxonomy_term.insights_topics
+target_entity_type_id: taxonomy_term
+target_bundle: insights_topics
+default_langcode: site_default
+language_alterable: false

@@ -19,7 +19,21 @@
  * @ingroup themeable
  */
 #}
-<div{{ attributes.addClass('marketo-form-wrapper') }}>
+{% set rendered_content = content|without(
+  'name',
+  'field_p_media'
+  )
+%}
+
+{% if content.field_p_media|field_value %}
+  {{ content.field_p_media }}
+{% endif %}
+
+{% if content.field_p_media|field_value %}
+ <div{{ attributes.addClass('marketo-form-wrapper', 'with-image') }}>
+{% else %}
+ <div{{ attributes.addClass('marketo-form-wrapper') }}>
+{% endif %}
   <div{{ create_attribute({'class': "marketo-form-entity-ajax-wrapper"}) }}>
     {% if content %}
       {% if content.name is not empty and page is empty %}
@@ -32,7 +46,7 @@
           <div {{ create_attribute({'class': "marketo-form-description"}) }}>{{ description }}</div>
         {% endif %}
       {% endif %}
-      {{ content|without('name') }}
+      {{ rendered_content }}
     {% endif %}
   </div>
 </div>

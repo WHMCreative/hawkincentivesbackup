@@ -1,0 +1,88 @@
+uuid: b5f0aaaf-4b16-41a8-8a6a-d4bc47ca6764
+langcode: en
+status: true
+dependencies:
+  config:
+    - bhk_card_browser.card_type.default
+    - core.entity_view_mode.card.compact
+    - field.field.card.default.field_card_category
+    - field.field.card.default.field_card_type
+    - field.field.card.default.field_cash_back
+    - field.field.card.default.field_co_brand
+    - field.field.card.default.field_cost
+    - field.field.card.default.field_currency
+    - field.field.card.default.field_customization
+    - field.field.card.default.field_delivery
+    - field.field.card.default.field_description
+    - field.field.card.default.field_filtered
+    - field.field.card.default.field_fulfillment
+    - field.field.card.default.field_greeting_card
+    - field.field.card.default.field_issuance
+    - field.field.card.default.field_load_max
+    - field.field.card.default.field_network
+    - field.field.card.default.field_num_mechants
+    - field.field.card.default.field_p_media
+    - field.field.card.default.field_personalization
+    - field.field.card.default.field_prepaid_load
+    - field.field.card.default.field_prepaid_type
+    - field.field.card.default.field_virtual
+  module:
+    - entity_reference_revisions
+    - options
+id: card.default.compact
+targetEntityType: card
+bundle: default
+mode: compact
+content:
+  field_card_type:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_cost:
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_p_media:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  name:
+    label: hidden
+    type: string
+    weight: 1
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  field_card_category: true
+  field_cash_back: true
+  field_co_brand: true
+  field_currency: true
+  field_customization: true
+  field_delivery: true
+  field_description: true
+  field_filtered: true
+  field_fulfillment: true
+  field_greeting_card: true
+  field_issuance: true
+  field_load_max: true
+  field_network: true
+  field_num_mechants: true
+  field_personalization: true
+  field_prepaid_load: true
+  field_prepaid_type: true
+  field_virtual: true
+  langcode: true
+  user_id: true

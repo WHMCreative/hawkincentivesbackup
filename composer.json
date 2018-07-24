@@ -22,7 +22,7 @@
     "drupal-composer/drupal-scaffold": "^2.2",
     "cweagans/composer-patches": "~1.0",
     "wikimedia/composer-merge-plugin": "dev-master",
-    "drupal/core": "8.5.3",
+    "drupal/core": "8.5.5",
     "drush/drush": "~8.0",
     "drupal/console": "^1.0",
     "drupal/devel": "1.x-dev",
@@ -96,7 +96,10 @@
     "drupal/graphql": "^3.0",
     "drupal/addtoany": "^1.10",
     "drupal/draggableviews": "^1.0",
-    "drupal/path_redirect_import": "^1.0"
+    "drupal/path_redirect_import": "^1.0",
+    "drupal/views_infinite_scroll": "^1.5",
+    "drupal/better_exposed_filters": "^3.0@alpha",
+    "drupal/varnish_purge": "^1.11"
   },
   "conflict": {
       "drupal/drupal": "*"
@@ -130,7 +133,9 @@
     "enable-patching": true,
     "patches": {
       "drupal/core": {
-        "Node revision routes don't convert {node} param": "https://www.drupal.org/files/issues/2730631-41.patch"
+        "Node revision routes don't convert {node} param": "https://www.drupal.org/files/issues/2730631-41.patch",
+        "MenuLinkContentAccessControlHandler does not allow 'view' access without admin permission": "https://www.drupal.org/files/issues/menu_link_content-view-permissions-2915792-12.patch",
+        "Drupal.views.ajaxView is not initializing pagers in nested views": "https://www.drupal.org/files/issues/2018-03-29/2858890-26.patch"
       },
       "drupal/media_entity": {
         "Allow updates to thumbnails on save": "https://www.drupal.org/files/issues/2749695_14_media_entity.patch"
@@ -145,11 +150,14 @@
       "drupal/editor_advanced_link": {
         "Add predefined styles": "./patches/editor-advance-link--add-predefined-styles.patch"
       },
-      "drupal/swiftmailer": {
-        "htmlspecialchars() expects parameter 1 to be string": "https://www.drupal.org/files/issues/swiftmailer-htmlspecialchars_-2855052-9-do-not-test.patch"
-      },
       "drupal/paragraphs": {
         "Add additional subform alters": "https://www.drupal.org/files/issues/2868155-16.patch"
+      },
+      "drupal/metatag": {
+        "GraphQL throws an error due to Metatag's use of a custom data structure": "https://www.drupal.org/files/issues/2018-06-05/metatag-n2977545-5.patch"
+      },
+      "drupal/shield": {
+        "Exclude/Include Pages from Shield Protection": "https://www.drupal.org/files/issues/2018-03-20/2822720-21.patch"
       }
     }
   },

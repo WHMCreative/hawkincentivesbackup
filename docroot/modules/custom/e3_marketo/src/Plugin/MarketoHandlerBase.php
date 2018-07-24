@@ -4,6 +4,7 @@ namespace Drupal\e3_marketo\Plugin;
 
 use Drupal\Component\Plugin\PluginBase;
 use Drupal\Core\Config\ConfigFactory;
+use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\Render\Renderer;
 use Drupal\e3_marketo\Entity\MarketoFormEntityInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -65,6 +66,13 @@ abstract class MarketoHandlerBase extends PluginBase implements MarketoHandlerIn
   protected $configFactory;
 
   /**
+   * Messenger service.
+   *
+   * @var \Drupal\Core\Messenger\MessengerInterface
+   */
+  protected $messenger;
+
+  /**
    * Constructs a MarketoHandlerBase object.
    *
    * @param array $configuration
@@ -81,8 +89,12 @@ abstract class MarketoHandlerBase extends PluginBase implements MarketoHandlerIn
    *   Current User.
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    *   Entity Type Manager.
+   * @param \Drupal\Core\Render\Renderer $renderer
+   *   Renderer service.
+   * @param \Drupal\Core\Messenger\MessengerInterface $messenger
+   *   Messenger service.
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, Connection $database, ConfigFactory $config_factory, AccountInterface $current_user, EntityTypeManagerInterface $entity_type_manager, Renderer $renderer) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, Connection $database, ConfigFactory $config_factory, AccountInterface $current_user, EntityTypeManagerInterface $entity_type_manager, Renderer $renderer, MessengerInterface $messenger) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
 
     $this->database = $database;
@@ -91,6 +103,7 @@ abstract class MarketoHandlerBase extends PluginBase implements MarketoHandlerIn
     $this->currentUser = $current_user;
     $this->entityTypeManager = $entity_type_manager;
     $this->renderer = $renderer;
+    $this->messenger = $messenger;
   }
 
   /**
@@ -105,7 +118,8 @@ abstract class MarketoHandlerBase extends PluginBase implements MarketoHandlerIn
       $container->get('config.factory'),
       $container->get('current_user'),
       $container->get('entity_type.manager'),
-      $container->get('renderer')
+      $container->get('renderer'),
+      $container->get('messenger')
     );
   }
 

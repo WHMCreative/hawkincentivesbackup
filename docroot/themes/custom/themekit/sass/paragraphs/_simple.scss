@@ -11,6 +11,42 @@
     align-items: center;
   }
 
+  // Placed at the top level
+  .field--name-field-p-content > & {
+    > .paragraph-content {
+      @include content-width(narrow);
+      text-align: center;
+
+      .field--name-field-p-multiple-links {
+        justify-content: center;
+
+        & > .paragraph {
+          margin: 0 8px;
+
+          &:first-child {
+            margin-left: 0;
+          }
+        }
+
+        &.link-count-1 {
+          > .paragraph a {
+            @include btn(blue);
+          }
+        }
+
+        &.link-count-2 {
+          > .paragraph:first-child a {
+            @include btn(blue);
+          }
+          > .paragraph:nth-child(2) a {
+            @include link(default);
+          }
+        }
+      }
+    }
+  }
+
+  // Placed inside content bar
   .paragraph--type--compound-content-bar & {
     .field--name-field-heading {
       color: $secondary-color-dark;
@@ -21,14 +57,24 @@
 
       & > .paragraph {
         margin: 0 8px;
-        a {
+
+        &:first-child {
+          margin-left: 0;
+        }
+      }
+
+      &.link-count-1 {
+        > .paragraph a {
           @include link(default);
         }
+      }
 
-        &:nth-last-child(2) {
-          a {
-            @include btn(blue);
-          }
+      &.link-count-2 {
+        > .paragraph:first-child a {
+          @include btn(blue);
+        }
+        > .paragraph:nth-child(2) a {
+          @include link(default);
         }
       }
     }
@@ -48,15 +94,24 @@
 
       & > .paragraph {
         margin: 0 8px;
-        a {
-            @include link(default);
-        }
 
         &:first-child {
           margin-left: 0;
-          a {
-            @include btn(blue);
-          }
+        }
+      }
+
+      &.link-count-1 {
+        > .paragraph a {
+          @include btn(blue);
+        }
+      }
+
+      &.link-count-2 {
+        > .paragraph:first-child a {
+          @include btn(blue);
+        }
+        > .paragraph:nth-child(2) a {
+          @include link(default);
         }
       }
     }
@@ -65,15 +120,18 @@
   .paragraph--type--layout-2-column.color-scheme-dark & {
     .field--name-field-p-multiple-links {
 
-      & > .paragraph {
-        a {
-          @include link(white);
+      &.link-count-1 {
+        > .paragraph a {
+          @include btn(ghost-white);
         }
+      }
 
-        &:first-child {
-          a {
-            @include btn(ghost-white);
-          }
+      &.link-count-2 {
+        > .paragraph:first-child a {
+          @include btn(ghost-white);
+        }
+        > .paragraph:nth-child(2) a {
+          @include link(white);
         }
       }
     }
@@ -111,6 +169,15 @@
   .field--name-field-p-insight &,
   .field--name-field-p-sidebar & {
     @include top-bottom(padding, rem-calc(40));
+    @include breakpoint(medium) {
+      min-height: 190px;
+    }
+    @include breakpoint(large) {
+      min-height: 215px;
+    }
+    @include breakpoint(xlarge) {
+      min-height: 245px;
+    }
 
     & > .paragraph-content {
       text-align: left;
@@ -128,8 +195,109 @@
   }
 }
 
+// Simple Icon Content
+.paragraph--type--simple-icon-content {
+  > .paragraph-content {
+
+    .field--name-field-p-media {
+      margin-bottom: rem-calc(16);
+    }
+
+    .field--name-field-description {
+      display: none;
+      font-size: rem-calc(13);
+
+      @include breakpoint(medium) {
+        display: block;
+      }
+    }
+
+    .field--name-field-mobile-description {
+      @include breakpoint(medium) {
+        display: none;
+      }
+    }
+  }
+
+  .field--name-field-p-compound-content & {
+    .field--name-field-p-media {
+      margin-bottom: rem-calc(16);
+
+      img,
+      svg {
+        height: rem-calc(45);
+        width: auto;
+        margin: 0 auto;
+      }
+
+      .no-cssfilters & {
+        .svg-container {
+          padding-top: 0 !important;
+          height: auto;
+          svg {
+            padding-top: 0;
+            position: relative;
+          }
+        }
+      }
+    }
+  }
+
+
+  // When placed in callout
+  .field--name-field-p-callout-content & {
+    & > .paragraph-content {
+      display: flex;
+      align-items: center;
+      font-size: rem-calc(13);
+      line-height: 1.3;
+
+      .field--name-field-p-media {
+        margin-bottom: 0;
+        margin-right: rem-calc(12);
+        width: rem-calc(50);
+        min-width: rem-calc(50);
+
+        * {
+          text-align: center;
+        }
+      }
+    }
+
+    // When placed in banner hero
+    .paragraph--type--banner-hero & {
+      .field--name-field-p-media {
+        width: rem-calc(30);
+        min-width: rem-calc(30);
+
+        img,
+        svg {
+          height: auto;
+          width: auto;
+          margin: 0 auto;
+        }
+      }
+    }
+
+    // When placed in layout 2 column
+    .paragraph--type--layout-2-column & {
+      .field--name-field-heading {
+        color: $secondary-color-dark;
+        font-weight: $global-weight-bold;
+        font-size: rem-calc(20);
+      }
+    }
+  }
+}
+
 // Simple - Media Tile
 .paragraph--type--simple-media-tile {
+  padding: rem-calc(20);
+  @include bg-style(cover);
+
+  @include breakpoint(large) {
+    padding: 0;
+  }
   & > .paragraph-content {
     background: $white;
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
@@ -137,6 +305,15 @@
     height: 100%;
     @include frame($secondary-color-light, 1px, 16px, 3px, $z-index: z(video-modal,flourish));
     position: relative;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
 
     .field--name-field-p-media {
       position: relative;
@@ -151,6 +328,26 @@
 
         div {
           display: inline-block;
+        }
+      }
+
+      .paragraph--type--media-svg {
+        margin-bottom: rem-calc(16);
+
+        svg {
+          height: rem-calc(90);
+        }
+
+        // Allow height to be used on svg in IE 11
+        .no-cssfilters & {
+          .svg-container {
+            padding-top: 0 !important;
+            height: auto;
+            svg {
+              padding-top: 0;
+              position: relative;
+            }
+          }
         }
       }
     }
@@ -176,8 +373,130 @@
 
     .field--name-field-link a {
       @include link(default);
-      display: block;
+      display: inline-block;
       margin-top: rem-calc(16);
+    }
+  }
+
+  &.has-bg-image {
+    & > .paragraph-content {
+
+      &:before {
+        opacity: 0.8;
+      }
+    }
+  }
+
+  .paragraph--type--compound-media-title-bar & {
+
+  }
+
+  .paragraph--type--layout-grid & {
+
+    & > .paragraph-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      &:after {
+        transition: transform 250ms;
+      }
+    }
+    .field--name-field-heading {
+      font-size: rem-calc(16);
+      font-weight: $global-weight-normal;
+      margin-bottom: 0;
+    }
+    .field--name-field-p-media {
+      margin-bottom: rem-calc(16);
+
+      .paragraph--type--media-image {
+        top: 0;
+        box-shadow: none;
+        display: inline-block;
+        margin-bottom: 0;
+
+        img {
+          max-height: rem-calc(25);
+        }
+
+        div {
+          display: inline-block;
+        }
+      }
+
+      .paragraph--type--media-svg {
+
+        svg {
+          height: rem-calc(25);
+        }
+
+        // Allow height to be used on svg in IE 11
+        .no-cssfilters & {
+          .svg-container {
+            padding-top: 0 !important;
+            height: auto;
+            svg {
+              padding-top: 0;
+              position: relative;
+            }
+          }
+        }
+      }
+    }
+    @include selectors(active) {
+      & > .paragraph-content {
+        .field--name-field-heading {
+          font-weight: $global-weight-bold;
+        }
+        &:after {
+          transform: translate(-14px, -14px);
+        }
+      }
+    }
+  }
+
+  .paragraph--type--layout-grid.component-bg-color-blue & {
+    & > .paragraph-content {
+      box-shadow: none;
+
+      &:before {
+        background: $secondary-color-dark;
+      }
+    }
+
+    .field--name-field-heading {
+      color: $white;
+    }
+
+    @include selectors(active) {
+      & > .paragraph-content {
+        &:before {
+          background: $blue-gradient-reverse;
+        }
+      }
+    }
+  }
+
+  .paragraph--type--layout-grid.component-bg-color-green & {
+    & > .paragraph-content {
+      box-shadow: none;
+
+      &:before {
+        background: $primary-color;
+      }
+    }
+
+    .field--name-field-heading {
+      color: $white;
+    }
+
+    @include selectors(active) {
+      & > .paragraph-content {
+        &:before {
+          background: $blue-gradient-reverse;
+        }
+      }
     }
   }
 }
@@ -204,18 +523,132 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: center;
       min-width: rem-calc(100);
     }
   }
 
+  // Inside Banner
+  .paragraph--type--banner-hero & {
+    color: $white;
+  }
+
+  // Inside Layout 2 Column
   .paragraph--type--layout-2-column & {
     .paragraph-content {
-      //align-content: center;
       justify-content: flex-start;
     }
     .field--name-field-description p {
       font-size: rem-calc(13);
     }
   }
+}
+
+// Simple - Media Bar
+.paragraph--type--simple-media-bar {
+
+  &.paragraph--view-mode--nested {
+    position: relative;
+    color: $white;
+
+    @include breakpoint(marge) {
+      min-height: 500px;
+    }
+
+    > .paragraph-content {
+      max-width: 950px;
+      margin: 0 auto;
+      padding: 30px 1rem 120px;
+      text-align: center;
+
+      @include breakpoint(marge) {
+        padding: 120px 1rem 140px;
+        text-align: left;
+      }
+
+      .content--wrapper {
+        @include breakpoint(marge) {
+          @include tk-flex-block-grid(2, 'div', 60px);
+        }
+      }
+
+      .field--name-field-label {
+        display: none;
+      }
+
+      .field--name-field-heading,
+      .field--name-field-callout {
+        font-size: rem-calc(48);
+        line-height: rem-calc(56);
+        letter-spacing: rem-calc(-.69);
+        p {
+          line-height: inherit;
+        }
+      }
+
+      .field--name-field-heading {
+        display: inline;
+        padding-right: 5px;
+        font-weight: $global-weight-light;
+        @include breakpoint(marge) {
+          font-weight: $global-weight-bold;
+        }
+      }
+
+      .field--name-field-callout {
+        display: inline-block;
+        font-weight: $global-weight-light;
+      }
+
+      .field--name-field-description {
+        margin-top: 25px;
+        font-size: rem-calc(16);
+        line-height: rem-calc(26);
+        @include breakpoint(marge) {
+          margin-top: 0;
+        }
+      }
+
+      .field--name-field-p-link {
+        margin-top: 10px;
+        font-size: rem-calc(14);
+        font-weight: $global-weight-bold;
+        @include breakpoint(medium down) {
+          margin-top: 16px;
+        }
+
+        a {
+          @include breakpoint(medium down) {
+            font-size: 16px;
+            border-bottom: 1px solid;
+            padding-bottom: 4px;
+          }
+        }
+      }
+
+      a {
+        color: inherit;
+      }
+    }
+
+    .bg-container {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+      @include bg-style(cover);
+
+      &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        //background-color: rgba($primary-color, .85);
+      }
+    }
+  }
+
 }

@@ -85,8 +85,8 @@ class GatedContentHandler extends DefaultMarketoHandler {
    * {@inheritdoc}
    */
   public function alterScriptParameters(&$params, MarketoFormEntityInterface $marketo_form) {
-    $params['submissionCallbacks'] = $this->getSubmissionCallbacks();
-    $params['gatedContent'] = $this->parentNode->id();
+    $params[$this->instance]['submissionCallbacks'] = $this->getSubmissionCallbacks();
+    $params[$this->instance]['gatedContent'] = $this->parentNode->id();
   }
 
   /**

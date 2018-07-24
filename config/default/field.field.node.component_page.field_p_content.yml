@@ -5,13 +5,14 @@ dependencies:
   config:
     - field.storage.node.field_p_content
     - node.type.component_page
-    - paragraphs.paragraphs_type.compound_callout
     - paragraphs.paragraphs_type.compound_content_bar
+    - paragraphs.paragraphs_type.compound_media_title_bar
     - paragraphs.paragraphs_type.compound_slider
     - paragraphs.paragraphs_type.compound_stat_bar
     - paragraphs.paragraphs_type.compound_tabbed_content
     - paragraphs.paragraphs_type.layout_2_column
     - paragraphs.paragraphs_type.layout_grid
+    - paragraphs.paragraphs_type.microquiz_quiz
     - paragraphs.paragraphs_type.reference_block
     - paragraphs.paragraphs_type.reference_card_browser
     - paragraphs.paragraphs_type.reference_featured_insight
@@ -38,7 +39,6 @@ settings:
     negate: 0
     target_bundles:
       summary_insights: summary_insights
-      compound_callout: compound_callout
       compound_content_bar: compound_content_bar
       compound_stat_bar: compound_stat_bar
       compound_tabbed_content: compound_tabbed_content
@@ -49,16 +49,18 @@ settings:
       compound_slider: compound_slider
       simple_content: simple_content
       layout_grid: layout_grid
+      compound_media_title_bar: compound_media_title_bar
       reference_block: reference_block
       reference_featured_insight: reference_featured_insight
+      microquiz_quiz: microquiz_quiz
       summary_cards: summary_cards
     target_bundles_drag_drop:
       summary_insights:
         enabled: true
         weight: 12
       compound_callout:
-        enabled: true
         weight: 21
+        enabled: false
       compound_content_bar:
         enabled: true
         weight: 22
@@ -77,18 +79,18 @@ settings:
       marketo_hidden_field:
         weight: 27
         enabled: false
+      marketo_submission_confirmation:
+        weight: 28
+        enabled: false
       banner_featured_insights:
         weight: 28
         enabled: false
-      marketo_submission_confirmation:
-        weight: 28
+      media_image_slider:
+        weight: 29
         enabled: false
       reference_card_browser:
         enabled: true
         weight: 29
-      media_image_slider:
-        weight: 29
-        enabled: false
       banner_hero:
         weight: 29
         enabled: false
@@ -125,6 +127,9 @@ settings:
       simple_stat:
         weight: 36
         enabled: false
+      compound_media_title_bar:
+        enabled: true
+        weight: 37
       link_form_modal:
         weight: 39
         enabled: false
@@ -139,6 +144,18 @@ settings:
         enabled: false
       media_video:
         weight: 47
+        enabled: false
+      microquiz_conditional:
+        weight: 48
+        enabled: false
+      microquiz_question:
+        weight: 49
+        enabled: false
+      microquiz_quiz:
+        enabled: true
+        weight: 50
+      media_svg:
+        weight: 50
         enabled: false
       summary_cards:
         enabled: true

@@ -16,17 +16,21 @@
        *   Marketo Form.
        * @param {object} marketoConfig
        *   Marketo Settings.
-       * @param values
+       * @param {Array} values
        *   Submitted values.
+       * @param {String} dataInstance
+       *   Configuration instance index.
        */
-      Drupal.behaviors.marketoForms.unlockGatedContent = function (form, marketoConfig, values) {
+      Drupal.behaviors.marketoForms.unlockGatedContent = function (form, marketoConfig, values, dataInstance) {
+
+        let instanceConfig = marketoConfig[dataInstance];
 
         // Send the request to unlock content.
         $.ajax({
           method: 'POST',
           url: '/marketo/unlock_gated_content',
           data: {
-            unlocked_content: marketoConfig.gatedContent,
+            unlocked_content: instanceConfig.gatedContent,
           }
         })
           .done(function(data) {
@@ -34,9 +38,13 @@
             // Look through processed data and reload the page if content is
             // unlocked.
             if (!!data) {
-
-              // Add the offer type parameter.
-              window.location.search += data['query_string'];
+              if (window.location.search.length) {
+                // Add the offer type parameter. When several parameters are in the query
+                window.location.search += '&' + data['query_string'];
+              } else {
+                // Add the offer type parameter. When the query is empty
+                window.location.search += data['query_string'];
+              }
             }
           });
       }

@@ -1,0 +1,25 @@
+uuid: 57d4806b-f8bc-4987-afc3-6d008f19463a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_bg_color
+    - paragraphs.paragraphs_type.compound_media_title_bar
+id: paragraph.compound_media_title_bar.field_bg_color
+field_name: field_bg_color
+entity_type: paragraph
+bundle: compound_media_title_bar
+label: 'Background Color'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: display_settings
+      display_name: colors_gray
+      arguments: {  }
+field_type: entity_reference

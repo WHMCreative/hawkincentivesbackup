@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.menu_link_content.main.field_cta
     - field.field.menu_link_content.main.field_description
+    - field.field.menu_link_content.main.field_form
     - field.field.menu_link_content.main.field_media_image
     - system.menu.main
   module:
@@ -37,4 +38,5 @@ content:
     region: content
 hidden:
   field_cta: true
+  field_form: true
   langcode: true
