@@ -131,17 +131,21 @@
     .node--image {
       position: relative;
       margin-bottom: 5px;
-      @include breakpoint(small down) {
-        margin-bottom: 0;
-        margin-right: 20px;
+      &:not(.view-insights) & {
+        @include breakpoint(small down) {
+          margin-bottom: 0;
+          margin-right: 20px;
+        }
       }
       .field--name-field-insight-type {
         position: absolute;
         left: 15px;
         top: 15px;
         @include insight-label();
-        @include breakpoint(small down) {
-          display: none;
+        &:not(.view-insights) & {
+          @include breakpoint(small down) {
+            display: none;
+          }
         }
       }
       .field--name-field-media,
@@ -150,15 +154,18 @@
         position: relative;
         overflow: hidden;
         border-radius: 3px;
-        @include breakpoint(marge) {
-          max-height: 180px;
-          height: 180px;
-        }
-        @include breakpoint(small down) {
-          width: 70px;
-          height: 70px;
-          max-height: 70px;
-          border-radius: 0;
+
+        &:not(.view-insights) & {
+          @include breakpoint(marge) {
+            max-height: 180px;
+            height: 180px;
+          }
+          @include breakpoint(small down) {
+            width: 70px;
+            height: 70px;
+            max-height: 70px;
+            border-radius: 0;
+          }
         }
 
         .node--sidebar .paragraph--type--summary-insights &,
@@ -183,11 +190,13 @@
               margin-top: -40px;
             }
           }
-          @include breakpoint(small down) {
-            width: auto;
-            max-width: 200%;
-            height: 100%;
-            max-height: 70px;
+          &:not(.view-insights) & {
+            @include breakpoint(small down) {
+              width: auto;
+              max-width: 200%;
+              height: 100%;
+              max-height: 70px;
+            }
           }
         }
       }
