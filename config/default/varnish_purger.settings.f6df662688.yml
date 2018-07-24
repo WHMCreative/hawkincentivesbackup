@@ -1,0 +1,25 @@
+uuid: b68b2a0f-d01f-48d1-880e-b433fae0739e
+langcode: en
+status: true
+dependencies: {  }
+id: f6df662688
+name: 'Blackmesh Varnish Purger'
+invalidationtype: tag
+hostname: localhost
+port: 80
+path: /
+request_method: BAN
+scheme: http
+verify: '1'
+headers:
+  -
+    field: Cache-Tags
+    value: '[invalidations:separated_pipe]'
+body: null
+body_content_type: null
+runtime_measurement: true
+timeout: !!float 1
+connect_timeout: !!float 1
+cooldown_time: 0.2
+max_requests: 100
+http_errors: true
