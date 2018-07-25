@@ -1,6 +1,6 @@
-webpackJsonp([3],{
+webpackJsonp([2],{
 
-/***/ 178:
+/***/ 110:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13,7 +13,7 @@ exports.MediaQuery = undefined;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _jquery = __webpack_require__(5);
+var _jquery = __webpack_require__(6);
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
@@ -253,7 +253,7 @@ exports.MediaQuery = MediaQuery;
 
 /***/ }),
 
-/***/ 179:
+/***/ 111:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -276,7 +276,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 ;(function(factory) {
     'use strict';
     if (true) {
-        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(5)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(6)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -3274,61 +3274,61 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 /***/ }),
 
-/***/ 222:
+/***/ 166:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(223);
+__webpack_require__(167);
 
-__webpack_require__(231);
+__webpack_require__(175);
 
-__webpack_require__(232);
+__webpack_require__(176);
 
-__webpack_require__(234);
+__webpack_require__(178);
 
-__webpack_require__(235);
+__webpack_require__(179);
 
-__webpack_require__(236);
+__webpack_require__(180);
 
-__webpack_require__(237);
+__webpack_require__(181);
 
-__webpack_require__(238);
+__webpack_require__(182);
 
-__webpack_require__(239);
+__webpack_require__(183);
 
-__webpack_require__(240);
+__webpack_require__(184);
 
 /***/ }),
 
-/***/ 223:
+/***/ 167:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _jquery = __webpack_require__(5);
+var _jquery = __webpack_require__(6);
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
-var _foundation = __webpack_require__(224);
+var _foundation = __webpack_require__(168);
 
-var _foundationUtil = __webpack_require__(64);
+var _foundationUtil = __webpack_require__(50);
 
-var _foundationUtil2 = __webpack_require__(225);
+var _foundationUtil2 = __webpack_require__(169);
 
-var _foundationUtil3 = __webpack_require__(226);
+var _foundationUtil3 = __webpack_require__(170);
 
-var _foundationUtil4 = __webpack_require__(227);
+var _foundationUtil4 = __webpack_require__(171);
 
-var _foundationUtil5 = __webpack_require__(178);
+var _foundationUtil5 = __webpack_require__(110);
 
-var _foundationUtil6 = __webpack_require__(228);
+var _foundationUtil6 = __webpack_require__(172);
 
-var _foundationUtil7 = __webpack_require__(229);
+var _foundationUtil7 = __webpack_require__(173);
 
-var _foundationUtil8 = __webpack_require__(230);
+var _foundationUtil8 = __webpack_require__(174);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3366,7 +3366,7 @@ _foundation.Foundation.Timer = _foundationUtil8.Timer;
 
 /***/ }),
 
-/***/ 224:
+/***/ 168:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3379,13 +3379,13 @@ exports.Foundation = undefined;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _jquery = __webpack_require__(5);
+var _jquery = __webpack_require__(6);
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
-var _foundationUtil = __webpack_require__(64);
+var _foundationUtil = __webpack_require__(50);
 
-var _foundationUtil2 = __webpack_require__(178);
+var _foundationUtil2 = __webpack_require__(110);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3732,7 +3732,7 @@ exports.Foundation = Foundation;
 
 /***/ }),
 
-/***/ 225:
+/***/ 169:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3743,7 +3743,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Box = undefined;
 
-var _foundationUtil = __webpack_require__(64);
+var _foundationUtil = __webpack_require__(50);
 
 var Box = {
   ImNotTouchingYou: ImNotTouchingYou,
@@ -3969,7 +3969,7 @@ exports.Box = Box;
 
 /***/ }),
 
-/***/ 226:
+/***/ 170:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3980,7 +3980,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.onImagesLoaded = undefined;
 
-var _jquery = __webpack_require__(5);
+var _jquery = __webpack_require__(6);
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
@@ -4029,7 +4029,7 @@ exports.onImagesLoaded = onImagesLoaded;
 
 /***/ }),
 
-/***/ 227:
+/***/ 171:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4048,11 +4048,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Keyboard = undefined;
 
-var _jquery = __webpack_require__(5);
+var _jquery = __webpack_require__(6);
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
-var _foundationUtil = __webpack_require__(64);
+var _foundationUtil = __webpack_require__(50);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -4217,7 +4217,7 @@ exports.Keyboard = Keyboard;
 
 /***/ }),
 
-/***/ 228:
+/***/ 172:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4228,11 +4228,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Motion = exports.Move = undefined;
 
-var _jquery = __webpack_require__(5);
+var _jquery = __webpack_require__(6);
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
-var _foundationUtil = __webpack_require__(64);
+var _foundationUtil = __webpack_require__(50);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -4337,7 +4337,7 @@ exports.Motion = Motion;
 
 /***/ }),
 
-/***/ 229:
+/***/ 173:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4348,7 +4348,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Nest = undefined;
 
-var _jquery = __webpack_require__(5);
+var _jquery = __webpack_require__(6);
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
@@ -4415,7 +4415,7 @@ exports.Nest = Nest;
 
 /***/ }),
 
-/***/ 230:
+/***/ 174:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4426,7 +4426,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Timer = undefined;
 
-var _jquery = __webpack_require__(5);
+var _jquery = __webpack_require__(6);
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
@@ -4482,7 +4482,7 @@ exports.Timer = Timer;
 
 /***/ }),
 
-/***/ 231:
+/***/ 175:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4512,21 +4512,21 @@ exports.Timer = Timer;
     $(this).attr('target', '_blank');
   });
 }(jQuery);
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
 
 /***/ }),
 
-/***/ 232:
+/***/ 176:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _jquery = __webpack_require__(5);
+var _jquery = __webpack_require__(6);
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
-__webpack_require__(233);
+__webpack_require__(177);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -4584,7 +4584,7 @@ $mySVGsToInject.each(function (i, el) {
 
 /***/ }),
 
-/***/ 233:
+/***/ 177:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10147,17 +10147,17 @@ return SVG
 
 /***/ }),
 
-/***/ 234:
+/***/ 178:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _jquery = __webpack_require__(5);
+var _jquery = __webpack_require__(6);
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
-var _jquery3 = __webpack_require__(97);
+var _jquery3 = __webpack_require__(74);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -10191,17 +10191,17 @@ Drupal.behaviors.magnificPopup = {
 
 /***/ }),
 
-/***/ 235:
+/***/ 179:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _jquery = __webpack_require__(5);
+var _jquery = __webpack_require__(6);
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
-var _jquery3 = __webpack_require__(97);
+var _jquery3 = __webpack_require__(74);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -10286,13 +10286,13 @@ Drupal.behaviors.menuFeaturedItems = {
 
 /***/ }),
 
-/***/ 236:
+/***/ 180:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _jquery = __webpack_require__(5);
+var _jquery = __webpack_require__(6);
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
@@ -10317,17 +10317,17 @@ $skipLink.on('click', function (e) {
 
 /***/ }),
 
-/***/ 237:
+/***/ 181:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _jquery = __webpack_require__(5);
+var _jquery = __webpack_require__(6);
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
-var _jquery3 = __webpack_require__(97);
+var _jquery3 = __webpack_require__(74);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -10355,17 +10355,17 @@ Drupal.behaviors.videoModal = {
 
 /***/ }),
 
-/***/ 238:
+/***/ 182:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _jquery = __webpack_require__(5);
+var _jquery = __webpack_require__(6);
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
-var _slick = __webpack_require__(179);
+var _slick = __webpack_require__(111);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -10527,6 +10527,20 @@ Drupal.behaviors.slickCustom = {
       });
     });
 
+    (0, _jquery2.default)(document).on('touchend', '.slick-list.draggable', function (event) {
+      var $this = (0, _jquery2.default)(event.currentTarget);
+      var index = $this.find('.slick-slide.slick-active').index();
+      var myContainer = $this.closest('.paragraph');
+
+      // Update slick counter numbers class
+      myContainer.find('.slick-counter-numbers span').removeClass('active');
+      myContainer.find('.slick-counter-numbers span:nth-of-type(' + (index + 1) + ')').addClass('active');
+
+      // Update slick counter labels class
+      myContainer.find('.slick-counter-labels span').removeClass('active');
+      myContainer.find('.slick-counter-labels span:nth-of-type(' + (index + 1) + ')').addClass('active');
+    });
+
     (0, _jquery2.default)(document).on('click', '.slick-dots button', function (event) {
       var $this = (0, _jquery2.default)(event.currentTarget);
       var index = $this.parent().index();
@@ -10596,13 +10610,13 @@ Drupal.behaviors.mediaTile = {
 
 /***/ }),
 
-/***/ 239:
+/***/ 183:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _jquery = __webpack_require__(5);
+var _jquery = __webpack_require__(6);
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
@@ -10713,17 +10727,17 @@ Drupal.behaviors.emailManipulations = {
 
 /***/ }),
 
-/***/ 240:
+/***/ 184:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _jquery = __webpack_require__(5);
+var _jquery = __webpack_require__(6);
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
-var _slick = __webpack_require__(179);
+var _slick = __webpack_require__(111);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -10810,14 +10824,7 @@ Drupal.behaviors.heroSlider = {
 
 /***/ }),
 
-/***/ 5:
-/***/ (function(module, exports) {
-
-module.exports = jQuery;
-
-/***/ }),
-
-/***/ 64:
+/***/ 50:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10828,7 +10835,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.transitionend = exports.GetYoDigits = exports.rtl = undefined;
 
-var _jquery = __webpack_require__(5);
+var _jquery = __webpack_require__(6);
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
@@ -10887,7 +10894,14 @@ exports.transitionend = transitionend;
 
 /***/ }),
 
-/***/ 97:
+/***/ 6:
+/***/ (function(module, exports) {
+
+module.exports = jQuery;
+
+/***/ }),
+
+/***/ 74:
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(__webpack_provided_window_dot_jQuery) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! Magnific Popup - v1.1.0 - 2016-02-20
@@ -10896,7 +10910,7 @@ exports.transitionend = transitionend;
 ;(function (factory) { 
 if (true) { 
  // AMD. Register as an anonymous module. 
- !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(5)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+ !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(6)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)); 
@@ -12753,9 +12767,9 @@ $.magnificPopup.registerModule(RETINA_NS, {
 
 /*>>retina*/
  _checkInstance(); }));
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
 
 /***/ })
 
-},[222]);
+},[166]);
 //# sourceMappingURL=themekit.js.map
