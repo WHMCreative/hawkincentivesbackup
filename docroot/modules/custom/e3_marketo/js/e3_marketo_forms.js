@@ -238,7 +238,7 @@
               trkValue: marketoCookie,
               formFields: form.getValues()
             },
-            success: function (data, text_status) {
+            success: function (data, textStatus) {
 
               let prefillValues = {};
               let currentValues = form.getValues();
@@ -342,7 +342,9 @@
 
         // Remove inline styles that Marketo adds to most elements.
         $('*[class^="mkto"][style]').removeAttr('style');
-        $form.removeAttr('style');
+
+        // Remove some core Marketo css classes in favor of our own.
+        $form.removeAttr('style').removeClass('mktoForm').find('.mktoButton').removeClass('mktoButton');
 
         // Remove Marketo "required" divs and add Drupal's "form-required" class
         // to form labels instead. Remove mktoClear, mktoOffset, mktoGutter
@@ -377,6 +379,9 @@
         if (mktoinlineFormStyles.length > 0) {
           mktoinlineFormStyles.remove();
         }
+
+        // Reveal the form once it's been processed.
+        form.getFormElem().closest('.marketo-steps-wrapper').removeClass('hidden');
       };
 
       /**
