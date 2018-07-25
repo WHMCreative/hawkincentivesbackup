@@ -206,13 +206,31 @@ function themekit_preprocess_paragraph_simple_media_bar(&$variables) {
 }
 
 function themekit_preprocess_paragraph_banner_hero(&$variables) {
+  /* @var Drupal\paragraphs\Entity\Paragraph $paragraph */
   $paragraph = $variables['paragraph'];
   $node = $paragraph->getParentEntity();
   themekit_get_insight_data($node, $variables);
 
   $variables['image_inline_style'] = themekit_get_entity_image_inline_style($paragraph, 'field_media', 'banner_hero');
 
-  $variables['overlay_color'] = themekit_get_term_slug($paragraph, 'field_bg_color') ? themekit_get_term_slug($paragraph, 'field_bg_color') : 'blue';
+  if ($paragraph->hasField('field_media')
+    && empty($paragraph->get('field_media')->getValue())
+    && $paragraph->hasField('field_bg_color')
+    && empty($paragraph->get('field_bg_color')->getValue())
+  ) {
+    $variables['overlay_color'] = 'blue';
+  }
+  elseif ($paragraph->hasField('field_media')
+    && !empty($paragraph->get('field_media')->getValue())
+    && $paragraph->hasField('field_bg_color')
+    && empty($paragraph->get('field_bg_color')->getValue())
+  ) {
+    $variables['overlay_color'] = '';
+  }
+  else {
+    $variables['overlay_color'] = themekit_get_term_slug($paragraph, 'field_bg_color') ? themekit_get_term_slug($paragraph, 'field_bg_color') : '';
+  }
+
 
   if ($paragraph->hasField('field_large_heading') && empty($paragraph->field_large_heading->value)) {
     $variables['attributes']['class'][] = 'only-heading-field';
