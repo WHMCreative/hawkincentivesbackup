@@ -485,11 +485,14 @@
   // Selected
   .selected-cards & {
     max-width: 300px;
+    .heart {
+      background-image: url(img-get('svg/heart-active.svg'));
+    }
   }
 
   &.selected {
     .heart {
-      background: red;
+      background-image: url(img-get('svg/heart-active.svg'));
     }
   }
 }

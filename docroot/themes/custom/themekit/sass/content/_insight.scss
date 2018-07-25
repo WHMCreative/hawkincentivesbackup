@@ -245,6 +245,7 @@
         top: 22px;
         @include insight-label();
       }
+      .field--name-field-media,
       .field--name-field-teaser-image {
         @include frame($secondary-color-light, 1px, 10px, 3px);
         img {
@@ -275,6 +276,7 @@
         margin-bottom: 20px;
       }
 
+      .field--name-field-media,
       .field--name-field-image {
         img {
           width: 100%;

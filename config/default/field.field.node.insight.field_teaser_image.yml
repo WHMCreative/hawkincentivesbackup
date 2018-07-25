@@ -11,7 +11,7 @@ field_name: field_teaser_image
 entity_type: node
 bundle: insight
 label: 'Teaser Image'
-description: ''
+description: 'Recommended size it 740px x 460px'
 required: false
 translatable: false
 default_value: {  }

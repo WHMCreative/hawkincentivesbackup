@@ -11,7 +11,7 @@ field_name: field_media
 entity_type: paragraph
 bundle: banner_hero
 label: 'Background Image'
-description: ''
+description: 'Recommended size is at least 1440px wide. The amount of content will determine the height of the banner. '
 required: false
 translatable: true
 default_value: {  }

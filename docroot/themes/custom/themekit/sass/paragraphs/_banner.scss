@@ -172,6 +172,7 @@
   position: relative;
   margin-top: rem-calc(-90);
   z-index: z(banner, content);
+  margin-bottom: rem-calc($paragraphs-default-spacing);
 }
 
 .paragraph--type--banner-featured-insights {

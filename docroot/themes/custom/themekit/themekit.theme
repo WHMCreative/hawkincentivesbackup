@@ -336,44 +336,46 @@ function themekit_preprocess_paragraph_media_image(&$variables) {
   // Identify the implementing bundle and use any additional conditions as well and add either `image_inline_style` or `custom_image_style` var
   $parent = $paragraph->getParentEntity();
   if ($parent->getEntityTypeId() === 'paragraph') {
-    $media = $uri = $paragraph->field_media_image->entity->field_image;
-    $uri = $media->entity->getFileUri();
-    $alt = $media->first()->get('alt')->getString();
+    if(!empty($paragraph->field_media_image->entity)) {
+      $media = $uri = $paragraph->field_media_image->entity->field_image;
+      $uri = $media->entity->getFileUri();
+      $alt = $media->first()->get('alt')->getString();
 
-    switch ($parent->getType()) {
-      case 'simple_stat':
-        $variables['custom_image_style'] = [
-          '#theme' => 'image_style',
-          '#style_name' => 'stat',
-          '#uri' => $uri,
-          '#alt' => $alt,
-        ];
-        break;
-      case 'simple_icon_content':
-        $variables['custom_image_style'] = [
-          '#theme' => 'image_style',
-          '#style_name' => 'thumbnail',
-          '#uri' => $uri,
-          '#alt' => $alt,
-        ];
-        break;
-      case 'layout_2_column':
-        $variables['custom_image_style'] = [
-          '#theme' => 'image_style',
-          '#style_name' => 'half_column',
-          '#uri' => $uri,
-          '#alt' => $alt,
-        ];
-        break;
+      switch ($parent->getType()) {
+        case 'simple_stat':
+          $variables['custom_image_style'] = [
+            '#theme' => 'image_style',
+            '#style_name' => 'stat',
+            '#uri' => $uri,
+            '#alt' => $alt,
+          ];
+          break;
+        case 'simple_icon_content':
+          $variables['custom_image_style'] = [
+            '#theme' => 'image_style',
+            '#style_name' => 'thumbnail',
+            '#uri' => $uri,
+            '#alt' => $alt,
+          ];
+          break;
+        case 'layout_2_column':
+          $variables['custom_image_style'] = [
+            '#theme' => 'image_style',
+            '#style_name' => 'half_column',
+            '#uri' => $uri,
+            '#alt' => $alt,
+          ];
+          break;
 
-      case 'simple_media_tile':
-        $variables['custom_image_style'] = [
-          '#theme' => 'image_style',
-          '#style_name' => 'third_column',
-          '#uri' => $uri,
-          '#alt' => $alt,
-        ];
-        break;
+        case 'simple_media_tile':
+          $variables['custom_image_style'] = [
+            '#theme' => 'image_style',
+            '#style_name' => 'third_column',
+            '#uri' => $uri,
+            '#alt' => $alt,
+          ];
+          break;
+      }
     }
   }
 }

@@ -52,7 +52,7 @@
           <Card v-for="card in cards" :card="card" :key="card.id" @selectCard='selectCard' @openFrom='openFrom' :class="{selected: checkIfSelected(card.id)}"></Card>
         </div>
         <div class="no-results" v-if="cards.length == 0">
-          <p>No results</p>
+          <p>Sorry! No reward options match your query. Please try a different combination of features.</p>
         </div>
         <template v-if="visibleCards !== cardCount">
           <button @click='loadMore' class="load-more">Load More</button>
