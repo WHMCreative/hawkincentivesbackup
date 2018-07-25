@@ -62,6 +62,8 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class
     <div class="bg-container" {{ image_inline_style|raw }}></div>
   {% endif %}
   <div class="paragraph-content">
-    {{ rendered_content }}
+    <div class="quiz-wrapper">
+      {{ rendered_content }}
+    </div>
   </div>
 </div>

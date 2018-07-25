@@ -5,6 +5,7 @@
 .paragraph--type--microquiz-quiz {
   position: relative;
   z-index: z(quiz, base);
+  @include paragraph-paddings();
   .bg-container {
     position: absolute;
     z-index: z(quiz,base);
@@ -13,11 +14,157 @@
     width: 100%;
     height: 100%;
     @include bg-style(cover);
+    &:after {
+      content: '';
+      position: absolute;
+      z-index: z(quiz,overlay);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: $blue-gradient;
+      opacity: 0.9;
+    }
   }
   > .paragraph-content {
     @include content-width(default);
     position: relative;
-    color: $white;
     z-index: z(quiz, content);
+    color: $white;
+    text-align: center;
+    .quiz-wrapper {
+      > .field--name-field-heading {
+        color: inherit;
+        max-width: 700px;
+        margin: 0 auto 15px;
+        @include breakpoint(medium) {
+          margin-bottom: 35px;
+        }
+      }
+      > .field--name-field-description {
+        max-width: 700px;
+        margin: 15px auto;
+        @include breakpoint(medium) {
+          margin-top: 35px;
+          margin-bottom: 35px;
+        }
+      }
+    }
+    .micro-quiz-result {
+      .field--name-name {
+        @include header-font-size(h2);
+        margin-bottom: 0.5em;
+      }
+      .field--name-field-description {
+        max-width: 700px;
+        margin: 0 auto;
+      }
+      .field--name-field-p-multiple-links {
+        margin: 15px auto;
+        display: flex;
+        justify-content: center;
+        > .paragraph {
+          margin: 0 5px;
+          a {
+            @include btn(ghost-white);
+          }
+        }
+      }
+    }
+    .no-result {
+      margin-bottom: 15px;
+    }
+    a.micro-quiz-restart {
+      @include btn(ghost-white);
+    }
+  }
+}
+
+.paragraph--type--microquiz-question {
+  form.micro-quiz-question {
+    @include breakpoint(large) {
+      position: relative;
+    }
+    fieldset {
+      margin: 0 auto;
+      max-width: 700px;
+      legend {
+        font-size: rem-calc(16);
+        margin: 0 0 10px;
+        @include breakpoint(medium) {
+          font-size: rem-calc(18);
+          margin-bottom: 30px;
+        }
+      }
+      .form-radios {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        > .form-item {
+          width: 100%;
+          max-width: 160px;
+          margin: 20px 3px 0;
+          position: relative;
+          @include breakpoint(medium) {
+            margin-left: 10px;
+            margin-right: 10px;
+          }
+          @include breakpoint(marge) {
+            &:first-child {
+              margin-left: 0;
+            }
+            &:last-child {
+              margin-right: 0;
+            }
+          }
+          input.form-radio {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            &:focus + label {
+              outline: -webkit-focus-ring-color auto 5px;
+            }
+          }
+          label {
+            margin: 0;
+            color: inherit;
+            display: block;
+          }
+        }
+      }
+    }
+    .form-actions {
+      text-align: center;
+      @include breakpoint(large) {
+        margin: 0;
+        position: absolute;
+        right: 0;
+        bottom: 70px;
+      }
+      .form-submit {
+        @include btn(ghost-white);
+      }
+      .current-question {
+        font-size: rem-calc(12);
+        margin-top: 10px;
+        opacity: 0.8;
+      }
+    }
+
+    .micro-quiz-answer {
+      .field--name-field-p-media {
+        width: 90px;
+        height: 90px;
+        background: $white;
+        border-radius: 50%;
+        padding: 18px;
+        margin: 0 auto 15px;
+      }
+      .field--name-field-description {
+        font-size: rem-calc(14);
+      }
+    }
+
   }
 }

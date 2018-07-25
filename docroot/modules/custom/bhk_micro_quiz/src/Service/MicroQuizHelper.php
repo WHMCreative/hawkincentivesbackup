@@ -129,7 +129,13 @@ class MicroQuizHelper {
       $render_array['result'] = $this->entityTypeManager->getViewBuilder('micro_quiz')->view($parent);
     }
     else {
-      $render_array['result'] = ['#markup' => $this->noResultsMessage];
+      $render_array['result'] = [
+        '#type' => 'container',
+        '#attributes' => [
+          'class' => ['no-result'],
+        ],
+        '#markup' => $this->noResultsMessage,
+      ];
     }
 
     // Add a button to reset cookies.

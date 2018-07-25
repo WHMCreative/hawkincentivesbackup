@@ -549,6 +549,7 @@ function themekit_theme_suggestions_field_alter(array &$suggestions, array $vari
       case 'layout_grid':
       case 'simple_cta':
       case 'simple_content':
+      case 'microquiz_quiz':
       array_unshift($suggestions, 'field__heading_2');
         break;
       case 'single_heading':
