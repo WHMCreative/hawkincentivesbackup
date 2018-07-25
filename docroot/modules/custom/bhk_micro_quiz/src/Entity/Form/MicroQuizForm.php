@@ -51,7 +51,7 @@ class MicroQuizForm extends ContentEntityForm {
           '%label' => $entity->label(),
         ]));
     }
-    $form_state->setRedirect('entity.micro_quiz.canonical', ['micro_quiz' => $entity->id()]);
+    $form_state->setRedirect('view.microquiz.microquiz_admin_list');
   }
 
 }

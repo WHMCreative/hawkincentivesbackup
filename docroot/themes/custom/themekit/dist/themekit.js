@@ -3300,6 +3300,8 @@ __webpack_require__(239);
 
 __webpack_require__(240);
 
+__webpack_require__(480);
+
 /***/ }),
 
 /***/ 223:
@@ -10821,6 +10823,58 @@ Drupal.behaviors.heroSlider = {
     });
   }
 };
+
+/***/ }),
+
+/***/ 480:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _jquery = __webpack_require__(5);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+Drupal.behaviors.footerManipulations = {
+  attach: function attach(context, settings) {
+    // Only the last N menu items can be visible
+    var footerSecond = (0, _jquery2.default)('.menu--footer > ul', context);
+    if (!footerSecond.length) return;
+    var liCount = footerSecond.find('> li').length;
+
+    footerSecond.find('> li').each(function (i, elem) {
+      var $this = (0, _jquery2.default)(elem);
+      var invertedIndexs = [0, 1, 2]; // index from the end -- The last three elements
+
+      if (liCount - i - 1 in invertedIndexs) {
+        $this.addClass('visible');
+      }
+    });
+
+    // Copyright Block
+    var copyrightBlock = (0, _jquery2.default)('.footer-content #block-copyright', context);
+
+    (0, _jquery2.default)(window).on('changed.zf.mediaquery', function () {
+      if ((0, _jquery2.default)(window).width() < 640) {
+        copyrightBlock.appendTo('footer .region-footer-second');
+      } else {
+        copyrightBlock.appendTo('footer .region-footer-first');
+      }
+    });
+
+    // Initialization for mobile
+    if ((0, _jquery2.default)(window).width() < 640) {
+      copyrightBlock.appendTo('footer .region-footer-second');
+    }
+  }
+
+}; /**
+    * @file
+    * Footer
+    */
 
 /***/ }),
 
