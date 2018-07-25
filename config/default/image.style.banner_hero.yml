@@ -15,8 +15,3 @@ effects:
       width: 1400
       height: 510
       crop_type: focal_point
-  ae357ea9-b495-44bf-bffd-e8d511f8bb6f:
-    uuid: ae357ea9-b495-44bf-bffd-e8d511f8bb6f
-    id: image_desaturate
-    weight: 2
-    data: {  }
