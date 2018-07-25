@@ -388,7 +388,7 @@ function themekit_preprocess_paragraph_media_image(&$variables) {
         case 'simple_media_tile':
           $variables['custom_image_style'] = [
             '#theme' => 'image_style',
-            '#style_name' => 'third_column',
+            '#style_name' => 'media_tile',
             '#uri' => $uri,
             '#alt' => $alt,
           ];
