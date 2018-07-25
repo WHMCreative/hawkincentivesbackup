@@ -188,7 +188,15 @@ if (isset($_SERVER['AH_SITE_ENVIRONMENT'])) {
       $config['e3_google_tag.settings']['gtm_code'] = '';
 
       // Set purger host
-      $config['varnish_purger.settings.972afd4ab5']['hostname'] = '172.28.4.1';
+      switch ($_SERVER['AH_SITE_SERVER']) {
+        case 'mp1':
+          $config['varnish_purger.settings.972afd4ab5']['hostname'] = '172.28.4.1';
+          break;
+
+        case 'mp2':
+          $config['varnish_purger.settings.972afd4ab5']['hostname'] = '172.28.4.2';
+          break;
+      }
       break;
   }
 }
