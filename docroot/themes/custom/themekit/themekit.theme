@@ -353,12 +353,15 @@ function themekit_preprocess_paragraph_media_image(&$variables) {
   // Do contextual adjustments to image (image style or background image if necessary)
   // Identify the implementing bundle and use any additional conditions as well and add either `image_inline_style` or `custom_image_style` var
   $parent = $paragraph->getParentEntity();
-  if ($parent->getEntityTypeId() === 'paragraph') {
-    if(!empty($paragraph->field_media_image->entity)) {
-      $media = $uri = $paragraph->field_media_image->entity->field_image;
-      $uri = $media->entity->getFileUri();
-      $alt = $media->first()->get('alt')->getString();
+  $entity_type_id = $parent->getEntityTypeId();
 
+
+  if(!empty($paragraph->field_media_image->entity)) {
+    $media = $paragraph->field_media_image->entity->field_image;
+    $uri = $media->entity->getFileUri();
+    $alt = $media->first()->get('alt')->getString();
+
+    if ($entity_type_id === 'paragraph') {
       switch ($parent->getType()) {
         case 'simple_stat':
           $variables['custom_image_style'] = [
@@ -395,6 +398,18 @@ function themekit_preprocess_paragraph_media_image(&$variables) {
           break;
       }
     }
+
+    if ($entity_type_id === 'micro_quiz') {
+      if ($parent->bundle() === 'answer') {
+        $variables['custom_image_style'] = [
+          '#theme' => 'image_style',
+          '#style_name' => 'teaser_small',
+          '#uri' => $uri,
+          '#alt' => $alt,
+        ];
+      }
+    }
+
   }
 }
 
@@ -403,6 +418,12 @@ function themekit_preprocess_paragraph_media_image_slider(&$variables) {
   $paragraph = $variables['paragraph'];
   $image_style = (isset($variables['content']['field_media'][0]['#image_style'])) ? $variables['content']['field_media'][0]['#image_style'] : NULL;
   $variables['image_inline_style'] = themekit_get_entity_image_inline_style($paragraph, 'field_media', $image_style);
+}
+
+function themekit_preprocess_paragraph_microquiz_quiz(&$variables) {
+  /* @var $paragraph Drupal\paragraphs\Entity\Paragraph */
+  $paragraph = $variables['paragraph'];
+  $variables['image_inline_style'] = themekit_get_entity_image_inline_style($paragraph, 'field_media', 'banner_hero');
 }
 
 
@@ -528,6 +549,7 @@ function themekit_theme_suggestions_field_alter(array &$suggestions, array $vari
       case 'layout_grid':
       case 'simple_cta':
       case 'simple_content':
+      case 'microquiz_quiz':
       array_unshift($suggestions, 'field__heading_2');
         break;
       case 'single_heading':

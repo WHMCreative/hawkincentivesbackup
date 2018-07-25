@@ -59,7 +59,7 @@
           success: function (data, text_status) {
 
             let result = data['result'],
-              mainWrapper = activeQuestion.parents('.paragraph--type--microquiz-quiz > .paragraph-content');
+              mainWrapper = activeQuestion.parents('.paragraph--type--microquiz-quiz .quiz-wrapper');
 
             // Save answers.
             if (saveAnswers) {
@@ -86,7 +86,6 @@
         $('input[name=microquiz_question]', context).once('answer-select').change(function () {
           let $active_question = $(this).parents('.active-question');
 
-          console.log('enable');
           if ($active_question.length) {
             $active_question.find('.form-submit')
               .removeClass('is-disabled')

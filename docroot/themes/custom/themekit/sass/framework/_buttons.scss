@@ -84,6 +84,14 @@ $buttons: (
       -webkit-text-fill-color: transparent;
     }
   }
+  &[disabled] {
+    opacity: 0.5;
+    @include selectors(active) {
+      border-color: key($button, border);
+      background: key($button, background);
+      color: key($button, color);
+    }
+  }
 
   @include selectors(active) {
     border-color: key($button, active-border);
