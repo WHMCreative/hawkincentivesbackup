@@ -220,9 +220,11 @@
       font-weight: $global-weight-normal;
     }
 
-    .mktoButton {
-      margin-top: 0;
-      margin-left: rem-calc(12);
+    .mktoButtonRow {
+      button {
+        margin-top: 0;
+        margin-left: rem-calc(12);
+      }
     }
 
     .marketo-steps-wrapper {

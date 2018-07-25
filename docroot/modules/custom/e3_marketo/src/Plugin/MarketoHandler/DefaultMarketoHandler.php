@@ -40,7 +40,6 @@ class DefaultMarketoHandler extends MarketoHandlerBase {
 
     $this->htmlClass = "marketo-form-{$marketo_form_id}";
 
-
     // Do not embed the form if key Marketo settings are missing.
     if (!$this->verifyMarketoSettings()) {
       return;
@@ -181,7 +180,6 @@ class DefaultMarketoHandler extends MarketoHandlerBase {
    */
   public function getMarketoFormAttributes(MarketoFormEntityInterface $marketo_form) {
     $html_class = $this->htmlClass;
-    $form_id = $marketo_form->getFormId();
 
     $attributes = new Attribute();
     $attributes->setAttribute('data-form-id', $marketo_form->getFormId());

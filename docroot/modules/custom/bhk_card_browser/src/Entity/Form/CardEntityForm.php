@@ -49,7 +49,7 @@ class CardEntityForm extends ContentEntityForm {
           '%label' => $entity->label(),
         ]));
     }
-    $form_state->setRedirect('entity.card.canonical', ['card' => $entity->id()]);
+    $form_state->setRedirect('view.cards.card_admin_list');
   }
 
 }

@@ -10840,6 +10840,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 Drupal.behaviors.footerManipulations = {
   attach: function attach(context, settings) {
+    // Only the last N menu items can be visible
     var footerSecond = (0, _jquery2.default)('.menu--footer > ul', context);
     if (!footerSecond.length) return;
     var liCount = footerSecond.find('> li').length;
@@ -10858,10 +10859,8 @@ Drupal.behaviors.footerManipulations = {
 
     (0, _jquery2.default)(window).on('changed.zf.mediaquery', function () {
       if ((0, _jquery2.default)(window).width() < 640) {
-        console.log('<640');
         copyrightBlock.appendTo('footer .region-footer-second');
       } else {
-        console.log('>640');
         copyrightBlock.appendTo('footer .region-footer-first');
       }
     });
