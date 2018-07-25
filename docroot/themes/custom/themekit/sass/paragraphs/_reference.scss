@@ -124,6 +124,12 @@
 }
 
 .paragraph--type--reference-block {
+  .block {
+    > h2 {
+      @include content-width(default);
+      text-align: center;
+    }
+  }
   .field--name-field-p-content > & {
     @include paragraph-margins((small: 0));
   }

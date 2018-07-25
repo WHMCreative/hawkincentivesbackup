@@ -12,3 +12,4 @@ import './video-modal';
 import './slick';
 import './email';
 import './hero-slider';
+import './footer';
