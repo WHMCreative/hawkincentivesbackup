@@ -80,7 +80,7 @@
   .block--component & {
     background: $gray-gradient;
     @include paragraph-margins((small: 0));
-    color: $secondary-color;
+    color: $medium-gray;
 
     >.paragraph-content {
       @include content-width(default);
