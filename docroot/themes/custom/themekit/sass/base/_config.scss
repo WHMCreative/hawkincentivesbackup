@@ -52,7 +52,13 @@ $z-layers: (
     overlay: 3,
     play: 5,
     flourish: 7
-  )
+  ),
+  quiz: (
+    base: 1,
+    overlay: 3,
+    image: 4,
+    content: 5
+  ),
 );
 
 /// Button config
