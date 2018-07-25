@@ -163,6 +163,9 @@ if (isset($_SERVER['AH_SITE_ENVIRONMENT'])) {
       $config['environment_indicator.indicator']['name'] = 'BlackMesh ' . $_SERVER['AH_SITE_ENVIRONMENT'] . ' [Master DB]';
       $config['environment_indicator.indicator']['bg_color'] = '#000000';
 
+      //@TODO remove before launch
+      $config['e3_google_tag.settings']['gtm_code'] = 'GTM-TPNVKPS';
+
       break;
     case 'prod':
 
