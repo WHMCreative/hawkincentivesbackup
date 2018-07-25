@@ -6,12 +6,13 @@ footer {
   background: $primary-color;
   color: $white;
   .footer-content {
-    padding:70px;
+    padding: 40px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     @include breakpoint(medium) {
       flex-wrap: nowrap;
+      padding: 70px;
     }
     @include content-width(default);
     a,h2 {
