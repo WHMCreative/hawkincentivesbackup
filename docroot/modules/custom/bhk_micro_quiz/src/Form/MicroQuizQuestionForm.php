@@ -130,6 +130,17 @@ class MicroQuizQuestionForm extends FormBase {
       '#options' => $options,
     ];
 
+    $question_counter = [
+      '#type' => 'container',
+      '#attributes' => [
+        'class' => ['current-question'],
+      ],
+      '#markup' => $this->t('@current of @total', [
+        '@current' => static::$questions[$parent->id()]['current'],
+        '@total' => static::$questions[$parent->id()]['total'],
+      ]),
+    ];
+
     $form['actions'] = [
       '#type' => 'actions',
       'next' => [
@@ -141,6 +152,7 @@ class MicroQuizQuestionForm extends FormBase {
           ],
           'disabled' => 'disabled',
         ],
+        '#suffix' => $this->renderer->render($question_counter),
       ],
     ];
 

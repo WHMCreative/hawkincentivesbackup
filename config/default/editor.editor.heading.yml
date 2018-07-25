@@ -23,14 +23,14 @@ settings:
   plugins:
     stylescombo:
       styles: ''
+    language:
+      language_list: un
     drupallink:
       linkit_enabled: false
       linkit_profile: ''
-    language:
-      language_list: un
     linkitstyles:
       enable: 0
-      styles: ''
+      styles: ".btn.blue|Blue Button\r\n.btn.blue-ghost|Blue Ghost Button"
 image_upload:
   status: false
   scheme: public

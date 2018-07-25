@@ -85,7 +85,7 @@
       -webkit-appearance: none;
       -moz-appearance: none;
       font-size: rem-calc(13);
-      color: rgba($secondary-color, .001); // not just "transparent" because of IE ые
+      color: rgba($secondary-color, .001); // not just "transparent" because of IE
 
 
       &::-ms-expand {
@@ -149,8 +149,11 @@
   }
 
   .mktoError {
-    margin: -15px 0 10px 5px;
-    font-size: rem-calc(13);
+    //margin: -15px 0 10px 5px;
+    position: absolute;
+    left: 5px !important;
+    bottom: 7px !important;
+    font-size: rem-calc(11);
   }
 
   .mktoButtonRow {
@@ -160,6 +163,10 @@
       margin-left: 5px;
       cursor: pointer;
     }
+  }
+
+  .mktoRequiredField {
+    padding-bottom: 1px;
   }
 
   .mfp-content &,
@@ -175,21 +182,21 @@
       }
 
       input {
-        border-bottom: 1px solid rgba(255, 255, 255, .6);
+        border-bottom: 1px solid rgba($white, .6);
         color: $white;
       }
 
       select {
-        border-bottom: 1px solid rgba(255, 255, 255, .6);
+        border-bottom: 1px solid rgba($white, .6);
         background-image: url('../../images/svg/arrow-down-white.svg');
 
         &:focus {
-          box-shadow: 0 1px 0 0 $white;
+          box-shadow: inset 0 -1px 0 0 $white;
         }
       }
 
       textarea {
-        border-bottom: 1px solid rgba(255, 255, 255, .6);
+        border-bottom: 1px solid rgba($white, .6);
         color: $white;
 
         &:focus {
@@ -220,13 +227,36 @@
       font-weight: $global-weight-normal;
     }
 
-    .mktoButton {
-      margin-top: 0;
-      margin-left: rem-calc(12);
+    .mktoButtonRow {
+      button {
+        margin-top: 0;
+        margin-left: rem-calc(12);
+      }
     }
 
     .marketo-steps-wrapper {
       @include content-width(narrow);
+    }
+  }
+}
+
+.paragraph--type--marketo-submission-confirmation {
+
+  .field--name-field-thank-you-title {
+    text-align: center;
+    @include header-font-size(h2);
+    color: $secondary-color-dark;
+    font-weight: $global-weight-normal;
+    margin-bottom: rem-calc(16);
+  }
+
+  .field field--name-field-thank-you-description p {
+    color: $medium-gray;
+  }
+
+  .block--component & {
+    .field field--name-field-thank-you-description p {
+      color: $medium-gray;
     }
   }
 }

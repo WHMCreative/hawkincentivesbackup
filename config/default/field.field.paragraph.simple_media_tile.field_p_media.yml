@@ -14,7 +14,7 @@ field_name: field_p_media
 entity_type: paragraph
 bundle: simple_media_tile
 label: Media
-description: ''
+description: 'If the media is selected is an image recommended size is 210px x140px. Images will be sized automatically to this size. '
 required: true
 translatable: true
 default_value: {  }
@@ -90,6 +90,9 @@ settings:
       layout_grid:
         weight: 40
         enabled: false
+      compound_media_title_bar:
+        weight: 40
+        enabled: false
       link_form_modal:
         weight: 42
         enabled: false
@@ -113,6 +116,15 @@ settings:
         enabled: false
       simple_cta:
         weight: 56
+        enabled: false
+      microquiz_conditional:
+        weight: 56
+        enabled: false
+      microquiz_question:
+        weight: 57
+        enabled: false
+      microquiz_quiz:
+        weight: 58
         enabled: false
       simple_media_bar:
         weight: 58

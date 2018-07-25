@@ -41,7 +41,7 @@ filters:
     status: true
     weight: -49
     settings:
-      allowed_html: '<em> <strong> <a href hreflang !href accesskey id rel target data-entity-type data-entity-uuid data-entity-substitution data-entity-substitution class=""> <div class=""> <ul> <li> <drupal-entity data-* title alt data-entity-type data-entity-uuid data-entity-substitution data-entity-embed-display data-entity-embed-display-settings data-align data-caption data-embed-button>'
+      allowed_html: '<em> <strong> <a href hreflang !href accesskey id rel target data-entity-type data-entity-uuid data-entity-substitution class=""> <div class=""> <ul> <li> <drupal-entity data-* title alt data-entity-type data-entity-uuid data-entity-substitution data-entity-embed-display data-entity-embed-display-settings data-align data-caption data-embed-button> <p> <h2> <h3> <h4>'
       filter_html_help: true
       filter_html_nofollow: false
   filter_autop:

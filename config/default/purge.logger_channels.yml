@@ -1,27 +1,23 @@
 channels:
-  0:
+  -
     id: purgers
     grants:
       - 0
       - 2
       - 3
-  1:
+  -
     id: queue
     grants:
       - 0
       - 2
       - 3
-  2:
+  -
     id: diagnostics
     grants:
       - 3
-  4:
-    id: purger_varnishbundled_f6df662688
+  -
+    id: purger_varnish_972afd4ab5
     grants:
       - 0
       - 2
       - 3
-      - 4
-      - 5
-      - 6
-      - 7

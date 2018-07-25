@@ -1,11 +1,11 @@
-uuid: b68b2a0f-d01f-48d1-880e-b433fae0739e
+uuid: f0b3ef61-965d-4d54-ad1f-8d9207e1cbc2
 langcode: en
 status: true
 dependencies: {  }
-id: f6df662688
-name: 'Blackmesh Varnish Purger'
+id: 972afd4ab5
+name: 'Local Varnish Instance'
 invalidationtype: tag
-hostname: 127.0.0.1
+hostname: 172.28.4.1
 port: 80
 path: /
 request_method: BAN
@@ -13,13 +13,13 @@ scheme: http
 verify: '1'
 headers:
   -
-    field: Cache-Tags
-    value: '[invalidations:separated_pipe]'
+    field: Purge-Cache-Tags
+    value: '[invalidation:expression]'
 body: null
 body_content_type: null
 runtime_measurement: true
 timeout: !!float 1
 connect_timeout: !!float 1
-cooldown_time: 0.2
+cooldown_time: !!float 0
 max_requests: 100
 http_errors: true

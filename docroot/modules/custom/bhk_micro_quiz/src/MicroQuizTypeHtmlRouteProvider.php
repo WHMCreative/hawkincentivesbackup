@@ -24,4 +24,17 @@ class MicroQuizTypeHtmlRouteProvider extends AdminHtmlRouteProvider {
     return $collection;
   }
 
+  /**
+   * Gets the canonical route.
+   *
+   * @param \Drupal\Core\Entity\EntityTypeInterface $entity_type
+   *   The entity type.
+   *
+   * @return \Symfony\Component\Routing\Route|null
+   *   The generated route, if available.
+   */
+  protected function getCanonicalRoute(EntityTypeInterface $entity_type) {
+    return NULL;
+  }
+
 }

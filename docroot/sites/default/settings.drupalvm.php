@@ -160,3 +160,8 @@ $settings['trusted_host_patterns'][] = '^.+\.drupalvm';
 
 // Enable dev modules locally, commented out until config split is figured out
 //$config['config_split.config_split.config_dev']['status'] = TRUE;
+
+// Set purger info
+$config['varnish_purger.settings.972afd4ab5']['hostname'] = '127.0.0.1';
+$config['purge.plugins']['purgers'][0]['instance_id'] = '';
+$config['purge.plugins']['purgers'][0]['plugin_id'] = '';

@@ -167,6 +167,20 @@ Drupal.behaviors.slickCustom = {
       });
     });
 
+    $(document).on('touchend', '.slick-list.draggable', (event) => {
+      const $this = $(event.currentTarget);
+      const index = $this.find('.slick-slide.slick-active').index();
+      const myContainer = $this.closest('.paragraph');
+
+      // Update slick counter numbers class
+      myContainer.find(`.slick-counter-numbers span`).removeClass('active');
+      myContainer.find(`.slick-counter-numbers span:nth-of-type(${index + 1})`).addClass('active');
+
+      // Update slick counter labels class
+      myContainer.find(`.slick-counter-labels span`).removeClass('active');
+      myContainer.find(`.slick-counter-labels span:nth-of-type(${index + 1})`).addClass('active');
+    });
+
     $(document).on('click', '.slick-dots button', (event) => {
       const $this = $(event.currentTarget);
       const index = $this.parent().index();

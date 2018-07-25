@@ -1,0 +1,22 @@
+uuid: 0847c52d-3521-45e0-9a7b-ea7a62b9b96d
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: banner_hero_bw
+label: 'Banner Hero BW (1400x510)'
+effects:
+  e19a0ff4-8d79-43dd-bad7-baafc5478ff6:
+    uuid: e19a0ff4-8d79-43dd-bad7-baafc5478ff6
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 1400
+      height: 510
+      crop_type: focal_point
+  b66c783d-260f-471f-9276-40865c9bde83:
+    uuid: b66c783d-260f-471f-9276-40865c9bde83
+    id: image_desaturate
+    weight: 2
+    data: {  }
