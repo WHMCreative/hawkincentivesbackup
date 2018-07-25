@@ -24560,8 +24560,8 @@ exports.default = {
     return {
       allCards: null,
       sidebar: null,
-      filters: [{ key: 'coBrand', value: 'Co-brandable' }, { key: 'customization', value: 'Customization' }, { key: 'fulfillment', value: 'Fast Fulfillment Available' }, { key: 'virtual', value: 'Virtual Option' }, { key: 'phsyical', value: 'Physical Option' }],
-      cardsToShow: 3,
+      filters: [{ key: 'coBrand', value: 'Co-brandable' }, { key: 'customization', value: 'Customization Available' }, { key: 'fulfillment', value: 'Fast Fulfillment Available' }, { key: 'virtual', value: 'Virtual Option' }, { key: 'phsyical', value: 'Physical Option' }],
+      cardsToShow: 6,
       cardCount: 0,
       hasSelectedCards: false,
       multipler: 1,
@@ -25013,11 +25013,6 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
-//
-//
-//
-//
-//
 
 exports.default = {
   props: ['card', 'selected'],
@@ -25032,8 +25027,8 @@ exports.default = {
       },
 
       devlieryMap: {
-        'individual': 'Individual',
-        'bulk': 'Bulk'
+        'individual': 'Ships Individually',
+        'bulk': 'Ships in Bulk'
       },
 
       issuanceMap: {
@@ -25048,8 +25043,8 @@ exports.default = {
       },
 
       personalizationMap: {
-        'anonymous': 'Anonymous',
-        'personalized': 'Personalized'
+        'anonymous': false,
+        'personalized': true
       },
 
       prepaidLoadMap: {
@@ -25914,7 +25909,7 @@ var render = function() {
                   staticClass: "feature icon customization",
                   class: { true: _vm.card.customization }
                 },
-                [_vm._v("\n          Customization\n        ")]
+                [_vm._v("\n          Customization Available\n        ")]
               ),
               _vm._v(" "),
               _c(
@@ -25939,14 +25934,18 @@ var render = function() {
                   ]
                 : _vm._e(),
               _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "feature icon filtered",
-                  class: { true: _vm.card.filtered }
-                },
-                [_vm._v("\n          Filterable\n        ")]
-              ),
+              _vm.card.cardType === "prepaid"
+                ? [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "feature icon filtered",
+                        class: { true: _vm.card.filtered }
+                      },
+                      [_vm._v("\n            Filterable\n          ")]
+                    )
+                  ]
+                : _vm._e(),
               _vm._v(" "),
               _vm.card.cardType === "prepaid" ||
               _vm.card.cardType === "gift_card"
@@ -25957,7 +25956,26 @@ var render = function() {
                         staticClass: "feature icon greetingCard",
                         class: { true: _vm.card.greetingCard }
                       },
-                      [_vm._v("\n            Greeting Card\n          ")]
+                      [
+                        _vm._v(
+                          "\n            Greeting Card Available\n          "
+                        )
+                      ]
+                    )
+                  ]
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.card.cardType === "prepaid"
+                ? [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "feature icon personalization",
+                        class: {
+                          true: _vm.personalizationMap[_vm.card.personalization]
+                        }
+                      },
+                      [_vm._v("\n            Personalization\n          ")]
                     )
                   ]
                 : _vm._e()
@@ -25969,31 +25987,6 @@ var render = function() {
             "div",
             { staticClass: "content varied" },
             [
-              _vm.card.cardType === "prepaid"
-                ? [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "feature personalization",
-                        class: { true: _vm.card.personalization }
-                      },
-                      [
-                        _c("span", { staticClass: "label" }, [
-                          _vm._v("Personalization")
-                        ]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "value" }, [
-                          _vm._v(
-                            _vm._s(
-                              _vm.personalizationMap[_vm.card.personalization]
-                            )
-                          )
-                        ])
-                      ]
-                    )
-                  ]
-                : _vm._e(),
-              _vm._v(" "),
               _c(
                 "div",
                 {
@@ -26001,9 +25994,7 @@ var render = function() {
                   class: { true: _vm.card.delivery }
                 },
                 [
-                  _c("span", { staticClass: "label" }, [
-                    _vm._v("Delivery/Shipping")
-                  ]),
+                  _c("span", { staticClass: "label" }, [_vm._v("Delivery")]),
                   _vm._v(" "),
                   _c("span", { staticClass: "value" }, [
                     _vm._v(_vm._s(_vm.devlieryMap[_vm.card.delivery]))
@@ -26161,29 +26152,6 @@ var render = function() {
                         _c("span", { staticClass: "value" }, [
                           _vm._v(
                             _vm._s(_vm.prepaidLoadMap[_vm.card.prepaidLoad])
-                          )
-                        ])
-                      ]
-                    )
-                  ]
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.card.cardType === "prepaid"
-                ? [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "feature prepaidType",
-                        class: { true: _vm.card.prepaidType }
-                      },
-                      [
-                        _c("span", { staticClass: "label" }, [
-                          _vm._v("Prepaid Type")
-                        ]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "value" }, [
-                          _vm._v(
-                            _vm._s(_vm.prepaidTypeMap[_vm.card.prepaidType])
                           )
                         ])
                       ]

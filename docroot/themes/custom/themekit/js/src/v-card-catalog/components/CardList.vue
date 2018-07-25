@@ -91,12 +91,12 @@ export default {
       sidebar: null,
       filters: [
         {key:'coBrand', value:'Co-brandable'},
-        {key:'customization', value:'Customization'},
+        {key:'customization', value:'Customization Available'},
         {key:'fulfillment', value:'Fast Fulfillment Available'},
         {key:'virtual', value:'Virtual Option'},
         {key:'phsyical', value:'Physical Option'}
       ],
-      cardsToShow: 3,
+      cardsToShow: 6,
       cardCount: 0,
       hasSelectedCards: false,
       multipler: 1,

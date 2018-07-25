@@ -76,7 +76,7 @@
             Fast Fulfillment
           </div>
           <div class="feature icon customization" :class="{ true: card.customization }">
-            Customization
+            Customization Available
           </div>
           <div class="feature icon virtual" :class="{ true: card.virtual }">
             Virtual Options
@@ -86,25 +86,26 @@
               5% Cash Back
             </div>
           </template>
-          <div class="feature icon filtered" :class="{ true: card.filtered }">
-            Filterable
-          </div>
+          <template v-if="card.cardType === 'prepaid'">
+            <div class="feature icon filtered" :class="{ true: card.filtered }">
+              Filterable
+            </div>
+          </template>
           <template v-if="card.cardType === 'prepaid' || card.cardType === 'gift_card'">
             <div class="feature icon greetingCard" :class="{ true: card.greetingCard }">
-              Greeting Card
+              Greeting Card Available
+            </div>
+          </template>
+          <template v-if="card.cardType === 'prepaid'">
+            <div class="feature icon personalization" :class="{ true: personalizationMap[card.personalization] }">
+              Personalization
             </div>
           </template>
         </div>
 
         <div class="content varied">
-          <template v-if="card.cardType === 'prepaid'">
-            <div class="feature personalization" :class="{ true: card.personalization }">
-              <span class="label">Personalization</span>
-              <span class="value">{{ personalizationMap[card.personalization] }}</span>
-            </div>
-          </template>
           <div class="feature delivery" :class="{ true: card.delivery }">
-            <span class="label">Delivery/Shipping</span>
+            <span class="label">Delivery</span>
             <span class="value">{{ devlieryMap[card.delivery] }}</span>
           </div>
           <template v-if="card.cardType === 'gift_card' || card.cardType === 'omnicodes'">
@@ -150,12 +151,6 @@
               <span class="value">{{ prepaidLoadMap[card.prepaidLoad] }}</span>
             </div>
           </template>
-          <template v-if="card.cardType === 'prepaid'">
-            <div class="feature prepaidType" :class="{ true: card.prepaidType }">
-              <span class="label">Prepaid Type</span>
-              <span class="value">{{ prepaidTypeMap[card.prepaidType] }}</span>
-            </div>
-          </template>
         </div>
       </div>
       <button class="marketo-modal-cta-link" @click="$emit('openFrom')">Start a Conversation</button>
@@ -179,8 +174,8 @@ export default {
       },
 
       devlieryMap: {
-        'individual': 'Individual',
-        'bulk': 'Bulk'
+        'individual': 'Ships Individually',
+        'bulk': 'Ships in Bulk'
       },
 
       issuanceMap: {
@@ -195,8 +190,8 @@ export default {
       },
 
       personalizationMap: {
-        'anonymous': 'Anonymous',
-        'personalized': 'Personalized'
+        'anonymous': false,
+        'personalized': true
       },
 
       prepaidLoadMap: {
