@@ -220,13 +220,36 @@
       font-weight: $global-weight-normal;
     }
 
-    .mktoButton {
-      margin-top: 0;
-      margin-left: rem-calc(12);
+    .mktoButtonRow {
+      button {
+        margin-top: 0;
+        margin-left: rem-calc(12);
+      }
     }
 
     .marketo-steps-wrapper {
       @include content-width(narrow);
+    }
+  }
+}
+
+.paragraph--type--marketo-submission-confirmation {
+
+  .field--name-field-thank-you-title {
+    text-align: center;
+    @include header-font-size(h2);
+    color: $secondary-color-dark;
+    font-weight: $global-weight-normal;
+    margin-bottom: rem-calc(16);
+  }
+
+  .field field--name-field-thank-you-description p {
+    color: $medium-gray;
+  }
+
+  .block--component & {
+    .field field--name-field-thank-you-description p {
+      color: $medium-gray;
     }
   }
 }

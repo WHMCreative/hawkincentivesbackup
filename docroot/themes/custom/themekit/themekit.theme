@@ -16,6 +16,7 @@ use Drupal\taxonomy\Entity\Term;
 use Drupal\node\NodeInterface;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Url;
+use Drupal\Core\Form\FormStateInterface;
 
 //*********************************************
 // 1. Preprocess hooks
@@ -28,6 +29,7 @@ function themekit_preprocess_html(&$variables) {
 
   /** @var \Drupal\node\NodeInterface $current_node */
   $current_node = \Drupal::routeMatch()->getParameter('node');
+  $current_route = \Drupal::routeMatch()->getRouteName();
 
   // Prevent banner from being placed on unlocked Insights.
   if ($current_node && $current_node instanceof NodeInterface) {
@@ -41,6 +43,12 @@ function themekit_preprocess_html(&$variables) {
 
   // Place this block programmatically, issues placing within the block ui.
   $variables['page']['content_above']['pagebanner'] = themekit_block_to_renderable_array('pagebanner');
+
+  if ($current_route === 'view.insights.page_resources') {
+    if (isset($variables['page']['content_above']['pagebanner'])) {
+      unset($variables['page']['content_above']['pagebanner']);
+    }
+  }
 }
 
 /**
@@ -198,13 +206,31 @@ function themekit_preprocess_paragraph_simple_media_bar(&$variables) {
 }
 
 function themekit_preprocess_paragraph_banner_hero(&$variables) {
+  /* @var Drupal\paragraphs\Entity\Paragraph $paragraph */
   $paragraph = $variables['paragraph'];
   $node = $paragraph->getParentEntity();
   themekit_get_insight_data($node, $variables);
 
   $variables['image_inline_style'] = themekit_get_entity_image_inline_style($paragraph, 'field_media', 'banner_hero');
 
-  $variables['overlay_color'] = themekit_get_term_slug($paragraph, 'field_bg_color') ? themekit_get_term_slug($paragraph, 'field_bg_color') : 'blue';
+  if ($paragraph->hasField('field_media')
+    && empty($paragraph->get('field_media')->getValue())
+    && $paragraph->hasField('field_bg_color')
+    && empty($paragraph->get('field_bg_color')->getValue())
+  ) {
+    $variables['overlay_color'] = 'blue';
+  }
+  elseif ($paragraph->hasField('field_media')
+    && !empty($paragraph->get('field_media')->getValue())
+    && $paragraph->hasField('field_bg_color')
+    && empty($paragraph->get('field_bg_color')->getValue())
+  ) {
+    $variables['overlay_color'] = '';
+  }
+  else {
+    $variables['overlay_color'] = themekit_get_term_slug($paragraph, 'field_bg_color') ? themekit_get_term_slug($paragraph, 'field_bg_color') : '';
+  }
+
 
   if ($paragraph->hasField('field_large_heading') && empty($paragraph->field_large_heading->value)) {
     $variables['attributes']['class'][] = 'only-heading-field';
@@ -328,44 +354,46 @@ function themekit_preprocess_paragraph_media_image(&$variables) {
   // Identify the implementing bundle and use any additional conditions as well and add either `image_inline_style` or `custom_image_style` var
   $parent = $paragraph->getParentEntity();
   if ($parent->getEntityTypeId() === 'paragraph') {
-    $media = $uri = $paragraph->field_media_image->entity->field_image;
-    $uri = $media->entity->getFileUri();
-    $alt = $media->first()->get('alt')->getString();
+    if(!empty($paragraph->field_media_image->entity)) {
+      $media = $uri = $paragraph->field_media_image->entity->field_image;
+      $uri = $media->entity->getFileUri();
+      $alt = $media->first()->get('alt')->getString();
 
-    switch ($parent->getType()) {
-      case 'simple_stat':
-        $variables['custom_image_style'] = [
-          '#theme' => 'image_style',
-          '#style_name' => 'stat',
-          '#uri' => $uri,
-          '#alt' => $alt,
-        ];
-        break;
-      case 'simple_icon_content':
-        $variables['custom_image_style'] = [
-          '#theme' => 'image_style',
-          '#style_name' => 'thumbnail',
-          '#uri' => $uri,
-          '#alt' => $alt,
-        ];
-        break;
-      case 'layout_2_column':
-        $variables['custom_image_style'] = [
-          '#theme' => 'image_style',
-          '#style_name' => 'half_column',
-          '#uri' => $uri,
-          '#alt' => $alt,
-        ];
-        break;
+      switch ($parent->getType()) {
+        case 'simple_stat':
+          $variables['custom_image_style'] = [
+            '#theme' => 'image_style',
+            '#style_name' => 'stat',
+            '#uri' => $uri,
+            '#alt' => $alt,
+          ];
+          break;
+        case 'simple_icon_content':
+          $variables['custom_image_style'] = [
+            '#theme' => 'image_style',
+            '#style_name' => 'thumbnail',
+            '#uri' => $uri,
+            '#alt' => $alt,
+          ];
+          break;
+        case 'layout_2_column':
+          $variables['custom_image_style'] = [
+            '#theme' => 'image_style',
+            '#style_name' => 'half_column',
+            '#uri' => $uri,
+            '#alt' => $alt,
+          ];
+          break;
 
-      case 'simple_media_tile':
-        $variables['custom_image_style'] = [
-          '#theme' => 'image_style',
-          '#style_name' => 'third_column',
-          '#uri' => $uri,
-          '#alt' => $alt,
-        ];
-        break;
+        case 'simple_media_tile':
+          $variables['custom_image_style'] = [
+            '#theme' => 'image_style',
+            '#style_name' => 'media_tile',
+            '#uri' => $uri,
+            '#alt' => $alt,
+          ];
+          break;
+      }
     }
   }
 }
@@ -432,6 +460,24 @@ function themekit_preprocess_field(&$variables) {
 
   if( $variables['element']['#field_name'] == 'field_p_multiple_links') {
     $variables['attributes']['class'][] = 'link-count-' . count($variables['items']);
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function themekit_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if ($form_id == 'views_exposed_form') {
+    $view = $form_state->getStorage()['view'];
+    if ($view->id() === 'insights' && $view->current_display === 'page_resources') {
+      if (isset($form['type']['#options']['All'])) {
+        $form['type']['#options']['All'] = t('All Types of Content');
+      }
+      if (isset($form['topic']['#options']['All'])) {
+        $form['topic']['#options']['All'] = t('All Topics');
+      }
+    }
+
   }
 }
 

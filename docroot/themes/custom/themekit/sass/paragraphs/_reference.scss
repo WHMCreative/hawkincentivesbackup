@@ -80,7 +80,7 @@
   .block--component & {
     background: $gray-gradient;
     @include paragraph-margins((small: 0));
-    color: $secondary-color;
+    color: $medium-gray;
 
     >.paragraph-content {
       @include content-width(default);
@@ -90,17 +90,18 @@
   &.form-id--1351 {
     @include top-bottom(padding, 100px);
     .marketo-steps-wrapper {
-      .mktoForm {
-        display: flex;
-        max-width: rem-calc(430);
-        margin: 0 auto;
+      .marketo-form {
+        > form {
+          display: flex;
+          max-width: rem-calc(430);
+          margin: 0 auto;
 
-        .mktoFieldEmail {
-          flex-grow: 1;
+          .mktoFieldEmail {
+            flex-grow: 1;
+          }
         }
       }
     }
-
   }
 }
 

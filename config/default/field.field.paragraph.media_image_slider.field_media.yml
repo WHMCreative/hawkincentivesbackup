@@ -11,7 +11,7 @@ field_name: field_media
 entity_type: paragraph
 bundle: media_image_slider
 label: Image
-description: '<strong>Recommended size is 800px x 800px.</strong> This image should be square and not bleed off the edge.  On desktop, this image will be displayed on the right, bleeds off the screen (top, right, bottom). On mobile, this image will display in the center and bleeds off (left and right). '
+description: '<strong>Recommended size is 800px x 800px.</strong> This image should be square and not bleed off the edge.  On desktop, this image will be displayed on the right, bleeds off the screen (top, right, bottom). On mobile, this image will display in the center and bleeds off (left and right). Production image should not be cropped. '
 required: true
 translatable: true
 default_value: {  }
