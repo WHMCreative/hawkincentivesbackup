@@ -25,7 +25,7 @@ content:
     region: content
   field_p_conditional:
     type: entity_reference_paragraphs_browser
-    weight: 2
+    weight: 3
     settings:
       title: Conditional
       title_plural: Conditionals
@@ -40,7 +40,7 @@ content:
     region: content
   field_p_multiple_links:
     type: entity_reference_paragraphs_browser
-    weight: 3
+    weight: 2
     settings:
       title: Link
       title_plural: Links

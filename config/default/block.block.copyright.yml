@@ -1,6 +1,6 @@
 uuid: f53a872c-a84a-4e05-87bf-1305570c8c91
 langcode: en
-status: true
+status: false
 dependencies:
   content:
     - 'block_content:basic:60c4951d-2ec1-481d-89d1-6f19cf577c5b'
@@ -10,7 +10,7 @@ dependencies:
     - themekit
 id: copyright
 theme: themekit
-region: footer_bottom
+region: header
 weight: -8
 provider: null
 plugin: 'block_content:60c4951d-2ec1-481d-89d1-6f19cf577c5b'
