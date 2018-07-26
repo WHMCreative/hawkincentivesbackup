@@ -11,7 +11,7 @@ dependencies:
 id: startaconversationfooter
 theme: themekit
 region: footer_first
-weight: -8
+weight: -9
 provider: null
 plugin: 'block_content:616e6bb9-6cf5-482a-a272-ad28f8dfdc06'
 settings:

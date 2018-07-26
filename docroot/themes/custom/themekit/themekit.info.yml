@@ -33,4 +33,5 @@ regions:
   content_below: 'Content below'
   footer_first: 'Footer First'
   footer_second: 'Footer Second'
+  footer_bottom: 'Footer Bottom'
   none: 'Rendered Programmatically'
