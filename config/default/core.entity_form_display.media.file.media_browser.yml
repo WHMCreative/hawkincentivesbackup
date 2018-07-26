@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_form_mode.media.media_browser
+    - field.field.media.file.field_description
     - field.field.media.file.field_file
     - field.field.media.file.field_file_size
     - field.field.media.file.field_file_type
@@ -11,6 +12,7 @@ dependencies:
     - field.field.media.file.field_tags
     - media_entity.bundle.file
   module:
+    - content_moderation
     - file
     - path
 id: media.file.media_browser
@@ -18,8 +20,16 @@ targetEntityType: media
 bundle: file
 mode: media_browser
 content:
-  field_file:
+  field_description:
+    type: string_textfield
     weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_file:
+    weight: 2
     settings:
       progress_indicator: throbber
     third_party_settings: {  }
@@ -27,13 +37,13 @@ content:
     region: content
   field_file_type:
     type: options_select
-    weight: 2
+    weight: 3
     settings: {  }
     third_party_settings: {  }
     region: content
   field_tags:
     type: entity_reference_autocomplete_tags
-    weight: 3
+    weight: 4
     settings:
       match_operator: CONTAINS
       size: 60
@@ -42,11 +52,17 @@ content:
     region: content
   langcode:
     type: language_select
-    weight: 4
+    weight: 5
     settings:
       include_locked: true
     third_party_settings: {  }
     region: content
+  moderation_state:
+    type: moderation_state_default
+    weight: 7
+    settings: {  }
+    region: content
+    third_party_settings: {  }
   name:
     type: string_textfield
     weight: 0
@@ -57,7 +73,7 @@ content:
     region: content
   path:
     type: path
-    weight: 30
+    weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }

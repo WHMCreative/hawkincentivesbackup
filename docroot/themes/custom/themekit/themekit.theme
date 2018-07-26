@@ -483,6 +483,34 @@ function themekit_preprocess_field(&$variables) {
   if( $variables['element']['#field_name'] == 'field_p_multiple_links') {
     $variables['attributes']['class'][] = 'link-count-' . count($variables['items']);
   }
+
+  if ($variables['element']['#field_name'] == 'field_file' && $variables['element']['#entity_type']) {
+    /*  @var Drupal\media_entity\Entity\Media $media*/
+    $media = $variables['element']['#object'];
+
+    if ($media->hasField('field_description')) {
+      $description = $media->get('field_description')->getValue()[0]['value'];
+
+      if ($variables['element'][0]['#theme'] === 'file_link') {
+        /* @var Drupal\file\Entity\File $file */
+        $file = $variables['element'][0]['#file'];
+        $file_url = $file->getFileUri();
+        $file_path = file_url_transform_relative(file_create_url($file_url));
+        $file_mime = $file->getMimeType();
+        $file_mime_as_class = str_replace('/', '-', $file_mime);
+
+        if (!empty($description)) {
+          $link_description = '<span class="file file--mime-' . $file_mime_as_class . ' file--' . $file_mime_as_class . '">
+                              <a href="' . $file_path . '" type="' . $file_mime . '" target="_blank">' . $description . '</a>
+                             </span>';
+        } else {
+          $link_description = NULL;
+        }
+
+        $variables['link_description'] = $link_description;
+      }
+    }
+  }
 }
 
 /**

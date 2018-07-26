@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.media.file.field_description
     - field.field.media.file.field_file
     - field.field.media.file.field_file_size
     - field.field.media.file.field_file_type
@@ -19,12 +20,14 @@ content:
   field_file:
     weight: 0
     label: hidden
-    settings: {  }
+    settings:
+      use_description_as_link_text: true
     third_party_settings: {  }
     type: file_default
     region: content
 hidden:
   created: true
+  field_description: true
   field_file_size: true
   field_file_type: true
   field_mime_type: true
