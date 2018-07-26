@@ -256,11 +256,19 @@
 
   .field--name-field-thank-you-description p {
     color: $medium-gray;
+
+    .mfp-content & {
+      color: $white;
+    }
   }
 
   .block--component & {
     .field--name-field-thank-you-description p {
       color: $medium-gray;
+
+      .mfp-content & {
+        color: $white;
+      }
     }
   }
 }
