@@ -6,7 +6,7 @@ dependencies:
     - paragraphs_browser
 third_party_settings:
   paragraphs_browser:
-    image_path: 'public://simple-content.png'
+    image_path: 'public://Banners.png'
 id: banner_hero
 label: 'Banner - Hero'
 icon_uuid: null
