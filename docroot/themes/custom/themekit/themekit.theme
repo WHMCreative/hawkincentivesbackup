@@ -488,7 +488,7 @@ function themekit_preprocess_field(&$variables) {
     /*  @var Drupal\media_entity\Entity\Media $media*/
     $media = $variables['element']['#object'];
 
-    if ($media->hasField('field_description')) {
+    if ($media->hasField('field_description') && !empty($media->get('field_description')->getValue())) {
       $description = $media->get('field_description')->getValue()[0]['value'];
 
       if ($variables['element'][0]['#theme'] === 'file_link') {
