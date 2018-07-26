@@ -124,6 +124,10 @@ class MicroQuizQuestionForm extends FormBase {
       $options[$key] = $this->renderer->render($answers[$key]);
     }
 
+    $form['#attached']['library'] = [
+      'bhk_micro_quiz/bhk_micro_quiz.commands',
+    ];
+
     $form['microquiz_question'] = [
       '#type' => 'radios',
       '#title' => $this->renderer->render($question),
