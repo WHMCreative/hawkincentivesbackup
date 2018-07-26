@@ -144,7 +144,10 @@ class MicroQuizHelper {
       '#title' => $this->restartButtonText,
       '#url' => Url::fromRoute('bhk_micro_quiz.reset'),
       '#attached' => [
-        'library' => ['bhk_micro_quiz/bhk_micro_quiz.commands'],
+        'library' => [
+          'core/drupal.ajax',
+          'bhk_micro_quiz/bhk_micro_quiz.commands',
+        ],
       ],
       '#options' => [
         'attributes' => [

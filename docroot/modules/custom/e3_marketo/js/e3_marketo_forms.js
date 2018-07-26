@@ -5,6 +5,29 @@
 (function ($, Drupal) {
   'use strict';
 
+  /**
+   * Global object to hold some global Marketo Forms data.
+   *
+   * @type {Drupal~marketoForms}
+   */
+  Drupal.marketoForms = Drupal.marketoForms || {};
+
+  /**
+   * Array of already loaded forms to prevent third-party Marketo scripts form
+   * creating duplicates.
+   *
+   * @type {Array}
+   */
+  Drupal.marketoForms.loadedForms = Drupal.marketoForms.loadedForms || [];
+
+  /**
+   * Marketo forms base logic.
+   *
+   * @type {Drupal~behavior}
+   *
+   * @prop {Drupal~behaviorAttach} attach
+   *   Inject all Marketo forms and initialize submission behaviors.
+   */
   Drupal.behaviors.marketoForms = {
 
     attach: function (context, settings) {
@@ -196,29 +219,51 @@
         let loadForm = MktoForms2.loadForm.bind(MktoForms2, marketoConfig.instanceHost, marketoConfig.munchkinId, marketoConfig.formId),
           formEls = arrayFrom(document.querySelectorAll("[" + marketoFormDataAttr + '="' + marketoConfig.formId + '"]'));
 
+        let dataInstances = [];
+        formEls.forEach(function(element, index) {
+
+          let dataInstance = element.getAttribute('data-instance');
+          if (dataInstance && dataInstances.indexOf(dataInstance) > -1) {
+            formEls.splice(index, 1);
+          }
+          else {
+            dataInstances.push(dataInstance);
+          }
+        });
+
         // Chain load forms. This will ensure the same form can be loaded on a
         // page multiple times.
         (function loadFormCb(formEls) {
 
           // Retrieve the form
-          let formEl = formEls.shift();
+          let formEl = formEls.shift(),
+            dataInstance = formEl.getAttribute('data-instance');
           formEl.id = "mktoForm_" + marketoConfig.formId;
 
-          // Load the form.
-          loadForm(function (form) {
-            let dataInstance = formEl.getAttribute('data-instance');
-            formEl.id = 'marketo-form-' + marketoConfig.formId + "-" + dataInstance;
+          // Only load the form if the form inatsnce hasn't been loaded yet.
+          // Also make sure that there's no form with the ID we're about to add
+          // in the DOM already.
+          if ($('form#marketo-form-' + marketoConfig.formId + "-" + dataInstance).length < 1 &&
+            Drupal.marketoForms.loadedForms.indexOf(marketoConfig.formId + "-" + dataInstance) === -1) {
 
-            // Pre-fill the form.
-            prefillMarketoForm(form);
+            // Load the form.
+            loadForm(function (form) {
 
-            // Execute all post-load stuff for the form.
-            marketoFormPostLoad(form, marketoConfig, dataInstance);
+              // Save loaded form for future reference.
+              Drupal.marketoForms.loadedForms.push(marketoConfig.formId + "-" + dataInstance);
 
-            if (formEls.length) {
-              loadFormCb(formEls);
-            }
-          });
+              formEl.id = 'marketo-form-' + marketoConfig.formId + "-" + dataInstance;
+              // Pre-fill the form.
+              prefillMarketoForm(form);
+
+              // Execute all post-load stuff for the form.
+              marketoFormPostLoad(form, marketoConfig, dataInstance);
+
+              if (formEls.length) {
+                loadFormCb(formEls);
+              }
+            });
+          }
         })(formEls);
       };
 
