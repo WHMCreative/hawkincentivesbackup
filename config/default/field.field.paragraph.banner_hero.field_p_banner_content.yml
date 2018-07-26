@@ -7,7 +7,6 @@ dependencies:
     - paragraphs.paragraphs_type.banner_hero
     - paragraphs.paragraphs_type.compound_callout
     - paragraphs.paragraphs_type.compound_media_title_bar
-    - paragraphs.paragraphs_type.compound_slider
     - paragraphs.paragraphs_type.compound_stat_bar
     - paragraphs.paragraphs_type.media_video_modal
   module:
@@ -28,7 +27,6 @@ settings:
     negate: 0
     target_bundles:
       compound_callout: compound_callout
-      compound_slider: compound_slider
       compound_stat_bar: compound_stat_bar
       media_video_modal: media_video_modal
       compound_media_title_bar: compound_media_title_bar
@@ -43,8 +41,8 @@ settings:
         weight: 25
         enabled: false
       compound_slider:
-        enabled: true
         weight: 26
+        enabled: false
       compound_stat_bar:
         enabled: true
         weight: 27
@@ -93,10 +91,13 @@ settings:
       simple_media_tile:
         weight: 39
         enabled: false
-      simple_stat:
-        weight: 40
+      banner_slider:
+        weight: 39
         enabled: false
       layout_grid:
+        weight: 40
+        enabled: false
+      simple_stat:
         weight: 40
         enabled: false
       link_form_modal:
@@ -125,6 +126,15 @@ settings:
         enabled: false
       simple_cta:
         weight: 56
+        enabled: false
+      microquiz_conditional:
+        weight: 58
+        enabled: false
+      microquiz_question:
+        weight: 59
+        enabled: false
+      microquiz_quiz:
+        weight: 60
         enabled: false
       summary_cards:
         weight: 61
