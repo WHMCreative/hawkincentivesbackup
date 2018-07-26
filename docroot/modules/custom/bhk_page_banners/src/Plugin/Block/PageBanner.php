@@ -176,7 +176,7 @@ class PageBanner extends BlockBase implements ContainerFactoryPluginInterface {
         $paragraph = $header_render_array[0]['#paragraph'];
       }
 
-      if (empty($paragraph->field_heading->getValue())) {
+      if ($paragraph->hasField('field_heading') && empty($paragraph->field_heading->getValue())) {
         $paragraph->field_heading->setValue($node_current_translation->getTitle());
       }
     }

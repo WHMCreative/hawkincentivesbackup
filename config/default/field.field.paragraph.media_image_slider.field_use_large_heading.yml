@@ -1,0 +1,23 @@
+uuid: 4d74b964-791f-44ad-811b-96aff60fec52
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_use_large_heading
+    - paragraphs.paragraphs_type.media_image_slider
+id: paragraph.media_image_slider.field_use_large_heading
+field_name: field_use_large_heading
+entity_type: paragraph
+bundle: media_image_slider
+label: 'Use Large Heading as H1'
+description: 'Only applies to the first slide'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -4,14 +4,37 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.paragraph.preview
+    - field.field.paragraph.media_image_slider.field_description
+    - field.field.paragraph.media_image_slider.field_heading
     - field.field.paragraph.media_image_slider.field_label
+    - field.field.paragraph.media_image_slider.field_large_heading
     - field.field.paragraph.media_image_slider.field_media
+    - field.field.paragraph.media_image_slider.field_p_multiple_links
+    - field.field.paragraph.media_image_slider.field_use_large_heading
     - paragraphs.paragraphs_type.media_image_slider
+  module:
+    - entity_reference_revisions
+    - text
 id: paragraph.media_image_slider.preview
 targetEntityType: paragraph
 bundle: media_image_slider
 mode: preview
 content:
+  field_description:
+    type: text_default
+    weight: 3
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_heading:
+    type: string
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
   field_label:
     weight: 0
     label: hidden
@@ -20,8 +43,15 @@ content:
     third_party_settings: {  }
     type: string
     region: content
+  field_large_heading:
+    type: text_default
+    weight: 2
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
   field_media:
-    weight: 1
+    weight: 5
     label: hidden
     settings:
       view_mode: form_preview
@@ -29,4 +59,14 @@ content:
     third_party_settings: {  }
     type: entity_reference_entity_view
     region: content
-hidden: {  }
+  field_p_multiple_links:
+    type: entity_reference_revisions_entity_view
+    weight: 4
+    region: content
+    label: hidden
+    settings:
+      view_mode: preview
+      link: ''
+    third_party_settings: {  }
+hidden:
+  field_use_large_heading: true

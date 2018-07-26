@@ -1,0 +1,19 @@
+uuid: 1d3ad520-7e34-46c9-978e-29344ddc6b57
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_heading
+    - paragraphs.paragraphs_type.media_image_slider
+id: paragraph.media_image_slider.field_heading
+field_name: field_heading
+entity_type: paragraph
+bundle: media_image_slider
+label: Heading
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

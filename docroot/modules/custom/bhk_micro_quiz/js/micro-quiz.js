@@ -72,6 +72,7 @@
 
             if (mainWrapper.length) {
               mainWrapper.replaceWith(result);
+              Drupal.attachBehaviors();
             }
           }
         });

@@ -25,8 +25,8 @@ content:
   field_p_link:
     weight: 102
     settings:
-      title: Paragraph
-      title_plural: Paragraphs
+      title: Link
+      title_plural: Links
       edit_mode: open
       add_mode: paragraphs_browser
       form_display_mode: default

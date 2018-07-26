@@ -1,0 +1,140 @@
+uuid: 340dbd88-5c58-44a1-9e70-a9ef33b7598c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_multiple_links
+    - paragraphs.paragraphs_type.link_file
+    - paragraphs.paragraphs_type.link_form_modal
+    - paragraphs.paragraphs_type.link_url
+    - paragraphs.paragraphs_type.media_image_slider
+  module:
+    - entity_reference_revisions
+id: paragraph.media_image_slider.field_p_multiple_links
+field_name: field_p_multiple_links
+entity_type: paragraph
+bundle: media_image_slider
+label: Link
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      link_file: link_file
+      link_form_modal: link_form_modal
+      link_url: link_url
+    target_bundles_drag_drop:
+      banner_slider:
+        weight: 37
+        enabled: false
+      banner_featured_insights:
+        weight: 38
+        enabled: false
+      banner_hero:
+        weight: 39
+        enabled: false
+      compound_callout:
+        weight: 40
+        enabled: false
+      compound_content_bar:
+        weight: 41
+        enabled: false
+      compound_media_title_bar:
+        weight: 42
+        enabled: false
+      compound_slider:
+        weight: 43
+        enabled: false
+      compound_stat_bar:
+        weight: 44
+        enabled: false
+      compound_tabbed_content:
+        weight: 45
+        enabled: false
+      layout_2_column:
+        weight: 46
+        enabled: false
+      layout_grid:
+        weight: 47
+        enabled: false
+      link_file:
+        enabled: true
+        weight: 48
+      link_form_modal:
+        enabled: true
+        weight: 49
+      link_url:
+        enabled: true
+        weight: 50
+      marketo_hidden_field:
+        weight: 51
+        enabled: false
+      marketo_submission_confirmation:
+        weight: 52
+        enabled: false
+      media_image:
+        weight: 53
+        enabled: false
+      media_image_slider:
+        weight: 54
+        enabled: false
+      media_svg:
+        weight: 55
+        enabled: false
+      media_video:
+        weight: 56
+        enabled: false
+      media_video_modal:
+        weight: 57
+        enabled: false
+      microquiz_conditional:
+        weight: 58
+        enabled: false
+      microquiz_question:
+        weight: 59
+        enabled: false
+      microquiz_quiz:
+        weight: 60
+        enabled: false
+      reference_block:
+        weight: 61
+        enabled: false
+      reference_card_browser:
+        weight: 62
+        enabled: false
+      reference_featured_insight:
+        weight: 63
+        enabled: false
+      reference_marketo_form:
+        weight: 64
+        enabled: false
+      simple_content:
+        weight: 65
+        enabled: false
+      simple_cta:
+        weight: 66
+        enabled: false
+      simple_icon_content:
+        weight: 67
+        enabled: false
+      simple_media_bar:
+        weight: 68
+        enabled: false
+      simple_media_tile:
+        weight: 69
+        enabled: false
+      simple_stat:
+        weight: 70
+        enabled: false
+      summary_cards:
+        weight: 71
+        enabled: false
+      summary_insights:
+        weight: 72
+        enabled: false
+field_type: entity_reference_revisions

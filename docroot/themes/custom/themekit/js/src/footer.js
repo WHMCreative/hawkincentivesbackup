@@ -20,23 +20,6 @@ Drupal.behaviors.footerManipulations = {
         $this.addClass('visible');
       }
     });
-
-    // Copyright Block
-    const copyrightBlock = $('.footer-content #block-copyright', context);
-
-    $(window)
-      .on('changed.zf.mediaquery', () => {
-        if ($(window).width() < 640) {
-          copyrightBlock.appendTo('footer .region-footer-second');
-        } else {
-          copyrightBlock.appendTo('footer .region-footer-first');
-        }
-      });
-
-    // Initialization for mobile
-    if ($(window).width() < 640) {
-      copyrightBlock.appendTo('footer .region-footer-second');
-    }
   }
 
 };

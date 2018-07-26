@@ -11,7 +11,7 @@ dependencies:
 id: utility
 theme: themekit
 region: header
-weight: -8
+weight: -9
 provider: null
 plugin: 'menu_block:utility'
 settings:

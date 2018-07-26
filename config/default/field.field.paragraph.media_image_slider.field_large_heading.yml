@@ -1,0 +1,29 @@
+uuid: ef65faa3-1bc8-48ab-87e7-2353cf960096
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_large_heading
+    - paragraphs.paragraphs_type.media_image_slider
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    heading: heading
+    limited_rich_text: '0'
+    rich_text: '0'
+    plain_text: '0'
+    html: '0'
+id: paragraph.media_image_slider.field_large_heading
+field_name: field_large_heading
+entity_type: paragraph
+bundle: media_image_slider
+label: 'Large Heading'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

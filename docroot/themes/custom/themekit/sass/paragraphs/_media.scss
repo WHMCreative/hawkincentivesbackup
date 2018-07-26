@@ -75,22 +75,120 @@
 }
 
 .paragraph--type--media-image-slider {
-  padding-top: 120%;
 
-  @include breakpoint(medium) {
-    padding-top: 0;
+  > .paragraph-content {
+    @include content-width(default);
+    position: relative;
+    margin-bottom: rem-calc(16);
+    color: $white;
+
+    @each $bp, $size in $banner-spacing {
+      $size: rem-calc($size);
+      @include breakpoint($bp) {
+        padding-top: $size;
+        padding-bottom: $size + rem-calc(100); // make space for slider nar
+      }
+    }
+    @include breakpoint(small down) {
+      padding-bottom: 0;
+    }
+
+    > * + * {
+      margin-top: rem-calc(20);
+      @include breakpoint(medium) {
+        max-width: 50%;
+      }
+      @include breakpoint(large) {
+        max-width: rem-calc(520);
+      }
+    }
+
+    div {
+      height: 100%;
+    }
   }
+
   .simple-image-bg {
+    z-index: z(banner, image);
+    pointer-events: none;
     @include bg-style(cover);
-    position: absolute;
-    top:0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    padding-top: 120%;
+    margin-bottom: rem-calc(100);
 
     @include breakpoint(medium) {
+      position: absolute;
+      top:0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin-bottom: 0;
+      padding-top: 0;
       background-size: 60%;
       background-position: right -20% center;
+    }
+  }
+
+  .field--name-field-large-heading {
+    color: inherit;
+    font-size: rem-calc(26);
+    font-weight: $global-weight-light;
+    line-height: 1.25;
+
+    @include breakpoint(medium) {
+      font-size: rem-calc(35);
+    }
+  }
+
+  .field--name-field-heading {
+    color: inherit;
+    opacity: 0.6;
+    font-weight: 700;
+    text-transform: uppercase;
+    @include header-font-size(h5);
+  }
+
+  h3 {
+    color: inherit;
+  }
+
+  .field--name-field-description {
+    font-size: rem-calc(20);
+  }
+
+  a {
+    @include btn(ghost-white);
+  }
+
+  .field--name-field-p-multiple-links {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 20px;
+    @include breakpoint(large) {
+      margin-top: 40px;
+    }
+
+    & > .paragraph {
+      margin: 0 8px;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+
+    &.link-count-1 {
+      > .paragraph a {
+        @include btn(ghost-white);
+      }
+    }
+
+    &.link-count-2 {
+      > .paragraph:first-child a {
+        @include btn(ghost-white);
+      }
+      > .paragraph:nth-child(2) a {
+        @include link(white);
+      }
     }
   }
 }

@@ -3,17 +3,46 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.media_image_slider.field_description
+    - field.field.paragraph.media_image_slider.field_heading
     - field.field.paragraph.media_image_slider.field_label
+    - field.field.paragraph.media_image_slider.field_large_heading
     - field.field.paragraph.media_image_slider.field_media
+    - field.field.paragraph.media_image_slider.field_p_multiple_links
+    - field.field.paragraph.media_image_slider.field_use_large_heading
     - image.style.banner_square
     - paragraphs.paragraphs_type.media_image_slider
   module:
+    - entity_reference_revisions
     - media_entity_image
+    - text
 id: paragraph.media_image_slider.default
 targetEntityType: paragraph
 bundle: media_image_slider
 mode: default
 content:
+  field_description:
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_heading:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_large_heading:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
   field_media:
     weight: 0
     label: hidden
@@ -23,5 +52,15 @@ content:
     third_party_settings: {  }
     type: media_image
     region: content
+  field_p_multiple_links:
+    weight: 4
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
 hidden:
   field_label: true
+  field_use_large_heading: true

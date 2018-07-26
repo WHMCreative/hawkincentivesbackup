@@ -1,28 +1,28 @@
-uuid: 33559d3b-daf5-44f6-a0d4-9d19a4d15e11
+uuid: 740402c8-bfe6-4d81-bb31-777673e615a4
 langcode: en
 status: true
 dependencies:
   config:
-    - bhk_micro_quiz.micro_quiz_type.answer
-    - field.storage.micro_quiz.field_description
+    - field.storage.paragraph.field_description
+    - paragraphs.paragraphs_type.media_image_slider
   module:
     - allowed_formats
     - text
 third_party_settings:
   allowed_formats:
-    limited_rich_text: limited_rich_text
-    heading: '0'
+    heading: heading
+    limited_rich_text: '0'
     rich_text: '0'
     plain_text: '0'
     html: '0'
-id: micro_quiz.answer.field_description
+id: paragraph.media_image_slider.field_description
 field_name: field_description
-entity_type: micro_quiz
-bundle: answer
+entity_type: paragraph
+bundle: media_image_slider
 label: Description
 description: ''
-required: true
-translatable: false
+required: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }

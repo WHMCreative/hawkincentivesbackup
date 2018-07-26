@@ -14,8 +14,8 @@
   // Placed at the top level
   .field--name-field-p-content > & {
     > .paragraph-content {
-      @include content-width(narrow);
-      text-align: center;
+      @include content-width(default);
+      text-align: left;
 
       .field--name-field-p-multiple-links {
         justify-content: center;
@@ -577,8 +577,8 @@
 
       .field--name-field-heading,
       .field--name-field-callout {
-        font-size: rem-calc(48);
-        line-height: rem-calc(56);
+        font-size: rem-calc(40);
+        line-height: rem-calc(46);
         letter-spacing: rem-calc(-.69);
         p {
           line-height: inherit;
@@ -617,11 +617,13 @@
         }
 
         a {
-          @include breakpoint(medium down) {
-            font-size: 16px;
-            border-bottom: 1px solid;
-            padding-bottom: 4px;
-          }
+          //@include breakpoint(medium down) {
+          //  font-size: 16px;
+          //  border-bottom: 1px solid;
+          //  padding-bottom: 4px;
+          //}
+          @include btn(ghost-white);
+          margin-top: 10px;
         }
       }
 

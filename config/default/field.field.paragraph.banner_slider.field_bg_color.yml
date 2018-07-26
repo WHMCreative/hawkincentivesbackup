@@ -1,0 +1,25 @@
+uuid: 60210873-00ce-4f42-abf9-63ebae1fc2f6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_bg_color
+    - paragraphs.paragraphs_type.banner_slider
+id: paragraph.banner_slider.field_bg_color
+field_name: field_bg_color
+entity_type: paragraph
+bundle: banner_slider
+label: 'Background Color'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: display_settings
+      display_name: colors_banner
+      arguments: {  }
+field_type: entity_reference

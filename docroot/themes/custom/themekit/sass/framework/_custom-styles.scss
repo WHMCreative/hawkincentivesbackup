@@ -141,3 +141,51 @@
     }
   }
 }
+
+
+@mixin slider-nav() {
+  list-style: none;
+  margin: 0;
+  max-width: rem-calc(520);
+
+  li {
+    font-size: rem-calc(13);
+    font-weight: $global-weight-bold;
+    cursor: pointer;
+    margin-bottom: rem-calc(16);
+    padding-right: rem-calc(32);
+    color: $white;
+
+    .progress-bar {
+      width: 100%;
+      height: 2px;
+      display: block;
+      margin-top: rem-calc(8);
+      position: relative;
+
+      &:before{
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: $white;
+        opacity: 0.4;
+      }
+      span {
+        position: absolute;
+        display: block;
+        width: 0%;
+        height: 2px;
+        background: $secondary-color-light;
+        opacity: 1;
+        z-index: 1;
+      }
+    }
+
+  }
+
+  .slick-track {
+    @include left-right(margin, 0);
+  }
+}

@@ -238,6 +238,58 @@ function themekit_preprocess_paragraph_banner_hero(&$variables) {
   }
 }
 
+function themekit_preprocess_paragraph_banner_slider(&$variables) {
+  /* @var Drupal\paragraphs\Entity\Paragraph $paragraph */
+  $paragraph = $variables['paragraph'];
+  $node = $paragraph->getParentEntity();
+  themekit_get_insight_data($node, $variables);
+
+
+  if ($paragraph->hasField('field_media')
+    && empty($paragraph->get('field_media')->getValue())
+    && $paragraph->hasField('field_bg_color')
+    && empty($paragraph->get('field_bg_color')->getValue())
+  ) {
+    $variables['overlay_color'] = 'blue';
+  }
+  elseif ($paragraph->hasField('field_media')
+    && !empty($paragraph->get('field_media')->getValue())
+    && $paragraph->hasField('field_bg_color')
+    && empty($paragraph->get('field_bg_color')->getValue())
+  ) {
+    $variables['overlay_color'] = '';
+    $variables['image_inline_style'] = themekit_get_entity_image_inline_style($paragraph, 'field_media', 'banner_hero');
+  }
+  else {
+    $variables['overlay_color'] = themekit_get_term_slug($paragraph, 'field_bg_color') ? themekit_get_term_slug($paragraph, 'field_bg_color') : '';
+    $variables['image_inline_style'] = themekit_get_entity_image_inline_style($paragraph, 'field_media', 'banner_hero_bw');
+  }
+
+
+  if ($paragraph->hasField('field_large_heading') && empty($paragraph->field_large_heading->value)) {
+    $variables['attributes']['class'][] = 'only-heading-field';
+  }
+
+  if($paragraph->hasField('field_p_slider') && !empty($paragraph->field_p_slider->getValue())) {
+    $slides = $paragraph->field_p_slider->referencedEntities();
+
+    $labels['#prefix'] = '<ul class="slider-nav-items">';
+    $labels['#suffix'] = '</ul>';
+    foreach ($slides as $slide) {
+      if ($slide->bundle() == 'media_image_slider') {
+        if($slide->hasField('field_label') && !empty($slide->field_label->value)) {
+          $label['#plain_text'] = $slide->field_label->value;
+          $label['#prefix'] = '<li>';
+          $label['#suffix'] = '<div class="progress-bar"><span class="bar"></span></div></li>';
+          $labels[] = $label;
+        }
+      }
+    }
+
+    $variables['slider_nav'] = $labels;
+  }
+}
+
 function themekit_preprocess_paragraph_compound_content_bar(&$variables) {
   $paragraph = $variables['paragraph'];
 
@@ -424,7 +476,7 @@ function themekit_preprocess_paragraph_media_image_slider(&$variables) {
 function themekit_preprocess_paragraph_microquiz_quiz(&$variables) {
   /* @var $paragraph Drupal\paragraphs\Entity\Paragraph */
   $paragraph = $variables['paragraph'];
-  $variables['image_inline_style'] = themekit_get_entity_image_inline_style($paragraph, 'field_media', 'banner_hero');
+  $variables['image_inline_style'] = themekit_get_entity_image_inline_style($paragraph, 'field_media', 'banner_hero_bw');
 }
 
 
@@ -483,6 +535,34 @@ function themekit_preprocess_field(&$variables) {
   if( $variables['element']['#field_name'] == 'field_p_multiple_links') {
     $variables['attributes']['class'][] = 'link-count-' . count($variables['items']);
   }
+
+  if ($variables['element']['#field_name'] == 'field_file' && $variables['element']['#entity_type']) {
+    /*  @var Drupal\media_entity\Entity\Media $media*/
+    $media = $variables['element']['#object'];
+
+    if ($media->hasField('field_description') && !empty($media->get('field_description')->getValue())) {
+      $description = $media->get('field_description')->getValue()[0]['value'];
+
+      if ($variables['element'][0]['#theme'] === 'file_link') {
+        /* @var Drupal\file\Entity\File $file */
+        $file = $variables['element'][0]['#file'];
+        $file_url = $file->getFileUri();
+        $file_path = file_url_transform_relative(file_create_url($file_url));
+        $file_mime = $file->getMimeType();
+        $file_mime_as_class = str_replace('/', '-', $file_mime);
+
+        if (!empty($description)) {
+          $link_description = '<span class="file file--mime-' . $file_mime_as_class . ' file--' . $file_mime_as_class . '">
+                              <a href="' . $file_path . '" type="' . $file_mime . '" target="_blank">' . $description . '</a>
+                             </span>';
+        } else {
+          $link_description = NULL;
+        }
+
+        $variables['link_description'] = $link_description;
+      }
+    }
+  }
 }
 
 /**
@@ -522,6 +602,36 @@ function themekit_theme_suggestions_field_alter(array &$suggestions, array $vari
   // Check if Large heading
   if ($is_paragraph && $bundle === 'banner_hero' && $entity->hasField('field_use_large_heading') && $entity->field_use_large_heading->value) {
     $large_heading = TRUE;
+  }
+
+  if($field_name == 'field_heading' && $is_paragraph) {
+    $paragraph = $variables['element']['#object'];
+    $parent = $paragraph->getParentEntity();
+
+    switch ($bundle) {
+      case 'media_image_slider':
+        if ($paragraph && $parent->getEntityTypeId() == 'paragraph' && $parent->parent_field_name->value == 'field_p_header') {
+          if($paragraph->id() == $parent->{$paragraph->parent_field_name->value}->first()->getValue()['target_id']) {
+            array_unshift($suggestions, 'field__heading_1');
+          }
+        }
+        break;
+    }
+  }
+
+  if($field_name == 'field_large_heading' && $is_paragraph) {
+    $paragraph = $variables['element']['#object'];
+    $parent = $paragraph->getParentEntity();
+
+    switch ($bundle) {
+      case 'media_image_slider':
+        if ($paragraph && $parent->getEntityTypeId() == 'paragraph' && $parent->parent_field_name->value == 'field_p_header') {
+          if($paragraph->id() == $parent->{$paragraph->parent_field_name->value}->first()->getValue()['target_id']) {
+            $suggestions[] = $large_heading ? 'field__heading_1' : 'field__heading_3';
+          }
+        }
+        break;
+    }
   }
 
   // Apply theme suggestions based on field name.
