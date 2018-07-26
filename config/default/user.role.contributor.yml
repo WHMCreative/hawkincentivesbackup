@@ -18,6 +18,7 @@ permissions:
   - 'access toolbar'
   - 'access video entity browser pages'
   - 'access video_embed entity browser pages'
+  - 'administer nodes'
   - 'create component_page content'
   - 'create insight content'
   - 'create media'
