@@ -6,6 +6,9 @@
   position: relative;
   z-index: z(quiz, base);
   @include paragraph-paddings();
+  .field--name-field-p-content > & {
+    @include paragraph-margins((small: 0));
+  }
   .bg-container {
     position: absolute;
     z-index: z(quiz,base);
@@ -91,6 +94,7 @@
       legend {
         font-size: rem-calc(16);
         margin: 0 0 10px;
+        font-weight: 400;
         @include breakpoint(medium) {
           font-size: rem-calc(18);
           margin-bottom: 30px;
