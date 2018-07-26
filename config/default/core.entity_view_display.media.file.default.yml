@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.media.file.field_description
     - field.field.media.file.field_file
     - field.field.media.file.field_file_size
     - field.field.media.file.field_file_type
@@ -16,10 +17,19 @@ targetEntityType: media
 bundle: file
 mode: default
 content:
+  field_description:
+    type: string
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
   field_file:
     weight: 0
     label: hidden
-    settings: {  }
+    settings:
+      use_description_as_link_text: true
     third_party_settings: {  }
     type: file_default
     region: content

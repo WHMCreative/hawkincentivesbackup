@@ -206,13 +206,10 @@
         padding-top: 5px;
       }
       h5 {
-        font-weight: 700;
+        font-weight: $global-weight-bold;
         color: $dark-gray;
         @include breakpoint(small down) {
           margin-bottom: 2px;
-        }
-        a {
-          color: inherit;
         }
       }
       .date {
@@ -221,6 +218,12 @@
         @include breakpoint(small down) {
           font-size: rem-calc(11);
         }
+      }
+    }
+
+    &:hover {
+      .node--content h5 {
+        color: $secondary-color-dark;
       }
     }
   }
