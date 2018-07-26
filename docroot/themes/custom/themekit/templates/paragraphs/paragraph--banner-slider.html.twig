@@ -47,28 +47,40 @@
  */
 #}
 
+{% set bg_image = content.field_media|render %}
+
 {%
 set classes = [
-'paragraph',
-'paragraph--type--' ~ paragraph.bundle|clean_class,
-view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
-'image-type--' ~ image_type
+  'paragraph',
+  'paragraph--type--' ~ paragraph.bundle|clean_class,
+  view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+  overlay_color ? 'overlay--' ~ overlay_color,
 ]
 %}
 
 {% set rendered_content = content|without(
-'field_media'
+  'field_media',
+  'field_p_slider'
 ) %}
 
 <div{{ attributes.addClass(classes) }}>
+  {% if image_inline_style %}
+    <div class="bg-container" {{ image_inline_style|raw }}></div>
+  {% elseif topic_image %}
+    <div class="bg-container" {{ topic_image|raw }}></div>
+  {% else %}
+    <div class="bg-container"></div>
+  {% endif %}
+  <div class="slider-content">
+    {{ content.field_p_slider }}
+  </div>
+  <div class="slider-nav">
+    <div class="nav-content">
+      {{ slider_nav }}
+    </div>
+  </div>
   <div class="paragraph-content">
     {{ rendered_content }}
   </div>
-  {% if image_inline_style %}
-    <div class="simple-image-bg" {{ image_inline_style|raw }}></div>
-  {% elseif custom_image_style %}
-    {{ custom_image_style }}
-  {% else %}
-    {{ content.field_media }}
-  {% endif %}
 </div>
+

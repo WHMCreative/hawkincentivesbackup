@@ -7,6 +7,7 @@ dependencies:
     - node.type.reward
     - paragraphs.paragraphs_type.banner_featured_insights
     - paragraphs.paragraphs_type.banner_hero
+    - paragraphs.paragraphs_type.banner_slider
   module:
     - entity_reference_revisions
 id: node.reward.field_p_header
@@ -26,6 +27,7 @@ settings:
     target_bundles:
       banner_featured_insights: banner_featured_insights
       banner_hero: banner_hero
+      banner_slider: banner_slider
     target_bundles_drag_drop:
       marketo_hidden_field:
         weight: 10
@@ -35,15 +37,6 @@ settings:
         enabled: false
       reference_marketo_form:
         weight: 12
-        enabled: false
-      single_image:
-        weight: 14
-        enabled: false
-      single_svg:
-        weight: 15
-        enabled: false
-      single_video:
-        weight: 17
         enabled: false
       summary_insights:
         weight: 18
@@ -72,6 +65,9 @@ settings:
       layout_grid:
         weight: 36
         enabled: false
+      banner_slider:
+        enabled: true
+        weight: 37
       link_file:
         weight: 37
         enabled: false
@@ -84,6 +80,9 @@ settings:
       media_video_modal:
         weight: 42
         enabled: false
+      compound_media_title_bar:
+        weight: 42
+        enabled: false
       reference_block:
         weight: 43
         enabled: false
@@ -93,11 +92,17 @@ settings:
       reference_featured_insight:
         weight: 45
         enabled: false
+      layout_2_column:
+        weight: 46
+        enabled: false
       simple_content:
         weight: 47
         enabled: false
       simple_icon_content:
         weight: 48
+        enabled: false
+      link_form_modal:
+        weight: 49
         enabled: false
       simple_media_bar:
         weight: 49
@@ -108,7 +113,28 @@ settings:
       simple_stat:
         weight: 51
         enabled: false
+      media_image:
+        weight: 53
+        enabled: false
       summary_cards:
         weight: 55
+        enabled: false
+      media_svg:
+        weight: 55
+        enabled: false
+      media_video:
+        weight: 56
+        enabled: false
+      microquiz_conditional:
+        weight: 58
+        enabled: false
+      microquiz_question:
+        weight: 59
+        enabled: false
+      microquiz_quiz:
+        weight: 60
+        enabled: false
+      simple_cta:
+        weight: 66
         enabled: false
 field_type: entity_reference_revisions

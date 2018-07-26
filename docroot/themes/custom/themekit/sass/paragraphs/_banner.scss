@@ -157,11 +157,11 @@
     z-index: z(banner, content);
   }
 
-  &.addtional-content--compound-slider {
+  /*&.addtional-content--compound-slider {
     .field--name-field-p-banner-content {
       position: static;
     }
-  }
+  }*/
 
   &.addtional-content--media-video-modal + .paragraph--type--banner-hero-additional {
     @include content-width(default);
@@ -194,11 +194,11 @@
     }
   }
 
-  &.addtional-content--compound-slider {
+  /*&.addtional-content--compound-slider {
     > .paragraph-content {
       padding-bottom: 0;
     }
-  }
+  }*/
 }
 
 .paragraph--type--banner-hero-additional {
@@ -258,6 +258,91 @@
     > .field__item,
     > .field__items > .field__item {
       margin-bottom: 35px;
+    }
+  }
+}
+
+
+.paragraph--type--banner-slider {
+  position: relative;
+  z-index: z(banner, base);
+
+  .bg-overlay {
+    position: absolute;
+    z-index: z(banner,overlay);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    @include bg-style(cover);
+  }
+
+  .bg-container {
+    position: absolute;
+    z-index: z(banner,base);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    @include bg-style(cover);
+  }
+
+  @each $overlay in $overlays {
+    &.overlay--#{$overlay} {
+      .bg-container {
+        &:after {
+          content: '';
+          position: absolute;
+          z-index: z(banner,overlay);
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-image: url(img-get('banners/#{$overlay}.png'));
+        }
+      }
+    }
+  }
+
+  > .paragraph-content {
+    @include content-width(default);
+    position: relative;
+    color: $white;
+    z-index: z(banner, content);
+  }
+
+  .field--name-field-p-slider {
+    position: relative;
+    z-index: z(banner, content);
+  }
+
+
+  > .paragraph-content {
+    @include content-width(default);
+    position: relative;
+    z-index: z(banner, content);
+  }
+
+  .slider-nav {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    z-index: z(banner, content);
+
+    @each $bp, $size in $banner-spacing {
+      $size: rem-calc($size);
+      @include breakpoint($bp) {
+        bottom: $size;
+      }
+    }
+
+    .nav-content {
+      @include content-width(default);
+    }
+    .slider-nav-items {
+      @include slider-nav;
     }
   }
 }

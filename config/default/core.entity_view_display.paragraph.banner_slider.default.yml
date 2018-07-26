@@ -1,0 +1,28 @@
+uuid: e839cb5c-79d3-445c-8266-0eb1a1f9c9de
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.banner_slider.field_bg_color
+    - field.field.paragraph.banner_slider.field_media
+    - field.field.paragraph.banner_slider.field_p_slider
+    - paragraphs.paragraphs_type.banner_slider
+  module:
+    - entity_reference_revisions
+id: paragraph.banner_slider.default
+targetEntityType: paragraph
+bundle: banner_slider
+mode: default
+content:
+  field_p_slider:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_bg_color: true
+  field_media: true

@@ -10749,7 +10749,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  */
 Drupal.behaviors.heroSlider = {
   attach: function attach(context, settings) {
-    var $content = (0, _jquery2.default)('.paragraph--type--compound-slider', context);
+    var $content = (0, _jquery2.default)('.paragraph--type--banner-slider', context);
     if (!$content.length) return;
 
     var time = 5;
@@ -10759,14 +10759,14 @@ Drupal.behaviors.heroSlider = {
       var isPause = void 0,
           tick = void 0,
           percentTime = void 0,
-          $nav = $content.find('.slider-nav'),
-          $slides = $content.find('.field--name-field-p-slider-content');
+          $nav = $content.find('.slider-nav-items'),
+          $slides = $content.find('.field--name-field-p-slider');
 
       // Init Nav
       $nav.slick({
         slidesToShow: 3,
         slidesToScroll: 1,
-        asNavFor: '.field--name-field-p-slider-content',
+        asNavFor: '.field--name-field-p-slider',
         dots: false,
         focusOnSelect: true
       });
@@ -10779,6 +10779,8 @@ Drupal.behaviors.heroSlider = {
         fade: true,
         adaptiveHeight: false,
         infinite: true
+      }).on('setPosition', function (event, slick) {
+        slick.$slides.css('height', slick.$slideTrack.height() + 'px');
       });
 
       // Update nav for current slide

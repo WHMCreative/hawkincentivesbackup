@@ -1,0 +1,65 @@
+uuid: e3e8fdf9-29c4-4016-ac29-b802faf880cb
+langcode: en
+status: true
+dependencies:
+  config:
+    - entity_browser.browser.image
+    - field.field.paragraph.banner_slider.field_bg_color
+    - field.field.paragraph.banner_slider.field_media
+    - field.field.paragraph.banner_slider.field_p_slider
+    - paragraphs.paragraphs_type.banner_slider
+  module:
+    - content_moderation
+    - entity_browser
+    - paragraphs_browser
+id: paragraph.banner_slider.default
+targetEntityType: paragraph
+bundle: banner_slider
+mode: default
+content:
+  field_bg_color:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_media:
+    weight: 2
+    settings:
+      entity_browser: image
+      field_widget_display: rendered_entity
+      field_widget_remove: true
+      open: true
+      selection_mode: selection_append
+      field_widget_display_settings:
+        view_mode: form_preview
+      field_widget_edit: false
+      field_widget_replace: false
+    third_party_settings: {  }
+    type: entity_browser_entity_reference
+    region: content
+  field_p_slider:
+    type: entity_reference_paragraphs_browser
+    weight: 1
+    settings:
+      title: Slide
+      title_plural: Slides
+      edit_mode: preview
+      add_mode: paragraphs_browser
+      form_display_mode: default
+      default_paragraph_type: media_image_slider
+      paragraphs_browser: browser
+      modal_width: 80%
+      modal_height: auto
+    third_party_settings: {  }
+    region: content
+  moderation_state:
+    type: moderation_state_default
+    weight: 0
+    settings: {  }
+    region: content
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true
