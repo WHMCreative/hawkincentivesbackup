@@ -124,7 +124,7 @@
     &.has-value,
     &.marketo-focus-form-item {
       label {
-        top: -10px;
+        top: -9px;
         font-size: rem-calc(10);
       }
 
@@ -152,7 +152,7 @@
     //margin: -15px 0 10px 5px;
     position: absolute;
     left: 5px !important;
-    bottom: 7px !important;
+    bottom: 11px !important;
     font-size: rem-calc(11);
   }
 
@@ -166,7 +166,7 @@
   }
 
   .mktoRequiredField {
-    padding-bottom: 1px;
+    padding-bottom: 6px;
   }
 
   .mfp-content &,
@@ -248,14 +248,18 @@
     color: $secondary-color-dark;
     font-weight: $global-weight-normal;
     margin-bottom: rem-calc(16);
+
+    .mfp-content & {
+      color: $white;
+    }
   }
 
-  .field field--name-field-thank-you-description p {
+  .field--name-field-thank-you-description p {
     color: $medium-gray;
   }
 
   .block--component & {
-    .field field--name-field-thank-you-description p {
+    .field--name-field-thank-you-description p {
       color: $medium-gray;
     }
   }
