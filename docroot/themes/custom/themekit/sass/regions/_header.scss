@@ -114,7 +114,7 @@
 
     // Main menu
     .menu--main {
-      flex-grow: 1;
+
       //Mobile
       @include breakpoint(medium down) {
         position: fixed;
@@ -171,15 +171,6 @@
             @include breakpoint(marge) {
               margin-left: 30px;
             }
-
-            &.featured-item {
-              display: none;
-              margin-left: auto;
-              @include breakpoint(marge) {
-                display: block;
-              }
-            }
-
             &.menu-item--expanded {
                 position: relative;
 
@@ -414,25 +405,25 @@
       }
     }
 
-    // Form Buttons
-    .menu_link_content.view-mode-form {
-      a {
-        @include breakpoint(marge down) {
-          font-size: rem-calc(11);
-          padding: rem-calc(5 10);
+    [id=block-startaconversationheader] {
+      margin-left: auto;
+      @include breakpoint(medium down) {
+        margin-top: -6px;
+        margin-right: 13px;
+      }
+      .paragraph {
+        margin: 0;
+      }
+      .paragraph--type--link-form-modal {
+        a {
+          @include breakpoint(marge down) {
+            font-size: rem-calc(11);
+            padding: rem-calc(5 10);
+          }
+          @include btn(blue);
         }
-        @include btn(blue);
       }
     }
 
-    > .menu_link_content.view-mode-form {
-      position: absolute;
-      top: 9px;
-      right: 55px;
-
-      @include breakpoint(marge) {
-        display: none;
-      }
-    }
   }
 }

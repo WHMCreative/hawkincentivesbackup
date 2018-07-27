@@ -51,33 +51,3 @@ Drupal.behaviors.menuMain = {
   }
 
 };
-
-Drupal.behaviors.menuFeaturedItems = {
-  attach: function (context, settings) {
-
-    // Copy featured button for mobile use
-    let $header = $('.region-inner', context);
-    if(!$header.length) return;
-
-    let $featuredItem = $header.find('.featured-item .menu_link_content').clone();
-
-    let $link = $featuredItem.find('a.marketo-modal-cta-link');
-
-    $link.on('click', function(e) {
-      let $parent_paragraph = $(this).parents('.paragraph--type--link-form-modal'),
-        $modalSrc = $parent_paragraph.find('.paragraph--type--reference-marketo-form');
-      if ($modalSrc.length) {
-        $.magnificPopup.open({
-          items: {
-            src: $modalSrc,
-            type: 'inline'
-          },
-          closeBtnInside: true,
-        });
-      }
-      e.preventDefault();
-    });
-
-    $header.append($featuredItem);
-  }
-};
