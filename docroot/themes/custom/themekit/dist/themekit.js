@@ -3302,7 +3302,7 @@ __webpack_require__(240);
 
 __webpack_require__(241);
 
-__webpack_require__(481);
+__webpack_require__(242);
 
 /***/ }),
 
@@ -10258,36 +10258,6 @@ Drupal.behaviors.menuMain = {
 
 };
 
-Drupal.behaviors.menuFeaturedItems = {
-  attach: function attach(context, settings) {
-
-    // Copy featured button for mobile use
-    var $header = (0, _jquery2.default)('.region-inner', context);
-    if (!$header.length) return;
-
-    var $featuredItem = $header.find('.featured-item .menu_link_content').clone();
-
-    var $link = $featuredItem.find('a.marketo-modal-cta-link');
-
-    $link.on('click', function (e) {
-      var $parent_paragraph = (0, _jquery2.default)(this).parents('.paragraph--type--link-form-modal'),
-          $modalSrc = $parent_paragraph.find('.paragraph--type--reference-marketo-form');
-      if ($modalSrc.length) {
-        _jquery2.default.magnificPopup.open({
-          items: {
-            src: $modalSrc,
-            type: 'inline'
-          },
-          closeBtnInside: true
-        });
-      }
-      e.preventDefault();
-    });
-
-    $header.append($featuredItem);
-  }
-};
-
 /***/ }),
 
 /***/ 236:
@@ -10866,7 +10836,7 @@ Drupal.behaviors.footerManipulations = {
 
 /***/ }),
 
-/***/ 481:
+/***/ 242:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
