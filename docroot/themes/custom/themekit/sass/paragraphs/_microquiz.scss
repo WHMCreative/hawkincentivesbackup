@@ -96,7 +96,7 @@
       margin-bottom: 15px;
     }
     a.micro-quiz-restart {
-      @include btn(ghost-white);
+      @include link(white);
     }
   }
 }
