@@ -238,6 +238,15 @@
       @include content-width(narrow);
     }
   }
+
+  .form-id--1351 & {
+    .mktoButtonRow {
+      button {
+        margin-top: 0;
+        margin-left: rem-calc(12);
+      }
+    }
+  }
 }
 
 .paragraph--type--marketo-submission-confirmation {
