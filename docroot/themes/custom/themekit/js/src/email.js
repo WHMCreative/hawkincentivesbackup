@@ -12,7 +12,41 @@ Drupal.behaviors.emailManipulations = {
     const validationText = Drupal.t('Must be valid email. example@yourdomain.com');
 
     /**
-     * Validate form.
+     * Open a marketo form in modal and fill a email field.
+     *
+     * @param {object} elem
+     *   Sibling element.
+     * @param {object} emailValue
+     *   email value.
+     */
+    const showMarketoForm = (elem, emailValue) => {
+      // Open the Marketo Form in modal
+      let commonParent = elem.parents('.field--name-field-p-form'),
+        modalSrc = commonParent.find('.paragraph--type--reference-marketo-form');
+      if (modalSrc.length) {
+        $.magnificPopup.open({
+          items: {
+            src: modalSrc,
+            type: 'inline'
+          },
+          closeBtnInside: true,
+        });
+      }
+
+      // Add the email value to the email field
+      modalSrc.find('form [type="email"]').val(emailValue);
+
+      const form = $(modalSrc).find('form');
+      const formId = form.attr('data-form-id');
+
+      // Replace the email value after prefill all marketo fields
+      form.on('whenFormElRendered' + formId, () => {
+        modalSrc.find('form [type="email"]').val(emailValue);
+      });
+    };
+
+    /**
+     * Validate the form.
      *
      * @param {object} element
      *   Form.
@@ -27,7 +61,8 @@ Drupal.behaviors.emailManipulations = {
         return false;
       } else {
         errorElement.removeClass('showed');
-        return true;
+        showMarketoForm(element, emailVal);
+        return false;
       }
     };
 
@@ -59,12 +94,11 @@ Drupal.behaviors.emailManipulations = {
       });
     };
 
-    // Build form
+    // Build the form
     if (component.length) {
       component.each((i, el) => {
         let $this = $(el);
-        let componentId = $this.attr('data-id');
-        let form = `<form class="download-form" action="/node/${componentId}" method="get">
+        let form = `<form class="download-form" action="javascript:void()" method="">
                       <div class="form-item">
                         <label for="email--download-form" class="form-required">${labelText}</label>
                         <input type="email" id="email--download-form" name="email" value="">
@@ -75,7 +109,7 @@ Drupal.behaviors.emailManipulations = {
                       </div>
                     </form>`;
 
-        $this.find('.node--content').append(form);
+        $this.find('.node--content .field--name-field-p-form').append(form);
 
         $this.find('.node--content .download-form').on('submit', (e) => {
           return validateDownloadForm($(e.currentTarget));
@@ -84,32 +118,6 @@ Drupal.behaviors.emailManipulations = {
 
       setInputStateTracker(component.find('.form-item input'));
     }
-
-    // Auto set up email from url
-    const setToForm = $('.node--type-insight .paragraph--type--reference-marketo-form form', context);
-    const setToFormId = setToForm.attr('data-form-id');
-    const url = window.location.href;
-    const urlTargetString = '?email=';
-    let emailString = '';
-
-    if (url.indexOf(urlTargetString) + 1) {
-      // When several parameters are in the query
-      if (url.indexOf('&') + 1) {
-        emailString = url.split(urlTargetString)[1].split('&')[0];
-      } else {
-        emailString = url.split(urlTargetString)[1];
-      }
-    }
-
-    // Fill in the email field after the form is rendered
-    $(setToForm).on('whenFormElRendered' + setToFormId, () => {
-      const setToFormEmail = setToForm.find('[type="email"]');
-
-      if (emailString.length) {
-        setToFormEmail.closest('.marketo-form-item').addClass('has-value');
-        setToFormEmail.val(emailString);
-      }
-    });
 
   }
 };

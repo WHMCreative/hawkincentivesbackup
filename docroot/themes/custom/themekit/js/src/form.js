@@ -21,6 +21,7 @@ Drupal.behaviors.formManipulations = {
       }
     });
 
+    // Select onFocus
     $(document).on('focus', mktoFieldSelectSelector, (event) => {
       const mktoFieldSelect = $(event.target);
       const mktoFieldLabel = mktoFieldSelect.closest(mktoFieldSelector).find('label');
@@ -33,6 +34,7 @@ Drupal.behaviors.formManipulations = {
       }
     });
 
+    // Select onBlur
     $(document).on('blur', mktoFieldSelectSelector, (event) => {
       const mktoFieldSelect = $(event.target);
       const mktoFieldLabel = mktoFieldSelect.closest(mktoFieldSelector).find('label');
