@@ -126,7 +126,7 @@
             left: 0;
             top: 0;
             opacity: 0;
-            &:focus + label {
+            &:focus + label .field--name-field-description {
               outline: -webkit-focus-ring-color auto 5px;
             }
           }
@@ -156,19 +156,20 @@
       }
     }
 
-    .micro-quiz-answer {
-      .field--name-field-p-media {
-        width: 90px;
-        height: 90px;
-        background: $white;
-        border-radius: 50%;
-        padding: 18px;
-        margin: 0 auto 15px;
-      }
-      .field--name-field-description {
-        font-size: rem-calc(14);
-      }
-    }
+  }
+}
 
+.micro-quiz-answer {
+  .field--name-field-p-media {
+    width: 90px;
+    height: 90px;
+    background: $white;
+    border-radius: 50%;
+    padding: 18px;
+    margin: 0 auto 15px;
+    @include border-spin($color: $primary-color-light, $hover: '.form-radio:checked + label &');
+  }
+  .field--name-field-description {
+    font-size: rem-calc(14);
   }
 }
