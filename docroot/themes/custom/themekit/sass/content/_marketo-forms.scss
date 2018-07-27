@@ -137,9 +137,6 @@
 
     &.marketo-focus-form-item {
       label {
-        max-height: 22px;
-        overflow: hidden;
-
         .mktoError {
           display: inline-block;
           height: auto;
@@ -154,6 +151,8 @@
     &.marketo-focus-form-item {
       label {
         top: -10px;
+        max-height: 22px;
+        overflow: hidden;
         font-size: rem-calc(10);
       }
 
