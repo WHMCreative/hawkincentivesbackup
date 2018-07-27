@@ -52,6 +52,24 @@
           margin-bottom: 35px;
         }
       }
+      > .field--name-field-p-questions {
+        display: flex;
+        overflow: hidden;
+        > .paragraph {
+          width: 100%;
+          flex-shrink: 0;
+          transition: transform 500ms linear;
+        }
+        .hidden {
+          display: block;
+          &:first-child {
+            transform: translateX(-100%);
+          }
+          + .paragraph {
+            transform: translateX(-100%);
+          }
+        }
+      }
     }
     .micro-quiz-result {
       .field--name-name {
