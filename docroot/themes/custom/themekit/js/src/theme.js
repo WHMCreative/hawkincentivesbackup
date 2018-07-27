@@ -13,3 +13,4 @@ import './slick';
 import './email';
 import './hero-slider';
 import './footer';
+import './form';

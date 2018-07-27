@@ -3302,6 +3302,8 @@ __webpack_require__(240);
 
 __webpack_require__(241);
 
+__webpack_require__(481);
+
 /***/ }),
 
 /***/ 223:
@@ -10860,6 +10862,63 @@ Drupal.behaviors.footerManipulations = {
 }; /**
     * @file
     * Footer
+    */
+
+/***/ }),
+
+/***/ 481:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _jquery = __webpack_require__(5);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+Drupal.behaviors.formManipulations = {
+  attach: function attach(context, settings) {
+    // Marketo form
+    var mktoFieldSelector = '.mktoFieldDescriptor';
+    var mktoFieldSelectSelector = '.mktoFieldDescriptor select';
+
+    // Put a message element into a label
+    (0, _jquery2.default)(document).on('click keyup', mktoFieldSelector, function (event) {
+      var mktoField = (0, _jquery2.default)(event.currentTarget);
+      var mktoFieldLabel = mktoField.find('label');
+      var mktoFieldMsg = mktoField.find('.mktoError');
+
+      if (mktoFieldMsg.length) {
+        mktoFieldMsg.appendTo(mktoFieldLabel);
+      }
+    });
+
+    (0, _jquery2.default)(document).on('focus', mktoFieldSelectSelector, function (event) {
+      var mktoFieldSelect = (0, _jquery2.default)(event.target);
+      var mktoFieldLabel = mktoFieldSelect.closest(mktoFieldSelector).find('label');
+      var mktoFieldMsg = mktoFieldSelect.closest(mktoFieldSelector).find('.mktoError');
+
+      if (mktoFieldMsg.length) {
+        var msgClone = mktoFieldMsg.clone();
+
+        msgClone.appendTo(mktoFieldLabel);
+      }
+    });
+
+    (0, _jquery2.default)(document).on('blur', mktoFieldSelectSelector, function (event) {
+      var mktoFieldSelect = (0, _jquery2.default)(event.target);
+      var mktoFieldLabel = mktoFieldSelect.closest(mktoFieldSelector).find('label');
+
+      if (mktoFieldLabel.find('.mktoError').length) {
+        mktoFieldLabel.find('.mktoError').remove();
+      }
+    });
+  }
+}; /**
+    * @file
+    * Form
     */
 
 /***/ }),
