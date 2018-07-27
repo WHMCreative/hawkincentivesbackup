@@ -3298,17 +3298,12 @@ __webpack_require__(240);
 
 __webpack_require__(241);
 
-<<<<<<< HEAD
 __webpack_require__(242);
 
 __webpack_require__(495);
 
 __webpack_require__(496);
 
-=======
-__webpack_require__(481);
-
->>>>>>> 5efaca7233a2ae92a23135f90b788db14fb09869
 /***/ }),
 
 /***/ 225:
@@ -10665,6 +10660,7 @@ Drupal.behaviors.emailManipulations = {
 
       var form = (0, _jquery2.default)(modalSrc).find('form');
       var formId = form.attr('data-form-id');
+
       // Replace the email value after prefill all marketo fields
       form.on('whenFormElRendered' + formId, function () {
         modalSrc.find('form [type="email"]').val(emailValue);
@@ -10878,7 +10874,7 @@ Drupal.behaviors.footerManipulations = {
 
 /***/ }),
 
-/***/ 481:
+/***/ 496:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

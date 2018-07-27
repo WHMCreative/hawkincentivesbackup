@@ -38,6 +38,7 @@ Drupal.behaviors.emailManipulations = {
 
       const form = $(modalSrc).find('form');
       const formId = form.attr('data-form-id');
+
       // Replace the email value after prefill all marketo fields
       form.on('whenFormElRendered' + formId, () => {
         modalSrc.find('form [type="email"]').val(emailValue);
