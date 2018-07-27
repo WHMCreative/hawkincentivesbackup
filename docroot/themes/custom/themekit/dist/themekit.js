@@ -3298,12 +3298,17 @@ __webpack_require__(240);
 
 __webpack_require__(241);
 
+<<<<<<< HEAD
 __webpack_require__(242);
 
 __webpack_require__(495);
 
 __webpack_require__(496);
 
+=======
+__webpack_require__(481);
+
+>>>>>>> 5efaca7233a2ae92a23135f90b788db14fb09869
 /***/ }),
 
 /***/ 225:
@@ -10873,7 +10878,7 @@ Drupal.behaviors.footerManipulations = {
 
 /***/ }),
 
-/***/ 496:
+/***/ 481:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

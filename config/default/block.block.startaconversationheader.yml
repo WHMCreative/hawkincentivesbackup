@@ -1,0 +1,25 @@
+uuid: 2ce61cfe-b29c-4fda-ba0e-1ed2abfc97c9
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:component:6db7b98d-721e-49cb-bbdc-e581d9858f2b'
+  module:
+    - block_content
+  theme:
+    - themekit
+id: startaconversationheader
+theme: themekit
+region: header
+weight: 0
+provider: null
+plugin: 'block_content:6db7b98d-721e-49cb-bbdc-e581d9858f2b'
+settings:
+  id: 'block_content:6db7b98d-721e-49cb-bbdc-e581d9858f2b'
+  label: 'Start a Conversation (Header)'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }
