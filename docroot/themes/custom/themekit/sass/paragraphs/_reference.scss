@@ -102,6 +102,11 @@
         }
       }
     }
+
+    .node--view-mode-full .field--name-field-p-content > & {
+      @include top-bottom(padding, 50px);
+      @include top-bottom(margin, 40px);
+    }
   }
 }
 

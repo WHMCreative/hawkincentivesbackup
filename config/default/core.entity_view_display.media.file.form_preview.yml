@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.media.form_preview
-    - field.field.media.file.field_description
     - field.field.media.file.field_file
     - field.field.media.file.field_file_size
     - field.field.media.file.field_file_type
@@ -20,14 +19,6 @@ targetEntityType: media
 bundle: file
 mode: form_preview
 content:
-  field_description:
-    type: string
-    weight: 2
-    region: content
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
   field_file:
     type: file_default
     weight: 3

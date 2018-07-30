@@ -343,6 +343,10 @@
     }
     .slider-nav-items {
       @include slider-nav;
+
+      .slick-slide {
+        outline: 0;
+      }
     }
   }
 }

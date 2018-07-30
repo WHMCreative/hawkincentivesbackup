@@ -3274,21 +3274,17 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 /***/ }),
 
-/***/ 222:
+/***/ 224:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(223);
+__webpack_require__(225);
 
-__webpack_require__(231);
-
-__webpack_require__(232);
+__webpack_require__(233);
 
 __webpack_require__(234);
-
-__webpack_require__(235);
 
 __webpack_require__(236);
 
@@ -3302,9 +3298,15 @@ __webpack_require__(240);
 
 __webpack_require__(241);
 
+__webpack_require__(242);
+
+__webpack_require__(495);
+
+__webpack_require__(496);
+
 /***/ }),
 
-/***/ 223:
+/***/ 225:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3314,23 +3316,23 @@ var _jquery = __webpack_require__(5);
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
-var _foundation = __webpack_require__(224);
+var _foundation = __webpack_require__(226);
 
 var _foundationUtil = __webpack_require__(64);
 
-var _foundationUtil2 = __webpack_require__(225);
+var _foundationUtil2 = __webpack_require__(227);
 
-var _foundationUtil3 = __webpack_require__(226);
+var _foundationUtil3 = __webpack_require__(228);
 
-var _foundationUtil4 = __webpack_require__(227);
+var _foundationUtil4 = __webpack_require__(229);
 
 var _foundationUtil5 = __webpack_require__(178);
 
-var _foundationUtil6 = __webpack_require__(228);
+var _foundationUtil6 = __webpack_require__(230);
 
-var _foundationUtil7 = __webpack_require__(229);
+var _foundationUtil7 = __webpack_require__(231);
 
-var _foundationUtil8 = __webpack_require__(230);
+var _foundationUtil8 = __webpack_require__(232);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3368,7 +3370,7 @@ _foundation.Foundation.Timer = _foundationUtil8.Timer;
 
 /***/ }),
 
-/***/ 224:
+/***/ 226:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3734,7 +3736,7 @@ exports.Foundation = Foundation;
 
 /***/ }),
 
-/***/ 225:
+/***/ 227:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3971,7 +3973,7 @@ exports.Box = Box;
 
 /***/ }),
 
-/***/ 226:
+/***/ 228:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4031,7 +4033,7 @@ exports.onImagesLoaded = onImagesLoaded;
 
 /***/ }),
 
-/***/ 227:
+/***/ 229:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4219,7 +4221,7 @@ exports.Keyboard = Keyboard;
 
 /***/ }),
 
-/***/ 228:
+/***/ 230:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4339,7 +4341,7 @@ exports.Motion = Motion;
 
 /***/ }),
 
-/***/ 229:
+/***/ 231:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4417,7 +4419,7 @@ exports.Nest = Nest;
 
 /***/ }),
 
-/***/ 230:
+/***/ 232:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4484,7 +4486,7 @@ exports.Timer = Timer;
 
 /***/ }),
 
-/***/ 231:
+/***/ 233:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4518,7 +4520,7 @@ exports.Timer = Timer;
 
 /***/ }),
 
-/***/ 232:
+/***/ 234:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4528,7 +4530,7 @@ var _jquery = __webpack_require__(5);
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
-__webpack_require__(233);
+__webpack_require__(235);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -4586,7 +4588,7 @@ $mySVGsToInject.each(function (i, el) {
 
 /***/ }),
 
-/***/ 233:
+/***/ 235:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10149,7 +10151,7 @@ return SVG
 
 /***/ }),
 
-/***/ 234:
+/***/ 236:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10193,7 +10195,7 @@ Drupal.behaviors.magnificPopup = {
 
 /***/ }),
 
-/***/ 235:
+/***/ 237:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10256,39 +10258,9 @@ Drupal.behaviors.menuMain = {
 
 };
 
-Drupal.behaviors.menuFeaturedItems = {
-  attach: function attach(context, settings) {
-
-    // Copy featured button for mobile use
-    var $header = (0, _jquery2.default)('.region-inner', context);
-    if (!$header.length) return;
-
-    var $featuredItem = $header.find('.featured-item .menu_link_content').clone();
-
-    var $link = $featuredItem.find('a.marketo-modal-cta-link');
-
-    $link.on('click', function (e) {
-      var $parent_paragraph = (0, _jquery2.default)(this).parents('.paragraph--type--link-form-modal'),
-          $modalSrc = $parent_paragraph.find('.paragraph--type--reference-marketo-form');
-      if ($modalSrc.length) {
-        _jquery2.default.magnificPopup.open({
-          items: {
-            src: $modalSrc,
-            type: 'inline'
-          },
-          closeBtnInside: true
-        });
-      }
-      e.preventDefault();
-    });
-
-    $header.append($featuredItem);
-  }
-};
-
 /***/ }),
 
-/***/ 236:
+/***/ 238:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10319,7 +10291,7 @@ $skipLink.on('click', function (e) {
 
 /***/ }),
 
-/***/ 237:
+/***/ 239:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10357,7 +10329,7 @@ Drupal.behaviors.videoModal = {
 
 /***/ }),
 
-/***/ 238:
+/***/ 240:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10612,7 +10584,7 @@ Drupal.behaviors.mediaTile = {
 
 /***/ }),
 
-/***/ 239:
+/***/ 241:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10632,7 +10604,41 @@ Drupal.behaviors.emailManipulations = {
     var validationText = Drupal.t('Must be valid email. example@yourdomain.com');
 
     /**
-     * Validate form.
+     * Open a marketo form in modal and fill a email field.
+     *
+     * @param {object} elem
+     *   Sibling element.
+     * @param {object} emailValue
+     *   email value.
+     */
+    var showMarketoForm = function showMarketoForm(elem, emailValue) {
+      // Open the Marketo Form in modal
+      var commonParent = elem.parents('.field--name-field-p-form'),
+          modalSrc = commonParent.find('.paragraph--type--reference-marketo-form');
+      if (modalSrc.length) {
+        _jquery2.default.magnificPopup.open({
+          items: {
+            src: modalSrc,
+            type: 'inline'
+          },
+          closeBtnInside: true
+        });
+      }
+
+      // Add the email value to the email field
+      modalSrc.find('form [type="email"]').val(emailValue);
+
+      var form = (0, _jquery2.default)(modalSrc).find('form');
+      var formId = form.attr('data-form-id');
+
+      // Replace the email value after prefill all marketo fields
+      form.on('whenFormElRendered' + formId, function () {
+        modalSrc.find('form [type="email"]').val(emailValue);
+      });
+    };
+
+    /**
+     * Validate the form.
      *
      * @param {object} element
      *   Form.
@@ -10647,7 +10653,8 @@ Drupal.behaviors.emailManipulations = {
         return false;
       } else {
         errorElement.removeClass('showed');
-        return true;
+        showMarketoForm(element, emailVal);
+        return false;
       }
     };
 
@@ -10679,14 +10686,13 @@ Drupal.behaviors.emailManipulations = {
       });
     };
 
-    // Build form
+    // Build the form
     if (component.length) {
       component.each(function (i, el) {
         var $this = (0, _jquery2.default)(el);
-        var componentId = $this.attr('data-id');
-        var form = '<form class="download-form" action="/node/' + componentId + '" method="get">\n                      <div class="form-item">\n                        <label for="email--download-form" class="form-required">' + labelText + '</label>\n                        <input type="email" id="email--download-form" name="email" value="">\n                        <div class="error-msg">' + validationText + '</div>\n                      </div>\n                      <div class="form-actions">\n                        <input type="submit" value="' + btnText + '">\n                      </div>\n                    </form>';
+        var form = '<form class="download-form" action="javascript:void()" method="">\n                      <div class="form-item">\n                        <label for="email--download-form" class="form-required">' + labelText + '</label>\n                        <input type="email" id="email--download-form" name="email" value="">\n                        <div class="error-msg">' + validationText + '</div>\n                      </div>\n                      <div class="form-actions">\n                        <input type="submit" value="' + btnText + '">\n                      </div>\n                    </form>';
 
-        $this.find('.node--content').append(form);
+        $this.find('.node--content .field--name-field-p-form').append(form);
 
         $this.find('.node--content .download-form').on('submit', function (e) {
           return validateDownloadForm((0, _jquery2.default)(e.currentTarget));
@@ -10695,32 +10701,6 @@ Drupal.behaviors.emailManipulations = {
 
       setInputStateTracker(component.find('.form-item input'));
     }
-
-    // Auto set up email from url
-    var setToForm = (0, _jquery2.default)('.node--type-insight .paragraph--type--reference-marketo-form form', context);
-    var setToFormId = setToForm.attr('data-form-id');
-    var url = window.location.href;
-    var urlTargetString = '?email=';
-    var emailString = '';
-
-    if (url.indexOf(urlTargetString) + 1) {
-      // When several parameters are in the query
-      if (url.indexOf('&') + 1) {
-        emailString = url.split(urlTargetString)[1].split('&')[0];
-      } else {
-        emailString = url.split(urlTargetString)[1];
-      }
-    }
-
-    // Fill in the email field after the form is rendered
-    (0, _jquery2.default)(setToForm).on('whenFormElRendered' + setToFormId, function () {
-      var setToFormEmail = setToForm.find('[type="email"]');
-
-      if (emailString.length) {
-        setToFormEmail.closest('.marketo-form-item').addClass('has-value');
-        setToFormEmail.val(emailString);
-      }
-    });
   }
 }; /**
     * @file
@@ -10729,7 +10709,7 @@ Drupal.behaviors.emailManipulations = {
 
 /***/ }),
 
-/***/ 240:
+/***/ 242:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10828,7 +10808,7 @@ Drupal.behaviors.heroSlider = {
 
 /***/ }),
 
-/***/ 241:
+/***/ 495:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10860,6 +10840,65 @@ Drupal.behaviors.footerManipulations = {
 }; /**
     * @file
     * Footer
+    */
+
+/***/ }),
+
+/***/ 496:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _jquery = __webpack_require__(5);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+Drupal.behaviors.formManipulations = {
+  attach: function attach(context, settings) {
+    // Marketo form
+    var mktoFieldSelector = '.mktoFieldDescriptor';
+    var mktoFieldSelectSelector = '.mktoFieldDescriptor select';
+
+    // Put a message element into a label
+    (0, _jquery2.default)(document).on('click keyup', mktoFieldSelector, function (event) {
+      var mktoField = (0, _jquery2.default)(event.currentTarget);
+      var mktoFieldLabel = mktoField.find('label');
+      var mktoFieldMsg = mktoField.find('.mktoError');
+
+      if (mktoFieldMsg.length) {
+        mktoFieldMsg.appendTo(mktoFieldLabel);
+      }
+    });
+
+    // Select onFocus
+    (0, _jquery2.default)(document).on('focus', mktoFieldSelectSelector, function (event) {
+      var mktoFieldSelect = (0, _jquery2.default)(event.target);
+      var mktoFieldLabel = mktoFieldSelect.closest(mktoFieldSelector).find('label');
+      var mktoFieldMsg = mktoFieldSelect.closest(mktoFieldSelector).find('.mktoError');
+
+      if (mktoFieldMsg.length) {
+        var msgClone = mktoFieldMsg.clone();
+
+        msgClone.appendTo(mktoFieldLabel);
+      }
+    });
+
+    // Select onBlur
+    (0, _jquery2.default)(document).on('blur', mktoFieldSelectSelector, function (event) {
+      var mktoFieldSelect = (0, _jquery2.default)(event.target);
+      var mktoFieldLabel = mktoFieldSelect.closest(mktoFieldSelector).find('label');
+
+      if (mktoFieldLabel.find('.mktoError').length) {
+        mktoFieldLabel.find('.mktoError').remove();
+      }
+    });
+  }
+}; /**
+    * @file
+    * Form
     */
 
 /***/ }),
@@ -12811,5 +12850,5 @@ $.magnificPopup.registerModule(RETINA_NS, {
 
 /***/ })
 
-},[222]);
+},[224]);
 //# sourceMappingURL=themekit.js.map

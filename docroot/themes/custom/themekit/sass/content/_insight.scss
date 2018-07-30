@@ -267,6 +267,12 @@
       .field--name-field-intro-copy {
         font-size: rem-calc(14);
       }
+
+      .field--name-field-p-form {
+        .paragraph--type--reference-marketo-form {
+          display: none;
+        }
+      }
     }
   }
 

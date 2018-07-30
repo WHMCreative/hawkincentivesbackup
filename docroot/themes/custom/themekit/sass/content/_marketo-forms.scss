@@ -29,8 +29,10 @@
     label {
       position: absolute;
       top: 10px;
-      font-size: rem-calc(13);
+      display: flex;
+      flex-wrap: wrap;
       padding-left: 5px;
+      font-size: rem-calc(13);
       line-height: 1;
       color: $medium-gray;
       transition: all .15s ease-out;
@@ -39,6 +41,7 @@
         content: '*';
         background-image: none;
         vertical-align: top;
+        order: 0;
       }
     }
 
@@ -87,7 +90,6 @@
       font-size: rem-calc(13);
       color: rgba($secondary-color, .001); // not just "transparent" because of IE
 
-
       &::-ms-expand {
         display: none;
       }
@@ -121,10 +123,36 @@
       }
     }
 
+    .mktoError {
+      position: static;
+      height: 0;
+      width: 0;
+      overflow: hidden;
+      font-size: inherit;
+
+      div {
+        display: inline;
+      }
+    }
+
+    &.marketo-focus-form-item {
+      label {
+        .mktoError {
+          display: inline-block;
+          height: auto;
+          width: auto;
+          overflow: visible;
+          order: 1;
+        }
+      }
+    }
+
     &.has-value,
     &.marketo-focus-form-item {
       label {
-        top: -9px;
+        top: -10px;
+        max-height: 22px;
+        overflow: hidden;
         font-size: rem-calc(10);
       }
 
@@ -148,14 +176,6 @@
     }
   }
 
-  .mktoError {
-    //margin: -15px 0 10px 5px;
-    position: absolute;
-    left: 5px !important;
-    bottom: 11px !important;
-    font-size: rem-calc(11);
-  }
-
   .mktoButtonRow {
     button {
       @include btn(blue);
@@ -163,10 +183,6 @@
       margin-left: 5px;
       cursor: pointer;
     }
-  }
-
-  .mktoRequiredField {
-    padding-bottom: 6px;
   }
 
   .mfp-content &,
@@ -236,6 +252,15 @@
 
     .marketo-steps-wrapper {
       @include content-width(narrow);
+    }
+  }
+
+  .form-id--1351 & {
+    .mktoButtonRow {
+      button {
+        margin-top: 0;
+        margin-left: rem-calc(12);
+      }
     }
   }
 }

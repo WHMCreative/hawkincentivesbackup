@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - core.entity_form_mode.media.media_browser
-    - field.field.media.file.field_description
     - field.field.media.file.field_file
     - field.field.media.file.field_file_size
     - field.field.media.file.field_file_type
@@ -20,14 +19,6 @@ targetEntityType: media
 bundle: file
 mode: media_browser
 content:
-  field_description:
-    type: string_textfield
-    weight: 1
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
   field_file:
     weight: 2
     settings:
