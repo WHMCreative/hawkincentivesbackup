@@ -109,7 +109,9 @@ Drupal.behaviors.emailManipulations = {
                       </div>
                     </form>`;
 
-        $this.find('.node--content .field--name-field-p-form').append(form);
+        if (!$this.find('.node--content .field--name-field-p-form .download-form').length) {
+          $this.find('.node--content .field--name-field-p-form').append(form);
+        }
 
         $this.find('.node--content .download-form').on('submit', (e) => {
           return validateDownloadForm($(e.currentTarget));

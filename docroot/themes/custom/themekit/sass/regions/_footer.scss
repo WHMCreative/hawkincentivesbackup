@@ -3,7 +3,7 @@
 ////
 
 .layout-container > footer {
-  background: $primary-color;
+  background: $secondary-color-dark;
   padding-bottom: 40px;
   color: $white;
   @include breakpoint(medium) {
@@ -45,7 +45,7 @@
               align-items: center;
               justify-content: center;
               color: $white;
-              background: $primary-color-light;
+              background: $primary-color;
               border-radius: 50%;
               width: 32px;
               height: 32px;
@@ -56,7 +56,8 @@
                 }
               }
               @include selectors(active) {
-                background: $secondary-color;
+                color: $secondary-color-dark;
+                background: $white;
               }
             }
           }

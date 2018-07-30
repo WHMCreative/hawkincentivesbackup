@@ -3304,7 +3304,7 @@ __webpack_require__(241);
 
 __webpack_require__(242);
 
-__webpack_require__(482);
+__webpack_require__(243);
 
 /***/ }),
 
@@ -10694,7 +10694,9 @@ Drupal.behaviors.emailManipulations = {
         var $this = (0, _jquery2.default)(el);
         var form = '<form class="download-form" action="javascript:void()" method="">\n                      <div class="form-item">\n                        <label for="email--download-form" class="form-required">' + labelText + '</label>\n                        <input type="email" id="email--download-form" name="email" value="">\n                        <div class="error-msg">' + validationText + '</div>\n                      </div>\n                      <div class="form-actions">\n                        <input type="submit" value="' + btnText + '">\n                      </div>\n                    </form>';
 
-        $this.find('.node--content .field--name-field-p-form').append(form);
+        if (!$this.find('.node--content .field--name-field-p-form .download-form').length) {
+          $this.find('.node--content .field--name-field-p-form').append(form);
+        }
 
         $this.find('.node--content .download-form').on('submit', function (e) {
           return validateDownloadForm((0, _jquery2.default)(e.currentTarget));
@@ -10905,7 +10907,7 @@ Drupal.behaviors.formManipulations = {
 
 /***/ }),
 
-/***/ 482:
+/***/ 243:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

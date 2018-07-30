@@ -45,6 +45,7 @@ use Drupal\user\UserInterface;
  *   translatable = TRUE,
  *   admin_permission = "administer marketo form entity entities",
  *   bundle_entity_type = "marketo_form_bundle",
+ *   render_cache = FALSE,
  *   entity_keys = {
  *     "id" = "id",
  *     "revision" = "vid",

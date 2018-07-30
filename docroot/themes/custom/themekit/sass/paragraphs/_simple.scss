@@ -418,6 +418,9 @@
 
         img {
           max-height: rem-calc(25);
+          max-width: none;
+          height: auto;
+          width: auto;
         }
 
         div {

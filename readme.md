@@ -1,19 +1,44 @@
-# Paragon
-
-## Git workflow
-
-This project uses our standard single master branch workflow with date based tag releases. https://elevatedthird.github.io/docs/docs_git_workflow.html
+# Blackhawk Incentives
 
 ## Hosting
 
 * Platform: BlackMesh/Contegix
 * Dev URL: bhk-d8.dev.e3develop.com
-* Prod URL: N/A
+* Prod URL: bhk-d8.dev.e3develop.com
+* Live URL: hawkincentives.com
+
+The site is hosted on Contegix with three servers (MP1, MP2, MP3). All server creds are stored in LastPass.
+
+As of July, 2018, the account with Contegix is owned by Elevated Third and is called Elevated Third - Hawak Incentives. 
+
+MP1 & MP2 are the production servers that are then then servered up through a load balancer. 
+
+MP3 is used as the dev server. 
 
 ### Shield credentials
 
 * Username: hawkincentives
 * Password: 3ditHawk
+
+
+## Deploying
+
+This site is using a custom version of deploykit ( based on https://github.com/elevatedthird/deploykit/tree/d8 ). Deploykit has been customized to work with a load balancer. 
+
+To deploy to dev run from deploykit directory `make deploy env=dev` and provide the system password.
+
+To deploy to prod run from deploykit directory `make deploy env=mp1 && make deploy env=mp2` to make simultaneously deployments to MP1 and MP2 and provide the system passwords for each server respectively.
+
+## Caching & Varnish
+
+There is a layer of caching on the servers – Varnish purge has been configured to asset with this. Each server needs to be setup to point to its own varnish to work. This is configured in the `settings.php` file and uses a server variable to switch accordingly.  
+* MP1 = 172.28.4.1
+* MP2 = 172.28.4.2
+* MP3 = 172.28.4.3
+
+To clear the varnish cache on a particular server run the command `varnishadm "ban obj.http.x-host ~ /"`. In the case of clearing varnish cache, this command will need to be run on both MP1 & MP2.
+
+Drupal cache will also need to be cleared on each server independently. Drush aliases have been established for this reason ( @bhk.prod & @bhk.prod2). 
 
 ## Config workflow
 

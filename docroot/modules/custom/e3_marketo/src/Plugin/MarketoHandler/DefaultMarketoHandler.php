@@ -52,7 +52,7 @@ class DefaultMarketoHandler extends MarketoHandlerBase {
 
       // Set Marketo instance.
       if (!isset(static::$marketoInstances[$marketo_form_id])) {
-        $instance = 0;
+        $instance = time();
         static::$marketoInstances[$marketo_form_id] = $instance;
       }
       else {
