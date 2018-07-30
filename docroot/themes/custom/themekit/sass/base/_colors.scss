@@ -9,8 +9,8 @@ $colors: (
     lighter: #e9fe77,
   ),
   secondary: (
-    default: #1969b7, // Hawk Blue
-    dark: #125c7f,
+    default: #0065BD, // Hawk Blue
+    dark: #005B82,
     light: #6bcec9
   ),
   tertiary: (
@@ -23,6 +23,8 @@ $colors: (
     lighter: #e5e5e5,
   ),
 );
+
+// violet 653279
 
 
 $primary-color: color(default, default);
