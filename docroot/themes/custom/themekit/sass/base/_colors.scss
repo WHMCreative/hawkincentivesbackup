@@ -16,6 +16,9 @@ $colors: (
   tertiary: (
     default: #e4773a, // Orange
   ),
+  violet: (
+    default: #653279,
+  ),
   gray: (
     default: #6b6b6b,
     dark: #4a4a4a,
@@ -24,7 +27,6 @@ $colors: (
   ),
 );
 
-// violet 653279
 
 
 $primary-color: color(default, default);
@@ -34,6 +36,7 @@ $secondary-color: color(secondary, default);
 $secondary-color-light: color(secondary, light);
 $secondary-color-dark: color(secondary, dark);
 $tertiary-color: color(tertiary, default);
+$violet-color: color(violet, default);
 
 $light-gray: color(gray, light);
 $lighter-gray: color(gray, lighter);

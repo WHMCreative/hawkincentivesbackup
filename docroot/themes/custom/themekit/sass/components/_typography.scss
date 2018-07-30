@@ -9,9 +9,13 @@ h3 {
 .cke_editable,
 .field.text-formatted {
 
+  h3 {
+    color: $violet-color;
+  }
+
   h4 {
     text-transform: uppercase;
-    color: $primary-color;
+    color: $secondary-color-dark;
     font-weight: $global-weight-bold;
     font-size: rem-calc(14);
   }
@@ -40,6 +44,13 @@ h3 {
         border: 0 solid;
         color: $secondary-color;
       }
+    }
+  }
+
+  ul {
+    li {
+      list-style-position: inside;
+      text-indent: -1.5em;
     }
   }
 
@@ -103,6 +114,7 @@ h3 {
       left: 50%;
       transform: translate(-50%, -60%);
       padding: rem-calc(0 10);
+      color: $primary-color;
     }
 
     .content {
