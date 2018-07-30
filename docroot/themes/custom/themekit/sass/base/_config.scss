@@ -80,8 +80,8 @@ $buttons: (
     border: none,
     active-color: $white,
     active-border: none,
-    gradient: linear-gradient(-45deg, $secondary-color 0%, $secondary-color 20%, $white 60%, $white 100%),
-    gradient-active: linear-gradient(-45deg, $secondary-color 0%, $secondary-color 50%, $white 60%, $white 100%),
+    gradient: linear-gradient(-45deg, $primary-color 0%, $primary-color 20%, $white 60%, $white 100%),
+    gradient-active: linear-gradient(-45deg, $primary-color 0%, $primary-color 50%, $white 60%, $white 100%),
   ),
   ghost: (
     background: $white,
