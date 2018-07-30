@@ -82,7 +82,7 @@ class InfogramFormatter extends FormatterBase implements ContainerFactoryPluginI
     $element = [];
 
     foreach ($items as $delta => $item) {
-      $response = json_decode(file_get_contents('https://infogram.com/oembed?url=' . $item->value));
+      $response = json_decode(file_get_contents('https://infogram.com/oembed_iframe?url=' . $item->value));
 
       $thumbnail = '';
       $html = '';
