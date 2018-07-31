@@ -11,7 +11,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\Database\Driver\mysql\Connection;
 use Drupal\Core\Session\AccountInterface;
-use Drupal\Core\State\StateInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 
 /**
@@ -73,6 +73,15 @@ abstract class MarketoHandlerBase extends PluginBase implements MarketoHandlerIn
   protected $messenger;
 
   /**
+   * Request Stack.
+   *
+   * @var \Symfony\Component\HttpFoundation\RequestStack
+   */
+  protected $requestStack;
+
+  public static $loadedMarketoSettings;
+
+  /**
    * Constructs a MarketoHandlerBase object.
    *
    * @param array $configuration
@@ -93,8 +102,21 @@ abstract class MarketoHandlerBase extends PluginBase implements MarketoHandlerIn
    *   Renderer service.
    * @param \Drupal\Core\Messenger\MessengerInterface $messenger
    *   Messenger service.
+   * @param \Symfony\Component\HttpFoundation\RequestStack $request_stack
+   *   Request Stack.
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, Connection $database, ConfigFactory $config_factory, AccountInterface $current_user, EntityTypeManagerInterface $entity_type_manager, Renderer $renderer, MessengerInterface $messenger) {
+  public function __construct(
+    array $configuration,
+    $plugin_id,
+    $plugin_definition,
+    Connection $database,
+    ConfigFactory $config_factory,
+    AccountInterface $current_user,
+    EntityTypeManagerInterface $entity_type_manager,
+    Renderer $renderer,
+    MessengerInterface $messenger,
+    RequestStack $request_stack) {
+
     parent::__construct($configuration, $plugin_id, $plugin_definition);
 
     $this->database = $database;
@@ -104,6 +126,7 @@ abstract class MarketoHandlerBase extends PluginBase implements MarketoHandlerIn
     $this->entityTypeManager = $entity_type_manager;
     $this->renderer = $renderer;
     $this->messenger = $messenger;
+    $this->requestStack = $request_stack;
   }
 
   /**
@@ -119,7 +142,8 @@ abstract class MarketoHandlerBase extends PluginBase implements MarketoHandlerIn
       $container->get('current_user'),
       $container->get('entity_type.manager'),
       $container->get('renderer'),
-      $container->get('messenger')
+      $container->get('messenger'),
+      $container->get('request_stack')
     );
   }
 

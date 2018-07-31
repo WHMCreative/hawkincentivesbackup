@@ -7,8 +7,6 @@ use Drupal\e3_marketo\Annotation\MarketoHandler;
 use Drupal\e3_marketo\Entity\MarketoFormEntityInterface;
 use Drupal\e3_marketo\Plugin\MarketoHandler\DefaultMarketoHandler;
 use Drupal\paragraphs\ParagraphInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * Default handler to build output for Marketo Forms.
@@ -40,37 +38,6 @@ class GatedContentHandler extends DefaultMarketoHandler {
   protected $parentNode = NULL;
 
   /**
-   * Request Stack.
-   *
-   * @var \Symfony\Component\HttpFoundation\RequestStack
-   */
-  protected $requestStack;
-
-  /**
-   * {@inheritdoc}
-   */
-  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
-    /** @var static $handler */
-    $handler = parent::create($container, $configuration, $plugin_id, $plugin_definition);
-
-    $handler->injectAdditionalServices(
-      $container->get('request_stack')
-    );
-
-    return $handler;
-  }
-
-  /**
-   * Inject additional services, not specified within the main form.
-   *
-   * @param \Symfony\Component\HttpFoundation\RequestStack $request_stack
-   *   Request Stack.
-   */
-  public function injectAdditionalServices(RequestStack $request_stack) {
-    $this->requestStack = $request_stack;
-  }
-
-  /**
    * {@inheritdoc}
    */
   public function embedMarketoForm(MarketoFormEntityInterface $marketo_form, array &$build) {
@@ -87,6 +54,17 @@ class GatedContentHandler extends DefaultMarketoHandler {
   public function alterScriptParameters(&$params, MarketoFormEntityInterface $marketo_form) {
     $params[$this->instance]['submissionCallbacks'] = $this->getSubmissionCallbacks();
     $params[$this->instance]['gatedContent'] = $this->parentNode->id();
+
+    // Determine the redirect URL.
+    $parent_path = $this->parentNode->toUrl()->setAbsolute()->toString();
+    $current_path = $this->requestStack->getCurrentRequest()->getUri();
+
+    if ($parent_path !== $current_path) {
+      $params[$this->instance]['redirectPath'] = $parent_path;
+    }
+    else {
+      $params[$this->instance]['redirectPath'] = FALSE;
+    }
   }
 
   /**

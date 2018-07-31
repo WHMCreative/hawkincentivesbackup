@@ -38,11 +38,11 @@
             // Look through processed data and reload the page if content is
             // unlocked.
             if (!!data) {
-              if (window.location.search.length) {
-                // Add the offer type parameter. When several parameters are in the query
-                window.location.search += '&' + data['query_string'];
-              } else {
-                // Add the offer type parameter. When the query is empty
+
+              if (instanceConfig.redirectPath) {
+                window.location.href = instanceConfig.redirectPath + data['query_string'];
+              }
+              else {
                 window.location.search += data['query_string'];
               }
             }

@@ -84,7 +84,7 @@ class GatedContentController extends ControllerBase implements ContainerInjectio
       foreach ($params as $param_key => $param_value) {
 
         if (empty($query_string)) {
-          $query_string = "{$param_key}={$param_value}";
+          $query_string = "?{$param_key}={$param_value}";
         }
         else {
           $query_string .= "&{$param_key}={$param_value}";

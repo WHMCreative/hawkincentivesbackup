@@ -10,7 +10,6 @@ use Drupal\e3_marketo\Entity\MarketoFormEntityInterface;
 use Drupal\e3_marketo\Plugin\MarketoHandler\DefaultMarketoHandler;
 use Drupal\paragraphs\ParagraphInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * Extra BHK handler for Marketo Forms 2.0.
@@ -61,8 +60,7 @@ class BhkMarketoHandler extends DefaultMarketoHandler {
     $handler = parent::create($container, $configuration, $plugin_id, $plugin_definition);
 
     $handler->injectAdditionalServices(
-      $container->get('state'),
-      $container->get('request_stack')
+      $container->get('state')
     );
 
     return $handler;
@@ -73,12 +71,9 @@ class BhkMarketoHandler extends DefaultMarketoHandler {
    *
    * @param \Drupal\Core\State\StateInterface $state
    *   State Storage.
-   * @param \Symfony\Component\HttpFoundation\RequestStack $request_stack
-   *   Request Stack.
    */
-  public function injectAdditionalServices(StateInterface $state, RequestStack $request_stack) {
+  public function injectAdditionalServices(StateInterface $state) {
     $this->state = $state;
-    $this->requestStack = $request_stack;
   }
 
   /**
