@@ -9,12 +9,15 @@ $colors: (
     lighter: #e9fe77,
   ),
   secondary: (
-    default: #1969b7, // Hawk Blue
-    dark: #125c7f,
+    default: #0065BD, // Hawk Blue
+    dark: #005B82,
     light: #6bcec9
   ),
   tertiary: (
     default: #e4773a, // Orange
+  ),
+  violet: (
+    default: #653279,
   ),
   gray: (
     default: #6b6b6b,
@@ -25,6 +28,7 @@ $colors: (
 );
 
 
+
 $primary-color: color(default, default);
 $primary-color-light: color(default, light);
 $primary-color-lighter: color(default, lighter);
@@ -32,6 +36,7 @@ $secondary-color: color(secondary, default);
 $secondary-color-light: color(secondary, light);
 $secondary-color-dark: color(secondary, dark);
 $tertiary-color: color(tertiary, default);
+$violet-color: color(violet, default);
 
 $light-gray: color(gray, light);
 $lighter-gray: color(gray, lighter);
