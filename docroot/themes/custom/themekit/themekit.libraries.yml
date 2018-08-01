@@ -47,6 +47,13 @@ card-summary:
     dist/whatwg-fetch.js: {}
     dist/card-summary.js: {}
 
+wistia:
+  version: VERSION
+  js:
+    'https://fast.wistia.com/assets/external/E-v1.js': { type: external }
+  dependencies:
+    - themekit/themekit
+
 # Define additional sub-apps here. Be sure to first add it
 # as an entry point in webpack.config.js
 #myApp:

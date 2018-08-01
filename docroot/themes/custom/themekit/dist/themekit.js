@@ -10315,17 +10315,21 @@ Drupal.behaviors.videoModal = {
   attach: function attach(context, settings) {
 
     // Video Modal
-    var $link = (0, _jquery2.default)('a.video-modal', context);
+    var $link = (0, _jquery2.default)('span.video-modal', context);
     if (!$link.length) return;
 
-    $link.magnificPopup({
-      type: 'iframe',
-      mainClass: 'mfp-fade',
-      removalDelay: 160,
-      preloader: false,
+    if (!$link.hasClass('wistia_embed')) {
+      console.log('test');
+      $link.find('a').magnificPopup({
+        type: 'iframe',
+        mainClass: 'mfp-fade',
+        removalDelay: 160,
+        preloader: false,
+        closeBtnInside: false,
 
-      fixedContentPos: false
-    });
+        fixedContentPos: false
+      });
+    }
   }
 };
 
