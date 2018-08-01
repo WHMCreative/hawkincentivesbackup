@@ -8,6 +8,7 @@ use Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException;
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
+use Drupal\e3_marketo\Plugin\MarketoHandlerBase;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -66,8 +67,13 @@ class MicroQuizController extends ControllerBase implements ContainerInjectionIn
     $params = $request->request->all();
 
     // Get Survey Results.
+    $has_form = FALSE;
     try {
       $output = $this->quizHelper->getSurveyResult($params['answers']);
+
+      if (preg_match('/marketo-form-/', $output)) {
+        $has_form = TRUE;
+      }
     } catch (InvalidPluginDefinitionException $e) {
       return new JsonResponse(FALSE);
     } catch (\Exception $e) {
@@ -77,7 +83,30 @@ class MicroQuizController extends ControllerBase implements ContainerInjectionIn
     // Update Marketo lead.
     $this->quizHelper->updateMarketoLead($request);
 
-    return new JsonResponse(['result' => $output]);
+    // Build result.
+    $result = [
+      'result' => $output,
+      'hasForm' => $has_form,
+    ];
+
+    // If result has form, build info about the form instance and pass it along
+    // with the result.
+    if ($has_form) {
+
+      // Determine form key.
+      $settings = MarketoHandlerBase::$loadedMarketoSettings;
+      $marketo_form_key = key(MarketoHandlerBase::$loadedMarketoSettings);
+      $result['marketoFormKey'] = $marketo_form_key;
+
+      // Grab settings and instance id.
+      $instance_settings = array_filter($settings[$marketo_form_key], function($key) {
+        return is_numeric($key);
+      }, ARRAY_FILTER_USE_KEY);
+      $result['formSettingsKey'] = key($instance_settings);
+      $result['formSettings'] = reset($instance_settings);
+    }
+
+    return new JsonResponse($result);
   }
 
   /**

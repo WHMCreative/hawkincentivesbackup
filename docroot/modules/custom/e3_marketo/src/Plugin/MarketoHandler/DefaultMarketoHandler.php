@@ -26,10 +26,31 @@ use Drupal\e3_marketo\Plugin\MarketoHandlerManager;
  */
 class DefaultMarketoHandler extends MarketoHandlerBase {
 
+  /**
+   * Tracks Marketo instances on the page.
+   *
+   * This variable is necessaryn in case the same form is added several times on
+   * the page.
+   *
+   * @var array
+   */
   public static $marketoInstances;
 
+  /**
+   * HTML class of Marketo Form.
+   *
+   * @var string
+   */
   protected $htmlClass;
 
+  /**
+   * Current Marketo Form instance.
+   *
+   * For cases when same form is added multiple times on the page, this helps
+   * handlers to be aware of the exact instance we're working with.
+   *
+   * @var int
+   */
   protected $instance;
 
   /**
@@ -45,21 +66,13 @@ class DefaultMarketoHandler extends MarketoHandlerBase {
       return;
     }
 
+    // Determine the current form instance.
+    $this->instance = $this->getMarketoFormInstance($build, $marketo_form_id);
+
     // Only run the default processing if dynamic parameters has not been set or
     // if they were mistakenly cleared by one of the plugins.
     if (empty($build['marketo_form_embed']['#form_attributes'])
       || empty($build['marketo_form_embed']['#attached']['drupalSettings']['marketoForms'])) {
-
-      // Set Marketo instance.
-      if (!isset(static::$marketoInstances[$marketo_form_id])) {
-        $instance = time();
-        static::$marketoInstances[$marketo_form_id] = $instance;
-      }
-      else {
-        static::$marketoInstances[$marketo_form_id]++;
-        $instance = static::$marketoInstances[$marketo_form_id];
-      }
-      $this->instance = $instance;
 
 
       $build['marketo_form_embed'] = [
@@ -76,9 +89,52 @@ class DefaultMarketoHandler extends MarketoHandlerBase {
     }
     else {
       // Otherwise only update the dynamic parameters.
-      $this->instance = static::$marketoInstances[$marketo_form_id];
       $this->alterScriptParameters($build['marketo_form_embed']['#attached']['drupalSettings']['marketoForms'][$this->htmlClass], $marketo_form);
     }
+
+    static::$loadedMarketoSettings = $build['marketo_form_embed']['#attached']['drupalSettings']['marketoForms'];
+  }
+
+  /**
+   * Determine Marketo Form instance of the current form.
+   *
+   * @param array $build
+   *   Marketo Form entity build array.
+   * @param int $marketo_form_id
+   *   Marketo form id.
+   *
+   * @return int
+   *
+   */
+  public function getMarketoFormInstance(array $build, $marketo_form_id) {
+
+    if (empty($build['marketo_form_embed']['#form_attributes'])
+      || empty($build['marketo_form_embed']['#attached']['drupalSettings']['marketoForms'])) {
+
+      // Set Marketo instance.
+      if (!isset(static::$marketoInstances[$marketo_form_id])) {
+
+        $request = $this->requestStack->getCurrentRequest();
+
+        if ($request->isXmlHttpRequest()) {
+          $instance = time();
+        }
+        else {
+          $instance = 0;
+        }
+
+        static::$marketoInstances[$marketo_form_id] = $instance;
+      }
+      else {
+        static::$marketoInstances[$marketo_form_id]++;
+        $instance = static::$marketoInstances[$marketo_form_id];
+      }
+    }
+    else {
+      $instance = static::$marketoInstances[$marketo_form_id];
+    }
+
+    return $instance;
   }
 
   /**

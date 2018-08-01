@@ -54,7 +54,6 @@
       padding: rem-calc(20);
       background: $white;
       box-shadow: 0 5px 15px rgba(153, 153, 153, 0.15);
-      border-bottom: $lighter-gray solid 1px;
 
       &:last-child {
         border-bottom: none;
@@ -62,6 +61,7 @@
 
       &.content {
         display: none;
+        margin-top: rem-calc(32);
         @include breakpoint(marge) {
           display: block;
         }
@@ -166,7 +166,7 @@
   // Selected Cards Area
   .selected-cards {
     background-image: $blue-gradient;
-    position: absolute;
+    position: fixed;
     width: 100%;
     z-index: z(just-above);
     transition: all 1s;

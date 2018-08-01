@@ -5,15 +5,15 @@
 .region-header {
   background: $body-background;
   box-shadow: 0 2px 10px rgba($black, 0.05);
-  position: relative;
   z-index: z(header, base);
   height: 48px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+
   @include breakpoint(marge) {
-    position: fixed;
     height: $header-height;
-    left: 0;
-    top: 0;
-    width: 100%;
     .toolbar-horizontal & {
       top: 39px;
     }

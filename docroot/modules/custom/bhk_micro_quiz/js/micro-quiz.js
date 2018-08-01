@@ -58,6 +58,10 @@
           },
           success: function (data, text_status) {
 
+            if (data['hasForm']) {
+              settings.marketoForms[data['marketoFormKey']][data['formSettingsKey']] = data['formSettings'];
+            }
+
             let result = data['result'],
               mainWrapper = activeQuestion.parents('.paragraph--type--microquiz-quiz .quiz-wrapper');
 
@@ -75,6 +79,7 @@
               Drupal.attachBehaviors();
             }
           }
+
         });
       };
 

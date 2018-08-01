@@ -356,12 +356,17 @@ function themekit_preprocess_paragraph_layout_grid(&$variables) {
 
 function themekit_preprocess_paragraph_media_video_modal(&$variables) {
   $paragraph = $variables['paragraph'];
+  $media = $paragraph->get('field_media')->entity;
 
   if (!$paragraph->field_media->isEmpty()) {
     $variables['video_url'] = $paragraph->field_media->entity->field_video->value;
     $view_builder = \Drupal::entityTypeManager()->getViewBuilder('media');
     $variables['thumbnail'] = $view_builder->viewField($paragraph->field_media->entity->thumbnail, 'thumbnail');
   }
+
+  $variables['#attached']['drupalSettings']['video_url'] = $media->field_video->value;
+  $variables['video_id'] = $media->field_video_id->value;
+  $variables['video_source'] = $media->field_video_source->value;
 }
 
 function themekit_preprocess_paragraph_reference_marketo_form(&$variables) {

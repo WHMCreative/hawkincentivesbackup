@@ -62,19 +62,27 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class
 ) %}
 
 <div{{ attributes.addClass(classes) }}>
-  <a href="{{ video_url }}" class="paragraph-content video-modal" >
-    <div class="overlay-items">
-      <div class="overlay-color"></div>
-      <div class="content">
-        <div class="play-btn"></div>
-        {{ content.field_heading }}
+  {% if video_id and video_source == 'wistia' %}
+    {{ attach_library('themekit/wistia') }}
+    <span class="paragraph-content video-modal wistia_embed wistia_async_{{ video_id }} popover=true popoverContent=link"><a href="#">
+  {% else %}
+    <span class="paragraph-content video-modal">
+      <a href="{{ video_url }}">
+  {% endif %}
+      <div class="overlay-items">
+        <div class="overlay-color"></div>
+        <div class="content">
+          <div class="play-btn"></div>
+          {{ content.field_heading }}
+        </div>
       </div>
-    </div>
-    {% if content.field_media_image|render %}
-      {{ content.field_media_image }}
-    {% else %}
-      {{ thumbnail }}
-    {% endif %}
-    {{ rendered_content }}
-  </a>
+      {% if content.field_media_image|render %}
+        {{ content.field_media_image }}
+      {% else %}
+        {{ thumbnail }}
+      {% endif %}
+      {{ rendered_content }}
+    </a>
+  </span>
+
 </div>

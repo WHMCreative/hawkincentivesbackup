@@ -83,25 +83,30 @@
                 $formField.parents('.mktoFormRow').addClass('mktoField' + elementName);
               }
 
-              if($formField.is('input:not([type=checkbox])') && $formField.is('input:not([type=radio])')) {
+              // Track the value state of text inputs.
+              if ($formField.is('input:not([type=checkbox])') && $formField.is('input:not([type=radio])')) {
                 setInputStateTracker($formField);
               }
 
-              if($formField.is('select')) {
+              // Track the value state of select elements.
+              if ($formField.is('select')) {
                 $formField.parents('.mktoFieldWrap').addClass('marketo-form-item');
                 setSelectStateTracker($formField);
               }
 
-              if($formField.is('textarea')) {
+              // Track the value state of text areas.
+              if ($formField.is('textarea')) {
                 $formField.parents('.mktoFieldWrap').addClass('marketo-form-item');
                 setInputStateTracker($formField);
               }
 
-              if($formField.is('input[type=checkbox]')) {
+              // Track checkboxes.
+              if ($formField.is('input[type=checkbox]')) {
                 $formField.parents('.mktoFieldWrap').addClass('marketo-checkbox');
               }
 
-              if($formField.is('input[type=radio]')) {
+              // Track radios.
+              if ($formField.is('input[type=radio]')) {
                 $formField.parents('.mktoFieldWrap').addClass('marketo-radio');
               }
             });
@@ -217,7 +222,7 @@
         });
 
         let loadForm = MktoForms2.loadForm.bind(MktoForms2, marketoConfig.instanceHost, marketoConfig.munchkinId, marketoConfig.formId),
-          formEls = arrayFrom(document.querySelectorAll("[" + marketoFormDataAttr + '="' + marketoConfig.formId + '"]'));
+          formEls = arrayFrom($('form[' + marketoFormDataAttr + '=' + marketoConfig.formId + ']:not(.mktoHasWidth)'));
 
         let dataInstances = [];
         formEls.forEach(function(element, index) {
@@ -236,33 +241,37 @@
         (function loadFormCb(formEls) {
 
           // Retrieve the form
-          let formEl = formEls.shift(),
-            dataInstance = formEl.getAttribute('data-instance');
-          formEl.id = "mktoForm_" + marketoConfig.formId;
+          let formEl = formEls.shift();
 
-          // Only load the form if the form inatsnce hasn't been loaded yet.
-          // Also make sure that there's no form with the ID we're about to add
-          // in the DOM already.
-          if ($('form#marketo-form-' + marketoConfig.formId + "-" + dataInstance).length < 1 &&
-            Drupal.marketoForms.loadedForms.indexOf(marketoConfig.formId + "-" + dataInstance) === -1) {
+          if (typeof(formEl) !== 'undefined') {
 
-            // Load the form.
-            loadForm(function (form) {
+            let dataInstance = formEl.getAttribute('data-instance');
+            formEl.id = "mktoForm_" + marketoConfig.formId;
 
-              // Save loaded form for future reference.
-              Drupal.marketoForms.loadedForms.push(marketoConfig.formId + "-" + dataInstance);
+            // Only load the form if the form instance hasn't been loaded yet.
+            // Also make sure that there's no form with the ID we're about to add
+            // in the DOM already.
+            if ($('form#marketo-form-' + marketoConfig.formId + "-" + dataInstance).length < 1 &&
+              Drupal.marketoForms.loadedForms.indexOf(marketoConfig.formId + "-" + dataInstance) === -1) {
 
-              formEl.id = 'marketo-form-' + marketoConfig.formId + "-" + dataInstance;
-              // Pre-fill the form.
-              prefillMarketoForm(form);
+              // Load the form.
+              loadForm(function (form) {
 
-              // Execute all post-load stuff for the form.
-              marketoFormPostLoad(form, marketoConfig, dataInstance);
+                // Save loaded form for future reference.
+                Drupal.marketoForms.loadedForms.push(marketoConfig.formId + "-" + dataInstance);
 
-              if (formEls.length) {
-                loadFormCb(formEls);
-              }
-            });
+                formEl.id = 'marketo-form-' + marketoConfig.formId + "-" + dataInstance;
+                // Pre-fill the form.
+                prefillMarketoForm(form);
+
+                // Execute all post-load stuff for the form.
+                marketoFormPostLoad(form, marketoConfig, dataInstance);
+
+                if (formEls.length > 0) {
+                  loadFormCb(formEls);
+                }
+              });
+            }
           }
         })(formEls);
       };
