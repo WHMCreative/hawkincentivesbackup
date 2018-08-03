@@ -1,0 +1,13 @@
+uuid: 9f88fd16-d388-470d-972d-d945cda6908f
+langcode: en
+status: true
+dependencies: {  }
+id: yearly
+label: Yearly
+enabled: true
+keep: 1
+period: 31449600
+cron: null
+source_id: default_db
+destination_id: private_files
+settings_profile_id: null
