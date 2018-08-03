@@ -34,7 +34,7 @@ class PathProcessorRemoteEntity implements InboundPathProcessorInterface, Outbou
       if ($options['route']->getPath() == '/node/{node}') {
         switch ($options['entity']->bundle()) {
           // Add cases for each content type and condition and set `base_url`.
-          case 'event':
+          case 'news':
             if (!$options['entity']->field_external_link->isEmpty()) {
               $url = Url::fromUri($options['entity']->field_external_link->first()->getValue()['uri']);
               $options['base_url'] = $url->toString();

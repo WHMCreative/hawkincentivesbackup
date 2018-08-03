@@ -163,6 +163,21 @@
     }
   }*/
 
+  &.addtional-content--media-video-modal {
+    .paragraph-content.has-additional-content-section {
+      @each $bp, $size in $banner-spacing {
+        $size: rem-calc($size);
+        @include breakpoint($bp) {
+          @if $bp == 'small' {
+            padding-bottom: rem-calc(170);
+          } @else  {
+            padding-bottom: $size;
+          }
+        }
+      }
+    }
+  }
+
   &.addtional-content--media-video-modal + .paragraph--type--banner-hero-additional {
     @include content-width(default);
     margin-top: rem-calc(-180);

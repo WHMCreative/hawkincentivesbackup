@@ -1,12 +1,12 @@
-uuid: 7aa3e99f-7eef-4ec2-88d6-7778813210b8
+uuid: 9f88fd16-d388-470d-972d-d945cda6908f
 langcode: en
 status: true
 dependencies: {  }
-id: monthly_backup
-label: 'Monthly backup'
+id: yearly
+label: Yearly
 enabled: true
-keep: 12
-period: 2419200
+keep: 1
+period: 31449600
 cron: null
 source_id: default_db
 destination_id: private_files

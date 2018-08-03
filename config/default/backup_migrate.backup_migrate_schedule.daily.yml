@@ -1,12 +1,12 @@
-uuid: b112b436-2c97-415b-a8ba-91078fd293f1
+uuid: ffa04e2a-4379-4da2-874c-147f10329503
 langcode: en
 status: true
 dependencies: {  }
-id: weekly_backup
-label: 'Weekly backup'
+id: daily
+label: Daily
 enabled: true
-keep: 6
-period: 604800
+keep: 7
+period: 86400
 cron: null
 source_id: default_db
 destination_id: private_files
