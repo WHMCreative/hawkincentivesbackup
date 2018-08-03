@@ -34,7 +34,10 @@
 
       & > .paragraph {
         height: 100%;
-        min-width: rem-calc(340);
+
+        @include breakpoint(medium) {
+          min-width: rem-calc(340);
+        }
 
         & > .paragraph-content {
           height: 100%;

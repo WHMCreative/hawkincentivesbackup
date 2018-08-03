@@ -42,8 +42,17 @@
           text-indent: -9999px;
           width: 150px;
           height: 18px;
+          margin-left: 0;
           background-image: url(img-get('svg/logo.svg'));
           background-size: contain;
+          background-repeat: no-repeat;
+
+          @media screen and (max-width: 320px) {
+            width: 110px;
+            height: 18px;
+            margin-left: -10px;
+          }
+
           @include breakpoint(large) {
             width: 281px;
             height: 38px;

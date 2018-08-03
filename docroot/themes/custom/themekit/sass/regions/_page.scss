@@ -4,6 +4,7 @@
 
 body {
   min-width: 320px;
+  padding-top: rem-calc(48);
   @include breakpoint(marge) {
     padding-top: $header-height;
     &.toolbar-horizontal {
