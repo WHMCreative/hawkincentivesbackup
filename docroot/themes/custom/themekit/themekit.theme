@@ -674,24 +674,36 @@ function themekit_theme_suggestions_field_alter(array &$suggestions, array $vari
 
       $parent_field = $variables['element']['#object']->parent_field_name->getValue()[0]['value'];
       // Check if this was part of the layout component
-      if ($parent_field == 'field_p_layout_content') {
-        switch($bundle) {
-          case 'simple_content':
-            if ($field_name == 'field_heading') {
-              $suggestions[] = 'field__heading_2';
-            }
-            break;
-        }
-      }
+      switch ($parent_field) {
+        case 'field_p_layout_content':
+          switch($bundle) {
+            case 'simple_content':
+              if ($field_name == 'field_heading') {
+                $suggestions[] = 'field__heading_2';
+              }
+              break;
+          }
+          break;
 
-      if ($parent_field == 'field_p_callout_content') {
-        switch($bundle) {
-          case 'simple_icon_content':
-            if ($field_name == 'field_heading') {
-              $suggestions[] = 'field';
-            }
-            break;
-        }
+        case 'field_p_compound_content':
+          switch($bundle) {
+            case 'simple_content':
+              if ($field_name == 'field_heading') {
+                $suggestions[] = 'field__heading_3';
+              }
+              break;
+          }
+          break;
+
+        case 'field_p_callout_content':
+          switch($bundle) {
+            case 'simple_icon_content':
+              if ($field_name == 'field_heading') {
+                $suggestions[] = 'field';
+              }
+              break;
+          }
+          break;
       }
     }
   }
