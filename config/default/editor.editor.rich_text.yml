@@ -19,6 +19,7 @@ settings:
             - Italic
             - Superscript
             - Subscript
+            - SpecialChar
         -
           name: Alignment
           items:
@@ -51,6 +52,8 @@ settings:
         -
           name: Tools
           items:
+            - Undo
+            - Redo
             - PasteText
             - Source
   plugins:

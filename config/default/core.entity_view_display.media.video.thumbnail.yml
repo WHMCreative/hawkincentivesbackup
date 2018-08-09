@@ -9,7 +9,7 @@ dependencies:
     - field.field.media.video.field_video_id
     - field.field.media.video.field_video_source
     - field.field.media.video.field_video_type
-    - image.style.third_column
+    - image.style.third_column_bw
     - media_entity.bundle.video
   module:
     - image
@@ -36,7 +36,7 @@ content:
     region: content
     label: hidden
     settings:
-      image_style: third_column
+      image_style: third_column_bw
       image_link: ''
     third_party_settings: {  }
 hidden:

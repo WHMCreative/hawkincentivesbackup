@@ -51,14 +51,16 @@
 set classes = [
 'paragraph',
 'paragraph--type--' ~ paragraph.bundle|clean_class,
-view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class
+view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+overlay ? 'overlay-' ~ overlay|clean_class
 ]
 %}
 
 {% set rendered_content = content|without(
 'field_heading',
 'field_media_image',
-'field_media'
+'field_media',
+'field_overlay_color'
 ) %}
 
 <div{{ attributes.addClass(classes) }}>

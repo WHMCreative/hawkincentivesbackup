@@ -26,7 +26,7 @@
         right: 0;
         bottom: 0;
         background: $blue-gradient-reverse;
-        opacity: 0.8;
+        opacity: 0.6;
         z-index: z(video-modal,base);
         transition: all ease 0.5s;
       }
@@ -60,11 +60,22 @@
     @include selectors(active) {
       .overlay-items {
         .overlay-color {
-          opacity: 0.5;
+          opacity: 0.4;
         }
       }
     }
 
+  }
+
+  &.overlay-dark {
+    & > .paragraph-content {
+      .overlay-items {
+        .overlay-color {
+          background: $secondary-color-dark;
+          opacity: 0.8;
+        }
+      }
+    }
   }
 
   // Inside Layout 2 Column

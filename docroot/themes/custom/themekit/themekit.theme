@@ -364,6 +364,10 @@ function themekit_preprocess_paragraph_media_video_modal(&$variables) {
     $variables['thumbnail'] = $view_builder->viewField($paragraph->field_media->entity->thumbnail, 'thumbnail');
   }
 
+  if (!$paragraph->field_overlay_color->isEmpty()) {
+    $variables['overlay'] = $paragraph->field_overlay_color->value;
+  }
+
   $variables['#attached']['drupalSettings']['video_url'] = $media->field_video->value;
   $variables['video_id'] = $media->field_video_id->value;
   $variables['video_source'] = $media->field_video_source->value;

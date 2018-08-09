@@ -17,6 +17,9 @@ settings:
           items:
             - Bold
             - Italic
+            - Superscript
+            - Subscript
+            - SpecialChar
         -
           name: 'Block Formatting'
           items:
@@ -33,15 +36,17 @@ settings:
         -
           name: Tools
           items:
+            - Undo
+            - Redo
             - Source
   plugins:
     stylescombo:
       styles: ''
-    language:
-      language_list: un
     drupallink:
       linkit_enabled: true
       linkit_profile: default
+    language:
+      language_list: un
     linkitstyles:
       enable: 1
       styles: ".btn.blue|Blue Button\r\n.btn.blue-ghost|Blue Ghost Button"

@@ -1,0 +1,21 @@
+uuid: 8fa8b341-2608-4d67-bff7-1d0e1805f52e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_overlay_color
+    - paragraphs.paragraphs_type.media_video_modal
+  module:
+    - options
+id: paragraph.media_video_modal.field_overlay_color
+field_name: field_overlay_color
+entity_type: paragraph
+bundle: media_video_modal
+label: 'Overlay Color'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

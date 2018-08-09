@@ -10319,7 +10319,6 @@ Drupal.behaviors.videoModal = {
     if (!$link.length) return;
 
     if (!$link.hasClass('wistia_embed')) {
-      console.log('test');
       $link.find('a').magnificPopup({
         type: 'iframe',
         mainClass: 'mfp-fade',
