@@ -1,0 +1,27 @@
+uuid: f40c9058-7633-4fde-98e8-bf898793b3e5
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_overlay_color
+field_name: field_overlay_color
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: light
+      label: Light
+    -
+      value: dark
+      label: Dark
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
