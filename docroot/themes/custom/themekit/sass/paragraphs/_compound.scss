@@ -389,6 +389,28 @@
       }
     }
   }
+
+  // In the context of the banner hero
+  .paragraph--type--banner-hero-additional & {
+    &.with-bg {
+      padding-top: 0;
+    }
+
+    &.bg-color-gray {
+      background: transparent;
+
+      &:after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: calc(100% - 90px);
+        background: $gray-gradient;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+      }
+    }
+  }
 }
 
 // Compound - Slider
