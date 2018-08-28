@@ -55,14 +55,24 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
 bg_status,
 bg_color,
 color_scheme,
-'column-width-' ~ width
+'column-width-' ~ width,
+'media-' ~ media_alignment
 ]
 %}
 
-{% set rendered_content = content|without('') %}
+{% set rendered_content = content|without(
+'field_p_layout_media',
+'field_media_alignment'
+) %}
 
 <div{{ attributes.addClass(classes) }}>
   <div class="paragraph-content">
+    {% if media_alignment == 'left' %}
+      {{ content.field_p_layout_media }}
+    {% endif %}
     {{ rendered_content }}
+    {% if media_alignment != 'left' %}
+      {{ content.field_p_layout_media }}
+    {% endif %}
   </div>
 </div>

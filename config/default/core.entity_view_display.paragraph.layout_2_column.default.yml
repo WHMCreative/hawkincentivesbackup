@@ -4,17 +4,26 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.layout_2_column.field_bg_color
+    - field.field.paragraph.layout_2_column.field_media_alignment
     - field.field.paragraph.layout_2_column.field_p_layout_content
     - field.field.paragraph.layout_2_column.field_p_layout_media
     - field.field.paragraph.layout_2_column.field_width
     - paragraphs.paragraphs_type.layout_2_column
   module:
     - entity_reference_revisions
+    - options
 id: paragraph.layout_2_column.default
 targetEntityType: paragraph
 bundle: layout_2_column
 mode: default
 content:
+  field_media_alignment:
+    type: list_default
+    weight: 2
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
   field_p_layout_content:
     type: entity_reference_revisions_entity_view
     weight: 0

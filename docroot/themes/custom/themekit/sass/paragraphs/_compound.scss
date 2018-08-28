@@ -218,6 +218,18 @@
       }
     }
   }
+
+  .paragraph--type--layout-2-column.media-left & {
+
+    @include breakpoint(medium){
+      padding-left: 0;
+      padding-right: rem-calc(80);
+      &:after {
+        left: auto;
+        right: 0;
+      }
+    }
+  }
 }
 
 // Compound Stat Bar
@@ -295,6 +307,20 @@
 
         &:last-child {
           margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  .paragraph--type--layout-2-column.media-left & {
+    & > .paragraph-content {
+
+      @include breakpoint(medium){
+        padding-left: 0;
+        padding-right: rem-calc(80);
+        &:after {
+          left: auto;
+          right: 0;
         }
       }
     }

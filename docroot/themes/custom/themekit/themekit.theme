@@ -341,6 +341,14 @@ function themekit_preprocess_paragraph_layout_2_column(&$variables) {
   if ($paragraph->hasField('field_width')) {
     $variables['width'] = $paragraph->field_width->getValue()[0]['value'];
   }
+
+  if ($paragraph->hasField('field_media_alignment')) {
+    if ($paragraph->field_media_alignment->getValue()) {
+      $variables['media_alignment'] = $paragraph->field_media_alignment->getValue()[0]['value'];
+    } else {
+      $variables['media_alignment'] = 'right';
+    }
+  }
 }
 
 function themekit_preprocess_paragraph_layout_grid(&$variables) {

@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.layout_2_column.field_bg_color
+    - field.field.paragraph.layout_2_column.field_media_alignment
     - field.field.paragraph.layout_2_column.field_p_layout_content
     - field.field.paragraph.layout_2_column.field_p_layout_media
     - field.field.paragraph.layout_2_column.field_width
@@ -18,6 +19,12 @@ mode: default
 content:
   field_bg_color:
     weight: 104
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_media_alignment:
+    weight: 105
     settings: {  }
     third_party_settings: {  }
     type: options_select
