@@ -33,7 +33,7 @@ class ColorButton extends CKEditorPluginBase implements CKEditorPluginConfigurab
    * {@inheritdoc}
    */
   public function getDependencies(Editor $editor) {
-    return ['panelbutton'];
+    return ['panelbutton', 'colordialog'];
   }
 
   /**
@@ -51,7 +51,7 @@ class ColorButton extends CKEditorPluginBase implements CKEditorPluginConfigurab
 
     // enableMore can only be supported if the Color Dialog plugin is present.
     $config = [
-      'colorButton_enableMore' => FALSE,
+      'colorButton_enableMore' => TRUE,
       'colorButton_enableAutomatic' => TRUE,
     ];
 

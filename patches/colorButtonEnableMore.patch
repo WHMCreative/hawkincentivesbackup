@@ -1,0 +1,34 @@
+diff --git a/colorbutton.info.yml b/colorbutton.info.yml
+index 252b6ea0..4c91168a 100644
+--- a/colorbutton.info.yml
++++ b/colorbutton.info.yml
+@@ -7,6 +7,7 @@ package: CKEditor
+ dependencies:
+   - ckeditor
+   - panelbutton
++  - colordialog
+ 
+ # Information added by Drupal.org packaging script on 2017-07-16
+ version: '8.x-1.1'
+diff --git a/src/Plugin/CKEditorPlugin/ColorButton.php b/src/Plugin/CKEditorPlugin/ColorButton.php
+index def1dd17..4134a091 100644
+--- a/src/Plugin/CKEditorPlugin/ColorButton.php
++++ b/src/Plugin/CKEditorPlugin/ColorButton.php
+@@ -33,7 +33,7 @@ public function getLibraryPath() {
+    * {@inheritdoc}
+    */
+   public function getDependencies(Editor $editor) {
+-    return ['panelbutton'];
++    return ['panelbutton', 'colordialog'];
+   }
+ 
+   /**
+@@ -51,7 +51,7 @@ public function getConfig(Editor $editor) {
+ 
+     // enableMore can only be supported if the Color Dialog plugin is present.
+     $config = [
+-      'colorButton_enableMore' => FALSE,
++      'colorButton_enableMore' => TRUE,
+       'colorButton_enableAutomatic' => TRUE,
+     ];
+ 

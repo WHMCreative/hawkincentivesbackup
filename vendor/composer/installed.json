@@ -3051,6 +3051,9 @@
                     "status": "covered",
                     "message": "Covered by Drupal's security advisory policy"
                 }
+            },
+            "patches_applied": {
+                "Turned on enable more for colors": "./patches/colorButtonEnableMore.patch"
             }
         },
         "installation-source": "dist",
