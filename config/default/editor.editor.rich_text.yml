@@ -48,6 +48,7 @@ settings:
         -
           name: 'Block Formatting'
           items:
+            - TextColor
             - Format
             - Styles
         -
@@ -65,6 +66,8 @@ settings:
       linkit_profile: default
     language:
       language_list: un
+    colorbutton:
+      colors: '89AE43,0065BD,E4773A,653279'
     linkitstyles:
       enable: 1
       styles: ".btn.blue|Blue Button\r\n.btn.blue-ghost|Blue Ghost Button"
