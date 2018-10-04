@@ -5,7 +5,7 @@ dependencies:
   module:
     - focal_point
 name: media_tile
-label: 'Media tile (210x140)'
+label: 'Media tile (210x210)'
 effects:
   7ece38ec-832f-47d5-a6e5-0bec47480faf:
     uuid: 7ece38ec-832f-47d5-a6e5-0bec47480faf
@@ -13,5 +13,5 @@ effects:
     weight: 2
     data:
       width: 210
-      height: 140
+      height: 210
       crop_type: focal_point

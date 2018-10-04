@@ -417,7 +417,7 @@
         margin-bottom: 0;
 
         img {
-          max-height: rem-calc(25);
+          max-height: rem-calc(35);
           max-width: none;
           height: auto;
           width: auto;
@@ -431,7 +431,7 @@
       .paragraph--type--media-svg {
 
         svg {
-          height: rem-calc(25);
+          height: rem-calc(35);
         }
 
         // Allow height to be used on svg in IE 11
