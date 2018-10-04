@@ -1,0 +1,23 @@
+uuid: 73042925-525a-48e9-bd81-fc696ce5d83f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_remove_blue_outline
+    - paragraphs.paragraphs_type.simple_media_tile
+id: paragraph.simple_media_tile.field_remove_blue_outline
+field_name: field_remove_blue_outline
+entity_type: paragraph
+bundle: simple_media_tile
+label: 'Remove Blue Outline'
+description: 'When checked, the blue outline on tile will be removed.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

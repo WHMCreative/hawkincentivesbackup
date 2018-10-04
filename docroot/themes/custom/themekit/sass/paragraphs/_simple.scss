@@ -378,6 +378,24 @@
     }
   }
 
+  &.no-dropshadow {
+    & > .paragraph-content {
+      .field--name-field-p-media {
+        .paragraph--type--media-image {
+          box-shadow: none;
+        }
+      }
+    }
+  }
+
+  &.no-outline {
+    & > .paragraph-content {
+      &:after {
+        border: none;
+      }
+    }
+  }
+
   &.has-bg-image {
     & > .paragraph-content {
 

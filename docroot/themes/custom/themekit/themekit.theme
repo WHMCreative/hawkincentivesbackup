@@ -400,6 +400,16 @@ function themekit_preprocess_paragraph_simple_media_tile(&$variables) {
   if($paragraph->hasField('field_media') && !empty($paragraph->field_media->getValue())) {
     $variables['bg_image'] = themekit_get_entity_image_inline_style($paragraph, 'field_media', 'third_column_bw');
   }
+
+  $variables['outline'] = 'with-outline';
+  if ($paragraph->hasField('field_remove_blue_outline') && !empty($paragraph->field_remove_blue_outline->getValue()) && $paragraph->field_remove_blue_outline->getValue()[0]['value']) {
+    $variables['outline'] = 'no-outline';
+  }
+
+  $variables['drop_shadow'] = 'with-dropshadow';
+  if ($paragraph->hasField('field_remove_drop_shadow') && !empty($paragraph->field_remove_drop_shadow->getValue()) && $paragraph->field_remove_drop_shadow->getValue()[0]['value']) {
+    $variables['drop_shadow'] = 'no-dropshadow';
+  }
 }
 
 /**

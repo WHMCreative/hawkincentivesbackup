@@ -9,10 +9,28 @@ dependencies:
     - field.field.paragraph.simple_media_tile.field_media
     - field.field.paragraph.simple_media_tile.field_p_link
     - field.field.paragraph.simple_media_tile.field_p_media
+    - field.field.paragraph.simple_media_tile.field_remove_blue_outline
+    - field.field.paragraph.simple_media_tile.field_remove_drop_shadow
     - paragraphs.paragraphs_type.simple_media_tile
   module:
+    - field_group
     - paragraphs_browser
     - text
+third_party_settings:
+  field_group:
+    group_display_settings:
+      children:
+        - field_remove_drop_shadow
+        - field_remove_blue_outline
+      parent_name: ''
+      weight: 4
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: true
+      label: 'Display Settings'
 id: paragraph.simple_media_tile.default
 targetEntityType: paragraph
 bundle: simple_media_tile
@@ -63,6 +81,20 @@ content:
       modal_height: auto
     third_party_settings: {  }
     type: entity_reference_paragraphs_browser
+    region: content
+  field_remove_blue_outline:
+    weight: 6
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_remove_drop_shadow:
+    weight: 5
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
     region: content
 hidden:
   created: true

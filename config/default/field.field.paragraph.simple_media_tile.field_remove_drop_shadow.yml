@@ -1,0 +1,23 @@
+uuid: dc798f57-97a3-4352-9556-01ca9e0fd87a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_remove_drop_shadow
+    - paragraphs.paragraphs_type.simple_media_tile
+id: paragraph.simple_media_tile.field_remove_drop_shadow
+field_name: field_remove_drop_shadow
+entity_type: paragraph
+bundle: simple_media_tile
+label: 'Remove Drop Shadow'
+description: 'When checked, the drop shadow from the media item will be removed.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean
