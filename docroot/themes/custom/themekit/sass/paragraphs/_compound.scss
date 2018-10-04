@@ -575,8 +575,9 @@
     bottom: 20px;
     right: 0;
     @include breakpoint(marge) {
-      border-top: 1px solid $white;
-      bottom: 0;
+      border-bottom: 1px solid $white;
+      bottom: auto;
+      top: 0;
     }
 
     &:after {
@@ -670,7 +671,7 @@
       .slick-slide {
         &.slick-current {
           a {
-            border-top: 6px solid $primary-color-lighter;
+            border-bottom: 6px solid $primary-color-lighter;
           }
         }
       }
@@ -698,7 +699,7 @@
       .slick-slide {
         &.slick-current {
           a {
-            border-top: 6px solid $secondary-color-light;
+            border-bottom: 6px solid $secondary-color-light;
           }
         }
       }

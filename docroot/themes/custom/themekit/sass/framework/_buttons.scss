@@ -30,7 +30,9 @@ $buttons: (
   border-radius: $radius;
   appearance: none;
   transition: all 0.5s ease;
-  background: key($button, background);
+  @if (map-has-key($button, background)) {
+    background: key($button, background);
+  }
 
   color: key($button, color);
   appearance: none;
@@ -87,16 +89,26 @@ $buttons: (
   &[disabled] {
     opacity: 0.5;
     @include selectors(active) {
-      border-color: key($button, border);
-      background: key($button, background);
+      @if (map-has-key($button, border)) {
+        border-color: key($button, border);
+      }
+      @if (map-has-key($button, background)) {
+        background: key($button, background);
+      }
       color: key($button, color);
     }
   }
 
   @include selectors(active) {
-    border-color: key($button, active-border);
-    background: key($button, active-background);
-    color: key($button, active-color);
+    @if (map-has-key($button, active-border)) {
+      border-color: key($button, active-border);
+    }
+    @if (map-has-key($button, active-color)) {
+      color: key($button, active-color);
+    }
+    @if (map-has-key($button, active-background)) {
+      background: key($button, active-background);
+    }
     @if (map-has-key($button, gradient)) {
       background-position: 90% center;
     }
@@ -106,9 +118,13 @@ $buttons: (
     }
 
     @if (map-has-key($button, gradient-text)) {
-      background: key($button, active-background);
+      @if (map-has-key($button, active-background)) {
+        background: key($button, active-background);
+      }
       -webkit-background-clip: border-box;
-      -webkit-text-fill-color: key($button, active-color);
+      @if (map-has-key($button, active-color)) {
+        -webkit-text-fill-color: key($button, active-color);
+      }
       &:after {
         background-position: 90% center;
         background-image: key($button, gradient-active);

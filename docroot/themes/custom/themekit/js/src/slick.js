@@ -44,6 +44,7 @@ Drupal.behaviors.slickCustom = {
       labels.each((i, el) => {
         tabNavElement += `<a href="#" class="slick-tab-nav--element">${$(el).text()}</a>`;
       });
+      console.log(container);
       container.after(`<div class="slick-tab-nav slick-tab-nav-${containerIndex}">${tabNavElement}</div>`);
 
       return r;

@@ -10391,6 +10391,7 @@ Drupal.behaviors.slickCustom = {
       labels.each(function (i, el) {
         tabNavElement += '<a href="#" class="slick-tab-nav--element">' + (0, _jquery2.default)(el).text() + '</a>';
       });
+      console.log(container);
       container.after('<div class="slick-tab-nav slick-tab-nav-' + containerIndex + '">' + tabNavElement + '</div>');
 
       return r;
