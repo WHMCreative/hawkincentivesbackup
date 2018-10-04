@@ -112,6 +112,7 @@ class MicroQuizHelper {
         break;
       }
 
+      $stop='';
       $field_key = $key + 1;
       $query->condition("field_q{$field_key}_answer.target_id", $answer_id);
     }
@@ -182,7 +183,7 @@ class MicroQuizHelper {
       return FALSE;
     }
 
-    $data = $this->restHelper->getLeadFields($marketo_cookie, ['mqintention', 'mqquantity']);
+    $data = $this->restHelper->getLeadFields($marketo_cookie, ['mqintention', 'mqquantity', 'buyingstage']);
 
     if ($data && !empty($data->success)) {
 
@@ -208,6 +209,7 @@ class MicroQuizHelper {
               'id' => $result->id,
               'mqintention' => $params['mq_intention'],
               'mqquantity' => $params['mq_quantity'],
+              'buyingstage' => $params['Buying_Stage'],
             ],
           ],
         ];

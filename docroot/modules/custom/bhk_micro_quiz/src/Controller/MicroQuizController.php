@@ -131,6 +131,7 @@ class MicroQuizController extends ControllerBase implements ContainerInjectionIn
     $response->headers->clearCookie('mq_answers', '/', $request->getHost());
     $response->headers->clearCookie('mq_intention', '/', $request->getHost());
     $response->headers->clearCookie('mq_quantity', '/', $request->getHost());
+    $response->headers->clearCookie('Buying_Stage', '/', $request->getHost());
     $response->addCommand(new ReloadPageAjaxCommand());
 
     return $response;

@@ -63,10 +63,10 @@
         .hidden {
           display: block;
           &:first-child {
-            transform: translateX(-100%);
+            //transform: translateX(-100%);
           }
           + .paragraph {
-            transform: translateX(-100%);
+            //transform: translateX(-100%);
           }
         }
       }
@@ -159,12 +159,14 @@
     .form-actions {
       text-align: center;
       @include breakpoint(large) {
-        margin: 0;
-        position: absolute;
-        right: 0;
-        bottom: 70px;
+        margin: rem-calc(16 0 0);
       }
-      .form-submit {
+
+      .quiz-action-back {
+        @include link(white);
+      }
+      .quiz-action-next,
+      .quiz-action-finish {
         @include btn(ghost-white);
       }
       .current-question {
@@ -175,6 +177,11 @@
     }
 
   }
+    &:first-child form.micro-quiz-question .form-actions {
+      .quiz-action-back {
+        display: none;
+      }
+    }
 }
 
 .micro-quiz-answer {

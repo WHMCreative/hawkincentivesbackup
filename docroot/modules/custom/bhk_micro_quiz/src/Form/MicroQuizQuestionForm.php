@@ -147,6 +147,15 @@ class MicroQuizQuestionForm extends FormBase {
 
     $form['actions'] = [
       '#type' => 'actions',
+      'back' => [
+        '#type' => 'submit',
+        '#value' =>  $this->t('Back'),
+        '#attributes' => [
+          'class' => [
+            'quiz-action-back',
+          ],
+        ],
+      ],
       'next' => [
         '#type' => 'submit',
         '#value' => empty($last_question) ? $this->t('Next') : $this->t('Get Result'),
