@@ -40,18 +40,18 @@ $links: (
     transition: left 0.2s cubic-bezier(0.215, 0.61, 0.355, 1), width 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
   }
 
-  @supports (-webkit-text-fill-color: transparent) {
-    background: none;
-    -webkit-background-clip: unset;
-    -webkit-text-fill-color: key($link-conf, color);
-  }
-
   @if (map-has-key($link-conf, background)) {
     @supports (-webkit-text-fill-color: transparent) {
       background: key($link-conf, background);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+  }
+
+  @supports (-webkit-text-fill-color: transparent) {
+    background: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: key($link-conf, color);
   }
 
   @include selectors(active) {
