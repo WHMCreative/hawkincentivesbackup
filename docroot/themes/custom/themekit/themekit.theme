@@ -433,7 +433,9 @@ function themekit_preprocess_paragraph_media_image(&$variables) {
   // Do contextual adjustments to image (image style or background image if necessary)
   // Identify the implementing bundle and use any additional conditions as well and add either `image_inline_style` or `custom_image_style` var
   $parent = $paragraph->getParentEntity();
-  $grandParent = $parent->getParentEntity();
+  if (method_exists($parent,'getParentEntity')) {
+    $grandParent = $parent->getParentEntity();
+  }
   $entity_type_id = $parent->getEntityTypeId();
 
 
