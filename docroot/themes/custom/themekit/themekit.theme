@@ -433,6 +433,7 @@ function themekit_preprocess_paragraph_media_image(&$variables) {
   // Do contextual adjustments to image (image style or background image if necessary)
   // Identify the implementing bundle and use any additional conditions as well and add either `image_inline_style` or `custom_image_style` var
   $parent = $paragraph->getParentEntity();
+  $grandParent = $parent->getParentEntity();
   $entity_type_id = $parent->getEntityTypeId();
 
 
@@ -469,12 +470,21 @@ function themekit_preprocess_paragraph_media_image(&$variables) {
           break;
 
         case 'simple_media_tile':
-          $variables['custom_image_style'] = [
-            '#theme' => 'image_style',
-            '#style_name' => 'media_tile',
-            '#uri' => $uri,
-            '#alt' => $alt,
-          ];
+          if ($grandParent && $grandParent->bundle() == 'layout_grid') {
+            $variables['custom_image_style'] = [
+              '#theme' => 'image_style',
+              '#style_name' => 'medium',
+              '#uri' => $uri,
+              '#alt' => $alt,
+            ];
+          } else {
+            $variables['custom_image_style'] = [
+              '#theme' => 'image_style',
+              '#style_name' => 'media_tile',
+              '#uri' => $uri,
+              '#alt' => $alt,
+            ];
+          }
           break;
       }
     }

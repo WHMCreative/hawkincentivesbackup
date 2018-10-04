@@ -14,7 +14,7 @@ field_name: field_p_media
 entity_type: paragraph
 bundle: simple_media_tile
 label: Media
-description: 'If the media is selected is an image recommended size is 210px x 210px. Images will be sized automatically to this size. '
+description: 'If the media is selected is an image recommended size is 210px x 140px. Images will be sized automatically to this size. '
 required: true
 translatable: true
 default_value: {  }
