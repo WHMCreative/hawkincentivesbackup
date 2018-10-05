@@ -414,7 +414,6 @@
     & > .paragraph-content {
       display: flex;
       flex-direction: column;
-      justify-content: center;
 
       &:after {
         transition: transform 250ms;
