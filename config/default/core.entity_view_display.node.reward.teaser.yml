@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.reward.field_meta_summary
+    - field.field.node.reward.field_metatags
     - field.field.node.reward.field_p_content
     - field.field.node.reward.field_p_header
     - node.type.reward
@@ -15,13 +16,20 @@ targetEntityType: node
 bundle: reward
 mode: teaser
 content:
+  content_moderation_control:
+    weight: -20
+    settings: {  }
+    third_party_settings: {  }
+    region: content
   links:
     weight: 100
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
+  addtoany: true
   field_meta_summary: true
+  field_metatags: true
   field_p_content: true
   field_p_header: true
   langcode: true

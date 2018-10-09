@@ -4,7 +4,10 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.menu_link_content.column
+    - field.field.menu_link_content.main.field_cta
     - field.field.menu_link_content.main.field_description
+    - field.field.menu_link_content.main.field_form
+    - field.field.menu_link_content.main.field_media_image
     - system.menu.main
 id: menu_link_content.main.column
 targetEntityType: menu_link_content
@@ -19,5 +22,6 @@ content:
 hidden:
   field_cta: true
   field_description: true
+  field_form: true
   field_media_image: true
   langcode: true
