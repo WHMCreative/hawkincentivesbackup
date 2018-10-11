@@ -163,9 +163,6 @@ if (isset($_SERVER['AH_SITE_ENVIRONMENT'])) {
       $config['environment_indicator.indicator']['name'] = 'BlackMesh ' . $_SERVER['AH_SITE_ENVIRONMENT'] . ' [Master DB]';
       $config['environment_indicator.indicator']['bg_color'] = '#000000';
 
-      //@TODO remove before launch
-      $config['e3_google_tag.settings']['gtm_code'] = 'GTM-TPNVKPS';
-
       // Set purger host
       $config['varnish_purger.settings.972afd4ab5']['hostname'] = '172.28.4.3';
 
@@ -176,9 +173,8 @@ if (isset($_SERVER['AH_SITE_ENVIRONMENT'])) {
       $config['shield.settings']['credentials']['shield']['user'] = 'hawkincentives';
       $config['shield.settings']['credentials']['shield']['pass'] = '3ditHawk';
 
-      //@TODO Configure this
-        $settings['file_private_path'] = "/var/www/bhk-d8.prod.e3develop.com/application/shared/private";
-        $config['system.file']['path']['temporary'] = "/var/www/bhk-d8.prod.e3develop.com/application/shared/private/tmp";
+      $settings['file_private_path'] = "/mnt/gluster/files/bhk-d8.prod.e3develop.com/files/private";
+      $config['system.file']['path']['temporary'] = "/mnt/gluster/files/bhk-d8.prod.e3develop.com/files/private/tmp";
 
       // Set logging level on production.
       $config['system.logging']['error_level'] = 'hide';
