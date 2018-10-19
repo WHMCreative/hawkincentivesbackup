@@ -16,6 +16,7 @@ settings:
           name: Formatting
           items:
             - Bold
+            - Superscript
         -
           name: Tools
           items:
@@ -23,11 +24,13 @@ settings:
   plugins:
     stylescombo:
       styles: ''
-    language:
-      language_list: un
     drupallink:
       linkit_enabled: false
       linkit_profile: ''
+    language:
+      language_list: un
+    colorbutton:
+      colors: ''
     linkitstyles:
       enable: 0
       styles: ".btn.blue|Blue Button\r\n.btn.blue-ghost|Blue Ghost Button"
