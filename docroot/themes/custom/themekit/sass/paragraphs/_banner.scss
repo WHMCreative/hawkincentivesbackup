@@ -183,6 +183,7 @@
     @include content-width(default);
     margin-top: rem-calc(-180);
     padding-top: rem-calc(32);
+    pointer-events: none;
 
     @include breakpoint(medium) {
       padding-top: 0;

@@ -3,6 +3,7 @@
 ////
 
 .paragraph--type--media-video-modal {
+  pointer-events: auto;
   & > .paragraph-content {
     position: relative;
     display: inline-block;
