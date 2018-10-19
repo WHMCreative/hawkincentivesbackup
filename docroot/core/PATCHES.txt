@@ -10,6 +10,6 @@ Source: https://www.drupal.org/files/issues/menu_link_content-view-permissions-2
 
 
 Drupal.views.ajaxView is not initializing pagers in nested views
-Source: https://www.drupal.org/files/issues/2018-03-29/2858890-26.patch
+Source: https://www.drupal.org/files/issues/2018-09-19/2858890-35.patch
 
 

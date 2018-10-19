@@ -11,8 +11,8 @@
     if (settings && settings.views && settings.views.ajaxViews) {
       var ajaxViews = settings.views.ajaxViews;
 
-      Object.keys(ajaxViews || {}).forEach(function (i) {
-        Drupal.views.instances[i] = new Drupal.views.ajaxView(ajaxViews[i]);
+      Drupal.views.sortByNestingLevel(ajaxViews).forEach(function (item) {
+        Drupal.views.instances[item.key] = new Drupal.views.ajaxView(item.value);
       });
     }
   };

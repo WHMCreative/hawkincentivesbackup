@@ -18,8 +18,8 @@
       const {
         views: { ajaxViews },
       } = settings;
-      Object.keys(ajaxViews || {}).forEach(i => {
-        Drupal.views.instances[i] = new Drupal.views.ajaxView(ajaxViews[i]);
+      Drupal.views.sortByNestingLevel(ajaxViews).forEach((item) => {
+        Drupal.views.instances[item.key] = new Drupal.views.ajaxView(item.value);
       });
     }
   };
@@ -143,7 +143,6 @@
     this.$view
       // Don't attach to nested views. Doing so would attach multiple behaviors
       // to a given element.
-      .filter($.proxy(this.filterNestedViews, this))
       .once('ajax-pager')
       .each($.proxy(this.attachPagerAjax, this));
 
@@ -181,16 +180,6 @@
   };
 
   /**
-   * @return {bool}
-   *   If there is at least one parent with a view class return false.
-   */
-  Drupal.views.ajaxView.prototype.filterNestedViews = function() {
-    // If there is at least one parent with a view class, this view
-    // is nested (e.g., an attachment). Bail.
-    return !this.$view.parents('.view').length;
-  };
-
-  /**
    * Attach the ajax behavior to each link.
    */
   Drupal.views.ajaxView.prototype.attachPagerAjax = function() {
@@ -198,6 +187,7 @@
       .find(
         'ul.js-pager__items > li > a, th.views-field a, .attachment .views-summary a',
       )
+      .once('attach-pager-ajax')
       .each($.proxy(this.attachPagerLinkAjax, this));
   };
 

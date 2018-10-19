@@ -22,7 +22,7 @@
     "drupal-composer/drupal-scaffold": "^2.2",
     "cweagans/composer-patches": "~1.0",
     "wikimedia/composer-merge-plugin": "dev-master",
-    "drupal/core": "8.6.1",
+    "drupal/core": "8.6.2",
     "drush/drush": "~8.0",
     "drupal/console": "^1.0",
     "drupal/devel": "1.x-dev",
@@ -136,7 +136,7 @@
       "drupal/core": {
         "Node revision routes don't convert {node} param": "https://www.drupal.org/files/issues/2730631-41.patch",
         "MenuLinkContentAccessControlHandler does not allow 'view' access without admin permission": "https://www.drupal.org/files/issues/menu_link_content-view-permissions-2915792-12.patch",
-        "Drupal.views.ajaxView is not initializing pagers in nested views": "https://www.drupal.org/files/issues/2018-03-29/2858890-26.patch"
+        "Drupal.views.ajaxView is not initializing pagers in nested views": "https://www.drupal.org/files/issues/2018-09-19/2858890-35.patch"
       },
       "drupal/media_entity": {
         "Allow updates to thumbnails on save": "https://www.drupal.org/files/issues/2749695_14_media_entity.patch"

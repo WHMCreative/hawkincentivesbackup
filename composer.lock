@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "89cc6094e41c7f17c3736c74600a6d62",
+    "content-hash": "148a848a2dc49596a11784ed73e164a9",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -2974,16 +2974,16 @@
         },
         {
             "name": "drupal/core",
-            "version": "8.6.1",
+            "version": "8.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core.git",
-                "reference": "1c8b96c89288daf4d145c6dbcf1e8f0d0c9d7970"
+                "reference": "356292934802bb1aecc478e88a3cba77442d7c62"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core/zipball/1c8b96c89288daf4d145c6dbcf1e8f0d0c9d7970",
-                "reference": "1c8b96c89288daf4d145c6dbcf1e8f0d0c9d7970",
+                "url": "https://api.github.com/repos/drupal/core/zipball/356292934802bb1aecc478e88a3cba77442d7c62",
+                "reference": "356292934802bb1aecc478e88a3cba77442d7c62",
                 "shasum": ""
             },
             "require": {
@@ -3188,7 +3188,8 @@
                 },
                 "patches_applied": {
                     "Node revision routes don't convert {node} param": "https://www.drupal.org/files/issues/2730631-41.patch",
-                    "MenuLinkContentAccessControlHandler does not allow 'view' access without admin permission": "https://www.drupal.org/files/issues/menu_link_content-view-permissions-2915792-12.patch"
+                    "MenuLinkContentAccessControlHandler does not allow 'view' access without admin permission": "https://www.drupal.org/files/issues/menu_link_content-view-permissions-2915792-12.patch",
+                    "Drupal.views.ajaxView is not initializing pagers in nested views": "https://www.drupal.org/files/issues/2018-09-19/2858890-35.patch"
                 }
             },
             "autoload": {
@@ -3212,7 +3213,7 @@
                 "GPL-2.0-or-later"
             ],
             "description": "Drupal is an open source content management platform powering millions of websites and applications.",
-            "time": "2018-09-10T11:50:07+00:00"
+            "time": "2018-10-17T22:19:50+00:00"
         },
         {
             "name": "drupal/crop",
