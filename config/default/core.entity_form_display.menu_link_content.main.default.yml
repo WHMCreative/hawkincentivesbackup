@@ -52,7 +52,7 @@ content:
       edit_mode: open
       add_mode: paragraphs_browser
       form_display_mode: default
-      default_paragraph_type: link_form_modal
+      default_paragraph_type: _none
       paragraphs_browser: browser
       modal_width: 80%
       modal_height: auto
@@ -69,6 +69,7 @@ content:
       field_widget_display_settings:
         view_mode: form_preview
       field_widget_edit: false
+      field_widget_replace: false
     third_party_settings: {  }
     type: entity_browser_entity_reference
     region: content
