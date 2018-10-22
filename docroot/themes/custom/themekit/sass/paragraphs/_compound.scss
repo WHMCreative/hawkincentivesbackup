@@ -652,20 +652,20 @@
 
   &.bg-color-green {
     > .paragraph-content {
-      background-color: rgba($primary-color, .85);
+      background-color: rgba($primary-color, .65);
     }
 
     .paragraph {
       .bg-container {
         &:after {
-          background-color: rgba($primary-color, .85);
+          background-color: rgba($primary-color, .65);
         }
       }
     }
 
     .slick-tab-nav {
       &:after {
-        background-color: rgba($primary-color, .6);
+        background-color: rgba($primary-color, .8);
       }
 
       .slick-slide {
@@ -680,20 +680,20 @@
 
   &.bg-color-blue {
     > .paragraph-content {
-      background-color: rgba($secondary-color-dark, .85);
+      background-color: rgba($secondary-color-dark, .65);
     }
 
     .paragraph {
       .bg-container {
         &:after {
-          background-color: rgba($secondary-color-dark, .85);
+          background-color: rgba($secondary-color-dark, .65);
         }
       }
     }
 
     .slick-tab-nav {
       &:after {
-        background-color: rgba($secondary-color-dark, .6);
+        background-color: rgba($secondary-color-dark, .8);
       }
 
       .slick-slide {

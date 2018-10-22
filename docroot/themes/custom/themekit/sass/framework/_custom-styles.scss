@@ -85,10 +85,11 @@
   }
 }
 
-@mixin play-btn($size: 28) {
+@mixin play-btn($size: 45) {
   display: block;
   height: rem-calc($size);
   width: rem-calc($size);
+  margin: 0 auto;
   background-image: url(img-get('svg/play-btn.svg'));
   background-size: contain;
   background-repeat: no-repeat;

@@ -19,6 +19,7 @@
       padding: rem-calc(28 50);
       display: flex;
       align-items: flex-end;
+      justify-content: center;
 
       .overlay-color {
         position: absolute;
@@ -35,6 +36,7 @@
       .content {
         position: relative;
         z-index: z(video-modal,overlay);
+        text-align: center;
 
         .play-btn {
           @include play-btn();

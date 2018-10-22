@@ -101,6 +101,7 @@
   }
 
   .field--name-field-p-grid-content {
+    justify-content: center;
     @include breakpoint(medium) {
       @include tk-flex-block-grid(2, '.paragraph');
     }
