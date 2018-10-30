@@ -20,7 +20,7 @@ field_name: field_large_heading
 entity_type: paragraph
 bundle: banner_hero
 label: 'Large Heading'
-description: ''
+description: 'Providing text here overrides the page title. This is the page H1.'
 required: false
 translatable: false
 default_value: {  }

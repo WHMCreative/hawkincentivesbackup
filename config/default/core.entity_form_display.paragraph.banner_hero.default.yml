@@ -24,29 +24,21 @@ bundle: banner_hero
 mode: default
 content:
   field_bg_color:
-    weight: 7
+    weight: 5
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   field_description:
-    weight: 3
+    weight: 1
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
     region: content
-  field_heading:
-    weight: 0
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
-    region: content
   field_large_heading:
-    weight: 1
+    weight: 0
     settings:
       rows: 3
       placeholder: ''
@@ -57,7 +49,7 @@ content:
     type: text_textarea
     region: content
   field_media:
-    weight: 6
+    weight: 4
     settings:
       entity_browser: image
       field_widget_display: rendered_entity
@@ -67,12 +59,13 @@ content:
       field_widget_display_settings:
         view_mode: form_preview
       field_widget_edit: false
+      field_widget_replace: false
     third_party_settings: {  }
     type: entity_browser_entity_reference
     region: content
   field_p_banner_content:
     type: entity_reference_paragraphs_browser
-    weight: 5
+    weight: 3
     settings:
       title: Component
       title_plural: Components
@@ -86,7 +79,7 @@ content:
     third_party_settings: {  }
     region: content
   field_p_multiple_links:
-    weight: 4
+    weight: 2
     settings:
       title: Link
       title_plural: Links
@@ -100,15 +93,10 @@ content:
     third_party_settings: {  }
     type: entity_reference_paragraphs_browser
     region: content
-  field_use_large_heading:
-    weight: 2
-    settings:
-      display_label: true
-    third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
 hidden:
   created: true
+  field_heading: true
+  field_use_large_heading: true
   moderation_state: true
   status: true
   uid: true

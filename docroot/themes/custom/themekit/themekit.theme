@@ -664,7 +664,7 @@ function themekit_theme_suggestions_field_alter(array &$suggestions, array $vari
     switch($bundle) {
       case 'banner_featured_insights':
       case 'banner_hero':
-        array_unshift($suggestions, $large_heading ? 'field__heading_5' : 'field__heading_1');
+        array_unshift($suggestions, 'field__heading_1');
         break;
       case 'compound_content_bar':
       case 'compound_media_title_bar':
