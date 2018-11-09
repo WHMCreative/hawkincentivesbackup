@@ -1,19 +1,20 @@
-uuid: fe9931ab-2237-4417-961c-5771dd048514
+uuid: 68736879-a007-4974-9331-23895211b528
 langcode: en
 status: true
 dependencies:
   module:
     - bhk_card_browser
-    - taxonomy
-id: card.field_card_category
-field_name: field_card_category
+id: card.field_benefits
+field_name: field_benefits
 entity_type: card
-type: entity_reference
+type: string
 settings:
-  target_type: taxonomy_term
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
 module: core
 locked: false
-cardinality: -1
+cardinality: 3
 translatable: true
 indexes: {  }
 persist_with_no_fields: false

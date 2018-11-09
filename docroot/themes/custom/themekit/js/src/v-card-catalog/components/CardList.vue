@@ -23,21 +23,9 @@
     <!-- Begin Filters -->
       <div class="filters">
         <div class="content">
-          <h3 class="filter-title">Reward Types</h3>
-          <div class="filter filter--type" v-if="types.length > 0">
-            <RadioFilter v-for="type in types" :filter="type" :type="'cardType'" :key="type" @selectRadio='selectRadio' :class="{selected: selectedRadioOption === type}"></RadioFilter>
-          </div>
-          <div class="box-filter">
-            <h3 class="filter-title">Filters</h3>
-            <div class="filter filter--category" v-if="filters.length > 0">
-              <FilterItem v-for="filter in filters" :filter="filter" :type="'boolean'" :key="filter.key" @selectFilter='selectFilter'></FilterItem>
-            </div>
-          </div>
-          <div class="box-filter content">
-            <h3 class="filter-title">About Our Rewards</h3>
-            <div class="description" v-for="content in sidebarContent" v-if="content.description" v-html="content.description.processed">
-              {{ content.description.processed }}
-            </div>
+          <h3 class="filter-title">Filter By</h3>
+          <div class="filter filter--category" v-if="filters.length > 0">
+            <FilterItem v-for="filter in filters" :filter="filter" :type="'boolean'" :key="filter" @selectFilter='selectFilter'></FilterItem>
           </div>
         </div>
       </div>
@@ -69,12 +57,10 @@
 import Card from './Card.vue'
 import FilterItem from './FilterItem.vue'
 import gql from 'graphql-tag'
-import RadioFilter from "./RadioFilter";
 
 export default {
   name: 'CardList',
   components: {
-    RadioFilter,
     Card,
     FilterItem
   },
@@ -88,14 +74,6 @@ export default {
   data () {
     return {
       allCards: null,
-      sidebar: null,
-      filters: [
-        {key:'coBrand', value:'Co-brandable'},
-        {key:'customization', value:'Customization Available'},
-        {key:'fulfillment', value:'Fast Fulfillment Available'},
-        {key:'virtual', value:'Virtual Option'},
-        {key:'phsyical', value:'Physical Option'}
-      ],
       cardsToShow: 6,
       cardCount: 0,
       hasSelectedCards: false,
@@ -185,26 +163,6 @@ export default {
       });
     },
 
-    // Update radio filters
-    selectRadio(filter) {
-      let value = filter.target.value,
-          type = filter.target.name,
-          index = this.selectedFilters.findIndex(filter => filter.type === type);
-
-      this.selectedRadioOption = value;
-
-      //Remove existing filters of same type
-      if (index > -1) {
-        this.selectedFilters.splice(index, 1);
-      }
-
-      if (value !== 'All') {
-        if (filter.target.checked) {
-          this.selectedFilters.push({value: value, type: type});
-        }
-      }
-    },
-
     // Update selected filters
     selectFilter(filter) {
       let value = filter.target.value,
@@ -269,24 +227,20 @@ export default {
       if (allCards) {
 
         if (this.selectedFilters.length > 0) {
-          for (let i in this.selectedFilters) {
-            allCards = allCards.filter((card) => {
-              // Get filter type
-              let type = this.selectedFilters[i].type,
-                value = this.selectedFilters[i].value;
+          allCards = allCards.filter((card) => {
+            // Get filter type
+            let cardValues = [];
+            for (let i in card.cardCategory) {
+              cardValues.push(card.cardCategory[i].entity.entityLabel)
+            }
 
-              if (type === 'boolean') {
-                if (value === 'phsyical') {
-                  return card['virtual'] === false;
-                } else {
-                  return card[value] === true;
-                }
-              } else  {
-                // Find cards that match filter
-                return card[type] === value;
+            for (let j in this.selectedFilters) {
+              if (!cardValues.includes(this.selectedFilters[j].value)){
+                return 0;
               }
-            })
-          }
+            }
+            return 1;
+          })
         }
 
         // Set number of cards for this filter
@@ -304,28 +258,16 @@ export default {
       }
     },
 
-    // Get content for sidebar
-    sidebarContent () {
-      let sidebar = this.sidebar ? this.sidebar.fieldPContent : [];
-      if (sidebar) {
-        let content = [];
-        for (let i in sidebar) {
-          if(sidebar[i].entity.bundle === 'reference_card_browser') {
-            content.push(sidebar[i].entity);
-          }
-        }
-        return content;
-      }
-    },
-
     // Return all unique types sorted
-    types() {
+    filters() {
       let allCards = this.allCards ? this.allCards.entities : [],
-        types = ['All'];
+        types = [];
       if (allCards) {
         for (let i in allCards) {
-          for (let j in allCards[i].cardType) {
-            types.push(allCards[i].cardType);
+          for (let j in allCards[i].cardCategory) {
+            for (let k in allCards[i].cardCategory[j]) {
+              types.push(allCards[i].cardCategory[j].entity.entityLabel);
+            }
           }
         }
         types = types.filter( this.onlyUnique );
@@ -352,9 +294,6 @@ export default {
           ... on Card {
             id: entityId
             title: entityLabel
-            cashBack: fieldCashBack
-            coBrand: fieldCoBrand
-            customization: fieldCustomization
             image: fieldPMedia {
               entity {
                 fieldMediaImage {
@@ -375,57 +314,15 @@ export default {
               }
             }
             cost: fieldCost
-            currency:fieldCurrency {
-              entity {
-                entityLabel
-              }
-            }
-            delivery:fieldDelivery
             description:fieldDescription {
               processed
             }
-            fulfillment: fieldFulfillment
-            filtered: fieldFiltered
-            greetingCard: fieldGreetingCard
-            issance: fieldIssuance
-            virtual: fieldVirtual
-            loadMax: fieldLoadMax
-            network: fieldNetwork
-            numMechants: fieldNumMechants
-            personalization: fieldPersonalization
-            prepaidLoad: fieldPrepaidLoad
-            prepaidType: fieldPrepaidType
             cardType:fieldCardType
+            benefits: fieldBenefits
           }
         }
       }
     }`),
-
-    // Query for sidebar content
-    sidebar: {
-      query: gql(`query ($nid:String!){
-        sidebar:nodeById (id: $nid) {
-          entityLabel
-          fieldPContent {
-            entity {
-              bundle:entityBundle
-              description: fieldDescription {
-                processed
-              }
-            }
-          }
-        }
-      }`),
-      variables() {
-        return {
-          nid: this.nodeId
-        }
-      },
-
-       skip() {
-        return !this.nodeId;
-      }
-    }
   }
 }
 </script>

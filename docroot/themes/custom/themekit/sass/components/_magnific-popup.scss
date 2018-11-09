@@ -40,5 +40,11 @@
       padding: rem-calc(40);
     }
   }
+
+  .marketo-form {
+    form {
+      width: 100% !important;
+    }
+  }
 }
 

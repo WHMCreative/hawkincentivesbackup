@@ -61,7 +61,7 @@ function bhk_card_browser_theme_suggestions_card(array $variables) {
 /**
  * Implements hook_form_BASE_FORM_ID_alter().
  */
-function bhk_card_browser_form_card_form_alter(array &$form, FormStateInterface $form_state, $form_id) {
+/*function bhk_card_browser_form_card_form_alter(array &$form, FormStateInterface $form_state, $form_id) {
 
   // Fields that should be visible when Prepaid option is selected as the Card
   // type.
@@ -193,4 +193,4 @@ function bhk_card_browser_form_card_form_alter(array &$form, FormStateInterface 
     ];
   }
 
-}
+}*/

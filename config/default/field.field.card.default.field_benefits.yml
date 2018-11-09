@@ -1,0 +1,19 @@
+uuid: c2e792fd-83db-4fe2-aae8-d6deace44129
+langcode: en
+status: true
+dependencies:
+  config:
+    - bhk_card_browser.card_type.default
+    - field.storage.card.field_benefits
+id: card.default.field_benefits
+field_name: field_benefits
+entity_type: card
+bundle: default
+label: Benefits
+description: 'Each benefit should not exceed 45 characters including spaces.  '
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

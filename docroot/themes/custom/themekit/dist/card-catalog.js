@@ -550,6 +550,22 @@ function isNetworkRequestInFlight(networkStatus) {
 /* 31 */,
 /* 32 */,
 /* 33 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FetchType; });
+var FetchType;
+(function (FetchType) {
+    FetchType[FetchType["normal"] = 1] = "normal";
+    FetchType[FetchType["refetch"] = 2] = "refetch";
+    FetchType[FetchType["poll"] = 3] = "poll";
+})(FetchType || (FetchType = {}));
+//# sourceMappingURL=types.js.map
+
+/***/ }),
+/* 34 */,
+/* 35 */,
+/* 36 */
 /***/ (function(module, exports) {
 
 /*
@@ -631,7 +647,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 34 */
+/* 37 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -863,7 +879,7 @@ function applyToTag (styleElement, obj) {
 
 
 /***/ }),
-/* 35 */
+/* 38 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -972,22 +988,6 @@ function normalizeComponent (
 
 
 /***/ }),
-/* 36 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FetchType; });
-var FetchType;
-(function (FetchType) {
-    FetchType[FetchType["normal"] = 1] = "normal";
-    FetchType[FetchType["refetch"] = 2] = "refetch";
-    FetchType[FetchType["poll"] = 3] = "poll";
-})(FetchType || (FetchType = {}));
-//# sourceMappingURL=types.js.map
-
-/***/ }),
-/* 37 */,
-/* 38 */,
 /* 39 */,
 /* 40 */,
 /* 41 */
@@ -1332,7 +1332,7 @@ GraphQLError.prototype = Object.create(Error.prototype, {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__networkStatus__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util_Observable__ = __webpack_require__(72);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__errors_ApolloError__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__types__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__types__ = __webpack_require__(33);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -17541,7 +17541,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "ObservableQuery", function() { return __WEBPACK_IMPORTED_MODULE_1__core_ObservableQuery__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_networkStatus__ = __webpack_require__(22);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "NetworkStatus", function() { return __WEBPACK_IMPORTED_MODULE_2__core_networkStatus__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_types__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_types__ = __webpack_require__(33);
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "FetchType", function() { return __WEBPACK_IMPORTED_MODULE_3__core_types__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__errors_ApolloError__ = __webpack_require__(47);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "ApolloError", function() { return __WEBPACK_IMPORTED_MODULE_4__errors_ApolloError__["a"]; });
@@ -19723,7 +19723,7 @@ var ApolloClient = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__data_queries__ = __webpack_require__(134);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ObservableQuery__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__networkStatus__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__types__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__types__ = __webpack_require__(33);
 var __assign = (this && this.__assign) || Object.assign || function(t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
         s = arguments[i];
@@ -20759,7 +20759,7 @@ var DedupLink = /** @class */ (function (_super) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return QueryScheduler; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_types__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_types__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_ObservableQuery__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_networkStatus__ = __webpack_require__(22);
 // The QueryScheduler is supposed to be a mechanism that schedules polling queries such that
@@ -24414,7 +24414,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _CardList = __webpack_require__(250);
+var _CardList = __webpack_require__(249);
 
 var _CardList2 = _interopRequireDefault(_CardList);
 
@@ -24456,11 +24456,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Card = __webpack_require__(253);
+var _Card = __webpack_require__(252);
 
 var _Card2 = _interopRequireDefault(_Card);
 
-var _FilterItem = __webpack_require__(257);
+var _FilterItem = __webpack_require__(256);
 
 var _FilterItem2 = _interopRequireDefault(_FilterItem);
 
@@ -24468,84 +24468,11 @@ var _graphqlTag = __webpack_require__(102);
 
 var _graphqlTag2 = _interopRequireDefault(_graphqlTag);
 
-var _RadioFilter = __webpack_require__(261);
-
-var _RadioFilter2 = _interopRequireDefault(_RadioFilter);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 exports.default = {
   name: 'CardList',
   components: {
-    RadioFilter: _RadioFilter2.default,
     Card: _Card2.default,
     FilterItem: _FilterItem2.default
   },
@@ -24559,8 +24486,6 @@ exports.default = {
   data: function data() {
     return {
       allCards: null,
-      sidebar: null,
-      filters: [{ key: 'coBrand', value: 'Co-brandable' }, { key: 'customization', value: 'Customization Available' }, { key: 'fulfillment', value: 'Fast Fulfillment Available' }, { key: 'virtual', value: 'Virtual Option' }, { key: 'phsyical', value: 'Physical Option' }],
       cardsToShow: 6,
       cardCount: 0,
       hasSelectedCards: false,
@@ -24657,29 +24582,6 @@ exports.default = {
     },
 
 
-    // Update radio filters
-    selectRadio: function selectRadio(filter) {
-      var value = filter.target.value,
-          type = filter.target.name,
-          index = this.selectedFilters.findIndex(function (filter) {
-        return filter.type === type;
-      });
-
-      this.selectedRadioOption = value;
-
-      //Remove existing filters of same type
-      if (index > -1) {
-        this.selectedFilters.splice(index, 1);
-      }
-
-      if (value !== 'All') {
-        if (filter.target.checked) {
-          this.selectedFilters.push({ value: value, type: type });
-        }
-      }
-    },
-
-
     // Update selected filters
     selectFilter: function selectFilter(filter) {
       var value = filter.target.value,
@@ -24749,28 +24651,20 @@ exports.default = {
       if (allCards) {
 
         if (this.selectedFilters.length > 0) {
-          var _loop = function _loop(i) {
-            allCards = allCards.filter(function (card) {
-              // Get filter type
-              var type = _this.selectedFilters[i].type,
-                  value = _this.selectedFilters[i].value;
+          allCards = allCards.filter(function (card) {
+            // Get filter type
+            var cardValues = [];
+            for (var i in card.cardCategory) {
+              cardValues.push(card.cardCategory[i].entity.entityLabel);
+            }
 
-              if (type === 'boolean') {
-                if (value === 'phsyical') {
-                  return card['virtual'] === false;
-                } else {
-                  return card[value] === true;
-                }
-              } else {
-                // Find cards that match filter
-                return card[type] === value;
+            for (var j in _this.selectedFilters) {
+              if (!(cardValues.indexOf(_this.selectedFilters[j].value) !== -1)) {
+                return 0;
               }
-            });
-          };
-
-          for (var i in this.selectedFilters) {
-            _loop(i);
-          }
+            }
+            return 1;
+          });
         }
 
         // Set number of cards for this filter
@@ -24789,29 +24683,16 @@ exports.default = {
     },
 
 
-    // Get content for sidebar
-    sidebarContent: function sidebarContent() {
-      var sidebar = this.sidebar ? this.sidebar.fieldPContent : [];
-      if (sidebar) {
-        var content = [];
-        for (var i in sidebar) {
-          if (sidebar[i].entity.bundle === 'reference_card_browser') {
-            content.push(sidebar[i].entity);
-          }
-        }
-        return content;
-      }
-    },
-
-
     // Return all unique types sorted
-    types: function types() {
+    filters: function filters() {
       var allCards = this.allCards ? this.allCards.entities : [],
-          types = ['All'];
+          types = [];
       if (allCards) {
         for (var i in allCards) {
-          for (var j in allCards[i].cardType) {
-            types.push(allCards[i].cardType);
+          for (var j in allCards[i].cardCategory) {
+            for (var k in allCards[i].cardCategory[j]) {
+              types.push(allCards[i].cardCategory[j].entity.entityLabel);
+            }
           }
         }
         types = types.filter(this.onlyUnique);
@@ -24823,22 +24704,63 @@ exports.default = {
 
   apollo: {
     // Query for all the published cards
-    allCards: (0, _graphqlTag2.default)('{\n      allCards: cardQuery(sort:{\n        direction: ASC\n        field: "name"\n      },\n      filter: {\n        conditions:[{\n          field: "status"\n          value: "1"\n        }],\n      }) {\n        entities {\n          ... on Card {\n            id: entityId\n            title: entityLabel\n            cashBack: fieldCashBack\n            coBrand: fieldCoBrand\n            customization: fieldCustomization\n            image: fieldPMedia {\n              entity {\n                fieldMediaImage {\n                  entity {\n                    fieldImage {\n                      image: derivative(style:FOURTH_COLUMN) {\n                        url\n                      }\n                      alt\n                    }\n                  }\n                }\n              }\n            }\n            cardCategory:fieldCardCategory {\n              entity {\n                entityLabel\n              }\n            }\n            cost: fieldCost\n            currency:fieldCurrency {\n              entity {\n                entityLabel\n              }\n            }\n            delivery:fieldDelivery\n            description:fieldDescription {\n              processed\n            }\n            fulfillment: fieldFulfillment\n            filtered: fieldFiltered\n            greetingCard: fieldGreetingCard\n            issance: fieldIssuance\n            virtual: fieldVirtual\n            loadMax: fieldLoadMax\n            network: fieldNetwork\n            numMechants: fieldNumMechants\n            personalization: fieldPersonalization\n            prepaidLoad: fieldPrepaidLoad\n            prepaidType: fieldPrepaidType\n            cardType:fieldCardType\n          }\n        }\n      }\n    }'),
-
-    // Query for sidebar content
-    sidebar: {
-      query: (0, _graphqlTag2.default)('query ($nid:String!){\n        sidebar:nodeById (id: $nid) {\n          entityLabel\n          fieldPContent {\n            entity {\n              bundle:entityBundle\n              description: fieldDescription {\n                processed\n              }\n            }\n          }\n        }\n      }'),
-      variables: function variables() {
-        return {
-          nid: this.nodeId
-        };
-      },
-      skip: function skip() {
-        return !this.nodeId;
-      }
-    }
+    allCards: (0, _graphqlTag2.default)('{\n      allCards: cardQuery(sort:{\n        direction: ASC\n        field: "name"\n      },\n      filter: {\n        conditions:[{\n          field: "status"\n          value: "1"\n        }],\n      }) {\n        entities {\n          ... on Card {\n            id: entityId\n            title: entityLabel\n            image: fieldPMedia {\n              entity {\n                fieldMediaImage {\n                  entity {\n                    fieldImage {\n                      image: derivative(style:FOURTH_COLUMN) {\n                        url\n                      }\n                      alt\n                    }\n                  }\n                }\n              }\n            }\n            cardCategory:fieldCardCategory {\n              entity {\n                entityLabel\n              }\n            }\n            cost: fieldCost\n            description:fieldDescription {\n              processed\n            }\n            cardType:fieldCardType\n            benefits: fieldBenefits\n          }\n        }\n      }\n    }')
   }
-};
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ }),
@@ -24846,128 +24768,11 @@ exports.default = {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(jQuery) {
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -25069,13 +24874,12 @@ exports.default = {
   methods: {
 
     // Open card detail modal
-    details: function details(id) {
+    /*details(id) {
       // Find detail content
-      var selector = 'modal--card-' + id;
-      var modalSrc = document.getElementsByClassName(selector);
+      let selector = 'modal--card-' + id;
+      let modalSrc = document.getElementsByClassName(selector);
       if (!modalSrc.length) return;
-
-      // Open in modal
+       // Open in modal
       jQuery.magnificPopup.open({
         items: {
           src: modalSrc,
@@ -25085,20 +24889,20 @@ exports.default = {
         closeOnBgClick: false,
         closeOnContentClick: false,
         callbacks: {
-          beforeOpen: function beforeOpen() {
-            jQuery.magnificPopup.instance.close = function () {
+          beforeOpen: function() {
+            jQuery.magnificPopup.instance.close = function() {
               jQuery.magnificPopup.proto.close.call(this);
             };
           }
         }
       });
-    },
+    },*/
+
     handleClick: function handleClick() {
       this.$emit('selectCard', this.card.id);
     }
   }
 };
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ }),
 /* 183 */
@@ -25116,47 +24920,17 @@ Object.defineProperty(exports, "__esModule", {
 //
 
 exports.default = {
-  props: ['filter', 'type']
-};
-
-/***/ }),
-/* 184 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-//
-//
-//
-//
-
-exports.default = {
   props: ['filter', 'type'],
-  data: function data() {
-
-    return {
-      typeMap: {
-        'All': 'All Rewards',
-        'gift_card': 'Gift Card',
-        'omnicode': 'OmniCode',
-        'prepaid': 'PrePaid'
-      }
-    };
-  },
-
 
   methods: {
-    handleClick: function handleClick($event) {
-      this.$emit('selectRadio', $event);
+    cleanString: function cleanString(str) {
+      return str.replace(/[^a-zA-Z ]/g, '').replace(/[^A-Z0-9]/ig, '-').replace('--', '-').toLowerCase();
     }
   }
 };
 
 /***/ }),
+/* 184 */,
 /* 185 */,
 /* 186 */,
 /* 187 */,
@@ -25217,8 +24991,7 @@ exports.default = {
 /* 242 */,
 /* 243 */,
 /* 244 */,
-/* 245 */,
-/* 246 */
+/* 245 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25228,7 +25001,7 @@ var _vue = __webpack_require__(98);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _App = __webpack_require__(247);
+var _App = __webpack_require__(246);
 
 var _App2 = _interopRequireDefault(_App);
 
@@ -25329,7 +25102,7 @@ window.cardCatalog = new _vue2.default({
 });
 
 /***/ }),
-/* 247 */
+/* 246 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -25337,12 +25110,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_App_vue__ = __webpack_require__(180);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_App_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_App_vue__);
 /* harmony namespace reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_App_vue__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_App_vue__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_5bb1e590_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_App_vue__ = __webpack_require__(266);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_5bb1e590_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_App_vue__ = __webpack_require__(261);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(38);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(248)
+  __webpack_require__(247)
 }
 /* script */
 
@@ -25389,17 +25162,17 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 248 */
+/* 247 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(249);
+var content = __webpack_require__(248);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var add = __webpack_require__(34).default
+var add = __webpack_require__(37).default
 var update = add("a115561a", content, false, {});
 // Hot Module Replacement
 if(false) {
@@ -25416,10 +25189,10 @@ if(false) {
 }
 
 /***/ }),
-/* 249 */
+/* 248 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(33)(false);
+exports = module.exports = __webpack_require__(36)(false);
 // imports
 
 
@@ -25430,7 +25203,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 
 /***/ }),
-/* 250 */
+/* 249 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -25438,12 +25211,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_CardList_vue__ = __webpack_require__(181);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_CardList_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_CardList_vue__);
 /* harmony namespace reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_CardList_vue__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_CardList_vue__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_2a4c0cfe_hasScoped_true_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_CardList_vue__ = __webpack_require__(265);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_2a4c0cfe_hasScoped_true_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_CardList_vue__ = __webpack_require__(260);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(38);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(251)
+  __webpack_require__(250)
 }
 /* script */
 
@@ -25490,17 +25263,17 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 251 */
+/* 250 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(252);
+var content = __webpack_require__(251);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var add = __webpack_require__(34).default
+var add = __webpack_require__(37).default
 var update = add("69acb076", content, false, {});
 // Hot Module Replacement
 if(false) {
@@ -25517,21 +25290,21 @@ if(false) {
 }
 
 /***/ }),
-/* 252 */
+/* 251 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(33)(false);
+exports = module.exports = __webpack_require__(36)(false);
 // imports
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 253 */
+/* 252 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -25539,12 +25312,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Card_vue__ = __webpack_require__(182);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Card_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Card_vue__);
 /* harmony namespace reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Card_vue__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Card_vue__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_fbdde980_hasScoped_true_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Card_vue__ = __webpack_require__(256);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_fbdde980_hasScoped_true_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Card_vue__ = __webpack_require__(255);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(38);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(254)
+  __webpack_require__(253)
 }
 /* script */
 
@@ -25591,17 +25364,17 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 254 */
+/* 253 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(255);
+var content = __webpack_require__(254);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var add = __webpack_require__(34).default
+var add = __webpack_require__(37).default
 var update = add("895e9f84", content, false, {});
 // Hot Module Replacement
 if(false) {
@@ -25618,10 +25391,10 @@ if(false) {
 }
 
 /***/ }),
-/* 255 */
+/* 254 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(33)(false);
+exports = module.exports = __webpack_require__(36)(false);
 // imports
 
 
@@ -25632,7 +25405,7 @@ exports.push([module.i, "", ""]);
 
 
 /***/ }),
-/* 256 */
+/* 255 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -25647,6 +25420,14 @@ var render = function() {
       _c("div", { staticClass: "media" }, [
         _c("div", { staticClass: "media-content" }, [
           _c("button", {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.selected,
+                expression: "selected"
+              }
+            ],
             staticClass: "heart",
             on: { click: _vm.handleClick }
           }),
@@ -25679,6 +25460,12 @@ var render = function() {
           _c("h3", { staticClass: "card-title" }, [
             _vm._v("\n        " + _vm._s(_vm.card.title) + "\n      ")
           ]),
+          _vm._v(" "),
+          _c(
+            "button",
+            { staticClass: "heart", on: { click: _vm.handleClick } },
+            [_vm._v("Order Today")]
+          ),
           _vm._v(" "),
           _c("div", { staticClass: "features" }, [
             _c("div", { staticClass: "top-level-info" }, [
@@ -25716,470 +25503,47 @@ var render = function() {
               )
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "content boolean" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "feature icon co-brand",
-                  class: { true: _vm.card.coBrand }
-                },
-                [_vm._v("\n            Co-Brandable\n          ")]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "feature icon fulfillment",
-                  class: { true: _vm.card.fulfillment }
-                },
-                [_vm._v("\n            Fast Fulfillment\n          ")]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "feature icon customization",
-                  class: { true: _vm.card.customization }
-                },
-                [_vm._v("\n            Customization\n          ")]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  directives: [
+            _c("div", { staticClass: "content" }, [
+              _vm.card.description
+                ? _c(
+                    "div",
                     {
-                      name: "show",
-                      rawName: "v-show",
-                      value:
-                        _vm.card.cardType === "prepaid" ||
-                        _vm.card.cardType === "gift_card",
-                      expression:
-                        "card.cardType === 'prepaid' || card.cardType === 'gift_card'"
-                    }
-                  ],
-                  staticClass: "feature icon virtual",
-                  class: { true: _vm.card.virtual }
-                },
-                [_vm._v("\n            Virtual Options\n          ")]
-              )
+                      staticClass: "description",
+                      domProps: {
+                        innerHTML: _vm._s(_vm.card.description.processed)
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "\n            " +
+                          _vm._s(_vm.card.description.processed) +
+                          "\n          "
+                      )
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.card.benefits.length > 0
+                ? _c("div", { staticClass: "benfits" }, [
+                    _c(
+                      "ul",
+                      _vm._l(_vm.card.benefits, function(benefit) {
+                        return _c("li", [
+                          _vm._v(
+                            "\n                " +
+                              _vm._s(benefit) +
+                              "\n              "
+                          )
+                        ])
+                      })
+                    )
+                  ])
+                : _vm._e()
             ])
-          ]),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: !_vm.selected,
-                  expression: "!selected"
-                }
-              ],
-              staticClass: "view-details",
-              on: {
-                click: function($event) {
-                  _vm.details(_vm.card.id)
-                }
-              }
-            },
-            [_vm._v("View Details")]
-          )
+          ])
         ]
       )
     ]),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        directives: [
-          {
-            name: "show",
-            rawName: "v-show",
-            value: !_vm.selected,
-            expression: "!selected"
-          }
-        ],
-        staticClass: "card card-modal mfp-hide",
-        class: "modal--card-" + _vm.card.id
-      },
-      [
-        _c("div", { staticClass: "card-info" }, [
-          _c("div", { staticClass: "media" }, [
-            _c("img", {
-              attrs: {
-                src:
-                  _vm.card.image.entity.fieldMediaImage.entity.fieldImage.image
-                    .url,
-                alt: _vm.card.image.entity.fieldMediaImage.entity.fieldImage.alt
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "content" }, [
-            _c("h3", { staticClass: "card-title" }, [
-              _vm._v("\n          " + _vm._s(_vm.card.title) + "\n        ")
-            ]),
-            _vm._v(" "),
-            _vm.card.description
-              ? _c(
-                  "div",
-                  {
-                    staticClass: "description",
-                    domProps: {
-                      innerHTML: _vm._s(_vm.card.description.processed)
-                    }
-                  },
-                  [
-                    _vm._v(
-                      "\n          " +
-                        _vm._s(_vm.card.description.processed) +
-                        "\n        "
-                    )
-                  ]
-                )
-              : _vm._e()
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "features" }, [
-          _c("div", { staticClass: "top-level-info" }, [
-            _c("div", { staticClass: "type", class: _vm.card.cardType }, [
-              _vm._v(
-                "\n          " +
-                  _vm._s(_vm.typeMap[_vm.card.cardType]) +
-                  "\n        "
-              )
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value:
-                      _vm.card.cardType === "prepaid" ||
-                      _vm.card.cardType === "gift_card",
-                    expression:
-                      "card.cardType === 'prepaid' || card.cardType === 'gift_card'"
-                  }
-                ],
-                staticClass: "cost"
-              },
-              [
-                _vm._v(
-                  "\n          " +
-                    _vm._s(_vm.costMap[_vm.card.cost]) +
-                    "\n        "
-                )
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "content boolean" },
-            [
-              _vm.card.cardType === "prepaid" ||
-              _vm.card.cardType === "gift_card"
-                ? [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "feature icon co-brand",
-                        class: { true: _vm.card.coBrand }
-                      },
-                      [_vm._v("\n            Co-Brandable\n          ")]
-                    )
-                  ]
-                : _vm._e(),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "feature icon fulfillment",
-                  class: { true: _vm.card.fulfillment }
-                },
-                [_vm._v("\n          Fast Fulfillment\n        ")]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "feature icon customization",
-                  class: { true: _vm.card.customization }
-                },
-                [_vm._v("\n          Customization Available\n        ")]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "feature icon virtual",
-                  class: { true: _vm.card.virtual }
-                },
-                [_vm._v("\n          Virtual Options\n        ")]
-              ),
-              _vm._v(" "),
-              _vm.card.cardType === "prepaid"
-                ? [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "feature icon cashBack",
-                        class: { true: _vm.card.cashBack }
-                      },
-                      [_vm._v("\n            5% Cash Back\n          ")]
-                    )
-                  ]
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.card.cardType === "prepaid"
-                ? [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "feature icon filtered",
-                        class: { true: _vm.card.filtered }
-                      },
-                      [_vm._v("\n            Filterable\n          ")]
-                    )
-                  ]
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.card.cardType === "prepaid" ||
-              _vm.card.cardType === "gift_card"
-                ? [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "feature icon greetingCard",
-                        class: { true: _vm.card.greetingCard }
-                      },
-                      [
-                        _vm._v(
-                          "\n            Greeting Card Available\n          "
-                        )
-                      ]
-                    )
-                  ]
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.card.cardType === "prepaid"
-                ? [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "feature icon personalization",
-                        class: {
-                          true: _vm.personalizationMap[_vm.card.personalization]
-                        }
-                      },
-                      [_vm._v("\n            Personalization\n          ")]
-                    )
-                  ]
-                : _vm._e()
-            ],
-            2
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "content varied" },
-            [
-              _c(
-                "div",
-                {
-                  staticClass: "feature delivery",
-                  class: { true: _vm.card.delivery }
-                },
-                [
-                  _c("span", { staticClass: "label" }, [_vm._v("Delivery")]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "value" }, [
-                    _vm._v(_vm._s(_vm.devlieryMap[_vm.card.delivery]))
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _vm.card.cardType === "gift_card" ||
-              _vm.card.cardType === "omnicodes"
-                ? [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "feature cardCategory",
-                        class: { true: _vm.card.cardCategory }
-                      },
-                      [
-                        _c("span", { staticClass: "label" }, [
-                          _vm._v("Card Category")
-                        ]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "value" }, [
-                          _vm._v(
-                            _vm._s(_vm.card.cardCategory.entity.entityLabel)
-                          )
-                        ])
-                      ]
-                    )
-                  ]
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.card.cardType === "gift_card" ||
-              _vm.card.cardType === "omnicodes"
-                ? [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "feature currency",
-                        class: { true: _vm.card.currency }
-                      },
-                      [
-                        _c("span", { staticClass: "label" }, [
-                          _vm._v("Currency")
-                        ]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "value" }, [
-                          _vm._v(_vm._s(_vm.card.currency.entity.entityLabel))
-                        ])
-                      ]
-                    )
-                  ]
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.card.cardType === "prepaid" &&
-              (_vm.card.prepaidType === "pre_filtered" ||
-                _vm.card.prepaidType === "filtered")
-                ? [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "feature numMechants",
-                        class: { true: _vm.card.numMechants }
-                      },
-                      [
-                        _c("span", { staticClass: "label" }, [
-                          _vm._v("Number of Merchants")
-                        ]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "value" }, [
-                          _vm._v(_vm._s(_vm.card.numMechants))
-                        ])
-                      ]
-                    )
-                  ]
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.card.cardType === "gift_card" ||
-              _vm.card.cardType === "omnicodes"
-                ? [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "feature issuance",
-                        class: { true: _vm.card.issance }
-                      },
-                      [
-                        _c("span", { staticClass: "label" }, [
-                          _vm._v("Issuance")
-                        ]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "value" }, [
-                          _vm._v(_vm._s(_vm.issuanceMap[_vm.card.issance]))
-                        ])
-                      ]
-                    )
-                  ]
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.card.cardType === "gift_card" ||
-              _vm.card.cardType === "omnicodes"
-                ? [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "feature loadMax",
-                        class: { true: _vm.card.loadMax }
-                      },
-                      [
-                        _c("span", { staticClass: "label" }, [
-                          _vm._v("Load Max")
-                        ]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "value" }, [
-                          _vm._v("$" + _vm._s(_vm.card.loadMax))
-                        ])
-                      ]
-                    )
-                  ]
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.card.cardType === "prepaid"
-                ? [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "feature network",
-                        class: { true: _vm.card.network }
-                      },
-                      [
-                        _c("span", { staticClass: "label" }, [
-                          _vm._v("Network")
-                        ]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "value" }, [
-                          _vm._v(_vm._s(_vm.networkMap[_vm.card.network]))
-                        ])
-                      ]
-                    )
-                  ]
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.card.cardType === "prepaid"
-                ? [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "feature prepaidLoad",
-                        class: { true: _vm.card.prepaidLoad }
-                      },
-                      [
-                        _c("span", { staticClass: "label" }, [
-                          _vm._v("Prepaid Load")
-                        ]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "value" }, [
-                          _vm._v(
-                            _vm._s(_vm.prepaidLoadMap[_vm.card.prepaidLoad])
-                          )
-                        ])
-                      ]
-                    )
-                  ]
-                : _vm._e()
-            ],
-            2
-          )
-        ]),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "marketo-modal-cta-link",
-            on: {
-              click: function($event) {
-                _vm.$emit("openFrom")
-              }
-            }
-          },
-          [_vm._v("Start a Conversation")]
-        )
-      ]
-    ),
     _vm._v(" "),
     _c("input", {
       directives: [
@@ -26206,7 +25570,7 @@ if (false) {
 }
 
 /***/ }),
-/* 257 */
+/* 256 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -26214,12 +25578,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_FilterItem_vue__ = __webpack_require__(183);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_FilterItem_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_FilterItem_vue__);
 /* harmony namespace reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_FilterItem_vue__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_FilterItem_vue__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_652df75b_hasScoped_true_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_FilterItem_vue__ = __webpack_require__(260);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_652df75b_hasScoped_true_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_FilterItem_vue__ = __webpack_require__(259);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(38);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(258)
+  __webpack_require__(257)
 }
 /* script */
 
@@ -26266,17 +25630,17 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 258 */
+/* 257 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(259);
+var content = __webpack_require__(258);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var add = __webpack_require__(34).default
+var add = __webpack_require__(37).default
 var update = add("4c10f804", content, false, {});
 // Hot Module Replacement
 if(false) {
@@ -26293,10 +25657,10 @@ if(false) {
 }
 
 /***/ }),
-/* 259 */
+/* 258 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(33)(false);
+exports = module.exports = __webpack_require__(36)(false);
 // imports
 
 
@@ -26307,7 +25671,7 @@ exports.push([module.i, "\nlabel[data-v-652df75b] {\n  text-align: left;\n}\n\n"
 
 
 /***/ }),
-/* 260 */
+/* 259 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -26320,14 +25684,14 @@ var render = function() {
   return _c("label", [
     _c("input", {
       attrs: { type: "checkbox", name: _vm.type },
-      domProps: { value: _vm.filter.key },
+      domProps: { value: _vm.filter },
       on: {
         change: function($event) {
           _vm.$emit("selectFilter", $event)
         }
       }
     }),
-    _vm._v(_vm._s(_vm.filter.value))
+    _c("span", [_vm._v(_vm._s(_vm.filter))])
   ])
 }
 var staticRenderFns = []
@@ -26341,144 +25705,7 @@ if (false) {
 }
 
 /***/ }),
-/* 261 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_RadioFilter_vue__ = __webpack_require__(184);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_RadioFilter_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_RadioFilter_vue__);
-/* harmony namespace reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_RadioFilter_vue__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_RadioFilter_vue__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_670cd85a_hasScoped_true_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_RadioFilter_vue__ = __webpack_require__(264);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(35);
-var disposed = false
-function injectStyle (context) {
-  if (disposed) return
-  __webpack_require__(262)
-}
-/* script */
-
-
-/* template */
-
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-670cd85a"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-
-var Component = Object(__WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__["a" /* default */])(
-  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_RadioFilter_vue___default.a,
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_670cd85a_hasScoped_true_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_RadioFilter_vue__["a" /* render */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_670cd85a_hasScoped_true_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_RadioFilter_vue__["b" /* staticRenderFns */],
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "js/src/v-card-catalog/components/RadioFilter.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-670cd85a", Component.options)
-  } else {
-    hotAPI.reload("data-v-670cd85a", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-/* harmony default export */ __webpack_exports__["default"] = (Component.exports);
-
-
-/***/ }),
-/* 262 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(263);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var add = __webpack_require__(34).default
-var update = add("371f9105", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"id\":\"data-v-670cd85a\",\"scoped\":true,\"sourceMap\":false}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./RadioFilter.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"id\":\"data-v-670cd85a\",\"scoped\":true,\"sourceMap\":false}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./RadioFilter.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 263 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(33)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 264 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("label", [
-    _c("span", [
-      _c("input", {
-        attrs: { type: "radio", name: _vm.type },
-        domProps: { value: _vm.filter },
-        on: {
-          change: function($event) {
-            _vm.handleClick($event)
-          }
-        }
-      }),
-      _vm._v(_vm._s(_vm.typeMap[_vm.filter]))
-    ])
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-670cd85a", { render: render, staticRenderFns: staticRenderFns })
-  }
-}
-
-/***/ }),
-/* 265 */
+/* 260 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -26547,72 +25774,21 @@ var render = function() {
       _c("div", { staticClass: "card-list" }, [
         _c("div", { staticClass: "filters" }, [
           _c("div", { staticClass: "content" }, [
-            _c("h3", { staticClass: "filter-title" }, [_vm._v("Reward Types")]),
+            _c("h3", { staticClass: "filter-title" }, [_vm._v("Filter By")]),
             _vm._v(" "),
-            _vm.types.length > 0
+            _vm.filters.length > 0
               ? _c(
                   "div",
-                  { staticClass: "filter filter--type" },
-                  _vm._l(_vm.types, function(type) {
-                    return _c("RadioFilter", {
-                      key: type,
-                      class: { selected: _vm.selectedRadioOption === type },
-                      attrs: { filter: type, type: "cardType" },
-                      on: { selectRadio: _vm.selectRadio }
+                  { staticClass: "filter filter--category" },
+                  _vm._l(_vm.filters, function(filter) {
+                    return _c("FilterItem", {
+                      key: filter,
+                      attrs: { filter: filter, type: "boolean" },
+                      on: { selectFilter: _vm.selectFilter }
                     })
                   })
                 )
-              : _vm._e(),
-            _vm._v(" "),
-            _c("div", { staticClass: "box-filter" }, [
-              _c("h3", { staticClass: "filter-title" }, [_vm._v("Filters")]),
-              _vm._v(" "),
-              _vm.filters.length > 0
-                ? _c(
-                    "div",
-                    { staticClass: "filter filter--category" },
-                    _vm._l(_vm.filters, function(filter) {
-                      return _c("FilterItem", {
-                        key: filter.key,
-                        attrs: { filter: filter, type: "boolean" },
-                        on: { selectFilter: _vm.selectFilter }
-                      })
-                    })
-                  )
-                : _vm._e()
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "box-filter content" },
-              [
-                _c("h3", { staticClass: "filter-title" }, [
-                  _vm._v("About Our Rewards")
-                ]),
-                _vm._v(" "),
-                _vm._l(_vm.sidebarContent, function(content) {
-                  return content.description
-                    ? _c(
-                        "div",
-                        {
-                          staticClass: "description",
-                          domProps: {
-                            innerHTML: _vm._s(content.description.processed)
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n            " +
-                              _vm._s(content.description.processed) +
-                              "\n          "
-                          )
-                        ]
-                      )
-                    : _vm._e()
-                })
-              ],
-              2
-            )
+              : _vm._e()
           ])
         ]),
         _vm._v(" "),
@@ -26681,7 +25857,7 @@ if (false) {
 }
 
 /***/ }),
-/* 266 */
+/* 261 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -26709,5 +25885,5 @@ if (false) {
 }
 
 /***/ })
-],[246]);
+],[245]);
 //# sourceMappingURL=card-catalog.js.map

@@ -6,9 +6,6 @@
 
   .card-list {
     @include content-width(default);
-    @include breakpoint(marge) {
-      display: flex;
-    }
   }
 
   // Filters
@@ -18,25 +15,7 @@
     @include top-bottom(padding, rem-calc(50));
 
     @include breakpoint(marge) {
-      flex: 0 0 rem-calc(320);
       padding-right: rem-calc(50);
-    }
-
-    &:before {
-      content: "";
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      width: calc(100% + 60px);
-      left: rem-calc(-30);
-      right: rem-calc(-30);
-      background-image: $gray-gradient;
-
-      @include breakpoint(marge) {
-        width: 9600px;
-        right: 0;
-        left: auto;
-      }
     }
 
     .content {
@@ -50,87 +29,39 @@
       color: $secondary-color-dark;
     }
 
-    .box-filter {
-      padding: rem-calc(20);
-      background: $white;
-      box-shadow: 0 5px 15px rgba(153, 153, 153, 0.15);
-
-      &:last-child {
-        border-bottom: none;
-      }
-
-      &.content {
+    .filter--category {
+      display: flex;
+      input[type=checkbox] {
         display: none;
-        margin-top: rem-calc(32);
-        @include breakpoint(marge) {
-          display: block;
-        }
-      }
 
-      .filter--category {
-        label {
-          &:last-child {
-            input {
-              margin-bottom: 0;
-            }
-          }
-        }
-        @include breakpoint(marge down) {
-          display: flex;
-          flex-wrap: wrap;
-          label {
-            margin-right: rem-calc(20);
-            &:last-child {
-              margin-right: 0;
-            }
-          }
-        }
-
-      }
-
-      .description{
-        h3 {
-          color: $medium-gray;
-          font-size: rem-calc(13);
-        }
-
-        p {
-          font-size: rem-calc(13);
-        }
-      }
-    }
-
-    .filter--type {
-      @include tk-flex-block-grid(2, 'label', $gutter: 16px, $bottom-gutter: 16px);
-      margin-bottom: rem-calc(32);
-
-      @include breakpoint(medium only) {
-        @include tk-flex-block-grid(4, 'label', $gutter: 16px, $bottom-gutter: 16px);
-      }
-
-      input[type=radio] {
-        display: none;
-      }
-
-      label span {
-        display: block;
-        background: $white;
-        text-align: center;
-        border-radius: 5px;
-        font-size: rem-calc(13);
-        @include top-bottom(padding, rem-calc(20));
-        box-shadow: 0 5px 15px rgba(153, 153, 153, 0.15);
-        cursor: pointer;
-
-        @include selectors(active){
+        &:checked + span {
           background: $secondary-color-dark;
           color: $white;
         }
       }
 
-      label.selected span {
-        background: $secondary-color-dark;
-        color: $white;
+      label {
+        margin-right: rem-calc(8);
+
+        &:last-child {
+          margin-right: 0;
+        }
+
+        span {
+          display: block;
+          background: $white;
+          text-align: center;
+          border-radius: 5px;
+          font-size: rem-calc(13);
+          padding: rem-calc(20);
+          border: $lighter-gray solid 1px;
+          cursor: pointer;
+
+          @include selectors(active){
+            background: $secondary-color-dark;
+            color: $white;
+          }
+        }
       }
     }
   }
@@ -139,12 +70,7 @@
   .card-list {
     /* Cards */
     > .cards {
-      @include top-bottom(padding, rem-calc(50));
-      flex-grow: 1;
-
-      @include breakpoint(marge) {
-        padding-left: rem-calc(50);
-      }
+      padding-bottom: rem-calc(50);
     }
 
     .count {
@@ -242,22 +168,10 @@
 
 // Card Styles
 .card {
+  position: relative;
 
   .media {
     position: relative;
-  }
-
-  .heart {
-    height: 20px;
-    width: 20px;
-    position: absolute;
-    top: 6%;
-    right: 6%;
-    background-image: url(img-get('svg/heart.svg'));
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center center;
-    cursor: pointer;
   }
 
 
@@ -271,39 +185,50 @@
   }
 
   .features {
-    border-bottom: $lighter-gray 2px solid;
-    border-top: $lighter-gray 2px solid;
-    padding: 25px 0 15px;
+    padding: 25px 0 25px;
     position: relative;
 
-    .content.boolean {
-      @include tk-flex-block-grid(2, '.feature', $gutter: 16px, $bottom-gutter: 10px);
+    .content {
+      @include breakpoint(marge) {
+        display: flex;
+      }
+
+      & > div {
+        flex: 1;
+        margin-right: rem-calc(16);
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
     }
 
-    .feature {
-      font-size: rem-calc(13);
-      &.icon {
-        @include icon-before(times);
-        position: relative;
+    .benfits {
+      margin-top: rem-calc(16);
 
-        &:before {
-          color: $lighter-gray;
-          min-width: rem-calc(20);
-          text-align: left;
-          top: 2px;
+      @include breakpoint(marge) {
+        margin-top: 0;
+      }
+
+      ul {
+        list-style: none;
+        margin-left: rem-calc(24);
+
+        li {
           position: relative;
-        }
+          margin-bottom: rem-calc(4);
+          font-size: rem-calc(14);
 
-        &.true {
-          @include icon-before(checkmark);
-
-          &:before {
-            text-align: left;
+          @include icon-before(checkmark){
             color: $primary-color;
+            min-width: rem-calc(20);
+            text-align: left;
+            top: 5px;
+            left: rem-calc(-24);
+            position: absolute;
           }
         }
       }
-
     }
 
     .top-level-info {
@@ -344,10 +269,20 @@
   .card-list & {
     .card-overview {
       min-height: 100px;
-      margin-bottom: rem-calc(48);
+      position: relative;
+      z-index: 2;
 
       @include breakpoint(medium) {
         display: flex;
+      }
+
+      & > .content {
+        @include left-right(padding, rem-calc(20));
+        padding-bottom: rem-calc(36);
+        @include breakpoint(medium) {
+          @include left-right(padding, 0);
+          padding-bottom: 0;
+        }
       }
 
       .media {
@@ -358,7 +293,6 @@
           width: rem-calc(300);
           margin-right: rem-calc(24);
           margin-bottom: 0;
-          //align-items: center;
         }
 
         @include breakpoint(marge) {
@@ -367,14 +301,15 @@
 
         @include breakpoint(large) {
           width: rem-calc(300);
-          //align-items: flex-start;
         }
 
         .media-content {
           position: relative;
-          width: 50%;
+          width: 75%;
+          margin: 0 auto;
           @include breakpoint(medium) {
             width: 100%;
+            margin: 0;
           }
         }
         img {
@@ -389,100 +324,52 @@
       .content {
         text-align: left;
         flex: 1;
-
-
-        .view-details {
-          cursor: pointer;
-          @include link(blue);
-          margin-top: rem-calc(20);
-        }
       }
     }
   }
 
-  // Detail Modal
-  &.card-modal {
-    text-align: left;
+  .all-cards & {
+    padding: rem-calc(24 24 24 0);
+    margin-bottom: rem-calc(24);
 
-    .card-info {
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      height: calc(100% - 100px);
+      width: 100%;
+      box-shadow: 0 15px 15px rgba(0, 0, 0, 0.15);
+      bottom: 0;
+      right: 0;
+      z-index: 1;
 
       @include breakpoint(medium) {
-        display: flex;
+        width: calc(100% - 200px);
+        height: 100%;
       }
 
-      .media {
-        flex: 1;
-        margin-bottom: rem-calc(24);
-        @include breakpoint(medium) {
-          margin-right: rem-calc(24);
-          margin-bottom: 0;
-        }
+      @include breakpoint(marge) {
+        width: calc(100% - 120px);
       }
 
-      .content {
-        flex: 2;
+      @include breakpoint(large) {
+        width: calc(100% - 200px);
       }
     }
 
-    .description {
-      font-size: rem-calc(14);
-    }
-
-    .features {
-      margin: rem-calc(32 0);
-
-      .content.boolean {
-        @include tk-flex-block-grid(1, '.feature', $gutter: 16px, $bottom-gutter: 10px);
-
-        @include breakpoint(medium) {
-          @include tk-flex-block-grid(3, '.feature', $gutter: 16px, $bottom-gutter: 10px);
-        }
-      }
-
-      .feature {
-        .value {
-          color: $primary-color;
-          font-weight: $global-weight-bold;
-          min-width: rem-calc(35);
-          display: inline-block;
-        }
-
-        .label {
-          font-weight: $global-weight-normal;
-          margin-right: 4px;
-        }
-      }
-
-      .varied {
-        margin-top: rem-calc(32);
-        @include breakpoint(medium) {
-          @include tk-flex-block-grid(3, '.feature', $gutter: 16px, $bottom-gutter: 10px);
-        }
-
-        .feature {
-          margin-bottom: rem-calc(4);
-
-          @include breakpoint(medium) {
-            margin-bottom: 0;
-          }
-        }
-
-        &:before {
-          position: absolute;
-          top: 3px;
-          width: 100%;
-          background: red;
-          display: block;
-        }
-      }
-    }
-
-    .marketo-modal-cta-link {
+    .heart {
       @include btn(blue);
+      position: absolute;
+      bottom: 0;
+      left: rem-calc(16);
       cursor: pointer;
-      margin-left: auto;
-      margin-right: 0;
-      display: block;
+
+      @include breakpoint(medium) {
+        top: 0;
+        right: 0;
+        bottom: auto;
+        left: auto;
+      }
     }
   }
 
@@ -490,13 +377,16 @@
   .selected-cards & {
     max-width: 300px;
     .heart {
+      height: 20px;
+      width: 20px;
+      position: absolute;
+      top: 6%;
+      right: 6%;
       background-image: url(img-get('svg/heart-active.svg'));
-    }
-  }
-
-  &.selected {
-    .heart {
-      background-image: url(img-get('svg/heart-active.svg'));
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center center;
+      cursor: pointer;
     }
   }
 }
