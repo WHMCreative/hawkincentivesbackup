@@ -24,9 +24,9 @@
     }
 
     .filter-title {
-      font-size: rem-calc(20);
+      font-size: rem-calc(14);
       font-weight: $global-weight-bold;
-      color: $secondary-color-dark;
+      color: $light-gray;
     }
 
     .filter--category {
@@ -60,6 +60,7 @@
           @include selectors(active){
             background: $secondary-color-dark;
             color: $white;
+            font-weight: $global-weight-bold;
           }
         }
       }
@@ -187,6 +188,10 @@
   .features {
     padding: 25px 0 25px;
     position: relative;
+
+    @include breakpoint(medium) {
+      padding-bottom: 0;
+    }
 
     .content {
       @include breakpoint(marge) {
@@ -338,7 +343,7 @@
       position: absolute;
       height: calc(100% - 100px);
       width: 100%;
-      box-shadow: 0 15px 15px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
       bottom: 0;
       right: 0;
       z-index: 1;
