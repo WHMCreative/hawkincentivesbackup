@@ -37,6 +37,7 @@
         &:checked + span {
           background: $secondary-color-dark;
           color: $white;
+          font-weight: $global-weight-bold;
         }
       }
 
@@ -53,14 +54,16 @@
           text-align: center;
           border-radius: 5px;
           font-size: rem-calc(13);
-          padding: rem-calc(20);
+          padding: rem-calc(20 10);
           border: $lighter-gray solid 1px;
           cursor: pointer;
+          height: 100%;
+          display: flex;
+          align-items: center;
 
           @include selectors(active){
             background: $secondary-color-dark;
             color: $white;
-            font-weight: $global-weight-bold;
           }
         }
       }
