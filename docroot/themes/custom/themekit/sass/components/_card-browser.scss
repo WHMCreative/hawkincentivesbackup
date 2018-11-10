@@ -12,7 +12,8 @@
   .filters {
     position: relative;
     text-align: left;
-    @include top-bottom(padding, rem-calc(50));
+    padding-top: rem-calc(50);
+    padding-bottom: rem-calc(36);
 
     @include breakpoint(marge) {
       padding-right: rem-calc(50);
@@ -31,6 +32,7 @@
 
     .filter--category {
       display: flex;
+      flex-wrap: wrap;
       input[type=checkbox] {
         display: none;
 
@@ -43,6 +45,7 @@
 
       label {
         margin-right: rem-calc(8);
+        margin-bottom: rem-calc(12);
 
         &:last-child {
           margin-right: 0;
