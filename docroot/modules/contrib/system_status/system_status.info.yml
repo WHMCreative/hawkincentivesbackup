@@ -5,8 +5,8 @@ description : "Provides an overview of all the available updates for your Drupal
 configure : system_status.admin_settings
 
 
-# Information added by Drupal.org packaging script on 2018-01-29
-version: '8.x-2.7'
+# Information added by Drupal.org packaging script on 2018-11-15
+version: '8.x-2.8'
 core: '8.x'
 project: 'system_status'
-datestamp: 1517238504
+datestamp: 1542299596

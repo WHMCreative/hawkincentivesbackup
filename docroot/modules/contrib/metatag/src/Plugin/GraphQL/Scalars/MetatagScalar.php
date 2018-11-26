@@ -17,5 +17,4 @@ use Drupal\graphql\Plugin\GraphQL\Scalars\Internal\StringScalar;
  * )
  */
 class MetatagScalar extends StringScalar {
-
 }

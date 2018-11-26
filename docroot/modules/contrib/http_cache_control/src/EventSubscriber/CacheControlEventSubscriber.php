@@ -34,6 +34,10 @@ class CacheControlEventSubscriber implements EventSubscriberInterface {
         $ttl = $config->get('cache.http.302_max_age', $max_age);
         break;
 
+      case 301:
+        $ttl = $config->get('cache.http.301_max_age', $max_age);
+        break;
+
       default:
         $ttl = $config->get('cache.page.max_age');
         break;

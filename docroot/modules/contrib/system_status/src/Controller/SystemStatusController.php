@@ -138,14 +138,14 @@ class SystemStatusController extends ControllerBase {
     $config = $this->config('system_status.settings');
     if(function_exists('openssl_random_pseudo_bytes')) {
       $res = SystemStatusEncryption::encrypt_openssl(json_encode(["system_status" => $res]));
-      return new JsonResponse(["system_status" => "encrypted_openssl", "data" => $res, "drupal_version" => "8", "engine_version" => "DRUPAL8"]);
+      return new JsonResponse(["system_status" => "encrypted_openssl", "data" => $res, "drupal_version" => "8", "engine_version" => "DRUPAL8", "php_version" => phpversion()]);
     }
     else if (extension_loaded('mcrypt')) {
       $res = SystemStatusEncryption::encrypt_mcrypt(json_encode(["system_status" => $res]));
-      return new JsonResponse(["system_status" => "encrypted", "data" => $res, "drupal_version" => "8", "engine_version" => "DRUPAL8"]);
+      return new JsonResponse(["system_status" => "encrypted", "data" => $res, "drupal_version" => "8", "engine_version" => "DRUPAL8", "php_version" => phpversion()]);
     }
     else {
-      return new JsonResponse(["system_status" => $res, "drupal_version" => "8", "engine_version" => "DRUPAL8"]);
+      return new JsonResponse(["system_status" => $res, "drupal_version" => "8", "engine_version" => "DRUPAL8", "php_version" => phpversion()]);
     }
   }
 

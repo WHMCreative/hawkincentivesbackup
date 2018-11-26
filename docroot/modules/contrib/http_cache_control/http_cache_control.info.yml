@@ -5,8 +5,8 @@ description: Module for implementing s-max-age
 package: performance
 # project: http_cache_control
 
-# Information added by Drupal.org packaging script on 2018-05-17
-version: '8.x-1.0-beta1'
+# Information added by Drupal.org packaging script on 2018-09-06
+version: '8.x-1.0'
 core: '8.x'
 project: 'http_cache_control'
-datestamp: 1526600284
+datestamp: 1536274983

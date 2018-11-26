@@ -4,4 +4,4 @@ package: Development
 type: module
 core: 8.x
 dependencies:
-  - field_ui
+  - drupal:field_ui
