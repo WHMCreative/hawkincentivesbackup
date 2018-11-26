@@ -1,10 +1,11 @@
 uuid: b5f0aaaf-4b16-41a8-8a6a-d4bc47ca6764
 langcode: en
-status: false
+status: true
 dependencies:
   config:
     - bhk_card_browser.card_type.default
     - core.entity_view_mode.card.compact
+    - field.field.card.default.field_benefits
     - field.field.card.default.field_card_category
     - field.field.card.default.field_card_type
     - field.field.card.default.field_cash_back
@@ -41,13 +42,6 @@ content:
     third_party_settings: {  }
     type: list_default
     region: content
-  field_cost:
-    weight: 3
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    type: list_default
-    region: content
   field_p_media:
     type: entity_reference_revisions_entity_view
     weight: 0
@@ -66,9 +60,11 @@ content:
       link_to_entity: false
     third_party_settings: {  }
 hidden:
+  field_benefits: true
   field_card_category: true
   field_cash_back: true
   field_co_brand: true
+  field_cost: true
   field_currency: true
   field_customization: true
   field_delivery: true

@@ -8,7 +8,7 @@
         </div>
       </div>
       <div class="content" v-show="!selected">
-        <h3 class="card-title">
+        <h3 class="card-title" :id="cleanName(card.title)">
           {{ card.title }}
         </h3>
 
@@ -18,9 +18,6 @@
           <div class="top-level-info">
             <div class="type" :class=card.cardType>
               {{ typeMap[card.cardType ]}}
-            </div>
-            <div class="cost" v-show="card.cardType === 'prepaid' || card.cardType === 'gift_card'">
-              {{ costMap[card.cost ]}}
             </div>
           </div>
           <div class="content">
@@ -96,6 +93,9 @@ export default {
     }
   },
   methods: {
+    cleanName(name) {
+      return name.replace(/[^a-zA-Z0-9 ]/g, '').replace(/[^A-Z0-9]/ig, '-').replace('--', '-').toLowerCase();
+    },
 
     // Open card detail modal
     /*details(id) {

@@ -40,13 +40,6 @@ card-catalog:
     dist/whatwg-fetch.js: {}
     dist/card-catalog.js: {}
 
-card-summary:
-  version: 1.x
-  js:
-    dist/babel-polyfill.js: {}
-    dist/whatwg-fetch.js: {}
-    dist/card-summary.js: {}
-
 wistia:
   version: VERSION
   js:

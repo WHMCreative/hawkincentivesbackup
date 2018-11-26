@@ -202,10 +202,32 @@
   }
 
   .field--name-field-cards {
-    display: none;
+    //display: none;
+    @include breakpoint(marge) {
+      @include tk-flex-equal-width-items($grid-column-gutter);
+    }
+
+    .card {
+      .field--name-name {
+        margin-top: 16px;
+        margin-bottom: 10px;
+        font-size: rem-calc(16);
+        font-weight: $global-weight-bold;
+        color: $secondary-color-dark;
+      }
+
+      .features {
+        padding: 0;
+
+        .type {
+          display: inline-block;
+        }
+      }
+    }
+
   }
 
-  #card-summary {
+  /*#card-summary {
     width: 100%;
 
     @include breakpoint(small down) {
@@ -279,5 +301,5 @@
         }
       }
     }
-  }
+  }*/
 }

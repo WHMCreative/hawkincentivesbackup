@@ -291,18 +291,22 @@ export default {
         }],
       }) {
         entities {
-          ... on Card {
+          ... on CardDefault {
             id: entityId
             title: entityLabel
             image: fieldPMedia {
               entity {
-                fieldMediaImage {
-                  entity {
-                    fieldImage {
-                      image: derivative(style:FOURTH_COLUMN) {
-                        url
+                ... on ParagraphMediaImage {
+                  fieldMediaImage {
+                    entity {
+                      ... on MediaImage {
+                        fieldImage {
+                          image: derivative(style:FOURTH_COLUMN) {
+                            url
+                          }
+                          alt
+                        }
                       }
-                      alt
                     }
                   }
                 }

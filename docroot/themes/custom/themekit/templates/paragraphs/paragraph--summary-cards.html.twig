@@ -56,13 +56,11 @@ set classes = [
 %}
 
 {% set rendered_content = content|without('field_heading', 'field_p_multiple_links', 'field_cards') %}
-{{ attach_library('themekit/card-summary') }}
 
 <div{{ attributes.addClass(classes) }}>
   <div class="paragraph-content">
 
     {{ content.field_heading }}
-    <div id="card-summary"></div>
     {{ content.field_cards }}
     {{ content.field_p_multiple_links }}
     {{ rendered_content }}

@@ -23,17 +23,15 @@
   'field_cost'
 ) %}
 
-<div{{ attributes.addClass('card') }} data-card-id={{ card_identifier }}>
+<div {{ attributes.addClass('card') }} data-card-id={{ card_identifier }}>
   {% if content %}
     {{ rendered_content }}
 
-    {#<div class="features">#}
-      {#<div class="type {{ card_type }}">#}
-        {#{{ content.field_card_type }}#}
-      {#</div>#}
-
-      {#{{ content.field_cost }}#}
-    {#</div>#}
+    <div class="features">
+      <div class="type {{ card_type }}">
+        {{ content.field_card_type }}
+      </div>
+    </div>
 
   {% endif %}
 </div>
