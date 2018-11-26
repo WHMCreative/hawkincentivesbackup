@@ -169,19 +169,14 @@ if (isset($_SERVER['AH_SITE_ENVIRONMENT'])) {
       break;
     case 'prod':
 
-      //@TODO remove before launch
-      $config['shield.settings']['credentials']['shield']['user'] = 'hawkincentives';
-      $config['shield.settings']['credentials']['shield']['pass'] = '3ditHawk';
-
       $settings['file_private_path'] = "/mnt/gluster/files/bhk-d8.prod.e3develop.com/files/private";
       $config['system.file']['path']['temporary'] = "/mnt/gluster/files/bhk-d8.prod.e3develop.com/files/private/tmp";
 
       // Set logging level on production.
       $config['system.logging']['error_level'] = 'hide';
 
-      //@TODO update before launch
       // Set GTM Code
-      $config['e3_google_tag.settings']['gtm_code'] = '';
+      $config['e3_google_tag.settings']['gtm_code'] = 'GTM-TPN3SGZ';
 
       // Set purger host
       switch ($_SERVER['AH_SITE_SERVER']) {
