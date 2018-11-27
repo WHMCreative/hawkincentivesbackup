@@ -32,7 +32,7 @@ $aliases['www.bhk.drupalvm'] = array(
 
 $aliases['prod'] = array(
   'root' => '/var/www/bhk-d8.prod.e3develop.com/htdocs',
-  'uri' => 'bhk-d8.prod.e3develop.com',
+  'uri' => 'hawkincentives.com',
   'remote-host' => '199.167.77.119',
   'remote-user' => 'hawk1',
   'path-aliases' => array(
@@ -48,7 +48,7 @@ $aliases['prod'] = array(
 
 $aliases['prod2'] = array(
   'root' => '/var/www/bhk-d8.prod.e3develop.com/htdocs',
-  'uri' => 'bhk-d8.prod.e3develop.com',
+  'uri' => 'hawkincentives.com',
   'remote-host' => '199.167.77.121',
   'remote-user' => 'hawk1',
   'path-aliases' => array(
