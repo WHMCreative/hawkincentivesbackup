@@ -1,6 +1,6 @@
 uuid: e043c9a6-eaf7-45ae-be61-246aadb489e3
 langcode: en
-status: true
+status: false
 dependencies:
   content:
     - 'block_content:component:406b4e34-6106-4cbb-b6f0-ab5b7c43fd95'
