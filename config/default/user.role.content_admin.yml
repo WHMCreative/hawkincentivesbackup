@@ -27,6 +27,7 @@ permissions:
   - 'add card entities'
   - 'add marketo form entity entities'
   - 'add microquiz entities'
+  - 'administer blocks'
   - 'administer menu'
   - 'administer nodes'
   - 'administer redirects'

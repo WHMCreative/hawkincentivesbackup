@@ -9,3 +9,6 @@ enabled_entity_types:
   - menu_link_content
 _core:
   default_config_hash: 8k2nJ3kHjGVhNYkfxevQzneu__VHph2Nb1LrZVV9fms
+cron_generate_interval: 0
+base_url: 'https://www.hawkincentives.com'
+excluded_languages: {  }

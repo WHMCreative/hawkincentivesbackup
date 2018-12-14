@@ -16,7 +16,7 @@ provider: null
 plugin: 'block_content:60c4951d-2ec1-481d-89d1-6f19cf577c5b'
 settings:
   id: 'block_content:60c4951d-2ec1-481d-89d1-6f19cf577c5b'
-  label: '© [current-date:html_year] Blachhawk Network Holdings, Inc. All Rights Reserved.'
+  label: '© [current-date:html_year] Blackhawk Network Holdings, Inc. All Rights Reserved.'
   provider: block_content
   label_display: visible
   status: true
