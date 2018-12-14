@@ -122,9 +122,14 @@ AddEncoding gzip svgz
   # uncomment the following line:
   # RewriteBase /
 
+  # ensure correct domain on prod
+  RewriteCond %{HTTP_HOST} ^bhk-d8.prod.e3develop.com [OR]
+  RewriteCond %{HTTP_HOST} ^www.bhk-d8.prod.e3develop.com [NC]
+  RewriteRule ^(.*)$ https://www.hawkincentives.com/$1 [L,R=301,NC]
+
 
   # Determine whether environment is production:
-  RewriteCond %{HTTP_HOST} !^.hawkincentives\.com [NC, OR]
+  RewriteCond %{HTTP_HOST} !^.hawkincentives\.com [OR]
   RewriteCond %{HTTP_HOST} !^www\.hawkincentives\.com [NC]
   # Then send requests to nonproduction environments to the blocking robots.txt:
   RewriteRule ^robots.txt robots_hidden.txt [L]

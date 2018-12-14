@@ -36,7 +36,7 @@ There is a layer of caching on the servers – Varnish purge has been configured
 * MP2 = 172.28.4.2
 * MP3 = 172.28.4.3
 
-To clear the varnish cache on a particular server run the command `varnishadm "ban obj.http.x-host ~ /"`. In the case of clearing varnish cache, this command will need to be run on both MP1 & MP2.
+To clear the varnish cache on a particular server run the command `systemctl restart varnish.service` or `service varnish restart`. In the case of clearing varnish cache, this command will need to be run on both MP1 & MP2.
 
 Drupal cache will also need to be cleared on each server independently. Drush aliases have been established for this reason ( @bhk.prod & @bhk.prod2). 
 
