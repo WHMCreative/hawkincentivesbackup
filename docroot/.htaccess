@@ -129,9 +129,9 @@ AddEncoding gzip svgz
 
 
   # Determine whether environment is production:
+  # Then send requests to nonproduction environments to the blocking robots.txt:
   RewriteCond %{HTTP_HOST} !^.hawkincentives\.com [OR]
   RewriteCond %{HTTP_HOST} !^www\.hawkincentives\.com [NC]
-  # Then send requests to nonproduction environments to the blocking robots.txt:
   RewriteRule ^robots.txt robots_hidden.txt [L]
 
   # Redirect common PHP files to their new locations.
