@@ -135,7 +135,7 @@
     "patches": {
       "drupal/core": {
         "Node revision routes don't convert {node} param": "https://www.drupal.org/files/issues/2730631-41.patch",
-        "MenuLinkContentAccessControlHandler does not allow 'view' access without admin permission": "https://www.drupal.org/files/issues/menu_link_content-view-permissions-2915792-12.patch",
+        "MenuLinkContentAccessControlHandler does not allow 'view' access without admin permission": "https://www.drupal.org/files/issues/2018-03-19/menu_link_content-view-permissions-2915792-16.patch",
         "Drupal.views.ajaxView is not initializing pagers in nested views": "https://www.drupal.org/files/issues/2018-09-19/2858890-35.patch"
       },
       "drupal/media_entity": {
