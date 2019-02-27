@@ -165,3 +165,7 @@ $settings['trusted_host_patterns'][] = '^.+\.drupalvm';
 $config['varnish_purger.settings.972afd4ab5']['hostname'] = '127.0.0.1';
 $config['purge.plugins']['purgers'][0]['instance_id'] = '';
 $config['purge.plugins']['purgers'][0]['plugin_id'] = '';
+
+$config['language.negotiation']['url']['source'] = 'domain';
+$config['language.negotiation']['url']['domains']['en'] = 'www.bhk-d8.drupalvm';
+$config['language.negotiation']['url']['domains']['en-ca'] = 'www.ca.bhk-d8.drupalvm';
