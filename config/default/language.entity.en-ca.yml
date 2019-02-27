@@ -1,0 +1,9 @@
+uuid: 04b7e478-6eef-4fdd-bc46-9596b0e67a8b
+langcode: en
+status: true
+dependencies: {  }
+id: en-ca
+label: 'English (Canada)'
+direction: ltr
+weight: 1
+locked: false
