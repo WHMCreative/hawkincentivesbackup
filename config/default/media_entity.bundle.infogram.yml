@@ -1,7 +1,12 @@
 uuid: baea0a48-69d2-47ee-8246-1bc89223ee94
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - crop
+third_party_settings:
+  crop:
+    image_field: null
 id: infogram
 label: Infogram
 description: ''

@@ -6,7 +6,7 @@ dependencies:
     - crop
 third_party_settings:
   crop:
-    image_field: null
+    image_field: _none
 id: svg
 label: SVG
 description: ''

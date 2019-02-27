@@ -1,16 +1,16 @@
-uuid: 2cad5fc6-477b-41a5-a7a2-e2719da6cb9e
+uuid: 3784964b-a09a-474d-a3d6-75dc3b9884f0
 langcode: en
 status: true
 dependencies:
   config:
-    - node.type.people
+    - media_entity.bundle.image
   module:
     - content_translation
 third_party_settings:
   content_translation:
     enabled: true
-id: node.people
-target_entity_type_id: node
-target_bundle: people
+id: media.image
+target_entity_type_id: media
+target_bundle: image
 default_langcode: site_default
 language_alterable: false
