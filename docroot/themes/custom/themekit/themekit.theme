@@ -49,6 +49,10 @@ function themekit_preprocess_html(&$variables) {
       unset($variables['page']['content_above']['pagebanner']);
     }
   }
+
+  // Pass language domain data to settings JS object
+  $config = \Drupal::config('language.negotiation')->get('url');
+  $variables['#attached']['drupalSettings']['language'] = $config;
 }
 
 /**

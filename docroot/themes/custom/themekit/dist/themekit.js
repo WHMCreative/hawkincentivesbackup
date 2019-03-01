@@ -3282,13 +3282,13 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 __webpack_require__(166);
 
-__webpack_require__(174);
+__webpack_require__(167);
 
-__webpack_require__(175);
+__webpack_require__(168);
+
+__webpack_require__(176);
 
 __webpack_require__(177);
-
-__webpack_require__(178);
 
 __webpack_require__(179);
 
@@ -3306,9 +3306,56 @@ __webpack_require__(185);
 
 __webpack_require__(186);
 
+__webpack_require__(187);
+
+__webpack_require__(188);
+
 /***/ }),
 
 /***/ 166:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function setCookie(cname, cvalue, exdays) {
+  var d = new Date();
+  d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+  var expires = "expires=" + d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getQueryVariable(variable) {
+  var query = window.location.search.substring(1);
+  var vars = query.split("&");
+  for (var i = 0; i < vars.length; i++) {
+    var pair = vars[i].split("=");
+    if (pair[0] === variable) {
+      return pair[1];
+    }
+  }
+  return false;
+}
+
+Drupal.behaviors.languageChoice = {
+  attach: function attach(context, settings) {
+
+    //window.console.log(window.location.href.split('?')[1]);
+    var query = getQueryVariable('sitechoice');
+
+    if (query) {
+      if (query === 'ca') {
+        setCookie('sitechoice', 'ca');
+      } else if (query === 'us') {
+        setCookie('sitechoice', 'us');
+      }
+    }
+  }
+};
+
+/***/ }),
+
+/***/ 167:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3318,23 +3365,88 @@ var _jquery = __webpack_require__(5);
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
-var _foundation = __webpack_require__(167);
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function getCookie(cname) {
+  var name = cname + "=";
+  var ca = document.cookie.split(';');
+  for (var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) === ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) === 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+//window.console.log('foo');
+Drupal.behaviors.ipstack = {
+  attach: function attach(context, settings) {
+
+    // set endpoint and your access key
+    // TODO: swap with client key for launch
+    var accessKey = 'e9af2a0a8b852229fce1833b9efc7ac0';
+
+    // if we're logged in, bail out
+    if (drupalSettings.user.uid > 0) {
+      return;
+    }
+    // get the API result via jQuery.ajax
+    _jquery2.default.ajax({
+      url: 'http://api.ipstack.com/check?access_key=' + accessKey,
+      dataType: 'jsonp',
+      success: function success(json) {
+
+        var countryCode = json.country_code;
+        var cookie = getCookie('sitechoice');
+        window.console.log(cookie);
+        window.console.log(countryCode);
+
+        if (cookie === 'ca' && window.location.host !== drupalSettings.language.domains['en-ca']) {
+          window.location.replace('//' + drupalSettings.language.domains['en-ca'] + window.location.pathname + window.location.search);
+        } else if (cookie === 'us' && window.location.host !== drupalSettings.language.domains['en']) {
+          window.location.replace('//' + drupalSettings.language.domains['en'] + window.location.pathname + window.location.search);
+        } else if (!cookie && countryCode === 'CA' && window.location.host !== drupalSettings.language.domains['en-ca']) {
+          window.location.replace('//' + drupalSettings.language.domains['en-ca'] + window.location.pathname + window.location.search);
+        } else if (!cookie && countryCode === 'US' && window.location.host !== drupalSettings.language.domains['en']) {
+          window.location.replace('//' + drupalSettings.language.domains['en'] + window.location.pathname + window.location.search);
+        }
+      }
+    });
+  }
+};
+
+/***/ }),
+
+/***/ 168:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _jquery = __webpack_require__(5);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+var _foundation = __webpack_require__(169);
 
 var _foundationUtil = __webpack_require__(50);
 
-var _foundationUtil2 = __webpack_require__(168);
+var _foundationUtil2 = __webpack_require__(170);
 
-var _foundationUtil3 = __webpack_require__(169);
+var _foundationUtil3 = __webpack_require__(171);
 
-var _foundationUtil4 = __webpack_require__(170);
+var _foundationUtil4 = __webpack_require__(172);
 
 var _foundationUtil5 = __webpack_require__(110);
 
-var _foundationUtil6 = __webpack_require__(171);
+var _foundationUtil6 = __webpack_require__(173);
 
-var _foundationUtil7 = __webpack_require__(172);
+var _foundationUtil7 = __webpack_require__(174);
 
-var _foundationUtil8 = __webpack_require__(173);
+var _foundationUtil8 = __webpack_require__(175);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3372,7 +3484,7 @@ _foundation.Foundation.Timer = _foundationUtil8.Timer;
 
 /***/ }),
 
-/***/ 167:
+/***/ 169:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3738,7 +3850,7 @@ exports.Foundation = Foundation;
 
 /***/ }),
 
-/***/ 168:
+/***/ 170:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3975,7 +4087,7 @@ exports.Box = Box;
 
 /***/ }),
 
-/***/ 169:
+/***/ 171:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4035,7 +4147,7 @@ exports.onImagesLoaded = onImagesLoaded;
 
 /***/ }),
 
-/***/ 170:
+/***/ 172:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4223,7 +4335,7 @@ exports.Keyboard = Keyboard;
 
 /***/ }),
 
-/***/ 171:
+/***/ 173:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4343,7 +4455,7 @@ exports.Motion = Motion;
 
 /***/ }),
 
-/***/ 172:
+/***/ 174:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4421,7 +4533,7 @@ exports.Nest = Nest;
 
 /***/ }),
 
-/***/ 173:
+/***/ 175:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4488,7 +4600,7 @@ exports.Timer = Timer;
 
 /***/ }),
 
-/***/ 174:
+/***/ 176:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4522,7 +4634,7 @@ exports.Timer = Timer;
 
 /***/ }),
 
-/***/ 175:
+/***/ 177:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4532,7 +4644,7 @@ var _jquery = __webpack_require__(5);
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
-__webpack_require__(176);
+__webpack_require__(178);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -4590,7 +4702,7 @@ $mySVGsToInject.each(function (i, el) {
 
 /***/ }),
 
-/***/ 176:
+/***/ 178:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10153,7 +10265,7 @@ return SVG
 
 /***/ }),
 
-/***/ 177:
+/***/ 179:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10197,7 +10309,7 @@ Drupal.behaviors.magnificPopup = {
 
 /***/ }),
 
-/***/ 178:
+/***/ 180:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10262,7 +10374,7 @@ Drupal.behaviors.menuMain = {
 
 /***/ }),
 
-/***/ 179:
+/***/ 181:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10293,7 +10405,7 @@ $skipLink.on('click', function (e) {
 
 /***/ }),
 
-/***/ 180:
+/***/ 182:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10334,7 +10446,7 @@ Drupal.behaviors.videoModal = {
 
 /***/ }),
 
-/***/ 181:
+/***/ 183:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10589,7 +10701,7 @@ Drupal.behaviors.mediaTile = {
 
 /***/ }),
 
-/***/ 182:
+/***/ 184:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10716,7 +10828,7 @@ Drupal.behaviors.emailManipulations = {
 
 /***/ }),
 
-/***/ 183:
+/***/ 185:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10815,7 +10927,7 @@ Drupal.behaviors.heroSlider = {
 
 /***/ }),
 
-/***/ 184:
+/***/ 186:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10851,7 +10963,7 @@ Drupal.behaviors.footerManipulations = {
 
 /***/ }),
 
-/***/ 185:
+/***/ 187:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10910,7 +11022,7 @@ Drupal.behaviors.formManipulations = {
 
 /***/ }),
 
-/***/ 186:
+/***/ 188:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

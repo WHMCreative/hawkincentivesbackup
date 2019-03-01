@@ -2,9 +2,11 @@
  * theme.js
  * Entry point for all theme related js.
  */
+import './language-choice';
+import './ipstack';
 import './foundation-setup';
 import './external-links';
-import './inject-svg'
+import './inject-svg';
 import './magnific-popup';
 import './menu';
 import './skip-link';
