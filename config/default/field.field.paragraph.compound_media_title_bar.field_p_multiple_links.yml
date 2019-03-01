@@ -17,7 +17,7 @@ bundle: compound_media_title_bar
 label: Link
 description: ''
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:

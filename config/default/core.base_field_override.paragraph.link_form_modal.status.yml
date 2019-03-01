@@ -1,0 +1,22 @@
+uuid: 28068d86-0226-4ff7-83fb-4d2f5af0046a
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.link_form_modal
+id: paragraph.link_form_modal.status
+field_name: status
+entity_type: paragraph
+bundle: link_form_modal
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -14,7 +14,7 @@ bundle: reference_marketo_form
 label: 'Redirect URL'
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:

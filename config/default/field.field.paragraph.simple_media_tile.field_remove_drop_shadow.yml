@@ -12,7 +12,7 @@ bundle: simple_media_tile
 label: 'Remove Drop Shadow'
 description: 'When checked, the drop shadow from the media item will be removed.'
 required: false
-translatable: false
+translatable: true
 default_value:
   -
     value: 0

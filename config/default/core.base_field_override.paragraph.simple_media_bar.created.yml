@@ -1,0 +1,18 @@
+uuid: 6adca38a-cb11-4b78-81ea-3563ea35c9af
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.simple_media_bar
+id: paragraph.simple_media_bar.created
+field_name: created
+entity_type: paragraph
+bundle: simple_media_bar
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

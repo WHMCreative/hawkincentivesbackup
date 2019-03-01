@@ -1,0 +1,18 @@
+uuid: a661c4c1-7aee-4042-ade5-aa672969aacb
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.compound_media_title_bar
+id: paragraph.compound_media_title_bar.created
+field_name: created
+entity_type: paragraph
+bundle: compound_media_title_bar
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

@@ -12,7 +12,7 @@ bundle: simple_media_tile
 label: 'Remove Blue Outline'
 description: 'When checked, the blue outline on tile will be removed.'
 required: false
-translatable: false
+translatable: true
 default_value:
   -
     value: 0

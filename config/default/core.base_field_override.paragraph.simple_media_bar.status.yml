@@ -1,0 +1,22 @@
+uuid: 4abe2360-7ac7-4acf-9e92-474cb1059059
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.simple_media_bar
+id: paragraph.simple_media_bar.status
+field_name: status
+entity_type: paragraph
+bundle: simple_media_bar
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

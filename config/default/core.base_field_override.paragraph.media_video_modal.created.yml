@@ -1,0 +1,18 @@
+uuid: 5920fbe3-03d7-419e-8f19-b6d5c0c989e0
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.media_video_modal
+id: paragraph.media_video_modal.created
+field_name: created
+entity_type: paragraph
+bundle: media_video_modal
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

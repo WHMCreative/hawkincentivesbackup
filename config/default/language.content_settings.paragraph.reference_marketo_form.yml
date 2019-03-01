@@ -1,0 +1,18 @@
+uuid: a6262fe0-5276-44e2-aa2c-7948f5c80252
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.reference_marketo_form
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: paragraph.reference_marketo_form
+target_entity_type_id: paragraph
+target_bundle: reference_marketo_form
+default_langcode: site_default
+language_alterable: true

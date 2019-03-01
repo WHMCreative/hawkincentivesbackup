@@ -1,0 +1,18 @@
+uuid: ee07b838-3068-4ca7-a817-dc4d5f56255b
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.marketo_submission_confirmation
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: paragraph.marketo_submission_confirmation
+target_entity_type_id: paragraph
+target_bundle: marketo_submission_confirmation
+default_langcode: site_default
+language_alterable: true

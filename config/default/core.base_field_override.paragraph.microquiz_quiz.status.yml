@@ -1,0 +1,22 @@
+uuid: ad0afbb6-3f28-42e1-8fde-caf250ce43b6
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.microquiz_quiz
+id: paragraph.microquiz_quiz.status
+field_name: status
+entity_type: paragraph
+bundle: microquiz_quiz
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

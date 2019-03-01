@@ -14,7 +14,7 @@ bundle: layout_2_column
 label: 'Media Alignment'
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value:
   -
     value: right

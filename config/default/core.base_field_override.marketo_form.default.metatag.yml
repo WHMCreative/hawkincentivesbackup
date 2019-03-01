@@ -1,0 +1,18 @@
+uuid: 348ff83d-5168-4729-928e-732c8f75ca02
+langcode: en
+status: true
+dependencies:
+  config:
+    - e3_marketo.bundle.default
+id: marketo_form.default.metatag
+field_name: metatag
+entity_type: marketo_form
+bundle: default
+label: Metatags
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

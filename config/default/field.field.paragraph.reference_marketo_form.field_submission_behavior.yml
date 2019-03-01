@@ -14,7 +14,7 @@ bundle: reference_marketo_form
 label: 'Submission Behavior'
 description: 'Select the action to take on the form submission'
 required: true
-translatable: false
+translatable: true
 default_value:
   -
     value: confirmation

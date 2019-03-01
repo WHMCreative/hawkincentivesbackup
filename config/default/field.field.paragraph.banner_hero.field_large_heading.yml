@@ -22,7 +22,7 @@ bundle: banner_hero
 label: 'Large Heading'
 description: 'Providing text here overrides the page title. This is the page H1.'
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }

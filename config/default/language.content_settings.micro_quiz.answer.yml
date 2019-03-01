@@ -1,0 +1,18 @@
+uuid: ed93fc90-2093-4e4b-8cfe-e4310b3e3db2
+langcode: en
+status: true
+dependencies:
+  config:
+    - bhk_micro_quiz.micro_quiz_type.answer
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: micro_quiz.answer
+target_entity_type_id: micro_quiz
+target_bundle: answer
+default_langcode: site_default
+language_alterable: false

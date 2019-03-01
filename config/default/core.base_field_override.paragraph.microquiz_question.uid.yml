@@ -1,0 +1,20 @@
+uuid: 2eeb4b2c-ef8f-43dd-8032-3f42e0985f71
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.microquiz_question
+id: paragraph.microquiz_question.uid
+field_name: uid
+entity_type: paragraph
+bundle: microquiz_question
+label: 'Authored by'
+description: 'The user ID of the paragraphs author.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: 'Drupal\paragraphs\Entity\Paragraph::getCurrentUserId'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

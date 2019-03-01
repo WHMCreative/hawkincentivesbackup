@@ -1,0 +1,22 @@
+uuid: 4470dd44-e3d4-48bf-a4fc-48fc53bda504
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.compound_media_title_bar
+id: paragraph.compound_media_title_bar.status
+field_name: status
+entity_type: paragraph
+bundle: compound_media_title_bar
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

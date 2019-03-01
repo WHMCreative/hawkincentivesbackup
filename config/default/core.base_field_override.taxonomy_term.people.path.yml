@@ -1,0 +1,20 @@
+uuid: 479919ca-d505-46b3-9167-a37495c1bef1
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.people
+  module:
+    - path
+id: taxonomy_term.people.path
+field_name: path
+entity_type: taxonomy_term
+bundle: people
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

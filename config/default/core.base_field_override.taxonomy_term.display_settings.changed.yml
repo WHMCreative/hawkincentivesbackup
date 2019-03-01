@@ -1,0 +1,18 @@
+uuid: 334b3e84-195c-4ae0-adea-7acbadb11c85
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.display_settings
+id: taxonomy_term.display_settings.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: display_settings
+label: Changed
+description: 'The time that the term was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

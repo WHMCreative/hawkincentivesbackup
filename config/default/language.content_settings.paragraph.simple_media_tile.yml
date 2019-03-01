@@ -1,0 +1,18 @@
+uuid: d20cde63-6278-4434-ae7e-71fb0fe19e9b
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.simple_media_tile
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: paragraph.simple_media_tile
+target_entity_type_id: paragraph
+target_bundle: simple_media_tile
+default_langcode: site_default
+language_alterable: true

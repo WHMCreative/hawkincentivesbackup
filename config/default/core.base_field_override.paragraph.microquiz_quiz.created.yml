@@ -1,0 +1,18 @@
+uuid: 299e9c21-3e8f-46bf-9c84-b220a373703d
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.microquiz_quiz
+id: paragraph.microquiz_quiz.created
+field_name: created
+entity_type: paragraph
+bundle: microquiz_quiz
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

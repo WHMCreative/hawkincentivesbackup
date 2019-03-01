@@ -1,0 +1,18 @@
+uuid: 03a201a0-98ab-4c4f-a72d-55f9d7b04ad1
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.insights_topics
+id: taxonomy_term.insights_topics.name
+field_name: name
+entity_type: taxonomy_term
+bundle: insights_topics
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

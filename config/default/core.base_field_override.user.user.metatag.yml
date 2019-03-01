@@ -1,0 +1,18 @@
+uuid: 834653ab-0a11-42e1-92ff-07cbf931207d
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: user.user.metatag
+field_name: metatag
+entity_type: user
+bundle: user
+label: Metatags
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

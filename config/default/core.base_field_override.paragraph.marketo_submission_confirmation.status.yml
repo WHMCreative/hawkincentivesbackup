@@ -1,0 +1,22 @@
+uuid: 835d8681-4e40-4260-95f1-7c4fcfeb2e28
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.marketo_submission_confirmation
+id: paragraph.marketo_submission_confirmation.status
+field_name: status
+entity_type: paragraph
+bundle: marketo_submission_confirmation
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

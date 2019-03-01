@@ -1,0 +1,18 @@
+uuid: ddd30213-a020-4158-a574-07ea017463f7
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.marketo_hidden_field
+id: paragraph.marketo_hidden_field.created
+field_name: created
+entity_type: paragraph
+bundle: marketo_hidden_field
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

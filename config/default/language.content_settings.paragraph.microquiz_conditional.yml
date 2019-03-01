@@ -1,0 +1,18 @@
+uuid: 0551e298-0a8e-4deb-980b-08aac22873f4
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.microquiz_conditional
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: paragraph.microquiz_conditional
+target_entity_type_id: paragraph
+target_bundle: microquiz_conditional
+default_langcode: site_default
+language_alterable: true

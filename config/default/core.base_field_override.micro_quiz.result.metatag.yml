@@ -1,0 +1,18 @@
+uuid: fe094efb-0660-4e34-8539-a20da6b5a221
+langcode: en
+status: true
+dependencies:
+  config:
+    - bhk_micro_quiz.micro_quiz_type.result
+id: micro_quiz.result.metatag
+field_name: metatag
+entity_type: micro_quiz
+bundle: result
+label: Metatags
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

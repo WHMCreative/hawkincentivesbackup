@@ -1,0 +1,18 @@
+uuid: db95d686-cf40-4ae0-be66-9c6023e98c58
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.image_type
+id: taxonomy_term.image_type.name
+field_name: name
+entity_type: taxonomy_term
+bundle: image_type
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

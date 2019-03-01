@@ -1,0 +1,22 @@
+uuid: bca3dded-8bc3-4580-8e7c-4ef8a1fadcde
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.svg_type
+id: taxonomy_term.svg_type.status
+field_name: status
+entity_type: taxonomy_term
+bundle: svg_type
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

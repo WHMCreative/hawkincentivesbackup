@@ -1,0 +1,18 @@
+uuid: 0137985b-c2d5-4085-a6d8-a121f1f1fa6a
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.compound_tabbed_content
+id: paragraph.compound_tabbed_content.created
+field_name: created
+entity_type: paragraph
+bundle: compound_tabbed_content
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

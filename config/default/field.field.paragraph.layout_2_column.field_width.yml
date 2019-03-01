@@ -14,7 +14,7 @@ bundle: layout_2_column
 label: Width
 description: ''
 required: true
-translatable: false
+translatable: true
 default_value:
   -
     value: '60_40'

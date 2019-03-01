@@ -16,7 +16,7 @@ bundle: simple_media_tile
 label: Media
 description: 'If the media is selected is an image recommended size is 210px x 140px. Images will be sized automatically to this size. '
 required: true
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:

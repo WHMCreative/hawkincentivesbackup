@@ -1,0 +1,18 @@
+uuid: ec2178bf-809c-48fa-bbed-534c53954e74
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.layout_grid
+id: paragraph.layout_grid.created
+field_name: created
+entity_type: paragraph
+bundle: layout_grid
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

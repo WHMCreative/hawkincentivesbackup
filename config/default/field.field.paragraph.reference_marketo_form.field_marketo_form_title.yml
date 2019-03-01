@@ -14,7 +14,7 @@ bundle: reference_marketo_form
 label: 'Override Form Title'
 description: 'Leave empty to use the default title for the form.'
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }

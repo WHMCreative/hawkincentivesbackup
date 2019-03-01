@@ -1,0 +1,18 @@
+uuid: a9eab3de-97ca-4359-b5a0-8706c585184d
+langcode: en
+status: true
+dependencies:
+  config:
+    - e3_marketo.bundle.default
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: marketo_form.default
+target_entity_type_id: marketo_form
+target_bundle: default
+default_langcode: site_default
+language_alterable: false

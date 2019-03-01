@@ -1,0 +1,18 @@
+uuid: 54e70b5a-6358-4a62-aba5-6d06ef5351ff
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.insights_topics
+id: taxonomy_term.insights_topics.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: insights_topics
+label: Changed
+description: 'The time that the term was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

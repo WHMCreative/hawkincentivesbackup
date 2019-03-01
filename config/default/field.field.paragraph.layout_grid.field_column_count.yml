@@ -12,7 +12,7 @@ bundle: layout_grid
 label: Columns
 description: ''
 required: true
-translatable: false
+translatable: true
 default_value:
   -
     value: 3

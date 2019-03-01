@@ -85,15 +85,15 @@ settings:
       banner_featured_insights:
         weight: 28
         enabled: false
+      banner_hero:
+        weight: 29
+        enabled: false
       media_image_slider:
         weight: 29
         enabled: false
       reference_card_browser:
         enabled: true
         weight: 29
-      banner_hero:
-        weight: 29
-        enabled: false
       media_video_modal:
         weight: 30
         enabled: false
@@ -130,6 +130,9 @@ settings:
       compound_media_title_bar:
         enabled: true
         weight: 37
+      banner_slider:
+        weight: 39
+        enabled: false
       link_form_modal:
         weight: 39
         enabled: false

@@ -1,0 +1,18 @@
+uuid: 35ab9662-6cd5-480d-bcd6-6b5a7e48367d
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.reference_card_browser
+id: paragraph.reference_card_browser.created
+field_name: created
+entity_type: paragraph
+bundle: reference_card_browser
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

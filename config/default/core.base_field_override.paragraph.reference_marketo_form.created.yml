@@ -1,0 +1,18 @@
+uuid: e152546a-6e51-453b-b877-74afec033caa
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.reference_marketo_form
+id: paragraph.reference_marketo_form.created
+field_name: created
+entity_type: paragraph
+bundle: reference_marketo_form
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

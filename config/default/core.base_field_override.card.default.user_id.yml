@@ -1,0 +1,20 @@
+uuid: 1876d888-bb56-49f7-97e5-a4dc98030c00
+langcode: en
+status: true
+dependencies:
+  config:
+    - bhk_card_browser.card_type.default
+id: card.default.user_id
+field_name: user_id
+entity_type: card
+bundle: default
+label: 'Authored by'
+description: 'The user ID of author of the Card entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

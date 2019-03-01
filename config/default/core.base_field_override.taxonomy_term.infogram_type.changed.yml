@@ -1,0 +1,18 @@
+uuid: ec1c77ca-271c-4b04-8b9c-7c20063454fa
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.infogram_type
+id: taxonomy_term.infogram_type.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: infogram_type
+label: Changed
+description: 'The time that the term was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

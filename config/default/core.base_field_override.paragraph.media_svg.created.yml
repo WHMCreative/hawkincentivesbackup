@@ -1,0 +1,18 @@
+uuid: 5139fca1-4dd7-4114-898f-84a1429a97f7
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.media_svg
+id: paragraph.media_svg.created
+field_name: created
+entity_type: paragraph
+bundle: media_svg
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

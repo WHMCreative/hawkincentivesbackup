@@ -1,0 +1,18 @@
+uuid: 11a2a96b-dc11-497c-841b-e52bb83b7302
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.infogram_type
+id: taxonomy_term.infogram_type.name
+field_name: name
+entity_type: taxonomy_term
+bundle: infogram_type
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

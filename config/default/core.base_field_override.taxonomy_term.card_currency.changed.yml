@@ -1,0 +1,18 @@
+uuid: 7292d33d-6e82-4d1d-b701-c6734db2f381
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.card_currency
+id: taxonomy_term.card_currency.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: card_currency
+label: Changed
+description: 'The time that the term was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

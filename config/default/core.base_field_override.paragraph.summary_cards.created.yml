@@ -1,0 +1,18 @@
+uuid: dc09186b-0102-4e04-a3ac-463217893ca9
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.summary_cards
+id: paragraph.summary_cards.created
+field_name: created
+entity_type: paragraph
+bundle: summary_cards
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

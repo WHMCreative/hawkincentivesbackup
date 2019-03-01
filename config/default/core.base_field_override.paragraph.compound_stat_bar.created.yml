@@ -1,0 +1,18 @@
+uuid: 8e028332-b589-4934-97ce-b6373ce615ff
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.compound_stat_bar
+id: paragraph.compound_stat_bar.created
+field_name: created
+entity_type: paragraph
+bundle: compound_stat_bar
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

@@ -1,0 +1,22 @@
+uuid: c73d627b-32c0-4092-80a7-62a97e75988f
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.infogram_type
+id: taxonomy_term.infogram_type.status
+field_name: status
+entity_type: taxonomy_term
+bundle: infogram_type
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

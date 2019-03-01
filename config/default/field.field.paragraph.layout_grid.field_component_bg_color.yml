@@ -12,7 +12,7 @@ bundle: layout_grid
 label: 'Component Bg Color'
 description: 'Controls background color for nested components, if the nested component allow background colors. It will override the background color at the component level'
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:

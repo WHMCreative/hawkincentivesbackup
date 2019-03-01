@@ -1,0 +1,22 @@
+uuid: 32024062-1ab0-4a53-b4ca-8ce14482f691
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.banner_hero
+id: paragraph.banner_hero.status
+field_name: status
+entity_type: paragraph
+bundle: banner_hero
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

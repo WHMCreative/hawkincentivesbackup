@@ -1,0 +1,20 @@
+uuid: 0c36ceb7-fe9a-469f-b3cf-eb26a77d8869
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.media_svg
+id: paragraph.media_svg.uid
+field_name: uid
+entity_type: paragraph
+bundle: media_svg
+label: 'Authored by'
+description: 'The user ID of the paragraphs author.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: 'Drupal\paragraphs\Entity\Paragraph::getCurrentUserId'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

@@ -17,7 +17,7 @@ bundle: marketo_hidden_field
 label: 'Field Value'
 description: 'Value to set for the hidden field.'
 required: true
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }

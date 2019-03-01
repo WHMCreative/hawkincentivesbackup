@@ -1,0 +1,20 @@
+uuid: e7f80e25-1338-4f9f-af06-37b3a83a19bb
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.marketo_submission_confirmation
+id: paragraph.marketo_submission_confirmation.uid
+field_name: uid
+entity_type: paragraph
+bundle: marketo_submission_confirmation
+label: 'Authored by'
+description: 'The user ID of the paragraphs author.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: 'Drupal\paragraphs\Entity\Paragraph::getCurrentUserId'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

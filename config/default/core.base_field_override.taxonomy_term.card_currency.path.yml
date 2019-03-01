@@ -1,0 +1,20 @@
+uuid: ea2c9890-8acb-4bb9-925b-c6a06c8b8ec7
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.card_currency
+  module:
+    - path
+id: taxonomy_term.card_currency.path
+field_name: path
+entity_type: taxonomy_term
+bundle: card_currency
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

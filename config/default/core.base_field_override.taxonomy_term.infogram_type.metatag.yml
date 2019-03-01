@@ -1,0 +1,18 @@
+uuid: d7246eab-88d7-41d5-8b38-7a124b207139
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.infogram_type
+id: taxonomy_term.infogram_type.metatag
+field_name: metatag
+entity_type: taxonomy_term
+bundle: infogram_type
+label: Metatags
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

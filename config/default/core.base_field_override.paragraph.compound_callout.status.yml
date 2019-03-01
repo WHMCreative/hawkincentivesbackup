@@ -1,0 +1,22 @@
+uuid: af33f236-ee4d-46e2-b14f-47803fd366b0
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.compound_callout
+id: paragraph.compound_callout.status
+field_name: status
+entity_type: paragraph
+bundle: compound_callout
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

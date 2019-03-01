@@ -1,0 +1,20 @@
+uuid: c9f5638d-3d66-452f-8629-cc66167422f4
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.marketo_hidden_field
+id: paragraph.marketo_hidden_field.uid
+field_name: uid
+entity_type: paragraph
+bundle: marketo_hidden_field
+label: 'Authored by'
+description: 'The user ID of the paragraphs author.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: 'Drupal\paragraphs\Entity\Paragraph::getCurrentUserId'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

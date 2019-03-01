@@ -1,0 +1,18 @@
+uuid: ecde333b-081f-4b4a-b7a5-45f0f056f920
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.card_category
+id: taxonomy_term.card_category.metatag
+field_name: metatag
+entity_type: taxonomy_term
+bundle: card_category
+label: Metatags
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

@@ -1,0 +1,22 @@
+uuid: 63c4325a-930d-4500-a969-b0cec2e940df
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.insight_type
+id: taxonomy_term.insight_type.status
+field_name: status
+entity_type: taxonomy_term
+bundle: insight_type
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

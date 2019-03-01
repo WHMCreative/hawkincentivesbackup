@@ -1,0 +1,22 @@
+uuid: d515df7c-bc94-4cb1-ad7f-12535fcb4aa3
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.marketo_hidden_field
+id: paragraph.marketo_hidden_field.status
+field_name: status
+entity_type: paragraph
+bundle: marketo_hidden_field
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

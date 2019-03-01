@@ -1,0 +1,18 @@
+uuid: 290cd370-976e-4991-aab2-742401309f54
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.footer
+id: menu_link_content.footer.changed
+field_name: changed
+entity_type: menu_link_content
+bundle: footer
+label: Changed
+description: 'The time that the menu link was last edited.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

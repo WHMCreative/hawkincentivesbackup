@@ -1,0 +1,18 @@
+uuid: c66cb777-b734-4dde-b905-5c10e2ab7573
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.insights_topics
+id: taxonomy_term.insights_topics.metatag
+field_name: metatag
+entity_type: taxonomy_term
+bundle: insights_topics
+label: Metatags
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

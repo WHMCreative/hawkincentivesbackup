@@ -1,0 +1,22 @@
+uuid: 0aa0ca8e-5b09-4860-ab4c-d79c3880ba9d
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.insights_topics
+id: taxonomy_term.insights_topics.status
+field_name: status
+entity_type: taxonomy_term
+bundle: insights_topics
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,20 @@
+uuid: 6cbdf4af-dc01-4d79-9fa4-bb8e6eb8e722
+langcode: en
+status: true
+dependencies:
+  config:
+    - e3_marketo.bundle.default
+id: marketo_form.default.user_id
+field_name: user_id
+entity_type: marketo_form
+bundle: default
+label: 'Authored by'
+description: 'The user ID of author of the Marketo form entity entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

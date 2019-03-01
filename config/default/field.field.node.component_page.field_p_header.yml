@@ -17,7 +17,7 @@ bundle: component_page
 label: Header
 description: ''
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
@@ -71,12 +71,12 @@ settings:
       media_video_modal:
         weight: 36
         enabled: false
-      reference_marketo_form:
-        weight: 37
-        enabled: false
       banner_slider:
         enabled: true
         weight: 37
+      reference_marketo_form:
+        weight: 37
+        enabled: false
       simple_content:
         weight: 38
         enabled: false
@@ -89,10 +89,10 @@ settings:
       simple_media_tile:
         weight: 41
         enabled: false
-      simple_stat:
+      compound_media_title_bar:
         weight: 42
         enabled: false
-      compound_media_title_bar:
+      simple_stat:
         weight: 42
         enabled: false
       layout_2_column:

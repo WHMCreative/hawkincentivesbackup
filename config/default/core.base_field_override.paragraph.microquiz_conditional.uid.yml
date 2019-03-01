@@ -1,0 +1,20 @@
+uuid: 8bd56012-82a0-46c2-95b5-190f52958c2e
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.microquiz_conditional
+id: paragraph.microquiz_conditional.uid
+field_name: uid
+entity_type: paragraph
+bundle: microquiz_conditional
+label: 'Authored by'
+description: 'The user ID of the paragraphs author.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: 'Drupal\paragraphs\Entity\Paragraph::getCurrentUserId'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

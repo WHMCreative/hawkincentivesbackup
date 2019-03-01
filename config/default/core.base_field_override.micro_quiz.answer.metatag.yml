@@ -1,0 +1,18 @@
+uuid: 2b3a5120-7464-4c8c-83a8-18acb8846b2b
+langcode: en
+status: true
+dependencies:
+  config:
+    - bhk_micro_quiz.micro_quiz_type.answer
+id: micro_quiz.answer.metatag
+field_name: metatag
+entity_type: micro_quiz
+bundle: answer
+label: Metatags
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

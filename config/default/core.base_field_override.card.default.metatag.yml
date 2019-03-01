@@ -1,0 +1,18 @@
+uuid: 027cca10-418c-4f1f-a26b-5545ef104af5
+langcode: en
+status: true
+dependencies:
+  config:
+    - bhk_card_browser.card_type.default
+id: card.default.metatag
+field_name: metatag
+entity_type: card
+bundle: default
+label: Metatags
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

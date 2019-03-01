@@ -1,0 +1,18 @@
+uuid: a26aca2f-7c65-44d9-a6cc-9aa10e2eb9e7
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.svg_type
+id: taxonomy_term.svg_type.name
+field_name: name
+entity_type: taxonomy_term
+bundle: svg_type
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

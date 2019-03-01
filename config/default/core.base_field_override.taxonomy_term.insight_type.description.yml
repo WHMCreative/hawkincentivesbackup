@@ -1,0 +1,20 @@
+uuid: 011b390e-7ea1-45e4-9bbe-fbb4b1e675e7
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.insight_type
+  module:
+    - text
+id: taxonomy_term.insight_type.description
+field_name: description
+entity_type: taxonomy_term
+bundle: insight_type
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

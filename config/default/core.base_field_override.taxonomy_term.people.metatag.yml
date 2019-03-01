@@ -1,0 +1,18 @@
+uuid: 100117a1-264d-485b-9ede-f9dde3e652ed
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.people
+id: taxonomy_term.people.metatag
+field_name: metatag
+entity_type: taxonomy_term
+bundle: people
+label: Metatags
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

@@ -1,0 +1,18 @@
+uuid: 93f79bec-c099-443b-92e9-27a06fd8b25e
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.social
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: menu_link_content.social
+target_entity_type_id: menu_link_content
+target_bundle: social
+default_langcode: site_default
+language_alterable: true

@@ -17,7 +17,7 @@ bundle: marketo_hidden_field
 label: 'Field Name'
 description: 'Name attribute of the hidden field. This value is usually the same as the API name of the field in Marketo.<br>See https://docs.marketo.com/display/public/DOCS/Field+Management for more information on how to add and view existing field details in Marketo.'
 required: true
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }

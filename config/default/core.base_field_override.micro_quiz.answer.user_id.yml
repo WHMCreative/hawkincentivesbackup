@@ -1,0 +1,20 @@
+uuid: 0ee677e4-5083-4f8a-a7c8-26dbe8a459d0
+langcode: en
+status: true
+dependencies:
+  config:
+    - bhk_micro_quiz.micro_quiz_type.answer
+id: micro_quiz.answer.user_id
+field_name: user_id
+entity_type: micro_quiz
+bundle: answer
+label: 'Authored by'
+description: 'The user ID of author of the MicroQuiz entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

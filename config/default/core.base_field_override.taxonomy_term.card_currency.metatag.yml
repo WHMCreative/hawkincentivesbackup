@@ -1,0 +1,18 @@
+uuid: 859706e1-e158-415c-8a04-9f76015f1115
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.card_currency
+id: taxonomy_term.card_currency.metatag
+field_name: metatag
+entity_type: taxonomy_term
+bundle: card_currency
+label: Metatags
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

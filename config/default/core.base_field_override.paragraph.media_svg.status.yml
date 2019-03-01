@@ -1,0 +1,22 @@
+uuid: c77101af-c3d2-4098-ae74-c7e23e5db811
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.media_svg
+id: paragraph.media_svg.status
+field_name: status
+entity_type: paragraph
+bundle: media_svg
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

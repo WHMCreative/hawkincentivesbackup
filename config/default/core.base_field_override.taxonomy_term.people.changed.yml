@@ -1,0 +1,18 @@
+uuid: d078d938-f7b5-4f24-9120-edfb4c4e03b2
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.people
+id: taxonomy_term.people.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: people
+label: Changed
+description: 'The time that the term was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed
