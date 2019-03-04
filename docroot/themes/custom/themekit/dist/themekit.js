@@ -3409,9 +3409,9 @@ Drupal.behaviors.ipstack = {
         } else if (cookie === 'us' && window.location.host !== drupalSettings.language.domains['en']) {
           window.location.replace('//' + drupalSettings.language.domains['en'] + window.location.pathname + window.location.search);
         } else if (!cookie && countryCode === 'CA' && window.location.host !== drupalSettings.language.domains['en-ca']) {
-          window.location.replace('//' + drupalSettings.language.domains['en-ca'] + window.location.pathname + window.location.search);
+          window.location.replace('//' + drupalSettings.language.domains['en-ca'] + window.location.pathname);
         } else if (!cookie && countryCode === 'US' && window.location.host !== drupalSettings.language.domains['en']) {
-          window.location.replace('//' + drupalSettings.language.domains['en'] + window.location.pathname + window.location.search);
+          window.location.replace('//' + drupalSettings.language.domains['en'] + window.location.pathname);
         }
       }
     });
