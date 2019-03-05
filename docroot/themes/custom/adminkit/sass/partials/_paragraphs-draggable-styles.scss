@@ -107,6 +107,7 @@
         background: none;
       }
       .dropbutton-action input,
+      > input,
       input[value="Remove"] {
         font-size: 0;
         padding: 0;
@@ -136,24 +137,22 @@
       }
 
       // Edit button styles
-      .edit {
-        input {
-          background-image: edit-icon($default-icon-color);
+      .edit input,
+      input[value="Edit"] {
+        background-image: edit-icon($default-icon-color);
 
-          &:hover, &:active {
-            background-image: edit-icon($edit-color);
-          }
+        &:hover, &:active {
+          background-image: edit-icon($edit-color);
         }
       }
 
       // Collapse button styles
-      .collapse {
-        input {
-          background-image: collapse-icon($default-icon-color);
+      .collapse input,
+      input[value="Collapse"] {
+        background-image: collapse-icon($default-icon-color);
 
-          &:hover, &:active{
-            background-image: collapse-icon($collapse-color);
-          }
+        &:hover, &:active{
+          background-image: collapse-icon($collapse-color);
         }
       }
 
