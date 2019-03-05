@@ -134,6 +134,10 @@ if (isset($_SERVER['AH_SITE_ENVIRONMENT'])) {
   //  $settings['config_readonly'] = FALSE;
   //}
 
+  $config['language.negotiation']['url']['source'] = 'domain';
+  $config['language.negotiation']['url']['domains']['en'] = 'www.bhk-d8.dev.e3develop.com';
+  $config['language.negotiation']['url']['domains']['en-ca'] = 'www.bhk-d8.ca.dev.e3develop.com';
+
   switch ($_SERVER['AH_SITE_ENVIRONMENT']) {
     case 'dev':
       // Configure shield for dev environment.
@@ -149,9 +153,10 @@ if (isset($_SERVER['AH_SITE_ENVIRONMENT'])) {
       $settings['container_yamls'][] = DRUPAL_ROOT . '/sites/development.services.yml';
 
       // Set localization domains
-      $config['language.negotiation']['url']['source'] = 'domain';
-      $config['language.negotiation']['url']['domains']['en'] = 'www.bhk-d8.dev.e3develop.com';
-      $config['language.negotiation']['url']['domains']['en-ca'] = 'www.bhk-d8.ca.dev.e3develop.com';
+      // @TODO figure out how to switch per environment
+//      $config['language.negotiation']['url']['source'] = 'domain';
+//      $config['language.negotiation']['url']['domains']['en'] = 'www.bhk-d8.dev.e3develop.com';
+//      $config['language.negotiation']['url']['domains']['en-ca'] = 'www.bhk-d8.ca.dev.e3develop.com';
 
       /**
        * Master DB and Config Read-Only settings
