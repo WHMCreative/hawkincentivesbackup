@@ -1,0 +1,52 @@
+uuid: ede38e62-083d-4245-8cf8-38e6a9bf9866
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.menu_link_content.utility.field_block
+    - system.menu.utility
+  module:
+    - block_field
+    - link_attributes
+    - menu_item_extras
+id: menu_link_content.utility.default
+targetEntityType: menu_link_content
+bundle: utility
+mode: default
+content:
+  field_block:
+    weight: 21
+    settings:
+      plugin_id: ''
+      settings: {  }
+      configuration_form: full
+    third_party_settings: {  }
+    type: block_field_default
+    region: content
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  view_mode:
+    type: menu_item_extras_view_mode_selector_select
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

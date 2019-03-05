@@ -1,0 +1,28 @@
+uuid: 8e629399-e25b-4c93-b6e6-e04222a872eb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.menu_link_content.utility.field_block
+    - system.menu.utility
+  module:
+    - block_field
+id: menu_link_content.utility.default
+targetEntityType: menu_link_content
+bundle: utility
+mode: default
+content:
+  children:
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_block:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: block_field
+    region: content
+hidden:
+  langcode: true

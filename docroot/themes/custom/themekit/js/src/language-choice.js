@@ -23,11 +23,11 @@ function getQueryVariable(variable)
 Drupal.behaviors.languageChoice = {
   attach: function (context, settings) {
 
-    $('#block-languageswitcher').appendTo('#block-utility');
+    //$('#block-languageswitcher').appendTo('#block-utility--2');
 
     $('.language-link').each(function(){
       let href = $(this).attr('href');
-      let query = href.indexOf('?') ? '&sitechoice=' + $(this).attr('hreflang') : '?sitechoice=' + $(this).attr('hreflang');
+      let query = href.indexOf('?') > -1 ? '&sitechoice=' + $(this).attr('hreflang') : '?sitechoice=' + $(this).attr('hreflang');
       $(this).attr('href', $(this).attr('href') + query);
     });
 

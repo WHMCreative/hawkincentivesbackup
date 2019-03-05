@@ -1,0 +1,23 @@
+uuid: 2cc35642-6107-4172-969b-95c5394438fd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.menu_link_content.field_block
+    - system.menu.utility
+  module:
+    - block_field
+id: menu_link_content.utility.field_block
+field_name: field_block
+entity_type: menu_link_content
+bundle: utility
+label: Block
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  plugin_ids:
+    'language_block:language_interface': 'language_block:language_interface'
+field_type: block_field

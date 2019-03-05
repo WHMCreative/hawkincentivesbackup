@@ -3346,11 +3346,11 @@ function getQueryVariable(variable) {
 Drupal.behaviors.languageChoice = {
   attach: function attach(context, settings) {
 
-    (0, _jquery2.default)('#block-languageswitcher').appendTo('#block-utility');
+    //$('#block-languageswitcher').appendTo('#block-utility--2');
 
     (0, _jquery2.default)('.language-link').each(function () {
       var href = (0, _jquery2.default)(this).attr('href');
-      var query = href.indexOf('?') ? '&sitechoice=' + (0, _jquery2.default)(this).attr('hreflang') : '?sitechoice=' + (0, _jquery2.default)(this).attr('hreflang');
+      var query = href.indexOf('?') > -1 ? '&sitechoice=' + (0, _jquery2.default)(this).attr('hreflang') : '?sitechoice=' + (0, _jquery2.default)(this).attr('hreflang');
       (0, _jquery2.default)(this).attr('href', (0, _jquery2.default)(this).attr('href') + query);
     });
 
