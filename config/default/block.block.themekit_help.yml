@@ -11,7 +11,7 @@ _core:
 id: themekit_help
 theme: themekit
 region: help
-weight: -8
+weight: -9
 provider: null
 plugin: help_block
 settings:

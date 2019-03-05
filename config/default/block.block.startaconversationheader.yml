@@ -11,7 +11,7 @@ dependencies:
 id: startaconversationheader
 theme: themekit
 region: header
-weight: 0
+weight: -5
 provider: null
 plugin: 'block_content:e0e87507-7c3c-4969-8ec3-29f256498b48'
 settings:
