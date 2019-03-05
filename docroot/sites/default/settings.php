@@ -151,7 +151,7 @@ if (isset($_SERVER['AH_SITE_ENVIRONMENT'])) {
       // Set localization domains
       $config['language.negotiation']['url']['source'] = 'domain';
       $config['language.negotiation']['url']['domains']['en'] = 'www.bhk-d8.dev.e3develop.com';
-      $config['language.negotiation']['url']['domains']['en-ca'] = 'www.ca.bhk-d8.dev.e3develop.com';
+      $config['language.negotiation']['url']['domains']['en-ca'] = 'www.bhk-d8.ca.dev.e3develop.com';
 
       /**
        * Master DB and Config Read-Only settings

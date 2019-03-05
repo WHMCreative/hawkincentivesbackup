@@ -35,11 +35,14 @@ Drupal.behaviors.ipstack = {
       success: function (json) {
 
         let countryCode = json.country_code;
+        const englishUrl = drupalSettings.language.domains['en'];
+        const canadianUrl = drupalSettings.language.domains['en-ca'];
         let cookie = getCookie('sitechoice');
+        countryCode = 'CA'
         window.console.log(cookie);
         window.console.log(countryCode);
 
-        if ( cookie === 'ca' && window.location.host !== drupalSettings.language.domains['en-ca']) {
+        /*if ( cookie === 'ca' && window.location.host !== drupalSettings.language.domains['en-ca']) {
           window.location.replace('//' + drupalSettings.language.domains['en-ca'] + window.location.pathname + window.location.search);
         } else if ( cookie === 'us' && window.location.host !== drupalSettings.language.domains['en'] ) {
           window.location.replace('//' + drupalSettings.language.domains['en'] + window.location.pathname + window.location.search);
@@ -47,8 +50,15 @@ Drupal.behaviors.ipstack = {
           window.location.replace('//' + drupalSettings.language.domains['en-ca'] + window.location.pathname);
         } else if ( !cookie && countryCode === 'US' && window.location.host !== drupalSettings.language.domains['en'])  {
           window.location.replace('//' + drupalSettings.language.domains['en'] + window.location.pathname);
-        }
+        }*/
 
+        if (!cookie) {
+          if (countryCode === 'CA' && window.location.host !== drupalSettings.language.domains['en-ca']) {
+            window.location.replace('//' + canadianUrl + window.location.pathname);
+          } else if (countryCode === 'US' && window.location.host !== drupalSettings.language.domains['en']) {
+            window.location.replace('//' + englishUrl + window.location.pathname);
+          }
+        }
       }
     });
 

@@ -3400,18 +3400,29 @@ Drupal.behaviors.ipstack = {
       success: function success(json) {
 
         var countryCode = json.country_code;
+        var englishUrl = drupalSettings.language.domains['en'];
+        var canadianUrl = drupalSettings.language.domains['en-ca'];
         var cookie = getCookie('sitechoice');
+        countryCode = 'CA';
         window.console.log(cookie);
         window.console.log(countryCode);
 
-        if (cookie === 'ca' && window.location.host !== drupalSettings.language.domains['en-ca']) {
+        /*if ( cookie === 'ca' && window.location.host !== drupalSettings.language.domains['en-ca']) {
           window.location.replace('//' + drupalSettings.language.domains['en-ca'] + window.location.pathname + window.location.search);
-        } else if (cookie === 'us' && window.location.host !== drupalSettings.language.domains['en']) {
+        } else if ( cookie === 'us' && window.location.host !== drupalSettings.language.domains['en'] ) {
           window.location.replace('//' + drupalSettings.language.domains['en'] + window.location.pathname + window.location.search);
-        } else if (!cookie && countryCode === 'CA' && window.location.host !== drupalSettings.language.domains['en-ca']) {
+        } else if ( !cookie && countryCode === 'CA' && window.location.host !== drupalSettings.language.domains['en-ca']) {
           window.location.replace('//' + drupalSettings.language.domains['en-ca'] + window.location.pathname);
-        } else if (!cookie && countryCode === 'US' && window.location.host !== drupalSettings.language.domains['en']) {
+        } else if ( !cookie && countryCode === 'US' && window.location.host !== drupalSettings.language.domains['en'])  {
           window.location.replace('//' + drupalSettings.language.domains['en'] + window.location.pathname);
+        }*/
+
+        if (!cookie) {
+          if (countryCode === 'CA' && window.location.host !== drupalSettings.language.domains['en-ca']) {
+            window.location.replace('//' + canadianUrl + window.location.pathname);
+          } else if (countryCode === 'US' && window.location.host !== drupalSettings.language.domains['en']) {
+            window.location.replace('//' + englishUrl + window.location.pathname);
+          }
         }
       }
     });
@@ -4604,33 +4615,38 @@ exports.Timer = Timer;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(jQuery) {
 
-/**
- * @file external-links.js
- *
- * Add target=_blank to all external links.
- */
 
-!function ($) {
-  // Always use strict mode to enable better error handling in modern browsers.
-  "use strict";
+var _jquery = __webpack_require__(5);
 
-  // Add target="_blank" to all external links.
+var _jquery2 = _interopRequireDefault(_jquery);
 
-  $('a').each(function () {
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// eslint-disable-line import/no-extraneous-dependencies
+
+Drupal.behaviors.externalLink = {
+  attach: function attach(context) {
+    var englishUrl = drupalSettings.language.domains['en'];
+    var canadianUrl = drupalSettings.language.domains['en-ca'];
     var a = new RegExp('/' + window.location.host + '/');
-    if (!a.test(this.href) && this.href !== '') {
-      $(this).attr('target', '_blank');
-    }
-  });
+    // Add target="_blank" to all external links.
+    (0, _jquery2.default)('a', context).each(function () {
+      if (!a.test(this.href) && this.href !== '' && !(this.href.indexOf(englishUrl) !== -1) && !(this.href.indexOf(canadianUrl) !== -1)) {
+        (0, _jquery2.default)(this).attr('target', '_blank');
+      }
+    });
 
-  // Add target="_blank" to all files.
-  $('.file > a').each(function () {
-    $(this).attr('target', '_blank');
-  });
-}(jQuery);
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
+    // Add target="_blank" to all files.
+    (0, _jquery2.default)('.file > a').each(function () {
+      (0, _jquery2.default)(this).attr('target', '_blank');
+    });
+  }
+}; /**
+    * @file external-links.js
+    *
+    * Add target=_blank to all external links.
+    */
 
 /***/ }),
 
