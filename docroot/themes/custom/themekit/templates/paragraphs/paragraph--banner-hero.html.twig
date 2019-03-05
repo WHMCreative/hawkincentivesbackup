@@ -88,6 +88,9 @@ set classes = [
     {% if insight_date %}
       <div class="date">{{ insight_date }}</div>
     {% endif %}
+    {% if not content.field_large_heading|render %}
+      <h1 class="heading field--name-field-large-heading">{{ node_title }}</h1>
+    {% endif %}
     {{ rendered_content }}
   </div>
   {% if additional_content_type not in additional_content_below %}

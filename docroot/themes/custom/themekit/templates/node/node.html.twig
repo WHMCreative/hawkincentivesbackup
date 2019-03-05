@@ -91,7 +91,7 @@ view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
 %}
 
 {% set rendered_content = content|without(
-  'field_p_header'
+  ''
   ) %}
 
 {{ attach_library('classy/node') }}
