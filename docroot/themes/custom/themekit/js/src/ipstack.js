@@ -38,7 +38,7 @@ Drupal.behaviors.ipstack = {
         const englishUrl = drupalSettings.language.domains['en'];
         const canadianUrl = drupalSettings.language.domains['en-ca'];
         let cookie = getCookie('sitechoice');
-        countryCode = 'CA'
+        // countryCode = 'CA'
         window.console.log(cookie);
         window.console.log(countryCode);
 

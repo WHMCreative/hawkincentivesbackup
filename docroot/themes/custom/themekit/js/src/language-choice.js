@@ -1,5 +1,7 @@
 "use strict";
 
+import $ from 'jquery';
+
 function setCookie(cname, cvalue, exdays) {
   var d = new Date();
   d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
@@ -21,14 +23,22 @@ function getQueryVariable(variable)
 Drupal.behaviors.languageChoice = {
   attach: function (context, settings) {
 
+    $('#block-languageswitcher').appendTo('#block-utility');
+
+    $('.language-link').each(function(){
+      let href = $(this).attr('href');
+      let query = href.indexOf('?') ? '&sitechoice=' + $(this).attr('hreflang') : '?sitechoice=' + $(this).attr('hreflang');
+      $(this).attr('href', $(this).attr('href') + query);
+    });
+
     //window.console.log(window.location.href.split('?')[1]);
     let query = getQueryVariable('sitechoice');
 
     if (query) {
-      if (query === 'ca') {
-        setCookie('sitechoice', 'ca');
-      } else if (query === 'us') {
-        setCookie('sitechoice', 'us');
+      if (query === 'en-ca') {
+        setCookie('sitechoice', 'en-ca');
+      } else if (query === 'en') {
+        setCookie('sitechoice', 'en');
       }
     }
 

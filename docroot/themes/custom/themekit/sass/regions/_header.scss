@@ -73,7 +73,8 @@
     .menu--utility {
       display: none;
       @include breakpoint(marge) {
-        display: block;
+        display: flex;
+        justify-content: flex-end;
         padding-bottom: 11px;
         margin-bottom: 25px;
         width: 100%;
@@ -89,7 +90,8 @@
           background: $lighter-gray;
         }
       }
-      ul.menu {
+      ul.menu,
+      ul.links {
         margin: 0;
         list-style: none;
         @include breakpoint(marge) {
@@ -117,6 +119,11 @@
             font-weight: 700;
             color: $secondary-color;
           }
+        }
+      }
+      ul.links {
+        .is-active {
+          display: none;
         }
       }
     }

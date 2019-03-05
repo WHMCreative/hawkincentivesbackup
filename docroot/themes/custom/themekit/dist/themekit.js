@@ -3318,6 +3318,12 @@ __webpack_require__(188);
 "use strict";
 
 
+var _jquery = __webpack_require__(5);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function setCookie(cname, cvalue, exdays) {
   var d = new Date();
   d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
@@ -3340,14 +3346,22 @@ function getQueryVariable(variable) {
 Drupal.behaviors.languageChoice = {
   attach: function attach(context, settings) {
 
+    (0, _jquery2.default)('#block-languageswitcher').appendTo('#block-utility');
+
+    (0, _jquery2.default)('.language-link').each(function () {
+      var href = (0, _jquery2.default)(this).attr('href');
+      var query = href.indexOf('?') ? '&sitechoice=' + (0, _jquery2.default)(this).attr('hreflang') : '?sitechoice=' + (0, _jquery2.default)(this).attr('hreflang');
+      (0, _jquery2.default)(this).attr('href', (0, _jquery2.default)(this).attr('href') + query);
+    });
+
     //window.console.log(window.location.href.split('?')[1]);
     var query = getQueryVariable('sitechoice');
 
     if (query) {
-      if (query === 'ca') {
-        setCookie('sitechoice', 'ca');
-      } else if (query === 'us') {
-        setCookie('sitechoice', 'us');
+      if (query === 'en-ca') {
+        setCookie('sitechoice', 'en-ca');
+      } else if (query === 'en') {
+        setCookie('sitechoice', 'en');
       }
     }
   }
@@ -3403,7 +3417,7 @@ Drupal.behaviors.ipstack = {
         var englishUrl = drupalSettings.language.domains['en'];
         var canadianUrl = drupalSettings.language.domains['en-ca'];
         var cookie = getCookie('sitechoice');
-        countryCode = 'CA';
+        // countryCode = 'CA'
         window.console.log(cookie);
         window.console.log(countryCode);
 
