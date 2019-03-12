@@ -108,6 +108,7 @@ $config['config_split.config_split.config_dev']['status'] = FALSE;
 $config['language.negotiation']['url']['source'] = 'domain';
 $config['language.negotiation']['url']['domains']['en'] = 'www.bhk-d8.dev.e3develop.com';
 $config['language.negotiation']['url']['domains']['en-ca'] = 'www.bhk-d8.ca.dev.e3develop.com';
+$config['language.negotiation']['url']['domains']['fr'] = 'www.bhk-d8.fr.dev.e3develop.com';
 
 // @TODO figure out how to switch per environment
 // If $_SERVER['AH_SITE_ENVIRONMENT'], load Blackmesh settings.

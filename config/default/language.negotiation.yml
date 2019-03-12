@@ -5,9 +5,11 @@ url:
   prefixes:
     en: ''
     en-ca: en-ca
+    fr: fr
   domains:
     en: www.hawkincentives.com
     en-ca: www.hawkincentives.ca
+    fr: www.fr.hawkincentives.ca
 selected_langcode: site_default
 _core:
   default_config_hash: uEePITI9tV6WqzmsTb7MfPCi5yPWXSxAN1xeLcYFQbM

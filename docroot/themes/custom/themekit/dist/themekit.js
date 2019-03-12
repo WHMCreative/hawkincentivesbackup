@@ -4643,10 +4643,11 @@ Drupal.behaviors.externalLink = {
   attach: function attach(context) {
     var englishUrl = drupalSettings.language.domains['en'];
     var canadianUrl = drupalSettings.language.domains['en-ca'];
+    var frenchUrl = drupalSettings.language.domains['fr'];
     var a = new RegExp('/' + window.location.host + '/');
     // Add target="_blank" to all external links.
     (0, _jquery2.default)('a', context).each(function () {
-      if (!a.test(this.href) && this.href !== '' && !(this.href.indexOf(englishUrl) !== -1) && !(this.href.indexOf(canadianUrl) !== -1)) {
+      if (!a.test(this.href) && this.href !== '' && !(this.href.indexOf(englishUrl) !== -1) && !(this.href.indexOf(canadianUrl) !== -1) && !(this.href.indexOf(frenchUrl) !== -1)) {
         (0, _jquery2.default)(this).attr('target', '_blank');
       }
     });

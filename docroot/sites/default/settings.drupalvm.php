@@ -169,3 +169,4 @@ $config['purge.plugins']['purgers'][0]['plugin_id'] = '';
 $config['language.negotiation']['url']['source'] = 'domain';
 $config['language.negotiation']['url']['domains']['en'] = 'www.bhk-d8.drupalvm';
 $config['language.negotiation']['url']['domains']['en-ca'] = 'www.ca.bhk-d8.drupalvm';
+$config['language.negotiation']['url']['domains']['fr'] = 'www.fr.bhk-d8.drupalvm';

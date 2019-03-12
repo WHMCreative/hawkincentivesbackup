@@ -9,10 +9,14 @@ Drupal.behaviors.externalLink = {
   attach(context) {
     const englishUrl = drupalSettings.language.domains['en'];
     const canadianUrl = drupalSettings.language.domains['en-ca'];
+    const frenchUrl = drupalSettings.language.domains['fr'];
     const a = new RegExp(`/${window.location.host}/`);
     // Add target="_blank" to all external links.
     $('a', context).each(function () {
-      if (!a.test(this.href) && this.href !== '' && !this.href.includes(englishUrl) && !this.href.includes(canadianUrl)) {
+      if (!a.test(this.href) && this.href !== ''
+        && !this.href.includes(englishUrl)
+        && !this.href.includes(canadianUrl)
+        && !this.href.includes(frenchUrl)) {
         $(this).attr('target', '_blank');
       }
     });
