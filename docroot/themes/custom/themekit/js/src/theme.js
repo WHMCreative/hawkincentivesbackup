@@ -15,3 +15,4 @@ import './hero-slider';
 import './footer';
 import './form';
 import './infogram-resize';
+import './dialog-tech';
