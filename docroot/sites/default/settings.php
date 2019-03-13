@@ -105,12 +105,6 @@ $config['']['account'] = '';
 // Disable dev modules on all environments by default.
 $config['config_split.config_split.config_dev']['status'] = FALSE;
 
-$config['language.negotiation']['url']['source'] = 'domain';
-$config['language.negotiation']['url']['domains']['en'] = 'www.bhk-d8.dev.e3develop.com';
-$config['language.negotiation']['url']['domains']['en-ca'] = 'www.bhk-d8.ca.dev.e3develop.com';
-$config['language.negotiation']['url']['domains']['fr'] = 'www.bhk-d8.fr.dev.e3develop.com';
-
-// @TODO figure out how to switch per environment
 // If $_SERVER['AH_SITE_ENVIRONMENT'], load Blackmesh settings.
 if (isset($_SERVER['AH_SITE_ENVIRONMENT'])) {
 
@@ -132,6 +126,7 @@ if (isset($_SERVER['AH_SITE_ENVIRONMENT'])) {
   $settings['trusted_host_patterns'][] = 'bhk-d8.dev.e3develop.com';
   $settings['trusted_host_patterns'][] = 'bhk-d8.prod.e3develop.com';
   $settings['trusted_host_patterns'][] = 'hawkincentives.com';
+  $settings['trusted_host_patterns'][] = 'hawkincentives.ca';
 
   /**
    * Set default config_readonly status to TRUE on all Acquia environments.
@@ -155,9 +150,10 @@ if (isset($_SERVER['AH_SITE_ENVIRONMENT'])) {
       $settings['container_yamls'][] = DRUPAL_ROOT . '/sites/development.services.yml';
 
       // Set localization domains
-//      $config['language.negotiation']['url']['source'] = 'domain';
-//      $config['language.negotiation']['url']['domains']['en'] = 'www.bhk-d8.dev.e3develop.com';
-//      $config['language.negotiation']['url']['domains']['en-ca'] = 'www.bhk-d8.ca.dev.e3develop.com';
+      $config['language.negotiation']['url']['source'] = 'domain';
+      $config['language.negotiation']['url']['domains']['en'] = 'www.bhk-d8.dev.e3develop.com';
+      $config['language.negotiation']['url']['domains']['en-ca'] = 'www.bhk-d8.ca.dev.e3develop.com';
+      $config['language.negotiation']['url']['domains']['fr'] = 'www.bhk-d8.fr.dev.e3develop.com';
 
       /**
        * Master DB and Config Read-Only settings
@@ -171,7 +167,6 @@ if (isset($_SERVER['AH_SITE_ENVIRONMENT'])) {
        * All Master DB config must be merged into the master branch before merging new config from VCS.
        *
        */
-      $config['environment_indicator.indicator']['name'] = 'BlackMesh ' . $_SERVER['AH_SITE_ENVIRONMENT'] . ' [Master DB]';
       $config['environment_indicator.indicator']['bg_color'] = '#000000';
 
       // Set purger host
@@ -185,6 +180,8 @@ if (isset($_SERVER['AH_SITE_ENVIRONMENT'])) {
 
       // Set logging level on production.
       $config['system.logging']['error_level'] = 'hide';
+
+      $config['environment_indicator.indicator']['name'] = 'BlackMesh ' . $_SERVER['AH_SITE_ENVIRONMENT'] . ' [Master DB]';
 
       // Set GTM Code
       $config['e3_google_tag.settings']['gtm_code'] = 'GTM-TPN3SGZ';
