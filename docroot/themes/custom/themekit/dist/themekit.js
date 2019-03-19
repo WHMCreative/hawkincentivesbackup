@@ -3358,7 +3358,9 @@ Drupal.behaviors.languageChoice = {
     var query = getQueryVariable('sitechoice');
 
     if (query) {
-      if (query === 'en-ca') {
+      if (query === 'fr') {
+        setCookie('sitechoice', 'fr');
+      } else if (query === 'en-ca') {
         setCookie('sitechoice', 'en-ca');
       } else if (query === 'en') {
         setCookie('sitechoice', 'en');
@@ -3416,9 +3418,10 @@ Drupal.behaviors.ipstack = {
         var countryCode = json.country_code;
         var englishUrl = drupalSettings.language.domains['en'];
         var canadianUrl = drupalSettings.language.domains['en-ca'];
+        var frenchUrl = drupalSettings.language.domains['fr'];
         var cookie = getCookie('sitechoice');
         // countryCode = 'CA'
-        window.console.log(cookie);
+        window.console.log('cookie: ' + cookie);
         window.console.log(countryCode);
 
         /*if ( cookie === 'ca' && window.location.host !== drupalSettings.language.domains['en-ca']) {
@@ -3432,7 +3435,9 @@ Drupal.behaviors.ipstack = {
         }*/
 
         if (!cookie) {
-          if (countryCode === 'CA' && window.location.host !== canadianUrl) {
+          if (countryCode === 'FR' && window.location.host !== frenchUrl) {
+            window.location.replace('//' + frenchUrl + window.location.pathname);
+          } else if (countryCode === 'CA' && window.location.host !== canadianUrl) {
             window.location.replace('//' + canadianUrl + window.location.pathname);
           } else if (countryCode === 'US' && window.location.host !== englishUrl) {
             window.location.replace('//' + englishUrl + window.location.pathname);

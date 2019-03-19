@@ -37,9 +37,10 @@ Drupal.behaviors.ipstack = {
         let countryCode = json.country_code;
         const englishUrl = drupalSettings.language.domains['en'];
         const canadianUrl = drupalSettings.language.domains['en-ca'];
+        const frenchUrl = drupalSettings.language.domains['fr'];
         let cookie = getCookie('sitechoice');
         // countryCode = 'CA'
-        window.console.log(cookie);
+        window.console.log('cookie: ' + cookie);
         window.console.log(countryCode);
 
         /*if ( cookie === 'ca' && window.location.host !== drupalSettings.language.domains['en-ca']) {
@@ -53,7 +54,9 @@ Drupal.behaviors.ipstack = {
         }*/
 
         if (!cookie) {
-          if (countryCode === 'CA' && window.location.host !== canadianUrl) {
+          if (countryCode === 'FR' && window.location.host !== frenchUrl) {
+            window.location.replace('//' + frenchUrl + window.location.pathname);
+          } else if (countryCode === 'CA' && window.location.host !== canadianUrl) {
             window.location.replace('//' + canadianUrl + window.location.pathname);
           } else if (countryCode === 'US' && window.location.host !== englishUrl) {
             window.location.replace('//' + englishUrl + window.location.pathname);

@@ -35,9 +35,13 @@ Drupal.behaviors.languageChoice = {
     let query = getQueryVariable('sitechoice');
 
     if (query) {
-      if (query === 'en-ca') {
+      if (query === 'fr') {
+        setCookie('sitechoice', 'fr');
+      }
+      else if (query === 'en-ca') {
         setCookie('sitechoice', 'en-ca');
-      } else if (query === 'en') {
+      }
+      else if (query === 'en') {
         setCookie('sitechoice', 'en');
       }
     }
