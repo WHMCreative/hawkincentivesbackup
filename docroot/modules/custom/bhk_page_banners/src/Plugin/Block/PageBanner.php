@@ -5,6 +5,7 @@ namespace Drupal\bhk_page_banners\Plugin\Block;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Cache\Cache;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Drupal\paragraphs\Entity\Paragraph;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Controller\TitleResolver;
 use Drupal\Core\Language\LanguageManager;
@@ -168,12 +169,14 @@ class PageBanner extends BlockBase implements ContainerFactoryPluginInterface {
     // If current page is a node, test if it has the paragraph header field.
     if ($node_current_translation && $node_current_translation->hasField('field_p_header') && !$node_current_translation->field_p_header->isEmpty()) {
       // Build field_p_header.
-      $header_field = $node_current_translation->field_p_header;
-      $viewBuilder = $this->entityTypeManager->getViewBuilder('node');
-      $header_render_array = $viewBuilder->viewField($header_field, ['label' => 'hidden']);
+      $header_field_id = $node_current_translation->field_p_header->target_id;
+      $header_field = Paragraph::load($header_field_id)->getTranslation($lang_code);
+
+      $viewBuilder = $this->entityTypeManager->getViewBuilder('paragraph');
+      $header_render_array = $viewBuilder->view($header_field, 'full', $lang_code);
       $paragraph = NULL;
-      if (isset($header_render_array[0]['#paragraph'])) {
-        $paragraph = $header_render_array[0]['#paragraph'];
+      if (isset($header_render_array['#paragraph'])) {
+        $paragraph = $header_render_array['#paragraph'];
       }
 
       if ($paragraph->hasField('field_heading') && empty($paragraph->field_heading->getValue())) {
