@@ -42,13 +42,13 @@ function themekit_preprocess_html(&$variables) {
   }
 
   // Place this block programmatically, issues placing within the block ui.
-//  $variables['page']['content_above']['pagebanner'] = themekit_block_to_renderable_array('pagebanner');
-//
-//  if ($current_route === 'view.insights.page_resources') {
-//    if (isset($variables['page']['content_above']['pagebanner'])) {
-//      unset($variables['page']['content_above']['pagebanner']);
-//    }
-//  }
+  $variables['page']['content_above']['pagebanner'] = themekit_block_to_renderable_array('pagebanner');
+
+  if ($current_route === 'view.insights.page_resources') {
+    if (isset($variables['page']['content_above']['pagebanner'])) {
+      unset($variables['page']['content_above']['pagebanner']);
+    }
+  }
 
   // Pass language domain data to settings JS object
   $config = \Drupal::config('language.negotiation')->get('url');
@@ -215,7 +215,6 @@ function themekit_preprocess_paragraph_banner_hero(&$variables) {
   $node = $paragraph->getParentEntity();
   themekit_get_insight_data($node, $variables);
 
-  $variables['node_title'] = $node->getTitle();
 
   if ($paragraph->hasField('field_media')
     && empty($paragraph->get('field_media')->getValue())
