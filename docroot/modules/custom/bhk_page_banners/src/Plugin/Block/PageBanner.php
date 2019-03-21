@@ -179,12 +179,21 @@ class PageBanner extends BlockBase implements ContainerFactoryPluginInterface {
         $paragraph = $header_render_array['#paragraph'];
       }
 
-      if ($paragraph->hasField('field_heading') && empty($paragraph->field_heading->getValue())) {
-        $paragraph->field_heading->setValue($node_current_translation->getTitle());
+      // Add some strange logic to deal with field change on banner_hero
+      // If node is an insight use the field_heading but because we are no
+      // longer displaying that field, set field_large_heading to its value.
+      if ($paragraph->hasField('field_heading')
+        && empty($paragraph->field_heading->getValue())
+        && $node_current_translation->bundle() == 'insight') {
+        $paragraph->field_large_heading->setValue($node_current_translation->getTitle());
+      } else if ($paragraph->hasField('field_heading') && !empty($paragraph->field_heading->getValue())) {
+        $paragraph->field_large_heading->setValue($paragraph->field_heading->getValue());
       }
 
-      if ($paragraph->hasField('field_large_heading') && empty($paragraph->field_large_heading->getValue())) {
-        $paragraph->field_large_heading->setValue($node_current_translation->getTitle());
+      if ($paragraph->hasField('field_large_heading')
+        && empty($paragraph->field_large_heading->getValue())
+        && $node_current_translation->bundle() != 'insight') {
+          $paragraph->field_large_heading->setValue($node_current_translation->getTitle());
       }
     }
     elseif ($node_current_translation) {
