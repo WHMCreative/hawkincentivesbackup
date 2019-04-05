@@ -162,10 +162,12 @@ class PageBanner extends BlockBase implements ContainerFactoryPluginInterface {
     if ($current_node && $current_node->hasTranslation($lang_code)) {
       $node_current_translation = $current_node->getTranslation($lang_code);
     }
-    else {
+    elseif ($current_node) {
       // If there is no translation of the node, fallback to default language.
       $node_current_translation = $current_node->getTranslation($default_lang_code);
       $lang_code = $default_lang_code;
+    } else {
+      $node_current_translation = [];
     }
 
     // If current page is a node, test if it has the paragraph header field.
