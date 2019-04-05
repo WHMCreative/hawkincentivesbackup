@@ -1,0 +1,19 @@
+cross_auth_possible: true
+cross_auth_enabled: true
+_core:
+  default_config_hash: bWsKQC8PrJm0l7TUA2Lj4leJ73EC0izrzczNS_mjE9o
+url_negotiations:
+  en:
+    domain: www.hawkincentives.com
+    prefixes:
+      - ''
+      - en
+  en-ca:
+    domain: www.hawkincentives.ca
+    prefixes:
+      - ''
+      - en
+  fr:
+    domain: www.hawkincentives.ca
+    prefixes:
+      - fr

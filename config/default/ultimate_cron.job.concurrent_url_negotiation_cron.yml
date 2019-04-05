@@ -1,0 +1,17 @@
+uuid: 12e2a292-a024-4cb8-a67d-16cc1ded41da
+langcode: en
+status: true
+dependencies:
+  module:
+    - concurrent_url_negotiation
+title: 'Default cron handler'
+id: concurrent_url_negotiation_cron
+weight: 0
+module: concurrent_url_negotiation
+callback: concurrent_url_negotiation_cron
+scheduler:
+  id: simple
+launcher:
+  id: serial
+logger:
+  id: database

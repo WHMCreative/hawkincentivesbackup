@@ -170,3 +170,7 @@ $config['language.negotiation']['url']['source'] = 'domain';
 $config['language.negotiation']['url']['domains']['en'] = 'www.bhk-d8.drupalvm';
 $config['language.negotiation']['url']['domains']['en-ca'] = 'www.ca.bhk-d8.drupalvm';
 $config['language.negotiation']['url']['domains']['fr'] = 'www.fr.bhk-d8.drupalvm';
+
+$config['concurrent_url_negotiation.config']['url_negotiations']['en']['domain'] = 'www.bhk-d8.drupalvm';
+$config['concurrent_url_negotiation.config']['url_negotiations']['en-ca']['domain'] = 'www.ca.bhk-d8.drupalvm';
+$config['concurrent_url_negotiation.config']['url_negotiations']['fr']['domain'] = 'www.ca.bhk-d8.drupalvm';

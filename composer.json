@@ -100,7 +100,8 @@
     "drupal/views_infinite_scroll": "^1.5",
     "drupal/better_exposed_filters": "^3.0@alpha",
     "drupal/varnish_purge": "^1.11",
-    "drupal/colorbutton": "^1.1"
+    "drupal/colorbutton": "^1.1",
+    "drupal/concurrent_url_negotiation": "^1.0"
   },
   "conflict": {
       "drupal/drupal": "*"

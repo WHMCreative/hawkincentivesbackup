@@ -1,0 +1,14 @@
+name: Concurrent URL negotiation
+description: Provides domain and path concurrent URL language detection.
+package: Multilingual
+
+type: module
+# core: 8.x
+
+configure: concurrent_url_negotiation.config_form
+
+# Information added by Drupal.org packaging script on 2018-02-01
+version: '8.x-1.0'
+core: '8.x'
+project: 'concurrent_url_negotiation'
+datestamp: 1517479383

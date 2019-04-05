@@ -155,6 +155,10 @@ if (isset($_SERVER['AH_SITE_ENVIRONMENT'])) {
       $config['language.negotiation']['url']['domains']['en-ca'] = 'www.bhk-d8.ca.dev.e3develop.com';
       $config['language.negotiation']['url']['domains']['fr'] = 'www.bhk-d8.fr.dev.e3develop.com';
 
+      $config['concurrent_url_negotiation.config']['url_negotiations']['en']['domain'] = 'www.bhk-d8.dev.e3develop.com';
+      $config['concurrent_url_negotiation.config']['url_negotiations']['en-ca']['domain'] = 'www.bhk-d8.ca.dev.e3develop.com';
+      $config['concurrent_url_negotiation.config']['url_negotiations']['fr']['domain'] = 'www.bhk-d8.ca.dev.e3develop.com';
+
       /**
        * Master DB and Config Read-Only settings
        *
