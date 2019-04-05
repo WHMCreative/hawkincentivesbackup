@@ -14,5 +14,5 @@ services:
   concurrent_url_negotiation.request_listener:
     class: Drupal\concurrent_url_negotiation\EventListener\CrossTokenListener
     arguments: ['@concurrent_url_negotiation.cross_auth']
-    tags: 
+    tags:
       - {name: event_subscriber}
