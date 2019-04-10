@@ -123,12 +123,18 @@
           display: none;
         }
         .field--name-field-block {
+          html[lang="en"] & {
+            display: none;
+          }
           ul {
             list-style: none;
             margin: 0;
             display: flex;
             li {
               margin: 0;
+              &[hreflang="en"] {
+              display: none;
+            }
             }
           }
           .is-active {
