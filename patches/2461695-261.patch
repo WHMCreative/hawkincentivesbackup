@@ -1,0 +1,361 @@
+diff --git a/paragraphs.module b/paragraphs.module
+index 138f238..09fa1e8 100644
+--- a/paragraphs.module
++++ b/paragraphs.module
+@@ -125,7 +125,7 @@ function paragraphs_form_field_storage_config_edit_form_alter(&$form, \Drupal\Co
+ /**
+  * Implements hook_form_FORM_ID_alter().
+  *
+- * Indicate unsupported multilingual paragraphs field configuration.
++ * Indicates not recommended multilingual paragraphs field configuration.
+  */
+ function paragraphs_form_field_config_edit_form_alter(&$form,  \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+   $field = $form_state->getFormObject()->getEntity();
+@@ -144,24 +144,18 @@ function paragraphs_form_field_config_edit_form_alter(&$form,  \Drupal\Core\Form
+   }
+ 
+   // This is a translatable ERR field pointing to a paragraph.
+-  $message_display = 'warning';
+-  $message_text = t('Paragraphs fields do not support translation. See the <a href=":documentation">online documentation</a>.', [
++  $message_text = t('The recommended multilingual configuration is to not enable translation on Paragraph fields. See the <a href=":documentation">online documentation</a>.', [
+     ':documentation' => Url::fromUri('https://www.drupal.org/node/2735121')
+       ->toString()
+   ]);
+ 
+-  if ($form['translatable']['#default_value'] == TRUE) {
+-    $message_display = 'error';
+-  }
+-
+-  $form['paragraphs_message'] = array(
+-    '#type' => 'container',
+-    '#markup' => $message_text,
+-    '#attributes' => array(
+-      'class' => array('messages messages--' . $message_display),
+-    ),
++  $form['paragraphs_message'] = [
++    '#theme' => 'status_messages',
+     '#weight' => 0,
+-  );
++    '#message_list' => [
++      'warning' => [$message_text],
++    ],
++  ];
+ }
+ 
+ /**
+@@ -185,10 +179,7 @@ function paragraphs_module_implements_alter(&$implementations, $hook) {
+ /**
+  * Implements hook_form_FORM_ID_alter().
+  *
+- * Indicate unsupported multilingual paragraphs field configuration.
+- *
+- * Add a warning that paragraph fields can not be translated.
+- * Switch to error if a paragraph field is marked as translatable.
++ * Indicates not recommended multilingual paragraphs field configuration.
+  */
+ function paragraphs_form_language_content_settings_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+   // Without it Paragraphs message are meaningless.
+@@ -197,15 +188,11 @@ function paragraphs_form_language_content_settings_form_alter(&$form, \Drupal\Co
+   }
+ 
+   $content_translation_manager = \Drupal::service('content_translation.manager');
+-  $message_display = 'warning';
+-  $message_text = t('(* unsupported) Paragraphs fields do not support translation. See the <a href=":documentation">online documentation</a>.', [
++  $message_text = t('(* not recommended) The recommended multilingual configuration is to not enable translation on Paragraph fields. See the <a href=":documentation">online documentation</a>.', [
+     ':documentation' => Url::fromUri('https://www.drupal.org/node/2735121')
+       ->toString()]);
+   $map = \Drupal::service('entity_field.manager')->getFieldMapByFieldType('entity_reference_revisions');
+   foreach ($map as $entity_type_id => $info) {
+-    if (!$content_translation_manager->isEnabled($entity_type_id)) {
+-      continue;
+-    }
+     $field_storage_definitions = \Drupal::service('entity_field.manager')->getFieldStorageDefinitions($entity_type_id);
+ 
+     /** @var \Drupal\Core\Field\FieldStorageDefinitionInterface  $storage_definition */
+@@ -223,17 +210,11 @@ function paragraphs_form_language_content_settings_form_alter(&$form, \Drupal\Co
+           $bundles = Element::children($form['settings'][$entity_type_id]);
+         }
+         foreach($bundles as $bundle) {
+-          if (!$content_translation_manager->isEnabled($entity_type_id, $bundle)) {
+-            continue;
+-          }
+ 
+           // Update the label and if the paragraph field is translatable,
+           // display an error message instead of just a warning.
+           if (isset($form['settings'][$entity_type_id][$bundle]['fields'][$name]['#label'])) {
+-            $form['settings'][$entity_type_id][$bundle]['fields'][$name]['#label'] = t('@field_label (* unsupported)', ['@field_label' => $form['settings'][$entity_type_id][$bundle]['fields'][$name]['#label']]);
+-          }
+-          if (!empty($form['settings'][$entity_type_id][$bundle]['fields'][$name]['#default_value'])) {
+-            $message_display = 'error';
++            $form['settings'][$entity_type_id][$bundle]['fields'][$name]['#label'] = t('@field_label (* not recommended)', ['@field_label' => $form['settings'][$entity_type_id][$bundle]['fields'][$name]['#label']]);
+           }
+         }
+       }
+@@ -250,14 +231,13 @@ function paragraphs_form_language_content_settings_form_alter(&$form, \Drupal\Co
+     }
+   }
+ 
+-  $form['settings']['paragraphs_message'] = array(
+-    '#type' => 'container',
+-    '#markup' => $message_text,
+-    '#attributes' => array(
+-      'class' => array('messages messages--' . $message_display),
+-    ),
++  $form['settings']['paragraphs_message'] = [
++    '#theme' => 'status_messages',
+     '#weight' => 0,
+-  );
++    '#message_list' => [
++      'warning' => [$message_text],
++    ],
++  ];
+ }
+ 
+ /**
+diff --git a/src/Plugin/Field/FieldWidget/InlineParagraphsWidget.php b/src/Plugin/Field/FieldWidget/InlineParagraphsWidget.php
+index 48d6d2c..c1990e0 100644
+--- a/src/Plugin/Field/FieldWidget/InlineParagraphsWidget.php
++++ b/src/Plugin/Field/FieldWidget/InlineParagraphsWidget.php
+@@ -299,7 +299,7 @@ class InlineParagraphsWidget extends WidgetBase {
+       }
+     }
+ 
+-    if ($paragraphs_entity) {
++    if ($paragraphs_entity instanceof ParagraphInterface) {
+       // Detect if we are translating.
+       $this->initIsTranslating($form_state, $host);
+       $langcode = $form_state->get('langcode');
+@@ -318,6 +318,26 @@ class InlineParagraphsWidget extends WidgetBase {
+           }
+         }
+       }
++      elseif ($items->getFieldDefinition()->isTranslatable()) {
++        // If the field is translatable, host entity translation should refer to
++        // different paragraph entities. So we clone the paragraph.
++        if (!empty($form_state->get('content_translation'))) {
++          $paragraphs_entity = $this->createDuplicateWithSingleLanguage($paragraphs_entity, $langcode);
++        }
++
++        if ($paragraphs_entity->hasTranslation($langcode)) {
++          // Force the language on the target language. This is needed to load
++          // the translated paragraph entity form in case they were previously
++          // duplicated from an original entity which was already translated
++          // before enabling the asymmetric functionality.
++          $paragraphs_entity = $paragraphs_entity->getTranslation($langcode);
++        }
++        else {
++          // Edge case when paragraphs_entity translation in target language
++          // has been removed or was not created.
++          $paragraphs_entity = $this->createDuplicateWithSingleLanguage($paragraphs_entity, $langcode);
++        }
++      }
+       else {
+         // Add translation if missing for the target language.
+         if (!$paragraphs_entity->hasTranslation($langcode)) {
+@@ -402,7 +422,7 @@ class InlineParagraphsWidget extends WidgetBase {
+         $links = array();
+ 
+         // Hide the button when translating.
+-        $button_access = $paragraphs_entity->access('delete') && !$this->isTranslating;
++        $button_access = $paragraphs_entity->access('delete') && (!$this->isTranslating || $items->getFieldDefinition()->isTranslatable());
+         if ($item_mode != 'remove') {
+           $links['remove_button'] = [
+             '#type' => 'submit',
+@@ -923,7 +943,7 @@ class InlineParagraphsWidget extends WidgetBase {
+     $host = $items->getEntity();
+     $this->initIsTranslating($form_state, $host);
+ 
+-    if (($this->realItemCount < $cardinality || $cardinality == FieldStorageDefinitionInterface::CARDINALITY_UNLIMITED) && !$form_state->isProgrammed() && !$this->isTranslating) {
++    if (($this->realItemCount < $cardinality || $cardinality == FieldStorageDefinitionInterface::CARDINALITY_UNLIMITED) && !$form_state->isProgrammed() && (!$this->isTranslating || $this->fieldDefinition->isTranslatable())) {
+       $elements['add_more'] = $this->buildAddActions();
+     }
+ 
+@@ -1377,6 +1397,77 @@ class InlineParagraphsWidget extends WidgetBase {
+     }
+   }
+ 
++  /**
++   * Clones a paragraph recursively.
++   *
++   * Also, in case of a translatable paragraph, updates its original language
++   * and removes all other translations.
++   *
++   * @param \Drupal\paragraphs\ParagraphInterface $paragraph
++   *   The paragraph entity to clone.
++   * @param string $langcode
++   *   Language code for all the clone entities created.
++   *
++   * @return \Drupal\paragraphs\ParagraphInterface
++   *   New paragraph object with the data from the original paragraph. Not
++   *   saved. All sub-paragraphs are clones as well.
++   */
++  protected function createDuplicateWithSingleLanguage(ParagraphInterface $paragraph, $langcode) {
++    if ($paragraph->hasTranslation($langcode)) {
++      // If the paragraph entity was already translated before enabling the
++      // asymmetric functionality, use the translation in the target language as
++      // a base instead of using the default language.
++      $duplicate = $paragraph->createDuplicate()->getTranslation($langcode);
++    }
++    else {
++      $duplicate = $paragraph->createDuplicate();
++    }
++
++    // Clone all sub-paragraphs recursively.
++    foreach ($duplicate->getFields(FALSE) as $field) {
++      // @todo: should we support field collections as well?
++      if ($field->getFieldDefinition()->getType() == 'entity_reference_revisions' && $field->getFieldDefinition()->getTargetEntityTypeId() == 'paragraph') {
++        foreach ($field as $item) {
++          $item->entity = $this->createDuplicateWithSingleLanguage($item->entity, $langcode);
++
++          if ($item->entity->hasTranslation($langcode)) {
++            // Force the language on the target language. This is needed to
++            // reuse (as in "not have to translate again") the original
++            // paragraph entity translation in case they were already created
++            // before enabling the asymmetric functionality.
++            $item->entity = $item->entity->getTranslation($langcode);
++          }
++        }
++      }
++    }
++
++    // Change the original language and remove possible translations.
++    if ($duplicate->isTranslatable()) {
++      $duplicate->set('langcode', $langcode);
++      foreach ($duplicate->getTranslationLanguages(FALSE) as $language) {
++        try {
++          // We don't want to remove the translation which we are trying to use
++          // if it already exists. If we don't do this, we will have an
++          // exception which tells the translation was removed.
++          // Ideally, it would be better to be able to change the default
++          // language of $duplicate and remove all translations; unfortunately,
++          // setting the langcode of the $duplicate entity does not seem to
++          // change the default language at this moment.
++          if ($language->getId() == $langcode) {
++            continue;
++          }
++
++          $duplicate->removeTranslation($language->getId());
++        }
++        catch (\InvalidArgumentException $e) {
++          // Should never happen.
++        }
++      }
++    }
++
++    return $duplicate;
++  }
++
+   /**
+    * After-build callback for adding the translatability clue from the widget.
+    *
+diff --git a/src/Tests/Classic/ParagraphsConfigTest.php b/src/Tests/Classic/ParagraphsConfigTest.php
+index 6494543..b0e35fe 100644
+--- a/src/Tests/Classic/ParagraphsConfigTest.php
++++ b/src/Tests/Classic/ParagraphsConfigTest.php
+@@ -77,14 +77,13 @@ class ParagraphsConfigTest extends ParagraphsTestBase {
+ 
+     // Check warning message is displayed.
+     $this->drupalGet('admin/config/regional/content-language');
+-    $this->assertText('(* unsupported) Paragraphs fields do not support translation.');
++    $this->assertText('(* not recommended) The recommended multilingual configuration is to not enable translation on Paragraph fields.');
+ 
+     $this->addParagraphedContentType('paragraphed_test', 'paragraphs_field', 'entity_reference_paragraphs');
+ 
+     // Check error message is not displayed.
+     $this->drupalGet('admin/config/regional/content-language');
+-    $this->assertText('(* unsupported) Paragraphs fields do not support translation.');
+-    $this->assertNoRaw('<div class="messages messages--error');
++    $this->assertText('(* not recommended) The recommended multilingual configuration is to not enable translation on Paragraph fields.');
+ 
+     // Add a second language.
+     ConfigurableLanguage::create(['id' => 'de'])->save();
+@@ -99,12 +98,11 @@ class ParagraphsConfigTest extends ParagraphsTestBase {
+ 
+     // Check error message is still not displayed.
+     $this->drupalGet('admin/config/regional/content-language');
+-    $this->assertText('(* unsupported) Paragraphs fields do not support translation.');
+-    $this->assertNoRaw('<div class="messages messages--error');
++    $this->assertText('(* not recommended) The recommended multilingual configuration is to not enable translation on Paragraph fields.');
+ 
+     // Check content type field management warning.
+     $this->drupalGet('admin/structure/types/manage/paragraphed_test/fields/node.paragraphed_test.paragraphs_field');
+-    $this->assertText('Paragraphs fields do not support translation.');
++    $this->assertText('The recommended multilingual configuration is to not enable translation on Paragraph fields.');
+ 
+     // Make the paragraphs field translatable.
+     $edit = [
+@@ -116,8 +114,7 @@ class ParagraphsConfigTest extends ParagraphsTestBase {
+ 
+     // Check content type field management error.
+     $this->drupalGet('admin/structure/types/manage/paragraphed_test/fields/node.paragraphed_test.paragraphs_field');
+-    $this->assertText('Paragraphs fields do not support translation.');
+-    $this->assertRaw('<div class="messages messages--error');
++    $this->assertText('The recommended multilingual configuration is to not enable translation on Paragraph fields.');
+ 
+     // Check a not paragraphs translatable field does not display the message.
+     $this->drupalGet('admin/structure/types/manage/paragraphed_test/fields/add-field');
+@@ -128,8 +125,7 @@ class ParagraphsConfigTest extends ParagraphsTestBase {
+     ];
+     $this->drupalPostForm(NULL, $edit, t('Save and continue'));
+     $this->drupalPostForm(NULL, [], t('Save field settings'));
+-    $this->assertNoText('Paragraphs fields do not support translation.');
+-    $this->assertNoRaw('<div class="messages messages--warning');
++    $this->assertNoText('The recommended multilingual configuration is to not enable translation on Paragraph fields.');
+   }
+ 
+   /**
+diff --git a/src/Tests/Experimental/ParagraphsExperimentalConfigTest.php b/src/Tests/Experimental/ParagraphsExperimentalConfigTest.php
+index 7281362..fc811fa 100644
+--- a/src/Tests/Experimental/ParagraphsExperimentalConfigTest.php
++++ b/src/Tests/Experimental/ParagraphsExperimentalConfigTest.php
+@@ -78,13 +78,12 @@ class ParagraphsExperimentalConfigTest extends ParagraphsExperimentalTestBase {
+ 
+     // Check warning message is displayed.
+     $this->drupalGet('admin/config/regional/content-language');
+-    $this->assertText('(* unsupported) Paragraphs fields do not support translation.');
++    $this->assertText('(* not recommended) The recommended multilingual configuration is to not enable translation on Paragraph fields.');
+ 
+     $this->addParagraphedContentType('paragraphed_test');
+     // Check error message is not displayed.
+     $this->drupalGet('admin/config/regional/content-language');
+-    $this->assertText('(* unsupported) Paragraphs fields do not support translation.');
+-    $this->assertNoRaw('<div class="messages messages--error');
++    $this->assertText('(* not recommended) The recommended multilingual configuration is to not enable translation on Paragraph fields.');
+ 
+     // Add a second language.
+     ConfigurableLanguage::create(['id' => 'de'])->save();
+@@ -99,12 +98,11 @@ class ParagraphsExperimentalConfigTest extends ParagraphsExperimentalTestBase {
+ 
+     // Check error message is still not displayed.
+     $this->drupalGet('admin/config/regional/content-language');
+-    $this->assertText('(* unsupported) Paragraphs fields do not support translation.');
+-    $this->assertNoRaw('<div class="messages messages--error');
++    $this->assertText('(* not recommended) The recommended multilingual configuration is to not enable translation on Paragraph fields.');
+ 
+     // Check content type field management warning.
+     $this->drupalGet('admin/structure/types/manage/paragraphed_test/fields/node.paragraphed_test.field_paragraphs');
+-    $this->assertText('Paragraphs fields do not support translation.');
++    $this->assertText('The recommended multilingual configuration is to not enable translation on Paragraph fields.');
+ 
+     // Make the paragraphs field translatable.
+     $edit = [
+@@ -116,8 +114,7 @@ class ParagraphsExperimentalConfigTest extends ParagraphsExperimentalTestBase {
+ 
+     // Check content type field management error.
+     $this->drupalGet('admin/structure/types/manage/paragraphed_test/fields/node.paragraphed_test.field_paragraphs');
+-    $this->assertText('Paragraphs fields do not support translation.');
+-    $this->assertRaw('<div class="messages messages--error');
++    $this->assertText('The recommended multilingual configuration is to not enable translation on Paragraph fields.');
+ 
+     // Check a not paragraphs translatable field does not display the message.
+     $this->drupalGet('admin/structure/types/manage/paragraphed_test/fields/add-field');
+@@ -128,8 +125,7 @@ class ParagraphsExperimentalConfigTest extends ParagraphsExperimentalTestBase {
+     ];
+     $this->drupalPostForm(NULL, $edit, t('Save and continue'));
+     $this->drupalPostForm(NULL, [], t('Save field settings'));
+-    $this->assertNoText('Paragraphs fields do not support translation.');
+-    $this->assertNoRaw('<div class="messages messages--warning');
++    $this->assertNoText('The recommended multilingual configuration is to not enable translation on Paragraph fields.');
+   }
+ 
+   /**

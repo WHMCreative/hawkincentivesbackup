@@ -1,0 +1,4 @@
+type_settings:
+  transitions:
+    archived_published:
+      label: Restaurer

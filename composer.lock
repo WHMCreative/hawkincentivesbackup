@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "22da3238eb4583b180238dcd322dc05a",
+    "content-hash": "444f196fc42e526da9f1ad4bef5249c6",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -5594,7 +5594,8 @@
                     }
                 },
                 "patches_applied": {
-                    "Add additional subform alters": "https://www.drupal.org/files/issues/2868155-16.patch"
+                    "Add additional subform alters": "https://www.drupal.org/files/issues/2868155-16.patch",
+                    "Support asymmetric translations": "./patches/2461695-261.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -11635,12 +11636,12 @@
             "version": "v1.6.5",
             "source": {
                 "type": "git",
-                "url": "https://github.com/mikey179/vfsStream.git",
+                "url": "https://github.com/bovigo/vfsStream.git",
                 "reference": "d5fec95f541d4d71c4823bb5e30cf9b9e5b96145"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mikey179/vfsStream/zipball/d5fec95f541d4d71c4823bb5e30cf9b9e5b96145",
+                "url": "https://api.github.com/repos/bovigo/vfsStream/zipball/d5fec95f541d4d71c4823bb5e30cf9b9e5b96145",
                 "reference": "d5fec95f541d4d71c4823bb5e30cf9b9e5b96145",
                 "shasum": ""
             },

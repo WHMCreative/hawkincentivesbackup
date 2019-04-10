@@ -299,7 +299,7 @@ class InlineParagraphsWidget extends WidgetBase {
       }
     }
 
-    if ($paragraphs_entity) {
+    if ($paragraphs_entity instanceof ParagraphInterface) {
       // Detect if we are translating.
       $this->initIsTranslating($form_state, $host);
       $langcode = $form_state->get('langcode');
@@ -316,6 +316,26 @@ class InlineParagraphsWidget extends WidgetBase {
           else {
             $paragraphs_entity->set($langcode_key, $langcode);
           }
+        }
+      }
+      elseif ($items->getFieldDefinition()->isTranslatable()) {
+        // If the field is translatable, host entity translation should refer to
+        // different paragraph entities. So we clone the paragraph.
+        if (!empty($form_state->get('content_translation'))) {
+          $paragraphs_entity = $this->createDuplicateWithSingleLanguage($paragraphs_entity, $langcode);
+        }
+
+        if ($paragraphs_entity->hasTranslation($langcode)) {
+          // Force the language on the target language. This is needed to load
+          // the translated paragraph entity form in case they were previously
+          // duplicated from an original entity which was already translated
+          // before enabling the asymmetric functionality.
+          $paragraphs_entity = $paragraphs_entity->getTranslation($langcode);
+        }
+        else {
+          // Edge case when paragraphs_entity translation in target language
+          // has been removed or was not created.
+          $paragraphs_entity = $this->createDuplicateWithSingleLanguage($paragraphs_entity, $langcode);
         }
       }
       else {
@@ -402,7 +422,7 @@ class InlineParagraphsWidget extends WidgetBase {
         $links = array();
 
         // Hide the button when translating.
-        $button_access = $paragraphs_entity->access('delete') && !$this->isTranslating;
+        $button_access = $paragraphs_entity->access('delete') && (!$this->isTranslating || $items->getFieldDefinition()->isTranslatable());
         if ($item_mode != 'remove') {
           $links['remove_button'] = [
             '#type' => 'submit',
@@ -931,7 +951,7 @@ class InlineParagraphsWidget extends WidgetBase {
     $host = $items->getEntity();
     $this->initIsTranslating($form_state, $host);
 
-    if (($this->realItemCount < $cardinality || $cardinality == FieldStorageDefinitionInterface::CARDINALITY_UNLIMITED) && !$form_state->isProgrammed() && !$this->isTranslating) {
+    if (($this->realItemCount < $cardinality || $cardinality == FieldStorageDefinitionInterface::CARDINALITY_UNLIMITED) && !$form_state->isProgrammed() && (!$this->isTranslating || $this->fieldDefinition->isTranslatable())) {
       $elements['add_more'] = $this->buildAddActions();
     }
 
@@ -1383,6 +1403,77 @@ class InlineParagraphsWidget extends WidgetBase {
       // Editing a translation.
       $this->isTranslating = TRUE;
     }
+  }
+
+  /**
+   * Clones a paragraph recursively.
+   *
+   * Also, in case of a translatable paragraph, updates its original language
+   * and removes all other translations.
+   *
+   * @param \Drupal\paragraphs\ParagraphInterface $paragraph
+   *   The paragraph entity to clone.
+   * @param string $langcode
+   *   Language code for all the clone entities created.
+   *
+   * @return \Drupal\paragraphs\ParagraphInterface
+   *   New paragraph object with the data from the original paragraph. Not
+   *   saved. All sub-paragraphs are clones as well.
+   */
+  protected function createDuplicateWithSingleLanguage(ParagraphInterface $paragraph, $langcode) {
+    if ($paragraph->hasTranslation($langcode)) {
+      // If the paragraph entity was already translated before enabling the
+      // asymmetric functionality, use the translation in the target language as
+      // a base instead of using the default language.
+      $duplicate = $paragraph->createDuplicate()->getTranslation($langcode);
+    }
+    else {
+      $duplicate = $paragraph->createDuplicate();
+    }
+
+    // Clone all sub-paragraphs recursively.
+    foreach ($duplicate->getFields(FALSE) as $field) {
+      // @todo: should we support field collections as well?
+      if ($field->getFieldDefinition()->getType() == 'entity_reference_revisions' && $field->getFieldDefinition()->getTargetEntityTypeId() == 'paragraph') {
+        foreach ($field as $item) {
+          $item->entity = $this->createDuplicateWithSingleLanguage($item->entity, $langcode);
+
+          if ($item->entity->hasTranslation($langcode)) {
+            // Force the language on the target language. This is needed to
+            // reuse (as in "not have to translate again") the original
+            // paragraph entity translation in case they were already created
+            // before enabling the asymmetric functionality.
+            $item->entity = $item->entity->getTranslation($langcode);
+          }
+        }
+      }
+    }
+
+    // Change the original language and remove possible translations.
+    if ($duplicate->isTranslatable()) {
+      $duplicate->set('langcode', $langcode);
+      foreach ($duplicate->getTranslationLanguages(FALSE) as $language) {
+        try {
+          // We don't want to remove the translation which we are trying to use
+          // if it already exists. If we don't do this, we will have an
+          // exception which tells the translation was removed.
+          // Ideally, it would be better to be able to change the default
+          // language of $duplicate and remove all translations; unfortunately,
+          // setting the langcode of the $duplicate entity does not seem to
+          // change the default language at this moment.
+          if ($language->getId() == $langcode) {
+            continue;
+          }
+
+          $duplicate->removeTranslation($language->getId());
+        }
+        catch (\InvalidArgumentException $e) {
+          // Should never happen.
+        }
+      }
+    }
+
+    return $duplicate;
   }
 
   /**

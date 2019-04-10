@@ -6465,7 +6465,8 @@
                 }
             },
             "patches_applied": {
-                "Add additional subform alters": "https://www.drupal.org/files/issues/2868155-16.patch"
+                "Add additional subform alters": "https://www.drupal.org/files/issues/2868155-16.patch",
+                "Support asymmetric translations": "./patches/2461695-261.patch"
             }
         },
         "installation-source": "dist",
@@ -9159,12 +9160,12 @@
         "version_normalized": "1.6.5.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/mikey179/vfsStream.git",
+            "url": "https://github.com/bovigo/vfsStream.git",
             "reference": "d5fec95f541d4d71c4823bb5e30cf9b9e5b96145"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/mikey179/vfsStream/zipball/d5fec95f541d4d71c4823bb5e30cf9b9e5b96145",
+            "url": "https://api.github.com/repos/bovigo/vfsStream/zipball/d5fec95f541d4d71c4823bb5e30cf9b9e5b96145",
             "reference": "d5fec95f541d4d71c4823bb5e30cf9b9e5b96145",
             "shasum": ""
         },
