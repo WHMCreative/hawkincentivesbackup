@@ -46,7 +46,7 @@ Drupal.behaviors.ipstack = {
           } else if (countryCode === 'CA' && window.location.host !== canadianUrl) {
             window.location.replace('//' + canadianUrl + window.location.pathname);
           } else if (countryCode === 'US' && window.location.host !== englishUrl) {
-            window.location.replace('//' + englishUrl + window.location.pathname);
+            window.location.replace('//' + englishUrl + window.location.pathname.replace('/fr/', '/'));
           }
         }
       }
