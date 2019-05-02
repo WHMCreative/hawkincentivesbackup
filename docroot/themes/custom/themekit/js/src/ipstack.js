@@ -39,19 +39,6 @@ Drupal.behaviors.ipstack = {
         const canadianUrl = drupalSettings.language.domains['en-ca'];
         const frenchUrl = drupalSettings.language.domains['fr'];
         let cookie = getCookie('sitechoice');
-        // countryCode = 'CA'
-        window.console.log('cookie: ' + cookie);
-        window.console.log(countryCode);
-
-        /*if ( cookie === 'ca' && window.location.host !== drupalSettings.language.domains['en-ca']) {
-          window.location.replace('//' + drupalSettings.language.domains['en-ca'] + window.location.pathname + window.location.search);
-        } else if ( cookie === 'us' && window.location.host !== drupalSettings.language.domains['en'] ) {
-          window.location.replace('//' + drupalSettings.language.domains['en'] + window.location.pathname + window.location.search);
-        } else if ( !cookie && countryCode === 'CA' && window.location.host !== drupalSettings.language.domains['en-ca']) {
-          window.location.replace('//' + drupalSettings.language.domains['en-ca'] + window.location.pathname);
-        } else if ( !cookie && countryCode === 'US' && window.location.host !== drupalSettings.language.domains['en'])  {
-          window.location.replace('//' + drupalSettings.language.domains['en'] + window.location.pathname);
-        }*/
 
         if (!cookie) {
           if (countryCode === 'FR' && window.location.host !== frenchUrl) {
