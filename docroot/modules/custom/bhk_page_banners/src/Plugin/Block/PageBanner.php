@@ -191,7 +191,7 @@ class PageBanner extends BlockBase implements ContainerFactoryPluginInterface {
         && $node_current_translation->bundle() == 'insight') {
         $paragraph->field_large_heading->setValue($node_current_translation->getTitle());
       } else if ($paragraph->hasField('field_heading') && !empty($paragraph->field_heading->getValue())) {
-        $paragraph->field_large_heading->setValue($paragraph->field_heading->getValue());
+        $paragraph->field_heading->setValue($paragraph->field_heading->getValue());
       }
 
       if ($paragraph->hasField('field_large_heading')
