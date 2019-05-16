@@ -91,3 +91,4 @@ type_settings:
       - news
       - people
       - reward
+  default_moderation_state: draft

@@ -5,5 +5,4 @@ dependencies: {  }
 name: 'Insight Type'
 vid: insight_type
 description: ''
-hierarchy: 0
 weight: 0

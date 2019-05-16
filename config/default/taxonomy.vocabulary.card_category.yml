@@ -5,5 +5,4 @@ dependencies: {  }
 name: 'Card Category'
 vid: card_category
 description: ''
-hierarchy: 0
 weight: 0

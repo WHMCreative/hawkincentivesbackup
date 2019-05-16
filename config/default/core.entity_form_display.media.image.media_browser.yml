@@ -10,7 +10,6 @@ dependencies:
     - image.style.thumbnail
     - media_entity.bundle.image
   module:
-    - content_moderation
     - focal_point
     - path
 id: media.image.media_browser
@@ -50,12 +49,6 @@ content:
       include_locked: true
     third_party_settings: {  }
     region: content
-  moderation_state:
-    type: moderation_state_default
-    weight: 6
-    settings: {  }
-    region: content
-    third_party_settings: {  }
   name:
     type: string_textfield
     weight: 0
@@ -70,6 +63,11 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  translation:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+    region: content
 hidden:
   created: true
   uid: true

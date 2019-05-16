@@ -130,6 +130,10 @@ class ComposerStaticInit738f652496fda611950ad0e67807feab
             'GraphQL\\' => 8,
             'Goutte\\' => 7,
         ),
+        'E' => 
+        array (
+            'Egulias\\EmailValidator\\' => 23,
+        ),
         'D' => 
         array (
             'Drupal\\Driver\\' => 14,
@@ -399,6 +403,10 @@ class ComposerStaticInit738f652496fda611950ad0e67807feab
         array (
             0 => __DIR__ . '/..' . '/fabpot/goutte/Goutte',
         ),
+        'Egulias\\EmailValidator\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/egulias/email-validator/EmailValidator',
+        ),
         'Drupal\\Driver\\' => 
         array (
             0 => __DIR__ . '/../..' . '/docroot/drivers/lib/Drupal/Driver',
@@ -537,13 +545,13 @@ class ComposerStaticInit738f652496fda611950ad0e67807feab
             array (
                 0 => __DIR__ . '/..' . '/phpspec/prophecy/src',
             ),
+            'PEAR' => 
+            array (
+                0 => __DIR__ . '/..' . '/pear/pear_exception',
+            ),
         ),
         'E' => 
         array (
-            'Egulias\\' => 
-            array (
-                0 => __DIR__ . '/..' . '/egulias/email-validator/src',
-            ),
             'EasyRdf_' => 
             array (
                 0 => __DIR__ . '/..' . '/easyrdf/easyrdf/lib',
@@ -598,6 +606,10 @@ class ComposerStaticInit738f652496fda611950ad0e67807feab
             array (
                 0 => __DIR__ . '/..' . '/drush/drush/lib',
             ),
+            'Console' => 
+            array (
+                0 => __DIR__ . '/..' . '/pear/console_getopt',
+            ),
         ),
         'B' => 
         array (
@@ -622,6 +634,17 @@ class ComposerStaticInit738f652496fda611950ad0e67807feab
                 0 => __DIR__ . '/..' . '/behat/behat/src',
             ),
         ),
+        'A' => 
+        array (
+            'Archive_Tar' => 
+            array (
+                0 => __DIR__ . '/..' . '/pear/archive_tar',
+            ),
+        ),
+    );
+
+    public static $fallbackDirsPsr0 = array (
+        0 => __DIR__ . '/..' . '/pear/pear-core-minimal/src',
     );
 
     public static $classMap = array (
@@ -1096,6 +1119,7 @@ class ComposerStaticInit738f652496fda611950ad0e67807feab
             $loader->prefixLengthsPsr4 = ComposerStaticInit738f652496fda611950ad0e67807feab::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit738f652496fda611950ad0e67807feab::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInit738f652496fda611950ad0e67807feab::$prefixesPsr0;
+            $loader->fallbackDirsPsr0 = ComposerStaticInit738f652496fda611950ad0e67807feab::$fallbackDirsPsr0;
             $loader->classMap = ComposerStaticInit738f652496fda611950ad0e67807feab::$classMap;
 
         }, null, ClassLoader::class);

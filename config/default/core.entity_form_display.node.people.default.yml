@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.people.field_title
     - field.field.node.people.field_type
     - node.type.people
+    - workflows.workflow.editorial
   module:
     - content_moderation
     - entity_browser
@@ -134,6 +135,11 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  translation:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+    region: content
   uid:
     type: entity_reference_autocomplete
     weight: 7

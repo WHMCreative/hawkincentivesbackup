@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.component_page.field_p_content
     - field.field.node.component_page.field_p_header
     - node.type.component_page
+    - workflows.workflow.editorial
   module:
     - content_moderation
     - field_group

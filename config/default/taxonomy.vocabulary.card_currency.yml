@@ -5,5 +5,4 @@ dependencies: {  }
 name: 'Card Currency'
 vid: card_currency
 description: ''
-hierarchy: 0
 weight: 0

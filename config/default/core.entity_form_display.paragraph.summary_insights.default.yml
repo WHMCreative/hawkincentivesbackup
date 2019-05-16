@@ -12,7 +12,6 @@ dependencies:
     - field.field.paragraph.summary_insights.field_summary_direct
     - paragraphs.paragraphs_type.summary_insights
   module:
-    - content_moderation
     - paragraphs_browser
     - text
 id: paragraph.summary_insights.default
@@ -77,12 +76,11 @@ content:
       display_label: true
     third_party_settings: {  }
     region: content
-  moderation_state:
-    type: moderation_state_default
-    weight: 100
+  translation:
+    weight: 10
     settings: {  }
-    region: content
     third_party_settings: {  }
+    region: content
 hidden:
   created: true
   status: true

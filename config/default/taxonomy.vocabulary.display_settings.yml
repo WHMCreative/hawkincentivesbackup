@@ -5,5 +5,4 @@ dependencies: {  }
 name: 'Display Settings'
 vid: display_settings
 description: ''
-hierarchy: 0
 weight: 0

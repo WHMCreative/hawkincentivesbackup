@@ -7,8 +7,6 @@ dependencies:
     - field.field.paragraph.microquiz_conditional.field_q2_answer
     - field.field.paragraph.microquiz_conditional.field_q3_answer
     - paragraphs.paragraphs_type.microquiz_conditional
-  module:
-    - content_moderation
 id: paragraph.microquiz_conditional.default
 targetEntityType: paragraph
 bundle: microquiz_conditional
@@ -41,12 +39,11 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
-  moderation_state:
-    type: moderation_state_default
-    weight: 100
+  translation:
+    weight: 10
     settings: {  }
-    region: content
     third_party_settings: {  }
+    region: content
 hidden:
   created: true
   status: true
