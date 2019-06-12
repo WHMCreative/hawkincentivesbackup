@@ -52,7 +52,6 @@ use Drupal\user\UserInterface;
  *     "status" = "status",
  *   },
  *   links = {
- *     "canonical" = "/card/{card}",
  *     "add-page" = "/card/add",
  *     "add-form" = "/card/add/{card_type}",
  *     "edit-form" = "/card/{card}/edit",

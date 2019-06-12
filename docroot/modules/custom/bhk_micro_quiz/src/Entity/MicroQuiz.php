@@ -52,7 +52,6 @@ use Drupal\user\UserInterface;
  *     "status" = "status",
  *   },
  *   links = {
- *     "canonical" = "/micro_quiz/{micro_quiz}",
  *     "add-page" = "/micro_quiz/add",
  *     "add-form" = "/micro_quiz/add/{micro_quiz_type}",
  *     "edit-form" = "/micro_quiz/{micro_quiz}/edit",
