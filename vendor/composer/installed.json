@@ -5210,18 +5210,18 @@
     },
     {
         "name": "drupal/graphql",
-        "version": "3.0.0-rc2",
-        "version_normalized": "3.0.0.0-RC2",
+        "version": "3.0.0-rc3",
+        "version_normalized": "3.0.0.0-RC3",
         "source": {
             "type": "git",
             "url": "https://git.drupalcode.org/project/graphql.git",
-            "reference": "8.x-3.0-rc2"
+            "reference": "8.x-3.0-rc3"
         },
         "dist": {
             "type": "zip",
-            "url": "https://ftp.drupal.org/files/projects/graphql-8.x-3.0-rc2.zip",
-            "reference": "8.x-3.0-rc2",
-            "shasum": "99c229003fddc058fe7f213f9753ad7109c3e4d7"
+            "url": "https://ftp.drupal.org/files/projects/graphql-8.x-3.0-rc3.zip",
+            "reference": "8.x-3.0-rc3",
+            "shasum": "9764fe0c8c2288cb114e3c58b8c3abc5008432dc"
         },
         "require": {
             "drupal/core": "~8.0",
@@ -5233,8 +5233,8 @@
                 "dev-3.x": "3.x-dev"
             },
             "drupal": {
-                "version": "8.x-3.0-rc2",
-                "datestamp": "1537443780",
+                "version": "8.x-3.0-rc3",
+                "datestamp": "1555138081",
                 "security-coverage": {
                     "status": "not-covered",
                     "message": "RC releases are not covered by Drupal security advisories."
@@ -5259,7 +5259,7 @@
         "description": "Exposes your Drupal data model through a GraphQL schema.",
         "homepage": "http://drupal.org/project/graphql",
         "support": {
-            "source": "http://cgit.drupalcode.org/graphql"
+            "source": "https://git.drupalcode.org/project/graphql"
         }
     },
     {
@@ -6867,6 +6867,9 @@
                     "status": "not-covered",
                     "message": "Beta releases are not covered by Drupal security advisories."
                 }
+            },
+            "patches_applied": {
+                "Minify Cache-Tags header to avoid header overrun": "https://www.drupal.org/files/issues/2019-02-27/purge-2952277-25.patch"
             }
         },
         "installation-source": "dist",
@@ -6891,7 +6894,7 @@
         "description": "Provides a generic external cache invalidation API and queue service.",
         "homepage": "https://www.drupal.org/project/purge",
         "support": {
-            "source": "http://cgit.drupalcode.org/purge"
+            "source": "https://git.drupalcode.org/project/purge"
         }
     },
     {

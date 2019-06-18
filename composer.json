@@ -101,7 +101,8 @@
     "drupal/better_exposed_filters": "^3.0@alpha",
     "drupal/varnish_purge": "^1.11",
     "drupal/colorbutton": "^1.1",
-    "drupal/concurrent_url_negotiation": "^1.0"
+    "drupal/concurrent_url_negotiation": "^1.0",
+    "drupal/purge": "^3.0@beta"
   },
   "conflict": {
       "drupal/drupal": "*"
@@ -131,7 +132,7 @@
     },
 	"merge-plugin": {
 		"include": [ "docroot/modules/custom/*/composer.json" ]
-	},	  
+	},
     "enable-patching": true,
     "patches": {
       "drupal/core": {
@@ -158,6 +159,9 @@
       },
       "drupal/metatag": {
         "GraphQL throws an error due to Metatag's use of a custom data structure": "https://www.drupal.org/files/issues/2018-06-05/metatag-n2977545-5.patch"
+      },
+      "drupal/purge": {
+        "Minify Cache-Tags header to avoid header overrun": "https://www.drupal.org/files/issues/2019-02-27/purge-2952277-25.patch"
       },
       "drupal/shield": {
         "Exclude/Include Pages from Shield Protection": "https://www.drupal.org/files/issues/2018-03-20/2822720-21.patch"

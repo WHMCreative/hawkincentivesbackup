@@ -302,7 +302,7 @@ export default {
                     entity {
                       ... on MediaImage {
                         fieldImage {
-                          image: derivative(style:FOURTH_COLUMN) {
+                          image: derivative(style:FOURTHCOLUMN) {
                             url
                           }
                           alt

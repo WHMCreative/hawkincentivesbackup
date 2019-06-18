@@ -1,0 +1,47 @@
+<?php
+
+/**
+ * @file
+ * Provides a generic external cache invalidation API and queue service.
+ */
+
+/**
+ * Implements hook_purge_cache_tag_minify_dictionary().
+ */
+function purge_purge_cache_tag_minify_dictionary() {
+  // Pretty generic replacements that should gain some reasonable reduction in
+  // header size.
+  return [
+    'menu_link_content:' => 'ml:',
+    'menu' => 'mu',
+    'media:' => 'm:',
+    'block' => 'b',
+    'config:' => 'c:',
+    'field' => 'f',
+    'file:' => 'f:',
+    'image.style.' => 'is.',
+    'node:' => 'n:',
+    'paragraph' => 'p',
+    'responsive_image.styles.' => 'ris.',
+    'system' => 's',
+    'taxonomy_term:' => 't:',
+    'user' => 'u',
+    'view' => 'v',
+  ];
+}
+
+/**
+ * Implements hook_purge_cache_tags_simplify_dictionary().
+ */
+function purge_purge_cache_tags_simplify_dictionary() {
+  // Most common list cache tags.
+  return [
+    'config:block_list' => '/^config\:block\./',
+    'menu_link_content_list' => '/^menu_link_content\:/',
+    'media_list' => '/^media\:/',
+    'node_list' => '/^node\:/',
+    'file_list' => '/^file\:/',
+    'taxonomy_term_list' => '/^taxonomy_term\:/',
+    'user_list' => '/^user\:/',
+  ];
+}

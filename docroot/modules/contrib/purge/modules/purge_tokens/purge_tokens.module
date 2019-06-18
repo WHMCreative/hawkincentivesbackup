@@ -67,6 +67,7 @@ function purge_tokens_tokens($type, $tokens, array $data, array $options, Bubble
         case 'expression':
           if (is_string($expression = $data['invalidation']->getExpression())) {
             $bubbleable_metadata->setCacheMaxAge(0);
+            $expression = \Drupal::service('purge.cache_tag_minificator')->minifyCacheTag($expression);
             $replacements[$original] = $expression;
           }
           break;
@@ -87,6 +88,10 @@ function purge_tokens_tokens($type, $tokens, array $data, array $options, Bubble
           $expressions[] = $expression;
         }
       }
+
+      $cache_tag_minificator = \Drupal::service('purge.cache_tag_minificator');
+      $expressions = array_map([$cache_tag_minificator, 'minifyCacheTag'], $expressions);
+
       return implode($separator, $expressions);
     };
 

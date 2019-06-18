@@ -125,3 +125,13 @@ services:
     class: Drupal\purge\Plugin\Purge\TagsHeader\PluginManager
     parent: default_plugin_manager
     public: false
+
+  # Purge tag minificator.
+  purge.cache_tag_minificator:
+    class: Drupal\purge\CacheTagMinificator
+    arguments: ['@module_handler']
+
+  # Purge tags simplifier.
+  purge.cache_tags_simplifier:
+    class: Drupal\purge\CacheTagsSimplifier
+    arguments: ['@module_handler']
