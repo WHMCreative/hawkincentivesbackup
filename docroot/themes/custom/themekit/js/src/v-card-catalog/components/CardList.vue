@@ -284,6 +284,7 @@ export default {
         direction: ASC
         field: "name"
       },
+      limit: 1000,
       filter: {
         conditions:[{
           field: "status"
