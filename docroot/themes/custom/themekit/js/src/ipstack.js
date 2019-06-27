@@ -30,7 +30,7 @@ Drupal.behaviors.ipstack = {
     }
     // get the API result via jQuery.ajax
     $.ajax({
-      url: 'http://api.ipstack.com/check?access_key=' + accessKey,
+      url: '//api.ipstack.com/check?access_key=' + accessKey,
       dataType: 'jsonp',
       success: function (json) {
 

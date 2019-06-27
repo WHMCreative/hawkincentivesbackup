@@ -1,6 +1,6 @@
 webpackJsonp([2],{
 
-/***/ 106:
+/***/ 110:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -253,7 +253,7 @@ exports.MediaQuery = MediaQuery;
 
 /***/ }),
 
-/***/ 107:
+/***/ 111:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -3274,47 +3274,47 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 /***/ }),
 
-/***/ 155:
+/***/ 165:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(156);
-
-__webpack_require__(157);
-
-__webpack_require__(158);
-
 __webpack_require__(166);
 
 __webpack_require__(167);
 
-__webpack_require__(169);
-
-__webpack_require__(170);
-
-__webpack_require__(171);
-
-__webpack_require__(172);
-
-__webpack_require__(173);
-
-__webpack_require__(174);
-
-__webpack_require__(175);
+__webpack_require__(168);
 
 __webpack_require__(176);
 
 __webpack_require__(177);
 
-__webpack_require__(178);
-
 __webpack_require__(179);
+
+__webpack_require__(180);
+
+__webpack_require__(181);
+
+__webpack_require__(182);
+
+__webpack_require__(183);
+
+__webpack_require__(184);
+
+__webpack_require__(185);
+
+__webpack_require__(186);
+
+__webpack_require__(187);
+
+__webpack_require__(188);
+
+__webpack_require__(189);
 
 /***/ }),
 
-/***/ 156:
+/***/ 166:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3373,7 +3373,7 @@ Drupal.behaviors.languageChoice = {
 
 /***/ }),
 
-/***/ 157:
+/***/ 167:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3413,7 +3413,7 @@ Drupal.behaviors.ipstack = {
     }
     // get the API result via jQuery.ajax
     _jquery2.default.ajax({
-      url: 'http://api.ipstack.com/check?access_key=' + accessKey,
+      url: '//api.ipstack.com/check?access_key=' + accessKey,
       dataType: 'jsonp',
       success: function success(json) {
 
@@ -3439,7 +3439,7 @@ Drupal.behaviors.ipstack = {
 
 /***/ }),
 
-/***/ 158:
+/***/ 168:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3449,23 +3449,23 @@ var _jquery = __webpack_require__(5);
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
-var _foundation = __webpack_require__(159);
+var _foundation = __webpack_require__(169);
 
-var _foundationUtil = __webpack_require__(51);
+var _foundationUtil = __webpack_require__(50);
 
-var _foundationUtil2 = __webpack_require__(160);
+var _foundationUtil2 = __webpack_require__(170);
 
-var _foundationUtil3 = __webpack_require__(161);
+var _foundationUtil3 = __webpack_require__(171);
 
-var _foundationUtil4 = __webpack_require__(162);
+var _foundationUtil4 = __webpack_require__(172);
 
-var _foundationUtil5 = __webpack_require__(106);
+var _foundationUtil5 = __webpack_require__(110);
 
-var _foundationUtil6 = __webpack_require__(163);
+var _foundationUtil6 = __webpack_require__(173);
 
-var _foundationUtil7 = __webpack_require__(164);
+var _foundationUtil7 = __webpack_require__(174);
 
-var _foundationUtil8 = __webpack_require__(165);
+var _foundationUtil8 = __webpack_require__(175);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3503,7 +3503,7 @@ _foundation.Foundation.Timer = _foundationUtil8.Timer;
 
 /***/ }),
 
-/***/ 159:
+/***/ 169:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3520,9 +3520,9 @@ var _jquery = __webpack_require__(5);
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
-var _foundationUtil = __webpack_require__(51);
+var _foundationUtil = __webpack_require__(50);
 
-var _foundationUtil2 = __webpack_require__(106);
+var _foundationUtil2 = __webpack_require__(110);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3869,7 +3869,7 @@ exports.Foundation = Foundation;
 
 /***/ }),
 
-/***/ 160:
+/***/ 170:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3880,7 +3880,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Box = undefined;
 
-var _foundationUtil = __webpack_require__(51);
+var _foundationUtil = __webpack_require__(50);
 
 var Box = {
   ImNotTouchingYou: ImNotTouchingYou,
@@ -4106,7 +4106,7 @@ exports.Box = Box;
 
 /***/ }),
 
-/***/ 161:
+/***/ 171:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4166,7 +4166,7 @@ exports.onImagesLoaded = onImagesLoaded;
 
 /***/ }),
 
-/***/ 162:
+/***/ 172:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4189,7 +4189,7 @@ var _jquery = __webpack_require__(5);
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
-var _foundationUtil = __webpack_require__(51);
+var _foundationUtil = __webpack_require__(50);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -4354,7 +4354,7 @@ exports.Keyboard = Keyboard;
 
 /***/ }),
 
-/***/ 163:
+/***/ 173:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4369,7 +4369,7 @@ var _jquery = __webpack_require__(5);
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
-var _foundationUtil = __webpack_require__(51);
+var _foundationUtil = __webpack_require__(50);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -4474,7 +4474,7 @@ exports.Motion = Motion;
 
 /***/ }),
 
-/***/ 164:
+/***/ 174:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4552,7 +4552,7 @@ exports.Nest = Nest;
 
 /***/ }),
 
-/***/ 165:
+/***/ 175:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4619,7 +4619,7 @@ exports.Timer = Timer;
 
 /***/ }),
 
-/***/ 166:
+/***/ 176:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4659,7 +4659,7 @@ Drupal.behaviors.externalLink = {
 
 /***/ }),
 
-/***/ 167:
+/***/ 177:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4669,7 +4669,7 @@ var _jquery = __webpack_require__(5);
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
-__webpack_require__(168);
+__webpack_require__(178);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -4727,18 +4727,18 @@ $mySVGsToInject.each(function (i, el) {
 
 /***/ }),
 
-/***/ 168:
+/***/ 178:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_RESULT__;/*!
 * svg.js - A lightweight library for manipulating and animating SVG.
-* @version 2.7.1
+* @version 2.6.4
 * https://svgdotjs.github.io/
 *
 * @copyright Wout Fierens <wout@mick-wout.com>
 * @license MIT
 *
-* BUILT: Fri Nov 30 2018 10:01:55 GMT+0100 (GMT+01:00)
+* BUILT: Wed Feb 07 2018 22:59:25 GMT+0100 (Mitteleuropäische Zeit)
 */;
 (function(root, factory) {
   /* istanbul ignore next */
@@ -4754,12 +4754,8 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/*!
   }
 }(typeof window !== "undefined" ? window : this, function(window, document) {
 
-// Find global reference - uses 'this' by default when available,
-// falls back to 'window' otherwise (for bundlers like Webpack)
-var globalRef = (typeof this !== "undefined") ? this : window;
-
 // The main wrapping element
-var SVG = globalRef.SVG = function(element) {
+var SVG = this.SVG = function(element) {
   if (SVG.supported) {
     element = new SVG.Doc(element)
 
@@ -4895,7 +4891,7 @@ SVG.prepare = function() {
   // Create parser object
   SVG.parser = {
     body: body || document.documentElement
-  , draw: draw.style('opacity:0;position:absolute;left:-100%;top:-100%;overflow:hidden').attr('focusable', 'false').node
+  , draw: draw.style('opacity:0;position:absolute;left:-100%;top:-100%;overflow:hidden').node
   , poly: draw.polyline().node
   , path: draw.path().node
   , native: SVG.create('svg')
@@ -5293,11 +5289,7 @@ SVG.extend(SVG.PointArray, {
     if (Array.isArray(array)) {
       // and it is not flat, there is no need to parse it
       if(Array.isArray(array[0])) {
-        // make sure to use a clone
-        return array.map(function (el) { return el.slice() })
-      } else if (array[0].x != null){
-        // allow point objects to be passed
-        return array.map(function (el) { return [el.x, el.y] })
+        return array
       }
     } else { // Else, it is considered as a string
       // parse points
@@ -5765,7 +5757,6 @@ SVG.Element = SVG.invent({
     // make stroke value accessible dynamically
     this._stroke = SVG.defaults.attrs.stroke
     this._event = null
-    this._events = {}
 
     // initialize data object
     this.dom = {}
@@ -5774,7 +5765,6 @@ SVG.Element = SVG.invent({
     if (this.node = node) {
       this.type = node.nodeName
       this.node.instance = this
-      this._events = node._events || {}
 
       // store current attribute value
       this._stroke = node.getAttribute('stroke') || this._stroke
@@ -5824,7 +5814,7 @@ SVG.Element = SVG.invent({
         .height(new SVG.Number(p.height))
     }
     // Clone element
-  , clone: function(parent) {
+  , clone: function(parent, withData) {
       // write dom data to the dom so the clone can pickup the data
       this.writeDataToDom()
 
@@ -5940,7 +5930,7 @@ SVG.Element = SVG.invent({
       // loop trough ancestors if type is given
       while(parent && parent.node instanceof window.SVGElement){
         if(typeof type === 'string' ? parent.matches(type) : parent instanceof type) return parent
-        if(!parent.node.parentNode || parent.node.parentNode.nodeName == '#document' || parent.node.parentNode.nodeName == '#document-fragment') return null // #759, #720
+        if(parent.node.parentNode.nodeName == '#document') return null // #720
         parent = SVG.adopt(parent.node.parentNode)
       }
     }
@@ -5977,7 +5967,7 @@ SVG.Element = SVG.invent({
       // act as a setter if svg is given
       if (svg && this instanceof SVG.Parent) {
         // dump raw svg
-        well.innerHTML = '<svg>' + svg.replace(/\n/, '').replace(/<([\w:-]+)([^<]+?)\/>/g, '<$1$2></$1>') + '</svg>'
+        well.innerHTML = '<svg>' + svg.replace(/\n/, '').replace(/<(\w+)([^<]+?)\/>/g, '<$1$2></$1>') + '</svg>'
 
         // transplant nodes
         for (var i = 0, il = well.firstChild.childNodes.length; i < il; i++)
@@ -6782,13 +6772,8 @@ SVG.MorphObj = SVG.invent({
   create: function(from, to){
     // prepare color for morphing
     if(SVG.Color.isColor(to)) return new SVG.Color(from).morph(to)
-    // check if we have a list of values
-    if(SVG.regex.delimiter.test(from)) {
-      // prepare path for morphing
-      if(SVG.regex.pathLetters.test(from)) return new SVG.PathArray(from).morph(to)
-      // prepare value list for morphing
-      else return new SVG.Array(from).morph(to)
-    }
+    // prepare value list for morphing
+    if(SVG.regex.delimiter.test(from)) return new SVG.Array(from).morph(to)
     // prepare number for morphing
     if(SVG.regex.numberAndUnit.test(to)) return new SVG.Number(from).morph(to)
 
@@ -7288,11 +7273,7 @@ SVG.Matrix = SVG.invent({
     }
     // Convert matrix to string
   , toString: function() {
-      // Construct the matrix directly, avoid values that are too small
-      return 'matrix(' + float32String(this.a) + ',' + float32String(this.b)
-        + ',' + float32String(this.c) + ',' + float32String(this.d)
-        + ',' + float32String(this.e) + ',' + float32String(this.f)
-        + ')'
+      return 'matrix(' + this.a + ',' + this.b + ',' + this.c + ',' + this.d + ',' + this.e + ',' + this.f + ')'
     }
   }
 
@@ -8135,142 +8116,146 @@ SVG.ViewBox = SVG.invent({
 
 })
 // Add events to elements
+;[  'click'
+  , 'dblclick'
+  , 'mousedown'
+  , 'mouseup'
+  , 'mouseover'
+  , 'mouseout'
+  , 'mousemove'
+  // , 'mouseenter' -> not supported by IE
+  // , 'mouseleave' -> not supported by IE
+  , 'touchstart'
+  , 'touchmove'
+  , 'touchleave'
+  , 'touchend'
+  , 'touchcancel' ].forEach(function(event) {
 
-;[ 'click',
-  'dblclick',
-  'mousedown',
-  'mouseup',
-  'mouseover',
-  'mouseout',
-  'mousemove',
-  'mouseenter',
-  'mouseleave',
-  'touchstart',
-  'touchmove',
-  'touchleave',
-  'touchend',
-  'touchcancel' ].forEach(function (event) {
-    // add event to SVG.Element
-    SVG.Element.prototype[event] = function (f) {
-      // bind event to element rather than element node
-      if (f == null) {
-        SVG.off(this, event)
-      } else {
-        SVG.on(this, event, f)
-      }
-      return this
-    }
-  })
+  // add event to SVG.Element
+  SVG.Element.prototype[event] = function(f) {
+    // bind event to element rather than element node
+    SVG.on(this.node, event, f)
+    return this
+  }
+})
 
+// Initialize listeners stack
+SVG.listeners = []
+SVG.handlerMap = []
 SVG.listenerId = 0
 
 // Add event binder in the SVG namespace
-SVG.on = function (node, events, listener, binding, options) {
-  var l = listener.bind(binding || node)
-  var n = node instanceof SVG.Element ? node.node : node
+SVG.on = function(node, event, listener, binding, options) {
+  // create listener, get object-index
+  var l     = listener.bind(binding || node.instance || node)
+    , index = (SVG.handlerMap.indexOf(node) + 1 || SVG.handlerMap.push(node)) - 1
+    , ev    = event.split('.')[0]
+    , ns    = event.split('.')[1] || '*'
 
-  // ensure instance object for nodes which are not adopted
-  n.instance = n.instance || {_events: {}}
 
-  var bag = n.instance._events
+  // ensure valid object
+  SVG.listeners[index]         = SVG.listeners[index]         || {}
+  SVG.listeners[index][ev]     = SVG.listeners[index][ev]     || {}
+  SVG.listeners[index][ev][ns] = SVG.listeners[index][ev][ns] || {}
 
-  // add id to listener
-  if (!listener._svgjsListenerId) { listener._svgjsListenerId = ++SVG.listenerId }
+  if(!listener._svgjsListenerId)
+    listener._svgjsListenerId = ++SVG.listenerId
 
-  events.split(SVG.regex.delimiter).forEach(function (event) {
-    var ev = event.split('.')[0]
-    var ns = event.split('.')[1] || '*'
+  // reference listener
+  SVG.listeners[index][ev][ns][listener._svgjsListenerId] = l
 
-    // ensure valid object
-    bag[ev] = bag[ev] || {}
-    bag[ev][ns] = bag[ev][ns] || {}
-
-    // reference listener
-    bag[ev][ns][listener._svgjsListenerId] = l
-
-    // add listener
-    n.addEventListener(ev, l, options || false)
-  })
+  // add listener
+  node.addEventListener(ev, l, options || false)
 }
 
 // Add event unbinder in the SVG namespace
-SVG.off = function (node, events, listener, options) {
-  var n = node instanceof SVG.Element ? node.node : node
-  if (!n.instance) return
+SVG.off = function(node, event, listener) {
+  var index = SVG.handlerMap.indexOf(node)
+    , ev    = event && event.split('.')[0]
+    , ns    = event && event.split('.')[1]
+    , namespace = ''
 
-  // listener can be a function or a number
-  if (typeof listener === 'function') {
-    listener = listener._svgjsListenerId
-    if (!listener) return
-  }
+  if(index == -1) return
 
-  var bag = n.instance._events
+  if (listener) {
+    if(typeof listener == 'function') listener = listener._svgjsListenerId
+    if(!listener) return
 
-  ;(events || '').split(SVG.regex.delimiter).forEach(function (event) {
-    var ev = event && event.split('.')[0]
-    var ns = event && event.split('.')[1]
-    var namespace, l
+    // remove listener reference
+    if (SVG.listeners[index][ev] && SVG.listeners[index][ev][ns || '*']) {
+      // remove listener
+      node.removeEventListener(ev, SVG.listeners[index][ev][ns || '*'][listener], false)
 
-    if (listener) {
-      // remove listener reference
-      if (bag[ev] && bag[ev][ns || '*']) {
-        // removeListener
-        n.removeEventListener(ev, bag[ev][ns || '*'][listener], options || false)
-
-        delete bag[ev][ns || '*'][listener]
-      }
-    } else if (ev && ns) {
-      // remove all listeners for a namespaced event
-      if (bag[ev] && bag[ev][ns]) {
-        for (l in bag[ev][ns]) { SVG.off(n, [ev, ns].join('.'), l) }
-
-        delete bag[ev][ns]
-      }
-    } else if (ns) {
-      // remove all listeners for a specific namespace
-      for (event in bag) {
-        for (namespace in bag[event]) {
-          if (ns === namespace) { SVG.off(n, [event, ns].join('.')) }
-        }
-      }
-    } else if (ev) {
-      // remove all listeners for the event
-      if (bag[ev]) {
-        for (namespace in bag[ev]) { SVG.off(n, [ev, namespace].join('.')) }
-
-        delete bag[ev]
-      }
-    } else {
-      // remove all listeners on a given node
-      for (event in bag) { SVG.off(n, event) }
-
-      n.instance._events = {}
+      delete SVG.listeners[index][ev][ns || '*'][listener]
     }
-  })
+
+  } else if (ns && ev) {
+    // remove all listeners for a namespaced event
+    if (SVG.listeners[index][ev] && SVG.listeners[index][ev][ns]) {
+      for (listener in SVG.listeners[index][ev][ns])
+        SVG.off(node, [ev, ns].join('.'), listener)
+
+      delete SVG.listeners[index][ev][ns]
+    }
+
+  } else if (ns){
+    // remove all listeners for a specific namespace
+    for(event in SVG.listeners[index]){
+        for(namespace in SVG.listeners[index][event]){
+            if(ns === namespace){
+                SVG.off(node, [event, ns].join('.'))
+            }
+        }
+    }
+
+  } else if (ev) {
+    // remove all listeners for the event
+    if (SVG.listeners[index][ev]) {
+      for (namespace in SVG.listeners[index][ev])
+        SVG.off(node, [ev, namespace].join('.'))
+
+      delete SVG.listeners[index][ev]
+    }
+
+  } else {
+    // remove all listeners on a given node
+    for (event in SVG.listeners[index])
+      SVG.off(node, event)
+
+    delete SVG.listeners[index]
+    delete SVG.handlerMap[index]
+
+  }
 }
 
+//
 SVG.extend(SVG.Element, {
   // Bind given event to listener
-  on: function (event, listener, binding, options) {
-    SVG.on(this, event, listener, binding, options)
+  on: function(event, listener, binding, options) {
+    SVG.on(this.node, event, listener, binding, options)
+
     return this
-  },
+  }
   // Unbind event from listener
-  off: function (event, listener) {
+, off: function(event, listener) {
     SVG.off(this.node, event, listener)
+
     return this
-  },
-  fire: function (event, data) {
+  }
+  // Fire given event
+, fire: function(event, data) {
+
     // Dispatch event
-    if (event instanceof window.Event) {
-      this.node.dispatchEvent(event)
-    } else {
-      this.node.dispatchEvent(event = new SVG.CustomEvent(event, {detail: data, cancelable: true}))
+    if(event instanceof window.Event){
+        this.node.dispatchEvent(event)
+    }else{
+        this.node.dispatchEvent(event = new window.CustomEvent(event, {detail:data, cancelable: true}))
     }
+
     this._event = event
     return this
-  },
-  event: function() {
+  }
+, event: function() {
     return this._event
   }
 })
@@ -8333,122 +8318,6 @@ SVG.G = SVG.invent({
       return this.put(new SVG.G)
     }
   }
-})
-
-SVG.Doc = SVG.invent({
-  // Initialize node
-  create: function(element) {
-    if (element) {
-      // ensure the presence of a dom element
-      element = typeof element == 'string' ?
-        document.getElementById(element) :
-        element
-
-      // If the target is an svg element, use that element as the main wrapper.
-      // This allows svg.js to work with svg documents as well.
-      if (element.nodeName == 'svg') {
-        this.constructor.call(this, element)
-      } else {
-        this.constructor.call(this, SVG.create('svg'))
-        element.appendChild(this.node)
-        this.size('100%', '100%')
-      }
-
-      // set svg element attributes and ensure defs node
-      this.namespace().defs()
-    }
-  }
-
-  // Inherit from
-, inherit: SVG.Container
-
-  // Add class methods
-, extend: {
-    // Add namespaces
-    namespace: function() {
-      return this
-        .attr({ xmlns: SVG.ns, version: '1.1' })
-        .attr('xmlns:xlink', SVG.xlink, SVG.xmlns)
-        .attr('xmlns:svgjs', SVG.svgjs, SVG.xmlns)
-    }
-    // Creates and returns defs element
-  , defs: function() {
-      if (!this._defs) {
-        var defs
-
-        // Find or create a defs element in this instance
-        if (defs = this.node.getElementsByTagName('defs')[0])
-          this._defs = SVG.adopt(defs)
-        else
-          this._defs = new SVG.Defs
-
-        // Make sure the defs node is at the end of the stack
-        this.node.appendChild(this._defs.node)
-      }
-
-      return this._defs
-    }
-    // custom parent method
-  , parent: function() {
-      if(!this.node.parentNode || this.node.parentNode.nodeName == '#document' || this.node.parentNode.nodeName == '#document-fragment') return null
-      return this.node.parentNode
-    }
-    // Fix for possible sub-pixel offset. See:
-    // https://bugzilla.mozilla.org/show_bug.cgi?id=608812
-  , spof: function() {
-      var pos = this.node.getScreenCTM()
-
-      if (pos)
-        this
-          .style('left', (-pos.e % 1) + 'px')
-          .style('top',  (-pos.f % 1) + 'px')
-
-      return this
-    }
-
-      // Removes the doc from the DOM
-  , remove: function() {
-      if(this.parent()) {
-        this.parent().removeChild(this.node)
-      }
-
-      return this
-    }
-  , clear: function() {
-      // remove children
-      while(this.node.hasChildNodes())
-        this.node.removeChild(this.node.lastChild)
-
-      // remove defs reference
-      delete this._defs
-
-      // add back parser
-      if(!SVG.parser.draw.parentNode)
-        this.node.appendChild(SVG.parser.draw)
-
-      return this
-    }
-  , clone: function (parent) {
-      // write dom data to the dom so the clone can pickup the data
-      this.writeDataToDom()
-
-      // get reference to node
-      var node = this.node
-
-      // clone element and assign new id
-      var clone = assignNewId(node.cloneNode(true))
-
-      // insert the clone in the given parent or after myself
-      if(parent) {
-        (parent.node || parent).appendChild(clone.node)
-      } else {
-        node.parentNode.insertBefore(clone.node, node.nextSibling)
-      }
-
-      return clone
-    }
-  }
-
 })
 
 // ### This module adds backward / forward functionality to elements.
@@ -8559,7 +8428,7 @@ SVG.Mask = SVG.invent({
       this.targets = []
 
       // remove mask from parent
-      SVG.Element.prototype.remove.call(this)
+      this.parent().removeElement(this)
 
       return this
     }
@@ -8819,6 +8688,102 @@ SVG.extend(SVG.Defs, {
   }
 
 })
+SVG.Doc = SVG.invent({
+  // Initialize node
+  create: function(element) {
+    if (element) {
+      // ensure the presence of a dom element
+      element = typeof element == 'string' ?
+        document.getElementById(element) :
+        element
+
+      // If the target is an svg element, use that element as the main wrapper.
+      // This allows svg.js to work with svg documents as well.
+      if (element.nodeName == 'svg') {
+        this.constructor.call(this, element)
+      } else {
+        this.constructor.call(this, SVG.create('svg'))
+        element.appendChild(this.node)
+        this.size('100%', '100%')
+      }
+
+      // set svg element attributes and ensure defs node
+      this.namespace().defs()
+    }
+  }
+
+  // Inherit from
+, inherit: SVG.Container
+
+  // Add class methods
+, extend: {
+    // Add namespaces
+    namespace: function() {
+      return this
+        .attr({ xmlns: SVG.ns, version: '1.1' })
+        .attr('xmlns:xlink', SVG.xlink, SVG.xmlns)
+        .attr('xmlns:svgjs', SVG.svgjs, SVG.xmlns)
+    }
+    // Creates and returns defs element
+  , defs: function() {
+      if (!this._defs) {
+        var defs
+
+        // Find or create a defs element in this instance
+        if (defs = this.node.getElementsByTagName('defs')[0])
+          this._defs = SVG.adopt(defs)
+        else
+          this._defs = new SVG.Defs
+
+        // Make sure the defs node is at the end of the stack
+        this.node.appendChild(this._defs.node)
+      }
+
+      return this._defs
+    }
+    // custom parent method
+  , parent: function() {
+      return this.node.parentNode.nodeName == '#document' ? null : this.node.parentNode
+    }
+    // Fix for possible sub-pixel offset. See:
+    // https://bugzilla.mozilla.org/show_bug.cgi?id=608812
+  , spof: function() {
+      var pos = this.node.getScreenCTM()
+
+      if (pos)
+        this
+          .style('left', (-pos.e % 1) + 'px')
+          .style('top',  (-pos.f % 1) + 'px')
+
+      return this
+    }
+
+      // Removes the doc from the DOM
+  , remove: function() {
+      if(this.parent()) {
+        this.parent().removeChild(this.node)
+      }
+
+      return this
+    }
+  , clear: function() {
+      // remove children
+      while(this.node.hasChildNodes())
+        this.node.removeChild(this.node.lastChild)
+
+      // remove defs reference
+      delete this._defs
+
+      // add back parser
+      if(!SVG.parser.draw.parentNode)
+        this.node.appendChild(SVG.parser.draw)
+
+      return this
+    }
+  }
+
+})
+
 SVG.Shape = SVG.invent({
   // Initialize node
   create: function(element) {
@@ -9328,7 +9293,7 @@ SVG.Text = SVG.invent({
       if (y == null)
         return typeof oy === 'number' ? oy - o : oy
 
-      return this.attr('y', typeof y.valueOf() === 'number' ? y + o : y)
+      return this.attr('y', typeof y === 'number' ? y + o : y)
     }
     // Move center over x-axis
   , cx: function(x) {
@@ -9872,11 +9837,8 @@ SVG.extend(SVG.Parent, SVG.Text, SVG.Tspan, SVG.FX, {
 SVG.Set = SVG.invent({
   // Initialize
   create: function(members) {
-    if (members instanceof SVG.Set) {
-      this.members = members.members.slice()
-    } else {
-      Array.isArray(members) ? this.members = members : this.clear()
-    }
+    // Set initial state
+    Array.isArray(members) ? this.members = members : this.clear()
   }
 
   // Add class methods
@@ -10017,6 +9979,8 @@ SVG.Set.inherit = function() {
     }
   })
 }
+
+
 
 
 SVG.extend(SVG.Element, {
@@ -10270,35 +10234,26 @@ function fullBox(b) {
 
 // Get id from reference string
 function idFromReference(url) {
-  var m = (url || '').toString().match(SVG.regex.reference)
+  var m = url.toString().match(SVG.regex.reference)
 
   if (m) return m[1]
 }
 
-// If values like 1e-88 are passed, this is not a valid 32 bit float,
-// but in those cases, we are so close to 0 that 0 works well!
-function float32String(v) {
-  return Math.abs(v) > 1e-37 ? v : 0
-}
-
 // Create matrix array for looping
 var abcdef = 'abcdef'.split('')
-
 // Add CustomEvent to IE9 and IE10
 if (typeof window.CustomEvent !== 'function') {
   // Code from: https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent
-  var CustomEventPoly = function(event, options) {
+  var CustomEvent = function(event, options) {
     options = options || { bubbles: false, cancelable: false, detail: undefined }
     var e = document.createEvent('CustomEvent')
     e.initCustomEvent(event, options.bubbles, options.cancelable, options.detail)
     return e
   }
 
-  CustomEventPoly.prototype = window.Event.prototype
+  CustomEvent.prototype = window.Event.prototype
 
-  SVG.CustomEvent = CustomEventPoly
-} else {
-  SVG.CustomEvent = window.CustomEvent
+  window.CustomEvent = CustomEvent
 }
 
 // requestAnimationFrame / cancelAnimationFrame Polyfill with fallback based on Paul Irish
@@ -10335,7 +10290,7 @@ return SVG
 
 /***/ }),
 
-/***/ 169:
+/***/ 179:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10345,7 +10300,7 @@ var _jquery = __webpack_require__(5);
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
-var _jquery3 = __webpack_require__(76);
+var _jquery3 = __webpack_require__(74);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -10379,7 +10334,7 @@ Drupal.behaviors.magnificPopup = {
 
 /***/ }),
 
-/***/ 170:
+/***/ 180:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10389,7 +10344,7 @@ var _jquery = __webpack_require__(5);
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
-var _jquery3 = __webpack_require__(76);
+var _jquery3 = __webpack_require__(74);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -10444,7 +10399,7 @@ Drupal.behaviors.menuMain = {
 
 /***/ }),
 
-/***/ 171:
+/***/ 181:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10475,7 +10430,7 @@ $skipLink.on('click', function (e) {
 
 /***/ }),
 
-/***/ 172:
+/***/ 182:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10485,7 +10440,7 @@ var _jquery = __webpack_require__(5);
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
-var _jquery3 = __webpack_require__(76);
+var _jquery3 = __webpack_require__(74);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -10516,7 +10471,7 @@ Drupal.behaviors.videoModal = {
 
 /***/ }),
 
-/***/ 173:
+/***/ 183:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10526,7 +10481,7 @@ var _jquery = __webpack_require__(5);
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
-var _slick = __webpack_require__(107);
+var _slick = __webpack_require__(111);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -10771,7 +10726,7 @@ Drupal.behaviors.mediaTile = {
 
 /***/ }),
 
-/***/ 174:
+/***/ 184:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10898,7 +10853,7 @@ Drupal.behaviors.emailManipulations = {
 
 /***/ }),
 
-/***/ 175:
+/***/ 185:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10908,7 +10863,7 @@ var _jquery = __webpack_require__(5);
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
-var _slick = __webpack_require__(107);
+var _slick = __webpack_require__(111);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -10997,7 +10952,7 @@ Drupal.behaviors.heroSlider = {
 
 /***/ }),
 
-/***/ 176:
+/***/ 186:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11033,7 +10988,7 @@ Drupal.behaviors.footerManipulations = {
 
 /***/ }),
 
-/***/ 177:
+/***/ 187:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11092,7 +11047,7 @@ Drupal.behaviors.formManipulations = {
 
 /***/ }),
 
-/***/ 178:
+/***/ 188:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11128,7 +11083,7 @@ window.addEventListener('message', function (e) {
 
 /***/ }),
 
-/***/ 179:
+/***/ 189:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11156,7 +11111,7 @@ module.exports = jQuery;
 
 /***/ }),
 
-/***/ 51:
+/***/ 50:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11226,7 +11181,7 @@ exports.transitionend = transitionend;
 
 /***/ }),
 
-/***/ 76:
+/***/ 74:
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(__webpack_provided_window_dot_jQuery) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! Magnific Popup - v1.1.0 - 2016-02-20
@@ -13096,5 +13051,5 @@ $.magnificPopup.registerModule(RETINA_NS, {
 
 /***/ })
 
-},[155]);
+},[165]);
 //# sourceMappingURL=themekit.js.map
