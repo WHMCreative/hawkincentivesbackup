@@ -9,11 +9,11 @@
   vars:
     # Project
     site_name: bhk-d8.dev.e3develop.com   # Directory where htdocs and application will live
-    git_org: elevatedthird                # Name of the git user/organization
+    git_org: bessonette			# Name of the git user/organization
     git_repo: bhk-D8                      # Name of the git repository
     drupal_root: docroot               # Dir which has index.php
     git_branch: develop             # This is the branch that will be deployed
-    max_releases: 10                # Number of past releases to keep
+    max_releases: 11                # Number of past releases to keep
     settings_file: settings.php     # Name of the Drupal settings file to deploy
 
     site_domains:      # array of domains name to put in vhost. Should NOT have www.
