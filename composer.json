@@ -102,7 +102,10 @@
     "drupal/varnish_purge": "^1.11",
     "drupal/colorbutton": "^1.1",
     "drupal/concurrent_url_negotiation": "^1.0",
-    "drupal/purge": "^3.0@beta"
+    "drupal/purge": "^3.0@beta",
+    "drupal/login_redirect_per_role": "^1.2",
+    "drupal/menu_per_role": "^1.0",
+    "drupal/node_view_permissions": "^1.2"
   },
   "conflict": {
       "drupal/drupal": "*"
