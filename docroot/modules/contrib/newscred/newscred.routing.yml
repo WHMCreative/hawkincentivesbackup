@@ -1,0 +1,6 @@
+newscred.getlogs:
+    path: /nclogs
+    defaults:
+      _controller: 'Drupal\newscred\Controller\NewscredController::getlogs'
+    requirements:
+      _permission: 'access content' 
