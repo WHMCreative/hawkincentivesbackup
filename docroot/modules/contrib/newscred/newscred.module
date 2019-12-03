@@ -1,0 +1,49 @@
+<?php
+
+/**
+ * @file
+ * NewsCred Module.
+ */
+
+function newscred_node_insert(Drupal\Core\Entity\EntityInterface $entity) {
+    if ($entity->getType() === "article") {
+       	\Drupal::logger('newscred')->notice('Article Found');
+        $entity_data = $entity->toArray();
+        preg_match_all('/src="https:\/\/pixel.newscred.com\/px.gif\?key=([^"]*)"/i', $entity_data['body'][0]['value'], $src);
+
+        if(count($src[1]) > 0) {
+	        \Drupal::logger('newscred')->notice('NewsCred - Pixel Found - ' . $src[1][0]);
+            $url = 'https://api.newscred.com/assets/articles/customer_canonical_link';
+
+            $protocol = stripos($_SERVER['SERVER_PROTOCOL'], 'https') === true ? 'https://' : 'http://';
+            $current_path = $entity->toUrl()->toString();
+            $port = !in_array($_SERVER['SERVER_PORT'], [80, 443]) ? ":$_SERVER[SERVER_PORT]" : '';
+            $canonical_link = $protocol . $_SERVER['SERVER_NAME'] . $port . $current_path;
+
+            $fields = array(
+                'canonical_link' => $canonical_link,
+                'tracking_pixel_key' => $src[1][0],
+            );
+
+            $fields_string = '';
+	    
+            foreach($fields as $key=>$value) { $fields_string .= $key . '=' . print_r($value, true) .'&'; }
+            rtrim($fields_string, '&');
+ 
+            $ch = curl_init();
+	        curl_setopt($ch, CURLOPT_VERBOSE, true);
+	        curl_setopt($ch, CURLOPT_STDERR, $out);
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_POST, count($fields));
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string);
+	        \Drupal::logger('newscred')->notice('NewsCred - Initiating API Call');
+            $result = curl_exec($ch);
+            $response = curl_getinfo($ch);
+            curl_close($ch);
+	    
+	        \Drupal::logger('newscred')->notice('NewsCred - API call ended for tracking pixel ' . $src[1][0] . ' with canonical link ' . $canonical_link . '. ' . print_r($response, true));
+        }
+    }
+}
+
+

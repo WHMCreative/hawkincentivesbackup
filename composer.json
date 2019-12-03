@@ -105,7 +105,8 @@
     "drupal/purge": "^3.0@beta",
     "drupal/login_redirect_per_role": "^1.2",
     "drupal/menu_per_role": "^1.0",
-    "drupal/node_view_permissions": "^1.2"
+    "drupal/node_view_permissions": "^1.2",
+    "drupal/feeds": "^3.0@alpha"
   },
   "conflict": {
       "drupal/drupal": "*"
