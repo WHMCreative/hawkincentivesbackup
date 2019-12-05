@@ -1,0 +1,55 @@
+
+
+  @font-face {
+    font-family: 'lato-medium';
+    src: url('http://www.paloaltonetworks.com/etc/clientlibs/pan/fonts/lato/lato-medium/lato-medium.eot'),
+      url('http://www.paloaltonetworks.com/etc/clientlibs/pan/fonts/lato/lato-medium/lato-medium.woff') format('woff'),
+      url('http://www.paloaltonetworks.com/etc/clientlibs/pan/fonts/lato/lato-medium/lato-medium.ttf') format('truetype'),
+      url('http://www.paloaltonetworks.com/etc/clientlibs/pan/fonts/lato/lato-medium/lato-medium.eot?#iefix') format('embedded-opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'lato-bold';
+    src: url('http://www.paloaltonetworks.com/etc/clientlibs/pan/fonts/lato/lato-bold/lato-bold.eot'),
+      url('http://www.paloaltonetworks.com/etc/clientlibs/pan/fonts/lato/lato-bold/lato-bold.woff') format('woff'),
+      url('http://www.paloaltonetworks.com/etc/clientlibs/pan/fonts/lato/lato-bold/lato-bold.ttf') format('truetype'),
+      url('http://www.paloaltonetworks.com/etc/clientlibs/pan/fonts/lato/lato-bold/lato-bold?#iefix') format('embedded-opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+  font-family: 'lato-normal';
+  src: url('http://www.paloaltonetworks.com/etc/clientlibs/pan/fonts/lato/lato-normal/lato-normal.eot'),
+   url('http://www.paloaltonetworks.com/etc/clientlibs/pan/fonts/lato/lato-normal/lato-normal.woff') format('woff'),
+   url('http://www.paloaltonetworks.com/etc/clientlibs/pan/fonts/lato/lato-normal/lato-normal.ttf') format('truetype'),
+   url('http://www.paloaltonetworks.com/etc/clientlibs/pan/fonts/lato/lato-normal/lato-normal.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+  }
+  
+  
+  @font-face {
+  font-family: 'lato-thin';
+  src: url('http://www.paloaltonetworks.com/etc/clientlibs/pan/fonts/lato/lato-thin/lato-thin.eot'),
+   url('http://www.paloaltonetworks.com/etc/clientlibs/pan/fonts/lato/lato-thin/lato-thin.woff') format('woff'),
+   url('http://www.paloaltonetworks.com/etc/clientlibs/pan/fonts/lato/lato-thin/lato-thin.ttf') format('truetype'),
+   url('http://www.paloaltonetworks.com/etc/clientlibs/pan/fonts/lato/lato-thin/lato-thin.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'FontAwesome';
+    src: url( 'http://www.paloaltonetworks.com/etc/clientlibs/pan/fonts/font-awesome/fontawesome-webfont.eot?v=4.7.0');
+    src: url('http://www.paloaltonetworks.com/etc/clientlibs/pan/fonts/font-awesome/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'),
+      url('http://www.paloaltonetworks.com/etc/clientlibs/pan/fonts/font-awesome/fontawesome-webfont.woff2?v=4.7.0') format('woff2'),
+      url('http://www.paloaltonetworks.com/etc/clientlibs/pan/fonts/font-awesome/fontawesome-webfont.woff?v=4.7.0') format('woff'),
+      url('http://www.paloaltonetworks.com/etc/clientlibs/pan/fonts/font-awesome/fontawesome-webfont.ttf?v=4.7.0') format('truetype'),
+      url('http://www.paloaltonetworks.com/etc/clientlibs/pan/fonts/font-awesome/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');
+    font-weight: normal;
+    font-style: normal
+  }
+  
