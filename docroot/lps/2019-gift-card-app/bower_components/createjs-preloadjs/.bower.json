@@ -1,0 +1,14 @@
+{
+  "name": "createjs-preloadjs",
+  "homepage": "https://github.com/CreateJS/PreloadJS",
+  "version": "0.4.0",
+  "_release": "0.4.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.4.0",
+    "commit": "7d3fcc31bdb08c1bca5a8d7c2a080b1c341de486"
+  },
+  "_source": "https://github.com/CreateJS/PreloadJS.git",
+  "_target": "0.4.0",
+  "_originalSource": "createjs-preloadjs"
+}
